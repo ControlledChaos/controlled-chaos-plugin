@@ -33,9 +33,6 @@ class Controlled_Chaos_Admin_Pages {
 	 */
     public function __construct() {
 
-    	// Add ACF options page.
-    	$this->acf_options_page();
-
         // Replace default post title placeholders.
         add_filter( 'enter_title_here', [ $this, 'default_post_title_placeholders' ] );
 
@@ -59,31 +56,6 @@ class Controlled_Chaos_Admin_Pages {
         }
 
     }
-
-    /**
-     * Add ACF options page.
-     *
-     * @since    1.0.0
-     */
-    public function acf_options_page() {
-
-		if ( function_exists( 'acf_add_options_page' ) ) {
-
-			$title = get_bloginfo( 'name' );
-
-			acf_add_options_page( [
-				'page_title' 	=> $title . __( ' Settings', 'controlled-chaos' ),
-				'menu_title'	=> __( 'Site Settings', 'controlled-chaos' ),
-				'menu_slug' 	=> 'site-settings',
-				'icon_url'      => 'dashicons-admin-settings',
-				'position'      => 59,
-				'capability'	=> 'manage_options',
-				'redirect'		=> false
-			]);
-
-		}
-
-	}
 
     /**
      * Replace default post title placeholders.

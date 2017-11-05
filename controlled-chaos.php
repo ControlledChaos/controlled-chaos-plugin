@@ -8,7 +8,7 @@
  * @package           Controlled_Chaos
  *
  * @wordpress-plugin
- * Plugin Name:       Controlled Chaos
+ * Plugin Name:       Controlled Chaos - DEV
  * Plugin URI:        https://github.com/ControlledChaos/Controlled-Chaos-Plugin
  * Description:       Controlling some WordPress chaos.
  * Version:           1.0.0

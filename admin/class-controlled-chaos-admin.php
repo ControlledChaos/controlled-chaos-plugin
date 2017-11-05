@@ -95,6 +95,8 @@ class Controlled_Chaos_Admin {
 		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-dashboard.php';
 		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-admin-menu.php';
 		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-admin-pages.php';
+		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-settings.php';
+		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-settings-field-groups.php';
 		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-post-type-tax.php';
 		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-images.php';
 		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-gallery-shortcode.php';
