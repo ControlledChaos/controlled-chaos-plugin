@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Controlled Chaos base plugin
+ * Controlled Chaos starter plugin
  *
  * @link              http://ccdzine.com
  * @since             1.0.0
  * @package           Controlled_Chaos
  *
  * @wordpress-plugin
- * Plugin Name:       Controlled Chaos - DEV
+ * Plugin Name:       Controlled Chaos
  * Plugin URI:        https://github.com/ControlledChaos/Controlled-Chaos-Plugin
  * Description:       Controlling some WordPress chaos.
  * Version:           1.0.0
