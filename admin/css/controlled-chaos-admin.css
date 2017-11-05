@@ -1,0 +1,28 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+
+ /**
+  * PLUGINS
+  */
+.plugins tr.inactive *,
+.plugins a.delete,
+.row-actions span.delete a {
+    background: #f3f3f3;
+    color: #777777;
+}
+
+.plugins tr.inactive .activate a:hover {
+    color: #76a91d;
+}
+
+.plugins tr.active .deactivate a:hover,
+.plugins tr.inactive .delete a:hover {
+    color: #aa0000;
+}
+
+.plugins a.delete:hover,
+.row-actions span.delete a:hover {
+    color: #aa0000 !important;
+}
