@@ -45,8 +45,11 @@ function deactivate_controlled_chaos() {
 	Controlled_Chaos_Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_controlled_chaos' );
-register_deactivation_hook( __FILE__, 'deactivate_controlled_chaos' );
+/**
+ * Must include the namespace!
+ */
+register_activation_hook( __FILE__, __NAMESPACE__ . '\activate_controlled_chaos' );
+register_deactivation_hook( __FILE__, __NAMESPACE__ . '\deactivate_controlled_chaos' );
 
 /**
  * The core plugin class that is used to define internationalization,
