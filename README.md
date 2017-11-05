@@ -7,6 +7,16 @@ This plugin controls some chaos and provides a head start for site-specific plug
 ## Includes
 Following are some of the core functions and features offered.
 
+### jQuery Plugins
+UI & UX JS plugins enqueued
+(TODO: enqueue via settings page)
+
+* Fancybox 3 - https://github.com/fancyapps/fancybox
+* Slick - https://github.com/kenwheeler/slick
+* Tabslet - https://github.com/vdw/Tabslet
+* Tooltipster - https://github.com/iamceege/tooltipster
+* FitVids - https://github.com/davatron5000/FitVids.js
+
 ### Clean Up the Admin
 A little tidying up of the clutter, and removal of items to which inexperienced users ought not have access.
 

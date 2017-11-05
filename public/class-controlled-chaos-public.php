@@ -135,7 +135,10 @@ class Controlled_Chaos_Public {
 		wp_enqueue_script( $this->controlled_chaos . '-tabslet', plugin_dir_url( __FILE__ ) . 'js/jquery.tabslet.min.js', [ 'jquery' ], $this->version, true );
 
 		// Tooltipster.
-		wp_enqueue_script( $this->controlled_chaos . '-tooltipster', plugin_dir_url( __FILE__ ) . 'js/tooltipster.bundle.min', [ 'jquery' ], $this->version, true );
+		wp_enqueue_script( $this->controlled_chaos . '-tooltipster', plugin_dir_url( __FILE__ ) . 'js/tooltipster.bundle.min.js', [ 'jquery' ], $this->version, true );
+
+		// FitVids.
+		wp_enqueue_script( $this->controlled_chaos . '-fitvids', plugin_dir_url( __FILE__ ) . 'js/jquery.fitvids.min.js', [ 'jquery' ], $this->version, true );
 
 	}
 
