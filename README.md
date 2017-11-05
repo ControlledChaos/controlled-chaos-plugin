@@ -2,7 +2,7 @@
 A WordPress starter/boilerplate plugin.
 
 ## Description
-This plugin controls some chaos and provides a headstart for site-specific plugin.
+This plugin controls some chaos and provides a head start for site-specific plugins.
 
 ## Includes
 Following are some of the core functions and features offered.
