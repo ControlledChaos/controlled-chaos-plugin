@@ -57,7 +57,7 @@ class Controlled_Chaos_Admin {
 		$this->version = $version;
 
 		// Include admin function files.
-		$this->include_files();
+		$this->require_files();
 
 		// Remove theme & plugin editor links.
         add_action( 'admin_init', [ $this, 'remove_editor_links' ] );
@@ -90,7 +90,7 @@ class Controlled_Chaos_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function include_files() {
+	public function require_files() {
 
 		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-dashboard.php';
 		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-admin-menu.php';
