@@ -38,7 +38,7 @@ class Controlled_Chaos_Dashboard {
 
     /**
      * Add custom post types to "At a Glance" dashboard widget.
-     * 
+     *
      * @since    1.0.0
      */
     public function at_glance() {
@@ -69,13 +69,16 @@ class Controlled_Chaos_Dashboard {
     }
 
     /**
-     * Remove metaboxes.
-     * 
+     * Remove Dashboard metaboxes.
+     *
      * @since    1.0.0
      */
     public function metaboxes() {
 
         global $wp_meta_boxes;
+
+        remove_action( 'welcome_panel', 'wp_welcome_panel' );
+
         unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
         unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']);
         unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']);
