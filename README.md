@@ -1,4 +1,5 @@
-# Controlled Chaos
+Controlled Chaos
+================
 A WordPress starter/boilerplate plugin.
 
 ## Description
