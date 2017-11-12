@@ -163,7 +163,7 @@ class Controlled_Chaos_Admin_Pages {
             if ( $post_featured_image ) {
                 echo '<img src="' . $post_featured_image . '" style="width: 48px;" />';
             } else {
-                echo '<img src="' . get_bloginfo( 'stylesheet_directory' ) . '/assets/images/featured-image-placeholder.png" style="width: 48px;" />';
+                echo '<img src="' . plugins_url( 'images/featured-image-placeholder.png', __FILE__ ) . '" style="width: 48px;" />';
             }
         }
 
