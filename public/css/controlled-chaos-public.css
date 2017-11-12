@@ -22,5 +22,5 @@ button.fancybox-arrow:active {
 }
 
 .logged-in.admin-bar .fancybox-container {
-	top: 32px;
+	top: 32px !important;
 }
