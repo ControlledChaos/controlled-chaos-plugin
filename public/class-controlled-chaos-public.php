@@ -99,7 +99,7 @@ class Controlled_Chaos_Public {
 	public function enqueue_styles() {
 
 		// Non-vendor plugin styles.
-		wp_enqueue_style( $this->controlled_chaos, plugin_dir_url( __FILE__ ) . 'css/controlled-chaos-public.css', [], $this->version, 'all' );
+		wp_enqueue_style( $this->controlled_chaos . '-plugin', plugin_dir_url( __FILE__ ) . 'css/controlled-chaos-public.css', [], $this->version, 'all' );
 
 		// Fancybox 3.
 		wp_enqueue_style( $this->controlled_chaos . '-fancybox', plugin_dir_url( __FILE__ ) . 'css/jquery.fancybox.min.css', [], $this->version, 'all' );
