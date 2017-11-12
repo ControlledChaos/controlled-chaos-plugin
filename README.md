@@ -5,6 +5,8 @@ A WordPress starter/boilerplate plugin.
 ## Description
 This plugin controls some chaos and provides a head start for site-specific plugins.
 
+Short array syntax requires PHP 5.4+
+
 ## Includes
 Following are some of the core functions and features offered.
 
