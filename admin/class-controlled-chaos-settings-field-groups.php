@@ -26,7 +26,7 @@ class Controlled_Chaos_Settings_Fields {
     public function __construct() {
 
         // Register settings page fields.
-    	// $this->settings_fields();
+    	$this->settings_fields();
 
 	}
 	
