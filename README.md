@@ -5,7 +5,11 @@ A WordPress starter/boilerplate plugin.
 ## Description
 This plugin controls some chaos and provides a head start for site-specific plugins.
 
+## Dependencies
+
 Short array syntax requires PHP 5.4+
+
+To take advantage of all of its features, this plugin is recommended for use with Advanced Custom Fields PRO.
 
 ## Includes
 Following are some of the core functions and features offered.
