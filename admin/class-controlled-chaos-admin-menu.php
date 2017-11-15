@@ -35,8 +35,8 @@ class Controlled_Chaos_Admin_Menu {
 	 */
     public function __construct() {
 
-        // Move the menu items.
-        add_action( 'admin_menu', [ $this, 'move_menu_items' ] );
+        // Move the Menus & Widgets menu items.
+        add_action( 'admin_menu', [ $this, 'menus_widgets' ] );
 
         // Set the new parent file URL.
         add_filter( 'parent_file', [ $this, 'set_parent_file' ] );
@@ -51,30 +51,44 @@ class Controlled_Chaos_Admin_Menu {
      * 
      * @since    1.0.0
      */
-    public function move_menu_items() {
+    public function menus_widgets() {
     
         global $submenu, $menu;
+
+        if ( class_exists( 'ACF_Pro' ) ) :
+
+            $menus_link    = get_field( 'ccp_menus_link_position', 'option' );
+            $widgets_link  = get_field( 'ccp_widgets_link_position', 'option' );
+            $settings_link = get_field( 'ccp_settings_link_position', 'option' );
+            
+            if ( isset( $submenu['themes.php'] ) ) {
         
-        if ( isset( $submenu['themes.php'] ) ) {
-    
-            foreach ( $submenu['themes.php'] as $key => $item ) {
-                if ( $item[2] === 'nav-menus.php' ) {
-                    unset($submenu['themes.php'][$key] );
+                foreach ( $submenu['themes.php'] as $key => $item ) {
+                    if ( $item[2] === 'nav-menus.php' && 'default' != $menus_link ) {
+                        unset($submenu['themes.php'][$key] );
+                    }
+                    if ( $item[2] === 'widgets.php' && 'default' != $widgets_link ) {
+                        unset( $submenu['themes.php'][$key] );
+                    }
                 }
-                if ( $item[2] === 'widgets.php' ) {
-                    unset( $submenu['themes.php'][$key] );
-                }
+
             }
-        }
 
-        $user = wp_get_current_user();
+            $user = wp_get_current_user();
 
-        if ( in_array( 'editor', $user->roles ) ) {
-            unset( $menu[60] );
-        }
+            if ( in_array( 'editor', $user->roles ) ) {
+                unset( $menu[60] );
+            }
 
-        add_menu_page( __( 'Menus', 'controlled-chaos' ), __( 'Menus', 'controlled-chaos' ), 'delete_others_pages', 'nav-menus.php', '', 'dashicons-list-view', 61 );
-        add_menu_page( __( 'Widgets', 'controlled-chaos' ), __( 'Widgets', 'controlled-chaos' ), 'delete_others_pages', 'widgets.php', '', 'dashicons-welcome-widgets-menus', 62 );
+            if ( 'default' != $menus_link ) {
+                add_menu_page( __( 'Menus', 'controlled-chaos' ), __( 'Menus', 'controlled-chaos' ), 'delete_others_pages', 'nav-menus.php', '', 'dashicons-list-view', 61 );
+            }
+
+            if ( 'default' != $widgets_link ) {
+                add_menu_page( __( 'Widgets', 'controlled-chaos' ), __( 'Widgets', 'controlled-chaos' ), 'delete_others_pages', 'widgets.php', '', 'dashicons-welcome-widgets-menus', 62 );
+            }
+
+        endif;
     }
     
     /**
@@ -85,15 +99,22 @@ class Controlled_Chaos_Admin_Menu {
     public function set_parent_file( $parent_file ) {
 
         global $current_screen;
-    
-        if ( $current_screen->base == 'nav-menus' ) {
-            $parent_file = 'nav-menus.php';
-        }
 
-        if ( $current_screen->base == 'widgets' ) {
-            $parent_file = 'widgets.php';
-        }
-        return $parent_file;
+        if ( class_exists( 'ACF_Pro' ) ) :
+
+            $menus_link    = get_field( 'ccp_menus_link_position', 'option' );
+            $widgets_link  = get_field( 'ccp_widgets_link_position', 'option' );
+        
+            if ( $current_screen->base == 'nav-menus' && 'default' != $menus_link ) {
+                $parent_file = 'nav-menus.php';
+            }
+
+            if ( $current_screen->base == 'widgets' && 'default' != $widgets_link ) {
+                $parent_file = 'widgets.php';
+            }
+            return $parent_file;
+            
+        endif;
 
     }
     

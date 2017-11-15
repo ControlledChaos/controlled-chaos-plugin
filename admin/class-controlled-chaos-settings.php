@@ -34,7 +34,7 @@ class Controlled_Chaos_Site_Settings {
     public function __construct() {
 
         // Add ACF options page.
-    	add_action( 'init', [ $this, 'site_settings_page' ] );
+    	add_action( 'admin_menu', [ $this, 'site_settings_page' ] );
 
     }
 
@@ -45,19 +45,37 @@ class Controlled_Chaos_Site_Settings {
 	 */
     public function site_settings_page() {
 
-		if ( function_exists( 'acf_add_options_page' ) ) {
+		if ( class_exists( 'ACF_Pro' ) ) {
 
-			$title = get_bloginfo( 'name' );
+			$title    = get_bloginfo( 'name' );
+			$position = get_field( 'ccp_settings_link_position', 'option' );
 
-			acf_add_options_page( apply_filters( 'controlled_chaos_site_settings_page', [
-				'page_title' 	=> $title . __( ' Settings', 'controlled-chaos' ),
-				'menu_title'	=> __( 'Site Settings', 'controlled-chaos' ),
-				'menu_slug' 	=> 'site-settings',
-				'icon_url'      => 'dashicons-admin-settings',
-				'position'      => 59,
-				'capability'	=> 'manage_options',
-				'redirect'		=> false
-			] ) );
+			if ( 'top' == $position ) :
+					
+				$settings = apply_filters( 'controlled_chaos_site_settings_page_top', [
+					'page_title' 	=> $title . __( ' Settings', 'controlled-chaos' ),
+					'menu_title'	=> __( 'Site Settings', 'controlled-chaos' ),
+					'menu_slug' 	=> 'site-settings',
+					'icon_url'      => 'dashicons-admin-settings',
+					'position'      => 59,
+					'capability'	=> 'manage_options',
+					'redirect'		=> false
+				] );
+				acf_add_options_page( $settings );
+				remove_menu_page( 'options-general.php' );
+
+			else :
+
+				$settings = apply_filters( 'controlled_chaos_site_settings_page_default', [
+					'page_title' => $title . __( ' Settings', 'controlled-chaos' ),
+					'menu_title' => __( 'Site Settings', 'controlled-chaos' ),
+					'menu_slug'  => 'site-settings',
+					'parent'     => 'options-general.php',     
+					'capability' => 'manage_options'
+				] );
+				acf_add_options_page( $settings );
+
+			endif;
 
 		}
 
