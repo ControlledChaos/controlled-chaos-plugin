@@ -77,18 +77,41 @@ class Controlled_Chaos_Dashboard {
 
         global $wp_meta_boxes;
 
-        // remove_action( 'welcome_panel', 'wp_welcome_panel' );
+        if ( class_exists( 'ACF_Pro' ) ) {
 
-        unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
-        unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']);
-        // unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']);
-        unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);
-        unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_drafts']);
-        unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_comments']);
-        unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
-        unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary']);
+            $hide = get_field( 'ccp_dashboard_hide_widgets', 'option' );
 
-        remove_meta_box( 'dashboard_activity', 'dashboard', 'normal' );
+            if ( $hide && in_array( 'welcome', $hide ) ) {
+                remove_action( 'welcome_panel', 'wp_welcome_panel' );
+            }
+
+            if ( $hide && in_array( 'quick', $hide ) ) {
+                unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press'] );
+            }
+
+            if ( $hide && in_array( 'at_glance', $hide ) ) {
+                unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now'] );
+            }
+
+            if ( $hide && in_array( 'news', $hide ) ) {
+                unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
+            }
+
+            if ( $hide && in_array( 'activity', $hide ) ) {
+                remove_meta_box( 'dashboard_activity', 'dashboard', 'normal' );
+            }
+
+        } else {
+
+            // remove_action( 'welcome_panel', 'wp_welcome_panel' );
+
+            unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
+            // unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']);
+            unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
+
+            remove_meta_box( 'dashboard_activity', 'dashboard', 'normal' );
+
+        }
 
     }
 

@@ -26,7 +26,7 @@ class Controlled_Chaos_Settings_Fields {
     public function __construct() {
 
         // Register settings page fields.
-    	$this->settings_fields();
+    	// $this->settings_fields();
 
 	}
 	
@@ -118,6 +118,78 @@ class Controlled_Chaos_Settings_Fields {
 						'allow_null' => 0,
 						'default_value' => 'default',
 						'layout' => 'horizontal',
+						'return_format' => 'value',
+					),
+					array(
+						'key' => 'field_5a0c8d8a32b95',
+						'label' => 'Hide Links',
+						'name' => 'ccp_admin_hide_links',
+						'type' => 'checkbox',
+						'instructions' => 'Select which menu items to hide.',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'choices' => array(
+							'themes' => 'Appearance',
+							'plugins' => 'Plugins',
+							'users' => 'Users',
+							'tools' => 'Tools',
+							'fields' => 'Custom Fields',
+						),
+						'allow_custom' => 0,
+						'save_custom' => 0,
+						'default_value' => array(
+						),
+						'layout' => 'horizontal',
+						'toggle' => 1,
+						'return_format' => 'value',
+					),
+					array(
+						'key' => 'field_5a0c8d7232b94',
+						'label' => 'Dashboard',
+						'name' => '',
+						'type' => 'tab',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'placement' => 'top',
+						'endpoint' => 0,
+					),
+					array(
+						'key' => 'field_5a0c8f393edd6',
+						'label' => 'Hide Widgets',
+						'name' => 'ccp_dashboard_hide_widgets',
+						'type' => 'checkbox',
+						'instructions' => 'Select the Dashboard widgets to hide.',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'choices' => array(
+							'welcome' => 'Welcome',
+							'news' => 'WordPress News',
+							'quick' => 'Quick Press',
+							'at_glance' => 'At a Glance',
+							'activity' => 'Activity',
+						),
+						'allow_custom' => 0,
+						'save_custom' => 0,
+						'default_value' => array(
+						),
+						'layout' => 'horizontal',
+						'toggle' => 1,
 						'return_format' => 'value',
 					),
 				),
