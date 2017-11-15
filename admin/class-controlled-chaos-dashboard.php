@@ -103,6 +103,10 @@ class Controlled_Chaos_Dashboard {
 
         } else {
 
+            /**
+             * Uncomment or comment/remove as desired.
+             */
+
             // remove_action( 'welcome_panel', 'wp_welcome_panel' );
 
             unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);

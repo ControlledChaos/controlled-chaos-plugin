@@ -193,7 +193,19 @@ class Controlled_Chaos_Admin {
 	 */
 	public function admin_footer() {
 
-		echo sprintf( '%1s website designed & developed by <a href="http://ccdzine.com" target="_blank">%2s</a>.', get_bloginfo( 'name' ), __( 'Controlled Chaos Design', 'controlled-chaos' ) );
+		$site   = get_bloginfo( 'name' );
+		$credit = get_field( 'ccp_admin_footer_credit', 'option' );
+		$link   = get_field( 'ccp_admin_footer_link', 'option' );
+
+		if ( $credit && $link && class_exists( 'ACF_Pro' ) ) {
+			$footer = sprintf( '%1s %2s <a href="%3s" target="_blank">%4s</a>.', $site, esc_html__( 'website designed & developed by', 'controlled-chaos' ), $link, $credit );
+		} elseif ( $credit && class_exists( 'ACF_Pro' ) ) {
+			$footer = sprintf( '%1s %2s %3s.', $site, esc_html__( 'website designed & developed by', 'controlled-chaos' ), $credit );
+		} else {
+			$footer = sprintf( '%1s %2s.', $site, esc_html__( 'website powered by WordPress' ) );
+		}
+
+		echo $footer;
 
 	}
 

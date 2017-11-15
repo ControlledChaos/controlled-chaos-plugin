@@ -26,7 +26,7 @@ class Controlled_Chaos_Settings_Fields {
     public function __construct() {
 
         // Register settings page fields.
-    	// $this->settings_fields();
+    	$this->settings_fields();
 
 	}
 	
@@ -191,6 +191,57 @@ class Controlled_Chaos_Settings_Fields {
 						'layout' => 'horizontal',
 						'toggle' => 1,
 						'return_format' => 'value',
+					),
+					array(
+						'key' => 'field_5a0cbb3873e55',
+						'label' => 'Admin Pages',
+						'name' => '',
+						'type' => 'tab',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'placement' => 'top',
+						'endpoint' => 0,
+					),
+					array(
+						'key' => 'field_5a0cbb5e73e56',
+						'label' => 'Admin Footer Credit',
+						'name' => 'ccp_admin_footer_credit',
+						'type' => 'text',
+						'instructions' => 'The "developed by" credit.',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'default_value' => '',
+						'placeholder' => '',
+						'prepend' => '',
+						'append' => '',
+						'maxlength' => '',
+					),
+					array(
+						'key' => 'field_5a0cbba573e57',
+						'label' => 'Admin Footer Link',
+						'name' => 'ccp_admin_footer_link',
+						'type' => 'url',
+						'instructions' => 'Link to the website devoloper.',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'default_value' => '',
+						'placeholder' => '',
 					),
 				),
 				'location' => array(
