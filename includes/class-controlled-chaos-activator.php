@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Fired during plugin activation
+ * Fired during plugin activation.
  *
  * @link       http://ccdzine.com
  * @since      1.0.0
@@ -30,13 +30,13 @@ if ( ! defined( 'WPINC' ) ) {
 class Controlled_Chaos_Activator {
 
 	/**
-	 * Short Description. (use period)
-	 *
-	 * Long Description.
+	 * Activation.
 	 *
 	 * @since    1.0.0
 	 */
 	public static function activate() {
+
+		
 
 	}
 
