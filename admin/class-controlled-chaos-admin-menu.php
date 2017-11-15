@@ -55,7 +55,7 @@ class Controlled_Chaos_Admin_Menu {
     
         global $submenu, $menu;
 
-        if ( class_exists( 'ACF_Pro' ) ) :
+        if ( class_exists( 'ACF_Pro' ) ) {
 
             $menus_link    = get_field( 'ccp_menus_link_position', 'option' );
             $widgets_link  = get_field( 'ccp_widgets_link_position', 'option' );
@@ -87,8 +87,31 @@ class Controlled_Chaos_Admin_Menu {
             if ( 'default' != $widgets_link ) {
                 add_menu_page( __( 'Widgets', 'controlled-chaos' ), __( 'Widgets', 'controlled-chaos' ), 'delete_others_pages', 'widgets.php', '', 'dashicons-welcome-widgets-menus', 62 );
             }
+        
+        } else {
 
-        endif;
+            if ( isset( $submenu['themes.php'] ) ) {
+        
+                foreach ( $submenu['themes.php'] as $key => $item ) {
+                    if ( $item[2] === 'nav-menus.php' ) {
+                        unset($submenu['themes.php'][$key] );
+                    }
+                    if ( $item[2] === 'widgets.php' ) {
+                        unset( $submenu['themes.php'][$key] );
+                    }
+                }
+
+            }
+
+            $user = wp_get_current_user();
+
+            unset( $menu[60] );
+
+            add_menu_page( __( 'Menus', 'controlled-chaos' ), __( 'Menus', 'controlled-chaos' ), 'delete_others_pages', 'nav-menus.php', '', 'dashicons-list-view', 61 );
+
+            add_menu_page( __( 'Widgets', 'controlled-chaos' ), __( 'Widgets', 'controlled-chaos' ), 'delete_others_pages', 'widgets.php', '', 'dashicons-welcome-widgets-menus', 62 );
+
+        }
     }
     
     /**
@@ -100,7 +123,7 @@ class Controlled_Chaos_Admin_Menu {
 
         global $current_screen;
 
-        if ( class_exists( 'ACF_Pro' ) ) :
+        if ( class_exists( 'ACF_Pro' ) ) {
 
             $menus_link    = get_field( 'ccp_menus_link_position', 'option' );
             $widgets_link  = get_field( 'ccp_widgets_link_position', 'option' );
@@ -114,7 +137,18 @@ class Controlled_Chaos_Admin_Menu {
             }
             return $parent_file;
             
-        endif;
+        } else {
+
+            if ( $current_screen->base == 'nav-menus' ) {
+                $parent_file = 'nav-menus.php';
+            }
+
+            if ( $current_screen->base == 'widgets' ) {
+                $parent_file = 'widgets.php';
+            }
+            return $parent_file;
+
+        }
 
     }
     
