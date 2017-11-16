@@ -189,7 +189,7 @@ class Controlled_Chaos_Admin {
 	/**
 	 * Credits in admin footer.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.2
 	 */
 	public function admin_footer() {
 

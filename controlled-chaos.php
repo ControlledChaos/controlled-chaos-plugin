@@ -10,8 +10,8 @@
  * @wordpress-plugin
  * Plugin Name:       Controlled Chaos
  * Plugin URI:        https://github.com/ControlledChaos/Controlled-Chaos-Plugin
- * Description:       Controlling some WordPress chaos.
- * Version:           1.0.0
+ * Description:       A WordPress starter/boilerplate plugin.
+ * Version:           1.0.2
  * Author:            Controlled Chaos Design
  * Author URI:        http://ccdzine.com/
  * License:           GPL-3.0+
@@ -27,7 +27,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'CONTROLLEDCHAOS_VERSION', '1.0.0' );
+define( 'CONTROLLEDCHAOS_VERSION', '1.0.2' );
 
 /**
  * The code that runs during plugin activation.
