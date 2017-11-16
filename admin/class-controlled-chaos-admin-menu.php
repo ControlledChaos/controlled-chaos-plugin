@@ -105,7 +105,9 @@ class Controlled_Chaos_Admin_Menu {
 
             $user = wp_get_current_user();
 
-            unset( $menu[60] );
+            if ( in_array( 'editor', $user->roles ) ) {
+                unset( $menu[60] );
+            }
 
             add_menu_page( __( 'Menus', 'controlled-chaos' ), __( 'Menus', 'controlled-chaos' ), 'delete_others_pages', 'nav-menus.php', '', 'dashicons-list-view', 61 );
 
