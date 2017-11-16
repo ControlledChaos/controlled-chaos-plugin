@@ -32,4 +32,4 @@ A little tidying up of the clutter, and removal of items to which inexperienced 
 * Make Menus and Widgets top level menu items
 * Custom admin footer message
 * Remove WordPress logo from admin bar
-* Remove access to theme an plugin editors
+* Remove access to theme and plugin editors
