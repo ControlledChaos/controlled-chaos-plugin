@@ -35,6 +35,18 @@ class Controlled_Chaos_Admin_Menu {
 	 */
     public function __construct() {
 
+        // Remove menu items.
+        add_action( 'admin_menu', [ $this, 'hide' ] );
+        
+        if ( class_exists( 'ACF_Pro' ) ) {
+
+            $options = get_field( 'ccp_admin_hide_links', 'option' );
+            if ( $options && in_array( 'fields', $options ) ) {
+                add_filter( 'acf/settings/show_admin', '__return_false' );
+            }
+
+        }
+
         // Move the Menus & Widgets menu items.
         add_action( 'admin_menu', [ $this, 'menus_widgets' ] );
 
@@ -43,6 +55,37 @@ class Controlled_Chaos_Admin_Menu {
 
         // Set the user capability for the pages.
         add_filter( 'user_has_cap', [ $this, 'set_capability' ], 20, 4 );
+
+    }
+
+    /**
+     * Remove menu items.
+     * 
+     * @since    1.0.3
+     */
+    public function hide() {
+
+        if ( class_exists( 'ACF_Pro' ) ) {
+
+            $options = get_field( 'ccp_admin_hide_links', 'option' );
+
+            if ( $options && in_array( 'themes', $options ) ) {
+                remove_menu_page( 'themes.php' );
+            }
+
+            if ( $options && in_array( 'plugins', $options ) ) {
+                remove_menu_page( 'plugins.php' );
+            }
+
+            if ( $options && in_array( 'users', $options ) ) {
+                remove_menu_page( 'users.php' );
+            }
+
+            if ( $options && in_array( 'tools', $options ) ) {
+                remove_menu_page( 'tools.php' );
+            }
+
+        }
 
     }
 

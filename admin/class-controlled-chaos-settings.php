@@ -89,7 +89,7 @@ class Controlled_Chaos_Settings {
 	 */
 	public function settings() {
 		
-		if ( class_exists( 'ACF_Pro' ) || class_exists( 'acf_admin_options_page' ) ) {
+		if ( class_exists( 'ACF_Pro' ) ) {
 
 			add_settings_section( 'ccp-site-settings', __( 'Site Settings Page', 'controlled-chaos' ), [ $this, 'site_settings_page_section' ], 'controlled-chaos' );
 			
@@ -106,7 +106,7 @@ class Controlled_Chaos_Settings {
 
 	public function site_settings_page_section() {
 
-		if ( class_exists( 'ACF_Pro' ) || class_exists( 'acf_admin_options_page' ) ) {
+		if ( class_exists( 'ACF_Pro' ) ) {
 
 			echo sprintf( '<p>%1s</p>', esc_html( 'The "Site Settings" page registered by the Controlled Chaos plugin and Advanced Custom Fields contains field groups that can be imported for editing. These built-in field goups must be deactivated for the imported field groups to take effect.', 'controlled-chaos' ) );
 
@@ -116,7 +116,7 @@ class Controlled_Chaos_Settings {
 
 	public function site_settings_page_callback( $args ) {
 		
-		if ( class_exists( 'ACF_Pro' ) || class_exists( 'acf_admin_options_page' ) ) {
+		if ( class_exists( 'ACF_Pro' ) ) {
 
 			$html = '<p><input type="checkbox" id="ccp_site_settings_acf_fields" name="ccp_site_settings_acf_fields" value="1" ' . checked( 1, get_option( 'ccp_site_settings_acf_fields' ), false ) . '/>';
 			
