@@ -1,6 +1,6 @@
 <?php
 /**
- * Site settings page.
+ * Site settings page field groups.
  *
  * @package WordPress
  * @subpackage controlled-chaos
@@ -14,6 +14,9 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+/**
+ * Site settings page field groups.
+ */
 class Controlled_Chaos_Settings_Fields {
 
 	/**

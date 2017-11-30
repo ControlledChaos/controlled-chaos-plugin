@@ -104,7 +104,10 @@ class Controlled_Chaos_Admin {
 		}
 		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-post-type-tax.php';
 		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-images.php';
-		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-gallery-shortcode.php';
+		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-media-options.php';
+		if ( get_option( 'ccp_enqueue_fancybox' ) ) {
+			require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-gallery-shortcode.php';
+		}
 
 	}
 

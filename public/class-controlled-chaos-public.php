@@ -69,29 +69,34 @@ class Controlled_Chaos_Public {
 	 */
 	public function fancybox_single_images( $content ) {
 
-		// Check the page for link images direct to image (no trailing attributes).
-		$string = '/<a href="(.*?).(jpg|jpeg|png|gif|bmp|ico)"><img(.*?)class="(.*?)wp-image-(.*?)" \/><\/a>/i';
-		preg_match_all( $string, $content, $matches, PREG_SET_ORDER );
+			// Check the page for link images direct to image (no trailing attributes).
+			$string = '/<a href="(.*?).(jpg|jpeg|png|gif|bmp|ico)"><img(.*?)class="(.*?)wp-image-(.*?)" \/><\/a>/i';
+			preg_match_all( $string, $content, $matches, PREG_SET_ORDER );
 
-		// Check which attachment is referenced.
-		foreach ( $matches as $val ) {
+			if ( get_option( 'ccp_enqueue_fancybox' ) ) {
 
-			$slimbox_caption = '';
+				// Check which attachment is referenced.
+				foreach ( $matches as $val ) {
 
-			$post            = get_post( $val[5] );
-			$slimbox_caption = esc_attr( $post->post_content );
+					$slimbox_caption = '';
 
-			// Replace the instance with the lightbox and title(caption) references. Won't fail if caption is empty.
-			$string  = '<a href="' . $val[1] . '.' . $val[2] . '"><img' . $val[3] . 'class="' . $val[4] . 'wp-image-' . $val[5] . '" /></a>';
-			$replace = '<a href="' . $val[1] . '.' . $val[2] . '" data-fancybox data-type="image" title="' . $slimbox_caption . '"><img' . $val[3] . 'class="' . $val[4] . 'wp-image-' . $val[5] . '" /></a>';
-			
-			$fancy_content = str_replace( $string, $replace, $content );
+					$post            = get_post( $val[5] );
+					$slimbox_caption = esc_attr( $post->post_content );
 
-			return $fancy_content;
+					// Replace the instance with the lightbox and title(caption) references. Won't fail if caption is empty.
+					$string  = '<a href="' . $val[1] . '.' . $val[2] . '"><img' . $val[3] . 'class="' . $val[4] . 'wp-image-' . $val[5] . '" /></a>';
+					$replace = '<a href="' . $val[1] . '.' . $val[2] . '" data-fancybox data-type="image" title="' . $slimbox_caption . '"><img' . $val[3] . 'class="' . $val[4] . 'wp-image-' . $val[5] . '" /></a>';
+					
+					$fancy_content = str_replace( $string, $replace, $content );
 
-		}
+					return $fancy_content;
 
-		return $content;
+				}
+
+			}
+
+			return $content;
+		
 	}
 
 	/**
@@ -105,7 +110,9 @@ class Controlled_Chaos_Public {
 		wp_enqueue_style( $this->controlled_chaos . '-plugin', plugin_dir_url( __FILE__ ) . 'css/controlled-chaos-public.css', [], $this->version, 'all' );
 
 		// Fancybox 3.
-		wp_enqueue_style( $this->controlled_chaos . '-fancybox', plugin_dir_url( __FILE__ ) . 'css/jquery.fancybox.min.css', [], $this->version, 'all' );
+		if ( get_option( 'ccp_enqueue_fancybox' ) ) {
+			wp_enqueue_style( $this->controlled_chaos . '-fancybox', plugin_dir_url( __FILE__ ) . 'css/jquery.fancybox.min.css', [], $this->version, 'all' );
+		}
 
 		// Slick.
 		wp_enqueue_style( $this->controlled_chaos . '-slick', plugin_dir_url( __FILE__ ) . 'css/slick.min.css', [], $this->version, 'all' );
@@ -129,7 +136,9 @@ class Controlled_Chaos_Public {
 		wp_enqueue_script( $this->controlled_chaos, plugin_dir_url( __FILE__ ) . 'js/controlled-chaos-public.js', [ 'jquery' ], $this->version, true );
 
 		// Fancybox 3.
-		wp_enqueue_script( $this->controlled_chaos . '-fancybox', plugin_dir_url( __FILE__ ) . 'js/jquery.fancybox.min.js', [ 'jquery' ], $this->version, true );
+		if ( get_option( 'ccp_enqueue_fancybox' ) ) {
+			wp_enqueue_script( $this->controlled_chaos . '-fancybox', plugin_dir_url( __FILE__ ) . 'js/jquery.fancybox.min.js', [ 'jquery' ], $this->version, true );
+		}
 
 		// Slick.
 		wp_enqueue_script( $this->controlled_chaos . '-slick', plugin_dir_url( __FILE__ ) . 'js/slick.min.js', [ 'jquery' ], $this->version, true );
