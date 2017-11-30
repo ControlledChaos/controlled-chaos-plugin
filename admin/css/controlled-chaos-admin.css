@@ -26,3 +26,13 @@
 .row-actions span.delete a:hover {
     color: #aa0000 !important;
 }
+
+/**
+ * MISCELLANEOUS
+ */
+.import-registered-field-groups-arrays {
+    -webkit-user-select: all;
+    -moz-user-select: all;
+    -ms-user-select: all;
+    user-select: all;
+}

@@ -84,7 +84,10 @@ class Controlled_Chaos_Public {
 			// Replace the instance with the lightbox and title(caption) references. Won't fail if caption is empty.
 			$string  = '<a href="' . $val[1] . '.' . $val[2] . '"><img' . $val[3] . 'class="' . $val[4] . 'wp-image-' . $val[5] . '" /></a>';
 			$replace = '<a href="' . $val[1] . '.' . $val[2] . '" data-fancybox data-type="image" title="' . $slimbox_caption . '"><img' . $val[3] . 'class="' . $val[4] . 'wp-image-' . $val[5] . '" /></a>';
-			$content = str_replace( $string, $replace, $content );
+			
+			$fancy_content = str_replace( $string, $replace, $content );
+
+			return $fancy_content;
 
 		}
 
