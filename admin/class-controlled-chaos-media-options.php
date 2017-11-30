@@ -43,6 +43,9 @@ class Controlled_Chaos_Media_Options {
 	 */
 	public function settings() {
 
+        /**
+         * Image crop settings.
+         */
         add_settings_field( 'ccp_hard_crop_medium', __( 'Medium size crop', 'controlled-chaos' ), [ $this, 'medium_crop' ], 'media', 'default', [ __( 'Crop thumbnail to exact dimensions (normally thumbnails are proportional)', 'controlled-chaos' ) ] );
 
         add_settings_field( 'ccp_hard_crop_large', __( 'Large size crop', 'controlled-chaos' ), [ $this, 'large_crop' ], 'media', 'default', [ __( 'Crop thumbnail to exact dimensions (normally thumbnails are proportional)', 'controlled-chaos' ) ] );
@@ -57,6 +60,9 @@ class Controlled_Chaos_Media_Options {
             'ccp_hard_crop_large'
         );
 
+        /**
+         * Fancybox settings.
+         */
         add_settings_section( 'ccp-media-settings', __( 'Fancybox', 'controlled-chaos' ), [], 'media' );
 
         add_settings_field( 'ccp_enqueue_fancybox', __( 'Enqueue Fancybox', 'controlled-chaos' ), [ $this, 'fancybox' ], 'media', 'ccp-media-settings', [ __( 'Add modal windows to image links.', 'controlled-chaos' ) ] );
@@ -69,7 +75,7 @@ class Controlled_Chaos_Media_Options {
     }
 
     /**
-     * Hard crop default image sizes.
+     * Medium crop field.
      * 
      * @since    1.0.2
      */
@@ -77,24 +83,32 @@ class Controlled_Chaos_Media_Options {
 
         $html = '<p><input type="checkbox" id="ccp_hard_crop_medium" name="ccp_hard_crop_medium" value="1" ' . checked( 1, get_option( 'ccp_hard_crop_medium' ), false ) . '/>';
         
-        // Here, we will take the first argument of the array and add it to a label next to the checkbox
         $html .= '<label for="ccp_hard_crop_medium"> '  . $args[0] . '</label></p>';
 
         echo $html;
 
     }
 
+    /**
+     * Large crop field.
+     * 
+     * @since    1.0.2
+     */
     public function large_crop( $args ) {
 
         $html = '<p><input type="checkbox" id="ccp_hard_crop_large" name="ccp_hard_crop_large" value="1" ' . checked( 1, get_option( 'ccp_hard_crop_large' ), false ) . '/>';
         
-        // Here, we will take the first argument of the array and add it to a label next to the checkbox
         $html .= '<label for="ccp_hard_crop_large"> '  . $args[0] . '</label></p>';
 
         echo $html;
         
     }
 
+    /**
+     * Update crop options.
+     * 
+     * @since    1.0.2
+     */
     public function crop() {
 
         if ( get_option( 'ccp_hard_crop_medium' ) ) {
@@ -112,7 +126,7 @@ class Controlled_Chaos_Media_Options {
     }
 
     /**
-     * Add Fancybox functionality.
+     * Add Fancybox field.
      * 
      * @since    1.0.2
      */
@@ -120,7 +134,6 @@ class Controlled_Chaos_Media_Options {
 
         $html = '<p><input type="checkbox" id="ccp_enqueue_fancybox" name="ccp_enqueue_fancybox" value="1" ' . checked( 1, get_option( 'ccp_enqueue_fancybox' ), false ) . '/>';
         
-        // Here, we will take the first argument of the array and add it to a label next to the checkbox
         $html .= '<label for="ccp_enqueue_fancybox"> '  . $args[0] . '</label></p>';
 
         echo $html;
