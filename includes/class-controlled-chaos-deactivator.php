@@ -38,6 +38,9 @@ class Controlled_Chaos_Deactivator {
 	 */
 	public static function deactivate() {
 
+		update_option( 'medium_crop', 0 );
+		update_option( 'large_crop', 0 );
+
 	}
 
 }

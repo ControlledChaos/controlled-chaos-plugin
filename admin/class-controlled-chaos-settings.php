@@ -163,7 +163,7 @@ class Controlled_Chaos_Settings {
 					'page_title' => $title . __( ' Settings', 'controlled-chaos' ),
 					'menu_title' => __( 'Site Settings', 'controlled-chaos' ),
 					'menu_slug'  => 'site-settings',
-					'parent'     => 'options-general.php',     
+					'parent'     => 'options-general.php',
 					'capability' => 'manage_options'
 				] );
 				acf_add_options_page( $settings );

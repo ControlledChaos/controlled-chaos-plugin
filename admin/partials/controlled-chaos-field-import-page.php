@@ -38,7 +38,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; ?>
         <p><?php printf( '<p>%1s<a href="%2s">%3s</a>%4s</p>', esc_html__( 'Go to ', 'controlled-chaos' ), admin_url( '/options-general.php?page=controlled-chaos' ), esc_html__( 'the Controlld Chaos settings page', 'controlled-chaos' ), esc_html__( ' and disable the imported field groups. The duplicate field IDs will interfere with the editing of fields.', 'controlled-chaos' ) ); ?>
     </div>
     <?php }
-    printf( '<p>%1s</p>', esc_html__( 'This tool imports any field groups registered outside the ACF plugin so that they can be edited or used in migrating from this framework.', 'controlled-chaos' ) ); ?>
+    printf( '<p>%1s</p>', esc_html__( 'This tool imports any field groups registered outside the ACF plugin so that they can be edited.', 'controlled-chaos' ) ); ?>
     <?php if ( ! empty( $acf_local->groups ) ) : ?>
 
     <form method="POST">
@@ -59,7 +59,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; ?>
                     // Set post status
                     $post_status = apply_filters( 'acf_recovery\query\post_status', '' );
                     if ( ! empty( $post_status ) ) {
-                        $sql .= ' AND post_status="' . esc_sql($post_status) . '"';
+                        $sql .= ' AND post_status="' . esc_sql( $post_status ) . '"';
                     }
                     $matches = $wpdb->get_results( $wpdb->prepare( $sql, '%' . $wpdb->esc_like( $field_group['title'] ) .'%' ) );
                     if ( empty( $matches ) ) {

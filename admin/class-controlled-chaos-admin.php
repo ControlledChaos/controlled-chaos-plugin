@@ -56,8 +56,8 @@ class Controlled_Chaos_Admin {
 		$this->controlled_chaos = $controlled_chaos;
 		$this->version = $version;
 
-		// Include admin function files.
-		$this->require_files();
+		// Admin dependencies.
+		$this->dependencies();
 
 		// Remove theme & plugin editor links.
         add_action( 'admin_init', [ $this, 'remove_editor_links' ] );
@@ -86,11 +86,11 @@ class Controlled_Chaos_Admin {
 	}
 
 	/**
-	 * Include admin function files.
+	 * Admin dependencies.
 	 *
 	 * @since    1.0.0
 	 */
-	public function require_files() {
+	public function dependencies() {
 
 		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-dashboard.php';
 		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-admin-menu.php';
@@ -103,7 +103,7 @@ class Controlled_Chaos_Admin {
 			include_once plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-fields-import.php';
 		}
 		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-post-type-tax.php';
-		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-images.php';
+		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-admin-images.php';
 		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-media-options.php';
 		if ( get_option( 'ccp_enqueue_fancybox' ) ) {
 			require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-gallery-shortcode.php';
