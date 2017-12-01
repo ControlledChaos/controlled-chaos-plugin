@@ -87,10 +87,6 @@ class Controlled_Chaos {
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
 
-		// Remove versions from stylesheets and scripts.
-		add_filter( 'style_loader_src', [ $this, 'remove_wp_version' ], 9999 );
-		add_filter( 'script_loader_src', [ $this, 'remove_wp_version' ], 9999 );
-
 	}
 
 	/**
@@ -225,21 +221,6 @@ class Controlled_Chaos {
 	 */
 	public function get_version() {
 		return $this->version;
-	}
-
-	/**
-	 * Remove versions from stylesheets and scripts.
-	 * 
-	 * @since     1.0.0
-	 */
-	public function remove_wp_version( $src ) {
-
-		if ( strpos( $src, 'ver=' ) ) {
-			$src = remove_query_arg( 'ver', $src );
-		}
-		
-		return $src;
-
 	}
 
 }

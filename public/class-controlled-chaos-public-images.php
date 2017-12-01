@@ -45,7 +45,7 @@ class Controlled_Chaos_Public_Images {
 	public function image_sizes() {
 
 		// For link embedding and sharing on social sites.
-		add_image_size( apply_filters( __( 'ccp_meta_image', 'Meta Image' ), 1200, 630, true ) );
+		add_image_size( __( 'Meta Image', 'controlled-chaos' ), 1200, 630, true );
 
 	}
 

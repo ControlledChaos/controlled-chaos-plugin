@@ -27,8 +27,6 @@ class Controlled_Chaos_Settings {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $controlled-chaos
-	 * @param      string    $version
 	 */
     public function __construct() {
 
@@ -88,12 +86,31 @@ class Controlled_Chaos_Settings {
 	 * @since    1.0.2
 	 */
 	public function settings() {
+
+		// Script options and enqueue settings.
+		add_settings_section( 'ccp-script-options', __( 'Script Options', 'controlled-chaos' ), [], 'controlled-chaos' );
+
+		add_settings_field( 'ccp_remove_script_verion', __( 'Script versions', 'controlled-chaos' ), [ $this, 'remove_script_verion_callback' ], 'controlled-chaos', 'ccp-script-options', [ esc_html__( 'Remove WordPress version from script and stylesheet links in <head>', 'controlled-chaos' ) ] );
+
+		register_setting(
+			'controlled-chaos',
+			'ccp_remove_script_verion'
+		);
+
+		// Remove emoji script.
+		add_settings_field( 'ccp_remove_emoji_script', __( 'Emoji script', 'controlled-chaos' ), [ $this, 'remove_emoji_script_callback' ], 'controlled-chaos', 'ccp-script-options', [ esc_html__( 'Remove emoji script from <head> (emojis will still work in modern browsers)', 'controlled-chaos' ) ] );
+
+		register_setting(
+			'controlled-chaos',
+			'ccp_remove_emoji_script'
+		);
 		
+		// Site Settings section.
 		if ( class_exists( 'ACF_Pro' ) ) {
 
 			add_settings_section( 'ccp-site-settings', __( 'Site Settings Page', 'controlled-chaos' ), [ $this, 'site_settings_page_section' ], 'controlled-chaos' );
 			
-			add_settings_field( 'ccp_site_settings_acf_fields', __( 'ACF Field Groups', 'controlled-chaos' ), [ $this, 'site_settings_page_callback' ], 'controlled-chaos', 'ccp-site-settings', [ __( 'Deactive field groups after importing.', 'controlled-chaos' ) ] );
+			add_settings_field( 'ccp_site_settings_acf_fields', __( 'ACF Field Groups', 'controlled-chaos' ), [ $this, 'site_settings_page_callback' ], 'controlled-chaos', 'ccp-site-settings', [ __( 'Deactive field groups after importing', 'controlled-chaos' ) ] );
 
 			register_setting(
 				'controlled-chaos',
@@ -104,11 +121,50 @@ class Controlled_Chaos_Settings {
 
 	}
 
+	/**
+	 * Script options and enqueue settings.
+	 * 
+	 * @since    1.0.3
+	 */
+	public function remove_script_verion_callback( $args ) {
+
+		$option = get_option( 'ccp_remove_script_verion' );
+
+		$html = '<p><input type="checkbox" id="ccp_remove_script_verion" name="ccp_remove_script_verion" value="1" ' . checked( 1, $option, false ) . '/>';
+		
+		$html .= '<label for="ccp_remove_script_verion"> '  . $args[0] . '</label></p>';
+
+		echo $html;
+
+	}
+
+	/**
+	 * Remove emoji script.
+	 * 
+	 * @since    1.0.3
+	 */
+	public function remove_emoji_script_callback( $args ) {
+
+		$option = get_option( 'ccp_remove_emoji_script' );
+
+		$html = '<p><input type="checkbox" id="ccp_remove_emoji_script" name="ccp_remove_emoji_script" value="1" ' . checked( 1, $option, false ) . '/>';
+		
+		$html .= '<label for="ccp_remove_emoji_script"> '  . $args[0] . '</label></p>';
+
+		echo $html;
+
+	}
+
+	/**
+	 * Site Settings section.
+	 * 
+	 * @since    1.0.2
+	 */
 	public function site_settings_page_section() {
 
 		if ( class_exists( 'ACF_Pro' ) ) {
 
-			echo sprintf( '<p>%1s</p>', esc_html( 'The "Site Settings" page registered by the Controlled Chaos plugin and Advanced Custom Fields contains field groups that can be imported for editing. These built-in field goups must be deactivated for the imported field groups to take effect.', 'controlled-chaos' ) );
+			echo sprintf( '<p>%1s</p>', esc_html( 'The "Site Settings" page registered by the Controlled Chaos plugin and Advanced Custom Fields Pro contains field groups that can be imported for editing. These built-in field goups must be deactivated for the imported field groups to take effect.', 'controlled-chaos' ) );
 
 		}
 
@@ -120,7 +176,6 @@ class Controlled_Chaos_Settings {
 
 			$html = '<p><input type="checkbox" id="ccp_site_settings_acf_fields" name="ccp_site_settings_acf_fields" value="1" ' . checked( 1, get_option( 'ccp_site_settings_acf_fields' ), false ) . '/>';
 			
-			// Here, we will take the first argument of the array and add it to a label next to the checkbox
 			$html .= '<label for="ccp_site_settings_acf_fields"> '  . $args[0] . '</label></p>';
 
 			$html .= sprintf( '<p class="description"><strong>%1s</strong> %2s</p>', esc_html__( 'Note:', 'controlled-chaos' ), esc_html__( 'Do not change the "Field Name" of the imported fields.', 'controlled-chaos' ) );

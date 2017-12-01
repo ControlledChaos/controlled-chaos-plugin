@@ -69,6 +69,7 @@ class Controlled_Chaos_Public {
 	 */
 	public function dependencies() {
 
+		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-head-scripts.php';
 		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-public-images.php';
 
 	}
