@@ -4,7 +4,7 @@
  *
  * @package    controlled-chaos
  * @subpackage controlled-chaos/includes
- * @since IntegratePress 1.0.0
+ * @since controlled-chaos 1.0.4
  */
 
 namespace Controlled_Chaos;
@@ -12,7 +12,7 @@ namespace Controlled_Chaos;
 // Restrict direct access
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class Integrate_Meta_Description {
+class Controlled_Chaos_Meta_Description {
 
 	/**
 	 * Constructor magic method.
@@ -26,7 +26,7 @@ class Integrate_Meta_Description {
 	/**
 	 * Description meta tag.
 	 * 
-	 * @since IntegratePress 1.0.0
+	 * @since controlled-chaos 1.0.4
 	 */
 	public function description() {
 
@@ -42,5 +42,5 @@ class Integrate_Meta_Description {
 
 }
 
-// Run the Integrate_Meta_Description class.
-$ccp_meta_description = new Integrate_Meta_Description;
+// Run the Controlled_Chaos_Meta_Description class.
+$ccp_meta_description = new Controlled_Chaos_Meta_Description;

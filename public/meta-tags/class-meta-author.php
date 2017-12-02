@@ -4,7 +4,7 @@
  *
  * @package    controlled-chaos
  * @subpackage controlled-chaos/includes
- * @since IntegratePress 1.0.0
+ * @since controlled-chaos 1.0.4
  */
 
 namespace Controlled_Chaos;
@@ -12,7 +12,7 @@ namespace Controlled_Chaos;
 // Restrict direct access
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class Integrate_Meta_Author {
+class Controlled_Chaos_Meta_Author {
 
 	/**
 	 * Constructor magic method.
@@ -26,7 +26,7 @@ class Integrate_Meta_Author {
 	/**
 	 * Author meta tag.
 	 * 
-	 * @since IntegratePress 1.0.0
+	 * @since controlled-chaos 1.0.4
 	 */
 	public function author() {
 
@@ -38,5 +38,5 @@ class Integrate_Meta_Author {
 
 }
 
-// Run the Integrate_Meta_Author class.
-$ccp_meta_author = new Integrate_Meta_Author;
+// Run the Controlled_Chaos_Meta_Author class.
+$ccp_meta_author = new Controlled_Chaos_Meta_Author;

@@ -4,7 +4,7 @@
  *
  * @package    controlled-chaos
  * @subpackage controlled-chaos/includes
- * @since IntegratePress 1.0.0
+ * @since controlled-chaos 1.0.4
  */
 
 namespace Controlled_Chaos;
@@ -12,7 +12,7 @@ namespace Controlled_Chaos;
 // Restrict direct access
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class Integrate_Bookmarks {
+class Controlled_Chaos_Bookmarks {
 
 	/**
 	 * Constructor magic method.
@@ -74,5 +74,5 @@ class Integrate_Bookmarks {
 
 }
 
-// Run the Integrate_Bookmarks class.
-$ccp_bookmarks = new Integrate_Bookmarks;
+// Run the Controlled_Chaos_Bookmarks class.
+$ccp_bookmarks = new Controlled_Chaos_Bookmarks;

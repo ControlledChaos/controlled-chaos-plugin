@@ -77,6 +77,8 @@ class Controlled_Chaos_Public {
 
 		/**
 		 * Meta tags.
+		 * 
+		 * @since    1.0.4
 		 */
 		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-url.php';
 		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-name.php';

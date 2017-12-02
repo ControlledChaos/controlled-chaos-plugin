@@ -4,7 +4,7 @@
  *
  * @package    controlled-chaos
  * @subpackage controlled-chaos/includes
- * @since IntegratePress 1.0.0
+ * @since controlled-chaos 1.0.4
  */
 
 namespace Controlled_Chaos;
@@ -12,7 +12,7 @@ namespace Controlled_Chaos;
 // Restrict direct access
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class Integrate_Meta_Image {
+class Controlled_Chaos_Meta_Image {
 
 	/**
 	 * Constructor magic method.
@@ -26,7 +26,7 @@ class Integrate_Meta_Image {
 	/**
 	 * Image meta tag.
 	 * 
-	 * @since IntegratePress 1.0.0
+	 * @since controlled-chaos 1.0.4
 	 */
 	public function image() {
 
@@ -69,5 +69,5 @@ class Integrate_Meta_Image {
 
 }
 
-// Run the Integrate_Meta_Image class.
-$ccp_meta_image = new Integrate_Meta_Image;
+// Run the Controlled_Chaos_Meta_Image class.
+$ccp_meta_image = new Controlled_Chaos_Meta_Image;
