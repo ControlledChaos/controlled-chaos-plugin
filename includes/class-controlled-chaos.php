@@ -13,7 +13,7 @@
  * @subpackage controlled-chaos/includes
  */
 
-namespace Controlled_Chaos;
+namespace Controlled_Chaos_Plugin;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -34,7 +34,7 @@ if ( ! defined( 'WPINC' ) ) {
  * @subpackage controlled-chaos/includes
  * @author     Greg Sweet <greg@ccdzine.com>
  */
-class Controlled_Chaos {
+class Controlled_Chaos_Plugin {
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power

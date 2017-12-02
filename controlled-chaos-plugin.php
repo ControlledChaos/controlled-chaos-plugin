@@ -20,7 +20,7 @@
  * Domain Path:       /languages
  */
 
-namespace Controlled_Chaos;
+namespace Controlled_Chaos_Plugin;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -64,7 +64,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-controlled-chaos.php';
  */
 function run_controlled_chaos() {
 
-	$plugin = new Controlled_Chaos();
+	$plugin = new Controlled_Chaos_Plugin();
 	$plugin->run();
 
 }

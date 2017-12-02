@@ -10,7 +10,7 @@
  * @subpackage controlled-chaos/includes
  */
 
-namespace Controlled_Chaos;
+namespace Controlled_Chaos_Plugin;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
