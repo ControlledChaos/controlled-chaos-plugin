@@ -2,7 +2,7 @@
 /**
  * Media options.
  *
- * @package WordPress
+ * @package    controlled-chaos
  * @subpackage controlled-chaos
  * @since controlled-chaos 1.0.0
  */

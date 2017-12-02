@@ -62,6 +62,9 @@ class Controlled_Chaos_Public {
 		// Frontend dependencies.
 		$this->dependencies();
 
+		// Meta tags in <head>.
+		add_action( 'wp_head', [ $this, 'meta_tags' ] );
+
 	}
 
 	/**
@@ -71,6 +74,18 @@ class Controlled_Chaos_Public {
 
 		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-head-scripts.php';
 		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-public-images.php';
+
+		/**
+		 * Meta tags.
+		 */
+		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-url.php';
+		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-name.php';
+		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-type.php';
+		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-title.php';
+		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-description.php';
+		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-image.php';
+		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-author.php';
+		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-bookmarks.php';
 
 	}
 
@@ -138,6 +153,17 @@ class Controlled_Chaos_Public {
 
 		// FitVids.
 		wp_enqueue_script( $this->controlled_chaos . '-fitvids', plugin_dir_url( __FILE__ ) . 'js/jquery.fitvids.min.js', [ 'jquery' ], $this->version, true );
+
+	}
+
+	/**
+	 * Meta tags for SEO and embedded links.
+	 */
+	public function meta_tags() {
+		
+		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-tags-standard.php';
+		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-tags-open-graph.php';
+		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-tags-twitter.php';
 
 	}
 

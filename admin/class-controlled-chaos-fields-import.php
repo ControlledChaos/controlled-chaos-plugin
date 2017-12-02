@@ -119,4 +119,4 @@ class Integrate_Fields_Import {
 
 }
 
-$integrate_fields_import = new Integrate_Fields_Import;
+$ccp_fields_import = new Integrate_Fields_Import;

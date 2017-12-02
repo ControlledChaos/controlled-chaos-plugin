@@ -3640,7 +3640,7 @@ $.tooltipster._plugin({
 				if (	takeTest == true
 					||	(	takeTest != false
 						&&	satisfied == false
-							// skip the window scenarios if asked. If they are reintegrated by
+							// skip the window scenarios if asked. If they are reccpd by
 							// the callback of the positionTest event, they will have to be
 							// excluded using the callback of positionTested
 						&&	(container != 'window' || self.__options.viewportAware)
