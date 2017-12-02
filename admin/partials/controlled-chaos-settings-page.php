@@ -5,7 +5,7 @@
  *
  * @package WordPress
  * @subpackage controlled-chaos
- * @since controlled-chaos 1.0.0
+ * @since controlled-chaos 1.0.2
  */
 
 namespace Controlled_Chaos;

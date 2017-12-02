@@ -182,7 +182,7 @@ class Controlled_Chaos_Settings {
 	/**
 	 * Enqueue Slick.
 	 * 
-	 * @since    1.0.3
+	 * @since    1.0.4
 	 */
 	public function enqueue_slick_callback( $args ) {
 
@@ -201,7 +201,7 @@ class Controlled_Chaos_Settings {
 	/**
 	 * Enqueue Tabslet.
 	 * 
-	 * @since    1.0.3
+	 * @since    1.0.4
 	 */
 	public function enqueue_tabslet_callback( $args ) {
 
@@ -220,7 +220,7 @@ class Controlled_Chaos_Settings {
 	/**
 	 * Enqueue Tooltipster.
 	 * 
-	 * @since    1.0.3
+	 * @since    1.0.4
 	 */
 	public function enqueue_tooltipster_callback( $args ) {
 
