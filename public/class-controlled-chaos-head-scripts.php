@@ -20,7 +20,7 @@ if ( ! defined( 'WPINC' ) ) {
  * @subpackage controlled-chaos/admin
  * @author     Greg Sweet <greg@ccdzine.com>
  */
-class Controlled_Chaos_Script_Options {
+class Controlled_Chaos_Head_Scripts {
 
     /**
 	 * Initialize the class and set its properties.
@@ -73,4 +73,4 @@ class Controlled_Chaos_Script_Options {
 
 }
 
-$controlled_chaos_script_options = new Controlled_Chaos_Script_Options;
+$controlled_chaos_head_scripts = new Controlled_Chaos_Head_Scripts;

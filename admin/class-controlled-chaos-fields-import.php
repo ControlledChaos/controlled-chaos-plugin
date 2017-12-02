@@ -23,10 +23,12 @@ define( 'ACFPR_GROUP_POST_TYPE', 'acf-field-group' );
  * 
  * @since controlled-chaos 1.0.0
  */
-class Integrate_Field_Import {
+class Integrate_Fields_Import {
 
 	/**
-     * Constructor magic method.
+     * Initialize the class and set its properties.
+	 * 
+	 * @since      1.0.0
      */
     public function __construct() {
 
@@ -117,4 +119,4 @@ class Integrate_Field_Import {
 
 }
 
-$integrate_field_import = new Integrate_Field_Import;
+$integrate_fields_import = new Integrate_Fields_Import;

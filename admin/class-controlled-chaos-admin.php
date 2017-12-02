@@ -94,7 +94,7 @@ class Controlled_Chaos_Admin {
 		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-admin-pages.php';
 		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-settings.php';
 		if ( class_exists( 'ACF_Pro' ) && ! get_option( 'ccp_site_settings_acf_fields' ) ) {
-			include_once plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-settings-field-groups.php';
+			include_once plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-settings-fields.php';
 		}
 		if ( class_exists( 'ACF_Pro' ) ) {
 			include_once plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-fields-import.php';

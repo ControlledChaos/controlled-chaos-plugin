@@ -28,8 +28,6 @@ class Controlled_Chaos_Post_Type_Tax {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $controlled-chaos
-	 * @param      string    $version
 	 */
 	public function __construct() {
 	
@@ -89,6 +87,8 @@ class Controlled_Chaos_Post_Type_Tax {
 	/**
 	 * Replace post type title placeholders.
 	 * 
+	 * Included for a head start in development of a site-specific plugin.
+	 * 
 	 * @since    1.0.0
 	 */
 	public function title_placeholders( $title ) {
@@ -97,7 +97,7 @@ class Controlled_Chaos_Post_Type_Tax {
 		
 		if ( '' == $screen->post_type ) {
 			$title = __( '', 'controlled-chaos' );
-		} elseif ( 'l' == $screen->post_type ) {
+		} elseif ( '' == $screen->post_type ) {
 			$title = __( '', 'controlled-chaos' );
 		}
 

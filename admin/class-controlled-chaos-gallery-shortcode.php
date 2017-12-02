@@ -24,8 +24,6 @@ class Controlled_Chaos_Gallery_Shortcode {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since      1.0.0
-	 * @param      string    $controlled_chaos
-	 * @param      string    $version
 	 */
 	public function __construct() {
 
