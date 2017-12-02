@@ -16,7 +16,6 @@ Following are some of the core functions and features offered.
 
 ### jQuery Plugins
 UI & UX JS plugins enqueued
-(TODO: enqueue via settings page)
 
 * Fancybox 3 - https://github.com/fancyapps/fancybox
 * Slick - https://github.com/kenwheeler/slick
@@ -30,6 +29,7 @@ A little tidying up of the clutter, and removal of items to which inexperienced 
 * Remove dashboard widgets: WordPress news, quick press
 * Add custom post types to the At a Glance widget
 * Make Menus and Widgets top level menu items
+* Remove select admin menu items
 * Custom admin footer message
 * Remove WordPress logo from admin bar
 * Remove access to theme and plugin editors
