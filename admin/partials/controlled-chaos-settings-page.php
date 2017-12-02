@@ -25,13 +25,13 @@ if ( isset( $_GET[ 'tab' ] ) ) {
     <p class="description"><?php esc_html_e( 'Settings for the Controlled Chaos plugin.', 'controlled-chaos' ); ?></p>
     <h2 class="nav-tab-wrapper">
         <a href="?page=controlled-chaos&tab=ccp-script-options" class="nav-tab <?php echo $active_tab == 'ccp-script-options' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Script Options', 'controlled-chaos' ); ?></a>
-        <a href="?page=controlled-chaos&tab=ccp-site-settings" class="nav-tab <?php echo $active_tab == 'ccp-site-settings' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Site Settings', 'controlled-chaos' ); ?></a>
+        <?php if ( class_exists( 'ACF_Pro' ) ) { ?><a href="?page=controlled-chaos&tab=ccp-site-settings" class="nav-tab <?php echo $active_tab == 'ccp-site-settings' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Site Settings', 'controlled-chaos' ); ?></a><?php } ?>
     </h2>
     <form action="options.php" method="post">
         <?php if ( $active_tab == 'ccp-script-options' ) {
             settings_fields( 'ccp-script-options' );
             do_settings_sections( 'ccp-script-options' );
-        } else {
+        } elseif ( class_exists( 'ACF_Pro' ) ) {
             settings_fields( 'ccp-site-settings' );
             do_settings_sections( 'ccp-site-settings' );
         } ?>
