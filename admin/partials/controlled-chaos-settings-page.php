@@ -37,5 +37,5 @@ if ( isset( $_GET[ 'tab' ] ) ) {
         } ?>
         <p><?php submit_button( __( 'Save Settings', 'controlled-chaos' ), 'primary', '', false, [] ); echo ' '; ?></p>
     </form>
-    <?php echo sprintf( '<p class="description">%1s <a href="%2s" target="_blank">%3s</a>.</p>', esc_html__( 'The Controlled Chaos Plugin is developed by' ), esc_url( 'http://ccdzine.com/' ),esc_html__( 'Controlled Chaos Design' ) ); ?>
+    <?php echo sprintf( '<p class="description">%1s <a href="%2s" target="_blank">%3s</a>.</p>', esc_html__( 'The Controlled Chaos plugin is developed by' ), esc_url( 'http://ccdzine.com/' ),esc_html__( 'Controlled Chaos Design' ) ); ?>
 </div>

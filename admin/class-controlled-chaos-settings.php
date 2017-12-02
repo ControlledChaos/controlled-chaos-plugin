@@ -104,7 +104,31 @@ class Controlled_Chaos_Settings {
 			'ccp-script-options',
 			'ccp_remove_emoji_script'
 		);
-		
+
+		// Enqueue Slick.
+		add_settings_field( 'ccp_enqueue_slick', __( 'Slick', 'controlled-chaos' ), [ $this, 'enqueue_slick_callback' ], 'ccp-script-options', 'ccp-script-options', [ esc_html__( 'Enqueue Slick script and stylesheets', 'controlled-chaos' ) ] );
+
+		register_setting(
+			'ccp-script-options',
+			'ccp_enqueue_slick'
+		);
+
+		// Enqueue Tabslet.
+		add_settings_field( 'ccp_enqueue_tabslet', __( 'Tabslet', 'controlled-chaos' ), [ $this, 'enqueue_tabslet_callback' ], 'ccp-script-options', 'ccp-script-options', [ esc_html__( 'Enqueue Tabslet script', 'controlled-chaos' ) ] );
+
+		register_setting(
+			'ccp-script-options',
+			'ccp_enqueue_tabslet'
+		);
+
+		// Enqueue Tooltipster.
+		add_settings_field( 'ccp_enqueue_tooltipster', __( 'Tooltipster', 'controlled-chaos' ), [ $this, 'enqueue_tooltipster_callback' ], 'ccp-script-options', 'ccp-script-options', [ esc_html__( 'Enqueue Tooltipster script and stylesheet', 'controlled-chaos' ) ] );
+
+		register_setting(
+			'ccp-script-options',
+			'ccp_enqueue_tooltipster'
+		);
+	
 		// Site Settings section.
 		if ( class_exists( 'ACF_Pro' ) ) {
 
@@ -150,6 +174,63 @@ class Controlled_Chaos_Settings {
 		$html = '<p><input type="checkbox" id="ccp_remove_emoji_script" name="ccp_remove_emoji_script" value="1" ' . checked( 1, $option, false ) . '/>';
 		
 		$html .= '<label for="ccp_remove_emoji_script"> '  . $args[0] . '</label></p>';
+
+		echo $html;
+
+	}
+
+	/**
+	 * Enqueue Slick.
+	 * 
+	 * @since    1.0.3
+	 */
+	public function enqueue_slick_callback( $args ) {
+
+		$option = get_option( 'ccp_enqueue_slick' );
+
+		$html = '<p><input type="checkbox" id="ccp_enqueue_slick" name="ccp_enqueue_slick" value="1" ' . checked( 1, $option, false ) . '/>';
+		
+		$html .= '<label for="ccp_enqueue_slick"> '  . $args[0] . '</label>';
+
+		$html .= '<a class="dashicons dashicons-editor-help" title="More info on GitHub" href="https://github.com/kenwheeler/slick" target="_blank"><span class="screen-reader-text">' . esc_html( 'More info on GitHub', 'controlled-chaos' ) . '</span></a></p>';
+
+		echo $html;
+
+	}
+
+	/**
+	 * Enqueue Tabslet.
+	 * 
+	 * @since    1.0.3
+	 */
+	public function enqueue_tabslet_callback( $args ) {
+
+		$option = get_option( 'ccp_enqueue_tabslet' );
+
+		$html = '<p><input type="checkbox" id="ccp_enqueue_tabslet" name="ccp_enqueue_tabslet" value="1" ' . checked( 1, $option, false ) . '/>';
+		
+		$html .= '<label for="ccp_enqueue_tabslet"> '  . $args[0] . '</label>';
+
+		$html .= '<a class="dashicons dashicons-editor-help" title="More info on GitHub" href="https://github.com/vdw/Tabslet" target="_blank"><span class="screen-reader-text">' . esc_html( 'More info on GitHub', 'controlled-chaos' ) . '</span></a></p>';
+
+		echo $html;
+
+	}
+
+	/**
+	 * Enqueue Tooltipster.
+	 * 
+	 * @since    1.0.3
+	 */
+	public function enqueue_tooltipster_callback( $args ) {
+
+		$option = get_option( 'ccp_enqueue_tooltipster' );
+
+		$html = '<p><input type="checkbox" id="ccp_enqueue_tooltipster" name="ccp_enqueue_tooltipster" value="1" ' . checked( 1, $option, false ) . '/>';
+		
+		$html .= '<label for="ccp_enqueue_tooltipster"> '  . $args[0] . '</label>';
+
+		$html .= '<a class="dashicons dashicons-editor-help" title="More info on GitHub" href="https://github.com/iamceege/tooltipster" target="_blank"><span class="screen-reader-text">' . esc_html( 'More info on GitHub', 'controlled-chaos' ) . '</span></a></p>';
 
 		echo $html;
 

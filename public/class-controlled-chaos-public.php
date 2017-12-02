@@ -90,13 +90,19 @@ class Controlled_Chaos_Public {
 		}
 
 		// Slick.
-		wp_enqueue_style( $this->controlled_chaos . '-slick', plugin_dir_url( __FILE__ ) . 'css/slick.min.css', [], $this->version, 'all' );
+		if ( get_option( 'ccp_enqueue_slick' ) ) {
+			wp_enqueue_style( $this->controlled_chaos . '-slick', plugin_dir_url( __FILE__ ) . 'css/slick.min.css', [], $this->version, 'all' );
+		}
 
 		// Slick theme.
-		wp_enqueue_style( $this->controlled_chaos . '-slick-theme', plugin_dir_url( __FILE__ ) . 'css/slick-theme.css', [], $this->version, 'all' );
+		if ( get_option( 'ccp_enqueue_slick' ) ) {
+			wp_enqueue_style( $this->controlled_chaos . '-slick-theme', plugin_dir_url( __FILE__ ) . 'css/slick-theme.css', [], $this->version, 'all' );
+		}
 
 		// Tooltipster.
-		wp_enqueue_style( $this->controlled_chaos . '-tooltipster', plugin_dir_url( __FILE__ ) . 'css/tooltipster.bundle.min.css', [], $this->version, 'all' );
+		if ( get_option( 'ccp_enqueue_tooltipster' ) ) {
+			wp_enqueue_style( $this->controlled_chaos . '-tooltipster', plugin_dir_url( __FILE__ ) . 'css/tooltipster.bundle.min.css', [], $this->version, 'all' );
+		}
 
 	}
 
@@ -116,13 +122,19 @@ class Controlled_Chaos_Public {
 		}
 
 		// Slick.
-		wp_enqueue_script( $this->controlled_chaos . '-slick', plugin_dir_url( __FILE__ ) . 'js/slick.min.js', [ 'jquery' ], $this->version, true );
+		if ( get_option( 'ccp_enqueue_slick' ) ) {
+			wp_enqueue_script( $this->controlled_chaos . '-slick', plugin_dir_url( __FILE__ ) . 'js/slick.min.js', [ 'jquery' ], $this->version, true );
+		}
 
 		// Tabslet.
-		wp_enqueue_script( $this->controlled_chaos . '-tabslet', plugin_dir_url( __FILE__ ) . 'js/jquery.tabslet.min.js', [ 'jquery' ], $this->version, true );
+		if ( get_option( 'ccp_enqueue_tabslet' ) ) {
+			wp_enqueue_script( $this->controlled_chaos . '-tabslet', plugin_dir_url( __FILE__ ) . 'js/jquery.tabslet.min.js', [ 'jquery' ], $this->version, true );
+		}
 
 		// Tooltipster.
-		wp_enqueue_script( $this->controlled_chaos . '-tooltipster', plugin_dir_url( __FILE__ ) . 'js/tooltipster.bundle.min.js', [ 'jquery' ], $this->version, true );
+		if ( get_option( 'ccp_enqueue_tooltipster' ) ) {
+			wp_enqueue_script( $this->controlled_chaos . '-tooltipster', plugin_dir_url( __FILE__ ) . 'js/tooltipster.bundle.min.js', [ 'jquery' ], $this->version, true );
+		}
 
 		// FitVids.
 		wp_enqueue_script( $this->controlled_chaos . '-fitvids', plugin_dir_url( __FILE__ ) . 'js/jquery.fitvids.min.js', [ 'jquery' ], $this->version, true );
