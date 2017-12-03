@@ -22,7 +22,7 @@ if ( ! defined( 'WPINC' ) ) {
  * @subpackage controlled-chaos/admin
  * @author     Greg Sweet <greg@ccdzine.com>
  */
-class Controlled_Chaos_Post_Type_Tax {
+class Controlled_Chaos_Post_Type_Tax_Functions {
 
 	/**
 	 * Initialize the class and set its properties.
@@ -106,4 +106,4 @@ class Controlled_Chaos_Post_Type_Tax {
 
 }
 
-$controlled_chaos_post_type_tax = new Controlled_Chaos_Post_Type_Tax;
+$controlled_chaos_post_type_tax_functions = new Controlled_Chaos_Post_Type_Tax_Functions;

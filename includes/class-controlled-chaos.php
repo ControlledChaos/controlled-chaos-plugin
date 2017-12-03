@@ -130,6 +130,9 @@ class Controlled_Chaos_Plugin {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-controlled-chaos-public.php';
 
+		// Post types and taxonomies.
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/post-types-taxes/class-controlled-chaos-post-types-taxes.php';
+
 		$this->loader = new controlled_chaos_Loader();
 
 	}

@@ -99,7 +99,7 @@ class Controlled_Chaos_Admin {
 		if ( class_exists( 'ACF_Pro' ) ) {
 			include_once plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-fields-import.php';
 		}
-		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-post-type-tax.php';
+		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-post-type-tax-functions.php';
 		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-admin-images.php';
 		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-media-options.php';
 		if ( get_option( 'ccp_enqueue_fancybox' ) ) {
