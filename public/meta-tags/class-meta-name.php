@@ -1,6 +1,6 @@
 <?php
 /**
- * Site name meta
+ * Site name meta.
  *
  * @package    controlled-chaos
  * @subpackage controlled-chaos/includes

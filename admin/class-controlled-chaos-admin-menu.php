@@ -36,6 +36,7 @@ class Controlled_Chaos_Admin_Menu {
         // Remove menu items.
         add_action( 'admin_menu', [ $this, 'hide' ] );
         
+        // Hide ACF field groups UI.
         if ( class_exists( 'ACF_Pro' ) ) {
 
             $options = get_field( 'ccp_admin_hide_links', 'option' );

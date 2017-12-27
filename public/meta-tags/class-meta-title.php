@@ -31,7 +31,7 @@ class Controlled_Chaos_Meta_Title {
 	public function title() {
 
 		if ( is_front_page() ) {
-			$title = bloginfo( 'name' );
+			$title = get_bloginfo( 'name' );
 		} else {
 			$title = the_title();
 		}

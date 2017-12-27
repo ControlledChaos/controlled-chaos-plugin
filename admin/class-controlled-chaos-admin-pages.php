@@ -32,7 +32,7 @@ class Controlled_Chaos_Admin_Pages {
     public function __construct() {
 
         // Replace default post title placeholders.
-        add_filter( 'enter_title_here', [ $this, 'default_post_title_placeholders' ] );
+        add_filter( 'enter_title_here', [ $this, 'title_placeholders' ] );
 
         // Add excerpts to pages for use in meta data.
         add_action( 'init', [ $this, 'add_page_excerpts' ] );
@@ -60,7 +60,7 @@ class Controlled_Chaos_Admin_Pages {
      *
      * @since    1.0.0
      */
-    public function default_post_title_placeholders( $title ) {
+    public function title_placeholders( $title ) {
 
         $screen = get_current_screen();
 
@@ -73,8 +73,8 @@ class Controlled_Chaos_Admin_Pages {
             $post_title = esc_html__( 'Enter Title', 'controlled-chaos' );
         }
 
-        // Apply a filter for plugins & child themes.
-        $title = apply_filters( 'igp_post_title_placeholders', $post_title );
+        // Apply a filter.
+        $title = apply_filters( 'ccp_post_title_placeholders', $post_title );
         return $title;
     }
 

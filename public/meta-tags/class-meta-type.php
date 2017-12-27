@@ -1,6 +1,6 @@
 <?php
 /**
- * Post type meta
+ * Post type meta.
  *
  * @package    controlled-chaos
  * @subpackage controlled-chaos/includes

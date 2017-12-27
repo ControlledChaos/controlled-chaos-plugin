@@ -67,7 +67,7 @@ class Controlled_Chaos_Bookmarks {
 	public function bookmarks() {
 
 		$output    = $this::bookmarks_output();
-		$bookmarks = apply_filters( 'igp_bookmarks', $output );
+		$bookmarks = apply_filters( 'ccp_bookmarks', $output );
 		return $bookmarks;
 		
 	}

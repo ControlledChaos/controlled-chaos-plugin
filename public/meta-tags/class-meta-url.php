@@ -9,4 +9,3 @@
 
 // Restrict direct access
 if ( ! defined( 'ABSPATH' ) ) exit;
-
