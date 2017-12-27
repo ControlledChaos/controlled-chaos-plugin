@@ -62,8 +62,16 @@ class Controlled_Chaos_Public {
 		// Frontend dependencies.
 		$this->dependencies();
 
-		// Meta tags in <head>.
-		add_action( 'wp_head', [ $this, 'meta_tags' ] );
+		// Add meta tags to <head> if not disabled.
+		if ( class_exists( 'ACF_Pro' ) ) {
+			$disable_tags = get_field( 'ccp_disable_meta_tags', 'option' );
+
+			if ( ! $disable_tags ) {
+				add_action( 'wp_head', [ $this, 'meta_tags' ] );
+			}
+		} else {
+			add_action( 'wp_head', [ $this, 'meta_tags' ] );
+		}
 
 	}
 

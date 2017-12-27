@@ -61,13 +61,20 @@ class Controlled_Chaos_Media_Options {
         /**
          * Fancybox settings.
          */
-        add_settings_section( 'ccp-media-settings', __( 'Fancybox', 'controlled-chaos' ), [], 'media' );
+        add_settings_section( 'ccp-media-settings', __( 'Fancybox', 'ccp-plugin' ), [ $this, 'fancybox_description' ], 'media' );
 
-        add_settings_field( 'ccp_enqueue_fancybox', __( 'Enqueue Fancybox', 'controlled-chaos' ), [ $this, 'fancybox' ], 'media', 'ccp-media-settings', [ __( 'Add modal windows to image links.', 'controlled-chaos' ) ] );
+        add_settings_field( 'ccp_enqueue_fancybox_script', __( 'Enqueue Fancybox script', 'ccp-plugin' ), [ $this, 'fancybox_script' ], 'media', 'ccp-media-settings', [ __( 'Needed for lightbox functionality.', 'ccp-plugin' ) ] );
+
+        add_settings_field( 'ccp_enqueue_fancybox_styles', __( 'Enqueue Fancybox styles', 'ccp-plugin' ), [ $this, 'fancybox_styles' ], 'media', 'ccp-media-settings', [ __( 'Leave unchecked to use custom styles in a theme.', 'ccp-plugin' ) ] );
 
         register_setting(
             'media',
-            'ccp_enqueue_fancybox'
+            'ccp_enqueue_fancybox_script'
+        );
+
+        register_setting(
+            'media',
+            'ccp_enqueue_fancybox_styles'
         );
 
     }
@@ -124,15 +131,44 @@ class Controlled_Chaos_Media_Options {
     }
 
     /**
-     * Add Fancybox field.
+     * Fancybox settings description.
+     */
+    public function fancybox_description() {
+
+        $url      = 'http://fancyapps.com/fancybox/3/';
+        $line_one = sprintf( '<p>%1s</p>', esc_html__( '"jQuery lightbox script for displaying images, videos and more. Touch enabled, responsive and fully customizable."', 'abcd-plugin' ) );
+        $line_two = sprintf( '<p>%1s <a href="%2s" target="_blank">%3s</a></p>', esc_html__( 'Fancybox website:', 'abcd-plugin' ), esc_url( $url ), $url );
+        $html     = $line_one . $line_two;
+
+        echo $html;
+
+    }
+
+    /**
+     * Fancybox script field.
      * 
      * @since    1.0.2
      */
-    public function fancybox( $args ) {
+    public function fancybox_script( $args ) {
 
-        $html = '<p><input type="checkbox" id="ccp_enqueue_fancybox" name="ccp_enqueue_fancybox" value="1" ' . checked( 1, get_option( 'ccp_enqueue_fancybox' ), false ) . '/>';
+        $html = '<p><input type="checkbox" id="ccp_enqueue_fancybox_script" name="ccp_enqueue_fancybox_script" value="1" ' . checked( 1, get_option( 'ccp_enqueue_fancybox_script' ), false ) . '/>';
         
-        $html .= '<label for="ccp_enqueue_fancybox"> '  . $args[0] . '</label></p>';
+        $html .= '<label for="ccp_enqueue_fancybox_script"> '  . $args[0] . '</label></p>';
+
+        echo $html;
+
+    }
+
+    /**
+     * Fancybox styles field.
+     * 
+     * @since    1.0.2
+     */
+    public function fancybox_styles( $args ) {
+
+        $html = '<p><input type="checkbox" id="ccp_enqueue_fancybox_styles" name="ccp_enqueue_fancybox_styles" value="1" ' . checked( 1, get_option( 'ccp_enqueue_fancybox_styles' ), false ) . '/>';
+        
+        $html .= '<label for="ccp_enqueue_fancybox_styles"> '  . $args[0] . '</label></p>';
 
         echo $html;
 
