@@ -53,6 +53,8 @@ class Controlled_Chaos_Admin_Pages {
             add_action( 'manage_posts_custom_column', [ $this, 'image_column_content' ], 10, 2 );
         }
 
+        add_action( 'admin_head', [ $this, 'remove_help_tabs' ] );
+
     }
 
     /**
@@ -163,6 +165,21 @@ class Controlled_Chaos_Admin_Pages {
             } else {
                 echo '<img src="' . plugins_url( 'images/featured-image-placeholder.png', __FILE__ ) . '" style="width: 48px;" />';
             }
+        }
+
+    }
+
+    public function remove_help_tabs() {
+
+        if ( class_exists( 'ACF_Pro' ) ) {
+
+            if ( true == get_field( 'ccp_remove_help_tabs', 'option' ) ) {
+
+                $screen = get_current_screen();
+                $screen->remove_help_tabs();
+
+            }
+
         }
 
     }
