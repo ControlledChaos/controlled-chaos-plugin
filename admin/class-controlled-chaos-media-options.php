@@ -65,7 +65,7 @@ class Controlled_Chaos_Media_Options {
 
         add_settings_field( 'ccp_enqueue_fancybox_script', __( 'Enqueue Fancybox script', 'ccp-plugin' ), [ $this, 'fancybox_script' ], 'media', 'ccp-media-settings', [ __( 'Needed for lightbox functionality.', 'ccp-plugin' ) ] );
 
-        add_settings_field( 'ccp_enqueue_fancybox_styles', __( 'Enqueue Fancybox styles', 'ccp-plugin' ), [ $this, 'fancybox_styles' ], 'media', 'ccp-media-settings', [ __( 'Leave unchecked to use custom styles in a theme.', 'ccp-plugin' ) ] );
+        add_settings_field( 'ccp_enqueue_fancybox_styles', __( 'Enqueue Fancybox styles', 'ccp-plugin' ), [ $this, 'fancybox_styles' ], 'media', 'ccp-media-settings', [ __( 'Leave unchecked to use a custom stylesheet in a theme.', 'ccp-plugin' ) ] );
 
         register_setting(
             'media',

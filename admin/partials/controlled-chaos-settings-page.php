@@ -25,17 +25,21 @@ if ( isset( $_GET[ 'tab' ] ) ) {
     <p class="description"><?php esc_html_e( 'Settings for the Controlled Chaos plugin.', 'controlled-chaos' ); ?></p>
     <h2 class="nav-tab-wrapper">
         <a href="?page=controlled-chaos&tab=ccp-script-options" class="nav-tab <?php echo $active_tab == 'ccp-script-options' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Script Options', 'controlled-chaos' ); ?></a>
-        <?php if ( class_exists( 'ACF_Pro' ) ) { ?><a href="?page=controlled-chaos&tab=ccp-site-settings" class="nav-tab <?php echo $active_tab == 'ccp-site-settings' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Site Settings', 'controlled-chaos' ); ?></a><?php } ?>
+        <a href="?page=controlled-chaos&tab=ccp-site-settings" class="nav-tab <?php echo $active_tab == 'ccp-site-settings' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Site Settings', 'controlled-chaos' ); ?></a>
     </h2>
     <form action="options.php" method="post">
         <?php if ( $active_tab == 'ccp-script-options' ) {
             settings_fields( 'ccp-script-options' );
             do_settings_sections( 'ccp-script-options' );
-        } elseif ( class_exists( 'ACF_Pro' ) ) {
+        } elseif ( $active_tab == 'ccp-site-settings' && class_exists( 'ACF_Pro' ) ) {
             settings_fields( 'ccp-site-settings' );
             do_settings_sections( 'ccp-site-settings' );
+        } elseif ( $active_tab == 'ccp-site-settings' && ! class_exists( 'ACF_Pro' ) ) {
+            echo sprintf( '<h3>%1s <a href="%2s" target="_blank">%3s</a>.</h3>', esc_html__( 'Acitve Advanced Custom Fields PRO for site settings options.', 'ccp-plugin' ), esc_url( 'https://www.advancedcustomfields.com/pro/' ), esc_html( 'Learn more', 'ccp-plugin' ) );
         } ?>
+        <?php if ( $active_tab == 'ccp-script-options' || ( $active_tab == 'ccp-site-settings' && class_exists( 'ACF_Pro' ) ) ) : ?>
         <p><?php submit_button( __( 'Save Settings', 'controlled-chaos' ), 'primary', '', false, [] ); echo ' '; ?></p>
+    <?php endif; ?>
     </form>
     <?php echo sprintf( '<p class="description">%1s <a href="%2s" target="_blank">%3s</a>.</p>', esc_html__( 'The Controlled Chaos plugin is developed by' ), esc_url( 'http://ccdzine.com/' ),esc_html__( 'Controlled Chaos Design' ) ); ?>
 </div>
