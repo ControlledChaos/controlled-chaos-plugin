@@ -51,12 +51,14 @@ class Controlled_Chaos_Post_Type_Tax_Functions {
 
 		global $post, $post_ID;
 
-		$post_types = get_post_types( [
-			'show_ui'  => true,
-			'_builtin' => false
-		], 'objects' );
+		$post_types = get_post_types(
+			[
+				'show_ui'  => true,
+				'_builtin' => false
+			],
+			'objects' );
 		
-		foreach( $post_types as $post_type => $post_object ) {
+		foreach ( $post_types as $post_type => $post_object ) {
 
 			$messages[ $post_type ] = [
 				0  => '', /* Unused. Messages start at index 1 */

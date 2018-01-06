@@ -37,12 +37,11 @@ if ( ! defined( 'WPINC' ) ) {
 class Controlled_Chaos_Plugin {
 
 	/**
-	 * The loader that's responsible for maintaining and registering all hooks that power
-	 * the plugin.
+	 * Maintains and registers all hooks for the plugin.
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      controlled_chaos_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      Controlled_Chaos_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -67,14 +66,11 @@ class Controlled_Chaos_Plugin {
 	/**
 	 * Define the core functionality of the plugin.
 	 *
-	 * Set the plugin name and the plugin version that can be used throughout the plugin.
-	 * Load the dependencies, define the locale, and set the hooks for the admin area and
-	 * the public-facing side of the site.
-	 *
 	 * @since    1.0.0
 	 */
 	public function __construct() {
 		
+		// Get or define version.
 		if ( defined( 'CONTROLLEDCHAOS_VERSION' ) ) {
 			$this->version = CONTROLLEDCHAOS_VERSION;
 		} else {
@@ -82,9 +78,16 @@ class Controlled_Chaos_Plugin {
 		}
 		$this->controlled_chaos = 'controlled-chaos';
 
+		// Load dependencies.
 		$this->load_dependencies();
+
+		// Define the locale for translation.
 		$this->set_locale();
+
+		// Register admin hooks.
 		$this->define_admin_hooks();
+
+		// Register public hooks.
 		$this->define_public_hooks();
 
 	}
@@ -92,56 +95,33 @@ class Controlled_Chaos_Plugin {
 	/**
 	 * Load the required dependencies for this plugin.
 	 *
-	 * Include the following files that make up the plugin:
-	 *
-	 * - controlled-chaos_Loader. Orchestrates the hooks of the plugin.
-	 * - controlled-chaos_i18n. Defines internationalization functionality.
-	 * - controlled-chaos_Admin. Defines all hooks for the admin area.
-	 * - controlled-chaos_Public. Defines all hooks for the public side of the site.
-	 *
-	 * Create an instance of the loader which will be used to register the hooks
-	 * with WordPress.
-	 *
 	 * @since    1.0.0
 	 * @access   private
 	 */
 	private function load_dependencies() {
 
-		/**
-		 * The class responsible for orchestrating the actions and filters of the
-		 * core plugin.
-		 */
+		// Core actions and filters of the plugin.
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-controlled-chaos-loader.php';
 
-		/**
-		 * The class responsible for defining internationalization functionality
-		 * of the plugin.
-		 */
+		// Translation functionality.
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-controlled-chaos-i18n.php';
 
-		/**
-		 * The class responsible for defining all actions that occur in the admin area.
-		 */
+		// Admin actions and filters.
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-controlled-chaos-admin.php';
 
-		/**
-		 * The class responsible for defining all actions that occur in the public-facing
-		 * side of the site.
-		 */
+		// Publis actions and filters.
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-controlled-chaos-public.php';
 
 		// Post types and taxonomies.
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/post-types-taxes/class-controlled-chaos-post-types-taxes.php';
 
-		$this->loader = new controlled_chaos_Loader();
+		// Run the loader.
+		$this->loader = new Controlled_Chaos_Loader();
 
 	}
 
 	/**
-	 * Define the locale for this plugin for internationalization.
-	 *
-	 * Uses the controlled-chaos_i18n class in order to set the domain and to register the hook
-	 * with WordPress.
+	 * Define the locale for translation.
 	 *
 	 * @since    1.0.0
 	 * @access   private
@@ -155,8 +135,7 @@ class Controlled_Chaos_Plugin {
 	}
 
 	/**
-	 * Register all of the hooks related to the admin area functionality
-	 * of the plugin.
+	 * Register admin hooks.
 	 *
 	 * @since    1.0.0
 	 * @access   private
@@ -171,8 +150,7 @@ class Controlled_Chaos_Plugin {
 	}
 
 	/**
-	 * Register all of the hooks related to the public-facing functionality
-	 * of the plugin.
+	 * Register public hooks.
 	 *
 	 * @since    1.0.0
 	 * @access   private
@@ -187,7 +165,7 @@ class Controlled_Chaos_Plugin {
 	}
 
 	/**
-	 * Run the loader to execute all of the hooks with WordPress.
+	 * Run the loader.
 	 *
 	 * @since    1.0.0
 	 */
@@ -196,8 +174,7 @@ class Controlled_Chaos_Plugin {
 	}
 
 	/**
-	 * The name of the plugin used to uniquely identify it within the context of
-	 * WordPress and to define internationalization functionality.
+	 * The name of the plugin used to uniquely identify it.
 	 *
 	 * @since     1.0.0
 	 * @return    string    The name of the plugin.
@@ -210,7 +187,7 @@ class Controlled_Chaos_Plugin {
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since     1.0.0
-	 * @return    controlled-chaos_Loader    Orchestrates the hooks of the plugin.
+	 * @return    Controlled_Chaos_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;
