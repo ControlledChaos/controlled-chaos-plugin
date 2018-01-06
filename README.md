@@ -30,8 +30,6 @@ One settings page via the default WordPress method and one settings page using t
 Rename and duplicate as needed.
 
 ### Clean Up the Admin
-A little tidying up of the clutter, and removal of items to which inexperienced users ought not have access.
-
 * Remove dashboard widgets: WordPress news, quick press
 * Make Menus and Widgets top level menu items
 * Remove select admin menu items
