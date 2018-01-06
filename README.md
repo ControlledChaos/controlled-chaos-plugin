@@ -23,6 +23,12 @@ UI & UX JS plugins enqueued
 * Tooltipster - https://github.com/iamceege/tooltipster
 * FitVids - https://github.com/davatron5000/FitVids.js
 
+### Starter Settings Pages
+One settings page via the default WordPress method and one settings page using the ACF Options Page method (if ACF is active).
+
+### Sample Custom Post Type
+Rename and duplicate as needed.
+
 ### Clean Up the Admin
 A little tidying up of the clutter, and removal of items to which inexperienced users ought not have access.
 
