@@ -33,9 +33,12 @@ Rename and duplicate as needed.
 A little tidying up of the clutter, and removal of items to which inexperienced users ought not have access.
 
 * Remove dashboard widgets: WordPress news, quick press
-* Add custom post types to the At a Glance widget
 * Make Menus and Widgets top level menu items
 * Remove select admin menu items
-* Custom admin footer message
 * Remove WordPress logo from admin bar
 * Remove access to theme and plugin editors
+
+### Enchance the Admin
+* Add three admin bar menus
+* Add custom post types to the At a Glance widget
+* Custom admin footer message
