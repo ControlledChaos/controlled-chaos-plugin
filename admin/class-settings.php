@@ -76,7 +76,7 @@ class Controlled_Chaos_Settings {
 	 */
     public function settings_page_output() {
 		
-		require plugin_dir_path( __FILE__ ) . 'partials/controlled-chaos-settings-page.php';
+		require plugin_dir_path( __FILE__ ) . 'partials/settings-page.php';
 
 	}
 

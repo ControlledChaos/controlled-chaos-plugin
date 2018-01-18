@@ -113,7 +113,7 @@ class Controlled_Chaos_Fields_Import {
 			while ( $num_import > 0 );
 		}
 
-		include_once plugin_dir_path( __FILE__ ) . 'partials/controlled-chaos-field-import-page.php';
+		include_once plugin_dir_path( __FILE__ ) . 'partials/field-import-page.php';
 		
 	}
 
