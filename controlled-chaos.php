@@ -34,7 +34,7 @@ define( 'CONTROLLEDCHAOS_VERSION', '1.0.0' );
  * The code that runs during plugin activation.
  */
 function activate_controlled_chaos() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-controlled-chaos-activator.php';
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-activator.php';
 	Controlled_Chaos_Activator::activate();
 }
 
@@ -42,7 +42,7 @@ function activate_controlled_chaos() {
  * The code that runs during plugin deactivation.
  */
 function deactivate_controlled_chaos() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-controlled-chaos-deactivator.php';
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-deactivator.php';
 	Controlled_Chaos_Deactivator::deactivate();
 }
 
@@ -56,7 +56,7 @@ register_deactivation_hook( __FILE__, __NAMESPACE__ . '\deactivate_controlled_ch
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-controlled-chaos.php';
+require plugin_dir_path( __FILE__ ) . 'includes/class-includes.php';
 
 /**
  * Begin execution of the plugin.

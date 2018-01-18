@@ -89,21 +89,21 @@ class Controlled_Chaos_Admin {
 	 */
 	public function dependencies() {
 
-		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-dashboard.php';
-		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-admin-menu.php';
-		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-adminbar-menus.php';
-		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-admin-pages.php';
-		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-settings.php';
+		require plugin_dir_path( __FILE__ ) . 'class-dashboard.php';
+		require plugin_dir_path( __FILE__ ) . 'class-admin-menu.php';
+		require plugin_dir_path( __FILE__ ) . 'class-adminbar-menus.php';
+		require plugin_dir_path( __FILE__ ) . 'class-admin-pages.php';
+		require plugin_dir_path( __FILE__ ) . 'class-settings.php';
 		if ( class_exists( 'ACF_Pro' ) && ! get_option( 'ccp_site_settings_acf_fields' ) ) {
-			include_once plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-settings-fields.php';
+			include_once plugin_dir_path( __FILE__ ) . 'class-settings-fields.php';
 		}
 		if ( class_exists( 'ACF_Pro' ) ) {
-			include_once plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-fields-import.php';
+			include_once plugin_dir_path( __FILE__ ) . 'class-fields-import.php';
 		}
-		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-admin-images.php';
-		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-media-options.php';
+		require plugin_dir_path( __FILE__ ) . 'class-admin-images.php';
+		require plugin_dir_path( __FILE__ ) . 'class-media-options.php';
 		if ( get_option( 'ccp_enqueue_fancybox_script' ) ) {
-			require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-gallery-shortcode.php';
+			require plugin_dir_path( __FILE__ ) . 'class-gallery-shortcode.php';
 		}
 
 	}
@@ -211,7 +211,7 @@ class Controlled_Chaos_Admin {
 	 */
 	public function enqueue_styles() {
 
-		wp_enqueue_style( $this->controlled_chaos, plugin_dir_url( __FILE__ ) . 'assets/css/controlled-chaos-admin.css', [], $this->version, 'all' );
+		wp_enqueue_style( $this->controlled_chaos, plugin_dir_url( __FILE__ ) . 'assets/css/admin.css', [], $this->version, 'all' );
 
 	}
 
@@ -222,7 +222,7 @@ class Controlled_Chaos_Admin {
 	 */
 	public function enqueue_scripts() {
 
-		wp_enqueue_script( $this->controlled_chaos, plugin_dir_url( __FILE__ ) . 'assets/js/controlled-chaos-admin.js', [ 'jquery' ], $this->version, false );
+		wp_enqueue_script( $this->controlled_chaos, plugin_dir_url( __FILE__ ) . 'assets/js/admin.js', [ 'jquery' ], $this->version, false );
 		wp_enqueue_script( 'controlled-chaos-excerpts', plugin_dir_url( __FILE__ ) . 'assets/js/excerpts.js', [ 'jquery' ], $this->version, false );
 
 	}

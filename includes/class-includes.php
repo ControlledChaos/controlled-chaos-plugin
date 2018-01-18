@@ -101,19 +101,19 @@ class Controlled_Chaos_Plugin {
 	private function load_dependencies() {
 
 		// Core actions and filters of the plugin.
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-controlled-chaos-loader.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-loader.php';
 
 		// Translation functionality.
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-controlled-chaos-i18n.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-i18n.php';
 
 		// Admin actions and filters.
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-controlled-chaos-admin.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-admin.php';
 
 		// Publis actions and filters.
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-controlled-chaos-public.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-public.php';
 
 		// Post types and taxonomies.
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/post-types-taxes/class-controlled-chaos-post-types-taxes.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/post-types-taxes/class-post-types-taxes.php';
 
 		// Run the loader.
 		$this->loader = new Controlled_Chaos_Loader();

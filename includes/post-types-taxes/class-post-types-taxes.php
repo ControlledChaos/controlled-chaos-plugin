@@ -31,13 +31,13 @@ class Controlled_Chaos_Post_Types_Taxes {
 	public function dependencies() {
 
 		// Resister cutsom post types.
-		require_once plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-register-post-types.php';
+		require_once plugin_dir_path( __FILE__ ) . 'class-register-post-types.php';
 
 		// Functions related to post types and taxonomies.
-		require_once plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-post-type-tax-functions.php';
+		require_once plugin_dir_path( __FILE__ ) . 'class-post-type-tax-functions.php';
 
 		// Capability to add custom taxonomy templates.
-		require_once plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-taxonomy-templates.php';
+		require_once plugin_dir_path( __FILE__ ) . 'class-taxonomy-templates.php';
 
 	}
 
