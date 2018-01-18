@@ -29,8 +29,10 @@ class Controlled_Chaos_Adminbar_Menus {
 		// Register menus for the admin bar.
 		add_action( 'init', [ $this, 'register' ] );
 
-		// Add the menus to the addmin bar.
-		add_action( 'admin_bar_menu', [ $this, 'add_menus' ], 35 );
+		// Add the menus to the admin bar.
+		add_action( 'admin_bar_menu', [ $this, 'menu_main' ], 35 );
+		add_action( 'admin_bar_menu', [ $this, 'menu_site' ], 35 );
+		add_action( 'admin_bar_menu', [ $this, 'menu_account' ], 35 );
 
 	}
 
@@ -52,75 +54,21 @@ class Controlled_Chaos_Adminbar_Menus {
 	}
 
 	/**
-	 * Add the menus to the addmin bar.
+	 * Menu in the main part of the addmin bar.
 	 * 
 	 * @since    1.0.0
 	 */
-	public function add_menus() {
+	public function menu_main() {
 		
 		global $wp_admin_bar;
-
-		/**
-		 * Site name menu.
-		 */
-		if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[ 'ccp_admin_menu_site' ] ) ) {
-
-			$menu_site = wp_get_nav_menu_object( $locations[ 'ccp_admin_menu_site' ] );
-
-			if ( false != $menu_site ) {
-
-				$menu_items = wp_get_nav_menu_items( $menu_site->term_id );
-
-				foreach ( (array) $menu_items as $key => $menu_item ) {
-
-					if ( $menu_item->classes ) {
-						$classes = implode( ' ', $menu_item->classes );
-					} else {
-						$classes = '';
-					}
-
-					$meta = [
-						'class'   => $classes,
-						'onclick' => '',
-						'target'  => $menu_item->target,
-						'title'   => $menu_item->attr_title
-					];
-
-					if ( $menu_item->menu_item_parent ) {
-						$wp_admin_bar->add_menu(
-							[
-								'id'     => $menu_item->ID,
-								'parent' => $menu_item->menu_item_parent,
-								'title'  => $menu_item->title,
-								'href'   => $menu_item->url,
-								'meta'   => $meta
-							]
-						);
-					} else {
-						$wp_admin_bar->add_menu(
-							[
-								'id'     => $menu_item->ID,
-								'parent' => 'site-name',
-								'title'  => $menu_item->title,
-								'href'   => $menu_item->url,
-								'meta'   => $meta
-							]
-						);
-					}
-				}
-			}
-		}
 		
-		/**
-		 * Admin bar main menu.
-		 */
 		if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[ 'ccp_admin_menu_main' ] ) ) {
 
-			$menu_main = wp_get_nav_menu_object( $locations[ 'ccp_admin_menu_main' ] );
+			$menu = wp_get_nav_menu_object( $locations[ 'ccp_admin_menu_main' ] );
 
-			if ( false != $menu_main ) {
+			if ( false != $menu ) {
 
-				$menu_items = wp_get_nav_menu_items( $menu_main->term_id );
+				$menu_items = wp_get_nav_menu_items( $menu->term_id );
 
 				foreach ( (array) $menu_items as $key => $menu_item ) {
 
@@ -161,16 +109,84 @@ class Controlled_Chaos_Adminbar_Menus {
 			}
 		}
 		
-		/**
-		 * Account menu.
-		 */
+		
+	}
+
+	/**
+	 * Menu under the site name.
+	 * 
+	 * @since    1.0.0
+	 */
+	public function menu_site() {
+
+		global $wp_admin_bar;
+
+		if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[ 'ccp_admin_menu_site' ] ) ) {
+
+			$menu = wp_get_nav_menu_object( $locations[ 'ccp_admin_menu_site' ] );
+
+			if ( false != $menu ) {
+
+				$menu_items = wp_get_nav_menu_items( $menu->term_id );
+
+				foreach ( (array) $menu_items as $key => $menu_item ) {
+
+					if ( $menu_item->classes ) {
+						$classes = implode( ' ', $menu_item->classes );
+					} else {
+						$classes = '';
+					}
+
+					$meta = [
+						'class'   => $classes,
+						'onclick' => '',
+						'target'  => $menu_item->target,
+						'title'   => $menu_item->attr_title
+					];
+
+					if ( $menu_item->menu_item_parent ) {
+						$wp_admin_bar->add_menu(
+							[
+								'id'     => $menu_item->ID,
+								'parent' => $menu_item->menu_item_parent,
+								'title'  => $menu_item->title,
+								'href'   => $menu_item->url,
+								'meta'   => $meta
+							]
+						);
+					} else {
+						$wp_admin_bar->add_menu(
+							[
+								'id'     => $menu_item->ID,
+								'parent' => 'site-name',
+								'title'  => $menu_item->title,
+								'href'   => $menu_item->url,
+								'meta'   => $meta
+							]
+						);
+					}
+				}
+			}
+		}
+
+	}
+
+	/**
+	 * Menu under the account name.
+	 * 
+	 * @since    1.0.0
+	 */
+	public function menu_account() {
+
+		global $wp_admin_bar;
+
 		if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[ 'ccp_admin_menu_account' ] ) ) {
 
-			$menu_account = wp_get_nav_menu_object( $locations[ 'ccp_admin_menu_account' ] );
+			$menu = wp_get_nav_menu_object( $locations[ 'ccp_admin_menu_account' ] );
 
-			if ( false != $menu_account ) {
+			if ( false != $menu ) {
 
-				$menu_items = wp_get_nav_menu_items( $menu_account->term_id );
+				$menu_items = wp_get_nav_menu_items( $menu->term_id );
 
 				foreach ( (array) $menu_items as $key => $menu_item ) {
 
@@ -211,6 +227,7 @@ class Controlled_Chaos_Adminbar_Menus {
 				}
 			}
 		}
+
 	}
 
 }

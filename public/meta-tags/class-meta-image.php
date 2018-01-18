@@ -58,7 +58,7 @@ class Controlled_Chaos_Meta_Image {
 			if ( has_post_thumbnail() ) {
 				$src = $image[0];
 			} else {
-				$src = '';
+				$src =  plugins_url( 'public/assets/images/default-meta-image.jpg', dirname(__FILE__) );
 			}
 
 			echo $src;

@@ -102,7 +102,7 @@ class Controlled_Chaos_Admin {
 		}
 		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-admin-images.php';
 		require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-media-options.php';
-		if ( get_option( 'ccp_enqueue_fancybox' ) ) {
+		if ( get_option( 'ccp_enqueue_fancybox_script' ) ) {
 			require plugin_dir_path( __FILE__ ) . 'class-controlled-chaos-gallery-shortcode.php';
 		}
 
@@ -211,7 +211,7 @@ class Controlled_Chaos_Admin {
 	 */
 	public function enqueue_styles() {
 
-		wp_enqueue_style( $this->controlled_chaos, plugin_dir_url( __FILE__ ) . 'css/controlled-chaos-admin.css', [], $this->version, 'all' );
+		wp_enqueue_style( $this->controlled_chaos, plugin_dir_url( __FILE__ ) . 'assets/css/controlled-chaos-admin.css', [], $this->version, 'all' );
 
 	}
 
@@ -222,8 +222,8 @@ class Controlled_Chaos_Admin {
 	 */
 	public function enqueue_scripts() {
 
-		wp_enqueue_script( $this->controlled_chaos, plugin_dir_url( __FILE__ ) . 'js/controlled-chaos-admin.js', [ 'jquery' ], $this->version, false );
-		wp_enqueue_script( 'controlled-chaos-excerpts', plugin_dir_url( __FILE__ ) . 'js/excerpts.js', [ 'jquery' ], $this->version, false );
+		wp_enqueue_script( $this->controlled_chaos, plugin_dir_url( __FILE__ ) . 'assets/js/controlled-chaos-admin.js', [ 'jquery' ], $this->version, false );
+		wp_enqueue_script( 'controlled-chaos-excerpts', plugin_dir_url( __FILE__ ) . 'assets/js/excerpts.js', [ 'jquery' ], $this->version, false );
 
 	}
 

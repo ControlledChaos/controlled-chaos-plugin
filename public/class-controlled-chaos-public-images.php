@@ -60,7 +60,7 @@ class Controlled_Chaos_Public_Images {
 			$string = '/<a href="(.*?).(jpg|jpeg|png|gif|bmp|ico)"><img(.*?)class="(.*?)wp-image-(.*?)" \/><\/a>/i';
 			preg_match_all( $string, $content, $matches, PREG_SET_ORDER );
 
-			if ( get_option( 'ccp_enqueue_fancybox' ) ) {
+			if ( get_option( 'ccp_enqueue_fancybox_script' ) ) {
 
 				// Check which attachment is referenced.
 				foreach ( $matches as $val ) {

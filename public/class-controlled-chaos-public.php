@@ -107,26 +107,26 @@ class Controlled_Chaos_Public {
 	public function enqueue_styles() {
 
 		// Non-vendor plugin styles.
-		wp_enqueue_style( $this->controlled_chaos . '-plugin', plugin_dir_url( __FILE__ ) . 'css/controlled-chaos-public.css', [], $this->version, 'all' );
+		wp_enqueue_style( $this->controlled_chaos . '-plugin', plugin_dir_url( __FILE__ ) . 'assets/css/controlled-chaos-public.css', [], $this->version, 'all' );
 
 		// Fancybox 3.
-		if ( get_option( 'ccp_enqueue_fancybox' ) ) {
-			wp_enqueue_style( $this->controlled_chaos . '-fancybox', plugin_dir_url( __FILE__ ) . 'css/jquery.fancybox.min.css', [], $this->version, 'all' );
+		if ( get_option( 'ccp_enqueue_fancybox_styles' ) ) {
+			wp_enqueue_style( $this->controlled_chaos . '-fancybox', plugin_dir_url( __FILE__ ) . 'assets/css/jquery.fancybox.min.css', [], $this->version, 'all' );
 		}
 
 		// Slick.
 		if ( get_option( 'ccp_enqueue_slick' ) ) {
-			wp_enqueue_style( $this->controlled_chaos . '-slick', plugin_dir_url( __FILE__ ) . 'css/slick.min.css', [], $this->version, 'all' );
+			wp_enqueue_style( $this->controlled_chaos . '-slick', plugin_dir_url( __FILE__ ) . 'assets/css/slick.min.css', [], $this->version, 'all' );
 		}
 
 		// Slick theme.
 		if ( get_option( 'ccp_enqueue_slick' ) ) {
-			wp_enqueue_style( $this->controlled_chaos . '-slick-theme', plugin_dir_url( __FILE__ ) . 'css/slick-theme.css', [], $this->version, 'all' );
+			wp_enqueue_style( $this->controlled_chaos . '-slick-theme', plugin_dir_url( __FILE__ ) . 'assets/css/slick-theme.css', [], $this->version, 'all' );
 		}
 
 		// Tooltipster.
 		if ( get_option( 'ccp_enqueue_tooltipster' ) ) {
-			wp_enqueue_style( $this->controlled_chaos . '-tooltipster', plugin_dir_url( __FILE__ ) . 'css/tooltipster.bundle.min.css', [], $this->version, 'all' );
+			wp_enqueue_style( $this->controlled_chaos . '-tooltipster', plugin_dir_url( __FILE__ ) . 'assets/css/tooltipster.bundle.min.css', [], $this->version, 'all' );
 		}
 
 	}
@@ -139,30 +139,30 @@ class Controlled_Chaos_Public {
 	public function enqueue_scripts() {
 
 		// Non-vendor plugin script.
-		wp_enqueue_script( $this->controlled_chaos, plugin_dir_url( __FILE__ ) . 'js/controlled-chaos-public.js', [ 'jquery' ], $this->version, true );
+		wp_enqueue_script( $this->controlled_chaos, plugin_dir_url( __FILE__ ) . 'assets/js/controlled-chaos-public.js', [ 'jquery' ], $this->version, true );
 
 		// Fancybox 3.
-		if ( get_option( 'ccp_enqueue_fancybox' ) ) {
-			wp_enqueue_script( $this->controlled_chaos . '-fancybox', plugin_dir_url( __FILE__ ) . 'js/jquery.fancybox.min.js', [ 'jquery' ], $this->version, true );
+		if ( get_option( 'ccp_enqueue_fancybox_script' ) ) {
+			wp_enqueue_script( $this->controlled_chaos . '-fancybox', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.fancybox.min.js', [ 'jquery' ], $this->version, true );
 		}
 
 		// Slick.
 		if ( get_option( 'ccp_enqueue_slick' ) ) {
-			wp_enqueue_script( $this->controlled_chaos . '-slick', plugin_dir_url( __FILE__ ) . 'js/slick.min.js', [ 'jquery' ], $this->version, true );
+			wp_enqueue_script( $this->controlled_chaos . '-slick', plugin_dir_url( __FILE__ ) . 'assets/js/slick.min.js', [ 'jquery' ], $this->version, true );
 		}
 
 		// Tabslet.
 		if ( get_option( 'ccp_enqueue_tabslet' ) ) {
-			wp_enqueue_script( $this->controlled_chaos . '-tabslet', plugin_dir_url( __FILE__ ) . 'js/jquery.tabslet.min.js', [ 'jquery' ], $this->version, true );
+			wp_enqueue_script( $this->controlled_chaos . '-tabslet', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.tabslet.min.js', [ 'jquery' ], $this->version, true );
 		}
 
 		// Tooltipster.
 		if ( get_option( 'ccp_enqueue_tooltipster' ) ) {
-			wp_enqueue_script( $this->controlled_chaos . '-tooltipster', plugin_dir_url( __FILE__ ) . 'js/tooltipster.bundle.min.js', [ 'jquery' ], $this->version, true );
+			wp_enqueue_script( $this->controlled_chaos . '-tooltipster', plugin_dir_url( __FILE__ ) . 'assets/js/tooltipster.bundle.min.js', [ 'jquery' ], $this->version, true );
 		}
 
 		// FitVids.
-		wp_enqueue_script( $this->controlled_chaos . '-fitvids', plugin_dir_url( __FILE__ ) . 'js/jquery.fitvids.min.js', [ 'jquery' ], $this->version, true );
+		wp_enqueue_script( $this->controlled_chaos . '-fitvids', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.fitvids.min.js', [ 'jquery' ], $this->version, true );
 
 	}
 
