@@ -63,15 +63,7 @@ class Controlled_Chaos_Public {
 		$this->dependencies();
 
 		// Add meta tags to <head> if not disabled.
-		if ( class_exists( 'ACF_Pro' ) ) {
-			$disable_tags = get_field( 'ccp_disable_meta_tags', 'option' );
-
-			if ( ! $disable_tags ) {
-				add_action( 'wp_head', [ $this, 'meta_tags' ] );
-			}
-		} else {
-			add_action( 'wp_head', [ $this, 'meta_tags' ] );
-		}
+		add_action( 'wp_head', [ $this, 'meta_tags' ] );
 
 	}
 
@@ -80,13 +72,13 @@ class Controlled_Chaos_Public {
 	 */
 	public function dependencies() {
 
-		require plugin_dir_path( __FILE__ ) . 'class-head-scripts.php';
-		require plugin_dir_path( __FILE__ ) . 'class-public-images.php';
+		require_once plugin_dir_path( __FILE__ ) . 'class-head-scripts.php';
+		require_once plugin_dir_path( __FILE__ ) . 'class-public-images.php';
 
 		/**
 		 * Meta tags.
 		 * 
-		 * @since    1.0.4
+		 * @since    1.0.0
 		 */
 		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-url.php';
 		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-name.php';
@@ -95,7 +87,6 @@ class Controlled_Chaos_Public {
 		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-description.php';
 		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-image.php';
 		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-author.php';
-		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-bookmarks.php';
 
 	}
 
@@ -168,12 +159,23 @@ class Controlled_Chaos_Public {
 
 	/**
 	 * Meta tags for SEO and embedded links.
+	 * 
+	 * @since    1.0.0
 	 */
 	public function meta_tags() {
-		
-		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-tags-standard.php';
-		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-tags-open-graph.php';
-		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-tags-twitter.php';
+
+		if ( class_exists( 'ACF_Pro' ) ) {
+			$disable_tags = get_field( 'ccp_disable_meta_tags', 'option' );
+
+			if ( false == $disable_tags ) {
+				
+				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-tags-standard.php';
+				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-tags-open-graph.php';
+				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-tags-twitter.php';
+
+			}
+
+		}
 
 	}
 
