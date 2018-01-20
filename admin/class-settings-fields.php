@@ -282,7 +282,7 @@ acf_add_local_field_group(array(
 		array(
 			'key' => 'field_5a237090744c4',
 			'label' => 'Meta Tags',
-			'name' => 'cco_disable_meta_tags',
+			'name' => 'ccp_disable_meta_tags',
 			'type' => 'true_false',
 			'instructions' => 'Disable if you plan on using Yoast SEO or a similarly awful plugin.',
 			'required' => 0,
