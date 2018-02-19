@@ -7,7 +7,7 @@
  * @since controlled-chaos 1.0.0
  */
 
-namespace Controlled_Chaos_Plugin;
+
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -37,7 +37,7 @@ class Controlled_Chaos_Media_Options {
     /**
 	 * Media settings.
 	 * 
-	 * @since    1.0.2
+	 * @since    1.0.0
 	 */
 	public function settings() {
 
@@ -82,7 +82,7 @@ class Controlled_Chaos_Media_Options {
     /**
      * Medium crop field.
      * 
-     * @since    1.0.2
+     * @since    1.0.0
      */
     public function medium_crop( $args ) {
 
@@ -97,7 +97,7 @@ class Controlled_Chaos_Media_Options {
     /**
      * Large crop field.
      * 
-     * @since    1.0.2
+     * @since    1.0.0
      */
     public function large_crop( $args ) {
 
@@ -112,7 +112,7 @@ class Controlled_Chaos_Media_Options {
     /**
      * Update crop options.
      * 
-     * @since    1.0.2
+     * @since    1.0.0
      */
     public function crop() {
 
@@ -147,7 +147,7 @@ class Controlled_Chaos_Media_Options {
     /**
      * Fancybox script field.
      * 
-     * @since    1.0.2
+     * @since    1.0.0
      */
     public function fancybox_script( $args ) {
 
@@ -162,7 +162,7 @@ class Controlled_Chaos_Media_Options {
     /**
      * Fancybox styles field.
      * 
-     * @since    1.0.2
+     * @since    1.0.0
      */
     public function fancybox_styles( $args ) {
 

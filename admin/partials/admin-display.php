@@ -12,7 +12,7 @@
  * @subpackage controlled-chaos/admin/partials
  */
 
-namespace Controlled_Chaos_Plugin;
+
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {

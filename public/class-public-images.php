@@ -10,7 +10,7 @@
  * @subpackage controlled-chaos/public
  */
 
-namespace Controlled_Chaos_Plugin;
+
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -40,7 +40,7 @@ class Controlled_Chaos_Public_Images {
 	/**
 	 * Add image sizes.
 	 * 
-	 * @since    1.0.3
+	 * @since    1.0.0
 	 */
 	public function image_sizes() {
 
@@ -52,7 +52,7 @@ class Controlled_Chaos_Public_Images {
 	/**
 	 * Add Fancybox data attributes to image links in the content.
 	 * 
-	 * @since    1.0.1
+	 * @since    1.0.0
 	 */
 	public function fancybox_single_images( $content ) {
 

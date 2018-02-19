@@ -5,10 +5,10 @@
  *
  * @package    controlled-chaos
  * @subpackage controlled-chaos
- * @since controlled-chaos 1.0.2
+ * @since controlled-chaos 1.0.0
  */
 
-namespace Controlled_Chaos_Plugin;
+
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -25,7 +25,8 @@ if ( isset( $_GET[ 'tab' ] ) ) {
     <p class="description"><?php esc_html_e( 'Settings for the Controlled Chaos plugin.', 'controlled-chaos' ); ?></p>
     <h2 class="nav-tab-wrapper">
         <a href="?page=controlled-chaos&tab=ccp-script-options" class="nav-tab <?php echo $active_tab == 'ccp-script-options' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Script Options', 'controlled-chaos' ); ?></a>
-        <a href="?page=controlled-chaos&tab=ccp-site-settings" class="nav-tab <?php echo $active_tab == 'ccp-site-settings' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Site Settings', 'controlled-chaos' ); ?></a>
+        <a href="?page=controlled-chaos&tab=ccp-post-types" class="nav-tab <?php echo $active_tab == 'ccp-post-types' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Post Types', 'controlled-chaos' ); ?></a>
+        <a href="?page=controlled-chaos&tab=ccp-site-settings" class="nav-tab <?php echo $active_tab == 'ccp-site-settings' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Custom Fields', 'controlled-chaos' ); ?></a>
     </h2>
     <form action="options.php" method="post">
         <?php if ( $active_tab == 'ccp-script-options' ) {
@@ -38,7 +39,7 @@ if ( isset( $_GET[ 'tab' ] ) ) {
             echo sprintf( '<h3>%1s <a href="%2s" target="_blank">%3s</a>.</h3>', esc_html__( 'Acitve Advanced Custom Fields PRO for site settings options.', 'ccp-plugin' ), esc_url( 'https://www.advancedcustomfields.com/pro/' ), esc_html( 'Learn more', 'ccp-plugin' ) );
         } ?>
         <?php if ( $active_tab == 'ccp-script-options' || ( $active_tab == 'ccp-site-settings' && class_exists( 'ACF_Pro' ) ) ) : ?>
-        <p><?php submit_button( __( 'Save Settings', 'controlled-chaos' ), 'primary', '', false, [] ); echo ' '; ?></p>
+        <p class="submit"><?php submit_button( __( 'Save Settings', 'controlled-chaos' ), 'primary', '', false, [] ); echo ' '; ?></p>
     <?php endif; ?>
     </form>
     <?php echo sprintf( '<p class="description">%1s <a href="%2s" target="_blank">%3s</a>.</p>', esc_html__( 'The Controlled Chaos plugin is developed by' ), esc_url( 'http://ccdzine.com/' ),esc_html__( 'Controlled Chaos Design' ) ); ?>

@@ -4,16 +4,16 @@
  *
  * @package    controlled-chaos
  * @subpackage controlled-chaos/includes
- * @since controlled-chaos 1.0.4
+ * @since controlled-chaos 1.0.0
  */
 
-namespace Controlled_Chaos_Plugin;
+
 
 // Restrict direct access
 if ( ! defined( 'ABSPATH' ) ) exit; ?>
 
 <!-- Open Graph meta -->
-<meta property="og:url" content="<?php echo get_the_permalink(); ?>" />
+<meta property="og:url" content="<?php do_action( 'ccp_meta_url' ); ?>" />
 <meta property="og:locale" content="<?php echo get_locale(); ?>" />
 <meta property="og:site_name" content="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" />
 <meta property="og:title" content="<?php do_action( 'ccp_meta_title' ); ?>" />

@@ -4,10 +4,10 @@
  *
  * @package    controlled-chaos
  * @subpackage controlled-chaos/includes
- * @since controlled-chaos 1.0.4
+ * @since controlled-chaos 1.0.0
  */
 
-namespace Controlled_Chaos_Plugin;
+
 
 // Restrict direct access
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -26,7 +26,7 @@ class Controlled_Chaos_Meta_Author {
 	/**
 	 * Author meta tag.
 	 * 
-	 * @since controlled-chaos 1.0.4
+	 * @since controlled-chaos 1.0.0
 	 */
 	public function author() {
 

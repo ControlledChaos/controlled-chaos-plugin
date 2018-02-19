@@ -10,7 +10,7 @@
  * @subpackage controlled-chaos/admin
  */
 
-namespace Controlled_Chaos_Plugin;
+
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -60,7 +60,7 @@ class Controlled_Chaos_Admin_Menu {
     /**
      * Remove menu items.
      * 
-     * @since    1.0.3
+     * @since    1.0.0
      */
     public function hide() {
 

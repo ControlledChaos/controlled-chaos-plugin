@@ -4,10 +4,10 @@
  *
  * @package    controlled-chaos
  * @subpackage controlled-chaos/includes
- * @since controlled-chaos 1.0.4
+ * @since controlled-chaos 1.0.0
  */
 
-namespace Controlled_Chaos_Plugin;
+
 
 // Restrict direct access
 if ( ! defined( 'ABSPATH' ) ) exit;

@@ -11,7 +11,7 @@
  * @subpackage controlled-chaos/admin
  */
 
-namespace Controlled_Chaos_Plugin;
+
 
 // Restrict direct access
 if ( ! defined( 'ABSPATH' ) ) exit;

@@ -10,7 +10,7 @@
  * @subpackage controlled-chaos/includes
  */
 
-namespace Controlled_Chaos_Plugin;
+
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -19,8 +19,6 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Fired during plugin activation.
- *
- * This class defines all code necessary to run during the plugin's activation.
  *
  * @since      1.0.0
  * @package    controlled-chaos

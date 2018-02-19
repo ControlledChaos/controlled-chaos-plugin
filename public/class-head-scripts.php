@@ -4,10 +4,10 @@
  *
  * @package    controlled-chaos
  * @subpackage controlled-chaos
- * @since controlled-chaos 1.0.3
+ * @since controlled-chaos 1.0.0
  */
 
-namespace Controlled_Chaos_Plugin;
+
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {

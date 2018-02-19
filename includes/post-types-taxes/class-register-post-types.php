@@ -10,7 +10,7 @@
  * @subpackage controlled-chaos/includes
  */
 
-namespace Controlled_Chaos_Plugin;
+
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -36,6 +36,9 @@ class Controlled_Chaos_Post_Types_Register {
 
         /**
          * Post Type: Sample custom post (Custom Posts).
+         * 
+         * See reference page:
+         * https://codex.wordpress.org/Function_Reference/register_post_type
          */
 
         $labels = [
