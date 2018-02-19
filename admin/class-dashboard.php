@@ -10,7 +10,7 @@
  * @subpackage controlled-chaos/admin
  */
 
-namespace Controlled_Chaos_Plugin;
+
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -69,7 +69,7 @@ class Controlled_Chaos_Dashboard {
     /**
      * Remove Dashboard metaboxes.
      *
-     * @since    1.0.2
+     * @since    1.0.0
      */
     public function metaboxes() {
 

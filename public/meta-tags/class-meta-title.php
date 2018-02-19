@@ -4,10 +4,10 @@
  *
  * @package    controlled-chaos
  * @subpackage controlled-chaos/includes
- * @since controlled-chaos 1.0.4
+ * @since controlled-chaos 1.0.0
  */
 
-namespace Controlled_Chaos_Plugin;
+
 
 // Restrict direct access
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -26,12 +26,14 @@ class Controlled_Chaos_Meta_Title {
 	/**
 	 * Title meta tag.
 	 * 
-	 * @since controlled-chaos 1.0.4
+	 * @since controlled-chaos 1.0.0
 	 */
 	public function title() {
 
 		if ( is_front_page() ) {
 			$title = get_bloginfo( 'name' );
+		} elseif ( is_home() ) {
+			$title = get_the_title( get_option( 'page_for_posts' ) );
 		} else {
 			$title = the_title();
 		}

@@ -10,7 +10,7 @@
  * @subpackage controlled-chaos/includes
  */
 
-namespace Controlled_Chaos_Plugin;
+
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -20,8 +20,6 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Fired during plugin deactivation.
  *
- * This class defines all code necessary to run during the plugin's deactivation.
- *
  * @since      1.0.0
  * @package    controlled-chaos
  * @subpackage controlled-chaos/includes
@@ -30,16 +28,13 @@ if ( ! defined( 'WPINC' ) ) {
 class Controlled_Chaos_Deactivator {
 
 	/**
-	 * Short Description. (use period)
-	 *
-	 * Long Description.
+	 * Deactivation.
 	 *
 	 * @since    1.0.0
 	 */
 	public static function deactivate() {
 
-		update_option( 'medium_crop', 0 );
-		update_option( 'large_crop', 0 );
+		
 
 	}
 

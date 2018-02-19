@@ -7,7 +7,7 @@
  * @since controlled-chaos 1.0.0
  */
 
-namespace Controlled_Chaos_Plugin;
+
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -47,7 +47,7 @@ class Controlled_Chaos_Settings {
 	/**
 	 * Add plugin settings page.
 	 *
-	 * @since    1.0.2
+	 * @since    1.0.0
 	 */
     public function plugin_settings_page() {
 
@@ -58,7 +58,7 @@ class Controlled_Chaos_Settings {
 	/**
 	 * Add setting link to Plugins page.
 	 * 
-	 * @since    1.0.2
+	 * @since    1.0.0
 	 */
 	public function plugin_settings_link( $links ) {
 
@@ -72,7 +72,7 @@ class Controlled_Chaos_Settings {
 	/**
 	 * Settings page output.
 	 *
-	 * @since    1.0.2
+	 * @since    1.0.0
 	 */
     public function settings_page_output() {
 		
@@ -83,18 +83,18 @@ class Controlled_Chaos_Settings {
 	/**
 	 * Plugin settings.
 	 * 
-	 * @since    1.0.2
+	 * @since    1.0.0
 	 */
 	public function settings() {
 
 		// Script options and enqueue settings.
 		add_settings_section( 'ccp-script-options', __( 'Script Options', 'controlled-chaos' ), [], 'ccp-script-options' );
 
-		add_settings_field( 'ccp_remove_script_verion', __( 'Script versions', 'controlled-chaos' ), [ $this, 'remove_script_verion_callback' ], 'ccp-script-options', 'ccp-script-options', [ esc_html__( 'Remove WordPress version from script and stylesheet links in <head>', 'controlled-chaos' ) ] );
+		add_settings_field( 'ccp_remove_script_version', __( 'Script versions', 'controlled-chaos' ), [ $this, 'remove_script_version_callback' ], 'ccp-script-options', 'ccp-script-options', [ esc_html__( 'Remove WordPress version from script and stylesheet links in <head>', 'controlled-chaos' ) ] );
 
 		register_setting(
 			'ccp-script-options',
-			'ccp_remove_script_verion'
+			'ccp_remove_script_version'
 		);
 
 		// Remove emoji script.
@@ -148,15 +148,15 @@ class Controlled_Chaos_Settings {
 	/**
 	 * Script options and enqueue settings.
 	 * 
-	 * @since    1.0.3
+	 * @since    1.0.0
 	 */
-	public function remove_script_verion_callback( $args ) {
+	public function remove_script_version_callback( $args ) {
 
-		$option = get_option( 'ccp_remove_script_verion' );
+		$option = get_option( 'ccp_remove_script_version' );
 
-		$html = '<p><input type="checkbox" id="ccp_remove_script_verion" name="ccp_remove_script_verion" value="1" ' . checked( 1, $option, false ) . '/>';
+		$html = '<p><input type="checkbox" id="ccp_remove_script_version" name="ccp_remove_script_version" value="1" ' . checked( 1, $option, false ) . '/>';
 		
-		$html .= '<label for="ccp_remove_script_verion"> '  . $args[0] . '</label></p>';
+		$html .= '<label for="ccp_remove_script_version"> '  . $args[0] . '</label></p>';
 
 		echo $html;
 
@@ -165,7 +165,7 @@ class Controlled_Chaos_Settings {
 	/**
 	 * Remove emoji script.
 	 * 
-	 * @since    1.0.3
+	 * @since    1.0.0
 	 */
 	public function remove_emoji_script_callback( $args ) {
 
@@ -182,7 +182,7 @@ class Controlled_Chaos_Settings {
 	/**
 	 * Enqueue Slick.
 	 * 
-	 * @since    1.0.4
+	 * @since    1.0.0
 	 */
 	public function enqueue_slick_callback( $args ) {
 
@@ -201,7 +201,7 @@ class Controlled_Chaos_Settings {
 	/**
 	 * Enqueue Tabslet.
 	 * 
-	 * @since    1.0.4
+	 * @since    1.0.0
 	 */
 	public function enqueue_tabslet_callback( $args ) {
 
@@ -220,7 +220,7 @@ class Controlled_Chaos_Settings {
 	/**
 	 * Enqueue Tooltipster.
 	 * 
-	 * @since    1.0.4
+	 * @since    1.0.0
 	 */
 	public function enqueue_tooltipster_callback( $args ) {
 
@@ -239,7 +239,7 @@ class Controlled_Chaos_Settings {
 	/**
 	 * Site Settings section.
 	 * 
-	 * @since    1.0.2
+	 * @since    1.0.0
 	 */
 	public function site_settings_page_section() {
 
@@ -270,7 +270,7 @@ class Controlled_Chaos_Settings {
     /**
 	 * Add ACF options page for site settings.
 	 *
-	 * @since    1.0.1
+	 * @since    1.0.0
 	 */
     public function site_settings_page() {
 

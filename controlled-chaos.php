@@ -20,15 +20,13 @@
  * Domain Path:       /languages
  */
 
-namespace Controlled_Chaos_Plugin;
-
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
 // Keeping the version at 1.0.0 as this is a starter plugin.
-define( 'CONTROLLEDCHAOS_VERSION', '1.0.0' );
+define( 'CCP_VERSION', '1.0.0' );
 
 /**
  * The code that runs during plugin activation.
@@ -47,10 +45,10 @@ function deactivate_controlled_chaos() {
 }
 
 /**
- * Must include the namespace!
+ * Activaction & deactivation hooks.
  */
-register_activation_hook( __FILE__, __NAMESPACE__ . '\activate_controlled_chaos' );
-register_deactivation_hook( __FILE__, __NAMESPACE__ . '\deactivate_controlled_chaos' );
+register_activation_hook( __FILE__, '\activate_controlled_chaos' );
+register_deactivation_hook( __FILE__, '\deactivate_controlled_chaos' );
 
 /**
  * The core plugin class that is used to define internationalization,
@@ -59,14 +57,15 @@ register_deactivation_hook( __FILE__, __NAMESPACE__ . '\deactivate_controlled_ch
 require plugin_dir_path( __FILE__ ) . 'includes/class-includes.php';
 
 /**
- * Begin execution of the plugin.
- *
- * @since    1.0.0
+ * Add settings links to the admin page.
  */
-function run_controlled_chaos() {
+function controlled_chaos_settings_link( $links ) {
 
-	$plugin = new Controlled_Chaos_Plugin();
-	$plugin->run();
+	$settings_link = [
+		sprintf( '<a href="%1s" class="controlled-chaos-settings-link">Settings</a>', admin_url( 'options-general.php?page=controlled-chaos' ) ),
+	];
+
+	return array_merge( $links, $settings_link );
 
 }
-run_controlled_chaos();
+add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'controlled_chaos_settings_link' );

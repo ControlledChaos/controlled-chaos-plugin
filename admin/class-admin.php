@@ -10,8 +10,6 @@
  * @subpackage controlled-chaos/admin
  */
 
-namespace Controlled_Chaos_Plugin;
-
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
@@ -27,34 +25,11 @@ if ( ! defined( 'WPINC' ) ) {
 class Controlled_Chaos_Admin {
 
 	/**
-	 * The ID of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 * @var      string    $controlled_chaos
-	 */
-	private $controlled_chaos;
-
-	/**
-	 * The version of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 * @var      string    $version
-	 */
-	private $version;
-
-	/**
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $controlled_chaos
-	 * @param      string    $version
 	 */
-	public function __construct( $controlled_chaos, $version ) {
-
-		$this->controlled_chaos = $controlled_chaos;
-		$this->version = $version;
+	public function __construct() {
 
 		// Admin dependencies.
 		$this->dependencies();
@@ -77,8 +52,11 @@ class Controlled_Chaos_Admin {
 		// Credits in admin footer.
 		add_filter( 'admin_footer_text', [ $this, 'admin_footer' ] );
 
-		// Disable the user admin color scheme picker.
-		remove_action( 'admin_color_scheme_picker', 'admin_color_scheme_picker' );
+		// Register the stylesheets for the admin area.
+		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_styles' ] );
+
+		// Register the JavaScript for the admin area.
+		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
 
 	}
 
@@ -177,7 +155,7 @@ class Controlled_Chaos_Admin {
 	/**
 	 * Credits in admin footer.
 	 *
-	 * @since    1.0.2
+	 * @since    1.0.0
 	 */
 	public function admin_footer() {
 
@@ -211,7 +189,7 @@ class Controlled_Chaos_Admin {
 	 */
 	public function enqueue_styles() {
 
-		wp_enqueue_style( $this->controlled_chaos, plugin_dir_url( __FILE__ ) . 'assets/css/admin.css', [], $this->version, 'all' );
+		wp_enqueue_style( 'controlled-chaos-plugin-admin', plugin_dir_url( __FILE__ ) . 'assets/css/admin.css', [], CCP_VERSION, 'all' );
 
 	}
 
@@ -222,9 +200,11 @@ class Controlled_Chaos_Admin {
 	 */
 	public function enqueue_scripts() {
 
-		wp_enqueue_script( $this->controlled_chaos, plugin_dir_url( __FILE__ ) . 'assets/js/admin.js', [ 'jquery' ], $this->version, false );
-		wp_enqueue_script( 'controlled-chaos-excerpts', plugin_dir_url( __FILE__ ) . 'assets/js/excerpts.js', [ 'jquery' ], $this->version, false );
+		wp_enqueue_script( 'controlled-chaos-plugin-admin', plugin_dir_url( __FILE__ ) . 'assets/js/admin.js', [ 'jquery' ], CCP_VERSION, true );
+		wp_enqueue_script( 'controlled-chaos-excerpts', plugin_dir_url( __FILE__ ) . 'assets/js/excerpts.js', [ 'jquery' ], CCP_VERSION, true );
 
 	}
 
 }
+
+$ccp_admin = new Controlled_Chaos_Admin();

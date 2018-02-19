@@ -4,10 +4,10 @@
  *
  * @package    controlled-chaos
  * @subpackage controlled-chaos/includes
- * @since controlled-chaos 1.0.4
+ * @since controlled-chaos 1.0.0
  */
 
-namespace Controlled_Chaos_Plugin;
+
 
 // Restrict direct access
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -26,7 +26,7 @@ class Controlled_Chaos_Meta_Description {
 	/**
 	 * Description meta tag.
 	 * 
-	 * @since controlled-chaos 1.0.4
+	 * @since controlled-chaos 1.0.0
 	 */
 	public function description() {
 
@@ -34,6 +34,8 @@ class Controlled_Chaos_Meta_Description {
 			bloginfo( 'description' );
 		} elseif ( is_404() ) {
 			echo __( 'No results found.' );
+		} elseif ( has_excerpt() ) {
+			echo get_the_excerpt();
 		} else { 
 			echo wp_trim_words( get_the_content(), 40, '...' );
 		}

@@ -18,7 +18,7 @@
  * @package    controlled-chaos
  */
 
-namespace Controlled_Chaos_Plugin;
+
 
 // If uninstall not called from WordPress, then exit.
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
