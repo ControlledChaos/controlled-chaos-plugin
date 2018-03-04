@@ -31,7 +31,7 @@ class Controlled_Chaos_Admin {
 	 */
 	public function __construct() {
 
-		// Admin dependencies.
+		// Admin file dependencies.
 		$this->dependencies();
 
 		// Remove theme & plugin editor links.
@@ -61,25 +61,44 @@ class Controlled_Chaos_Admin {
 	}
 
 	/**
-	 * Admin dependencies.
+	 * Admin file dependencies.
 	 *
 	 * @since    1.0.0
 	 */
 	public function dependencies() {
 
+		// Functions for dasboard widgets, excluding the welcome panel.
 		require plugin_dir_path( __FILE__ ) . 'class-dashboard.php';
+
+		// Functions for admin menu item positions and visibility.
 		require plugin_dir_path( __FILE__ ) . 'class-admin-menu.php';
+
+		// Add menus to the admin toolbar.
 		require plugin_dir_path( __FILE__ ) . 'class-adminbar-menus.php';
+
+		// Functions for various admin pages and edit screens.
 		require plugin_dir_path( __FILE__ ) . 'class-admin-pages.php';
+
+		// Register setting sections and fields for plugin functionality.
 		require plugin_dir_path( __FILE__ ) . 'class-settings.php';
+
+		// Include custom fields for Advanced Custom Fields Pro, if active.
 		if ( class_exists( 'ACF_Pro' ) && ! get_option( 'ccp_site_settings_acf_fields' ) ) {
-			include_once plugin_dir_path( __FILE__ ) . 'class-settings-fields.php';
+			include_once plugin_dir_path( __FILE__ ) . 'class-settings-acf-fields.php';
 		}
+
+		// Import custom fields for editing, if ACF Pro is active.
 		if ( class_exists( 'ACF_Pro' ) ) {
 			include_once plugin_dir_path( __FILE__ ) . 'class-fields-import.php';
 		}
+
+		// Add SVG upload support, various other image related functions for admin.
 		require plugin_dir_path( __FILE__ ) . 'class-admin-images.php';
+
+		// Fields for the Media Settings page.
 		require plugin_dir_path( __FILE__ ) . 'class-media-options.php';
+
+		// Replace WP gallery shortcode if Fancybox option is used.
 		if ( get_option( 'ccp_enqueue_fancybox_script' ) ) {
 			require plugin_dir_path( __FILE__ ) . 'class-gallery-shortcode.php';
 		}
