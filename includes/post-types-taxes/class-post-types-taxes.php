@@ -28,6 +28,9 @@ class Controlled_Chaos_Post_Types_Taxes {
 
 	}
 
+	/**
+     * Get post type & taxonomy dependencies.
+     */
 	public function dependencies() {
 
 		// Resister cutsom post types.

@@ -31,14 +31,16 @@ class Controlled_Chaos_Meta_Description {
 	public function description() {
 
 		if ( is_front_page() ) {
-			bloginfo( 'description' );
+			$description = esc_html( get_bloginfo( 'description' ) );
 		} elseif ( is_404() ) {
-			echo __( 'No results found.' );
+			$description = esc_html( __( 'No results found.' ) );
 		} elseif ( has_excerpt() ) {
-			echo get_the_excerpt();
+			$description = esc_html( get_the_excerpt() );
 		} else { 
-			echo wp_trim_words( get_the_content(), 40, '...' );
+			$description = esc_html( wp_trim_words( get_the_content(), 40, '...' ) );
 		}
+
+		echo $description;
 			
 	}
 

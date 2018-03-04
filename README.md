@@ -40,3 +40,13 @@ Rename and duplicate as needed.
 * Add three admin bar menus
 * Add custom post types to the At a Glance widget
 * Custom admin footer message
+
+### Renaming the plugin for your website.
+To rename this plugin to convert it specifically for a single website, first rename this file and rename the plugin folder with the same name as this file. Then use a find & replace function to look for the following...
+1. **Text Domain:** The text domain should be the same as this file and the plugin folder. Replace "controlled-chaos".
+2. **Classes:** Classes are prefixed with the plugin name. Replace "Controlled_Chaos".
+3. **Class Variables:** Class variables are prefixed with the plugin name. Replace "controlled_chaos".
+4. **Functions:** There are a few functions prefixed with the plugin name. The above replace of "controlled_chaos" will have given them your new name.
+5. **Filters:** Filters are prexixed with an abbreviation for the plugin name. Replace "ccp".
+6. **Options:** Options are prexixed with an abbreviation for the plugin name. The above replace of "ccp" will have given them your new prefix.
+7. **Version:** The plugin version is all caps and is prexixed with an abbreviation for the plugin name. Replace "CCP".

@@ -31,14 +31,14 @@ class Controlled_Chaos_Meta_Title {
 	public function title() {
 
 		if ( is_front_page() ) {
-			$title = get_bloginfo( 'name' );
+			$title = esc_html( get_bloginfo( 'name' ) );
 		} elseif ( is_home() ) {
-			$title = get_the_title( get_option( 'page_for_posts' ) );
+			$title = esc_html( get_the_title( get_option( 'page_for_posts' ) ) );
 		} else {
-			$title = the_title();
+			$title = esc_html( get_the_title() );
 		}
 
-		echo $title;
+		echo esc_attr( esc_html( $title ) );
 
 	}
 
