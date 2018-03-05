@@ -32,16 +32,16 @@ define( 'CCP_VERSION', '1.0.0' );
  * The code that runs during plugin activation.
  */
 function activate_controlled_chaos() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-activator.php';
-	Controlled_Chaos_Activator::activate();
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-activate.php';
+	Controlled_Chaos_Activate::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
  */
 function deactivate_controlled_chaos() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-deactivator.php';
-	Controlled_Chaos_Deactivator::deactivate();
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-deactivate.php';
+	Controlled_Chaos_Deactivate::deactivate();
 }
 
 /**
@@ -62,7 +62,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-includes.php';
 function controlled_chaos_settings_link( $links ) {
 
 	$settings_link = [
-		sprintf( '<a href="%1s" class="controlled-chaos-settings-link">Settings</a>', admin_url( 'options-general.php?page=controlled-chaos' ) ),
+		sprintf( '<a href="%1s" class="controlled-chaos-settings-link">Settings</a>', admin_url( 'options-general.php?page=controlled-chaos-scripts' ) ),
 	];
 
 	return array_merge( $links, $settings_link );

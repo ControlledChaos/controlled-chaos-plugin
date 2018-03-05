@@ -48,5 +48,7 @@ To rename this plugin to convert it specifically for a single website, first ren
 3. **Class Variables:** Class variables are prefixed with the plugin name. Replace "controlled_chaos".
 4. **Functions:** There are a few functions prefixed with the plugin name. The above replace of "controlled_chaos" will have given them your new name.
 5. **Filters:** Filters are prexixed with an abbreviation for the plugin name. Replace "ccp".
-6. **Options:** Options are prexixed with an abbreviation for the plugin name. The above replace of "ccp" will have given them your new prefix.
-7. **Version:** The plugin version is all caps and is prexixed with an abbreviation for the plugin name. Replace "CCP".
+6. **Pages:** Admin page URLs are prexixed with an abbreviation for the plugin name. The above replace of "ccp" will have given them your new prefix.
+7. **Options:** Options are prexixed with an abbreviation for the plugin name. The above replace of "ccp" will have given them your new prefix.
+8. **Version:** The plugin version is all caps and is prexixed with an abbreviation for the plugin name. Replace "CCP".
+9. **Plugin Name:** The plugin name is used in various places. Replace "Controlled Chaos".

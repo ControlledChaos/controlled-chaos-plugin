@@ -25,7 +25,7 @@ if ( ! defined( 'WPINC' ) ) {
  * @subpackage controlled-chaos/includes
  * @author     Greg Sweet <greg@ccdzine.com>
  */
-class Controlled_Chaos_Activator {
+class Controlled_Chaos_Activate {
 
 	/**
 	 * Activation.
