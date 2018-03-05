@@ -35,10 +35,26 @@ class Controlled_Chaos_Public {
 		$this->dependencies();
 
 		// Register the stylesheets for the public-facing side of the site.
-		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_styles' ] );
-		
-		// Register the JavaScript for the public-facing side of the site.
-		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
+		add_action( 'wp_enqueue_scripts', [ $this, 'styles' ] );
+
+		/**
+		 * Enqueue scripts or add them inline.
+		 */
+
+		// Get inline options.
+		$jquery  = get_option( 'ccp_inline_jquery' );
+		$scripts = get_option( 'ccp_inline_scripts' );
+
+		// Inline jQuery.
+		if ( $jquery ) {
+			add_action( 'wp_footer', [ $this, 'get_jquery' ], 1 );
+		}
+
+		if ( $scripts ) {
+			add_action( 'wp_footer', [ $this, 'get_scripts' ], 11 );
+		} else {
+			add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
+		}		
 
 		// Add meta tags to <head> if not disabled.
 		add_action( 'wp_head', [ $this, 'meta_tags' ] );
@@ -78,7 +94,7 @@ class Controlled_Chaos_Public {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_styles() {
+	public function styles() {
 
 		// Non-vendor plugin styles.
 		wp_enqueue_style( 'controlled-chaos-plugin', plugin_dir_url( __FILE__ ) . 'assets/css/public.css', [], CCP_VERSION, 'all' );
@@ -106,7 +122,7 @@ class Controlled_Chaos_Public {
 	}
 
 	/**
-	 * Register the JavaScript for the public-facing side of the site.
+	 * Enqueue scripts traditionally by default.
 	 *
 	 * @since    1.0.0
 	 */
@@ -137,6 +153,78 @@ class Controlled_Chaos_Public {
 
 		// FitVids.
 		wp_enqueue_script( 'controlled-chaos-fitvids', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.fitvids.min.js', [ 'jquery' ], CCP_VERSION, true );
+
+	}
+
+	/**
+	 * Deregister jQuery if inline is option selected.
+	 *
+	 * @since    1.0.0
+	 */
+	public function deregister_jquery() {
+
+		wp_deregister_script( 'jquery' );
+
+	}
+
+	/**
+	 * Add jQuery inline if option selected.
+	 *
+	 * @since    1.0.0
+	 */
+	public function get_jquery() {
+
+		$jquery = file_get_contents( plugin_dir_path( __FILE__ ) . '/assets/js/jquery.js' );
+
+		echo '<!-- jQuery --><script>' . $jquery . '</script>';
+
+	}
+
+	/**
+	 * Add scripts inline if option selected.
+	 *
+	 * @since    1.0.0
+	 */
+	public function get_scripts() {
+
+		$inline = get_option( 'ccp_inline_scripts' );
+
+		$fancybox    = file_get_contents( plugin_dir_path( __FILE__ ) . 'assets/js/jquery.fancybox.min.js' );
+		$slick       = file_get_contents( plugin_dir_path( __FILE__ ) . 'assets/js/slick.min.js' );
+		$tabslet     = file_get_contents( plugin_dir_path( __FILE__ ) . 'assets/js/jquery.tabslet.min.js' );
+		$tooltipster = file_get_contents( plugin_dir_path( __FILE__ ) . 'assets/js/tooltipster.bundle.min.js' );
+		$stickykit   = file_get_contents( plugin_dir_path( __FILE__ ) . 'assets/js/sticky-kit.min.js' );
+		$fitvids     = file_get_contents( plugin_dir_path( __FILE__ ) . 'assets/js/jquery.fitvids.min.js' );
+
+		// Fancybox 3.
+		if ( get_option( 'ccp_enqueue_fancybox_script' ) ) {
+			echo '<!-- Fancybox 3 Scripts --><script>' . $fancybox . '</script>';
+		}
+
+		// Slick.
+		if ( get_option( 'ccp_enqueue_slick' ) ) {
+			echo '<!-- Slick Scripts --><script>' . $slick . '</script>';
+		}
+
+		// Tabslet.
+		if ( get_option( 'ccp_enqueue_tabslet' ) ) {
+			echo '<!-- Tabslet Scripts --><script>' . $tabslet . '</script>';
+		}
+
+		// Tooltipster.
+		if ( get_option( 'ccp_enqueue_tooltipster' ) ) {
+			echo '<!-- Tooltipster Scripts --><script>' . $tooltipster . '</script>';
+		}
+
+		// Sticky-kit.
+		if ( get_option( 'ccp_enqueue_stickykit' ) ) {
+			echo '<!-- Sticky-kit Scripts --><script>' . $stickykit . '</script>';
+		}
+
+		// FitVids.
+		if ( ! is_front_page() ) {
+			echo '<!-- FitVids Scripts --><script>' . $fitvids . '</script>';
+		}
 
 	}
 
