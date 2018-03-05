@@ -47,6 +47,7 @@ class Controlled_Chaos_Public {
 
 		// Inline jQuery.
 		if ( $jquery ) {
+			add_action( 'wp_enqueue_scripts', [ $this, 'deregister_jquery' ] );
 			add_action( 'wp_footer', [ $this, 'get_jquery' ], 1 );
 		}
 
