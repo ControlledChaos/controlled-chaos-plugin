@@ -25,7 +25,6 @@ if ( isset( $_GET[ 'tab' ] ) ) {
     <p class="description"><?php esc_html_e( 'Settings for the Controlled Chaos plugin.', 'controlled-chaos' ); ?></p>
     <h2 class="nav-tab-wrapper">
         <a href="?page=controlled-chaos&tab=ccp-script-options" class="nav-tab <?php echo $active_tab == 'ccp-script-options' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Script Options', 'controlled-chaos' ); ?></a>
-        <a href="?page=controlled-chaos&tab=ccp-post-types" class="nav-tab <?php echo $active_tab == 'ccp-post-types' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Post Types', 'controlled-chaos' ); ?></a>
         <a href="?page=controlled-chaos&tab=ccp-site-settings" class="nav-tab <?php echo $active_tab == 'ccp-site-settings' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Custom Fields', 'controlled-chaos' ); ?></a>
     </h2>
     <form action="options.php" method="post">
