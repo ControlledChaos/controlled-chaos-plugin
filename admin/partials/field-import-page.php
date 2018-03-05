@@ -45,7 +45,7 @@ if ( isset( $_GET[ 'tab' ] ) ) {
         </div>
         <div class="notice notice-warning is-dismissible below-h2">
             <p><strong><?php esc_html_e( 'Next step:', 'controlled-chaos' ); ?></strong></p>
-            <p><?php printf( '<p>%1s<a href="%2s">%3s</a>%4s</p>', esc_html__( 'Go to ', 'controlled-chaos' ), admin_url( '/options-general.php?page=controlled-chaos' ), esc_html__( 'the Controlld Chaos settings page', 'controlled-chaos' ), esc_html__( ' and disable the imported field groups. The duplicate field IDs will interfere with the editing of fields.', 'controlled-chaos' ) ); ?>
+            <p><?php printf( '<p>%1s<a href="%2s">%3s</a>%4s</p>', admin_url( '/edit.php?post_type=acf-field-group&page=acf-theme-fields&tab=ccp-registered-fields-activation' ), esc_html__( 'Disable', 'controlled-chaos' ), esc_html__( ' the imported field groups. The duplicate field IDs will interfere with the editing of fields.', 'controlled-chaos' ) ); ?>
         </div>
         <?php }
         printf( '<p>%1s</p>', esc_html__( 'This tool imports any field groups registered outside the ACF plugin so that they can be edited.', 'controlled-chaos' ) ); ?>
