@@ -83,7 +83,7 @@ class Controlled_Chaos_Admin {
 		require plugin_dir_path( __FILE__ ) . 'class-settings.php';
 
 		// Include custom fields for Advanced Custom Fields Pro, if active.
-		if ( class_exists( 'ACF_Pro' ) && ! get_option( 'ccp_site_settings_acf_fields' ) ) {
+		if ( class_exists( 'ACF_Pro' ) && ! get_option( 'ccp_acf_activate_settings_page' ) ) {
 			include_once plugin_dir_path( __FILE__ ) . 'class-settings-acf-fields.php';
 		}
 

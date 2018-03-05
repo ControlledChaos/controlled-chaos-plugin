@@ -30,11 +30,8 @@ class Controlled_Chaos_Settings {
 	 */
     public function __construct() {
 
-		// Add plugin settings page.
-		add_action( 'admin_menu', [ $this, 'plugin_settings_page' ] );
-
-		// Add setting link to Plugins page.
-		add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), [ $this, 'plugin_settings_link' ] );
+		// Add scripts settings page.
+		add_action( 'admin_menu', [ $this, 'scripts_settings_page' ] );
 
 		// Register settings.
 		add_action( 'admin_init', [ $this, 'settings' ] );
@@ -45,27 +42,19 @@ class Controlled_Chaos_Settings {
 	}
 	
 	/**
-	 * Add plugin settings page.
+	 * Add scripts settings page.
 	 *
 	 * @since    1.0.0
 	 */
-    public function plugin_settings_page() {
+    public function scripts_settings_page() {
 
-		add_options_page( __( 'Controlled Chaos Plugin Settings', 'controlled-chaos' ), __( 'Controlled Chaos', 'controlled-chaos' ), 'manage_options', 'controlled-chaos', [ $this, 'settings_page_output' ] );
-
-	}
-
-	/**
-	 * Add setting link to Plugins page.
-	 * 
-	 * @since    1.0.0
-	 */
-	public function plugin_settings_link( $links ) {
-
-		$ccp_links = [
-			'<a href="' . admin_url( 'options-general.php?page=controlled-chaos' ) . '">Settings</a>',
-		];
-		return array_merge( $ccp_links, $links );
+		add_options_page(
+			__( 'Script Options', 'controlled-chaos' ),
+			__( 'Script Options', 'controlled-chaos' ),
+			'manage_options',
+			'controlled-chaos-scripts',
+			[ $this, 'settings_page_output' ]
+		);
 
 	}
 
@@ -76,7 +65,7 @@ class Controlled_Chaos_Settings {
 	 */
     public function settings_page_output() {
 		
-		require plugin_dir_path( __FILE__ ) . 'partials/settings-page.php';
+		require plugin_dir_path( __FILE__ ) . 'partials/settings-page-scripts.php';
 
 	}
 
@@ -87,78 +76,69 @@ class Controlled_Chaos_Settings {
 	 */
 	public function settings() {
 
-		// Script options and enqueue settings.
-		add_settings_section( 'ccp-script-options', __( 'Script Options', 'controlled-chaos' ), [], 'ccp-script-options' );
+		/**
+		 * Generl script options.
+		 */
+		add_settings_section( 'ccp-scripts-general', __( 'General Options', 'controlled-chaos' ), [], 'ccp-scripts-general' );
 
-		add_settings_field( 'ccp_remove_script_version', __( 'Script versions', 'controlled-chaos' ), [ $this, 'remove_script_version_callback' ], 'ccp-script-options', 'ccp-script-options', [ esc_html__( 'Remove WordPress version from script and stylesheet links in <head>', 'controlled-chaos' ) ] );
+		// Remove emoji script.
+		add_settings_field( 'ccp_remove_emoji_script', __( 'Emoji script', 'controlled-chaos' ), [ $this, 'remove_emoji_script_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Remove emoji script from <head> (emojis will still work in modern browsers)', 'controlled-chaos' ) ] );
 
 		register_setting(
-			'ccp-script-options',
+			'ccp-scripts-general',
+			'ccp_remove_emoji_script'
+		);
+		
+		// Remove WordPress version appended to script links.
+		add_settings_field( 'ccp_remove_script_version', __( 'Script versions', 'controlled-chaos' ), [ $this, 'remove_script_version_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Remove WordPress version from script and stylesheet links in <head>', 'controlled-chaos' ) ] );
+
+		register_setting(
+			'ccp-scripts-general',
 			'ccp_remove_script_version'
 		);
 
-		// Remove emoji script.
-		add_settings_field( 'ccp_remove_emoji_script', __( 'Emoji script', 'controlled-chaos' ), [ $this, 'remove_emoji_script_callback' ], 'ccp-script-options', 'ccp-script-options', [ esc_html__( 'Remove emoji script from <head> (emojis will still work in modern browsers)', 'controlled-chaos' ) ] );
-
-		register_setting(
-			'ccp-script-options',
-			'ccp_remove_emoji_script'
-		);
+		/**
+		 * Enqueue included vendor scripts & options.
+		 */
+		add_settings_section( 'ccp-scripts-vendor', __( 'Included Vendor Scripts', 'controlled-chaos' ), [], 'ccp-scripts-vendor' );
 
 		// Enqueue Slick.
-		add_settings_field( 'ccp_enqueue_slick', __( 'Slick', 'controlled-chaos' ), [ $this, 'enqueue_slick_callback' ], 'ccp-script-options', 'ccp-script-options', [ esc_html__( 'Enqueue Slick script and stylesheets', 'controlled-chaos' ) ] );
+		add_settings_field( 'ccp_enqueue_slick', __( 'Slick', 'controlled-chaos' ), [ $this, 'enqueue_slick_callback' ], 'ccp-scripts-vendor', 'ccp-scripts-vendor', [ esc_html__( 'Enqueue Slick script and stylesheets', 'controlled-chaos' ) ] );
 
 		register_setting(
-			'ccp-script-options',
+			'ccp-scripts-vendor',
 			'ccp_enqueue_slick'
 		);
 
 		// Enqueue Tabslet.
-		add_settings_field( 'ccp_enqueue_tabslet', __( 'Tabslet', 'controlled-chaos' ), [ $this, 'enqueue_tabslet_callback' ], 'ccp-script-options', 'ccp-script-options', [ esc_html__( 'Enqueue Tabslet script', 'controlled-chaos' ) ] );
+		add_settings_field( 'ccp_enqueue_tabslet', __( 'Tabslet', 'controlled-chaos' ), [ $this, 'enqueue_tabslet_callback' ], 'ccp-scripts-vendor', 'ccp-scripts-vendor', [ esc_html__( 'Enqueue Tabslet script', 'controlled-chaos' ) ] );
 
 		register_setting(
-			'ccp-script-options',
+			'ccp-scripts-vendor',
 			'ccp_enqueue_tabslet'
 		);
 
 		// Enqueue Tooltipster.
-		add_settings_field( 'ccp_enqueue_tooltipster', __( 'Tooltipster', 'controlled-chaos' ), [ $this, 'enqueue_tooltipster_callback' ], 'ccp-script-options', 'ccp-script-options', [ esc_html__( 'Enqueue Tooltipster script and stylesheet', 'controlled-chaos' ) ] );
+		add_settings_field( 'ccp_enqueue_tooltipster', __( 'Tooltipster', 'controlled-chaos' ), [ $this, 'enqueue_tooltipster_callback' ], 'ccp-scripts-vendor', 'ccp-scripts-vendor', [ esc_html__( 'Enqueue Tooltipster script and stylesheet', 'controlled-chaos' ) ] );
 
 		register_setting(
-			'ccp-script-options',
+			'ccp-scripts-vendor',
 			'ccp_enqueue_tooltipster'
 		);
 	
 		// Site Settings section.
 		if ( class_exists( 'ACF_Pro' ) ) {
 
-			add_settings_section( 'ccp-site-settings', __( 'Site Settings Page', 'controlled-chaos' ), [ $this, 'site_settings_page_section' ], 'ccp-site-settings' );
+			add_settings_section( 'ccp-registered-fields-activate', __( 'Registered Fields Activation', 'controlled-chaos' ), [ $this, 'registered_fields_activate' ], 'ccp-registered-fields-activate' );
 			
-			add_settings_field( 'ccp_site_settings_acf_fields', __( 'ACF Field Groups', 'controlled-chaos' ), [ $this, 'site_settings_page_callback' ], 'ccp-site-settings', 'ccp-site-settings', [ __( 'Deactive field groups after importing', 'controlled-chaos' ) ] );
+			add_settings_field( 'ccp_acf_activate_settings_page', __( 'Site Settings Page', 'controlled-chaos' ), [ $this, 'registered_fields_page_callback' ], 'ccp-registered-fields-activate', 'ccp-registered-fields-activate', [ __( 'Deactive the field group for the "Site Settings" options page.', 'controlled-chaos' ) ] );
 
 			register_setting(
-				'ccp-site-settings',
-				'ccp_site_settings_acf_fields'
+				'ccp-registered-fields-activate',
+				'ccp_acf_activate_settings_page'
 			);
 
 		}
-
-	}
-
-	/**
-	 * Script options and enqueue settings.
-	 * 
-	 * @since    1.0.0
-	 */
-	public function remove_script_version_callback( $args ) {
-
-		$option = get_option( 'ccp_remove_script_version' );
-
-		$html = '<p><input type="checkbox" id="ccp_remove_script_version" name="ccp_remove_script_version" value="1" ' . checked( 1, $option, false ) . '/>';
-		
-		$html .= '<label for="ccp_remove_script_version"> '  . $args[0] . '</label></p>';
-
-		echo $html;
 
 	}
 
@@ -174,6 +154,23 @@ class Controlled_Chaos_Settings {
 		$html = '<p><input type="checkbox" id="ccp_remove_emoji_script" name="ccp_remove_emoji_script" value="1" ' . checked( 1, $option, false ) . '/>';
 		
 		$html .= '<label for="ccp_remove_emoji_script"> '  . $args[0] . '</label></p>';
+
+		echo $html;
+
+	}
+
+	/**
+	 * Script options and enqueue settings.
+	 * 
+	 * @since    1.0.0
+	 */
+	public function remove_script_version_callback( $args ) {
+
+		$option = get_option( 'ccp_remove_script_version' );
+
+		$html = '<p><input type="checkbox" id="ccp_remove_script_version" name="ccp_remove_script_version" value="1" ' . checked( 1, $option, false ) . '/>';
+		
+		$html .= '<label for="ccp_remove_script_version"> '  . $args[0] . '</label></p>';
 
 		echo $html;
 
@@ -241,25 +238,23 @@ class Controlled_Chaos_Settings {
 	 * 
 	 * @since    1.0.0
 	 */
-	public function site_settings_page_section() {
+	public function registered_fields_activate() {
 
 		if ( class_exists( 'ACF_Pro' ) ) {
 
-			echo sprintf( '<p>%1s</p>', esc_html( 'The "Site Settings" page registered by the Controlled Chaos plugin and Advanced Custom Fields Pro contains field groups that can be imported for editing. These built-in field goups must be deactivated for the imported field groups to take effect.', 'controlled-chaos' ) );
+			echo sprintf( '<p>%1s</p>', esc_html( 'The Controlled Chaos plugin registers custom fields for Advanced Custom Fields Pro that can be imported for editing. These built-in field goups must be deactivated for the imported field groups to take effect.', 'controlled-chaos' ) );
 
 		}
 
 	}
 
-	public function site_settings_page_callback( $args ) {
+	public function registered_fields_page_callback( $args ) {
 		
 		if ( class_exists( 'ACF_Pro' ) ) {
 
-			$html = '<p><input type="checkbox" id="ccp_site_settings_acf_fields" name="ccp_site_settings_acf_fields" value="1" ' . checked( 1, get_option( 'ccp_site_settings_acf_fields' ), false ) . '/>';
+			$html = '<p><input type="checkbox" id="ccp_acf_activate_settings_page" name="ccp_acf_activate_settings_page" value="1" ' . checked( 1, get_option( 'ccp_acf_activate_settings_page' ), false ) . '/>';
 			
-			$html .= '<label for="ccp_site_settings_acf_fields"> '  . $args[0] . '</label></p>';
-
-			$html .= sprintf( '<p class="description"><strong>%1s</strong> %2s</p>', esc_html__( 'Note:', 'controlled-chaos' ), esc_html__( 'Do not change the "Field Name" of the imported fields.', 'controlled-chaos' ) );
+			$html .= '<label for="ccp_acf_activate_settings_page"> '  . $args[0] . '</label></p>';
 			
 			echo $html;
 			

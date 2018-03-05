@@ -16,8 +16,6 @@
 // Restrict direct access
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'ACFPR_GROUP_POST_TYPE', 'acf-field-group' );
-
 /**
  * Import custom fields.
  * 
@@ -32,7 +30,7 @@ class Controlled_Chaos_Fields_Import {
      */
     public function __construct() {
 
-		add_action( 'admin_menu', [ $this, 'menu_page' ], 100 );
+		add_action( 'admin_menu', [ $this, 'import_page' ], 100 );
 
 	}
 
@@ -41,9 +39,15 @@ class Controlled_Chaos_Fields_Import {
 	 * 
 	 * @since controlled-chaos 1.0.0
 	 */
-	public function menu_page() {
+	public function import_page() {
 
-		add_submenu_page( 'edit.php?post_type=' . ACFPR_GROUP_POST_TYPE, __( 'Registered Fields', 'controlled-chaos' ), __( 'Registered Fields', 'controlled-chaos' ), 'manage_options', 'acf-theme-fields', [ $this, 'page_output' ] );
+		add_submenu_page(
+			'edit.php?post_type=acf-field-group',
+			__( 'Registered Fields', 'controlled-chaos' ),
+			__( 'Registered Fields', 'controlled-chaos' ),
+			'manage_options', 'acf-theme-fields',
+			[ $this, 'page_output' ]
+		);
 
 	}
 
