@@ -15,11 +15,12 @@ To take advantage of all of its features, this plugin is recommended for use wit
 Following are some of the core functions and features offered.
 
 ### jQuery Plugins
-UI & UX JS plugins enqueued
+UI & UX JS plugins ready to use
 
 * Fancybox 3 - https://github.com/fancyapps/fancybox
 * Slick - https://github.com/kenwheeler/slick
 * Tabslet - https://github.com/vdw/Tabslet
+* Sticky-kit - https://github.com/leafo/sticky-kit
 * Tooltipster - https://github.com/iamceege/tooltipster
 * FitVids - https://github.com/davatron5000/FitVids.js
 
