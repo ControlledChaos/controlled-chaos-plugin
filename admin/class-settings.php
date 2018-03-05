@@ -90,7 +90,7 @@ class Controlled_Chaos_Settings {
 		);
 
 		// Inline jQuery.
-		add_settings_field( 'ccp_inline_jquery', __( 'Inline jQuery', 'controlled-chaos' ), [ $this, 'ccp_inline_jquery_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Add jQuery contents to footer', 'controlled-chaos' ) ] );
+		add_settings_field( 'ccp_inline_jquery', __( 'Inline jQuery', 'controlled-chaos' ), [ $this, 'ccp_inline_jquery_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Deregister jQuery and add its contents to footer, ahead of vendor scripts', 'controlled-chaos' ) ] );
 
 		register_setting(
 			'ccp-scripts-general',
