@@ -81,6 +81,22 @@ class Controlled_Chaos_Settings {
 		 */
 		add_settings_section( 'ccp-scripts-general', __( 'General Options', 'controlled-chaos' ), [], 'ccp-scripts-general' );
 
+		// Inline scripts.
+		add_settings_field( 'ccp_inline_scripts', __( 'Inline scripts', 'controlled-chaos' ), [ $this, 'ccp_inline_scripts_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Add script contents to footer to reduce HTTP requests and increase load speed', 'controlled-chaos' ) ] );
+
+		register_setting(
+			'ccp-scripts-general',
+			'ccp_inline_scripts'
+		);
+
+		// Inline jQuery.
+		add_settings_field( 'ccp_inline_jquery', __( 'Inline jQuery', 'controlled-chaos' ), [ $this, 'ccp_inline_jquery_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Deregister jQuery and add its contents to footer, ahead of vendor scripts', 'controlled-chaos' ) ] );
+
+		register_setting(
+			'ccp-scripts-general',
+			'ccp_inline_jquery'
+		);
+
 		// Remove emoji script.
 		add_settings_field( 'ccp_remove_emoji_script', __( 'Emoji script', 'controlled-chaos' ), [ $this, 'remove_emoji_script_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Remove emoji script from <head> (emojis will still work in modern browsers)', 'controlled-chaos' ) ] );
 
@@ -98,28 +114,36 @@ class Controlled_Chaos_Settings {
 		);
 
 		/**
-		 * Enqueue included vendor scripts & options.
+		 * Use included vendor scripts & options.
 		 */
-		add_settings_section( 'ccp-scripts-vendor', __( 'Included Vendor Scripts', 'controlled-chaos' ), [], 'ccp-scripts-vendor' );
+		add_settings_section( 'ccp-scripts-vendor', __( 'Included Vendor Scripts', 'controlled-chaos' ), [ $this, 'ccp_scripts_vendor_section_callback' ], 'ccp-scripts-vendor' );
 
-		// Enqueue Slick.
-		add_settings_field( 'ccp_enqueue_slick', __( 'Slick', 'controlled-chaos' ), [ $this, 'enqueue_slick_callback' ], 'ccp-scripts-vendor', 'ccp-scripts-vendor', [ esc_html__( 'Enqueue Slick script and stylesheets', 'controlled-chaos' ) ] );
+		// Use Slick.
+		add_settings_field( 'ccp_enqueue_slick', __( 'Slick', 'controlled-chaos' ), [ $this, 'enqueue_slick_callback' ], 'ccp-scripts-vendor', 'ccp-scripts-vendor', [ esc_html__( 'Use Slick script and stylesheets', 'controlled-chaos' ) ] );
 
 		register_setting(
 			'ccp-scripts-vendor',
 			'ccp_enqueue_slick'
 		);
 
-		// Enqueue Tabslet.
-		add_settings_field( 'ccp_enqueue_tabslet', __( 'Tabslet', 'controlled-chaos' ), [ $this, 'enqueue_tabslet_callback' ], 'ccp-scripts-vendor', 'ccp-scripts-vendor', [ esc_html__( 'Enqueue Tabslet script', 'controlled-chaos' ) ] );
+		// Use Tabslet.
+		add_settings_field( 'ccp_enqueue_tabslet', __( 'Tabslet', 'controlled-chaos' ), [ $this, 'enqueue_tabslet_callback' ], 'ccp-scripts-vendor', 'ccp-scripts-vendor', [ esc_html__( 'Use Tabslet script', 'controlled-chaos' ) ] );
 
 		register_setting(
 			'ccp-scripts-vendor',
 			'ccp_enqueue_tabslet'
 		);
 
-		// Enqueue Tooltipster.
-		add_settings_field( 'ccp_enqueue_tooltipster', __( 'Tooltipster', 'controlled-chaos' ), [ $this, 'enqueue_tooltipster_callback' ], 'ccp-scripts-vendor', 'ccp-scripts-vendor', [ esc_html__( 'Enqueue Tooltipster script and stylesheet', 'controlled-chaos' ) ] );
+		// Use Sticky-kit.
+		add_settings_field( 'ccp_enqueue_stickykit', __( 'Sticky-kit', 'controlled-chaos' ), [ $this, 'enqueue_stickykit_callback' ], 'ccp-scripts-vendor', 'ccp-scripts-vendor', [ esc_html__( 'Use Sticky-kit script', 'controlled-chaos' ) ] );
+
+		register_setting(
+			'ccp-scripts-vendor',
+			'ccp_enqueue_stickykit'
+		);
+
+		// Use Tooltipster.
+		add_settings_field( 'ccp_enqueue_tooltipster', __( 'Tooltipster', 'controlled-chaos' ), [ $this, 'enqueue_tooltipster_callback' ], 'ccp-scripts-vendor', 'ccp-scripts-vendor', [ esc_html__( 'Use Tooltipster script and stylesheet', 'controlled-chaos' ) ] );
 
 		register_setting(
 			'ccp-scripts-vendor',
@@ -139,6 +163,40 @@ class Controlled_Chaos_Settings {
 			);
 
 		}
+
+	}
+
+	/**
+	 * Inline jQuery.
+	 * 
+	 * @since    1.0.0
+	 */
+	public function ccp_inline_jquery_callback( $args ) {
+
+		$option = get_option( 'ccp_inline_jquery' );
+
+		$html = '<p><input type="checkbox" id="ccp_inline_jquery" name="ccp_inline_jquery" value="1" ' . checked( 1, $option, false ) . '/>';
+		
+		$html .= '<label for="ccp_inline_jquery"> '  . $args[0] . '</label></p>';
+
+		echo $html;
+
+	}
+
+	/**
+	 * Inline scripts.
+	 * 
+	 * @since    1.0.0
+	 */
+	public function ccp_inline_scripts_callback( $args ) {
+
+		$option = get_option( 'ccp_inline_scripts' );
+
+		$html = '<p><input type="checkbox" id="ccp_inline_scripts" name="ccp_inline_scripts" value="1" ' . checked( 1, $option, false ) . '/>';
+		
+		$html .= '<label for="ccp_inline_scripts"> '  . $args[0] . '</label></p>';
+
+		echo $html;
 
 	}
 
@@ -177,7 +235,20 @@ class Controlled_Chaos_Settings {
 	}
 
 	/**
-	 * Enqueue Slick.
+	 * Vendor section callback.
+	 * 
+	 * @since    1.0.0
+	 */
+	public function ccp_scripts_vendor_section_callback( $args ) {
+
+		$html = sprintf( '<p>%1s</p>', esc_html__( 'Look for Fancybox options on the Media Settings page.' ) );
+
+		echo $html;
+
+	}
+
+	/**
+	 * Use Slick.
 	 * 
 	 * @since    1.0.0
 	 */
@@ -196,7 +267,7 @@ class Controlled_Chaos_Settings {
 	}
 
 	/**
-	 * Enqueue Tabslet.
+	 * Use Tabslet.
 	 * 
 	 * @since    1.0.0
 	 */
@@ -215,7 +286,26 @@ class Controlled_Chaos_Settings {
 	}
 
 	/**
-	 * Enqueue Tooltipster.
+	 * Use Sticky-kit.
+	 * 
+	 * @since    1.0.0
+	 */
+	public function enqueue_stickykit_callback( $args ) {
+
+		$option = get_option( 'ccp_enqueue_stickykit' );
+
+		$html = '<p><input type="checkbox" id="ccp_enqueue_stickykit" name="ccp_enqueue_stickykit" value="1" ' . checked( 1, $option, false ) . '/>';
+		
+		$html .= '<label for="ccp_enqueue_stickykit"> '  . $args[0] . '</label>';
+
+		$html .= '<a class="dashicons dashicons-editor-help" title="More info on GitHub" href="https://github.com/leafo/sticky-kit" target="_blank"><span class="screen-reader-text">' . esc_html( 'More info on GitHub', 'controlled-chaos' ) . '</span></a></p>';
+
+		echo $html;
+
+	}
+
+	/**
+	 * Use Tooltipster.
 	 * 
 	 * @since    1.0.0
 	 */
