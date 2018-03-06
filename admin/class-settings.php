@@ -407,24 +407,16 @@ class Controlled_Chaos_Settings {
 			}
 
 		} else {
-			/*
+			
 			add_options_page(
 				__( 'Site Settings', 'controlled-chaos' ),
 				__( 'Site Settings', 'controlled-chaos' ),
 				'manage_options',
 				'controlled-chaos-settings',
 				[ $this, 'settings_site_output' ]
-			); */
+			);
 
 		}
-
-		add_options_page(
-			__( 'Site Settings', 'controlled-chaos' ),
-			__( 'Site Settings', 'controlled-chaos' ),
-			'manage_options',
-			'controlled-chaos-settings',
-			[ $this, 'settings_site_output' ]
-		);
 
 	}
 
