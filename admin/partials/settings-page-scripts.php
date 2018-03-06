@@ -31,11 +31,11 @@ if ( isset( $_GET[ 'tab' ] ) ) {
         <?php if ( $active_tab == 'ccp-scripts-general' ) {
             settings_fields( 'ccp-scripts-general' );
             do_settings_sections( 'ccp-scripts-general' );
-            $save = __( 'Save General Settings', 'controlled-chaos' );
+            $save = __( 'Save General', 'controlled-chaos' );
         } elseif ( $active_tab == 'ccp-scripts-vendor' ) {
             settings_fields( 'ccp-scripts-vendor' );
             do_settings_sections( 'ccp-scripts-vendor' );
-            $save = __( 'Save Vendor Settings', 'controlled-chaos' );
+            $save = __( 'Save Vendor', 'controlled-chaos' );
         } ?>
         <?php if ( $active_tab == 'ccp-scripts-general' || $active_tab == 'ccp-scripts-vendor' ) : ?>
         <p class="submit"><?php submit_button( $save, 'primary', '', false, [] ); echo ' '; ?></p>

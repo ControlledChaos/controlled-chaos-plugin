@@ -104,6 +104,14 @@ class Controlled_Chaos_Settings {
 			'ccp_inline_scripts'
 		);
 
+		// Inline styles.
+		add_settings_field( 'ccp_inline_styles', __( 'Inline styles', 'controlled-chaos' ), [ $this, 'ccp_inline_styles_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Add script-related CSS contents to head to reduce HTTP requests and increase load speed', 'controlled-chaos' ) ] );
+
+		register_setting(
+			'ccp-scripts-general',
+			'ccp_inline_styles'
+		);
+
 		// Inline jQuery.
 		add_settings_field( 'ccp_inline_jquery', __( 'Inline jQuery', 'controlled-chaos' ), [ $this, 'ccp_inline_jquery_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Deregister jQuery and add its contents to footer, ahead of vendor scripts', 'controlled-chaos' ) ] );
 
@@ -210,6 +218,23 @@ class Controlled_Chaos_Settings {
 		$html = '<p><input type="checkbox" id="ccp_inline_scripts" name="ccp_inline_scripts" value="1" ' . checked( 1, $option, false ) . '/>';
 		
 		$html .= '<label for="ccp_inline_scripts"> '  . $args[0] . '</label></p>';
+
+		echo $html;
+
+	}
+
+	/**
+	 * Inline styles.
+	 * 
+	 * @since    1.0.0
+	 */
+	public function ccp_inline_styles_callback( $args ) {
+
+		$option = get_option( 'ccp_inline_styles' );
+
+		$html = '<p><input type="checkbox" id="ccp_inline_styles" name="ccp_inline_styles" value="1" ' . checked( 1, $option, false ) . '/>';
+		
+		$html .= '<label for="ccp_inline_styles"> '  . $args[0] . '</label></p>';
 
 		echo $html;
 

@@ -36,16 +36,21 @@ class Controlled_Chaos_Public {
 		// Frontend dependencies.
 		$this->dependencies();
 
-		// Register the stylesheets for the public-facing side of the site.
-		add_action( 'wp_enqueue_scripts', [ $this, 'styles' ] );
+		// Get inline options.
+		$jquery  = get_option( 'ccp_inline_jquery' );
+		$scripts = get_option( 'ccp_inline_scripts' );
+		$styles  = get_option( 'ccp_inline_styles' );
+
+		// Enqueue styles or add them inline.
+		if ( $styles ) {
+			add_action( 'wp_head', [ $this, 'get_styles' ] );
+		} else {
+			add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_styles' ] );
+		}
 
 		/**
 		 * Enqueue scripts or add them inline.
 		 */
-
-		// Get inline options.
-		$jquery  = get_option( 'ccp_inline_jquery' );
-		$scripts = get_option( 'ccp_inline_scripts' );
 
 		// Inline jQuery.
 		if ( $jquery ) {
@@ -97,7 +102,7 @@ class Controlled_Chaos_Public {
 	 *
 	 * @since    1.0.0
 	 */
-	public function styles() {
+	public function enqueue_styles() {
 
 		// Non-vendor plugin styles.
 		wp_enqueue_style( 'controlled-chaos-plugin', plugin_dir_url( __FILE__ ) . 'assets/css/public.css', [], CCP_VERSION, 'all' );
@@ -120,6 +125,40 @@ class Controlled_Chaos_Public {
 		// Tooltipster.
 		if ( get_option( 'ccp_enqueue_tooltipster' ) ) {
 			wp_enqueue_style( 'controlled-chaos-tooltipster', plugin_dir_url( __FILE__ ) . 'assets/css/tooltipster.bundle.min.css', [], CCP_VERSION, 'all' );
+		}
+
+	}
+
+	/**
+	 * Add styles inline if option selected.
+	 *
+	 * @since    1.0.0
+	 */
+	public function get_styles() {
+
+		$fancybox    = file_get_contents( plugin_dir_path( __FILE__ ) . 'assets/css/jquery.fancybox.min.css' );
+		$slick       = file_get_contents( plugin_dir_path( __FILE__ ) . 'assets/css/slick.min.css' );
+		$slick_theme = file_get_contents( plugin_dir_path( __FILE__ ) . 'assets/css/slick-theme.min.css' );
+		$tooltipster = file_get_contents( plugin_dir_path( __FILE__ ) . 'assets/css/tooltipster.bundle.min.css' );
+
+		// Fancybox 3.
+		if ( get_option( 'ccp_enqueue_fancybox_styles' ) ) {
+			echo '<!-- Fancybox 3 Scripts --><style>' . $fancybox . '</style>';
+		}
+
+		// Slick.
+		if ( get_option( 'ccp_enqueue_slick' ) ) {
+			echo '<!-- Slick Scripts --><style>' . $slick . '</style>';
+		}
+
+		// Slick theme.
+		if ( get_option( 'ccp_enqueue_slick' ) ) {
+			echo '<!-- Tabslet Scripts --><style>' . $slick_theme . '</style>';
+		}
+
+		// Tooltipster.
+		if ( get_option( 'ccp_enqueue_tooltipster' ) ) {
+			echo '<!-- Tooltipster Scripts --><style>' . $tooltipster . '</style>';
 		}
 
 	}
@@ -177,7 +216,7 @@ class Controlled_Chaos_Public {
 	 */
 	public function get_jquery() {
 
-		$jquery = file_get_contents( plugin_dir_path( __FILE__ ) . '/assets/js/jquery.js' );
+		$jquery = file_get_contents( plugin_dir_path( __FILE__ ) . '/assets/js/jquery.min.js' );
 
 		echo '<!-- jQuery --><script>' . $jquery . '</script>';
 
@@ -189,8 +228,6 @@ class Controlled_Chaos_Public {
 	 * @since    1.0.0
 	 */
 	public function get_scripts() {
-
-		$inline = get_option( 'ccp_inline_scripts' );
 
 		$fancybox    = file_get_contents( plugin_dir_path( __FILE__ ) . 'assets/js/jquery.fancybox.min.js' );
 		$slick       = file_get_contents( plugin_dir_path( __FILE__ ) . 'assets/js/slick.min.js' );
