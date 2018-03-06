@@ -30,6 +30,9 @@ class Controlled_Chaos_Settings {
 	 */
     public function __construct() {
 
+		// Settings dependencies.
+		$this->dependencies();
+
 		// Add scripts settings page.
 		add_action( 'admin_menu', [ $this, 'scripts_settings_page' ] );
 
@@ -38,6 +41,18 @@ class Controlled_Chaos_Settings {
 
         // Add ACF options page.
     	add_action( 'admin_menu', [ $this, 'site_settings_page' ] );
+
+	}
+
+	/**
+	 * Admin file dependencies.
+	 *
+	 * @since    1.0.0
+	 */
+	public function dependencies() {
+
+		// Fields for the Site Settings page.
+		require plugin_dir_path( __FILE__ ) . 'class-site-settings-fields.php';
 
 	}
 	
@@ -70,7 +85,7 @@ class Controlled_Chaos_Settings {
 	}
 
 	/**
-	 * Plugin settings.
+	 * Plugin settings, various.
 	 * 
 	 * @since    1.0.0
 	 */
@@ -392,16 +407,24 @@ class Controlled_Chaos_Settings {
 			}
 
 		} else {
-
+			/*
 			add_options_page(
 				__( 'Site Settings', 'controlled-chaos' ),
 				__( 'Site Settings', 'controlled-chaos' ),
 				'manage_options',
 				'controlled-chaos-settings',
 				[ $this, 'settings_site_output' ]
-			);
+			); */
 
 		}
+
+		add_options_page(
+			__( 'Site Settings', 'controlled-chaos' ),
+			__( 'Site Settings', 'controlled-chaos' ),
+			'manage_options',
+			'controlled-chaos-settings',
+			[ $this, 'settings_site_output' ]
+		);
 
 	}
 
