@@ -45,6 +45,8 @@ class Controlled_Chaos_Site_Settings {
 		/**
 		 * Dashboard.
 		 */
+		
+		// Dashboard settings section.
 		add_settings_section( 'ccp-site-dashboard', __( 'Dashboard Settings', 'controlled-chaos' ), [], 'ccp-site-dashboard' );
 
 		// Hide Welcome panel.
@@ -86,6 +88,158 @@ class Controlled_Chaos_Site_Settings {
 			'ccp-site-dashboard',
 			'ccp_hide_activity'
 		);
+
+		/**
+		 * Admin menu.
+		 */
+
+		// Admin menu settings section.
+		add_settings_section( 'ccp-site-admin-menu', __( 'Admin Menu Settings', 'controlled-chaos' ), [], 'ccp-site-admin-menu' );
+
+		// Menus link position.
+		add_settings_field( 'ccp_menus_position', __( 'Menus Position', 'controlled-chaos' ), [ $this, 'ccp_menus_position_callback' ], 'ccp-site-admin-menu', 'ccp-site-admin-menu', [ esc_html__( 'Make Menus a top-level link', 'controlled-chaos' ) ] );
+
+		register_setting(
+			'ccp-site-admin-menu',
+			'ccp_menus_position'
+		);
+
+		// Widgets link position.
+		add_settings_field( 'ccp_widgets_position', __( 'Widgets Position', 'controlled-chaos' ), [ $this, 'ccp_widgets_position_callback' ], 'ccp-site-admin-menu', 'ccp-site-admin-menu', [ esc_html__( 'Make Widgets a top-level link', 'controlled-chaos' ) ] );
+
+		register_setting(
+			'ccp-site-admin-menu',
+			'ccp_widgets_position'
+		);
+
+		// Settings page position.
+		add_settings_field( 'ccp_settings_position', __( 'Settings Page Position', 'controlled-chaos' ), [ $this, 'ccp_settings_position_callback' ], 'ccp-site-admin-menu', 'ccp-site-admin-menu', [ esc_html__( 'Make this settings page a top-level link and hide othe settings links.', 'controlled-chaos' ) ] );
+
+		register_setting(
+			'ccp-site-admin-menu',
+			'ccp_settings_position'
+		);
+
+		// Hide Appearance link.
+		add_settings_field( 'ccp_hide_appearance', __( 'Hide Appearance', 'controlled-chaos' ), [ $this, 'ccp_hide_appearance_callback' ], 'ccp-site-admin-menu', 'ccp-site-admin-menu', [ esc_html__( 'Hide the Appearance link in the admin menu', 'controlled-chaos' ) ] );
+
+		register_setting(
+			'ccp-site-admin-menu',
+			'ccp_hide_appearance'
+		);
+
+		// Hide Plugins link.
+		add_settings_field( 'ccp_hide_plugins', __( 'Hide Plugins', 'controlled-chaos' ), [ $this, 'ccp_hide_plugins_callback' ], 'ccp-site-admin-menu', 'ccp-site-admin-menu', [ esc_html__( 'Hide the Plugins link in the admin menu', 'controlled-chaos' ) ] );
+
+		register_setting(
+			'ccp-site-admin-menu',
+			'ccp_hide_plugins'
+		);
+
+		// Hide Users link.
+		add_settings_field( 'ccp_hide_users', __( 'Hide Users', 'controlled-chaos' ), [ $this, 'ccp_hide_users_callback' ], 'ccp-site-admin-menu', 'ccp-site-admin-menu', [ esc_html__( 'Hide the Users link in the admin menu', 'controlled-chaos' ) ] );
+
+		register_setting(
+			'ccp-site-admin-menu',
+			'ccp_hide_users'
+		);
+
+		// Hide Tools link.
+		add_settings_field( 'ccp_hide_tools', __( 'Hide Tools', 'controlled-chaos' ), [ $this, 'ccp_hide_tools_callback' ], 'ccp-site-admin-menu', 'ccp-site-admin-menu', [ esc_html__( 'Hide the Tools link in the admin menu', 'controlled-chaos' ) ] );
+
+		register_setting(
+			'ccp-site-admin-menu',
+			'ccp_hide_tools'
+		);
+
+		/**
+		 * Admin pages.
+		 */
+
+		// Admin pages settings section.
+		add_settings_section( 'ccp-site-admin-pages', __( 'Admin Pages Settings', 'controlled-chaos' ), [], 'ccp-site-admin-pages' );
+
+		// Admin footer credit.
+		add_settings_field( 'ccp_footer_credit', __( 'Admin Footer Credit', 'controlled-chaos' ), [ $this, 'ccp_footer_credit_callback' ], 'ccp-site-admin-pages', 'ccp-site-admin-pages', [ esc_html__( 'The "developed by" credit.', 'controlled-chaos' ) ] );
+
+		register_setting(
+			'ccp-site-admin-pages',
+			'ccp_footer_credit'
+		);
+
+		// Admin footer link.
+		add_settings_field( 'ccp_footer_link', __( 'Admin Footer Link', 'controlled-chaos' ), [ $this, 'ccp_footer_link_callback' ], 'ccp-site-admin-pages', 'ccp-site-admin-pages', [ esc_html__( 'Link to the website devoloper.', 'controlled-chaos' ) ] );
+
+		register_setting(
+			'ccp-site-admin-pages',
+			'ccp_footer_link'
+		);
+
+		/**
+		 * Meta & SEO.
+		 */
+
+		// Meta/SEO settings section.
+		add_settings_section( 'ccp-site-meta-seo', __( 'Meta & SEO Settings', 'controlled-chaos' ), [], 'ccp-site-meta-seo' );
+
+		// Disable meta tags.
+		add_settings_field( 'ccp_disable_meta', __( 'Meta Tags', 'controlled-chaos' ), [ $this, 'ccp_disable_meta_callback' ], 'ccp-site-meta-seo', 'ccp-site-meta-seo', [ esc_html__( 'Disable if your theme includes SEO meta tags, or if you plan on using Yoast SEO or a similarly awful plugin.', 'controlled-chaos' ) ] );
+
+		register_setting(
+			'ccp-site-meta-seo',
+			'ccp_disable_meta'
+		);
+
+	}
+
+	/**
+	 * Menus link position.
+	 * 
+	 * @since    1.0.0
+	 */
+	public function ccp_menus_position_callback( $args ) {
+
+		$option = get_option( 'ccp_menus_position' );
+
+		$html = '<p><input type="checkbox" id="ccp_menus_position" name="ccp_menus_position" value="1" ' . checked( 1, $option, false ) . '/>';
+		
+		$html .= '<label for="ccp_menus_position"> '  . $args[0] . '</label></p>';
+
+		echo $html;
+
+	}
+
+	/**
+	 * Widgets link position.
+	 * 
+	 * @since    1.0.0
+	 */
+	public function ccp_widgets_position_callback( $args ) {
+
+		$option = get_option( 'ccp_widgets_position' );
+
+		$html = '<p><input type="checkbox" id="ccp_widgets_position" name="ccp_widgets_position" value="1" ' . checked( 1, $option, false ) . '/>';
+		
+		$html .= '<label for="ccp_widgets_position"> '  . $args[0] . '</label></p>';
+
+		echo $html;
+
+	}
+
+	/**
+	 * Settings page position.
+	 * 
+	 * @since    1.0.0
+	 */
+	public function ccp_settings_position_callback( $args ) {
+
+		$option = get_option( 'ccp_settings_position' );
+
+		$html = '<p><input type="checkbox" id="ccp_settings_position" name="ccp_settings_position" value="1" ' . checked( 1, $option, false ) . '/>';
+		
+		$html .= '<label for="ccp_settings_position"> '  . $args[0] . '</label></p>';
+
+		echo $html;
 
 	}
 
@@ -169,6 +323,125 @@ class Controlled_Chaos_Site_Settings {
 		$html = '<p><input type="checkbox" id="ccp_hide_activity" name="ccp_hide_activity" value="1" ' . checked( 1, $option, false ) . '/>';
 		
 		$html .= '<label for="ccp_hide_activity"> '  . $args[0] . '</label></p>';
+
+		echo $html;
+
+	}
+
+	/**
+	 * Hide Appearance link.
+	 * 
+	 * @since    1.0.0
+	 */
+	public function ccp_hide_appearance_callback( $args ) {
+
+		$option = get_option( 'ccp_hide_appearance' );
+
+		$html = '<p><input type="checkbox" id="ccp_hide_appearance" name="ccp_hide_appearance" value="1" ' . checked( 1, $option, false ) . '/>';
+		
+		$html .= '<label for="ccp_hide_appearance"> '  . $args[0] . '</label></p>';
+
+		echo $html;
+
+	}
+
+	/**
+	 * Hide Plugins link.
+	 * 
+	 * @since    1.0.0
+	 */
+	public function ccp_hide_plugins_callback( $args ) {
+
+		$option = get_option( 'ccp_hide_plugins' );
+
+		$html = '<p><input type="checkbox" id="ccp_hide_plugins" name="ccp_hide_plugins" value="1" ' . checked( 1, $option, false ) . '/>';
+		
+		$html .= '<label for="ccp_hide_plugins"> '  . $args[0] . '</label></p>';
+
+		echo $html;
+
+	}
+
+	/**
+	 * Hide Users link.
+	 * 
+	 * @since    1.0.0
+	 */
+	public function ccp_hide_users_callback( $args ) {
+
+		$option = get_option( 'ccp_hide_users' );
+
+		$html = '<p><input type="checkbox" id="ccp_hide_users" name="ccp_hide_users" value="1" ' . checked( 1, $option, false ) . '/>';
+		
+		$html .= '<label for="ccp_hide_users"> '  . $args[0] . '</label></p>';
+
+		echo $html;
+
+	}
+
+	/**
+	 * Hide Tools link.
+	 * 
+	 * @since    1.0.0
+	 */
+	public function ccp_hide_tools_callback( $args ) {
+
+		$option = get_option( 'ccp_hide_tools' );
+
+		$html = '<p><input type="checkbox" id="ccp_hide_tools" name="ccp_hide_tools" value="1" ' . checked( 1, $option, false ) . '/>';
+		
+		$html .= '<label for="ccp_hide_tools"> ' . $args[0] . '</label></p>';
+
+		echo $html;
+
+	}
+
+	/**
+	 * Admin footer credit.
+	 * 
+	 * @since    1.0.0
+	 */
+	public function ccp_footer_credit_callback( $args ) {
+
+		$option = get_option( 'ccp_footer_credit' );
+
+		$html = '<p><input type="text" size="50" id="ccp_footer_credit" name="ccp_footer_credit" value="' . esc_attr( $option ) . '" /><br />';
+		
+		$html .= '<label for="ccp_footer_credit"> ' . $args[0] . '</label></p>';
+
+		echo $html;
+
+	}
+
+	/**
+	 * Admin footer link.
+	 * 
+	 * @since    1.0.0
+	 */
+	public function ccp_footer_link_callback( $args ) {
+
+		$option = get_option( 'ccp_footer_link' );
+
+		$html = '<p><input type="text" size="50" id="ccp_footer_link" name="ccp_footer_link" value="' . esc_attr( $option ) . '" /><br />';
+		
+		$html .= '<label for="ccp_footer_link"> ' . $args[0] . '</label></p>';
+
+		echo $html;
+
+	}
+
+	/**
+	 * Disable meta tags.
+	 * 
+	 * @since    1.0.0
+	 */
+	public function ccp_disable_meta_callback( $args ) {
+
+		$option = get_option( 'ccp_disable_meta' );
+
+		$html = '<p><input type="checkbox" id="ccp_disable_meta" name="ccp_disable_meta" value="1" ' . checked( 1, $option, false ) . '/>';
+		
+		$html .= '<label for="ccp_disable_meta"> '  . $args[0] . '</label></p>';
 
 		echo $html;
 

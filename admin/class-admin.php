@@ -188,7 +188,7 @@ class Controlled_Chaos_Admin {
 			$link   = get_field( 'ccp_admin_footer_link', 'option' );
 
 			if ( $credit && $link ) {
-				$footer = sprintf( '%1s %2s <a href="%3s" target="_blank">%4s</a>.', $site, esc_html__( 'website designed & developed by', 'controlled-chaos' ), $link, $credit );
+				$footer = sprintf( '%1s %2s <a href="%3s" target="_blank">%4s</a>.', $site, esc_html__( 'website designed & developed by', 'controlled-chaos' ), esc_url( $link ), $credit );
 			} elseif ( $credit ) {
 				$footer = sprintf( '%1s %2s %3s.', $site, esc_html__( 'website designed & developed by', 'controlled-chaos' ), $credit );
 			} else {
@@ -196,7 +196,18 @@ class Controlled_Chaos_Admin {
 			}
 			
 		} else {
-			$footer = sprintf( '%1s %2s.', $site, esc_html__( 'website powered by WordPress' ) );
+
+			$credit = get_option( 'ccp_footer_credit' );
+			$link   = get_option( 'ccp_footer_link' );
+
+			if ( $credit && $link ) {
+				$footer = sprintf( '%1s %2s <a href="%3s" target="_blank">%4s</a>.', $site, esc_html__( 'website designed & developed by', 'controlled-chaos' ), esc_url( $link ), $credit );
+			} elseif ( $credit ) {
+				$footer = sprintf( '%1s %2s %3s.', $site, esc_html__( 'website designed & developed by', 'controlled-chaos' ), $credit );
+			} else {
+				$footer = sprintf( '%1s %2s.', $site, esc_html__( 'website powered by WordPress' ) );
+			}
+
 		}
 
 		echo $footer;

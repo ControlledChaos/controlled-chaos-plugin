@@ -250,6 +250,18 @@ class Controlled_Chaos_Public {
 
 			}
 
+		} else {
+
+			$disable_tags = get_option( 'ccp_disable_meta' );
+
+			if ( ! $disable_tags ) {
+				
+				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-tags-standard.php';
+				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-tags-open-graph.php';
+				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-tags-twitter.php';
+
+			}
+
 		}
 
 	}

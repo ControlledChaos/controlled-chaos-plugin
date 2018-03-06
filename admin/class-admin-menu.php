@@ -64,23 +64,63 @@ class Controlled_Chaos_Admin_Menu {
      */
     public function hide() {
 
+        /**
+         * If Advanced Custom Fields Pro is active.
+         */
         if ( class_exists( 'ACF_Pro' ) ) {
 
+            // Get the multiple checkbox field.
             $options = get_field( 'ccp_admin_hide_links', 'option' );
 
+            // Hide Appearance link.
             if ( $options && in_array( 'themes', $options ) ) {
                 remove_menu_page( 'themes.php' );
             }
 
+            // Hide Plugins link.
             if ( $options && in_array( 'plugins', $options ) ) {
                 remove_menu_page( 'plugins.php' );
             }
 
+            // Hide Users link.
             if ( $options && in_array( 'users', $options ) ) {
                 remove_menu_page( 'users.php' );
             }
 
+            // Hide Tools link.
             if ( $options && in_array( 'tools', $options ) ) {
+                remove_menu_page( 'tools.php' );
+            }
+
+        } else {
+
+            /**
+             * Get WordPress fields, not ACF.
+             */
+
+            // Get options.
+            $appearance = get_option( 'ccp_hide_appearance' );
+            $plugins    = get_option( 'ccp_hide_plugins' );
+            $users      = get_option( 'ccp_hide_users' );
+            $tools      = get_option( 'ccp_hide_tools' );
+
+            // Hide Appearance link.
+            if ( $appearance ) {
+                remove_menu_page( 'themes.php' );
+            }
+
+            // Hide Plugins link.
+            if ( $plugins ) {
+                remove_menu_page( 'plugins.php' );
+            }
+
+            // Hide Users link.
+            if ( $users ) {
+                remove_menu_page( 'users.php' );
+            }
+
+            // Hide Tools link.
+            if ( $tools ) {
                 remove_menu_page( 'tools.php' );
             }
 
@@ -99,9 +139,8 @@ class Controlled_Chaos_Admin_Menu {
 
         if ( class_exists( 'ACF_Pro' ) ) {
 
-            $menus_link    = get_field( 'ccp_menus_link_position', 'option' );
-            $widgets_link  = get_field( 'ccp_widgets_link_position', 'option' );
-            $settings_link = get_field( 'ccp_settings_link_position', 'option' );
+            $menus_link   = get_field( 'ccp_menus_link_position', 'option' );
+            $widgets_link = get_field( 'ccp_widgets_link_position', 'option' );
             
             if ( isset( $submenu['themes.php'] ) ) {
         
@@ -132,13 +171,16 @@ class Controlled_Chaos_Admin_Menu {
         
         } else {
 
+            $menus_link   = get_option( 'ccp_menus_position' );
+            $widgets_link = get_option( 'ccp_widgets_position' );
+
             if ( isset( $submenu['themes.php'] ) ) {
         
                 foreach ( $submenu['themes.php'] as $key => $item ) {
-                    if ( $item[2] === 'nav-menus.php' ) {
+                    if ( $item[2] === 'nav-menus.php' && $menus_link ) {
                         unset($submenu['themes.php'][$key] );
                     }
-                    if ( $item[2] === 'widgets.php' ) {
+                    if ( $item[2] === 'widgets.php' && $widgets_link ) {
                         unset( $submenu['themes.php'][$key] );
                     }
                 }
@@ -151,9 +193,13 @@ class Controlled_Chaos_Admin_Menu {
                 unset( $menu[60] );
             }
 
-            add_menu_page( __( 'Menus', 'controlled-chaos' ), __( 'Menus', 'controlled-chaos' ), 'delete_others_pages', 'nav-menus.php', '', 'dashicons-list-view', 61 );
+            if ( $menus_link ) {
+                add_menu_page( __( 'Menus', 'controlled-chaos' ), __( 'Menus', 'controlled-chaos' ), 'delete_others_pages', 'nav-menus.php', '', 'dashicons-list-view', 61 );
+            }
 
-            add_menu_page( __( 'Widgets', 'controlled-chaos' ), __( 'Widgets', 'controlled-chaos' ), 'delete_others_pages', 'widgets.php', '', 'dashicons-welcome-widgets-menus', 62 );
+            if ( $widgets_link ) {
+                add_menu_page( __( 'Widgets', 'controlled-chaos' ), __( 'Widgets', 'controlled-chaos' ), 'delete_others_pages', 'widgets.php', '', 'dashicons-welcome-widgets-menus', 62 );
+            }
 
         }
     }
@@ -169,8 +215,8 @@ class Controlled_Chaos_Admin_Menu {
 
         if ( class_exists( 'ACF_Pro' ) ) {
 
-            $menus_link    = get_field( 'ccp_menus_link_position', 'option' );
-            $widgets_link  = get_field( 'ccp_widgets_link_position', 'option' );
+            $menus_link   = get_field( 'ccp_menus_link_position', 'option' );
+            $widgets_link = get_field( 'ccp_widgets_link_position', 'option' );
         
             if ( $current_screen->base == 'nav-menus' && 'default' != $menus_link ) {
                 $parent_file = 'nav-menus.php';
@@ -183,11 +229,14 @@ class Controlled_Chaos_Admin_Menu {
             
         } else {
 
-            if ( $current_screen->base == 'nav-menus' ) {
+            $menus_link   = get_option( 'ccp_menus_position' );
+            $widgets_link = get_option( 'ccp_widgets_position' );
+
+            if ( $current_screen->base == 'nav-menus' && $menus_link ) {
                 $parent_file = 'nav-menus.php';
             }
 
-            if ( $current_screen->base == 'widgets' ) {
+            if ( $current_screen->base == 'widgets' && $widgets_link ) {
                 $parent_file = 'widgets.php';
             }
             return $parent_file;
