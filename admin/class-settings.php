@@ -7,7 +7,7 @@
  * @since controlled-chaos 1.0.0
  */
 
-
+namespace CCPlugin\Settings;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -30,6 +30,9 @@ class Controlled_Chaos_Settings {
 	 */
     public function __construct() {
 
+		// Settings dependencies.
+		$this->dependencies();
+
 		// Add scripts settings page.
 		add_action( 'admin_menu', [ $this, 'scripts_settings_page' ] );
 
@@ -38,6 +41,18 @@ class Controlled_Chaos_Settings {
 
         // Add ACF options page.
     	add_action( 'admin_menu', [ $this, 'site_settings_page' ] );
+
+	}
+
+	/**
+	 * Admin file dependencies.
+	 *
+	 * @since    1.0.0
+	 */
+	public function dependencies() {
+
+		// Fields for the Site Settings page.
+		require plugin_dir_path( __FILE__ ) . 'class-site-settings-fields.php';
 
 	}
 	
@@ -53,24 +68,24 @@ class Controlled_Chaos_Settings {
 			__( 'Script Options', 'controlled-chaos' ),
 			'manage_options',
 			'controlled-chaos-scripts',
-			[ $this, 'settings_page_output' ]
+			[ $this, 'settings_scripts_output' ]
 		);
 
 	}
 
 	/**
-	 * Settings page output.
+	 * Script Options page output.
 	 *
 	 * @since    1.0.0
 	 */
-    public function settings_page_output() {
+    public function settings_scripts_output() {
 		
 		require plugin_dir_path( __FILE__ ) . 'partials/settings-page-scripts.php';
 
 	}
 
 	/**
-	 * Plugin settings.
+	 * Plugin settings, various.
 	 * 
 	 * @since    1.0.0
 	 */
@@ -391,7 +406,36 @@ class Controlled_Chaos_Settings {
 
 			}
 
+		} else {
+			/*
+			add_options_page(
+				__( 'Site Settings', 'controlled-chaos' ),
+				__( 'Site Settings', 'controlled-chaos' ),
+				'manage_options',
+				'controlled-chaos-settings',
+				[ $this, 'settings_site_output' ]
+			); */
+
 		}
+
+		add_options_page(
+			__( 'Site Settings', 'controlled-chaos' ),
+			__( 'Site Settings', 'controlled-chaos' ),
+			'manage_options',
+			'controlled-chaos-settings',
+			[ $this, 'settings_site_output' ]
+		);
+
+	}
+
+	/**
+	 * Site Settings page output.
+	 *
+	 * @since    1.0.0
+	 */
+    public function settings_site_output() {
+		
+		require plugin_dir_path( __FILE__ ) . 'partials/settings-page-site.php';
 
 	}
 

@@ -10,6 +10,8 @@
  * @subpackage controlled-chaos/public
  */
 
+namespace CCPlugin\Plugin_Public;
+
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
@@ -241,6 +243,18 @@ class Controlled_Chaos_Public {
 			$disable_tags = get_field( 'ccp_disable_meta_tags', 'option' );
 
 			if ( false == $disable_tags ) {
+				
+				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-tags-standard.php';
+				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-tags-open-graph.php';
+				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-tags-twitter.php';
+
+			}
+
+		} else {
+
+			$disable_tags = get_option( 'ccp_disable_meta' );
+
+			if ( ! $disable_tags ) {
 				
 				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-tags-standard.php';
 				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-tags-open-graph.php';

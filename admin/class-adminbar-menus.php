@@ -10,7 +10,7 @@
  * @subpackage controlled-chaos/includes
  */
 
-
+namespace CCPlugin\Admin_Toolbar;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {

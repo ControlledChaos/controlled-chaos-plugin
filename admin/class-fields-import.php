@@ -11,7 +11,7 @@
  * @subpackage controlled-chaos/admin
  */
 
-
+namespace CCPlugin\Fields_Import;
 
 // Restrict direct access
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -117,7 +117,7 @@ class Controlled_Chaos_Fields_Import {
 			while ( $num_import > 0 );
 		}
 
-		include_once plugin_dir_path( __FILE__ ) . 'partials/field-import-page.php';
+		include_once plugin_dir_path( __FILE__ ) . 'partials/fields-import-page.php';
 		
 	}
 

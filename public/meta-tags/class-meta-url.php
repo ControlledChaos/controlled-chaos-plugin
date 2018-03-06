@@ -7,6 +7,8 @@
  * @since controlled-chaos 1.0.0
  */
 
+namespace CCPlugin\Meta_Tags\URL;
+
 // Restrict direct access
 if ( ! defined( 'ABSPATH' ) ) exit;
 

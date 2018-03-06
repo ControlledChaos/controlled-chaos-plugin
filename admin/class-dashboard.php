@@ -10,7 +10,7 @@
  * @subpackage controlled-chaos/admin
  */
 
-
+namespace CCPlugin\Dashboard;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -75,26 +75,35 @@ class Controlled_Chaos_Dashboard {
 
         global $wp_meta_boxes;
 
+        /**
+         * If Advanced Custom Fields Pro is active.
+         */
         if ( class_exists( 'ACF_Pro' ) ) {
 
+            // Get the multiple checkbox field.
             $hide = get_field( 'ccp_dashboard_hide_widgets', 'option' );
 
+            // Hide the Welcome panel.
             if ( $hide && in_array( 'welcome', $hide ) ) {
                 remove_action( 'welcome_panel', 'wp_welcome_panel' );
             }
 
-            if ( $hide && in_array( 'quick', $hide ) ) {
-                unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press'] );
-            }
-
-            if ( $hide && in_array( 'at_glance', $hide ) ) {
-                unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now'] );
-            }
-
+            // Hide the WordPress News widget.
             if ( $hide && in_array( 'news', $hide ) ) {
                 unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
             }
 
+            // Hide Quick Draft (QuickPress) widget.
+            if ( $hide && in_array( 'quick', $hide ) ) {
+                unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press'] );
+            }
+
+            // Hide At a Glance widget.
+            if ( $hide && in_array( 'at_glance', $hide ) ) {
+                unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now'] );
+            }
+
+            // Hide Activity widget.
             if ( $hide && in_array( 'activity', $hide ) ) {
                 remove_meta_box( 'dashboard_activity', 'dashboard', 'normal' );
             }
@@ -102,16 +111,40 @@ class Controlled_Chaos_Dashboard {
         } else {
 
             /**
-             * Uncomment or comment/remove as desired.
+             * Get WordPress fields, not ACF.
              */
 
-            // remove_action( 'welcome_panel', 'wp_welcome_panel' );
+            // Get options.
+            $welcome    = get_option( 'ccp_hide_welcome' );
+            $wp_news    = get_option( 'ccp_hide_wp_news' );
+            $quickpress = get_option( 'ccp_hide_quickpress' );
+            $at_glance  = get_option( 'ccp_hide_at_glance' );
+            $activity   = get_option( 'ccp_hide_activity' );
 
-            unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
-            // unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']);
-            unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
+            // Hide the Welcome panel.
+            if ( $welcome ) {
+                remove_action( 'welcome_panel', 'wp_welcome_panel' );
+            }
 
-            remove_meta_box( 'dashboard_activity', 'dashboard', 'normal' );
+            // Hide the WordPress News widget.
+            if ( $wp_news ) {
+                unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
+            }
+
+            // Hide Quick Draft (QuickPress) widget.
+            if ( $quickpress ) {
+                unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
+            }
+
+            // Hide At a Glance widget.
+            if ( $at_glance ) {
+                unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now'] );
+            }
+
+            // Hide Activity widget.
+            if ( $activity ) {
+                remove_meta_box( 'dashboard_activity', 'dashboard', 'normal' );
+            }
 
         }
 

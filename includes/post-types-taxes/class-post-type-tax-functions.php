@@ -8,7 +8,7 @@
  * @since controlled-chaos 1.0.0
  */
 
-
+namespace CCPlugin\Post_Type_Tax_Functions;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {

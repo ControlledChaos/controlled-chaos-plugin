@@ -7,7 +7,7 @@
  * @since controlled-chaos 1.0.0
  */
 
-
+namespace CCPlugin\Media_Options;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {

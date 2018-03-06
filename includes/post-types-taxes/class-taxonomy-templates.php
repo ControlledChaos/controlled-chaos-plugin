@@ -12,7 +12,7 @@
  * @subpackage controlled-chaos/includes
  */
 
-
+namespace CCPlugin\Taxonomy_Templates;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
