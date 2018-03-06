@@ -10,6 +10,8 @@
  * @subpackage controlled-chaos/public
  */
 
+namespace CCPlugin\Plugin_Public;
+
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;

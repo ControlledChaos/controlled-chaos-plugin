@@ -11,7 +11,7 @@
  * @subpackage controlled-chaos/public
  */
 
-
+namespace CCPlugin\Gallery_Shortcode;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {

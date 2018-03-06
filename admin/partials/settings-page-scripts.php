@@ -8,6 +8,8 @@
  * @since controlled-chaos 1.0.0
  */
 
+namespace CCPlugin\Settings_Page_Scripts;
+
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
@@ -29,12 +31,14 @@ if ( isset( $_GET[ 'tab' ] ) ) {
         <?php if ( $active_tab == 'ccp-scripts-general' ) {
             settings_fields( 'ccp-scripts-general' );
             do_settings_sections( 'ccp-scripts-general' );
+            $save = __( 'Save General Settings', 'controlled-chaos' );
         } elseif ( $active_tab == 'ccp-scripts-vendor' ) {
             settings_fields( 'ccp-scripts-vendor' );
             do_settings_sections( 'ccp-scripts-vendor' );
+            $save = __( 'Save Vendor Settings', 'controlled-chaos' );
         } ?>
         <?php if ( $active_tab == 'ccp-scripts-general' || $active_tab == 'ccp-scripts-vendor' ) : ?>
-        <p class="submit"><?php submit_button( __( 'Save Settings', 'controlled-chaos' ), 'primary', '', false, [] ); echo ' '; ?></p>
+        <p class="submit"><?php submit_button( $save, 'primary', '', false, [] ); echo ' '; ?></p>
     <?php endif; ?>
     </form>
     <?php echo sprintf( '<p class="description">%1s <a href="%2s" target="_blank">%3s</a>.</p>', esc_html__( 'The Controlled Chaos plugin is developed by' ), esc_url( 'http://ccdzine.com/' ),esc_html__( 'Controlled Chaos Design' ) ); ?>

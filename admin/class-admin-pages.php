@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Functions for post types and taxonomies.
  *
@@ -8,7 +9,7 @@
  * @since controlled-chaos 1.0.0
  */
 
-
+namespace CCPlugin\Admin_Pages;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {

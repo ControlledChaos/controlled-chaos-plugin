@@ -10,7 +10,7 @@
  * @subpackage controlled-chaos/admin
  */
 
-
+namespace CCPlugin\Admin_Menu;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {

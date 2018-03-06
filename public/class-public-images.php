@@ -10,7 +10,7 @@
  * @subpackage controlled-chaos/public
  */
 
-
+namespace CCPlugin\Public_Images;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {

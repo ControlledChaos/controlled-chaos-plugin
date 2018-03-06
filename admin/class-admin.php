@@ -10,6 +10,8 @@
  * @subpackage controlled-chaos/admin
  */
 
+namespace CCPlugin\Plugin_Admin;
+
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
