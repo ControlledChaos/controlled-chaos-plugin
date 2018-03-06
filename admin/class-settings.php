@@ -53,17 +53,17 @@ class Controlled_Chaos_Settings {
 			__( 'Script Options', 'controlled-chaos' ),
 			'manage_options',
 			'controlled-chaos-scripts',
-			[ $this, 'settings_page_output' ]
+			[ $this, 'settings_scripts_output' ]
 		);
 
 	}
 
 	/**
-	 * Settings page output.
+	 * Script Options page output.
 	 *
 	 * @since    1.0.0
 	 */
-    public function settings_page_output() {
+    public function settings_scripts_output() {
 		
 		require plugin_dir_path( __FILE__ ) . 'partials/settings-page-scripts.php';
 
@@ -391,7 +391,28 @@ class Controlled_Chaos_Settings {
 
 			}
 
+		} else {
+
+			add_options_page(
+				__( 'Site Settings', 'controlled-chaos' ),
+				__( 'Site Settings', 'controlled-chaos' ),
+				'manage_options',
+				'controlled-chaos-settings',
+				[ $this, 'settings_site_output' ]
+			);
+
 		}
+
+	}
+
+	/**
+	 * Site Settings page output.
+	 *
+	 * @since    1.0.0
+	 */
+    public function settings_site_output() {
+		
+		require plugin_dir_path( __FILE__ ) . 'partials/settings-page-site.php';
 
 	}
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * Site settings page output.
+ * Script options page output.
  *
  *
  * @package    controlled-chaos
