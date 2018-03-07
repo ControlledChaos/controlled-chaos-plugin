@@ -35,7 +35,7 @@ class Controlled_Chaos_Plugin {
 	public function __construct() {
 
 		// Load dependencies.
-		$this->load_dependencies();
+		$this->dependencies();
 
 	}
 
@@ -45,7 +45,7 @@ class Controlled_Chaos_Plugin {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function load_dependencies() {
+	private function dependencies() {
 
 		// Translation functionality.
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-i18n.php';
@@ -53,11 +53,18 @@ class Controlled_Chaos_Plugin {
 		// Admin actions and filters.
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-admin.php';
 
-		// Publis actions and filters.
+		// Public actions and filters.
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-public.php';
 
 		// Post types and taxonomies.
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/post-types-taxes/class-post-type-tax.php';
+
+		// Minify HTML source code.
+		$minify = get_option( 'ccp_html_minify' );
+
+		if ( $minify ) {
+			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-minify-process.php';
+		}
 
 	}
 
