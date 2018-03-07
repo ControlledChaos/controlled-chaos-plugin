@@ -1,9 +1,9 @@
 Controlled Chaos
 ================
-A WordPress starter/boilerplate plugin.
+This plugin controls some WordPress chaos.
 
 ## Description
-This plugin controls some chaos and provides a head start for site-specific plugins.
+A head start for site-specific WordPress plugins. Can be used as is without further development.
 
 ## Dependencies
 

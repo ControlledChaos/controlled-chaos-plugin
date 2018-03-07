@@ -95,7 +95,7 @@ class Controlled_Chaos_Settings {
 		/**
 		 * Generl script options.
 		 */
-		add_settings_section( 'ccp-scripts-general', __( 'General Options', 'controlled-chaos' ), [], 'ccp-scripts-general' );
+		add_settings_section( 'ccp-scripts-general', __( 'General Options', 'controlled-chaos' ), [ $this, 'scripts_general_section_callback' ], 'ccp-scripts-general' );
 
 		// Inline scripts.
 		add_settings_field( 'ccp_inline_scripts', __( 'Inline scripts', 'controlled-chaos' ), [ $this, 'ccp_inline_scripts_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Add script contents to footer to reduce HTTP requests and increase load speed', 'controlled-chaos' ) ] );
@@ -148,7 +148,7 @@ class Controlled_Chaos_Settings {
 		/**
 		 * Use included vendor scripts & options.
 		 */
-		add_settings_section( 'ccp-scripts-vendor', __( 'Included Vendor Scripts', 'controlled-chaos' ), [ $this, 'ccp_scripts_vendor_section_callback' ], 'ccp-scripts-vendor' );
+		add_settings_section( 'ccp-scripts-vendor', __( 'Included Vendor Scripts', 'controlled-chaos' ), [ $this, 'scripts_vendor_section_callback' ], 'ccp-scripts-vendor' );
 
 		// Use Slick.
 		add_settings_field( 'ccp_enqueue_slick', __( 'Slick', 'controlled-chaos' ), [ $this, 'enqueue_slick_callback' ], 'ccp-scripts-vendor', 'ccp-scripts-vendor', [ esc_html__( 'Use Slick script and stylesheets', 'controlled-chaos' ) ] );
@@ -195,6 +195,19 @@ class Controlled_Chaos_Settings {
 			);
 
 		}
+
+	}
+
+	/**
+	 * General section callback.
+	 * 
+	 * @since    1.0.0
+	 */
+	public function scripts_general_section_callback( $args ) {
+
+		$html = sprintf( '<p>%1s</p>', esc_html__( 'Inline settings only apply to scripts and styles included with the plugin.' ) );
+
+		echo $html;
 
 	}
 
@@ -305,7 +318,7 @@ class Controlled_Chaos_Settings {
 	 * 
 	 * @since    1.0.0
 	 */
-	public function ccp_scripts_vendor_section_callback( $args ) {
+	public function scripts_vendor_section_callback( $args ) {
 
 		$html = sprintf( '<p>%1s</p>', esc_html__( 'Look for Fancybox options on the Media Settings page.' ) );
 
