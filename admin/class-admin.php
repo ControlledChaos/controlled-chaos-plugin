@@ -37,7 +37,7 @@ class Controlled_Chaos_Admin {
 		$this->dependencies();
 
 		// Remove theme & plugin editor links.
-        add_action( 'admin_init', [ $this, 'remove_editor_links' ] );
+		add_action( 'admin_init', [ $this, 'remove_editor_links' ] );
 
 		// Redirect theme & plugin editor pages.
 		add_action( 'admin_init', [ $this, 'redirect_editor_pages' ] );
