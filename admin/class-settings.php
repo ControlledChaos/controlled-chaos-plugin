@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Plugin and site settings.
  *
@@ -136,6 +137,14 @@ class Controlled_Chaos_Settings {
 			'ccp_remove_script_version'
 		);
 
+		// Minify HTML.
+		add_settings_field( 'ccp_html_minify', __( 'Minify HTML', 'controlled-chaos' ), [ $this, 'html_minify_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Minify HTML source code to increase load speed', 'controlled-chaos' ) ] );
+
+		register_setting(
+			'ccp-scripts-general',
+			'ccp_html_minify'
+		);
+
 		/**
 		 * Use included vendor scripts & options.
 		 */
@@ -269,6 +278,23 @@ class Controlled_Chaos_Settings {
 		$html = '<p><input type="checkbox" id="ccp_remove_script_version" name="ccp_remove_script_version" value="1" ' . checked( 1, $option, false ) . '/>';
 		
 		$html .= '<label for="ccp_remove_script_version"> '  . $args[0] . '</label></p>';
+
+		echo $html;
+
+	}
+
+	/**
+	 * Minify HTML source code.
+	 * 
+	 * @since    1.0.0
+	 */
+	public function html_minify_callback( $args ) {
+
+		$option = get_option( 'ccp_html_minify' );
+
+		$html = '<p><input type="checkbox" id="ccp_html_minify" name="ccp_html_minify" value="1" ' . checked( 1, $option, false ) . '/>';
+		
+		$html .= '<label for="ccp_html_minify"> '  . $args[0] . '</label></p>';
 
 		echo $html;
 
