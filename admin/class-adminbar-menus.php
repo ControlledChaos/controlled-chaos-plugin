@@ -45,9 +45,9 @@ class Controlled_Chaos_Adminbar_Menus {
 
 		register_nav_menus(
 			[
-			'ccp_admin_menu_site'    => esc_html__( 'Admin Bar: Site Name', 'ccp-plugin' ),
-			'ccp_admin_menu_main'    => esc_html__( 'Admin Bar: Main', 'ccp-plugin' ),
-			'ccp_admin_menu_account' => esc_html__( 'Admin Bar: My Account', 'ccp-plugin' )
+			'ccp_admin_menu_site'    => esc_html__( 'Admin Bar: Site Name', 'controlled-chaos' ),
+			'ccp_admin_menu_main'    => esc_html__( 'Admin Bar: Main', 'controlled-chaos' ),
+			'ccp_admin_menu_account' => esc_html__( 'Admin Bar: My Account', 'controlled-chaos' )
 			]
 		);
 
