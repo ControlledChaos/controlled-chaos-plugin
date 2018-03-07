@@ -61,11 +61,11 @@ class Controlled_Chaos_Media_Options {
         /**
          * Fancybox settings.
          */
-        add_settings_section( 'ccp-media-settings', __( 'Fancybox', 'ccp-plugin' ), [ $this, 'fancybox_description' ], 'media' );
+        add_settings_section( 'ccp-media-settings', __( 'Fancybox', 'controlled-chaos' ), [ $this, 'fancybox_description' ], 'media' );
 
-        add_settings_field( 'ccp_enqueue_fancybox_script', __( 'Enqueue Fancybox script', 'ccp-plugin' ), [ $this, 'fancybox_script' ], 'media', 'ccp-media-settings', [ __( 'Needed for lightbox functionality.', 'ccp-plugin' ) ] );
+        add_settings_field( 'ccp_enqueue_fancybox_script', __( 'Enqueue Fancybox script', 'controlled-chaos' ), [ $this, 'fancybox_script' ], 'media', 'ccp-media-settings', [ __( 'Needed for lightbox functionality.', 'controlled-chaos' ) ] );
 
-        add_settings_field( 'ccp_enqueue_fancybox_styles', __( 'Enqueue Fancybox styles', 'ccp-plugin' ), [ $this, 'fancybox_styles' ], 'media', 'ccp-media-settings', [ __( 'Leave unchecked to use a custom stylesheet in a theme.', 'ccp-plugin' ) ] );
+        add_settings_field( 'ccp_enqueue_fancybox_styles', __( 'Enqueue Fancybox styles', 'controlled-chaos' ), [ $this, 'fancybox_styles' ], 'media', 'ccp-media-settings', [ __( 'Leave unchecked to use a custom stylesheet in a theme.', 'controlled-chaos' ) ] );
 
         register_setting(
             'media',
@@ -135,10 +135,8 @@ class Controlled_Chaos_Media_Options {
      */
     public function fancybox_description() {
 
-        $url      = 'http://fancyapps.com/fancybox/3/';
-        $line_one = sprintf( '<p>%1s</p>', esc_html__( '"jQuery lightbox script for displaying images, videos and more. Touch enabled, responsive and fully customizable."', 'abcd-plugin' ) );
-        $line_two = sprintf( '<p>%1s <a href="%2s" target="_blank">%3s</a></p>', esc_html__( 'Fancybox website:', 'abcd-plugin' ), esc_url( $url ), $url );
-        $html     = $line_one . $line_two;
+        $url  = 'http://fancyapps.com/fancybox/3/';
+        $html = sprintf( '<p>%1s <a href="%2s" target="_blank">%3s</a></p>', esc_html__( 'Documentation on the Fancybox website:', 'controlled-chaos' ), esc_url( $url ), $url );
 
         echo $html;
 
