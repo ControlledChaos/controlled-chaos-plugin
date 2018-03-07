@@ -30,7 +30,7 @@ class Controlled_Chaos_Minify {
 	public function __construct( $html ) {
 
 		if ( ! empty( $html ) ) {
-			$this->parseHTML( $html ) ;
+			$this->parse_html( $html ) ;
 		}
 
 	}
@@ -41,7 +41,7 @@ class Controlled_Chaos_Minify {
 
 	}
 
-	protected function bottomComment( $raw, $compressed ) {
+	protected function bottom_comment( $raw, $compressed ) {
 
 		$raw        = strlen( $raw );
 		$compressed = strlen( $compressed );
@@ -52,7 +52,7 @@ class Controlled_Chaos_Minify {
 
 	}
 
-	protected function minifyHTML( $html ) {
+	protected function minify_html( $html ) {
 
 		// Settings
 		$compress_css    = true;
@@ -120,7 +120,7 @@ class Controlled_Chaos_Minify {
 			}
 
 			if ( $strip ) {
-				$content = $this->removeWhiteSpace( $content );
+				$content = $this->remove_white_space( $content );
 			}
 
 			$html .= $content;
@@ -131,14 +131,14 @@ class Controlled_Chaos_Minify {
 
 	}
 
-	public function parseHTML( $html ) {
+	public function parse_html( $html ) {
 
-		$this->html = $this->minifyHTML( $html );
-		$this->html .= "\n" . $this->bottomComment( $html, $this->html );
+		$this->html = $this->minify_html( $html );
+		$this->html .= "\n" . $this->bottom_comment( $html, $this->html );
 
 	}
 
-	protected function removeWhiteSpace( $str ) {
+	protected function remove_white_space( $str ) {
 
 		$str = str_replace( "\t", ' ', $str );
 		$str = str_replace( "\n",  '', $str );
