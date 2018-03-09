@@ -94,6 +94,9 @@ class Controlled_Chaos_Admin {
 			include_once plugin_dir_path( __FILE__ ) . 'class-fields-import.php';
 		}
 
+		// Filter by page template.
+		require plugin_dir_path( __FILE__ ) . 'class-admin-template-filter.php';
+
 		// Add SVG upload support, various other image related functions for admin.
 		require plugin_dir_path( __FILE__ ) . 'class-admin-images.php';
 
