@@ -42,6 +42,10 @@ Rename and duplicate as needed.
 * Add custom post types to the At a Glance widget
 * Custom admin footer message
 
+### Media Options
+* Add option to hard crop the medium and/or large image sizes
+* Add option to allow SVG uploads to the Media Library
+
 ### Renaming the plugin for your website.
 To rename this plugin to convert it specifically for a single website, first rename this file and rename the plugin folder with the same name as this file. Then use a find & replace function to look for the following...
 1. **Text Domain:** The text domain should be the same as this file and the plugin folder. Replace "controlled-chaos".
