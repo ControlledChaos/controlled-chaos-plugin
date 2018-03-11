@@ -59,6 +59,18 @@ class Controlled_Chaos_Media_Options {
         );
 
         /**
+         * SVG options.
+         */
+        add_settings_section( 'ccp-svg-settings', __( 'SVG Images', 'controlled-chaos' ), [ $this, 'svg_notice' ], 'media' );
+
+        add_settings_field( 'ccp_add_svg_support', __( 'SVG Support', 'controlled-chaos' ), [ $this, 'svg_support' ], 'media', 'ccp-svg-settings', [ __( 'Add ability to upload SVG images to the media library.', 'controlled-chaos' ) ] );
+
+        register_setting(
+            'media',
+            'ccp_add_svg_support'
+        );
+
+        /**
          * Fancybox settings.
          */
         add_settings_section( 'ccp-media-settings', __( 'Fancybox', 'controlled-chaos' ), [ $this, 'fancybox_description' ], 'media' );
@@ -127,6 +139,32 @@ class Controlled_Chaos_Media_Options {
         } else {
             update_option( 'large_crop', 0 );
         }
+
+    }
+
+    /**
+     * Add warning about using SVG images.
+     */
+    public function svg_notice() {
+
+        $html = sprintf( '<p>%1s</p>', esc_html__( 'Use SVG images with caution! Only add support if you trust or examine each SVG file that you upload.', 'controlled-chaos' ) );
+
+        echo $html;
+
+    }
+
+    /**
+     * SVG options.
+     * 
+     * @since    1.0.0
+     */
+    public function svg_support( $args ) {
+
+        $html = '<p><input type="checkbox" id="ccp_add_svg_support" name="ccp_add_svg_support" value="1" ' . checked( 1, get_option( 'ccp_add_svg_support' ), false ) . '/>';
+        
+        $html .= '<label for="ccp_add_svg_support"> '  . $args[0] . '</label></p>';
+
+        echo $html;
 
     }
 

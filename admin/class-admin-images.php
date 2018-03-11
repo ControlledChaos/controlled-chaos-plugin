@@ -39,9 +39,13 @@ class Controlled_Chaos_Admin_Images {
         // Default add gallery images link.
         add_filter( 'media_view_settings', [ $this, 'gallery_link' ], 10 );
 
-		add_action( 'admin_init', [ $this, 'svg_support' ] );
-		add_filter( 'wp_check_filetype_and_ext', [ $this, 'svg_filetype' ], 100, 4 );
-		add_filter( 'wp_get_attachment_image_src', [ $this, 'image_src' ], 90 );
+		// Add SVG support.
+		$add_svg = get_option( 'ccp_add_svg_support' );
+		if ( $add_svg ) {
+			add_action( 'admin_init', [ $this, 'svg_support' ] );
+			add_filter( 'wp_check_filetype_and_ext', [ $this, 'svg_filetype' ], 100, 4 );
+			add_filter( 'wp_get_attachment_image_src', [ $this, 'image_src' ], 90 );
+		}
 
     }
 
@@ -78,17 +82,17 @@ class Controlled_Chaos_Admin_Images {
      * @link     http://kubiq.sk
      * @since    1.0.0
      */
-    function image_src( $image ) {
+    public function image_src( $image ) {
 
-		$extension = explode( ".", $image[0] );
+		$extension = explode( '.', $image[0] );
 		$extension = array_pop( $extension );
 
-		if ( $extension == "svg" ) {
+		if ( $extension == 'svg' ) {
 			$xml  = simplexml_load_file( $image[0] );
 			$attr = $xml->attributes();
 
 			if ( ! isset( $attr->width ) || ! isset( $attr->height ) ) {
-				$sizes = explode( " ", $attr->viewBox );
+				$sizes = explode( ' ', $attr->viewBox );
 				$attr->width  = $sizes[2];
 				$attr->height = $sizes[3];
 			}
@@ -100,7 +104,7 @@ class Controlled_Chaos_Admin_Images {
 		return $image;
 	}
 
-	function svg_filetype( $filetype_ext_data, $file, $filename, $mimes ) {
+	public function svg_filetype( $filetype_ext_data, $file, $filename, $mimes ) {
 
 		if ( substr( $filename, -4 ) === '.svg' ) {
 			$filetype_ext_data['ext']  = 'svg';
@@ -130,7 +134,7 @@ class Controlled_Chaos_Admin_Images {
 	public function svg_mime( $mimes = [] ) {
 
 		$user    = wp_get_current_user();
-		$allowed = array( 'administrator' );
+		$allowed = [ 'administrator' ];
 
 		if ( array_intersect( $allowed, $user->roles ) ) {
 			$mimes['svg']  = 'image/svg+xml';
