@@ -64,13 +64,16 @@ class Controlled_Chaos_Settings {
 	 */
     public function scripts_settings_page() {
 
-		add_options_page(
+		$this->help_scripts = add_options_page(
 			__( 'Script Options', 'controlled-chaos' ),
 			__( 'Script Options', 'controlled-chaos' ),
 			'manage_options',
 			'controlled-chaos-scripts',
 			[ $this, 'settings_scripts_output' ]
 		);
+
+		// Add content to the Help tab.
+		add_action( 'load-' . $this->help_scripts, [ $this, 'help_scripts' ] );
 
 	}
 
@@ -86,6 +89,78 @@ class Controlled_Chaos_Settings {
 	}
 
 	/**
+     * Output for the contextual help tab.
+	 * 
+	 * @since      1.0.0
+     */
+    public function help_scripts() {
+
+		// Add to the plugin settings pages.
+        $screen = get_current_screen();
+		if ( $screen->id != $this->help_scripts ) {
+			return;
+		}
+		
+		// Inline Scripts.
+		$screen->add_help_tab( [
+			'id'       => 'inline_scripts',
+			'title'    => __( 'Inline Scripts', 'controlled-chaos' ),
+			'content'  => null,
+			'callback' => [ $this, 'help_inline_scripts' ]
+		] );
+		
+		// Inline Scripts.
+		$screen->add_help_tab( [
+			'id'       => 'inline_jquery',
+			'title'    => __( 'Inline jQuery', 'controlled-chaos' ),
+			'content'  => null,
+			'callback' => [ $this, 'help_inline_jquery' ]
+		] );
+		
+		// Remove Emoji Scripts.
+		$screen->add_help_tab( [
+			'id'       => 'remove_emoji',
+			'title'    => __( 'Emoji Script', 'controlled-chaos' ),
+			'content'  => null,
+			'callback' => [ $this, 'help_remove_emoji' ]
+        ] );
+		
+	}
+
+	/**
+     * Get Inline Scripts help content.
+	 * 
+	 * @since      1.0.0
+     */
+	public function help_inline_scripts() { 
+		
+		include_once plugin_dir_path( __FILE__ ) . 'partials/help/help-inline-scripts.php';
+	
+	}
+
+	/**
+     * Get Inline jQuery help content.
+	 * 
+	 * @since      1.0.0
+     */
+	public function help_inline_jquery() { 
+		
+		include_once plugin_dir_path( __FILE__ ) . 'partials/help/help-inline-jquery.php';
+	
+	}
+
+	/**
+     * Get Remove Emoji Script help content.
+	 * 
+	 * @since      1.0.0
+     */
+	public function help_remove_emoji() { 
+		
+		include_once plugin_dir_path( __FILE__ ) . 'partials/help/help-remove-emoji.php';
+	
+	}
+
+	/**
 	 * Plugin settings, various.
 	 * 
 	 * @since    1.0.0
@@ -98,7 +173,7 @@ class Controlled_Chaos_Settings {
 		add_settings_section( 'ccp-scripts-general', __( 'General Options', 'controlled-chaos' ), [ $this, 'scripts_general_section_callback' ], 'ccp-scripts-general' );
 
 		// Inline scripts.
-		add_settings_field( 'ccp_inline_scripts', __( 'Inline scripts', 'controlled-chaos' ), [ $this, 'ccp_inline_scripts_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Add script contents to footer to reduce HTTP requests and increase load speed', 'controlled-chaos' ) ] );
+		add_settings_field( 'ccp_inline_scripts', __( 'Inline scripts', 'controlled-chaos' ), [ $this, 'ccp_inline_scripts_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Add script contents to footer', 'controlled-chaos' ) ] );
 
 		register_setting(
 			'ccp-scripts-general',
@@ -106,7 +181,7 @@ class Controlled_Chaos_Settings {
 		);
 
 		// Inline styles.
-		add_settings_field( 'ccp_inline_styles', __( 'Inline styles', 'controlled-chaos' ), [ $this, 'ccp_inline_styles_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Add script-related CSS contents to head to reduce HTTP requests and increase load speed', 'controlled-chaos' ) ] );
+		add_settings_field( 'ccp_inline_styles', __( 'Inline styles', 'controlled-chaos' ), [ $this, 'ccp_inline_styles_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Add script-related CSS contents to head', 'controlled-chaos' ) ] );
 
 		register_setting(
 			'ccp-scripts-general',
@@ -114,7 +189,7 @@ class Controlled_Chaos_Settings {
 		);
 
 		// Inline jQuery.
-		add_settings_field( 'ccp_inline_jquery', __( 'Inline jQuery', 'controlled-chaos' ), [ $this, 'ccp_inline_jquery_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Deregister jQuery and add its contents to footer, ahead of vendor scripts', 'controlled-chaos' ) ] );
+		add_settings_field( 'ccp_inline_jquery', __( 'Inline jQuery', 'controlled-chaos' ), [ $this, 'ccp_inline_jquery_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Deregister jQuery and add its contents to footer', 'controlled-chaos' ) ] );
 
 		register_setting(
 			'ccp-scripts-general',
