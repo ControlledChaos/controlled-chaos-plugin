@@ -22,7 +22,11 @@ if ( isset( $_GET[ 'tab' ] ) ) {
 
 <div class="wrap">
     <h1><?php esc_html_e( 'Script Options', 'controlled-chaos' ); ?></h1>
-    <p class="description"><?php esc_html_e( 'Script settings from the Controlled Chaos plugin.', 'controlled-chaos' ); ?></p>
+    <?php if ( is_rtl() ) : ?>
+    <p class="description"><?php esc_html_e( 'Script settings from the Controlled Chaos plugin. More information in the Help tab at upper left.', 'controlled-chaos' ); ?></p>
+    <?php else : ?>
+    <p class="description"><?php esc_html_e( 'Script settings from the Controlled Chaos plugin. More information in the Help tab at upper right.', 'controlled-chaos' ); ?></p>
+    <?php endif; ?>
     <h2 class="nav-tab-wrapper">
         <a href="?page=controlled-chaos-scripts&tab=ccp-scripts-general" class="nav-tab <?php echo $active_tab == 'ccp-scripts-general' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'General', 'controlled-chaos' ); ?></a>
         <a href="?page=controlled-chaos-scripts&tab=ccp-scripts-vendor" class="nav-tab <?php echo $active_tab == 'ccp-scripts-vendor' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Vendor', 'controlled-chaos' ); ?></a>
