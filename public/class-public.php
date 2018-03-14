@@ -136,10 +136,10 @@ class Controlled_Chaos_Public {
 	 */
 	public function get_styles() {
 
-		$fancybox    = file_get_contents( plugin_dir_path( __FILE__ ) . 'assets/css/jquery.fancybox.min.css' );
-		$slick       = file_get_contents( plugin_dir_path( __FILE__ ) . 'assets/css/slick.min.css' );
-		$slick_theme = file_get_contents( plugin_dir_path( __FILE__ ) . 'assets/css/slick-theme.min.css' );
-		$tooltipster = file_get_contents( plugin_dir_path( __FILE__ ) . 'assets/css/tooltipster.bundle.min.css' );
+		$fancybox    = file_get_contents( esc_html( plugin_dir_path( __FILE__ ) . 'assets/css/jquery.fancybox.min.css' ) );
+		$slick       = file_get_contents( esc_html( plugin_dir_path( __FILE__ ) . 'assets/css/slick.min.css' ) );
+		$slick_theme = file_get_contents( esc_html( plugin_dir_path( __FILE__ ) . 'assets/css/slick-theme.min.css' ) );
+		$tooltipster = file_get_contents( esc_html( plugin_dir_path( __FILE__ ) . 'assets/css/tooltipster.bundle.min.css' ) );
 
 		// Fancybox 3.
 		if ( get_option( 'ccp_enqueue_fancybox_styles' ) ) {
@@ -229,12 +229,12 @@ class Controlled_Chaos_Public {
 	 */
 	public function get_scripts() {
 
-		$fancybox    = file_get_contents( plugin_dir_path( __FILE__ ) . 'assets/js/jquery.fancybox.min.js' );
-		$slick       = file_get_contents( plugin_dir_path( __FILE__ ) . 'assets/js/slick.min.js' );
-		$tabslet     = file_get_contents( plugin_dir_path( __FILE__ ) . 'assets/js/jquery.tabslet.min.js' );
-		$tooltipster = file_get_contents( plugin_dir_path( __FILE__ ) . 'assets/js/tooltipster.bundle.min.js' );
-		$stickykit   = file_get_contents( plugin_dir_path( __FILE__ ) . 'assets/js/sticky-kit.min.js' );
-		$fitvids     = file_get_contents( plugin_dir_path( __FILE__ ) . 'assets/js/jquery.fitvids.min.js' );
+		$fancybox    = file_get_contents( esc_html( plugin_dir_path( __FILE__ ) . 'assets/js/jquery.fancybox.min.js' ) );
+		$slick       = file_get_contents( esc_html( plugin_dir_path( __FILE__ ) . 'assets/js/slick.min.js' ) );
+		$tabslet     = file_get_contents( esc_html( plugin_dir_path( __FILE__ ) . 'assets/js/jquery.tabslet.min.js' ) );
+		$tooltipster = file_get_contents( esc_html( plugin_dir_path( __FILE__ ) . 'assets/js/tooltipster.bundle.min.js' ) );
+		$stickykit   = file_get_contents( esc_html( plugin_dir_path( __FILE__ ) . 'assets/js/sticky-kit.min.js' ) );
+		$fitvids     = file_get_contents( esc_html( plugin_dir_path( __FILE__ ) . 'assets/js/jquery.fitvids.min.js' ) );
 
 		// Fancybox 3.
 		if ( get_option( 'ccp_enqueue_fancybox_script' ) ) {
