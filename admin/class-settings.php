@@ -89,7 +89,7 @@ class Controlled_Chaos_Settings {
 	}
 
 	/**
-     * Output for the contextual help tab.
+     * Output for the Script Options page contextual help tab.
 	 * 
 	 * @since      1.0.0
      */
@@ -123,7 +123,11 @@ class Controlled_Chaos_Settings {
 			'title'    => __( 'Emoji Script', 'controlled-chaos' ),
 			'content'  => null,
 			'callback' => [ $this, 'help_remove_emoji' ]
-        ] );
+		] );
+		
+		$screen->set_help_sidebar(
+			$this->help_scripts_sidebar()
+		);
 		
 	}
 
@@ -158,6 +162,24 @@ class Controlled_Chaos_Settings {
 		
 		include_once plugin_dir_path( __FILE__ ) . 'partials/help/help-remove-emoji.php';
 	
+	}
+
+	/**
+     * Get Script Options page contextual tab sidebar content.
+	 * 
+	 * @since      1.0.0
+     */
+    public function help_scripts_sidebar() {
+
+		$html = '<ul>
+			<li><a href="https://github.com/kenwheeler/slick" target="_blank" style="text-decoration: none;">' . __( 'Slick on GitHub', 'controlled-chaos' ) . '</a></li>
+			<li><a href="https://github.com/vdw/Tabslet" target="_blank" style="text-decoration: none;">' . __( 'Tabslet on GitHub', 'controlled-chaos' ) . '</a></li>
+			<li><a href="https://github.com/leafo/sticky-kit" target="_blank" style="text-decoration: none;">' . __( 'Sticky-kit on GitHub', 'controlled-chaos' ) . '</a></li>
+			<li><a href="https://github.com/iamceege/tooltipster" target="_blank" style="text-decoration: none;">' . __( 'Tooltipster on GitHub', 'controlled-chaos' ) . '</a></li>
+		</ul>';
+
+		return $html;
+
 	}
 
 	/**
@@ -414,8 +436,6 @@ class Controlled_Chaos_Settings {
 		
 		$html .= '<label for="ccp_enqueue_slick"> '  . $args[0] . '</label>';
 
-		$html .= '<a class="dashicons dashicons-editor-help" title="More info on GitHub" href="https://github.com/kenwheeler/slick" target="_blank"><span class="screen-reader-text">' . esc_html( 'More info on GitHub', 'controlled-chaos' ) . '</span></a></p>';
-
 		echo $html;
 
 	}
@@ -432,8 +452,6 @@ class Controlled_Chaos_Settings {
 		$html = '<p><input type="checkbox" id="ccp_enqueue_tabslet" name="ccp_enqueue_tabslet" value="1" ' . checked( 1, $option, false ) . '/>';
 		
 		$html .= '<label for="ccp_enqueue_tabslet"> '  . $args[0] . '</label>';
-
-		$html .= '<a class="dashicons dashicons-editor-help" title="More info on GitHub" href="https://github.com/vdw/Tabslet" target="_blank"><span class="screen-reader-text">' . esc_html( 'More info on GitHub', 'controlled-chaos' ) . '</span></a></p>';
 
 		echo $html;
 
@@ -452,8 +470,6 @@ class Controlled_Chaos_Settings {
 		
 		$html .= '<label for="ccp_enqueue_stickykit"> '  . $args[0] . '</label>';
 
-		$html .= '<a class="dashicons dashicons-editor-help" title="More info on GitHub" href="https://github.com/leafo/sticky-kit" target="_blank"><span class="screen-reader-text">' . esc_html( 'More info on GitHub', 'controlled-chaos' ) . '</span></a></p>';
-
 		echo $html;
 
 	}
@@ -470,8 +486,6 @@ class Controlled_Chaos_Settings {
 		$html = '<p><input type="checkbox" id="ccp_enqueue_tooltipster" name="ccp_enqueue_tooltipster" value="1" ' . checked( 1, $option, false ) . '/>';
 		
 		$html .= '<label for="ccp_enqueue_tooltipster"> '  . $args[0] . '</label>';
-
-		$html .= '<a class="dashicons dashicons-editor-help" title="More info on GitHub" href="https://github.com/iamceege/tooltipster" target="_blank"><span class="screen-reader-text">' . esc_html( 'More info on GitHub', 'controlled-chaos' ) . '</span></a></p>';
 
 		echo $html;
 
