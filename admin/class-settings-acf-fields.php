@@ -35,11 +35,11 @@ class Controlled_Chaos_Settings_Fields {
 
 		if ( function_exists( 'acf_add_local_field_group' ) ) :
 
-			acf_add_local_field_group(array(
+			acf_add_local_field_group( [
 				'key' => 'group_5a0c7ff7764ca',
 				'title' => 'Settings Page',
-				'fields' => array(
-					array(
+				'fields' => [
+					[
 						'key' => 'field_5a0c8d7232b94',
 						'label' => 'Dashboard',
 						'name' => '',
@@ -47,15 +47,15 @@ class Controlled_Chaos_Settings_Fields {
 						'instructions' => '',
 						'required' => 0,
 						'conditional_logic' => 0,
-						'wrapper' => array(
+						'wrapper' => [
 							'width' => '',
 							'class' => '',
 							'id' => '',
-						),
+						],
 						'placement' => 'top',
 						'endpoint' => 0,
-					),
-					array(
+					],
+					[
 						'key' => 'field_5a0c8f393edd6',
 						'label' => 'Hide Widgets',
 						'name' => 'ccp_dashboard_hide_widgets',
@@ -63,27 +63,27 @@ class Controlled_Chaos_Settings_Fields {
 						'instructions' => 'Select the Dashboard widgets to hide.',
 						'required' => 0,
 						'conditional_logic' => 0,
-						'wrapper' => array(
+						'wrapper' => [
 							'width' => '',
 							'class' => '',
 							'id' => '',
-						),
-						'choices' => array(
+						],
+						'choices' => [
 							'welcome' => 'Welcome',
 							'news' => 'WordPress News',
 							'quick' => 'Quick Press',
 							'at_glance' => 'At a Glance',
 							'activity' => 'Activity',
-						),
+						],
 						'allow_custom' => 0,
 						'save_custom' => 0,
-						'default_value' => array(
-						),
+						'default_value' => [
+						],
 						'layout' => 'horizontal',
 						'toggle' => 1,
 						'return_format' => 'value',
-					),
-					array(
+					],
+					[
 						'key' => 'field_5a0c800f57d56',
 						'label' => 'Admin Menu',
 						'name' => '',
@@ -91,15 +91,15 @@ class Controlled_Chaos_Settings_Fields {
 						'instructions' => '',
 						'required' => 0,
 						'conditional_logic' => 0,
-						'wrapper' => array(
+						'wrapper' => [
 							'width' => '',
 							'class' => '',
 							'id' => '',
-						),
+						],
 						'placement' => 'top',
 						'endpoint' => 0,
-					),
-					array(
+					],
+					[
 						'key' => 'field_5a0c802257d57',
 						'label' => 'Menus Link',
 						'name' => 'ccp_menus_link_position',
@@ -107,21 +107,21 @@ class Controlled_Chaos_Settings_Fields {
 						'instructions' => 'Select the position of the Menus page link.',
 						'required' => 0,
 						'conditional_logic' => 0,
-						'wrapper' => array(
+						'wrapper' => [
 							'width' => '',
 							'class' => '',
 							'id' => '',
-						),
-						'choices' => array(
+						],
+						'choices' => [
 							'top' => 'Top Level',
 							'default' => 'Default',
-						),
+						],
 						'allow_null' => 0,
 						'default_value' => 'top',
 						'layout' => 'horizontal',
 						'return_format' => 'value',
-					),
-					array(
+					],
+					[
 						'key' => 'field_5a0c808757d58',
 						'label' => 'Widgets Link',
 						'name' => 'ccp_widgets_link_position',
@@ -129,21 +129,21 @@ class Controlled_Chaos_Settings_Fields {
 						'instructions' => 'Select the position of the Widgets page link.',
 						'required' => 0,
 						'conditional_logic' => 0,
-						'wrapper' => array(
+						'wrapper' => [
 							'width' => '',
 							'class' => '',
 							'id' => '',
-						),
-						'choices' => array(
+						],
+						'choices' => [
 							'top' => 'Top Level',
 							'default' => 'Default',
-						),
+						],
 						'allow_null' => 0,
 						'default_value' => 'top',
 						'layout' => 'horizontal',
 						'return_format' => 'value',
-					),
-					array(
+					],
+					[
 						'key' => 'field_5a0c80ab57d59',
 						'label' => 'Settings Page',
 						'name' => 'ccp_settings_link_position',
@@ -151,21 +151,21 @@ class Controlled_Chaos_Settings_Fields {
 						'instructions' => 'Select the position of this Settings page link, and whether to show or hide the other settings links.',
 						'required' => 0,
 						'conditional_logic' => 0,
-						'wrapper' => array(
+						'wrapper' => [
 							'width' => '',
 							'class' => '',
 							'id' => '',
-						),
-						'choices' => array(
+						],
+						'choices' => [
 							'default' => 'Default/Show',
 							'top' => 'Top Level/Hide',
-						),
+						],
 						'allow_null' => 0,
 						'default_value' => 'default',
 						'layout' => 'horizontal',
 						'return_format' => 'value',
-					),
-					array(
+					],
+					[
 						'key' => 'field_5a0c8d8a32b95',
 						'label' => 'Hide Links',
 						'name' => 'ccp_admin_hide_links',
@@ -173,27 +173,46 @@ class Controlled_Chaos_Settings_Fields {
 						'instructions' => 'Select which menu items to hide.',
 						'required' => 0,
 						'conditional_logic' => 0,
-						'wrapper' => array(
+						'wrapper' => [
 							'width' => '',
 							'class' => '',
 							'id' => '',
-						),
-						'choices' => array(
+						],
+						'choices' => [
 							'themes' => 'Appearance',
 							'plugins' => 'Plugins',
 							'users' => 'Users',
 							'tools' => 'Tools',
 							'fields' => 'Custom Fields',
-						),
+						],
 						'allow_custom' => 0,
 						'save_custom' => 0,
-						'default_value' => array(
-						),
+						'default_value' => [
+						],
 						'layout' => 'horizontal',
 						'toggle' => 1,
 						'return_format' => 'value',
-					),
-					array(
+					],
+					[
+						'key' => 'field_5aaa73e38deb3',
+						'label' => 'Links Manager',
+						'name' => 'ccp_links_manager',
+						'type' => 'true_false',
+						'instructions' => 'The old Links Manager is hidden by default in newer WordPress installations.',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => [
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						],
+						'message' => '',
+						'default_value' => 0,
+						'ui' => 1,
+						'ui_on_text' => 'Enabled',
+						'ui_off_text' => 'Disabled',
+					],
+					[
 						'key' => 'field_5a0cbb3873e55',
 						'label' => 'Admin Pages',
 						'name' => '',
@@ -201,15 +220,15 @@ class Controlled_Chaos_Settings_Fields {
 						'instructions' => '',
 						'required' => 0,
 						'conditional_logic' => 0,
-						'wrapper' => array(
+						'wrapper' => [
 							'width' => '',
 							'class' => '',
 							'id' => '',
-						),
+						],
 						'placement' => 'top',
 						'endpoint' => 0,
-					),
-					array(
+					],
+					[
 						'key' => 'field_5a0cbb5e73e56',
 						'label' => 'Admin Footer Credit',
 						'name' => 'ccp_admin_footer_credit',
@@ -217,18 +236,18 @@ class Controlled_Chaos_Settings_Fields {
 						'instructions' => 'The "developed by" credit.',
 						'required' => 0,
 						'conditional_logic' => 0,
-						'wrapper' => array(
+						'wrapper' => [
 							'width' => '',
 							'class' => '',
 							'id' => '',
-						),
+						],
 						'default_value' => '',
 						'placeholder' => '',
 						'prepend' => '',
 						'append' => '',
 						'maxlength' => '',
-					),
-					array(
+					],
+					[
 						'key' => 'field_5a0cbba573e57',
 						'label' => 'Admin Footer Link',
 						'name' => 'ccp_admin_footer_link',
@@ -236,15 +255,15 @@ class Controlled_Chaos_Settings_Fields {
 						'instructions' => 'Link to the website devoloper.',
 						'required' => 0,
 						'conditional_logic' => 0,
-						'wrapper' => array(
+						'wrapper' => [
 							'width' => '',
 							'class' => '',
 							'id' => '',
-						),
+						],
 						'default_value' => '',
 						'placeholder' => '',
-					),
-					array(
+					],
+					[
 						'key' => 'field_5a1989a036067',
 						'label' => 'Meta/SEO',
 						'name' => '',
@@ -252,15 +271,15 @@ class Controlled_Chaos_Settings_Fields {
 						'instructions' => '',
 						'required' => 0,
 						'conditional_logic' => 0,
-						'wrapper' => array(
+						'wrapper' => [
 							'width' => '',
 							'class' => '',
 							'id' => '',
-						),
+						],
 						'placement' => 'top',
 						'endpoint' => 0,
-					),
-					array(
+					],
+					[
 						'key' => 'field_5a237090744c4',
 						'label' => 'Meta Tags',
 						'name' => 'ccp_disable_meta_tags',
@@ -268,92 +287,92 @@ class Controlled_Chaos_Settings_Fields {
 						'instructions' => 'Disable if you plan on using Yoast SEO or a similarly awful plugin.',
 						'required' => 0,
 						'conditional_logic' => 0,
-						'wrapper' => array(
+						'wrapper' => [
 							'width' => '',
 							'class' => '',
 							'id' => '',
-						),
+						],
 						'message' => 'Check to disable',
 						'default_value' => 0,
 						'ui' => 0,
 						'ui_on_text' => 'Disabled',
 						'ui_off_text' => 'Enabled',
-					),
-					array(
+					],
+					[
 						'key' => 'field_5a198d601b523',
 						'label' => 'Blog Pages Title',
 						'name' => 'ccp_meta_blog_title',
 						'type' => 'text',
 						'instructions' => 'Will use the site title if left empty.',
 						'required' => 0,
-						'conditional_logic' => array(
-							array(
-								array(
+						'conditional_logic' => [
+							[
+								[
 									'field' => 'field_5a237090744c4',
 									'operator' => '!=',
 									'value' => '1',
-								),
-							),
-						),
-						'wrapper' => array(
+								],
+							],
+						],
+						'wrapper' => [
 							'width' => '',
 							'class' => '',
 							'id' => '',
-						),
+						],
 						'default_value' => '',
 						'placeholder' => '',
 						'prepend' => '',
 						'append' => '',
 						'maxlength' => '',
-					),
-					array(
+					],
+					[
 						'key' => 'field_5a198bd736068',
 						'label' => 'Blog Pages Description',
 						'name' => 'ccp_meta_blog_description',
 						'type' => 'textarea',
 						'instructions' => 'Will use the site tagline if left empty and if a tagline is set.',
 						'required' => 0,
-						'conditional_logic' => array(
-							array(
-								array(
+						'conditional_logic' => [
+							[
+								[
 									'field' => 'field_5a237090744c4',
 									'operator' => '!=',
 									'value' => '1',
-								),
-							),
-						),
-						'wrapper' => array(
+								],
+							],
+						],
+						'wrapper' => [
 							'width' => '',
 							'class' => '',
 							'id' => '',
-						),
+						],
 						'default_value' => '',
 						'placeholder' => '',
 						'maxlength' => '',
 						'rows' => 4,
 						'new_lines' => '',
-					),
-					array(
+					],
+					[
 						'key' => 'field_5a198c1836069',
 						'label' => 'Blog Pages Image',
 						'name' => 'ccp_meta_blog_image',
 						'type' => 'image',
 						'instructions' => 'A minimum of 1230px by 600px is recommended for retina display devices.',
 						'required' => 0,
-						'conditional_logic' => array(
-							array(
-								array(
+						'conditional_logic' => [
+							[
+								[
 									'field' => 'field_5a237090744c4',
 									'operator' => '!=',
 									'value' => '1',
-								),
-							),
-						),
-						'wrapper' => array(
+								],
+							],
+						],
+						'wrapper' => [
 							'width' => '',
 							'class' => '',
 							'id' => '',
-						),
+						],
 						'return_format' => 'array',
 						'preview_size' => 'medium',
 						'library' => 'all',
@@ -364,17 +383,17 @@ class Controlled_Chaos_Settings_Fields {
 						'max_height' => '',
 						'max_size' => '',
 						'mime_types' => '',
-					),
-				),
-				'location' => array(
-					array(
-						array(
+					],
+				],
+				'location' => [
+					[
+						[
 							'param' => 'options_page',
 							'operator' => '==',
 							'value' => 'site-settings',
-						),
-					),
-				),
+						],
+					],
+				],
 				'menu_order' => 0,
 				'position' => 'acf_after_title',
 				'style' => 'seamless',
@@ -383,7 +402,7 @@ class Controlled_Chaos_Settings_Fields {
 				'hide_on_screen' => '',
 				'active' => 1,
 				'description' => '',
-			));
+			 ] );
 
 		endif;
 

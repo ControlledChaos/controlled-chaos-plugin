@@ -152,6 +152,14 @@ class Controlled_Chaos_Site_Settings {
 			'ccp_hide_tools'
 		);
 
+		// Show/Hide Links Manager link.
+		add_settings_field( 'ccp_hide_links', __( 'Show Links', 'controlled-chaos' ), [ $this, 'ccp_hide_links_callback' ], 'ccp-site-admin-menu', 'ccp-site-admin-menu', [ esc_html__( 'The old Links Manager is hidden by default in newer WordPress installations', 'controlled-chaos' ) ] );
+
+		register_setting(
+			'ccp-site-admin-menu',
+			'ccp_hide_links'
+		);
+
 		/**
 		 * Admin pages.
 		 */
@@ -391,6 +399,23 @@ class Controlled_Chaos_Site_Settings {
 		$html = '<p><input type="checkbox" id="ccp_hide_tools" name="ccp_hide_tools" value="1" ' . checked( 1, $option, false ) . '/>';
 		
 		$html .= '<label for="ccp_hide_tools"> ' . $args[0] . '</label></p>';
+
+		echo $html;
+
+	}
+
+	/**
+	 * Show/Hide Links Manager link.
+	 * 
+	 * @since    1.0.0
+	 */
+	public function ccp_hide_links_callback( $args ) {
+
+		$option = get_option( 'ccp_hide_links' );
+
+		$html = '<p><input type="checkbox" id="ccp_hide_links" name="ccp_hide_links" value="1" ' . checked( 1, $option, false ) . '/>';
+		
+		$html .= '<label for="ccp_hide_links"> ' . $args[0] . '</label></p>';
 
 		echo $html;
 
