@@ -153,7 +153,7 @@ class Controlled_Chaos_Site_Settings {
 		);
 
 		// Show/Hide Links Manager link.
-		add_settings_field( 'ccp_hide_links', __( 'Show Links', 'controlled-chaos' ), [ $this, 'ccp_hide_links_callback' ], 'ccp-site-admin-menu', 'ccp-site-admin-menu', [ esc_html__( 'The old Links Manager is hidden by default in newer WordPress installations', 'controlled-chaos' ) ] );
+		add_settings_field( 'ccp_hide_links', __( 'Restore Links Manager', 'controlled-chaos' ), [ $this, 'ccp_hide_links_callback' ], 'ccp-site-admin-menu', 'ccp-site-admin-menu', [ esc_html__( 'The old Links Manager is hidden by default in newer WordPress installations', 'controlled-chaos' ) ] );
 
 		register_setting(
 			'ccp-site-admin-menu',
