@@ -201,7 +201,7 @@ class Controlled_Chaos_Settings_Fields {
 					],
 					[
 						'key' => 'field_5aaa73e38deb3',
-						'label' => 'Links Manager',
+						'label' => 'Restore Links Manager',
 						'name' => 'ccp_links_manager',
 						'type' => 'true_false',
 						'instructions' => 'The old Links Manager is hidden by default in newer WordPress installations.',

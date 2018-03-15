@@ -46,6 +46,25 @@ class Controlled_Chaos_Admin_Menu {
 
         }
 
+        /**
+         * Show/Hide Links Manager link.
+         */
+        
+        // Get links option.
+        if ( class_exists( 'ACF_Pro' ) ) {
+            $links = get_field( 'ccp_links_manager', 'option' );
+        } else {
+            $links = get_option( 'ccp_hide_links' );
+        }
+
+        // Return links filter.
+        if ( $links ) {
+            add_filter( 'pre_option_link_manager_enabled', '__return_true' );
+        } else {
+            add_filter( 'pre_option_link_manager_enabled', '__return_false' );
+        }
+
+
         // Move the Menus & Widgets menu items.
         add_action( 'admin_menu', [ $this, 'menus_widgets' ] );
 
@@ -72,9 +91,6 @@ class Controlled_Chaos_Admin_Menu {
             // Get the multiple checkbox field.
             $options = get_field( 'ccp_admin_hide_links', 'option' );
 
-            // Get Links Manager option.
-            $links   = get_field( 'ccp_links_manager', 'option' );
-
             // Hide Appearance link.
             if ( $options && in_array( 'themes', $options ) ) {
                 remove_menu_page( 'themes.php' );
@@ -95,13 +111,6 @@ class Controlled_Chaos_Admin_Menu {
                 remove_menu_page( 'tools.php' );
             }
 
-            // Show/Hide the Links Manager.
-            if ( $links ) {
-                add_filter( 'pre_option_link_manager_enabled', '__return_true' );
-            } else {
-                add_filter( 'pre_option_link_manager_enabled', '__return_false' );
-            }
-
         } else {
 
             /**
@@ -113,7 +122,6 @@ class Controlled_Chaos_Admin_Menu {
             $plugins    = get_option( 'ccp_hide_plugins' );
             $users      = get_option( 'ccp_hide_users' );
             $tools      = get_option( 'ccp_hide_tools' );
-            $links      = get_option( 'ccp_hide_links' );
 
             // Hide Appearance link.
             if ( $appearance ) {
@@ -133,13 +141,6 @@ class Controlled_Chaos_Admin_Menu {
             // Hide Tools link.
             if ( $tools ) {
                 remove_menu_page( 'tools.php' );
-            }
-
-            // Show/Hide Links Manager link.
-            if ( $links ) {
-                add_filter( 'pre_option_link_manager_enabled', '__return_true' );
-            } else {
-                add_filter( 'pre_option_link_manager_enabled', '__return_false' );
             }
 
         }
