@@ -1,4 +1,5 @@
-[![WordPress](https://img.shields.io/wordpress/v/akismet.svg?style=flat-square)](https://wordpress.org/)
+![WordPress](https://img.shields.io/wordpress/v/akismet.svg?style=flat-square)
+![PHP version from PHP-Eye](https://img.shields.io/php-eye/symfony/symfony.svg?style=flat-square)
 # Controlled Chaos
 A head start for site-specific WordPress plugins. Can be used as is without further development.
 
