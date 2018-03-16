@@ -1,3 +1,5 @@
+[![GitHub tag](https://img.shields.io/github/tag/expressjs/express.svg?style=flat-square)](https://github.com/ControlledChaos/controlled-chaos-plugin)
+[![WordPress](https://img.shields.io/wordpress/v/akismet.svg?style=flat-square)](https://wordpress.org/)
 # Controlled Chaos
 A head start for site-specific WordPress plugins. Can be used as is without further development.
 
