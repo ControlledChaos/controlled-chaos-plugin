@@ -97,11 +97,11 @@ class Controlled_Chaos_Site_Settings {
 		add_settings_section( 'ccp-site-admin-menu', __( 'Admin Menu Settings', 'controlled-chaos' ), [], 'ccp-site-admin-menu' );
 
 		// Settings page link label.
-		add_settings_field( 'ccp_page_link_label', __( 'Settings Page Label', 'controlled-chaos' ), [ $this, 'ccp_page_link_label_callback' ], 'ccp-site-admin-menu', 'ccp-site-admin-menu', [ esc_html__( 'Change the label of the link to this page', 'controlled-chaos' ) ] );
+		add_settings_field( 'ccp_settings_page_link_label', __( 'Settings Page Label', 'controlled-chaos' ), [ $this, 'ccp_settings_page_link_label_callback' ], 'ccp-site-admin-menu', 'ccp-site-admin-menu', [ esc_html__( 'Change the label of the link to this page', 'controlled-chaos' ) ] );
 
 		register_setting(
 			'ccp-site-admin-menu',
-			'ccp_page_link_label'
+			'ccp_settings_page_link_label'
 		);
 
 		// Menus link position.
@@ -213,13 +213,13 @@ class Controlled_Chaos_Site_Settings {
 	 * 
 	 * @since    1.0.0
 	 */
-	public function ccp_page_link_label_callback( $args ) {
+	public function ccp_settings_page_link_label_callback( $args ) {
 
-		$option = get_option( 'ccp_page_link_label' );
+		$option = get_option( 'ccp_settings_page_link_label' );
 
-		$html = '<p><input type="text" size="50" id="ccp_page_link_label" name="ccp_page_link_label" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( __( 'Site Settings', 'controlled-chaos' ) ) . '" /><br />';
+		$html = '<p><input type="text" size="50" id="ccp_settings_page_link_label" name="ccp_settings_page_link_label" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( __( 'Site Settings', 'controlled-chaos' ) ) . '" /><br />';
 		
-		$html .= '<label for="ccp_page_link_label"> ' . $args[0] . '</label></p>';
+		$html .= '<label for="ccp_settings_page_link_label"> ' . $args[0] . '</label></p>';
 
 		echo $html;
 
