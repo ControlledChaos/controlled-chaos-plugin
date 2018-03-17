@@ -96,6 +96,14 @@ class Controlled_Chaos_Site_Settings {
 		// Admin menu settings section.
 		add_settings_section( 'ccp-site-admin-menu', __( 'Admin Menu Settings', 'controlled-chaos' ), [], 'ccp-site-admin-menu' );
 
+		// Settings page link label.
+		add_settings_field( 'ccp_page_link_label', __( 'Settings Page Label', 'controlled-chaos' ), [ $this, 'ccp_page_link_label_callback' ], 'ccp-site-admin-menu', 'ccp-site-admin-menu', [ esc_html__( 'Change the label of the link to this page', 'controlled-chaos' ) ] );
+
+		register_setting(
+			'ccp-site-admin-menu',
+			'ccp_page_link_label'
+		);
+
 		// Menus link position.
 		add_settings_field( 'ccp_menus_position', __( 'Menus Position', 'controlled-chaos' ), [ $this, 'ccp_menus_position_callback' ], 'ccp-site-admin-menu', 'ccp-site-admin-menu', [ esc_html__( 'Make Menus a top-level link', 'controlled-chaos' ) ] );
 
@@ -197,6 +205,23 @@ class Controlled_Chaos_Site_Settings {
 			'ccp-site-meta-seo',
 			'ccp_disable_meta'
 		);
+
+	}
+
+	/**
+	 * Settings page link label.
+	 * 
+	 * @since    1.0.0
+	 */
+	public function ccp_page_link_label_callback( $args ) {
+
+		$option = get_option( 'ccp_page_link_label' );
+
+		$html = '<p><input type="text" size="50" id="ccp_page_link_label" name="ccp_page_link_label" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( __( 'Site Settings', 'controlled-chaos' ) ) . '" /><br />';
+		
+		$html .= '<label for="ccp_page_link_label"> ' . $args[0] . '</label></p>';
+
+		echo $html;
 
 	}
 
@@ -430,7 +455,7 @@ class Controlled_Chaos_Site_Settings {
 
 		$option = get_option( 'ccp_footer_credit' );
 
-		$html = '<p><input type="text" size="50" id="ccp_footer_credit" name="ccp_footer_credit" value="' . esc_attr( $option ) . '" /><br />';
+		$html = '<p><input type="text" size="50" id="ccp_footer_credit" name="ccp_footer_credit" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( __( 'Your name/agency', 'controlled-chaos' ) ) . '" /><br />';
 		
 		$html .= '<label for="ccp_footer_credit"> ' . $args[0] . '</label></p>';
 
@@ -447,7 +472,7 @@ class Controlled_Chaos_Site_Settings {
 
 		$option = get_option( 'ccp_footer_link' );
 
-		$html = '<p><input type="text" size="50" id="ccp_footer_link" name="ccp_footer_link" value="' . esc_attr( $option ) . '" /><br />';
+		$html = '<p><input type="text" size="50" id="ccp_footer_link" name="ccp_footer_link" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( 'http://example.com/' ) . '" /><br />';
 		
 		$html .= '<label for="ccp_footer_link"> ' . $args[0] . '</label></p>';
 

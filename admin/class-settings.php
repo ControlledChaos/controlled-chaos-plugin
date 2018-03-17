@@ -560,10 +560,18 @@ class Controlled_Chaos_Settings {
 			}
 
 		} else {
+
+			$get_label = get_option( 'ccp_page_link_label' );
+
+			if ( $get_label ) {
+				$label = $get_label;
+			}  else {
+				$label = __( 'Site Settings', 'controlled-chaos' );
+			}
 			
 			add_options_page(
-				__( 'Site Settings', 'controlled-chaos' ),
-				__( 'Site Settings', 'controlled-chaos' ),
+				$label,
+				$label,
 				'manage_options',
 				'controlled-chaos-settings',
 				[ $this, 'settings_site_output' ]
