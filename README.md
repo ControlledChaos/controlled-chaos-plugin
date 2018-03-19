@@ -5,6 +5,8 @@ A head start for site-specific WordPress plugins. Can be used as is without furt
 ![WordPress](https://img.shields.io/wordpress/v/akismet.svg?style=flat-square)
 ![PHP version from PHP-Eye](https://img.shields.io/php-eye/symfony/symfony.svg?style=flat-square)
 
+<img src="https://raw.githubusercontent.com/ControlledChaos/controlled-chaos-plugin/master/controlled-chaos-plugin-readme-header.jpg" style="max-width: 100%" />
+
 ## Dependencies
 
 Short array syntax requires PHP 5.4+
@@ -28,7 +30,7 @@ UI & UX JS plugins ready to use
 
 ### Starter Settings Pages
 
-One settings page via the default WordPress method and one settings page using the ACF Options Page method (if ACF is active).
+One settings page via the default WordPress method and one settings page using the Advanced Custom Fields Options Page method (if ACF is active).
 
 ### Sample Custom Post Type
 
