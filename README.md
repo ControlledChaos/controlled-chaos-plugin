@@ -5,7 +5,7 @@ A head start for site-specific WordPress plugins. Can be used as is without furt
 ![WordPress](https://img.shields.io/wordpress/v/akismet.svg?style=flat-square)
 ![PHP version from PHP-Eye](https://img.shields.io/php-eye/symfony/symfony.svg?style=flat-square)
 
-![alt text](https://raw.githubusercontent.com/ControlledChaos/controlled-chaos-plugin/master/controlled-chaos-plugin-readme-header.jpg "Controlled Chaos Plugin")
+![Controlled Chaos Plugin cover image](https://raw.githubusercontent.com/ControlledChaos/controlled-chaos-plugin/master/controlled-chaos-plugin-readme-header.jpg)
 
 ## Dependencies
 
