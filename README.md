@@ -13,10 +13,6 @@ Short array syntax requires PHP 5.4+
 
 To take advantage of all of its features, this plugin is recommended for use with Advanced Custom Fields PRO.
 
-## Includes
-
-Following are some of the core functions and features offered.
-
 ### jQuery Plugins
 
 UI & UX JS plugins ready to use
