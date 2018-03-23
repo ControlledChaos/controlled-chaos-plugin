@@ -24,15 +24,15 @@ if ( isset( $_GET[ 'tab' ] ) ) {
 	<?php echo sprintf( '<h1>%1s %2s</h1>', get_bloginfo( 'name' ), esc_html__( 'Settings', 'controlled-chaos' ) ); ?>
     <p class="description"><?php esc_html_e( 'Site settings from the Controlled Chaos plugin.', 'controlled-chaos' ); ?></p>
     <h2 class="nav-tab-wrapper">
-		<a href="?page=controlled-chaos-settings&tab=ccp-site-dashboard" class="nav-tab <?php echo $active_tab == 'ccp-site-dashboard' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Dashboard', 'controlled-chaos' ); ?></a>
+		<a href="?page=controlled-chaos-settings&tab=ccp-dashboard" class="nav-tab <?php echo $active_tab == 'ccp-site-dashboard' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Dashboard', 'controlled-chaos' ); ?></a>
         <a href="?page=controlled-chaos-settings&tab=ccp-site-admin-menu" class="nav-tab <?php echo $active_tab == 'ccp-site-admin-menu' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Admin Menu', 'controlled-chaos' ); ?></a>
         <a href="?page=controlled-chaos-settings&tab=ccp-site-admin-pages" class="nav-tab <?php echo $active_tab == 'ccp-site-admin-pages' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Admin Pages', 'controlled-chaos' ); ?></a>
 		<a href="?page=controlled-chaos-settings&tab=ccp-site-meta-seo" class="nav-tab <?php echo $active_tab == 'ccp-site-meta-seo' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Meta/SEO', 'controlled-chaos' ); ?></a>
     </h2>
-	<form action="options.php" method="post">
-        <?php if ( $active_tab == 'ccp-site-dashboard' ) {
-            settings_fields( 'ccp-site-dashboard' );
-            do_settings_sections( 'ccp-site-dashboard' );
+	<form method="post" action="options.php">
+        <?php if ( $active_tab == 'ccp-dashboard' ) {
+            settings_fields( 'ccp_dashboard' );
+            do_settings_sections( 'ccp-dashboard' );
 			$save = __( 'Save Dashboard', 'controlled-chaos' );
 		} elseif ( $active_tab == 'ccp-site-admin-menu' ) {
             settings_fields( 'ccp-site-admin-menu' );
@@ -47,7 +47,7 @@ if ( isset( $_GET[ 'tab' ] ) ) {
             do_settings_sections( 'ccp-site-meta-seo' );
             $save = __( 'Save Meta', 'controlled-chaos' );
         } ?>
-        <p class="submit"><?php submit_button( $save, 'primary', '', false, [] ); echo ' '; ?></p>
+        <p class="submit"><?php submit_button( $save, 'primary', '', false, [] ); ?></p>
     </form>
 	<?php echo sprintf( '<p class="description">%1s <a href="%2s" target="_blank">%3s</a>.</p>', esc_html__( 'The Controlled Chaos plugin is developed by' ), esc_url( 'http://ccdzine.com/' ),esc_html__( 'Controlled Chaos Design' ) ); ?>
 </div>
