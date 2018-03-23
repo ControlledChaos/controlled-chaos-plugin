@@ -24,6 +24,11 @@ if ( ! defined( 'WPINC' ) ) {
 class Controlled_Chaos_Site_Settings {
 
 	/**
+     * Holds the values to be used in the fields callbacks
+     */
+    private $options;
+
+	/**
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
@@ -31,7 +36,9 @@ class Controlled_Chaos_Site_Settings {
     public function __construct() {
 
 		// Register settings sections and fields.
-		add_action( 'admin_init', [ $this, 'settings' ] );
+		if ( is_admin() ) {
+			add_action( 'admin_init', [ $this, 'settings' ] );
+		}
 
 	}
 
@@ -47,45 +54,45 @@ class Controlled_Chaos_Site_Settings {
 		 */
 		
 		// Dashboard settings section.
-		add_settings_section( 'ccp-site-dashboard', __( 'Dashboard Settings', 'controlled-chaos' ), [], 'ccp-site-dashboard' );
+		add_settings_section( 'ccp-site-dashboard', __( 'Dashboard Settings', 'controlled-chaos' ), [], 'ccp-dashboard' );
 
 		// Hide Welcome panel.
-		add_settings_field( 'ccp_hide_welcome', __( 'Hide Welcome', 'controlled-chaos' ), [ $this, 'ccp_hide_welcome_callback' ], 'ccp-site-dashboard', 'ccp-site-dashboard', [ esc_html__( 'Hide the Welcome panel on the Dashboard', 'controlled-chaos' ) ] );
+		add_settings_field( 'ccp_hide_welcome', __( 'Hide Welcome', 'controlled-chaos' ), [ $this, 'ccp_hide_welcome_callback' ], 'ccp-dashboard', 'ccp-site-dashboard', [ esc_html__( 'Hide the Welcome panel on the Dashboard', 'controlled-chaos' ) ] );
 
 		register_setting(
-			'ccp-site-dashboard',
+			'ccp_dashboard',
 			'ccp_hide_welcome'
 		);
 
 		// Hide WordPress News widget.
-		add_settings_field( 'ccp_hide_wp_news', __( 'Hide WordPress News', 'controlled-chaos' ), [ $this, 'ccp_hide_wp_news_callback' ], 'ccp-site-dashboard', 'ccp-site-dashboard', [ esc_html__( 'Hide the WordPress News widget on the Dashboard', 'controlled-chaos' ) ] );
+		add_settings_field( 'ccp_hide_wp_news', __( 'Hide WordPress News', 'controlled-chaos' ), [ $this, 'ccp_hide_wp_news_callback' ], 'ccp-dashboard', 'ccp-site-dashboard', [ esc_html__( 'Hide the WordPress News widget on the Dashboard', 'controlled-chaos' ) ] );
 
 		register_setting(
-			'ccp-site-dashboard',
+			'ccp_dashboard',
 			'ccp_hide_wp_news'
 		);
 
 		// Hide Quick Draft (QuickPress) widget.
-		add_settings_field( 'ccp_hide_quickpress', __( 'Hide Quick Draft', 'controlled-chaos' ), [ $this, 'ccp_hide_quickpress_callback' ], 'ccp-site-dashboard', 'ccp-site-dashboard', [ esc_html__( 'Hide the Quick Draft widget on the Dashboard', 'controlled-chaos' ) ] );
+		add_settings_field( 'ccp_hide_quickpress', __( 'Hide Quick Draft', 'controlled-chaos' ), [ $this, 'ccp_hide_quickpress_callback' ], 'ccp-dashboard', 'ccp-site-dashboard', [ esc_html__( 'Hide the Quick Draft widget on the Dashboard', 'controlled-chaos' ) ] );
 
 		register_setting(
-			'ccp-site-dashboard',
+			'ccp_dashboard',
 			'ccp_hide_quickpress'
 		);
 
 		// Hide At a Glance widget.
-		add_settings_field( 'ccp_hide_at_glance', __( 'Hide At a Glance', 'controlled-chaos' ), [ $this, 'ccp_hide_at_glance_callback' ], 'ccp-site-dashboard', 'ccp-site-dashboard', [ esc_html__( 'Hide the At a Glance widget on the Dashboard', 'controlled-chaos' ) ] );
+		add_settings_field( 'ccp_hide_at_glance', __( 'Hide At a Glance', 'controlled-chaos' ), [ $this, 'ccp_hide_at_glance_callback' ], 'ccp-dashboard', 'ccp-site-dashboard', [ esc_html__( 'Hide the At a Glance widget on the Dashboard', 'controlled-chaos' ) ] );
 
 		register_setting(
-			'ccp-site-dashboard',
+			'ccp_dashboard',
 			'ccp_hide_at_glance'
 		);
 
 		// Hide Activity widget.
-		add_settings_field( 'ccp_hide_activity', __( 'Hide Activity', 'controlled-chaos' ), [ $this, 'ccp_hide_activity_callback' ], 'ccp-site-dashboard', 'ccp-site-dashboard', [ esc_html__( 'Hide the Activity widget on the Dashboard', 'controlled-chaos' ) ] );
+		add_settings_field( 'ccp_hide_activity', __( 'Hide Activity', 'controlled-chaos' ), [ $this, 'ccp_hide_activity_callback' ], 'ccp-dashboard', 'ccp-site-dashboard', [ esc_html__( 'Hide the Activity widget on the Dashboard', 'controlled-chaos' ) ] );
 
 		register_setting(
-			'ccp-site-dashboard',
+			'ccp_dashboard',
 			'ccp_hide_activity'
 		);
 
