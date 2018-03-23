@@ -78,9 +78,6 @@ class Controlled_Chaos_Admin_Images {
 
     /**
      * Add SVG image support.
-     *
-     * @link     http://kubiq.sk
-     * @since    1.0.0
      */
     public function image_src( $image ) {
 
