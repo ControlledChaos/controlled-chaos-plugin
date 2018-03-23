@@ -41,7 +41,13 @@ class Controlled_Chaos_Settings {
 		add_action( 'admin_init', [ $this, 'settings' ] );
 
         // Add ACF options page.
-    	add_action( 'admin_menu', [ $this, 'site_settings_page' ] );
+		add_action( 'admin_menu', [ $this, 'site_settings_page' ] );
+		
+		// Include jQuery Migrate.
+		$migrate = get_option( 'ccp_jquery_migrate' );
+		if ( ! $migrate ) {
+			add_action( 'wp_default_scripts', [ $this, 'include_jquery_migrate' ] );
+		}
 
 	}
 
@@ -218,8 +224,16 @@ class Controlled_Chaos_Settings {
 			'ccp_inline_jquery'
 		);
 
+		// Include jQuery Migrate.
+		add_settings_field( 'ccp_jquery_migrate', __( 'jQuery Migrate', 'controlled-chaos' ), [ $this, 'ccp_jquery_migrate_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Use jQuery Migrate for backwards compatibility', 'controlled-chaos' ) ] );
+
+		register_setting(
+			'ccp-scripts-general',
+			'ccp_jquery_migrate'
+		);
+
 		// Remove emoji script.
-		add_settings_field( 'ccp_remove_emoji_script', __( 'Emoji script', 'controlled-chaos' ), [ $this, 'remove_emoji_script_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Remove emoji script from <head> (emojis will still work in modern browsers)', 'controlled-chaos' ) ] );
+		add_settings_field( 'ccp_remove_emoji_script', __( 'Emoji script', 'controlled-chaos' ), [ $this, 'remove_emoji_script_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Remove emoji script from <head>', 'controlled-chaos' ) ] );
 
 		register_setting(
 			'ccp-scripts-general',
@@ -326,6 +340,25 @@ class Controlled_Chaos_Settings {
 	}
 
 	/**
+	 * Include jQuery Migrate.
+	 * 
+	 * @since    1.0.0
+	 */
+	public function ccp_jquery_migrate_callback( $args ) {
+
+		$option = get_option( 'ccp_jquery_migrate' );
+
+		$html = '<p><input type="checkbox" id="ccp_jquery_migrate" name="ccp_jquery_migrate" value="1" ' . checked( 1, $option, false ) . '/>';
+		
+		$html .= '<label for="ccp_jquery_migrate"> '  . $args[0] . '</label><br />';
+
+		$html .= '<small><em>Some outdated plugins and themes may be dependent on an old version of jQuery</em></small></p>';
+
+		echo $html;
+
+	}
+
+	/**
 	 * Inline scripts.
 	 * 
 	 * @since    1.0.0
@@ -370,7 +403,9 @@ class Controlled_Chaos_Settings {
 
 		$html = '<p><input type="checkbox" id="ccp_remove_emoji_script" name="ccp_remove_emoji_script" value="1" ' . checked( 1, $option, false ) . '/>';
 		
-		$html .= '<label for="ccp_remove_emoji_script"> '  . $args[0] . '</label></p>';
+		$html .= '<label for="ccp_remove_emoji_script"> '  . $args[0] . '</label><br />';
+
+		$html .= '<small><em>Emojis will still work in modern browsers</em></small></p>';
 
 		echo $html;
 
@@ -596,6 +631,21 @@ class Controlled_Chaos_Settings {
     public function settings_site_output() {
 		
 		require plugin_dir_path( __FILE__ ) . 'partials/settings-page-site.php';
+
+	}
+
+	/**
+	 * Include jQuery Migrate.
+	 *
+	 * @since    1.0.0
+	 */
+    public function include_jquery_migrate( $scripts ) {
+		
+		if ( ! empty( $scripts->registered['jquery'] ) ) {
+
+			$scripts->registered['jquery']->deps = array_diff( $scripts->registered['jquery']->deps, [ 'jquery-migrate' ] );
+
+		}
 
 	}
 
