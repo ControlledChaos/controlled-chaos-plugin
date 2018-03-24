@@ -76,7 +76,7 @@ class Controlled_Chaos_Admin {
 		require plugin_dir_path( __FILE__ ) . 'class-admin-menu.php';
 
 		// Add menus to the admin toolbar.
-		require plugin_dir_path( __FILE__ ) . 'class-adminbar-menus.php';
+		require plugin_dir_path( __FILE__ ) . 'class-toolbar-menus.php';
 
 		// Functions for various admin pages and edit screens.
 		require plugin_dir_path( __FILE__ ) . 'class-admin-pages.php';
