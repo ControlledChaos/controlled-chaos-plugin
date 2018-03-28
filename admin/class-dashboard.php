@@ -32,6 +32,9 @@ class Controlled_Chaos_Dashboard {
         // Remove metaboxes.
         add_action( 'wp_dashboard_setup', [ $this, 'metaboxes' ] );
 
+        // Remove contextual help content.
+        add_action( 'admin_head', [ $this, 'remove_help' ] );
+
     }
 
     /**
@@ -147,6 +150,34 @@ class Controlled_Chaos_Dashboard {
             }
 
         }
+
+    }
+
+    /**
+     * Remove contextual help content.
+     * 
+     * Much of the default help content does not
+     * apply to the cleaned up Dashboard
+     *
+     * @since    1.0.0
+     */
+    public function remove_help() {
+
+        $screen = get_current_screen();
+        
+        if ( $screen->id != 'dashboard' ) {
+			return;
+		}
+        
+        // Remove individual content tabs.
+        $screen->remove_help_tab( 'overview' );
+        $screen->remove_help_tab( 'help-content' );
+        $screen->remove_help_tab( 'help-layout' );
+
+        // Remove the help sidebar.
+        $screen->set_help_sidebar(
+			null
+		);
 
     }
 
