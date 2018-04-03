@@ -52,6 +52,7 @@ class Controlled_Chaos_Admin_Pages {
             add_filter( 'manage_posts_columns', [ $this, 'image_column_head' ] );
             add_filter( 'manage_pages_columns', [ $this, 'image_column_head' ] );
             add_action( 'manage_posts_custom_column', [ $this, 'image_column_content' ], 10, 2 );
+            add_action( 'manage_pages_custom_column', [ $this, 'image_column_content' ], 10, 2 );
         }
 
     }
