@@ -102,7 +102,7 @@ class Controlled_Chaos_Settings {
     public function help_scripts() {
 
 		// Add to the plugin settings pages.
-        $screen = get_current_screen();
+		$screen = get_current_screen();
 		if ( $screen->id != $this->help_scripts ) {
 			return;
 		}
