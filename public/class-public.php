@@ -109,7 +109,16 @@ class Controlled_Chaos_Public {
 
 		// Fancybox 3.
 		if ( get_option( 'ccp_enqueue_fancybox_styles' ) ) {
-			wp_enqueue_style( 'controlled-chaos-fancybox', plugin_dir_url( __FILE__ ) . 'assets/css/jquery.fancybox.min.css', [], CCP_VERSION, 'all' );
+
+			/**
+			 * Bail if the current theme supports ccd-fancybox by
+			 * including its own copy of the Fancybox stylesheet.
+			 */
+			if ( current_theme_supports( 'ccd-fancybox' ) ) {
+				return;
+			} else {
+				wp_enqueue_style( 'controlled-chaos-fancybox', plugin_dir_url( __FILE__ ) . 'assets/css/jquery.fancybox.min.css', [], CCP_VERSION, 'all' );
+			}
 		}
 
 		// Slick.
@@ -143,7 +152,16 @@ class Controlled_Chaos_Public {
 
 		// Fancybox 3.
 		if ( get_option( 'ccp_enqueue_fancybox_styles' ) ) {
-			echo '<!-- Fancybox 3 Scripts --><style>' . $fancybox . '</style>';
+
+			/**
+			 * Bail if the current theme supports ccd-fancybox by
+			 * including its own copy of the Fancybox stylesheet.
+			 */
+			if ( current_theme_supports( 'ccd-fancybox' ) ) {
+				return;
+			} else {
+				echo '<!-- Fancybox 3 Scripts --><style>' . $fancybox . '</style>';
+			}
 		}
 
 		// Slick.
