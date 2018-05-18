@@ -71,6 +71,8 @@ class Controlled_Chaos_Admin_Pages {
             $post_title = esc_html__( 'Post Title', 'controlled-chaos' );
         } elseif ( 'page' == $screen->post_type ) {
             $post_title = esc_html__( 'Page Title', 'controlled-chaos' );
+        } elseif ( $screen->post_type == 'attachment' ) {
+            $post_title = null;
         } else {
             $post_title = esc_html__( 'Enter Title', 'controlled-chaos' );
         }
