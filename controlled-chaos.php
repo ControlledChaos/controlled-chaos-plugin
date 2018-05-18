@@ -51,10 +51,9 @@ register_activation_hook( __FILE__, '\activate_controlled_chaos' );
 register_deactivation_hook( __FILE__, '\deactivate_controlled_chaos' );
 
 /**
- * The core plugin class that is used to define internationalization,
- * admin-specific hooks, and public-facing site hooks.
+ * The core plugin class.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-includes.php';
+require plugin_dir_path( __FILE__ ) . 'includes/class-controlled-chaos-plugin.php';
 
 /**
  * Add settings links to the admin page.
@@ -62,7 +61,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-includes.php';
 function controlled_chaos_settings_link( $links ) {
 
 	$settings_link = [
-		sprintf( '<a href="%1s" class="controlled-chaos-settings-link">Settings</a>', admin_url( 'options-general.php?page=controlled-chaos-scripts' ) ),
+		sprintf( '<a href="%1s" class="controlled-chaos-settings-link">%2s</a>', admin_url( 'options-general.php?page=controlled-chaos-scripts' ), esc_attr( 'Settings', 'controlled-chaos' ) ),
 	];
 
 	return array_merge( $links, $settings_link );

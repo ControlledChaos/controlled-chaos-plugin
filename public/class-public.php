@@ -223,7 +223,11 @@ class Controlled_Chaos_Public {
 	 */
 	public function deregister_jquery() {
 
-		wp_deregister_script( 'jquery' );
+		if ( ! is_customize_preview() ) {
+
+			wp_deregister_script( 'jquery' );
+
+		}
 
 	}
 
@@ -234,9 +238,13 @@ class Controlled_Chaos_Public {
 	 */
 	public function get_jquery() {
 
-		$jquery = file_get_contents( plugin_dir_path( __FILE__ ) . '/assets/js/jquery.min.js' );
+		if ( ! is_customize_preview() ) {
 
-		echo '<!-- jQuery --><script>' . $jquery . '</script>';
+			$jquery = file_get_contents( plugin_dir_path( __FILE__ ) . '/assets/js/jquery.min.js' );
+
+			echo '<!-- jQuery --><script>' . $jquery . '</script>';
+
+		}
 
 	}
 
@@ -342,4 +350,5 @@ class Controlled_Chaos_Public {
 
 }
 
+// Run the public class.
 $ccp_public = new Controlled_Chaos_Public();
