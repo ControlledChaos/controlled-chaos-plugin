@@ -235,8 +235,12 @@ class Controlled_Chaos_Admin {
 	 */
 	public function enqueue_scripts() {
 
-		wp_enqueue_script( 'controlled-chaos-plugin-admin', plugin_dir_url( __FILE__ ) . 'assets/js/admin.js', [ 'jquery' ], CCP_VERSION, true );
-		wp_enqueue_script( 'controlled-chaos-excerpts', plugin_dir_url( __FILE__ ) . 'assets/js/excerpts.js', [ 'jquery' ], CCP_VERSION, true );
+		/**
+		 * No custom admin scripts out of the box.
+		 * 
+		 * This is provided for site-specific development.
+		 */
+		// wp_enqueue_script( 'controlled-chaos-plugin-admin', plugin_dir_url( __FILE__ ) . 'assets/js/admin.js', [ 'jquery' ], CCP_VERSION, true );
 
 	}
 
