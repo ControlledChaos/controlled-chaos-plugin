@@ -53,7 +53,7 @@ register_deactivation_hook( __FILE__, '\deactivate_controlled_chaos' );
 /**
  * The core plugin class.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-controlled-chaos-plugin.php';
+require plugin_dir_path( __FILE__ ) . 'includes/class-includes.php';
 
 /**
  * Add settings links to the admin page.

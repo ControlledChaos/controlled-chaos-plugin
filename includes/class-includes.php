@@ -42,6 +42,10 @@ class Controlled_Chaos_Plugin {
 		remove_filter( 'the_content', 'capital_P_dangit', 11 );
 		remove_filter( 'comment_text', 'capital_P_dangit', 31 );
 
+		// Add featured images to RSS feeds.
+		add_filter( 'the_excerpt_rss', [ $this, 'rss_featured_image' ] );
+		add_filter( 'the_content_feed', [ $this, 'rss_featured_image' ] );
+
 	}
 
 	/**
@@ -71,6 +75,25 @@ class Controlled_Chaos_Plugin {
 			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-minify-process.php';
 		}
 
+	}
+
+	/**
+	 * Add featured images to RSS feeds.
+	 *
+	 * @since    1.0.0
+	 * @access   public
+	 */
+	public function rss_featured_image( $content ) {
+
+		global $post;
+
+		$size = apply_filters( 'ccp_rss_featured_image_size', 'medium' );
+
+		if ( has_post_thumbnail( $post->ID ) ) {
+			$content = sprintf( '<div>%1s</div><div>%2s</div>', get_the_post_thumbnail( $post->ID, $size, [] ), $content );
+		}
+
+		return $content;
 	}
 
 }
