@@ -39,6 +39,10 @@ class Controlled_Chaos_Post_Types_Register {
          * 
          * See reference page:
          * https://codex.wordpress.org/Function_Reference/register_post_type
+         * 
+         * Renaming:
+         * Search case "Custom Post" and replace with your post type name.
+         * Search case "custom post" and replace with your post type name.
          */
 
         $labels = [
@@ -99,7 +103,12 @@ class Controlled_Chaos_Post_Types_Register {
             ],
         ];
 
-        register_post_type( 'ccp_post_type', $args );
+        /**
+         * Uncomment to register.
+         * 
+         * register_post_type( 'ccp_post_type', $args );
+         */
+        
     }
 
 }

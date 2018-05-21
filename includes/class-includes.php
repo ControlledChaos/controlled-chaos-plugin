@@ -43,8 +43,8 @@ class Controlled_Chaos_Plugin {
 		remove_filter( 'comment_text', 'capital_P_dangit', 31 );
 
 		// Add featured images to RSS feeds.
-		add_filter( 'the_excerpt_rss', [ $this, 'rss_featured_image' ] );
-		add_filter( 'the_content_feed', [ $this, 'rss_featured_image' ] );
+		add_filter( 'the_excerpt_rss', [ $this, 'rss_featured_images' ] );
+		add_filter( 'the_content_feed', [ $this, 'rss_featured_images' ] );
 
 	}
 
@@ -83,7 +83,7 @@ class Controlled_Chaos_Plugin {
 	 * @since    1.0.0
 	 * @access   public
 	 */
-	public function rss_featured_image( $content ) {
+	public function rss_featured_images( $content ) {
 
 		global $post;
 
