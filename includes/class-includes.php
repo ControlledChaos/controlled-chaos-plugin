@@ -68,6 +68,9 @@ class Controlled_Chaos_Plugin {
 		// Post types and taxonomies.
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/post-types-taxes/class-post-type-tax.php';
 
+		// User avatars.
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/users/class-user-avatars.php';
+
 		// Minify HTML source code.
 		$minify = get_option( 'ccp_html_minify' );
 
