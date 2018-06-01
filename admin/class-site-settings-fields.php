@@ -54,10 +54,10 @@ class Controlled_Chaos_Site_Settings {
 		 */
 		
 		// Dashboard settings section.
-		add_settings_section( 'ccp-site-dashboard', __( 'Dashboard Settings', 'controlled-chaos' ), [], 'ccp-dashboard' );
+		add_settings_section( 'ccp-site-dashboard', __( 'Dashboard Settings', 'controlled-chaos' ), [], 'ccp-site-dashboard' );
 
 		// Hide Welcome panel.
-		add_settings_field( 'ccp_hide_welcome', __( 'Hide Welcome', 'controlled-chaos' ), [ $this, 'ccp_hide_welcome_callback' ], 'ccp-dashboard', 'ccp-site-dashboard', [ esc_html__( 'Hide the Welcome panel on the Dashboard', 'controlled-chaos' ) ] );
+		add_settings_field( 'ccp_hide_welcome', __( 'Hide Welcome', 'controlled-chaos' ), [ $this, 'ccp_hide_welcome_callback' ], 'ccp-site-dashboard', 'ccp-site-dashboard', [ esc_html__( 'Hide the Welcome panel on the Dashboard', 'controlled-chaos' ) ] );
 
 		register_setting(
 			'ccp_dashboard',
@@ -65,7 +65,7 @@ class Controlled_Chaos_Site_Settings {
 		);
 
 		// Hide WordPress News widget.
-		add_settings_field( 'ccp_hide_wp_news', __( 'Hide WordPress News', 'controlled-chaos' ), [ $this, 'ccp_hide_wp_news_callback' ], 'ccp-dashboard', 'ccp-site-dashboard', [ esc_html__( 'Hide the WordPress News widget on the Dashboard', 'controlled-chaos' ) ] );
+		add_settings_field( 'ccp_hide_wp_news', __( 'Hide WordPress News', 'controlled-chaos' ), [ $this, 'ccp_hide_wp_news_callback' ], 'ccp-site-dashboard', 'ccp-site-dashboard', [ esc_html__( 'Hide the WordPress News widget on the Dashboard', 'controlled-chaos' ) ] );
 
 		register_setting(
 			'ccp_dashboard',
@@ -73,7 +73,7 @@ class Controlled_Chaos_Site_Settings {
 		);
 
 		// Hide Quick Draft (QuickPress) widget.
-		add_settings_field( 'ccp_hide_quickpress', __( 'Hide Quick Draft', 'controlled-chaos' ), [ $this, 'ccp_hide_quickpress_callback' ], 'ccp-dashboard', 'ccp-site-dashboard', [ esc_html__( 'Hide the Quick Draft widget on the Dashboard', 'controlled-chaos' ) ] );
+		add_settings_field( 'ccp_hide_quickpress', __( 'Hide Quick Draft', 'controlled-chaos' ), [ $this, 'ccp_hide_quickpress_callback' ], 'ccp-site-dashboard', 'ccp-site-dashboard', [ esc_html__( 'Hide the Quick Draft widget on the Dashboard', 'controlled-chaos' ) ] );
 
 		register_setting(
 			'ccp_dashboard',
@@ -81,7 +81,7 @@ class Controlled_Chaos_Site_Settings {
 		);
 
 		// Hide At a Glance widget.
-		add_settings_field( 'ccp_hide_at_glance', __( 'Hide At a Glance', 'controlled-chaos' ), [ $this, 'ccp_hide_at_glance_callback' ], 'ccp-dashboard', 'ccp-site-dashboard', [ esc_html__( 'Hide the At a Glance widget on the Dashboard', 'controlled-chaos' ) ] );
+		add_settings_field( 'ccp_hide_at_glance', __( 'Hide At a Glance', 'controlled-chaos' ), [ $this, 'ccp_hide_at_glance_callback' ], 'ccp-site-dashboard', 'ccp-site-dashboard', [ esc_html__( 'Hide the At a Glance widget on the Dashboard', 'controlled-chaos' ) ] );
 
 		register_setting(
 			'ccp_dashboard',
@@ -89,7 +89,7 @@ class Controlled_Chaos_Site_Settings {
 		);
 
 		// Hide Activity widget.
-		add_settings_field( 'ccp_hide_activity', __( 'Hide Activity', 'controlled-chaos' ), [ $this, 'ccp_hide_activity_callback' ], 'ccp-dashboard', 'ccp-site-dashboard', [ esc_html__( 'Hide the Activity widget on the Dashboard', 'controlled-chaos' ) ] );
+		add_settings_field( 'ccp_hide_activity', __( 'Hide Activity', 'controlled-chaos' ), [ $this, 'ccp_hide_activity_callback' ], 'ccp-site-dashboard', 'ccp-site-dashboard', [ esc_html__( 'Hide the Activity widget on the Dashboard', 'controlled-chaos' ) ] );
 
 		register_setting(
 			'ccp_dashboard',

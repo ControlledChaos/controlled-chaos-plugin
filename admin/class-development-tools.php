@@ -92,7 +92,7 @@ class Controlled_Chaos_Admin_Tools {
 	 */
 	public function layout_testing_section_callback( $args ) {
 
-		$html = sprintf( '<p>%1s</p>', esc_html__( 'Test for various layout scenarios before going live.' ) );
+		$html = sprintf( '<p>%1s</p>', esc_html__( '', 'controlled-chaos' ) );
 
 		echo $html;
 
@@ -107,9 +107,9 @@ class Controlled_Chaos_Admin_Tools {
 
 		$option = get_option( 'ccp_rtl_test' );
 
-		$html = '<p><input type="checkbox" id="ccp_rtl_test" name="ccp_rtl_test" value="1" ' . checked( 1, $option, false ) . '/>';
-		
+		$html = '<p><input type="checkbox" id="ccp_rtl_test" name="ccp_rtl_test" value="1" ' . checked( 1, $option, false ) . '/>';		
 		$html .= '<label for="ccp_rtl_test"> '  . $args[0] . '</label></p>';
+		$html .= sprintf( '<p>%1s <a href="%2s" target="_blank">%3s</a></p>', __( 'Reference:', 'controlled-chaos' ), esc_url( 'https://codex.wordpress.org/Right_to_Left_Language_Support' ), esc_html__( 'https://codex.wordpress.org/Right_to_Left_Language_Support' ) );
 
 		echo $html;
 
