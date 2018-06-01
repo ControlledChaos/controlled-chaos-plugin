@@ -20,7 +20,7 @@ if ( ! defined( 'WPINC' ) ) {
 class Controlled_Chaos_Media_Options {
 
     /**
-	 * Initialize the class and set its properties.
+	 * Initialize the class.
 	 *
 	 * @since    1.0.0
 	 */

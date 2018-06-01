@@ -28,7 +28,7 @@ if ( ! defined( 'WPINC' ) ) {
 class Controlled_Chaos_Plugin {
 
 	/**
-	 * Initialize the class and set its properties.
+	 * Initialize the class.
 	 *
 	 * @since    1.0.0
 	 */
@@ -68,11 +68,21 @@ class Controlled_Chaos_Plugin {
 		// Post types and taxonomies.
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/post-types-taxes/class-post-type-tax.php';
 
+		// User avatars.
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/users/class-user-avatars.php';
+
 		// Minify HTML source code.
 		$minify = get_option( 'ccp_html_minify' );
 
 		if ( $minify ) {
 			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-minify-process.php';
+		}
+
+		// RTL (right to left) test.
+		$rtl = get_option( 'ccp_rtl_test' );
+
+		if ( $rtl ) {
+			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-rtl-test.php';
 		}
 
 	}

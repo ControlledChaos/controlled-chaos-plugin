@@ -21,7 +21,7 @@ if ( ! defined( 'WPINC' ) ) {
 class Controlled_Chaos_Gallery_Shortcode {
 
 	/**
-	 * Initialize the class and set its properties.
+	 * Initialize the class.
 	 *
 	 * @since      1.0.0
 	 */
