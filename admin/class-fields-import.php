@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 class Controlled_Chaos_Fields_Import {
 
 	/**
-     * Initialize the class and set its properties.
+     * Initialize the class.
 	 * 
 	 * @since      1.0.0
      */

@@ -25,7 +25,7 @@ if ( ! defined( 'WPINC' ) ) {
 class Controlled_Chaos_Post_Type_Tax_Functions {
 
 	/**
-	 * Initialize the class and set its properties.
+	 * Initialize the class.
 	 *
 	 * @since    1.0.0
 	 */

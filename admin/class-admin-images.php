@@ -27,7 +27,7 @@ if ( ! defined( 'WPINC' ) ) {
 class Controlled_Chaos_Admin_Images {
 
     /**
-	 * Initialize the class and set its properties.
+	 * Initialize the class.
 	 *
 	 * @since    1.0.0
 	 */
