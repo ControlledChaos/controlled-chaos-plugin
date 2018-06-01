@@ -27,7 +27,7 @@ if ( ! defined( 'WPINC' ) ) {
 class Controlled_Chaos_Admin {
 
 	/**
-	 * Initialize the class and set its properties.
+	 * Initialize the class.
 	 *
 	 * @since    1.0.0
 	 */
@@ -74,6 +74,9 @@ class Controlled_Chaos_Admin {
 
 		// Functions for admin menu item positions and visibility.
 		require plugin_dir_path( __FILE__ ) . 'class-admin-menu.php';
+
+		// Add development tools page.
+		require plugin_dir_path( __FILE__ ) . 'class-development-tools.php';
 
 		// Add menus to the admin toolbar.
 		require plugin_dir_path( __FILE__ ) . 'class-toolbar-menus.php';
