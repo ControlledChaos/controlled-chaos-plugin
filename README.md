@@ -32,6 +32,10 @@ One settings page via the default WordPress method and one settings page using t
 
 Rename and duplicate as needed.
 
+### Sample Editor (Gutenberg) Block
+
+Supplied as reference. More to come.
+
 ### Clean Up the Admin
 
 * Remove dashboard widgets: WordPress news, quick press

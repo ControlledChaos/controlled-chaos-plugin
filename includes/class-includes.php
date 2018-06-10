@@ -17,6 +17,9 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+// Get plugins path to check for active plugins.
+include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
 /**
  * Define the core functionality of the plugin.
  *
@@ -65,10 +68,14 @@ class Controlled_Chaos_Plugin {
 		// Public actions and filters.
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-public.php';
 
-		// Register custom editor blocks.
-		//if ( function_exists( 'the_gutenberg_project' ) ) {
+		/**
+		 * Register custom editor blocks.
+		 * 
+		 * Remove conditional statement when Gutenberg is in core?
+		 */
+		if ( is_plugin_active( 'gutenberg/gutenberg.php' ) ) {
 			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/editor-blocks/class-register-block-types.php';
-		//}
+		}
 
 		// Post types and taxonomies.
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/post-types-taxes/class-post-type-tax.php';
