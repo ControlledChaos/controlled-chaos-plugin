@@ -66,7 +66,9 @@ class Controlled_Chaos_Plugin {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-public.php';
 
 		// Register custom editor blocks.
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/editor-blocks/class-register-block-types.php';
+		//if ( function_exists( 'the_gutenberg_project' ) ) {
+			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/editor-blocks/class-register-block-types.php';
+		//}
 
 		// Post types and taxonomies.
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/post-types-taxes/class-post-type-tax.php';
