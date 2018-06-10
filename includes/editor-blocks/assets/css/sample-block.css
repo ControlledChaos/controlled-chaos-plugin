@@ -1,0 +1,10 @@
+/**
+ * Sample block admin styles.
+ */
+
+.wp-block-ccp-sample-block {
+	color: inherit;
+	background: rgba(221, 0, 0, 0.15);
+	border: 0.2rem solid #d00;
+	padding: 2rem !important;
+}
