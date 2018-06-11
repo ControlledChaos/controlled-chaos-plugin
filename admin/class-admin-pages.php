@@ -68,9 +68,9 @@ class Controlled_Chaos_Admin_Pages {
     public function about_plugin() {
 
         add_submenu_page(
-            null, 
-            'About Page',
-            'About Page', 
+            'plugins.php', 
+            'Site Plugin',
+            'Site Plugin', 
             'manage_options', 
             'controlled-chaos-page', 
             [ $this, 'plugin_about_page' ]
