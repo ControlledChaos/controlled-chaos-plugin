@@ -91,10 +91,10 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-includes.php';
  * Add a link to the plugin's about page on the plugins page.
  * 
  * The about page in its original form is intended to be read by
- * developers for getting familiar with the plugin, so it is not
- * included in the admin menu.
+ * developers for getting familiar with the plugin, so it is
+ * included in the admin menu under plugins.
  * 
- * If you would like to show the page as you make it your own then
+ * If you would like to link the page elsewhere as you make it your own then
  * do so in admin/class-admin-pages.php, in the about_plugin method.
  * 
  * @since 1.0.0
@@ -105,7 +105,7 @@ function controlled_chaos_settings_link( $links ) {
 
 	// Create the link element.
 	$about_page = [
-		sprintf( '<a href="%1s" class="controlled-chaos-about-link">%2s</a>', admin_url( 'options-general.php?page=controlled-chaos-page' ), esc_attr( 'Documentation', 'controlled-chaos' ) ),
+		sprintf( '<a href="%1s" class="controlled-chaos-about-link">%2s</a>', admin_url( 'plugins.php?page=controlled-chaos-page' ), esc_attr( 'Documentation', 'controlled-chaos' ) ),
 	];
 
 	// Merge the about link with the default links.
