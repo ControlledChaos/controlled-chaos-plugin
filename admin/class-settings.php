@@ -579,7 +579,7 @@ class Controlled_Chaos_Settings {
 				$settings = apply_filters( 'controlled_chaos_site_settings_page_top', [
 					'page_title' => $title . __( ' Settings', 'controlled-chaos' ),
 					'menu_title' => $label,
-					'menu_slug'  => 'site-settings',
+					'menu_slug'  => 'controlled-chaos-settings',
 					'icon_url'   => 'dashicons-admin-settings',
 					'position'   => 59,
 					'capability' => 'manage_options',
@@ -593,7 +593,7 @@ class Controlled_Chaos_Settings {
 				$settings = apply_filters( 'controlled_chaos_site_settings_page_default', [
 					'page_title' => $title . __( ' Settings', 'controlled-chaos' ),
 					'menu_title' => $label,
-					'menu_slug'  => 'site-settings',
+					'menu_slug'  => 'controlled-chaos-settings',
 					'parent'     => 'options-general.php',
 					'capability' => 'manage_options'
 				] );

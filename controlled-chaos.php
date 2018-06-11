@@ -60,11 +60,15 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-includes.php';
  */
 function controlled_chaos_settings_link( $links ) {
 
-	$settings_link = [
-		sprintf( '<a href="%1s" class="controlled-chaos-settings-link">%2s</a>', admin_url( 'options-general.php?page=controlled-chaos-scripts' ), esc_attr( 'Settings', 'controlled-chaos' ) ),
+	$site_settings = [
+		sprintf( '<a href="%1s" class="controlled-chaos-settings-link">%2s</a>', admin_url( 'options-general.php?page=controlled-chaos-settings' ), esc_attr( 'Site Settings', 'controlled-chaos' ) ),
 	];
 
-	return array_merge( $links, $settings_link );
+	$script_options = [
+		sprintf( '<a href="%1s" class="controlled-chaos-settings-link">%2s</a>', admin_url( 'options-general.php?page=controlled-chaos-scripts' ), esc_attr( 'Script Options', 'controlled-chaos' ) ),
+	];
+
+	return array_merge( $site_settings, $script_options, $links );
 
 }
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'controlled_chaos_settings_link' );

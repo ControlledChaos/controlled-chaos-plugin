@@ -33,12 +33,6 @@ class Controlled_Chaos_Settings_Fields {
 
 	public function settings_fields() {
 
-		/**
-		 * Arrays will be aligned as per WordPress
-		 * coding standards when development of these
-		 * fields slows or is considered finished.
-		 */
-
 		if ( function_exists( 'acf_add_local_field_group' ) ) :
 
 			acf_add_local_field_group( [
@@ -415,7 +409,7 @@ class Controlled_Chaos_Settings_Fields {
 						[
 							'param' => 'options_page',
 							'operator' => '==',
-							'value' => 'site-settings',
+							'value' => 'controlled-chaos-settings',
 						],
 					],
 				],
