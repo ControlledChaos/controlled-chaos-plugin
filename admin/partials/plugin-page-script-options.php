@@ -1,6 +1,6 @@
 <?php
 /**
- * About page sscript options output.
+ * About page script options output.
  *
  *
  * @package    controlled-chaos
