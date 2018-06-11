@@ -21,7 +21,6 @@ if ( ! defined( 'WPINC' ) ) {
  * @since      1.0.0
  * @package    controlled-chaos
  * @subpackage controlled-chaos/includes
- * @author     Greg Sweet <greg@ccdzine.com>
  */
 class Controlled_Chaos_Activate {
 
