@@ -28,6 +28,9 @@ if ( ! defined( 'WPINC' ) ) {
 // Keeping the version at 1.0.0 as this is a starter plugin.
 define( 'CCP_VERSION', '1.0.0' );
 
+// This URL slug is used in various plugin admin & settings pages.
+define( 'CCP_ADMIN_SLUG', 'controlled-chaos' );
+
 /**
  * The code that runs during plugin activation.
  */
@@ -60,6 +63,10 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-includes.php';
  */
 function controlled_chaos_settings_link( $links ) {
 
+	$about_page = [
+		sprintf( '<a href="%1s" class="controlled-chaos-about-link">%2s</a>', admin_url( 'options-general.php?page=controlled-chaos-page' ), esc_attr( 'Documentation', 'controlled-chaos' ) ),
+	];
+
 	$site_settings = [
 		sprintf( '<a href="%1s" class="controlled-chaos-settings-link">%2s</a>', admin_url( 'options-general.php?page=controlled-chaos-settings' ), esc_attr( 'Site Settings', 'controlled-chaos' ) ),
 	];
@@ -68,7 +75,7 @@ function controlled_chaos_settings_link( $links ) {
 		sprintf( '<a href="%1s" class="controlled-chaos-settings-link">%2s</a>', admin_url( 'options-general.php?page=controlled-chaos-scripts' ), esc_attr( 'Script Options', 'controlled-chaos' ) ),
 	];
 
-	return array_merge( $site_settings, $script_options, $links );
+	return array_merge( $about_page, $links );
 
 }
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'controlled_chaos_settings_link' );

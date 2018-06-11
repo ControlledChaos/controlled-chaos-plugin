@@ -15,9 +15,9 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-$active_tab = 'ccp-scripts-general';
+$active_tab = 'general';
 if ( isset( $_GET[ 'tab' ] ) ) {
-    $active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'ccp-scripts-general';
+    $active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'general';
 } ?>
 
 <div class="wrap">
@@ -28,20 +28,20 @@ if ( isset( $_GET[ 'tab' ] ) ) {
     <p class="description"><?php esc_html_e( 'Script settings from the Controlled Chaos plugin. More information in the Help tab at upper right.', 'controlled-chaos' ); ?></p>
     <?php endif; ?>
     <h2 class="nav-tab-wrapper">
-        <a href="?page=controlled-chaos-scripts&tab=ccp-scripts-general" class="nav-tab <?php echo $active_tab == 'ccp-scripts-general' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'General', 'controlled-chaos' ); ?></a>
-        <a href="?page=controlled-chaos-scripts&tab=ccp-scripts-vendor" class="nav-tab <?php echo $active_tab == 'ccp-scripts-vendor' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Vendor', 'controlled-chaos' ); ?></a>
+        <a href="?page=<?php echo CCP_ADMIN_SLUG; ?>-scripts&tab=general" class="nav-tab <?php echo $active_tab == 'general' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'General', 'controlled-chaos' ); ?></a>
+        <a href="?page=<?php echo CCP_ADMIN_SLUG; ?>-scripts&tab=vendor" class="nav-tab <?php echo $active_tab == 'vendor' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Vendor', 'controlled-chaos' ); ?></a>
     </h2>
     <form action="options.php" method="post">
-        <?php if ( $active_tab == 'ccp-scripts-general' ) {
+        <?php if ( $active_tab == 'general' ) {
             settings_fields( 'ccp-scripts-general' );
             do_settings_sections( 'ccp-scripts-general' );
             $save = __( 'Save General', 'controlled-chaos' );
-        } elseif ( $active_tab == 'ccp-scripts-vendor' ) {
+        } elseif ( $active_tab == 'vendor' ) {
             settings_fields( 'ccp-scripts-vendor' );
             do_settings_sections( 'ccp-scripts-vendor' );
             $save = __( 'Save Vendor', 'controlled-chaos' );
         } ?>
-        <?php if ( $active_tab == 'ccp-scripts-general' || $active_tab == 'ccp-scripts-vendor' ) : ?>
+        <?php if ( $active_tab == 'general' || $active_tab == 'vendor' ) : ?>
         <p class="submit"><?php submit_button( $save, 'primary', '', false, [] ); echo ' '; ?></p>
     <?php endif; ?>
     </form>
