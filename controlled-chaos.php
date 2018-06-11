@@ -98,7 +98,8 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-includes.php';
  * do so in admin/class-admin-pages.php, in the about_plugin method.
  * 
  * @since 1.0.0
- * @return string
+ * @return mixed
+ * @link https://codex.wordpress.org/Plugin_API/Filter_Reference/plugin_action_links_(plugin_file_name)
  */
 function controlled_chaos_settings_link( $links ) {
 
