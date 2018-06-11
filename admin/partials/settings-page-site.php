@@ -15,9 +15,9 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-$active_tab = 'ccp-site-admin-menu';
+$active_tab = 'ccp-site-dashboard';
 if ( isset( $_GET[ 'tab' ] ) ) {
-    $active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'ccp-site-admin-menu';
+    $active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'ccp-site-dashboard';
 } ?>
 
 <div class="wrap">
