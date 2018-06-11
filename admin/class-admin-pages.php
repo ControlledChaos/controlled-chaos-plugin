@@ -32,6 +32,9 @@ class Controlled_Chaos_Admin_Pages {
 	 */
     public function __construct() {
 
+        // Add an about page for the plugin.
+        add_action( 'admin_menu', [ $this, 'about_plugin' ] );
+
         // Replace default post title placeholders.
         add_filter( 'enter_title_here', [ $this, 'title_placeholders' ] );
 
@@ -54,6 +57,35 @@ class Controlled_Chaos_Admin_Pages {
             add_action( 'manage_posts_custom_column', [ $this, 'image_column_content' ], 10, 2 );
             add_action( 'manage_pages_custom_column', [ $this, 'image_column_content' ], 10, 2 );
         }
+
+    }
+
+    /**
+     * Add an about page for the plugin.
+     *
+     * @since    1.0.0
+     */
+    public function about_plugin() {
+
+        add_submenu_page(
+            null, 
+            'About Page',
+            'About Page', 
+            'manage_options', 
+            'controlled-chaos-page', 
+            [ $this, 'plugin_about_page' ]
+        );
+
+    }
+
+    /**
+     * Get output of the about page for the plugin.
+     *
+     * @since    1.0.0
+     */
+    public function plugin_about_page() {
+
+        require plugin_dir_path( __FILE__ ) . 'partials/plugin-page-about.php';
 
     }
 
