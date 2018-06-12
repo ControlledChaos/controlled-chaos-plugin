@@ -22,7 +22,6 @@ if ( ! defined( 'WPINC' ) ) {
  *
  * @package    controlled-chaos
  * @subpackage controlled-chaos/admin
- * @author     Greg Sweet <greg@ccdzine.com>
  */
 class Controlled_Chaos_Admin {
 

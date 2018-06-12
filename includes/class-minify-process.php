@@ -4,7 +4,7 @@
  * Minify HTML source code.
  *
  * @package    controlled-chaos
- * @subpackage controlled-chaos
+ * @subpackage controlled-chaos/includes
  * @since controlled-chaos 1.0.0
  */
 
@@ -20,13 +20,17 @@ if ( ! defined( 'WPINC' ) ) {
  *
  * @package    controlled-chaos
  * @subpackage controlled-chaos/includes
- * @author     Greg Sweet <greg@ccdzine.com>
  */
 class Controlled_Chaos_Minify {
 
 	// Variables.
 	protected $html;
 
+	/**
+	 * Initialize the class.
+	 *
+	 * @since 1.0.0
+	 */
 	public function __construct( $html ) {
 
 		if ( ! empty( $html ) ) {
@@ -35,12 +39,24 @@ class Controlled_Chaos_Minify {
 
 	}
 
+	/**
+	 * Convert the HTML compressed by the class.
+	 *
+	 * @since 1.0.0
+	 * @return string
+	 */
 	public function __toString() {
 
 		return $this->html;
 
 	}
 
+	/**
+	 * Get the compression savings and return as a comment after the HTML.
+	 *
+	 * @since 1.0.0
+	 * @return string
+	 */
 	protected function bottom_comment( $raw, $compressed ) {
 
 		$raw        = strlen( $raw );
@@ -52,6 +68,11 @@ class Controlled_Chaos_Minify {
 
 	}
 
+	/**
+	 * Compress the HTML of the page.
+	 *
+	 * @since 1.0.0
+	 */
 	protected function minify_html( $html ) {
 
 		// Settings
@@ -105,13 +126,17 @@ class Controlled_Chaos_Minify {
 						$strip = false;
 					} else {
 						$strip = true;
-
-						// Remove any empty attributes, except:
-						// action, alt, content, src
+						
+						/**
+						 * Remove any empty attributes, except action, alt, content, src.
+						 */
 						$content = preg_replace( '/(\s+)(\w++(?<!\baction|\balt|\bcontent|\bsrc)="")/', '$1', $content );
 
-						// Remove any space before the end of self-closing XHTML tags
-						// JavaScript excluded
+						/**
+						 * Remove any space before the end of self-closing XHTML tags.
+						 * 
+						 * JavaScript excluded.
+						 */
 						$content = str_replace( ' />', '/>', $content );
 					}
 
@@ -131,6 +156,11 @@ class Controlled_Chaos_Minify {
 
 	}
 
+	/**
+	 * Parse the HTML of the page.
+	 *
+	 * @since 1.0.0
+	 */
 	public function parse_html( $html ) {
 
 		$this->html = $this->minify_html( $html );
@@ -138,6 +168,11 @@ class Controlled_Chaos_Minify {
 
 	}
 
+	/**
+	 * Remove the whitespace from the HTML of the page.
+	 *
+	 * @since 1.0.0
+	 */
 	protected function remove_white_space( $str ) {
 
 		$str = str_replace( "\t", ' ', $str );
@@ -154,12 +189,23 @@ class Controlled_Chaos_Minify {
 
 }
 
+/**
+ * Return the class as an output buffering callback.
+ *
+ * @since 1.0.0
+ */
 function wp_html_compression_finish( $html ) {
 
 	return new Controlled_Chaos_Minify( $html );
 
 }
 
+/**
+ * Return the HTML compressed by the class.
+ *
+ * @since 1.0.0
+ * @return string
+ */
 function wp_html_compression_start() {
 
 	ob_start( 'wp_html_compression_finish' );

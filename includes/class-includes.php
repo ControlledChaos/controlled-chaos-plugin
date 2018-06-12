@@ -1,7 +1,7 @@
 <?php
 
 /**
- * The file that defines the core plugin class.
+ * The core plugin class.
  *
  * @link       http://ccdzine.com
  * @since      1.0.0
@@ -26,14 +26,13 @@ include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
  * @since      1.0.0
  * @package    controlled-chaos
  * @subpackage controlled-chaos/includes
- * @author     Greg Sweet <greg@ccdzine.com>
  */
 class Controlled_Chaos_Plugin {
 
 	/**
 	 * Initialize the class.
 	 *
-	 * @since    1.0.0
+	 * @since 1.0.0
 	 */
 	public function __construct() {
 
@@ -62,10 +61,10 @@ class Controlled_Chaos_Plugin {
 		// Translation functionality.
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-i18n.php';
 
-		// Admin actions and filters.
+		// Admin/backend functionality, scripts and styles.
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-admin.php';
 
-		// Public actions and filters.
+		// Public/frontend functionality, scripts and styles.
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-public.php';
 
 		/**
@@ -90,7 +89,7 @@ class Controlled_Chaos_Plugin {
 			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-minify-process.php';
 		}
 
-		// RTL (right to left) test.
+		// Include the RTL (right to left) test if option selected.
 		$rtl = get_option( 'ccp_rtl_test' );
 
 		if ( $rtl ) {
@@ -109,8 +108,15 @@ class Controlled_Chaos_Plugin {
 
 		global $post;
 
+		// Apply a filter for conditional image sizes.
 		$size = apply_filters( 'ccp_rss_featured_image_size', 'medium' );
 
+		/**
+		 * Use this layout only if the post has a featured image.
+		 * 
+		 * The image and the content/excerpt are in separate <div> tags
+		 * to get the content below the image.
+		 */
 		if ( has_post_thumbnail( $post->ID ) ) {
 			$content = sprintf( '<div>%1s</div><div>%2s</div>', get_the_post_thumbnail( $post->ID, $size, [] ), $content );
 		}
