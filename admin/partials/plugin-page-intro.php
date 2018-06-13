@@ -36,5 +36,6 @@ if ( ! defined( 'WPINC' ) ) {
 <?php echo sprintf( '<li><strong>%1s:</strong> %2s</li>', esc_html__( 'Pages', 'controlled-chaos' ), esc_html__( 'Admin page URLs are prexixed with an abbreviation for the plugin name. The above replace of "ccp" will have given them your new prefix.', 'controlled-chaos' ) ); ?>
 <?php echo sprintf( '<li><strong>%1s:</strong> %2s</li>', esc_html__( 'Options', 'controlled-chaos' ), esc_html__( 'Options are prexixed with an abbreviation for the plugin name. The above replace of "ccp" will have given them your new prefix.', 'controlled-chaos' ) ); ?>
 <?php echo sprintf( '<li><strong>%1s:</strong> %2s</li>', esc_html__( 'Version', 'controlled-chaos' ), esc_html__( 'The plugin version is all caps and is prexixed with an abbreviation for the plugin name. Replace "CCP".', 'controlled-chaos' ) ); ?>
+<?php echo sprintf( '<li><strong>%1s:</strong> %2s</li>', esc_html__( 'Author', 'controlled-chaos' ), esc_html__( 'The author name and email is used in class docblocks. Replace "Greg Sweet" and replace "greg@ccdzine.com".', 'controlled-chaos' ) ); ?>
 <?php echo sprintf( '<li><strong>%1s:</strong> %2s</li>', esc_html__( 'Plugin Name', 'controlled-chaos' ), esc_html__( 'The plugin name is used in various places. Replace "Controlled Chaos".', 'controlled-chaos' ) ); ?>
 </ol>
