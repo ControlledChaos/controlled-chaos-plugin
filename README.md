@@ -56,9 +56,9 @@ Supplied as reference. More to come.
 * Add option to hard crop the medium and/or large image sizes
 * Add option to allow SVG uploads to the Media Library
 
-### Renaming the plugin for your website
+### Renaming & rebranding the plugin for your needs
 
-To rename this plugin to convert it specifically for a single website, first rename this file and rename the plugin folder with the same name as this file. Then use a find & replace function to look for the following...
+To rename or rebrand this plugin, first rename the plugin folder then use a find & replace function to look for the following...
 
 1. **Text Domain:** The text domain should be the same as this file and the plugin folder. Replace "controlled-chaos".
 2. **Classes:** Classes are prefixed with the plugin name. Replace "Controlled_Chaos".
@@ -68,4 +68,5 @@ To rename this plugin to convert it specifically for a single website, first ren
 6. **Pages:** Admin page URLs are prexixed with an abbreviation for the plugin name. The above replace of "ccp" will have given them your new prefix.
 7. **Options:** Options are prexixed with an abbreviation for the plugin name. The above replace of "ccp" will have given them your new prefix.
 8. **Version:** The plugin version is all caps and is prexixed with an abbreviation for the plugin name. Replace "CCP".
-9. **Plugin Name:** The plugin name is used in various places. Replace "Controlled Chaos".
+9. **Author:** The author name and email is used in class docblocks. Replace "Greg Sweet" and replace "greg@ccdzine.com".
+10. **Plugin Name:** The plugin name is used in various places. Replace "Controlled Chaos".
