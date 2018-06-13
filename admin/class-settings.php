@@ -564,12 +564,12 @@ class Controlled_Chaos_Settings {
 
 		if ( class_exists( 'ACF_Pro' ) || class_exists( 'acf_admin_options_page' ) ) {
 
-			$title     = get_bloginfo( 'name' );
+			$title     = apply_filters( 'site_settings_page_name', get_bloginfo( 'name' ) );
 			$position  = get_field( 'ccp_settings_link_position', 'option' );
-			$get_label = get_field( 'ccp_settings_page_link_label', 'option' );
+			$link_label = get_field( 'ccp_settings_page_link_label', 'option' );
 
-			if ( $get_label ) {
-				$label = $get_label;
+			if ( $link_label ) {
+				$label = $link_label;
 			}  else {
 				$label = __( 'Site Settings', 'controlled-chaos' );
 			}
@@ -603,21 +603,41 @@ class Controlled_Chaos_Settings {
 
 		} else {
 
-			$get_label = get_option( 'ccp_settings_page_link_label' );
+			$link_label = get_option( 'ccp_settings_page_link_label' );
+			$position  = get_option( 'ccp_settings_position' );
+			$link_icon  = get_option( 'ccp_settings_page_link_icon' );
 
-			if ( $get_label ) {
-				$label = $get_label;
+			if ( $link_label ) {
+				$label = $link_label;
 			}  else {
 				$label = __( 'Site Settings', 'controlled-chaos' );
 			}
-			
-			add_options_page(
-				$label,
-				$label,
-				'manage_options',
-				'controlled-chaos-settings',
-				[ $this, 'settings_site_output' ]
-			);
+
+			if ( $link_icon ) {
+				$icon = $link_icon;
+			}  else {
+				$icon = __( 'dashicons-admin-generic', 'controlled-chaos' );
+			}
+
+			if ( $position ) {
+				add_menu_page(
+					$label,
+					$label,
+					'manage_options',
+					'controlled-chaos-settings',
+					[ $this, 'settings_site_output' ],
+					$icon,
+					3
+				);
+			} else {
+				add_options_page(
+					$label,
+					$label,
+					'manage_options',
+					'controlled-chaos-settings',
+					[ $this, 'settings_site_output' ]
+				);
+			}
 
 		}
 
@@ -651,4 +671,5 @@ class Controlled_Chaos_Settings {
 
 }
 
+// Run the settings class.
 $controlled_chaos_settings = new Controlled_Chaos_Settings;
