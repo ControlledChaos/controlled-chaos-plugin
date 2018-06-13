@@ -4,7 +4,7 @@
  *
  * @package    controlled-chaos
  * @subpackage controlled-chaos
- * @since controlled-chaos 1.0.0
+ * @since	   controlled-chaos 1.0.0
  */
 
 namespace CCPlugin\Site_Settings;
@@ -30,8 +30,9 @@ class Controlled_Chaos_Site_Settings {
 
 	/**
 	 * Initialize the class.
-	 *
-	 * @since    1.0.0
+	 * 
+	 * @return self
+	 * @since 1.0.0
 	 */
     public function __construct() {
 
@@ -45,19 +46,35 @@ class Controlled_Chaos_Site_Settings {
 	/**
 	 * Plugin site settings.
 	 * 
-	 * @since    1.0.0
+	 * @return void
+	 * @link  https://codex.wordpress.org/Settings_API
+	 * @since 1.0.0
 	 */
 	public function settings() {
 
 		/**
-		 * Dashboard.
+		 * Dashboard settings.
+		 * 
+		 * @since 1.0.0
 		 */
 		
 		// Dashboard settings section.
-		add_settings_section( 'ccp-site-dashboard', __( 'Dashboard Settings', 'controlled-chaos' ), [], 'ccp-site-dashboard' );
+		add_settings_section(
+			'ccp-site-dashboard',
+			__( 'Dashboard Settings', 'controlled-chaos' ),
+			[],
+			'ccp-site-dashboard'
+		);
 
 		// Hide Welcome panel.
-		add_settings_field( 'ccp_hide_welcome', __( 'Hide Welcome', 'controlled-chaos' ), [ $this, 'ccp_hide_welcome_callback' ], 'ccp-site-dashboard', 'ccp-site-dashboard', [ esc_html__( 'Hide the Welcome panel on the Dashboard', 'controlled-chaos' ) ] );
+		add_settings_field(
+			'ccp_hide_welcome',
+			__( 'Hide Welcome', 'controlled-chaos' ),
+			[ $this, 'ccp_hide_welcome_callback' ],
+			'ccp-site-dashboard',
+			'ccp-site-dashboard',
+			[ esc_html__( 'Hide the Welcome panel on the Dashboard', 'controlled-chaos' ) ]
+		);
 
 		register_setting(
 			'ccp_dashboard',
@@ -65,7 +82,14 @@ class Controlled_Chaos_Site_Settings {
 		);
 
 		// Hide WordPress News widget.
-		add_settings_field( 'ccp_hide_wp_news', __( 'Hide WordPress News', 'controlled-chaos' ), [ $this, 'ccp_hide_wp_news_callback' ], 'ccp-site-dashboard', 'ccp-site-dashboard', [ esc_html__( 'Hide the WordPress News widget on the Dashboard', 'controlled-chaos' ) ] );
+		add_settings_field(
+			'ccp_hide_wp_news',
+			__( 'Hide WordPress News', 'controlled-chaos' ),
+			[ $this, 'ccp_hide_wp_news_callback' ],
+			'ccp-site-dashboard',
+			'ccp-site-dashboard',
+			[ esc_html__( 'Hide the WordPress News widget on the Dashboard', 'controlled-chaos' ) ]
+		);
 
 		register_setting(
 			'ccp_dashboard',
@@ -73,7 +97,14 @@ class Controlled_Chaos_Site_Settings {
 		);
 
 		// Hide Quick Draft (QuickPress) widget.
-		add_settings_field( 'ccp_hide_quickpress', __( 'Hide Quick Draft', 'controlled-chaos' ), [ $this, 'ccp_hide_quickpress_callback' ], 'ccp-site-dashboard', 'ccp-site-dashboard', [ esc_html__( 'Hide the Quick Draft widget on the Dashboard', 'controlled-chaos' ) ] );
+		add_settings_field(
+			'ccp_hide_quickpress',
+			__( 'Hide Quick Draft', 'controlled-chaos' ),
+			[ $this, 'ccp_hide_quickpress_callback' ],
+			'ccp-site-dashboard',
+			'ccp-site-dashboard',
+			[ esc_html__( 'Hide the Quick Draft widget on the Dashboard', 'controlled-chaos' ) ]
+		);
 
 		register_setting(
 			'ccp_dashboard',
@@ -81,7 +112,14 @@ class Controlled_Chaos_Site_Settings {
 		);
 
 		// Hide At a Glance widget.
-		add_settings_field( 'ccp_hide_at_glance', __( 'Hide At a Glance', 'controlled-chaos' ), [ $this, 'ccp_hide_at_glance_callback' ], 'ccp-site-dashboard', 'ccp-site-dashboard', [ esc_html__( 'Hide the At a Glance widget on the Dashboard', 'controlled-chaos' ) ] );
+		add_settings_field(
+			'ccp_hide_at_glance',
+			__( 'Hide At a Glance', 'controlled-chaos' ),
+			[ $this, 'ccp_hide_at_glance_callback' ],
+			'ccp-site-dashboard',
+			'ccp-site-dashboard',
+			[ esc_html__( 'Hide the At a Glance widget on the Dashboard', 'controlled-chaos' ) ]
+		);
 
 		register_setting(
 			'ccp_dashboard',
@@ -89,7 +127,14 @@ class Controlled_Chaos_Site_Settings {
 		);
 
 		// Hide Activity widget.
-		add_settings_field( 'ccp_hide_activity', __( 'Hide Activity', 'controlled-chaos' ), [ $this, 'ccp_hide_activity_callback' ], 'ccp-site-dashboard', 'ccp-site-dashboard', [ esc_html__( 'Hide the Activity widget on the Dashboard', 'controlled-chaos' ) ] );
+		add_settings_field(
+			'ccp_hide_activity',
+			__( 'Hide Activity', 'controlled-chaos' ),
+			[ $this, 'ccp_hide_activity_callback' ],
+			'ccp-site-dashboard',
+			'ccp-site-dashboard',
+			[ esc_html__( 'Hide the Activity widget on the Dashboard', 'controlled-chaos' ) ]
+		);
 
 		register_setting(
 			'ccp_dashboard',
@@ -97,22 +142,76 @@ class Controlled_Chaos_Site_Settings {
 		);
 
 		/**
-		 * Admin menu.
+		 * Admin menu settings.
+		 * 
+		 * @since 1.0.0
 		 */
 
 		// Admin menu settings section.
-		add_settings_section( 'ccp-site-admin-menu', __( 'Admin Menu Settings', 'controlled-chaos' ), [], 'ccp-site-admin-menu' );
+		add_settings_section(
+			'ccp-site-admin-menu',
+			__( 'Admin Menu Settings', 'controlled-chaos' ),
+			[],
+			'ccp-site-admin-menu'
+		);
+
+		// Settings page position.
+		add_settings_field(
+			'ccp_settings_position',
+			__( 'Settings Page Position', 'controlled-chaos' ),
+			[ $this, 'ccp_settings_position_callback' ],
+			'ccp-site-admin-menu',
+			'ccp-site-admin-menu',
+			[ esc_html__( 'Make this settings page a top-level link.', 'controlled-chaos' ) ]
+		);
 
 		// Settings page link label.
-		add_settings_field( 'ccp_settings_page_link_label', __( 'Settings Page Label', 'controlled-chaos' ), [ $this, 'ccp_settings_page_link_label_callback' ], 'ccp-site-admin-menu', 'ccp-site-admin-menu', [ esc_html__( 'Change the label of the link to this page', 'controlled-chaos' ) ] );
+		add_settings_field(
+			'ccp_settings_page_link_label',
+			__( 'Settings Page Label', 'controlled-chaos' ),
+			[ $this, 'ccp_settings_page_link_label_callback' ],
+			'ccp-site-admin-menu',
+			'ccp-site-admin-menu',
+			[ esc_html__( 'Change the label of the link to this page', 'controlled-chaos' ) ]
+		);
 
 		register_setting(
 			'ccp-site-admin-menu',
 			'ccp_settings_page_link_label'
 		);
 
+		/**
+		 * Settings page link icon if set to top level.
+		 * 
+		 * @todo Show or hide the field with JavaScript on the position option checkbox
+		 *       rather than checking if the position option is set.
+		 */
+		$position = get_option( 'ccp_settings_position' );
+		if ( $position ) :
+			add_settings_field(
+				'ccp_settings_page_link_icon',
+				__( 'Settings Page Icon', 'controlled-chaos' ),
+				[ $this, 'ccp_settings_page_link_icon_callback' ],
+				'ccp-site-admin-menu',
+				'ccp-site-admin-menu',
+				[ esc_html__( 'Enter a Dashicons class for the icon of the link to this page', 'controlled-chaos' ) ]
+			);
+			
+			register_setting(
+				'ccp-site-admin-menu',
+				'ccp_settings_page_link_icon'
+			);
+		endif;
+
 		// Menus link position.
-		add_settings_field( 'ccp_menus_position', __( 'Menus Position', 'controlled-chaos' ), [ $this, 'ccp_menus_position_callback' ], 'ccp-site-admin-menu', 'ccp-site-admin-menu', [ esc_html__( 'Make Menus a top-level link', 'controlled-chaos' ) ] );
+		add_settings_field(
+			'ccp_menus_position',
+			__( 'Menus Position', 'controlled-chaos' ),
+			[ $this, 'ccp_menus_position_callback' ],
+			'ccp-site-admin-menu',
+			'ccp-site-admin-menu',
+			[ esc_html__( 'Make Menus a top-level link', 'controlled-chaos' ) ]
+		);
 
 		register_setting(
 			'ccp-site-admin-menu',
@@ -120,15 +219,19 @@ class Controlled_Chaos_Site_Settings {
 		);
 
 		// Widgets link position.
-		add_settings_field( 'ccp_widgets_position', __( 'Widgets Position', 'controlled-chaos' ), [ $this, 'ccp_widgets_position_callback' ], 'ccp-site-admin-menu', 'ccp-site-admin-menu', [ esc_html__( 'Make Widgets a top-level link', 'controlled-chaos' ) ] );
+		add_settings_field(
+			'ccp_widgets_position',
+			__( 'Widgets Position', 'controlled-chaos' ),
+			[ $this, 'ccp_widgets_position_callback' ],
+			'ccp-site-admin-menu',
+			'ccp-site-admin-menu',
+			[ esc_html__( 'Make Widgets a top-level link', 'controlled-chaos' ) ]
+		);
 
 		register_setting(
 			'ccp-site-admin-menu',
 			'ccp_widgets_position'
 		);
-
-		// Settings page position.
-		add_settings_field( 'ccp_settings_position', __( 'Settings Page Position', 'controlled-chaos' ), [ $this, 'ccp_settings_position_callback' ], 'ccp-site-admin-menu', 'ccp-site-admin-menu', [ esc_html__( 'Make this settings page a top-level link and hide othe settings links.', 'controlled-chaos' ) ] );
 
 		register_setting(
 			'ccp-site-admin-menu',
@@ -136,7 +239,14 @@ class Controlled_Chaos_Site_Settings {
 		);
 
 		// Hide Appearance link.
-		add_settings_field( 'ccp_hide_appearance', __( 'Hide Appearance', 'controlled-chaos' ), [ $this, 'ccp_hide_appearance_callback' ], 'ccp-site-admin-menu', 'ccp-site-admin-menu', [ esc_html__( 'Hide the Appearance link in the admin menu', 'controlled-chaos' ) ] );
+		add_settings_field(
+			'ccp_hide_appearance',
+			__( 'Hide Appearance', 'controlled-chaos' ),
+			[ $this, 'ccp_hide_appearance_callback' ],
+			'ccp-site-admin-menu',
+			'ccp-site-admin-menu',
+			[ esc_html__( 'Hide the Appearance link in the admin menu', 'controlled-chaos' ) ]
+		);
 
 		register_setting(
 			'ccp-site-admin-menu',
@@ -144,7 +254,14 @@ class Controlled_Chaos_Site_Settings {
 		);
 
 		// Hide Plugins link.
-		add_settings_field( 'ccp_hide_plugins', __( 'Hide Plugins', 'controlled-chaos' ), [ $this, 'ccp_hide_plugins_callback' ], 'ccp-site-admin-menu', 'ccp-site-admin-menu', [ esc_html__( 'Hide the Plugins link in the admin menu', 'controlled-chaos' ) ] );
+		add_settings_field(
+			'ccp_hide_plugins',
+			__( 'Hide Plugins', 'controlled-chaos' ),
+			[ $this, 'ccp_hide_plugins_callback' ],
+			'ccp-site-admin-menu',
+			'ccp-site-admin-menu',
+			[ esc_html__( 'Hide the Plugins link in the admin menu', 'controlled-chaos' ) ]
+		);
 
 		register_setting(
 			'ccp-site-admin-menu',
@@ -152,7 +269,14 @@ class Controlled_Chaos_Site_Settings {
 		);
 
 		// Hide Users link.
-		add_settings_field( 'ccp_hide_users', __( 'Hide Users', 'controlled-chaos' ), [ $this, 'ccp_hide_users_callback' ], 'ccp-site-admin-menu', 'ccp-site-admin-menu', [ esc_html__( 'Hide the Users link in the admin menu', 'controlled-chaos' ) ] );
+		add_settings_field(
+			'ccp_hide_users',
+			__( 'Hide Users', 'controlled-chaos' ),
+			[ $this, 'ccp_hide_users_callback' ],
+			'ccp-site-admin-menu',
+			'ccp-site-admin-menu',
+			[ esc_html__( 'Hide the Users link in the admin menu', 'controlled-chaos' ) ]
+		);
 
 		register_setting(
 			'ccp-site-admin-menu',
@@ -160,7 +284,14 @@ class Controlled_Chaos_Site_Settings {
 		);
 
 		// Hide Tools link.
-		add_settings_field( 'ccp_hide_tools', __( 'Hide Tools', 'controlled-chaos' ), [ $this, 'ccp_hide_tools_callback' ], 'ccp-site-admin-menu', 'ccp-site-admin-menu', [ esc_html__( 'Hide the Tools link in the admin menu', 'controlled-chaos' ) ] );
+		add_settings_field(
+			'ccp_hide_tools',
+			__( 'Hide Tools', 'controlled-chaos' ),
+			[ $this, 'ccp_hide_tools_callback' ],
+			'ccp-site-admin-menu',
+			'ccp-site-admin-menu',
+			[ esc_html__( 'Hide the Tools link in the admin menu', 'controlled-chaos' ) ]
+		);
 
 		register_setting(
 			'ccp-site-admin-menu',
@@ -168,7 +299,14 @@ class Controlled_Chaos_Site_Settings {
 		);
 
 		// Show/Hide Links Manager link.
-		add_settings_field( 'ccp_hide_links', __( 'Restore Links Manager', 'controlled-chaos' ), [ $this, 'ccp_hide_links_callback' ], 'ccp-site-admin-menu', 'ccp-site-admin-menu', [ esc_html__( 'The old Links Manager is hidden by default in newer WordPress installations', 'controlled-chaos' ) ] );
+		add_settings_field(
+			'ccp_hide_links',
+			__( 'Restore Links Manager', 'controlled-chaos' ),
+			[ $this, 'ccp_hide_links_callback' ],
+			'ccp-site-admin-menu',
+			'ccp-site-admin-menu',
+			[ esc_html__( 'The old Links Manager is hidden by default in newer WordPress installations', 'controlled-chaos' ) ]
+		);
 
 		register_setting(
 			'ccp-site-admin-menu',
@@ -176,14 +314,28 @@ class Controlled_Chaos_Site_Settings {
 		);
 
 		/**
-		 * Admin pages.
+		 * Admin pages settings.
+		 * 
+		 * @since 1.0.0
 		 */
 
 		// Admin pages settings section.
-		add_settings_section( 'ccp-site-admin-pages', __( 'Admin Pages Settings', 'controlled-chaos' ), [], 'ccp-site-admin-pages' );
+		add_settings_section(
+			'ccp-site-admin-pages',
+			__( 'Admin Pages Settings', 'controlled-chaos' ),
+			[],
+			'ccp-site-admin-pages'
+		);
 
 		// Admin footer credit.
-		add_settings_field( 'ccp_footer_credit', __( 'Admin Footer Credit', 'controlled-chaos' ), [ $this, 'ccp_footer_credit_callback' ], 'ccp-site-admin-pages', 'ccp-site-admin-pages', [ esc_html__( 'The "developed by" credit.', 'controlled-chaos' ) ] );
+		add_settings_field(
+			'ccp_footer_credit',
+			__( 'Admin Footer Credit', 'controlled-chaos' ),
+			[ $this, 'ccp_footer_credit_callback' ],
+			'ccp-site-admin-pages',
+			'ccp-site-admin-pages',
+			[ esc_html__( 'The "developed by" credit.', 'controlled-chaos' ) ]
+		);
 
 		register_setting(
 			'ccp-site-admin-pages',
@@ -191,7 +343,14 @@ class Controlled_Chaos_Site_Settings {
 		);
 
 		// Admin footer link.
-		add_settings_field( 'ccp_footer_link', __( 'Admin Footer Link', 'controlled-chaos' ), [ $this, 'ccp_footer_link_callback' ], 'ccp-site-admin-pages', 'ccp-site-admin-pages', [ esc_html__( 'Link to the website devoloper.', 'controlled-chaos' ) ] );
+		add_settings_field(
+			'ccp_footer_link',
+			__( 'Admin Footer Link', 'controlled-chaos' ),
+			[ $this, 'ccp_footer_link_callback' ],
+			'ccp-site-admin-pages',
+			'ccp-site-admin-pages',
+			[ esc_html__( 'Link to the website devoloper.', 'controlled-chaos' ) ]
+		);
 
 		register_setting(
 			'ccp-site-admin-pages',
@@ -199,14 +358,28 @@ class Controlled_Chaos_Site_Settings {
 		);
 
 		/**
-		 * Meta & SEO.
+		 * Meta & SEO settings.
+		 * 
+		 * @since 1.0.0
 		 */
 
 		// Meta/SEO settings section.
-		add_settings_section( 'ccp-site-meta-seo', __( 'Meta & SEO Settings', 'controlled-chaos' ), [], 'ccp-site-meta-seo' );
+		add_settings_section(
+			'ccp-site-meta-seo',
+			__( 'Meta & SEO Settings', 'controlled-chaos' ),
+			[],
+			'ccp-site-meta-seo'
+		);
 
 		// Disable meta tags.
-		add_settings_field( 'ccp_disable_meta', __( 'Meta Tags', 'controlled-chaos' ), [ $this, 'ccp_disable_meta_callback' ], 'ccp-site-meta-seo', 'ccp-site-meta-seo', [ esc_html__( 'Disable if your theme includes SEO meta tags, or if you plan on using Yoast SEO or a similarly awful plugin.', 'controlled-chaos' ) ] );
+		add_settings_field(
+			'ccp_disable_meta',
+			__( 'Meta Tags', 'controlled-chaos' ),
+			[ $this, 'ccp_disable_meta_callback' ],
+			'ccp-site-meta-seo',
+			'ccp-site-meta-seo',
+			[ esc_html__( 'Disable if your theme includes SEO meta tags or if you plan on using an SEO plugin.', 'controlled-chaos' ) ]
+		);
 
 		register_setting(
 			'ccp-site-meta-seo',
@@ -216,9 +389,30 @@ class Controlled_Chaos_Site_Settings {
 	}
 
 	/**
+	 * Settings page position.
+	 * 
+	 * @param  array $args Extra arguments passed into the callback function.
+	 * @return string
+	 * @since  1.0.0
+	 */
+	public function ccp_settings_position_callback( $args ) {
+
+		$option = get_option( 'ccp_settings_position' );
+
+		$html = '<p><input type="checkbox" id="ccp_settings_position" name="ccp_settings_position" value="1" ' . checked( 1, $option, false ) . '/>';
+		
+		$html .= '<label for="ccp_settings_position"> '  . $args[0] . '</label></p>';
+
+		echo $html;
+
+	}
+
+	/**
 	 * Settings page link label.
 	 * 
-	 * @since    1.0.0
+	 * @param  array $args Extra arguments passed into the callback function.
+	 * @return mixed 
+	 * @since  1.0.0
 	 */
 	public function ccp_settings_page_link_label_callback( $args ) {
 
@@ -233,9 +427,30 @@ class Controlled_Chaos_Site_Settings {
 	}
 
 	/**
+	 * Settings page link icon.
+	 * 
+	 * @param  array $args Extra arguments passed into the callback function.
+	 * @return mixed 
+	 * @since  1.0.0
+	 */
+	public function ccp_settings_page_link_icon_callback( $args ) {
+
+		$option = get_option( 'ccp_settings_page_link_icon' );
+
+		$html = '<p><input type="text" size="50" id="ccp_settings_page_link_icon" name="ccp_settings_page_link_icon" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( __( 'dashicons-admin-generic', 'controlled-chaos' ) ) . '" /><br />';
+		
+		$html .= '<label for="ccp_settings_page_link_icon"> ' . $args[0] . '</label></p>';
+
+		echo $html;
+
+	}
+
+	/**
 	 * Menus link position.
 	 * 
-	 * @since    1.0.0
+	 * @param  array $args Extra arguments passed into the callback function.
+	 * @return string
+	 * @since  1.0.0
 	 */
 	public function ccp_menus_position_callback( $args ) {
 
@@ -252,7 +467,9 @@ class Controlled_Chaos_Site_Settings {
 	/**
 	 * Widgets link position.
 	 * 
-	 * @since    1.0.0
+	 * @param  array $args Extra arguments passed into the callback function.
+	 * @return string
+	 * @since  1.0.0
 	 */
 	public function ccp_widgets_position_callback( $args ) {
 
@@ -267,26 +484,11 @@ class Controlled_Chaos_Site_Settings {
 	}
 
 	/**
-	 * Settings page position.
-	 * 
-	 * @since    1.0.0
-	 */
-	public function ccp_settings_position_callback( $args ) {
-
-		$option = get_option( 'ccp_settings_position' );
-
-		$html = '<p><input type="checkbox" id="ccp_settings_position" name="ccp_settings_position" value="1" ' . checked( 1, $option, false ) . '/>';
-		
-		$html .= '<label for="ccp_settings_position"> '  . $args[0] . '</label></p>';
-
-		echo $html;
-
-	}
-
-	/**
 	 * Hide Welcome panel.
 	 * 
-	 * @since    1.0.0
+	 * @param  array $args Extra arguments passed into the callback function.
+	 * @return string
+	 * @since  1.0.0
 	 */
 	public function ccp_hide_welcome_callback( $args ) {
 
@@ -303,7 +505,9 @@ class Controlled_Chaos_Site_Settings {
 	/**
 	 * Hide WordPress News widget.
 	 * 
-	 * @since    1.0.0
+	 * @param  array $args Extra arguments passed into the callback function.
+	 * @return string
+	 * @since  1.0.0
 	 */
 	public function ccp_hide_wp_news_callback( $args ) {
 
@@ -320,7 +524,9 @@ class Controlled_Chaos_Site_Settings {
 	/**
 	 * Hide Quick Draft (QuickPress) widget.
 	 * 
-	 * @since    1.0.0
+	 * @param  array $args Extra arguments passed into the callback function.
+	 * @return string
+	 * @since  1.0.0
 	 */
 	public function ccp_hide_quickpress_callback( $args ) {
 
@@ -337,7 +543,9 @@ class Controlled_Chaos_Site_Settings {
 	/**
 	 * Hide At a Glance widget.
 	 * 
-	 * @since    1.0.0
+	 * @param  array $args Extra arguments passed into the callback function.
+	 * @return string
+	 * @since  1.0.0
 	 */
 	public function ccp_hide_at_glance_callback( $args ) {
 
@@ -354,7 +562,9 @@ class Controlled_Chaos_Site_Settings {
 	/**
 	 * Hide Activity widget.
 	 * 
-	 * @since    1.0.0
+	 * @param  array $args Extra arguments passed into the callback function.
+	 * @return string
+	 * @since  1.0.0
 	 */
 	public function ccp_hide_activity_callback( $args ) {
 
@@ -371,7 +581,9 @@ class Controlled_Chaos_Site_Settings {
 	/**
 	 * Hide Appearance link.
 	 * 
-	 * @since    1.0.0
+	 * @param  array $args Extra arguments passed into the callback function.
+	 * @return string
+	 * @since  1.0.0
 	 */
 	public function ccp_hide_appearance_callback( $args ) {
 
@@ -388,7 +600,9 @@ class Controlled_Chaos_Site_Settings {
 	/**
 	 * Hide Plugins link.
 	 * 
-	 * @since    1.0.0
+	 * @param  array $args Extra arguments passed into the callback function.
+	 * @return string
+	 * @since  1.0.0
 	 */
 	public function ccp_hide_plugins_callback( $args ) {
 
@@ -405,7 +619,9 @@ class Controlled_Chaos_Site_Settings {
 	/**
 	 * Hide Users link.
 	 * 
-	 * @since    1.0.0
+	 * @param  array $args Extra arguments passed into the callback function.
+	 * @return string
+	 * @since  1.0.0
 	 */
 	public function ccp_hide_users_callback( $args ) {
 
@@ -422,7 +638,9 @@ class Controlled_Chaos_Site_Settings {
 	/**
 	 * Hide Tools link.
 	 * 
-	 * @since    1.0.0
+	 * @param  array $args Extra arguments passed into the callback function.
+	 * @return string
+	 * @since  1.0.0
 	 */
 	public function ccp_hide_tools_callback( $args ) {
 
@@ -439,7 +657,9 @@ class Controlled_Chaos_Site_Settings {
 	/**
 	 * Show/Hide Links Manager link.
 	 * 
-	 * @since    1.0.0
+	 * @param  array $args Extra arguments passed into the callback function.
+	 * @return string
+	 * @since  1.0.0
 	 */
 	public function ccp_hide_links_callback( $args ) {
 
@@ -456,7 +676,9 @@ class Controlled_Chaos_Site_Settings {
 	/**
 	 * Admin footer credit.
 	 * 
-	 * @since    1.0.0
+	 * @param  array $args Extra arguments passed into the callback function.
+	 * @return string
+	 * @since  1.0.0
 	 */
 	public function ccp_footer_credit_callback( $args ) {
 
@@ -473,7 +695,9 @@ class Controlled_Chaos_Site_Settings {
 	/**
 	 * Admin footer link.
 	 * 
-	 * @since    1.0.0
+	 * @param  array $args Extra arguments passed into the callback function.
+	 * @return string
+	 * @since  1.0.0
 	 */
 	public function ccp_footer_link_callback( $args ) {
 
@@ -490,7 +714,9 @@ class Controlled_Chaos_Site_Settings {
 	/**
 	 * Disable meta tags.
 	 * 
-	 * @since    1.0.0
+	 * @param  array $args Extra arguments passed into the callback function.
+	 * @return string
+	 * @since  1.0.0
 	 */
 	public function ccp_disable_meta_callback( $args ) {
 
@@ -506,4 +732,4 @@ class Controlled_Chaos_Site_Settings {
 
 }
 
-$controlled_chaos_site_settings = new Controlled_Chaos_Site_Settings;
+$ccp_site_settings = new Controlled_Chaos_Site_Settings;

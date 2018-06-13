@@ -48,7 +48,7 @@ class Controlled_Chaos_Admin_Tools {
 	 */
 	public function dev_tools_page() {
 
-		add_submenu_page( 'tools.php', __( 'Website Development', 'controlled-chaos' ), __( 'Development', 'controlled-chaos' ), 'manage_options', 'controlled-chaos-dev-tools', [ $this, 'dev_tools_output' ] );
+		add_submenu_page( 'tools.php', __( 'Website Development', 'controlled-chaos' ), __( 'Site Development', 'controlled-chaos' ), 'manage_options', 'controlled-chaos-dev-tools', [ $this, 'dev_tools_output' ] );
 
 	}
 
