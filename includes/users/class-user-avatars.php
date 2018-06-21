@@ -1,42 +1,77 @@
 <?php
-
 /**
- * Adds an avatar upload field to user profiles.
+ * Add an avatar upload field to user profiles.
+ * 
  * Also provides front-end avatar management via a shortcode and bbPress support.
+ * 
+ * @package    controlled-chaos
+ * @subpackage Controlled_Chaos\includes\users
+ *
+ * @since      1.0.0
+ * @author	   Jared Atchison
+ * @author     Greg Sweet <greg@ccdzine.com>
  *
  * @link       http://wordpress.org/extend/basic-user-avatars
- * @author	   Jared Atchison
- * @since      1.0.0
- *
- * @package    controlled-chaos
- * @subpackage controlled-chaos/includes/users
  */
 
-namespace CCPlugin\Includes\Users;
+namespace CC_Plugin\Includes\Users;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-class Controlled_Chaos_User_Avatars {
+/**
+ * Add an avatar upload field to user profiles.
+ * 
+ * @since  1.0.0
+ * @access public
+ */
+class User_Avatars {
 
 	/**
 	 * User ID.
 	 *
 	 * @since 1.0.0
 	 * @var int
+	 * @access private
 	 */
 	private $user_id_being_edited;
 
 	/**
+	 * Get an instance of the plugin class.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return object Returns the instance.
+	 */
+	public static function instance() {
+
+		// Varialbe for the instance to be used outside the class.
+		static $instance = null;
+
+		if ( is_null( $instance ) ) {
+
+			// Set variable for new instance.
+			$instance = new self;
+			
+		}
+
+		// Return the instance.
+		return $instance;
+
+	}
+
+	/**
 	 * Initialize all the things.
 	 *
-	 * @since 1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return self
 	 */
 	public function __construct() {
 
-		// Actions
+		// Actions.
 		add_action( 'admin_init', [ $this, 'admin_init' ] );
 		add_action( 'show_user_profile', [ $this, 'edit_user_profile' ] );
 		add_action( 'edit_user_profile', [ $this, 'edit_user_profile' ] );
@@ -44,10 +79,10 @@ class Controlled_Chaos_User_Avatars {
 		add_action( 'edit_user_profile_update', [ $this, 'edit_user_profile_update' ] );
 		add_action( 'bbp_user_edit_after_about', [ $this, 'bbpress_user_profile' ] );
 
-		// Shortcode
-		add_shortcode( 'controlled-chaos', [ $this, 'shortcode' ] );
+		// Shortcode.
+		add_shortcode( 'controlled-chaos-plugin', [ $this, 'shortcode' ] );
 
-		// Filters
+		// Filters.
 		add_filter( 'get_avatar', [ $this, 'get_avatar' ], 10, 5 );
 		add_filter( 'avatar_defaults', [ $this, 'avatar_defaults' ] );
 
@@ -56,28 +91,31 @@ class Controlled_Chaos_User_Avatars {
 	/**
 	 * Start the admin engine.
 	 *
-	 * @since 1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
 	 */
 	public function admin_init() {
 
 		// Register/add the Discussion setting to restrict avatar upload capabilites
 		register_setting( 'discussion', 'ccp_user_avatars_caps', [ $this, 'sanitize_options' ] );
-		add_settings_field( 'basic-user-avatars-caps', __( 'Local Avatar Permissions', 'controlled-chaos' ), [ $this, 'avatar_settings_field' ], 'discussion', 'avatars' );
+		add_settings_field( 'basic-user-avatars-caps', __( 'Local Avatar Permissions', 'controlled-chaos-plugin' ), [ $this, 'avatar_settings_field' ], 'discussion', 'avatars' );
 
 	}
 
 	/**
 	 * Discussion settings option.
 	 *
-	 * @since 1.0.0
-	 * @param array $args [description]
+	 * @since  1.0.0
+	 * @access public
+	 * @return mixed
 	 */
-	public function avatar_settings_field( $args ) {
+	public function avatar_settings_field() {
 
 		$options = get_option( 'ccp_user_avatars_caps' ); ?>
 		<label for="ccp_user_avatars_caps">
 			<input type="checkbox" name="ccp_user_avatars_caps" id="ccp_user_avatars_caps" value="1" <?php checked( $options['ccp_user_avatars_caps'], 1 ); ?>/>
-			<?php _e( 'Only allow users with file upload capabilities to upload local avatars (Authors and above)', 'controlled-chaos' ); ?>
+			<?php _e( 'Only allow users with file upload capabilities to upload local avatars (Authors and above)', 'controlled-chaos-plugin' ); ?>
 		</label>
 		<?php
 
@@ -86,8 +124,9 @@ class Controlled_Chaos_User_Avatars {
 	/**
 	 * Sanitize the Discussion settings option.
 	 *
-	 * @since 1.0.0
-	 * @param array $input
+	 * @since  1.0.0
+	 * @access public
+	 * @param  array $input
 	 * @return array
 	 */
 	public function sanitize_options( $input ) {
@@ -101,12 +140,13 @@ class Controlled_Chaos_User_Avatars {
 	/**
 	 * Filter the avatar WordPress returns.
 	 *
-	 * @since 1.0.0
-	 * @param string $avatar 
-	 * @param int/string/object $id_or_email
-	 * @param int $size 
-	 * @param string $default
-	 * @param boolean $alt 
+	 * @since  1.0.0
+	 * @access public
+	 * @param  string $avatar 
+	 * @param  int/string/object $id_or_email
+	 * @param  int $size 
+	 * @param  string $default
+	 * @param  boolean $alt 
 	 * @return string
 	 */
 	public function get_avatar( $avatar = '', $id_or_email, $size = 96, $default = '', $alt = false ) {
@@ -165,8 +205,9 @@ class Controlled_Chaos_User_Avatars {
 	 * Form to display on the user profile edit screen.
 	 *
 	 * @since 1.0.0
+	 * @access public
 	 * @param object $profileuser
-	 * @return
+	 * @return mixed
 	 */
 	public function edit_user_profile( $profileuser ) {
 
@@ -176,10 +217,10 @@ class Controlled_Chaos_User_Avatars {
 			return;
 		?>
 
-		<h3><?php _e( 'Avatar', 'controlled-chaos' ); ?></h3>
+		<h3><?php _e( 'Avatar', 'controlled-chaos-plugin' ); ?></h3>
 		<table class="form-table">
 			<tr>
-				<th><label for="basic-user-avatar"><?php _e( 'Upload Avatar', 'controlled-chaos' ); ?></label></th>
+				<th><label for="basic-user-avatar"><?php _e( 'Upload Avatar', 'controlled-chaos-plugin' ); ?></label></th>
 				<td style="width: 50px;" valign="top">
 					<?php echo get_avatar( $profileuser->ID ); ?>
 				</td>
@@ -194,17 +235,17 @@ class Controlled_Chaos_User_Avatars {
 					echo '<input type="file" name="basic-user-avatar" id="basic-local-avatar" /><br />';
 
 					if ( empty( $profileuser->ccp_user_avatar ) ) {
-						echo '<span class="description">' . __( 'No local avatar is set. Use the upload field to add a local avatar.', 'controlled-chaos' ) . '</span>';
+						echo '<span class="description">' . __( 'No local avatar is set. Use the upload field to add a local avatar.', 'controlled-chaos-plugin' ) . '</span>';
 					} else {
-						echo '<input type="checkbox" name="basic-user-avatar-erase" value="1" /> ' . __( 'Delete local avatar', 'controlled-chaos' ) . '<br />';
-						echo '<span class="description">' . __( 'Replace the local avatar by uploading a new avatar, or erase the local avatar (falling back to a gravatar) by checking the delete option.', 'controlled-chaos' ) . '</span>';
+						echo '<input type="checkbox" name="basic-user-avatar-erase" value="1" /> ' . __( 'Delete local avatar', 'controlled-chaos-plugin' ) . '<br />';
+						echo '<span class="description">' . __( 'Replace the local avatar by uploading a new avatar, or erase the local avatar (falling back to a gravatar) by checking the delete option.', 'controlled-chaos-plugin' ) . '</span>';
 					}
 
 				} else {
 					if ( empty( $profileuser->ccp_user_avatar ) ) {
-						echo '<span class="description">' . __( 'No local avatar is set. Set up your avatar at Gravatar.com.', 'controlled-chaos' ) . '</span>';
+						echo '<span class="description">' . __( 'No local avatar is set. Set up your avatar at Gravatar.com.', 'controlled-chaos-plugin' ) . '</span>';
 					} else {
-						echo '<span class="description">' . __( 'You do not have media management permissions. To change your local avatar, contact the site administrator.', 'controlled-chaos' ) . '</span>';
+						echo '<span class="description">' . __( 'You do not have media management permissions. To change your local avatar, contact the site administrator.', 'controlled-chaos-plugin' ) . '</span>';
 					}	
 				}
 				?>
@@ -219,8 +260,10 @@ class Controlled_Chaos_User_Avatars {
 	/**
 	 * Update the user's avatar setting.
 	 *
-	 * @since 1.0.0
+	 * @since  1.0.0
+	 * @access public
 	 * @param int $user_id
+	 * @return mixed
 	 */
 	public function edit_user_profile_update( $user_id ) {
 
@@ -277,7 +320,9 @@ class Controlled_Chaos_User_Avatars {
 	/**
 	 * Enable avatar management on the frontend via this shortocde.
 	 *
-	 * @since 1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return mixed
 	 */
 	function shortcode() {
 
@@ -307,21 +352,21 @@ class Controlled_Chaos_User_Avatars {
 				echo '<p><input type="file" name="basic-user-avatar" id="basic-local-avatar" /></p>';
 
 				if ( empty( $profileuser->ccp_user_avatar ) ) {
-					echo '<p class="description">' . __( 'No local avatar is set. Use the upload field to add a local avatar.', 'controlled-chaos' ) . '</p>';
+					echo '<p class="description">' . __( 'No local avatar is set. Use the upload field to add a local avatar.', 'controlled-chaos-plugin' ) . '</p>';
 				} else {
-					echo '<input type="checkbox" name="basic-user-avatar-erase" value="1" /> ' . __( 'Delete local avatar', 'controlled-chaos' ) . '<br />';
-					echo '<p class="description">' . __( 'Replace the local avatar by uploading a new avatar, or erase the local avatar (falling back to a gravatar) by checking the delete option.', 'controlled-chaos' ) . '</p>';
+					echo '<input type="checkbox" name="basic-user-avatar-erase" value="1" /> ' . __( 'Delete local avatar', 'controlled-chaos-plugin' ) . '<br />';
+					echo '<p class="description">' . __( 'Replace the local avatar by uploading a new avatar, or erase the local avatar (falling back to a gravatar) by checking the delete option.', 'controlled-chaos-plugin' ) . '</p>';
 				}
 
 			} else {
 				if ( empty( $profileuser->ccp_user_avatar ) ) {
-					echo '<p class="description">' . __( 'No local avatar is set. Set up your avatar at Gravatar.com.', 'controlled-chaos' ) . '</p>';
+					echo '<p class="description">' . __( 'No local avatar is set. Set up your avatar at Gravatar.com.', 'controlled-chaos-plugin' ) . '</p>';
 				} else {
-					echo '<p class="description">' . __( 'You do not have media management permissions. To change your local avatar, contact the site administrator.', 'controlled-chaos' ) . '</p>';
+					echo '<p class="description">' . __( 'You do not have media management permissions. To change your local avatar, contact the site administrator.', 'controlled-chaos-plugin' ) . '</p>';
 				}	
 			}
 			?>
-			<input type="submit" name="manage_avatar_submit" value="<?php _e( 'Update Avatar', 'controlled-chaos' ); ?>" />
+			<input type="submit" name="manage_avatar_submit" value="<?php _e( 'Update Avatar', 'controlled-chaos-plugin' ); ?>" />
 		</form>
 		<?php
 
@@ -332,7 +377,9 @@ class Controlled_Chaos_User_Avatars {
 	/**
 	 * Form to display on the bbPress user profile edit screen.
 	 *
-	 * @since 1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return mixed
 	 */
 	public function bbpress_user_profile() {
 
@@ -343,7 +390,7 @@ class Controlled_Chaos_User_Avatars {
 		$profileuser = get_userdata( $user_id );
 
 		echo '<div>';
-			echo '<label for="basic-local-avatar">' . __( 'Avatar', 'controlled-chaos' ) . '</label>';
+			echo '<label for="basic-local-avatar">' . __( 'Avatar', 'controlled-chaos-plugin' ) . '</label>';
  			echo '<fieldset class="bbp-form avatar">';
 
 	 			echo get_avatar( $profileuser->ID );
@@ -356,17 +403,17 @@ class Controlled_Chaos_User_Avatars {
 					echo '<br /><input type="file" name="basic-user-avatar" id="basic-local-avatar" /><br />';
 
 					if ( empty( $profileuser->ccp_user_avatar ) ) {
-						echo '<span class="description" style="margin-left:0;">' . __( 'No local avatar is set. Use the upload field to add a local avatar.', 'controlled-chaos' ) . '</span>';
+						echo '<span class="description" style="margin-left:0;">' . __( 'No local avatar is set. Use the upload field to add a local avatar.', 'controlled-chaos-plugin' ) . '</span>';
 					} else {
-						echo '<input type="checkbox" name="basic-user-avatar-erase" value="1" style="width:auto" /> ' . __( 'Delete local avatar', 'controlled-chaos' ) . '<br />';
-						echo '<span class="description" style="margin-left:0;">' . __( 'Replace the local avatar by uploading a new avatar, or erase the local avatar (falling back to a gravatar) by checking the delete option.', 'controlled-chaos' ) . '</span>';
+						echo '<input type="checkbox" name="basic-user-avatar-erase" value="1" style="width:auto" /> ' . __( 'Delete local avatar', 'controlled-chaos-plugin' ) . '<br />';
+						echo '<span class="description" style="margin-left:0;">' . __( 'Replace the local avatar by uploading a new avatar, or erase the local avatar (falling back to a gravatar) by checking the delete option.', 'controlled-chaos-plugin' ) . '</span>';
 					}
 
 				} else {
 					if ( empty( $profileuser->ccp_user_avatar ) ) {
-						echo '<span class="description" style="margin-left:0;">' . __( 'No local avatar is set. Set up your avatar at Gravatar.com.', 'controlled-chaos' ) . '</span>';
+						echo '<span class="description" style="margin-left:0;">' . __( 'No local avatar is set. Set up your avatar at Gravatar.com.', 'controlled-chaos-plugin' ) . '</span>';
 					} else {
-						echo '<span class="description" style="margin-left:0;">' . __( 'You do not have media management permissions. To change your local avatar, contact the site administrator.', 'controlled-chaos' ) . '</span>';
+						echo '<span class="description" style="margin-left:0;">' . __( 'You do not have media management permissions. To change your local avatar, contact the site administrator.', 'controlled-chaos-plugin' ) . '</span>';
 					}	
 				}
 
@@ -382,8 +429,9 @@ class Controlled_Chaos_User_Avatars {
 	 * Remove the custom get_avatar hook for the default avatar list output on 
 	 * the Discussion Settings page.
 	 *
-	 * @since 1.0.0
-	 * @param array $avatar_defaults
+	 * @since  1.0.0
+	 * @access public
+	 * @param  array $avatar_defaults
 	 * @return array
 	 */
 	public function avatar_defaults( $avatar_defaults ) {
@@ -397,8 +445,9 @@ class Controlled_Chaos_User_Avatars {
 	/**
 	 * Delete avatars based on user_id.
 	 *
-	 * @since 1.0.0
-	 * @param int $user_id
+	 * @since  1.0.0
+	 * @access public
+	 * @param  int $user_id
 	 */
 	public function avatar_delete( $user_id ) {
 
@@ -419,10 +468,11 @@ class Controlled_Chaos_User_Avatars {
 	/**
 	 * File names are magic.
 	 *
-	 * @since 1.0.0
-	 * @param string $dir
-	 * @param string $name
-	 * @param string $ext
+	 * @since  1.0.0
+	 * @access public
+	 * @param  string $dir
+	 * @param  string $name
+	 * @param  string $ext
 	 * @return string
 	 */
 	public function unique_filename_callback( $dir, $name, $ext ) {
@@ -441,4 +491,19 @@ class Controlled_Chaos_User_Avatars {
 	}
 
 }
-$ccp_user_avatars = new Controlled_Chaos_User_Avatars;
+
+/**
+ * Put an instance of the class into a function.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return object Returns the instance of the class.
+ */
+function ccp_avatars() {
+
+	return User_Avatars::instance();
+
+}
+
+// Run an instance of the class.
+ccp_avatars();

@@ -38,7 +38,7 @@
 	* Block category common, formatting, layout, widgets, embed.
 	*/
 	registerBlockType( 'ccp/sample-block', {
-		title    : __( 'Sample Block', 'controlled-chaos' ),
+		title    : __( 'Sample Block', 'controlled-chaos-plugin' ),
 		icon     : 'lightbulb',
 		category : 'common',
 

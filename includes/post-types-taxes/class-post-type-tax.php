@@ -1,35 +1,71 @@
 <?php
-
 /**
  * Post types and taxonomies.
  *
- * @link       http://ccdzine.com
- * @since      1.0.0
- *
  * @package    controlled-chaos
- * @subpackage controlled-chaos/includes
+ * @subpackage Controlled_Chaos\includes\post-types-taxes
+ *
+ * @since      1.0.0
+ * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CCPlugin\Post_Type_Tax;
+namespace CC_Plugin\Includes\Post_Types_Taxes;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-class Controlled_Chaos_Post_Types_Taxes {
+/**
+ * Post types and taxonomies class.
+ * 
+ * @since  1.0.0
+ * @access public
+ */
+class Post_Types_Taxes {
 
 	/**
-	 * Constructor magic method.
+	 * Get an instance of the plugin class.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return object Returns the instance.
 	 */
-	public function __construct() {
+	public static function instance() {
 
-		$this->dependencies();
+		// Varialbe for the instance to be used outside the class.
+		static $instance = null;
+
+		if ( is_null( $instance ) ) {
+
+			// Set variable for new instance.
+			$instance = new self;
+
+			// Get class dependencies.
+			$instance->dependencies();
+			
+		}
+
+		// Return the instance.
+		return $instance;
 
 	}
 
 	/**
-     * Get post type & taxonomy dependencies.
+	 * Constructor method.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void Constructor method is empty.
+	 */
+	public function __construct() {}
+
+	/**
+     * Class dependency files.
+	 * 
+	 * @since  1.0.0
+	 * @access private
+	 * @return void
      */
 	public function dependencies() {
 
@@ -46,4 +82,18 @@ class Controlled_Chaos_Post_Types_Taxes {
 
 }
 
-$controlled_chaos_post_types_taxes = new Controlled_Chaos_Post_Types_Taxes;
+/**
+ * Put an instance of the class into a function.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return object Returns the instance of the class.
+ */
+function ccp_types_taxes() {
+
+	return Post_Types_Taxes::instance();
+
+}
+
+// Run an instance of the class.
+ccp_types_taxes();

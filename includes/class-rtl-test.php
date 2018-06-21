@@ -2,32 +2,59 @@
 /**
  * From the RTL-Tester plugin.
  *
- * Adds a button to the admin bar that allow super admins to switch the text direction of the site.
+ * Adds a button to the admin bar that allow super admins
+ * to switch the text direction of the site.
+ * 
+ * This file must not be namespaced.
  * 
  * @package    controlled-chaos
- * @subpackage controlled-chaos/includes
+ * @subpackage Controlled_Chaos\includes
  *
- * @package RTL_Tester
- * @author Automattic
- * @author Yoav Farhi
- * @link http://wordpress.org/extend/plugins/rtl-tester/
+ * @since      1.0.0
+ * @author     Automattic
+ * @author     Yoav Farhi
+ * @author     Greg Sweet <greg@ccdzine.com>
+ * @link       http://wordpress.org/extend/plugins/rtl-tester/
  */
 
 /**
  * RTL Test class.
- * 
- * Throws an error if namespaced.
  *
- * @since      1.0.0
- * @package    controlled-chaos
- * @subpackage controlled-chaos/includes
+ * @since  1.0.0
+ * @access public
  */
 class Controlled_Chaos_RTL_Test {
 
 	/**
+	 * Get an instance of the plugin class.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return object Returns the instance.
+	 */
+	public static function instance() {
+
+		// Varialbe for the instance to be used outside the class.
+		static $instance = null;
+
+		if ( is_null( $instance ) ) {
+
+			// Set variable for new instance.
+			$instance = new self;
+			
+		}
+
+		// Return the instance.
+		return $instance;
+
+	}
+
+	/**
 	 * Initialize the class.
 	 *
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return self
 	 */
 	public function __construct() {
 
@@ -39,9 +66,10 @@ class Controlled_Chaos_RTL_Test {
 	/**
 	 * Add a switcher button to the admin toolbar.
 	 * 
-	 * @since    1.0.0
-	 * @global object $wp_admin_bar Most likely instance of WP_Admin_Bar but this is filterable.
-	 * @return null Returns early if capability check isn't matched, or admin bar should not be showing.
+	 * @since  1.0.0
+	 * @access public
+	 * @global object wp_admin_bar Most likely instance of WP_Admin_Bar but this is filterable.
+	 * @return void Returns early if capability check isn't matched, or admin bar should not be showing.
 	 */
 	public function admin_bar_rtl_switcher() {
 
@@ -63,7 +91,7 @@ class Controlled_Chaos_RTL_Test {
 		$wp_admin_bar->add_menu(
 			[
 				'id'    => 'RTL',
-		 		'title' => sprintf( __( 'Switch to %s', 'controlled-chaos' ), strtoupper( $direction ) ),
+		 		'title' => sprintf( __( 'Switch to %s', 'controlled-chaos-plugin' ), strtoupper( $direction ) ),
 		 		'href'  => add_query_arg( [ 'd' => $direction ] )
 			]
 		);
@@ -72,9 +100,12 @@ class Controlled_Chaos_RTL_Test {
 
 	/**
 	 * Save the currently chosen direction on a per-user basis.
-	 *
+	 * 
+	 * @since  1.0.0
+	 * @access public
 	 * @global WP_Locale $wp_locale Locale object.
 	 * @global WP_Styles $wp_styles Styles object.
+	 * @return void
 	 */
 	public function set_direction() {
 
@@ -106,5 +137,18 @@ class Controlled_Chaos_RTL_Test {
 
 }
 
-// Run the class.
-$ccp_rtl_test = new Controlled_Chaos_RTL_Test;
+/**
+ * Put an instance of the class into a function.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return object Returns the instance of the class.
+ */
+function ccp_rtl_test() {
+
+	return Controlled_Chaos_RTL_Test::instance();
+
+}
+
+// Run an instance of the class.
+ccp_rtl_test();

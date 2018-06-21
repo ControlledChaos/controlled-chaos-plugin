@@ -7,10 +7,10 @@
  * @since      1.0.0
  *
  * @package    controlled-chaos
- * @subpackage controlled-chaos/public
+ * @subpackage Controlled_Chaos\public
  */
 
-namespace CCPlugin\Plugin_Public;
+namespace CC_Plugin\Plugin_Public;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -21,7 +21,7 @@ if ( ! defined( 'WPINC' ) ) {
  * The public-facing functionality of the plugin.
  *
  * @package    controlled-chaos
- * @subpackage controlled-chaos/public
+ * @subpackage Controlled_Chaos\public
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 class Controlled_Chaos_Public {
@@ -98,7 +98,7 @@ class Controlled_Chaos_Public {
 	}
 
 	/**
-	 * Register the stylesheets for the public-facing side of the site.
+	 * Enqueue the stylesheets for the public-facing side of the site.
 	 *
 	 * @since    1.0.0
 	 */

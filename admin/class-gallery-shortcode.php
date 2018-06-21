@@ -8,10 +8,10 @@
  * @since      1.0.0
  *
  * @package    controlled-chaos
- * @subpackage controlled-chaos/public
+ * @subpackage Controlled_Chaos\public
  */
 
-namespace CCPlugin\Gallery_Shortcode;
+namespace CC_Plugin\Gallery_Shortcode;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {

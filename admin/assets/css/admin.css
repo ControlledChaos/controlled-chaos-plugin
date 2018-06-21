@@ -5,7 +5,11 @@
 
  /**
   * PLUGINS
+  * 
+  * For the installed plugins and the add new plugins screens.
   */
+
+/* This provides better distinction between active and inactive plugins. */
 .plugins tr.inactive *,
 .plugins a.delete,
 .row-actions span.delete a {
@@ -28,8 +32,21 @@
 }
 
 /**
+ * MEDIA
+ * 
+ * For the media library and media uploads screens.
+ */
+
+/* Fix SVGs not showing correctly as featured images. */
+#postimagediv .inside .svg img {
+    width: 100%;
+}
+
+/**
  * MISCELLANEOUS
  */
+
+/* Easily copy the code of registered ACF fields on the Registered Fields screen. */
 .import-registered-field-groups-arrays {
     -webkit-user-select: all;
     -moz-user-select: all;

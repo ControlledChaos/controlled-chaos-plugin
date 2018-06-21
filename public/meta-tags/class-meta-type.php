@@ -3,11 +3,11 @@
  * Post type meta.
  *
  * @package    controlled-chaos
- * @subpackage controlled-chaos/includes
+ * @subpackage Controlled_Chaos\includes
  * @since controlled-chaos 1.0.0
  */
 
-namespace CCPlugin\Meta_Tags\Type;
+namespace CC_Plugin\Meta_Tags\Type;
 
 // Restrict direct access
 if ( ! defined( 'ABSPATH' ) ) exit;

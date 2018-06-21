@@ -11,11 +11,11 @@
  * - Verify the output of $_GET makes sense
  * - Repeat with other user roles. Best directly by using the links/query string parameters.
  * - Repeat things for multisite. Once for a single site in the network, once sitewide.
- *
- * @link       http://ccdzine.com
- * @since      1.0.0
- *
- * @package    controlled-chaos
+ * 
+ * @package   Controlled_Chaos
+ * @since     1.0.0
+ * @author    Greg Sweet <greg@ccdzine.com>
+ * @copyright Copyright © 2018, Greg Sweet
  */
 
 // If uninstall not called from WordPress, then exit.
@@ -27,7 +27,8 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
  * During uninstallation, remove the custom field from the users
  * and delete the local avatars.
  *
- * @since 1.0.0
+ * @since  1.0.0
+ * @return void
  */
 function ccp_user_avatars_uninstall() {
 

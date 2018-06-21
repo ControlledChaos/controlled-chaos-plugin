@@ -1,14 +1,17 @@
 <?php
-
 /**
  * Minify HTML source code.
  *
- * @package    controlled-chaos
- * @subpackage controlled-chaos/includes
- * @since controlled-chaos 1.0.0
+ * @package    Controlled_Chaos
+ * @subpackage Controlled_Chaos\includes
+ * 
+ * @since      1.0.0
+ * @author     Greg Sweet <greg@ccdzine.com>
+ * 
+ * @todo       Work out the errors thrown when the file is namespaced
  */
 
-// namespace CCPlugin\Includes\Minify;
+// namespace CC_Plugin\Includes\Minify;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -17,19 +20,26 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Minify HTML source code.
- *
- * @package    controlled-chaos
- * @subpackage controlled-chaos/includes
+ * 
+ * @since  1.0.0
+ * @access public
  */
 class Controlled_Chaos_Minify {
 
-	// Variables.
+	/**
+	 * HTML output variable.
+	 *
+	 * @var    string
+	 * @access protected
+	 */
 	protected $html;
 
 	/**
 	 * Initialize the class.
 	 *
-	 * @since 1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return self
 	 */
 	public function __construct( $html ) {
 
@@ -42,7 +52,8 @@ class Controlled_Chaos_Minify {
 	/**
 	 * Convert the HTML compressed by the class.
 	 *
-	 * @since 1.0.0
+	 * @since  1.0.0
+	 * @access public
 	 * @return string
 	 */
 	public function __toString() {
@@ -54,7 +65,8 @@ class Controlled_Chaos_Minify {
 	/**
 	 * Get the compression savings and return as a comment after the HTML.
 	 *
-	 * @since 1.0.0
+	 * @since  1.0.0
+	 * @access protected
 	 * @return string
 	 */
 	protected function bottom_comment( $raw, $compressed ) {
@@ -71,7 +83,9 @@ class Controlled_Chaos_Minify {
 	/**
 	 * Compress the HTML of the page.
 	 *
-	 * @since 1.0.0
+	 * @since  1.0.0
+	 * @access protected
+	 * @return string
 	 */
 	protected function minify_html( $html ) {
 
@@ -159,7 +173,9 @@ class Controlled_Chaos_Minify {
 	/**
 	 * Parse the HTML of the page.
 	 *
-	 * @since 1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
 	 */
 	public function parse_html( $html ) {
 
@@ -171,7 +187,9 @@ class Controlled_Chaos_Minify {
 	/**
 	 * Remove the whitespace from the HTML of the page.
 	 *
-	 * @since 1.0.0
+	 * @since  1.0.0
+	 * @access protected
+	 * @return string
 	 */
 	protected function remove_white_space( $str ) {
 
@@ -192,7 +210,9 @@ class Controlled_Chaos_Minify {
 /**
  * Return the class as an output buffering callback.
  *
- * @since 1.0.0
+ * @since  1.0.0
+ * @access public
+ * @return object
  */
 function wp_html_compression_finish( $html ) {
 
@@ -203,7 +223,8 @@ function wp_html_compression_finish( $html ) {
 /**
  * Return the HTML compressed by the class.
  *
- * @since 1.0.0
+ * @since  1.0.0
+ * @access public
  * @return string
  */
 function wp_html_compression_start() {

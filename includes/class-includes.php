@@ -2,15 +2,15 @@
 
 /**
  * The core plugin class.
- *
- * @link       http://ccdzine.com
- * @since      1.0.0
- *
+ * 
  * @package    controlled-chaos
- * @subpackage controlled-chaos/includes
+ * @subpackage Controlled_Chaos\includes
+ *
+ * @since      1.0.0
+ * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CCPlugin\Includes;
+namespace CC_Plugin\Includes;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -23,38 +23,59 @@ include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 /**
  * Define the core functionality of the plugin.
  *
- * @since      1.0.0
- * @package    controlled-chaos
- * @subpackage controlled-chaos/includes
+ * @since  1.0.0
+ * @access public
  */
-class Controlled_Chaos_Plugin {
+class Includes {
+
+	/**
+	 * Get an instance of the plugin class.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return object Returns the instance.
+	 */
+	public static function instance() {
+
+		// Varialbe for the instance to be used outside the class.
+		static $instance = null;
+
+		if ( is_null( $instance ) ) {
+
+			// Set variable for new instance.
+			$instance = new self;
+
+			// Get class dependencies.
+			$instance->dependencies();
+		}
+
+		// Return the instance.
+		return $instance;
+
+	}
 
 	/**
 	 * Initialize the class.
 	 *
-	 * @since 1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return self
 	 */
 	public function __construct() {
-
-		// Load dependencies.
-		$this->dependencies();
 
 		// Remove the capital P filter.
 		remove_filter( 'the_title', 'capital_P_dangit', 11 );
 		remove_filter( 'the_content', 'capital_P_dangit', 11 );
 		remove_filter( 'comment_text', 'capital_P_dangit', 31 );
 
-		// Add featured images to RSS feeds.
-		add_filter( 'the_excerpt_rss', [ $this, 'rss_featured_images' ] );
-		add_filter( 'the_content_feed', [ $this, 'rss_featured_images' ] );
-
 	}
 
 	/**
 	 * Load the required dependencies for this plugin.
 	 *
-	 * @since    1.0.0
-	 * @access   private
+	 * @since  1.0.0
+	 * @access private
+	 * @return void
 	 */
 	private function dependencies() {
 
@@ -66,6 +87,9 @@ class Controlled_Chaos_Plugin {
 
 		// Public/frontend functionality, scripts and styles.
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-public.php';
+
+		// Various media and media library functionality.
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/media/class-media.php';
 
 		/**
 		 * Register custom editor blocks.
@@ -98,33 +122,20 @@ class Controlled_Chaos_Plugin {
 
 	}
 
-	/**
-	 * Add featured images to RSS feeds.
-	 *
-	 * @since    1.0.0
-	 * @access   public
-	 */
-	public function rss_featured_images( $content ) {
+}
 
-		global $post;
+/**
+ * Put an instance of the class into a function.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return object Returns the instance of the class.
+ */
+function ccp_includes() {
 
-		// Apply a filter for conditional image sizes.
-		$size = apply_filters( 'ccp_rss_featured_image_size', 'medium' );
-
-		/**
-		 * Use this layout only if the post has a featured image.
-		 * 
-		 * The image and the content/excerpt are in separate <div> tags
-		 * to get the content below the image.
-		 */
-		if ( has_post_thumbnail( $post->ID ) ) {
-			$content = sprintf( '<div>%1s</div><div>%2s</div>', get_the_post_thumbnail( $post->ID, $size, [] ), $content );
-		}
-
-		return $content;
-	}
+	return Includes::instance();
 
 }
 
-// Run the core plugin class.
-$ccp_run = new Controlled_Chaos_Plugin();
+// Run an instance of the class.
+ccp_includes();

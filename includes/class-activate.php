@@ -1,13 +1,14 @@
 <?php
-
 /**
- * Fired during plugin activation.
- *
- * @link       http://ccdzine.com
- * @since      1.0.0
+ * Plugin activation class.
+ * 
+ * This file must not be namespaced.
  *
  * @package    controlled-chaos
- * @subpackage controlled-chaos/includes
+ * @subpackage Controlled_Chaos\includes
+ *
+ * @since      1.0.0
+ * @author     Greg Sweet <greg@ccdzine.com>
  */
 
 // If this file is called directly, abort.
@@ -16,23 +17,66 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 /**
- * Fired during plugin activation.
+ * Plugin activation class.
  *
- * @since      1.0.0
- * @package    controlled-chaos
- * @subpackage controlled-chaos/includes
+ * @since  1.0.0
+ * @access public
  */
 class Controlled_Chaos_Activate {
 
 	/**
-	 * Activation.
+	 * Get an instance of the plugin class.
 	 *
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return object Returns the instance.
 	 */
-	public static function activate() {
+	public static function instance() {
 
-		
+		// Varialbe for the instance to be used outside the class.
+		static $instance = null;
+
+		if ( is_null( $instance ) ) {
+
+			// Set variable for new instance.
+			$instance = new self;
+
+		}
+
+		// Return the instance.
+		return $instance;
 
 	}
+
+	/**
+	 * Constructor method.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void Constructor method is empty.
+	 */
+	public function __construct() {}
+
+	/**
+	 * Fired during plugin activation.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+	public function activate() {}
+
+}
+
+/**
+ * Put an instance of the class into a function.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return object Returns the instance of the class.
+ */
+function ccp_activate() {
+
+	return Controlled_Chaos_Activate::instance();
 
 }
