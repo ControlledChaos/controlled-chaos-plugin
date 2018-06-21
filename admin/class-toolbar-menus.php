@@ -7,10 +7,10 @@
  * @since      1.0.0
  *
  * @package    controlled-chaos
- * @subpackage controlled-chaos/includes
+ * @subpackage Controlled_Chaos\includes
  */
 
-namespace CCPlugin\Admin_Toolbar;
+namespace CC_Plugin\Admin_Toolbar;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -50,12 +50,12 @@ class Controlled_Chaos_Adminbar_Menus {
 
 		register_nav_menus(
 			[
-			'ccp_admin_toolbar_site'       => esc_html__( 'Admin Toolbar: Site Name', 'controlled-chaos' ),
-			'ccp_admin_toolbar_main'       => esc_html__( 'Admin Toolbar: Main', 'controlled-chaos' ),
-			'ccp_admin_toolbar_account'    => esc_html__( 'Admin Toolbar: My Account', 'controlled-chaos' ),
-			'ccp_frontend_toolbar_site'    => esc_html__( 'Frontend Toolbar: Site Name', 'controlled-chaos' ),
-			'ccp_frontend_toolbar_main'    => esc_html__( 'Frontend Toolbar: Main', 'controlled-chaos' ),
-			'ccp_frontend_toolbar_account' => esc_html__( 'Frontend Toolbar: My Account', 'controlled-chaos' )
+			'ccp_admin_toolbar_site'       => esc_html__( 'Admin Toolbar: Site Name', 'controlled-chaos-plugin' ),
+			'ccp_admin_toolbar_main'       => esc_html__( 'Admin Toolbar: Main', 'controlled-chaos-plugin' ),
+			'ccp_admin_toolbar_account'    => esc_html__( 'Admin Toolbar: My Account', 'controlled-chaos-plugin' ),
+			'ccp_frontend_toolbar_site'    => esc_html__( 'Frontend Toolbar: Site Name', 'controlled-chaos-plugin' ),
+			'ccp_frontend_toolbar_main'    => esc_html__( 'Frontend Toolbar: Main', 'controlled-chaos-plugin' ),
+			'ccp_frontend_toolbar_account' => esc_html__( 'Frontend Toolbar: My Account', 'controlled-chaos-plugin' )
 			]
 		);
 

@@ -8,10 +8,10 @@
  * @since      1.0.0
  *
  * @package    controlled-chaos
- * @subpackage controlled-chaos/admin
+ * @subpackage Controlled_Chaos\admin
  */
 
-namespace CCPlugin\Fields_Import;
+namespace CC_Plugin\Fields_Import;
 
 // Restrict direct access
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -43,8 +43,8 @@ class Controlled_Chaos_Fields_Import {
 
 		add_submenu_page(
 			'edit.php?post_type=acf-field-group',
-			__( 'Registered Fields', 'controlled-chaos' ),
-			__( 'Registered Fields', 'controlled-chaos' ),
+			__( 'Registered Fields', 'controlled-chaos-plugin' ),
+			__( 'Registered Fields', 'controlled-chaos-plugin' ),
 			'manage_options', 'acf-theme-fields',
 			[ $this, 'page_output' ]
 		);
@@ -74,7 +74,7 @@ class Controlled_Chaos_Fields_Import {
 
 			// Now we can import the groups
 			foreach ( $acf_local->groups as $key => $group ) {
-				$group['title'] = $group['title'] . __( ' (Imported)', 'controlled-chaos' );
+				$group['title'] = $group['title'] . __( ' (Imported)', 'controlled-chaos-plugin' );
 
 				// Only import those that were selected.
 				if ( in_array( $key, $import_fieldsets ) ) {

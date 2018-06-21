@@ -7,7 +7,7 @@
  * @since      1.0.0
  *
  * @package    controlled-chaos
- * @subpackage controlled-chaos/includes/editor-blocks
+ * @subpackage Controlled_Chaos\includes/editor-blocks
  */
 
 // If this file is called directly, abort.
@@ -20,7 +20,7 @@ if ( ! defined( 'WPINC' ) ) {
  *
  * @since      1.0.0
  * @package    controlled-chaos
- * @subpackage controlled-chaos/includes/editor-blocks
+ * @subpackage Controlled_Chaos\includes/editor-blocks
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 class Controlled_Chaos_Register_Blocks {

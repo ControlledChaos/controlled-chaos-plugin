@@ -7,7 +7,7 @@
  * @since controlled-chaos 1.0.0
  */
 
-namespace CCPlugin\Head_Scripts;
+namespace CC_Plugin\Head_Scripts;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -17,7 +17,7 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Script options.
  * @package    controlled-chaos
- * @subpackage controlled-chaos/admin
+ * @subpackage Controlled_Chaos\admin
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 class Controlled_Chaos_Head_Scripts {

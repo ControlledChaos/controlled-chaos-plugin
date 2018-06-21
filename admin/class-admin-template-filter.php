@@ -7,10 +7,10 @@
  * @since      1.0.0
  *
  * @package    controlled-chaos
- * @subpackage controlled-chaos/admin
+ * @subpackage Controlled_Chaos\admin
  */
 
-namespace CCPlugin\Admin_List_Filters;
+namespace CC_Plugin\Admin_List_Filters;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -21,7 +21,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Filter post types by page template.
  *
  * @package    controlled-chaos
- * @subpackage controlled-chaos/admin
+ * @subpackage Controlled_Chaos\admin
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 class Controlled_Chaos_Filter_By_Template {
@@ -59,7 +59,7 @@ class Controlled_Chaos_Filter_By_Template {
 		}
 	
 		$template      = isset( $_GET['page_template_filter'] ) ? $_GET['page_template_filter'] : "all"; 
-		$default_title = apply_filters( 'default_page_template_title',  __( 'Default Template', 'controlled-chaos' ), 'meta-box' );
+		$default_title = apply_filters( 'default_page_template_title',  __( 'Default Template', 'controlled-chaos-plugin' ), 'meta-box' );
 		?>
 		<select name="page_template_filter" id="page_template_filter">
 			<option value="all">All Page Templates</option>
@@ -130,7 +130,7 @@ class Controlled_Chaos_Filter_By_Template {
 
 	        	if ( $template == 'default' ) {
 
-	        		$template_name = apply_filters( 'default_page_template_title',  __( 'Default Template', 'controlled-chaos' ), 'meta-box' );
+	        		$template_name = apply_filters( 'default_page_template_title',  __( 'Default Template', 'controlled-chaos-plugin' ), 'meta-box' );
 					echo sprintf( '<span title="Template file : page.php">%1s</span>', $template_name );
 					
 	        	} else {

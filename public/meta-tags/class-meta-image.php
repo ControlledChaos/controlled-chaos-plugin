@@ -3,11 +3,11 @@
  * Image meta tag.
  *
  * @package    controlled-chaos
- * @subpackage controlled-chaos/includes
+ * @subpackage Controlled_Chaos\includes
  * @since controlled-chaos 1.0.0
  */
 
-namespace CCPlugin\Meta_Tags\Images;
+namespace CC_Plugin\Meta_Tags\Images;
 
 // Restrict direct access
 if ( ! defined( 'ABSPATH' ) ) exit;

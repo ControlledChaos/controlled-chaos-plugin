@@ -9,7 +9,7 @@
  * @since controlled-chaos 1.0.0
  */
 
-namespace CCPlugin\Admin_Pages;
+namespace CC_Plugin\Admin_Pages;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -20,7 +20,7 @@ if ( ! defined( 'WPINC' ) ) {
  * The admin-specific functionality of the plugin.
  *
  * @package    controlled-chaos
- * @subpackage controlled-chaos/admin
+ * @subpackage Controlled_Chaos\admin
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 class Controlled_Chaos_Admin_Pages {
@@ -69,11 +69,11 @@ class Controlled_Chaos_Admin_Pages {
 
         add_submenu_page(
             'plugins.php', 
-            'Site Plugin',
-            'Site Plugin', 
+            __( 'Site Plugin', 'controlled-chaos-plugin' ),
+            __( 'Site Plugin', 'controlled-chaos-plugin' ),
             'manage_options', 
             'controlled-chaos-page', 
-            [ $this, 'plugin_about_page' ]
+            [ $this, 'about_plugin_output' ]
         );
 
     }
@@ -83,7 +83,7 @@ class Controlled_Chaos_Admin_Pages {
      *
      * @since    1.0.0
      */
-    public function plugin_about_page() {
+    public function about_plugin_output() {
 
         require plugin_dir_path( __FILE__ ) . 'partials/plugin-page-about.php';
 
@@ -100,13 +100,13 @@ class Controlled_Chaos_Admin_Pages {
 
         // Post type edit screens.
         if ( 'post' == $screen->post_type ) {
-            $post_title = esc_html__( 'Post Title', 'controlled-chaos' );
+            $post_title = esc_html__( 'Post Title', 'controlled-chaos-plugin' );
         } elseif ( 'page' == $screen->post_type ) {
-            $post_title = esc_html__( 'Page Title', 'controlled-chaos' );
+            $post_title = esc_html__( 'Page Title', 'controlled-chaos-plugin' );
         } elseif ( $screen->post_type == 'attachment' ) {
             $post_title = null;
         } else {
-            $post_title = esc_html__( 'Enter Title', 'controlled-chaos' );
+            $post_title = esc_html__( 'Enter Title', 'controlled-chaos-plugin' );
         }
 
         // Apply a filter.
@@ -184,7 +184,7 @@ class Controlled_Chaos_Admin_Pages {
     // Add new column.
     public function image_column_head( $defaults ) {
 
-        $defaults['featured_image'] = esc_html__( 'Featured Image', 'controlled-chaos' );
+        $defaults['featured_image'] = esc_html__( 'Featured Image', 'controlled-chaos-plugin' );
         return $defaults;
     }
 

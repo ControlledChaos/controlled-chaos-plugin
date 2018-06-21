@@ -60,7 +60,7 @@ Supplied as reference. More to come.
 
 To rename or rebrand this plugin, first rename the plugin folder then use a find & replace function to look for the following...
 
-1. **Text Domain:** The text domain should be the same as this file and the plugin folder. Replace "controlled-chaos".
+1. **Text Domain:** The text domain should be the same as this file and the plugin folder. Replace "controlled-chaos-plugin".
 2. **Classes:** Classes are prefixed with the plugin name. Replace "Controlled_Chaos".
 3. **Class Variables:** Class variables are prefixed with the plugin name. Replace "controlled_chaos".
 4. **Functions:** There are a few functions prefixed with the plugin name. The above replace of "controlled_chaos" will have given them your new name.

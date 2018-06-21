@@ -7,10 +7,10 @@
  * @since      1.0.0
  *
  * @package    controlled-chaos
- * @subpackage controlled-chaos/public
+ * @subpackage Controlled_Chaos\public
  */
 
-namespace CCPlugin\Public_Images;
+namespace CC_Plugin\Public_Images;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -45,7 +45,7 @@ class Controlled_Chaos_Public_Images {
 	public function image_sizes() {
 
 		// For link embedding and sharing on social sites.
-		add_image_size( __( 'Meta Image', 'controlled-chaos' ), 1200, 630, true );
+		add_image_size( __( 'Meta Image', 'controlled-chaos-plugin' ), 1200, 630, true );
 
 	}
 

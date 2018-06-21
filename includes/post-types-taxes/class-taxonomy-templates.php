@@ -9,10 +9,10 @@
  * @since      1.0.0
  *
  * @package    controlled-chaos
- * @subpackage controlled-chaos/includes
+ * @subpackage Controlled_Chaos\includes
  */
 
-namespace CCPlugin\Taxonomy_Templates;
+namespace CC_Plugin\Taxonomy_Templates;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -105,9 +105,9 @@ class Controlled_Chaos_Post_Taxonomy_Templates {
 			return;
 		} ?>
 		<div class="form-field custom-taxonomy-template">
-			<label for="custom-taxonomy-template"><?php _e( 'Template', 'controlled-chaos' ); ?></label>
+			<label for="custom-taxonomy-template"><?php _e( 'Template', 'controlled-chaos-plugin' ); ?></label>
 			<select name="custom-taxonomy-template" id="custom-taxonomy-template" class="postform">
-				<option value="default"><?php _e( 'Default Template', 'controlled-chaos' ); ?></option>
+				<option value="default"><?php _e( 'Default Template', 'controlled-chaos-plugin' ); ?></option>
 				<?php $this->templates_dropdown( $taxonomy ) ?>
 			</select>
 		</div><?php
@@ -125,11 +125,11 @@ class Controlled_Chaos_Post_Taxonomy_Templates {
 
 		<tr class="form-field custom-taxonomy-template">
 			<th scope="row" valign="top">
-				<label for="custom-taxonomy-template"><?php _e( 'Template', 'controlled-chaos' ); ?></label>
+				<label for="custom-taxonomy-template"><?php _e( 'Template', 'controlled-chaos-plugin' ); ?></label>
 			</th>
 			<td>
 				<select name="custom-taxonomy-template" id="custom-taxonomy-template" class="postform">
-					<option value="default"><?php _e( 'Default Template', 'controlled-chaos' ); ?></option>
+					<option value="default"><?php _e( 'Default Template', 'controlled-chaos-plugin' ); ?></option>
 					<?php $this->templates_dropdown( $taxonomy, $template ) ?>
 				</select>
 			</td>

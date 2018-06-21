@@ -7,10 +7,10 @@
  * @since      1.0.0
  *
  * @package    controlled-chaos
- * @subpackage controlled-chaos/admin
+ * @subpackage Controlled_Chaos\admin
  */
 
-namespace CCPlugin\Dashboard;
+namespace CC_Plugin\Dashboard;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {

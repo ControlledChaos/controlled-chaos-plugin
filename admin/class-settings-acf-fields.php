@@ -7,7 +7,7 @@
  * @since controlled-chaos 1.0.0
  */
 
-namespace CCPlugin\ACF_Settings;
+namespace CC_Plugin\ACF_Settings;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {

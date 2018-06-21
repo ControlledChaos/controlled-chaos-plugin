@@ -8,7 +8,7 @@
  * @since controlled-chaos 1.0.0
  */
 
-namespace CCPlugin\Settings;
+namespace CC_Plugin\Settings;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -19,7 +19,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Plugin and site settings.
  *
  * @package    controlled-chaos
- * @subpackage controlled-chaos/admin
+ * @subpackage Controlled_Chaos\admin
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 class Controlled_Chaos_Settings {
@@ -71,8 +71,8 @@ class Controlled_Chaos_Settings {
     public function scripts_settings_page() {
 
 		$this->help_scripts = add_options_page(
-			__( 'Script Options', 'controlled-chaos' ),
-			__( 'Script Options', 'controlled-chaos' ),
+			__( 'Script Options', 'controlled-chaos-plugin' ),
+			__( 'Script Options', 'controlled-chaos-plugin' ),
 			'manage_options',
 			'controlled-chaos-scripts',
 			[ $this, 'settings_scripts_output' ]
@@ -110,7 +110,7 @@ class Controlled_Chaos_Settings {
 		// Inline Scripts.
 		$screen->add_help_tab( [
 			'id'       => 'inline_scripts',
-			'title'    => __( 'Inline Scripts', 'controlled-chaos' ),
+			'title'    => __( 'Inline Scripts', 'controlled-chaos-plugin' ),
 			'content'  => null,
 			'callback' => [ $this, 'help_inline_scripts' ]
 		] );
@@ -118,7 +118,7 @@ class Controlled_Chaos_Settings {
 		// Inline Scripts.
 		$screen->add_help_tab( [
 			'id'       => 'inline_jquery',
-			'title'    => __( 'Inline jQuery', 'controlled-chaos' ),
+			'title'    => __( 'Inline jQuery', 'controlled-chaos-plugin' ),
 			'content'  => null,
 			'callback' => [ $this, 'help_inline_jquery' ]
 		] );
@@ -126,7 +126,7 @@ class Controlled_Chaos_Settings {
 		// Remove Emoji Scripts.
 		$screen->add_help_tab( [
 			'id'       => 'remove_emoji',
-			'title'    => __( 'Emoji Script', 'controlled-chaos' ),
+			'title'    => __( 'Emoji Script', 'controlled-chaos-plugin' ),
 			'content'  => null,
 			'callback' => [ $this, 'help_remove_emoji' ]
 		] );
@@ -178,10 +178,10 @@ class Controlled_Chaos_Settings {
     public function help_scripts_sidebar() {
 
 		$html = '<ul>
-			<li><a href="https://github.com/kenwheeler/slick" target="_blank" style="text-decoration: none;">' . __( 'Slick on GitHub', 'controlled-chaos' ) . '</a></li>
-			<li><a href="https://github.com/vdw/Tabslet" target="_blank" style="text-decoration: none;">' . __( 'Tabslet on GitHub', 'controlled-chaos' ) . '</a></li>
-			<li><a href="https://github.com/leafo/sticky-kit" target="_blank" style="text-decoration: none;">' . __( 'Sticky-kit on GitHub', 'controlled-chaos' ) . '</a></li>
-			<li><a href="https://github.com/iamceege/tooltipster" target="_blank" style="text-decoration: none;">' . __( 'Tooltipster on GitHub', 'controlled-chaos' ) . '</a></li>
+			<li><a href="https://github.com/kenwheeler/slick" target="_blank" style="text-decoration: none;">' . __( 'Slick on GitHub', 'controlled-chaos-plugin' ) . '</a></li>
+			<li><a href="https://github.com/vdw/Tabslet" target="_blank" style="text-decoration: none;">' . __( 'Tabslet on GitHub', 'controlled-chaos-plugin' ) . '</a></li>
+			<li><a href="https://github.com/leafo/sticky-kit" target="_blank" style="text-decoration: none;">' . __( 'Sticky-kit on GitHub', 'controlled-chaos-plugin' ) . '</a></li>
+			<li><a href="https://github.com/iamceege/tooltipster" target="_blank" style="text-decoration: none;">' . __( 'Tooltipster on GitHub', 'controlled-chaos-plugin' ) . '</a></li>
 		</ul>';
 
 		return $html;
@@ -189,7 +189,7 @@ class Controlled_Chaos_Settings {
 	}
 
 	/**
-	 * Plugin settings, various.
+	 * Register settings via the WordPress Settings API.
 	 * 
 	 * @since    1.0.0
 	 */
@@ -198,10 +198,10 @@ class Controlled_Chaos_Settings {
 		/**
 		 * Generl script options.
 		 */
-		add_settings_section( 'ccp-scripts-general', __( 'General Options', 'controlled-chaos' ), [ $this, 'scripts_general_section_callback' ], 'ccp-scripts-general' );
+		add_settings_section( 'ccp-scripts-general', __( 'General Options', 'controlled-chaos-plugin' ), [ $this, 'scripts_general_section_callback' ], 'ccp-scripts-general' );
 
 		// Inline scripts.
-		add_settings_field( 'ccp_inline_scripts', __( 'Inline scripts', 'controlled-chaos' ), [ $this, 'ccp_inline_scripts_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Add script contents to footer', 'controlled-chaos' ) ] );
+		add_settings_field( 'ccp_inline_scripts', __( 'Inline scripts', 'controlled-chaos-plugin' ), [ $this, 'ccp_inline_scripts_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Add script contents to footer', 'controlled-chaos-plugin' ) ] );
 
 		register_setting(
 			'ccp-scripts-general',
@@ -209,7 +209,7 @@ class Controlled_Chaos_Settings {
 		);
 
 		// Inline styles.
-		add_settings_field( 'ccp_inline_styles', __( 'Inline styles', 'controlled-chaos' ), [ $this, 'ccp_inline_styles_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Add script-related CSS contents to head', 'controlled-chaos' ) ] );
+		add_settings_field( 'ccp_inline_styles', __( 'Inline styles', 'controlled-chaos-plugin' ), [ $this, 'ccp_inline_styles_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Add script-related CSS contents to head', 'controlled-chaos-plugin' ) ] );
 
 		register_setting(
 			'ccp-scripts-general',
@@ -217,7 +217,7 @@ class Controlled_Chaos_Settings {
 		);
 
 		// Inline jQuery.
-		add_settings_field( 'ccp_inline_jquery', __( 'Inline jQuery', 'controlled-chaos' ), [ $this, 'ccp_inline_jquery_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Deregister jQuery and add its contents to footer', 'controlled-chaos' ) ] );
+		add_settings_field( 'ccp_inline_jquery', __( 'Inline jQuery', 'controlled-chaos-plugin' ), [ $this, 'ccp_inline_jquery_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Deregister jQuery and add its contents to footer', 'controlled-chaos-plugin' ) ] );
 
 		register_setting(
 			'ccp-scripts-general',
@@ -225,7 +225,7 @@ class Controlled_Chaos_Settings {
 		);
 
 		// Include jQuery Migrate.
-		add_settings_field( 'ccp_jquery_migrate', __( 'jQuery Migrate', 'controlled-chaos' ), [ $this, 'ccp_jquery_migrate_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Use jQuery Migrate for backwards compatibility', 'controlled-chaos' ) ] );
+		add_settings_field( 'ccp_jquery_migrate', __( 'jQuery Migrate', 'controlled-chaos-plugin' ), [ $this, 'ccp_jquery_migrate_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Use jQuery Migrate for backwards compatibility', 'controlled-chaos-plugin' ) ] );
 
 		register_setting(
 			'ccp-scripts-general',
@@ -233,7 +233,7 @@ class Controlled_Chaos_Settings {
 		);
 
 		// Remove emoji script.
-		add_settings_field( 'ccp_remove_emoji_script', __( 'Emoji script', 'controlled-chaos' ), [ $this, 'remove_emoji_script_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Remove emoji script from <head>', 'controlled-chaos' ) ] );
+		add_settings_field( 'ccp_remove_emoji_script', __( 'Emoji script', 'controlled-chaos-plugin' ), [ $this, 'remove_emoji_script_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Remove emoji script from <head>', 'controlled-chaos-plugin' ) ] );
 
 		register_setting(
 			'ccp-scripts-general',
@@ -241,7 +241,7 @@ class Controlled_Chaos_Settings {
 		);
 		
 		// Remove WordPress version appended to script links.
-		add_settings_field( 'ccp_remove_script_version', __( 'Script versions', 'controlled-chaos' ), [ $this, 'remove_script_version_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Remove WordPress version from script and stylesheet links in <head>', 'controlled-chaos' ) ] );
+		add_settings_field( 'ccp_remove_script_version', __( 'Script versions', 'controlled-chaos-plugin' ), [ $this, 'remove_script_version_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Remove WordPress version from script and stylesheet links in <head>', 'controlled-chaos-plugin' ) ] );
 
 		register_setting(
 			'ccp-scripts-general',
@@ -249,7 +249,7 @@ class Controlled_Chaos_Settings {
 		);
 
 		// Minify HTML.
-		add_settings_field( 'ccp_html_minify', __( 'Minify HTML', 'controlled-chaos' ), [ $this, 'html_minify_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Minify HTML source code to increase load speed', 'controlled-chaos' ) ] );
+		add_settings_field( 'ccp_html_minify', __( 'Minify HTML', 'controlled-chaos-plugin' ), [ $this, 'html_minify_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Minify HTML source code to increase load speed', 'controlled-chaos-plugin' ) ] );
 
 		register_setting(
 			'ccp-scripts-general',
@@ -259,10 +259,10 @@ class Controlled_Chaos_Settings {
 		/**
 		 * Use included vendor scripts & options.
 		 */
-		add_settings_section( 'ccp-scripts-vendor', __( 'Included Vendor Scripts', 'controlled-chaos' ), [ $this, 'scripts_vendor_section_callback' ], 'ccp-scripts-vendor' );
+		add_settings_section( 'ccp-scripts-vendor', __( 'Included Vendor Scripts', 'controlled-chaos-plugin' ), [ $this, 'scripts_vendor_section_callback' ], 'ccp-scripts-vendor' );
 
 		// Use Slick.
-		add_settings_field( 'ccp_enqueue_slick', __( 'Slick', 'controlled-chaos' ), [ $this, 'enqueue_slick_callback' ], 'ccp-scripts-vendor', 'ccp-scripts-vendor', [ esc_html__( 'Use Slick script and stylesheets', 'controlled-chaos' ) ] );
+		add_settings_field( 'ccp_enqueue_slick', __( 'Slick', 'controlled-chaos-plugin' ), [ $this, 'enqueue_slick_callback' ], 'ccp-scripts-vendor', 'ccp-scripts-vendor', [ esc_html__( 'Use Slick script and stylesheets', 'controlled-chaos-plugin' ) ] );
 
 		register_setting(
 			'ccp-scripts-vendor',
@@ -270,7 +270,7 @@ class Controlled_Chaos_Settings {
 		);
 
 		// Use Tabslet.
-		add_settings_field( 'ccp_enqueue_tabslet', __( 'Tabslet', 'controlled-chaos' ), [ $this, 'enqueue_tabslet_callback' ], 'ccp-scripts-vendor', 'ccp-scripts-vendor', [ esc_html__( 'Use Tabslet script', 'controlled-chaos' ) ] );
+		add_settings_field( 'ccp_enqueue_tabslet', __( 'Tabslet', 'controlled-chaos-plugin' ), [ $this, 'enqueue_tabslet_callback' ], 'ccp-scripts-vendor', 'ccp-scripts-vendor', [ esc_html__( 'Use Tabslet script', 'controlled-chaos-plugin' ) ] );
 
 		register_setting(
 			'ccp-scripts-vendor',
@@ -278,7 +278,7 @@ class Controlled_Chaos_Settings {
 		);
 
 		// Use Sticky-kit.
-		add_settings_field( 'ccp_enqueue_stickykit', __( 'Sticky-kit', 'controlled-chaos' ), [ $this, 'enqueue_stickykit_callback' ], 'ccp-scripts-vendor', 'ccp-scripts-vendor', [ esc_html__( 'Use Sticky-kit script', 'controlled-chaos' ) ] );
+		add_settings_field( 'ccp_enqueue_stickykit', __( 'Sticky-kit', 'controlled-chaos-plugin' ), [ $this, 'enqueue_stickykit_callback' ], 'ccp-scripts-vendor', 'ccp-scripts-vendor', [ esc_html__( 'Use Sticky-kit script', 'controlled-chaos-plugin' ) ] );
 
 		register_setting(
 			'ccp-scripts-vendor',
@@ -286,7 +286,7 @@ class Controlled_Chaos_Settings {
 		);
 
 		// Use Tooltipster.
-		add_settings_field( 'ccp_enqueue_tooltipster', __( 'Tooltipster', 'controlled-chaos' ), [ $this, 'enqueue_tooltipster_callback' ], 'ccp-scripts-vendor', 'ccp-scripts-vendor', [ esc_html__( 'Use Tooltipster script and stylesheet', 'controlled-chaos' ) ] );
+		add_settings_field( 'ccp_enqueue_tooltipster', __( 'Tooltipster', 'controlled-chaos-plugin' ), [ $this, 'enqueue_tooltipster_callback' ], 'ccp-scripts-vendor', 'ccp-scripts-vendor', [ esc_html__( 'Use Tooltipster script and stylesheet', 'controlled-chaos-plugin' ) ] );
 
 		register_setting(
 			'ccp-scripts-vendor',
@@ -296,9 +296,9 @@ class Controlled_Chaos_Settings {
 		// Site Settings section.
 		if ( class_exists( 'ACF_Pro' ) ) {
 
-			add_settings_section( 'ccp-registered-fields-activate', __( 'Registered Fields Activation', 'controlled-chaos' ), [ $this, 'registered_fields_activate' ], 'ccp-registered-fields-activate' );
+			add_settings_section( 'ccp-registered-fields-activate', __( 'Registered Fields Activation', 'controlled-chaos-plugin' ), [ $this, 'registered_fields_activate' ], 'ccp-registered-fields-activate' );
 			
-			add_settings_field( 'ccp_acf_activate_settings_page', __( 'Site Settings Page', 'controlled-chaos' ), [ $this, 'registered_fields_page_callback' ], 'ccp-registered-fields-activate', 'ccp-registered-fields-activate', [ __( 'Deactive the field group for the "Site Settings" options page.', 'controlled-chaos' ) ] );
+			add_settings_field( 'ccp_acf_activate_settings_page', __( 'Site Settings Page', 'controlled-chaos-plugin' ), [ $this, 'registered_fields_page_callback' ], 'ccp-registered-fields-activate', 'ccp-registered-fields-activate', [ __( 'Deactive the field group for the "Site Settings" options page.', 'controlled-chaos-plugin' ) ] );
 
 			register_setting(
 				'ccp-registered-fields-activate',
@@ -312,7 +312,8 @@ class Controlled_Chaos_Settings {
 	/**
 	 * General section callback.
 	 * 
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @return string
 	 */
 	public function scripts_general_section_callback( $args ) {
 
@@ -535,7 +536,7 @@ class Controlled_Chaos_Settings {
 
 		if ( class_exists( 'ACF_Pro' ) ) {
 
-			echo sprintf( '<p>%1s</p>', esc_html( 'The Controlled Chaos plugin registers custom fields for Advanced Custom Fields Pro that can be imported for editing. These built-in field goups must be deactivated for the imported field groups to take effect.', 'controlled-chaos' ) );
+			echo sprintf( '<p>%1s</p>', esc_html( 'The Controlled Chaos plugin registers custom fields for Advanced Custom Fields Pro that can be imported for editing. These built-in field goups must be deactivated for the imported field groups to take effect.', 'controlled-chaos-plugin' ) );
 
 		}
 
@@ -556,9 +557,18 @@ class Controlled_Chaos_Settings {
 	}
 
     /**
-	 * Add ACF options page for site settings.
-	 *
-	 * @since    1.0.0
+	 * Add a page for site settings.
+	 * 
+	 * If the Advanced Custom Fields Pro plugin is active then
+	 * an ACF options page and ACF fields will be used. If not
+	 * then a default WordPress admin page and the WP Settings
+	 * API will be used.
+	 * 
+	 * @todo  Think about whether this is a good idea. Maybe it's
+	 *        better to simply provide a sample ACF page. ACF is
+	 *        certainly faster for further development but do we
+	 *        want the dependency?
+	 * @since 1.0.0
 	 */
     public function site_settings_page() {
 
@@ -571,13 +581,13 @@ class Controlled_Chaos_Settings {
 			if ( $link_label ) {
 				$label = $link_label;
 			}  else {
-				$label = __( 'Site Settings', 'controlled-chaos' );
+				$label = __( 'Site Settings', 'controlled-chaos-plugin' );
 			}
 
 			if ( 'top' == $position ) {
 					
 				$settings = apply_filters( 'controlled_chaos_site_settings_page_top', [
-					'page_title' => $title . __( ' Settings', 'controlled-chaos' ),
+					'page_title' => $title . __( ' Settings', 'controlled-chaos-plugin' ),
 					'menu_title' => $label,
 					'menu_slug'  => 'controlled-chaos-settings',
 					'icon_url'   => 'dashicons-admin-settings',
@@ -591,7 +601,7 @@ class Controlled_Chaos_Settings {
 			} else {
 
 				$settings = apply_filters( 'controlled_chaos_site_settings_page_default', [
-					'page_title' => $title . __( ' Settings', 'controlled-chaos' ),
+					'page_title' => $title . __( ' Settings', 'controlled-chaos-plugin' ),
 					'menu_title' => $label,
 					'menu_slug'  => 'controlled-chaos-settings',
 					'parent'     => 'options-general.php',
@@ -610,13 +620,13 @@ class Controlled_Chaos_Settings {
 			if ( $link_label ) {
 				$label = $link_label;
 			}  else {
-				$label = __( 'Site Settings', 'controlled-chaos' );
+				$label = __( 'Site Settings', 'controlled-chaos-plugin' );
 			}
 
 			if ( $link_icon ) {
 				$icon = $link_icon;
 			}  else {
-				$icon = __( 'dashicons-admin-generic', 'controlled-chaos' );
+				$icon = __( 'dashicons-admin-generic', 'controlled-chaos-plugin' );
 			}
 
 			if ( $position ) {

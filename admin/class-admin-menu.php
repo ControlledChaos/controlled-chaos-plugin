@@ -7,10 +7,10 @@
  * @since      1.0.0
  *
  * @package    controlled-chaos
- * @subpackage controlled-chaos/admin
+ * @subpackage Controlled_Chaos\admin
  */
 
-namespace CCPlugin\Admin_Menu;
+namespace CC_Plugin\Admin_Menu;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -21,7 +21,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Admin menu functions.
  *
  * @package    controlled-chaos
- * @subpackage controlled-chaos/admin
+ * @subpackage Controlled_Chaos\admin
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 class Controlled_Chaos_Admin_Menu {
@@ -181,11 +181,11 @@ class Controlled_Chaos_Admin_Menu {
             }
 
             if ( 'default' != $menus_link ) {
-                add_menu_page( __( 'Menus', 'controlled-chaos' ), __( 'Menus', 'controlled-chaos' ), 'delete_others_pages', 'nav-menus.php', '', 'dashicons-list-view', 61 );
+                add_menu_page( __( 'Menus', 'controlled-chaos-plugin' ), __( 'Menus', 'controlled-chaos-plugin' ), 'delete_others_pages', 'nav-menus.php', '', 'dashicons-list-view', 61 );
             }
 
             if ( 'default' != $widgets_link ) {
-                add_menu_page( __( 'Widgets', 'controlled-chaos' ), __( 'Widgets', 'controlled-chaos' ), 'delete_others_pages', 'widgets.php', '', 'dashicons-welcome-widgets-menus', 62 );
+                add_menu_page( __( 'Widgets', 'controlled-chaos-plugin' ), __( 'Widgets', 'controlled-chaos-plugin' ), 'delete_others_pages', 'widgets.php', '', 'dashicons-welcome-widgets-menus', 62 );
             }
         
         } else {
@@ -213,11 +213,11 @@ class Controlled_Chaos_Admin_Menu {
             }
 
             if ( $menus_link ) {
-                add_menu_page( __( 'Menus', 'controlled-chaos' ), __( 'Menus', 'controlled-chaos' ), 'delete_others_pages', 'nav-menus.php', '', 'dashicons-list-view', 61 );
+                add_menu_page( __( 'Menus', 'controlled-chaos-plugin' ), __( 'Menus', 'controlled-chaos-plugin' ), 'delete_others_pages', 'nav-menus.php', '', 'dashicons-list-view', 61 );
             }
 
             if ( $widgets_link ) {
-                add_menu_page( __( 'Widgets', 'controlled-chaos' ), __( 'Widgets', 'controlled-chaos' ), 'delete_others_pages', 'widgets.php', '', 'dashicons-welcome-widgets-menus', 62 );
+                add_menu_page( __( 'Widgets', 'controlled-chaos-plugin' ), __( 'Widgets', 'controlled-chaos-plugin' ), 'delete_others_pages', 'widgets.php', '', 'dashicons-welcome-widgets-menus', 62 );
             }
 
         }

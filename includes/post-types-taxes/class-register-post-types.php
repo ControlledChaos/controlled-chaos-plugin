@@ -7,10 +7,10 @@
  * @since      1.0.0
  *
  * @package    controlled-chaos
- * @subpackage controlled-chaos/includes
+ * @subpackage Controlled_Chaos\includes
  */
 
-namespace CCPlugin\Register_Post_Types;
+namespace CC_Plugin\Register_Post_Types;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -46,38 +46,38 @@ class Controlled_Chaos_Post_Types_Register {
          */
 
         $labels = [
-            'name'                  => __( 'Custom Posts', 'controlled-chaos' ),
-            'singular_name'         => __( 'Custom Post', 'controlled-chaos' ),
-            'menu_name'             => __( 'Custom Posts', 'controlled-chaos' ),
-            'all_items'             => __( 'All Custom Posts', 'controlled-chaos' ),
-            'add_new'               => __( 'Add New', 'controlled-chaos' ),
-            'add_new_item'          => __( 'Add New Custom Post', 'controlled-chaos' ),
-            'edit_item'             => __( 'Edit Custom Post', 'controlled-chaos' ),
-            'new_item'              => __( 'New Custom Post', 'controlled-chaos' ),
-            'view_item'             => __( 'View Custom Post', 'controlled-chaos' ),
-            'view_items'            => __( 'View Custom Posts', 'controlled-chaos' ),
-            'search_items'          => __( 'Search Custom Posts', 'controlled-chaos' ),
-            'not_found'             => __( 'No Custom Posts Found', 'controlled-chaos' ),
-            'not_found_in_trash'    => __( 'No Custom Posts Found in Trash', 'controlled-chaos' ),
-            'parent_item_colon'     => __( 'Parent Custom Post', 'controlled-chaos' ),
-            'featured_image'        => __( 'Featured image for this custom post', 'controlled-chaos' ),
-            'set_featured_image'    => __( 'Set featured image for this custom post', 'controlled-chaos' ),
-            'remove_featured_image' => __( 'Remove featured image for this custom post', 'controlled-chaos' ),
-            'use_featured_image'    => __( 'Use as featured image for this custom post', 'controlled-chaos' ),
-            'archives'              => __( 'Custom Post archives', 'controlled-chaos' ),
-            'insert_into_item'      => __( 'Insert into Custom Post', 'controlled-chaos' ),
-            'uploaded_to_this_item' => __( 'Uploaded to this Custom Post', 'controlled-chaos' ),
-            'filter_items_list'     => __( 'Filter Custom Posts', 'controlled-chaos' ),
-            'items_list_navigation' => __( 'Custom Posts list navigation', 'controlled-chaos' ),
-            'items_list'            => __( 'Custom Posts List', 'controlled-chaos' ),
-            'attributes'            => __( 'Custom Post Attributes', 'controlled-chaos' ),
-            'parent_item_colon'     => __( 'Parent Custom Post', 'controlled-chaos' ),
+            'name'                  => __( 'Custom Posts', 'controlled-chaos-plugin' ),
+            'singular_name'         => __( 'Custom Post', 'controlled-chaos-plugin' ),
+            'menu_name'             => __( 'Custom Posts', 'controlled-chaos-plugin' ),
+            'all_items'             => __( 'All Custom Posts', 'controlled-chaos-plugin' ),
+            'add_new'               => __( 'Add New', 'controlled-chaos-plugin' ),
+            'add_new_item'          => __( 'Add New Custom Post', 'controlled-chaos-plugin' ),
+            'edit_item'             => __( 'Edit Custom Post', 'controlled-chaos-plugin' ),
+            'new_item'              => __( 'New Custom Post', 'controlled-chaos-plugin' ),
+            'view_item'             => __( 'View Custom Post', 'controlled-chaos-plugin' ),
+            'view_items'            => __( 'View Custom Posts', 'controlled-chaos-plugin' ),
+            'search_items'          => __( 'Search Custom Posts', 'controlled-chaos-plugin' ),
+            'not_found'             => __( 'No Custom Posts Found', 'controlled-chaos-plugin' ),
+            'not_found_in_trash'    => __( 'No Custom Posts Found in Trash', 'controlled-chaos-plugin' ),
+            'parent_item_colon'     => __( 'Parent Custom Post', 'controlled-chaos-plugin' ),
+            'featured_image'        => __( 'Featured image for this custom post', 'controlled-chaos-plugin' ),
+            'set_featured_image'    => __( 'Set featured image for this custom post', 'controlled-chaos-plugin' ),
+            'remove_featured_image' => __( 'Remove featured image for this custom post', 'controlled-chaos-plugin' ),
+            'use_featured_image'    => __( 'Use as featured image for this custom post', 'controlled-chaos-plugin' ),
+            'archives'              => __( 'Custom Post archives', 'controlled-chaos-plugin' ),
+            'insert_into_item'      => __( 'Insert into Custom Post', 'controlled-chaos-plugin' ),
+            'uploaded_to_this_item' => __( 'Uploaded to this Custom Post', 'controlled-chaos-plugin' ),
+            'filter_items_list'     => __( 'Filter Custom Posts', 'controlled-chaos-plugin' ),
+            'items_list_navigation' => __( 'Custom Posts list navigation', 'controlled-chaos-plugin' ),
+            'items_list'            => __( 'Custom Posts List', 'controlled-chaos-plugin' ),
+            'attributes'            => __( 'Custom Post Attributes', 'controlled-chaos-plugin' ),
+            'parent_item_colon'     => __( 'Parent Custom Post', 'controlled-chaos-plugin' ),
         ];
 
         $args = [
-            'label'               => __( 'Custom Posts', 'controlled-chaos' ),
+            'label'               => __( 'Custom Posts', 'controlled-chaos-plugin' ),
             'labels'              => $labels,
-            'description'         => __( 'Custom post type description.', 'controlled-chaos' ),
+            'description'         => __( 'Custom post type description.', 'controlled-chaos-plugin' ),
             'public'              => true,
             'publicly_queryable'  => true,
             'show_ui'             => true,
@@ -103,11 +103,7 @@ class Controlled_Chaos_Post_Types_Register {
             ],
         ];
 
-        /**
-         * Uncomment to register.
-         * 
-         * register_post_type( 'ccp_post_type', $args );
-         */
+        register_post_type( 'ccp_post_type', $args );
         
     }
 
