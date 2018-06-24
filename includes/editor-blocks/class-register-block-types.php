@@ -1,14 +1,15 @@
 <?php
-
 /**
  * Register custom editor blocks.
  *
- * @link       http://ccdzine.com
- * @since      1.0.0
+ * @package    Controlled_Chaos_Plugin
+ * @subpackage Controlled_Chaos_Plugin\includes
  *
- * @package    controlled-chaos
- * @subpackage Controlled_Chaos\includes/editor-blocks
+ * @since      1.0.0
+ * @author     Greg Sweet <greg@ccdzine.com>
  */
+
+namespace CC_Plugin\Includes\Editor_Blocks;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -18,17 +19,41 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Register custom editor blocks.
  *
- * @since      1.0.0
- * @package    controlled-chaos
- * @subpackage Controlled_Chaos\includes/editor-blocks
- * @author     Greg Sweet <greg@ccdzine.com>
+ * @since  1.0.0
+ * @access public
  */
-class Controlled_Chaos_Register_Blocks {
+class Register_Blocks {
 
 	/**
-	 * Initialize the class.
+	 * Get an instance of the plugin class.
 	 *
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return object Returns the instance.
+	 */
+	public static function instance() {
+
+		// Varialbe for the instance to be used outside the class.
+		static $instance = null;
+
+		if ( is_null( $instance ) ) {
+
+			// Set variable for new instance.
+			$instance = new self;
+			
+		}
+
+		// Return the instance.
+		return $instance;
+
+	}
+
+	/**
+	 * Constructor method.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return self
 	 */
 	public function __construct() {
 
@@ -47,8 +72,9 @@ class Controlled_Chaos_Register_Blocks {
 	 * `wp-element`: includes the WordPress Element abstraction for describing the structure of your blocks.
 	 * `wp-i18n`: To internationalize the block's text.
 	 *
-	 * @since    1.0.0
-	 * @access   public
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
 	 */
 	public function sample_block_editor_assets() {
 
@@ -73,8 +99,9 @@ class Controlled_Chaos_Register_Blocks {
 	/**
 	 * Enqueue sample block frontend assets.
 	 *
-	 * @since    1.0.0
-	 * @access   public
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
 	 */
 	public function sample_block_frontend_assets() {
 
@@ -89,4 +116,18 @@ class Controlled_Chaos_Register_Blocks {
 
 }
 
-$ccp_register_blocks = new Controlled_Chaos_Register_Blocks();
+/**
+ * Put an instance of the class into a function.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return object Returns an instance of the class.
+ */
+function ccp_register_blocks() {
+
+	return Register_Blocks::instance();
+
+}
+
+// Run an instance of the class.
+ccp_register_blocks();

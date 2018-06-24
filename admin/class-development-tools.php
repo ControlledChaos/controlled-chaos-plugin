@@ -6,8 +6,8 @@
  * @link       http://ccdzine.com
  * @since      1.0.0
  *
- * @package    controlled-chaos
- * @subpackage Controlled_Chaos\admin
+ * @package    Controlled_Chaos_Plugin
+ * @subpackage Controlled_Chaos_Plugin\admin
  */
 
 namespace CC_Plugin\Plugin_Admin;
@@ -20,14 +20,14 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * The admin development page.
  *
- * @package    controlled-chaos
- * @subpackage Controlled_Chaos\admin
+ * @package    Controlled_Chaos_Plugin
+ * @subpackage Controlled_Chaos_Plugin\admin
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 class Controlled_Chaos_Admin_Tools {
 
 	/**
-	 * Initialize the class.
+	 * Constructor method.
 	 *
 	 * @since    1.0.0
 	 */

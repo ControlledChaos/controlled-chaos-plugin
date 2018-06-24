@@ -7,8 +7,8 @@
  * @link       http://ccdzine.com
  * @since      1.0.0
  *
- * @package    controlled-chaos
- * @subpackage Controlled_Chaos\public
+ * @package    Controlled_Chaos_Plugin
+ * @subpackage Controlled_Chaos_Plugin\public
  */
 
 namespace CC_Plugin\Gallery_Shortcode;
@@ -21,7 +21,7 @@ if ( ! defined( 'WPINC' ) ) {
 class Controlled_Chaos_Gallery_Shortcode {
 
 	/**
-	 * Initialize the class.
+	 * Constructor method.
 	 *
 	 * @since      1.0.0
 	 */

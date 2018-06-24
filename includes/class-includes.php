@@ -1,10 +1,9 @@
 <?php
-
 /**
  * The core plugin class.
  * 
- * @package    controlled-chaos
- * @subpackage Controlled_Chaos\includes
+ * @package    Controlled_Chaos_Plugin
+ * @subpackage Controlled_Chaos_Plugin\includes
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
@@ -55,7 +54,7 @@ class Includes {
 	}
 
 	/**
-	 * Initialize the class.
+	 * Constructor method.
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -85,8 +84,8 @@ class Includes {
 		// Admin/backend functionality, scripts and styles.
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-admin.php';
 
-		// Public/frontend functionality, scripts and styles.
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-public.php';
+		// Frontend functionality, scripts and styles.
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'frontend/class-frontend.php';
 
 		// Various media and media library functionality.
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/media/class-media.php';
@@ -129,7 +128,7 @@ class Includes {
  *
  * @since  1.0.0
  * @access public
- * @return object Returns the instance of the class.
+ * @return object Returns an instance of the class.
  */
 function ccp_includes() {
 

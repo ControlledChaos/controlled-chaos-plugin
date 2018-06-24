@@ -1,26 +1,37 @@
 <?php
-
 /**
  * Register post types.
  *
- * @link       http://ccdzine.com
- * @since      1.0.0
+ * @package    Controlled_Chaos_Plugin
+ * @subpackage Controlled_Chaos_Plugin\includes\post-types-taxes
  *
- * @package    controlled-chaos
- * @subpackage Controlled_Chaos\includes
+ * @since      1.0.0
+ * @author     Greg Sweet <greg@ccdzine.com>
+ * 
+ * @link       https://codex.wordpress.org/Function_Reference/register_post_type
  */
 
-namespace CC_Plugin\Register_Post_Types;
+namespace CC_Plugin\Includes\Post_Types_Taxes;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-class Controlled_Chaos_Post_Types_Register {
+/**
+ * Register post types.
+ * 
+ * @since  1.0.0
+ * @access public
+ */
+final class Post_Types_Register {
 
     /**
 	 * Constructor magic method.
+     * 
+     * @since  1.0.0
+	 * @access public
+	 * @return self
 	 */
 	public function __construct() {
 
@@ -31,18 +42,20 @@ class Controlled_Chaos_Post_Types_Register {
 
     /**
      * Register custom post types.
+     * 
+     * @since  1.0.0
+	 * @access public
+	 * @return void
      */
     public function register() {
 
         /**
          * Post Type: Sample custom post (Custom Posts).
          * 
-         * See reference page:
-         * https://codex.wordpress.org/Function_Reference/register_post_type
-         * 
          * Renaming:
-         * Search case "Custom Post" and replace with your post type name.
-         * Search case "custom post" and replace with your post type name.
+         * Search case "Custom Post" and replace with your post type capitalized name.
+         * Search case "custom post" and replace with your post type lowercase name.
+         * Search case "ccp_post_type" and replace with your post type database name.
          */
 
         $labels = [
@@ -96,17 +109,34 @@ class Controlled_Chaos_Post_Types_Register {
             'query_var'           => 'ccp_post_type',
             'menu_position'       => 5,
             'menu_icon'           => 'dashicons-lightbulb',
-            'supports'            => false,
+            'supports'            => [ 
+                'title', 
+                'editor', 
+                'thumbnail', 
+                'excerpt', 
+                'trackbacks', 
+                'custom-fields', 
+                'comments', 
+                'revisions', 
+                'author', 
+                'page-attributes', 
+                'post-formats' 
+            ],
             'taxonomies'          => [
                 'category',
-                'post_tag'
+                'post_tag',
+                'ccp_taxonomy' // Change to your custom taxonomy name.
             ],
         ];
 
-        register_post_type( 'ccp_post_type', $args );
+        register_post_type(
+            'ccp_post_type',
+            $args
+        );
         
     }
 
 }
 
-$ccp_post_types = new Controlled_Chaos_Post_Types_Register;
+// Run the class.
+new Post_Types_Register;

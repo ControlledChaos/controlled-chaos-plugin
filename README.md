@@ -12,7 +12,7 @@ A head start for site-specific WordPress plugins. Can be used as is without furt
 
 Short array syntax requires PHP 5.4+
 
-To take advantage of all of its features, this plugin is recommended for use with Advanced Custom Fields PRO.
+To take advantage of all of its features, this plugin is recommended for use with Advanced Custom Fields PRO or the free version of ACF plus the Options Page addon.
 
 ### jQuery Plugins
 

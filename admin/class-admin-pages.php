@@ -4,7 +4,7 @@
  * Functions for post types and taxonomies.
  *
  *
- * @package    controlled-chaos
+ * @package    Controlled_Chaos_Plugin
  * @subpackage controlled-chaos
  * @since controlled-chaos 1.0.0
  */
@@ -19,14 +19,14 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * The admin-specific functionality of the plugin.
  *
- * @package    controlled-chaos
- * @subpackage Controlled_Chaos\admin
+ * @package    Controlled_Chaos_Plugin
+ * @subpackage Controlled_Chaos_Plugin\admin
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 class Controlled_Chaos_Admin_Pages {
 
 	/**
-	 * Initialize the class.
+	 * Constructor method.
 	 *
 	 * @since    1.0.0
 	 */

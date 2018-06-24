@@ -6,8 +6,8 @@
  * @link       http://ccdzine.com
  * @since      1.0.0
  *
- * @package    controlled-chaos
- * @subpackage Controlled_Chaos\admin
+ * @package    Controlled_Chaos_Plugin
+ * @subpackage Controlled_Chaos_Plugin\admin
  */
 
 namespace CC_Plugin\Dashboard;
@@ -20,7 +20,7 @@ if ( ! defined( 'WPINC' ) ) {
 class Controlled_Chaos_Dashboard {
 
     /**
-	 * Initialize the class.
+	 * Constructor method.
 	 *
 	 * @since    1.0.0
 	 */
@@ -81,7 +81,7 @@ class Controlled_Chaos_Dashboard {
         /**
          * If Advanced Custom Fields Pro is active.
          */
-        if ( class_exists( 'ACF_Pro' ) ) {
+        if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
 
             // Get the multiple checkbox field.
             $hide = get_field( 'ccp_dashboard_hide_widgets', 'option' );

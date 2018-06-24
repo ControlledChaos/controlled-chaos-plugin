@@ -2,7 +2,7 @@
 /**
  * Plugin and site settings.
  *
- * @package    controlled-chaos
+ * @package    Controlled_Chaos_Plugin
  * @subpackage controlled-chaos
  * @since	   controlled-chaos 1.0.0
  */
@@ -17,8 +17,8 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Plugin and site settings.
  *
- * @package    controlled-chaos
- * @subpackage Controlled_Chaos\admin
+ * @package    Controlled_Chaos_Plugin
+ * @subpackage Controlled_Chaos_Plugin\admin
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 class Controlled_Chaos_Site_Settings {
@@ -29,7 +29,7 @@ class Controlled_Chaos_Site_Settings {
     private $options;
 
 	/**
-	 * Initialize the class.
+	 * Constructor method.
 	 * 
 	 * @return self
 	 * @since 1.0.0

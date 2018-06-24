@@ -3,7 +3,7 @@
  * Controlled Chaos admin functions.
  *
  * @package    Controlled_Chaos
- * @subpackage Controlled_Chaos\Plugin_Admin
+ * @subpackage Controlled_Chaos_Plugin\Plugin_Admin
  * 
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
@@ -16,6 +16,11 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+// Bail if not in the admin.
+if ( ! is_admin() ) {
+	return;
+}
+
 /**
  * The admin-specific functionality of the plugin.
  * 
@@ -25,7 +30,7 @@ if ( ! defined( 'WPINC' ) ) {
 class Controlled_Chaos_Admin {
 
 	/**
-	 * Initialize the class.
+	 * Constructor method.
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -90,12 +95,12 @@ class Controlled_Chaos_Admin {
 		require plugin_dir_path( __FILE__ ) . 'class-settings.php';
 
 		// Include custom fields for Advanced Custom Fields Pro, if active.
-		if ( class_exists( 'ACF_Pro' ) && ! get_option( 'ccp_acf_activate_settings_page' ) ) {
+		if ( class_exists( 'acf_pro' ) && ! get_option( 'ccp_acf_activate_settings_page' ) ) {
 			include_once plugin_dir_path( __FILE__ ) . 'class-settings-acf-fields.php';
 		}
 
 		// Import custom fields for editing, if ACF Pro is active.
-		if ( class_exists( 'ACF_Pro' ) ) {
+		if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
 			include_once plugin_dir_path( __FILE__ ) . 'class-fields-import.php';
 		}
 
@@ -232,7 +237,7 @@ class Controlled_Chaos_Admin {
 		 * 
 		 * @since  1.0.0
 		 */
-		if ( class_exists( 'ACF_Pro' ) ) {
+		if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
 
 			/**
 			 * Get the fields registered by this plugin. An additional parameter
