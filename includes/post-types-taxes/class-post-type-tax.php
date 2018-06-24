@@ -2,8 +2,8 @@
 /**
  * Post types and taxonomies.
  *
- * @package    controlled-chaos
- * @subpackage Controlled_Chaos\includes\post-types-taxes
+ * @package    Controlled_Chaos_Plugin
+ * @subpackage Controlled_Chaos_Plugin\includes\post-types-taxes
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
@@ -72,6 +72,9 @@ class Post_Types_Taxes {
 		// Resister cutsom post types.
 		require_once plugin_dir_path( __FILE__ ) . 'class-register-post-types.php';
 
+		// Resister cutsom taxonomies.
+		require_once plugin_dir_path( __FILE__ ) . 'class-register-taxonomies.php';
+
 		// Functions related to post types and taxonomies.
 		require_once plugin_dir_path( __FILE__ ) . 'class-post-type-tax-functions.php';
 
@@ -87,7 +90,7 @@ class Post_Types_Taxes {
  *
  * @since  1.0.0
  * @access public
- * @return object Returns the instance of the class.
+ * @return object Returns an instance of the class.
  */
 function ccp_types_taxes() {
 

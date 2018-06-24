@@ -55,6 +55,19 @@ if ( ! defined( 'CCP_ADMIN_SLUG' ) ) {
 }
 
 /**
+ * Define default meta image path.
+ * 
+ * @since  1.0.0
+ * @return string Returns the URL of the image.
+ */
+if ( ! defined( 'CCP_DEFAULT_META_IMAGE' ) ) {
+	define( 
+		'CCP_DEFAULT_META_IMAGE', 
+		plugins_url( 'frontend/assets/images/default-meta-image.jpg', __FILE__ ) 
+	);
+}
+
+/**
  * The core plugin class.
  *
  * @since  1.0.0

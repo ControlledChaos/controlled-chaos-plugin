@@ -7,8 +7,8 @@
  * 
  * This file must not be namespaced.
  * 
- * @package    controlled-chaos
- * @subpackage Controlled_Chaos\includes
+ * @package    Controlled_Chaos_Plugin
+ * @subpackage Controlled_Chaos_Plugin\includes
  *
  * @since      1.0.0
  * @author     Automattic
@@ -50,7 +50,7 @@ class Controlled_Chaos_RTL_Test {
 	}
 
 	/**
-	 * Initialize the class.
+	 * Constructor method.
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -142,7 +142,7 @@ class Controlled_Chaos_RTL_Test {
  *
  * @since  1.0.0
  * @access public
- * @return object Returns the instance of the class.
+ * @return object Returns an instance of the class.
  */
 function ccp_rtl_test() {
 

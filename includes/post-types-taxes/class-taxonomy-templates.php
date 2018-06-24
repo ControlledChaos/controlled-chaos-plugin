@@ -2,27 +2,51 @@
 /**
  * Taxonomy templates.
  * 
- * Hat tip: Hassan Derakhshandeh
- * https://wordpress.org/plugins/custom-taxonomy-templates/
+ * Enables themes to use custom templates for taxonomies in 
+ * the same way that templates can be used for post types.
+ * The template is registered in the file header.
+ * 
+ * @package    Controlled_Chaos_Plugin
+ * @subpackage Controlled_Chaos_Plugin\includes\post-types-taxes
  *
- * @link       http://ccdzine.com
  * @since      1.0.0
- *
- * @package    controlled-chaos
- * @subpackage Controlled_Chaos\includes
+ * @author     Hassan Derakhshandeh
+ * @author     Greg Sweet <greg@ccdzine.com>
+ * 
+ * @example    In the template header: {Taxonomy Singular Label} Template: Grid
+ * 
+ * @link       https://wordpress.org/plugins/custom-taxonomy-templates/
+ * @link       https://developer.wordpress.org/themes/template-files-section/page-template-files/#creating-page-templates-for-specific-post-types
  */
 
-namespace CC_Plugin\Taxonomy_Templates;
+namespace CC_Plugin\Includes\Post_Types_Taxes;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-class Controlled_Chaos_Post_Taxonomy_Templates {
+/**
+ * Taxonomy templates.
+ * 
+ * @since  1.0.0
+ * @access public
+ */
+final class Taxonomy_Templates {
 
+	/**
+	 * @var    mixed
+	 * @access public
+	 */
     var $meta_key;
 
+	/**
+	 * Constructor magic method.
+     * 
+     * @since  1.0.0
+	 * @access public
+	 * @return self
+	 */
 	public function __construct() {
 
 		add_action( 'init', [ $this, 'init' ], 100 );
@@ -32,6 +56,11 @@ class Controlled_Chaos_Post_Taxonomy_Templates {
 
 	}
 
+	/**
+	 * Undocumented function
+	 *
+	 * @return void
+	 */
 	public function init() {
 
 		$this->meta_key = apply_filters( 'custom_taxonomy_templates_meta_key', '_custom_template' );
@@ -54,6 +83,12 @@ class Controlled_Chaos_Post_Taxonomy_Templates {
 
 	}
 
+	/**
+	 * Undocumented function
+	 *
+	 * @param [type] $template
+	 * @return void
+	 */
 	public function template( $template ) {
 
 		$term     = get_queried_object();
@@ -72,6 +107,12 @@ class Controlled_Chaos_Post_Taxonomy_Templates {
 		return $template;
 	}
 
+	/**
+	 * Undocumented function
+	 *
+	 * @param [type] $classes
+	 * @return void
+	 */
 	public function body_class( $classes ) {
 
 		$term      = get_queried_object();
@@ -83,6 +124,12 @@ class Controlled_Chaos_Post_Taxonomy_Templates {
 
 	}
 
+	/**
+	 * Undocumented function
+	 *
+	 * @param [type] $term_id
+	 * @return void
+	 */
 	public function save_option( $term_id ) {
 		
 		if ( isset( $_POST['custom-taxonomy-template'] ) ) {
@@ -97,6 +144,12 @@ class Controlled_Chaos_Post_Taxonomy_Templates {
 
 	}
 
+	/**
+	 * Undocumented function
+	 *
+	 * @param [type] $taxonomy
+	 * @return void
+	 */
 	public function add_template_option( $taxonomy ) {
 
 		$category_templates = $this->get_templates( $taxonomy );
@@ -113,6 +166,13 @@ class Controlled_Chaos_Post_Taxonomy_Templates {
 		</div><?php
 	}
 
+	/**
+	 * Undocumented function
+	 *
+	 * @param [type] $tag
+	 * @param [type] $taxonomy
+	 * @return void
+	 */
 	public function edit_template_option( $tag, $taxonomy ) {
 
 		$category_templates = $this->get_templates( $taxonomy );
@@ -136,6 +196,12 @@ class Controlled_Chaos_Post_Taxonomy_Templates {
 		</tr><?php
 	}
 
+	/**
+	 * Undocumented function
+	 *
+	 * @param [type] $term_id
+	 * @return void
+	 */
 	public function delete_option( $term_id ) {
 
 		delete_term_meta( $term_id, $this->meta_key );
@@ -143,8 +209,10 @@ class Controlled_Chaos_Post_Taxonomy_Templates {
 	}
 
 	/**
-	 * Generate the options for the category templates list
+	 * Undocumented function
 	 *
+	 * @param string $taxonomy
+	 * @param [type] $default
 	 * @return void
 	 */
 	public function templates_dropdown( $taxonomy = 'category', $default = null ) {
@@ -166,7 +234,9 @@ class Controlled_Chaos_Post_Taxonomy_Templates {
 	/**
 	 * Get a list of taxonomy templates available in the current theme
 	 *
-	 * @return array Key is the template name, value is the filename of the template
+	 * @param string $taxonomy
+	 * @param [type] $template
+	 * @return mixed[]
 	 */
 	public function get_templates( $taxonomy = 'category', $template = null ) {
 
@@ -195,4 +265,5 @@ class Controlled_Chaos_Post_Taxonomy_Templates {
 
 }
 
-$controlled_chaos_post_taxonomy_templates = new Controlled_Chaos_Post_Taxonomy_Templates;
+// Run the class.
+new Taxonomy_Templates;

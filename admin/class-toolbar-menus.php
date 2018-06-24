@@ -6,8 +6,8 @@
  * @link       http://ccdzine.com
  * @since      1.0.0
  *
- * @package    controlled-chaos
- * @subpackage Controlled_Chaos\includes
+ * @package    Controlled_Chaos_Plugin
+ * @subpackage Controlled_Chaos_Plugin\includes
  */
 
 namespace CC_Plugin\Admin_Toolbar;
@@ -20,7 +20,7 @@ if ( ! defined( 'WPINC' ) ) {
 class Controlled_Chaos_Adminbar_Menus {
 
 	/**
-	 * Initialize the class.
+	 * Constructor method.
 	 *
 	 * @since    1.0.0
 	 */

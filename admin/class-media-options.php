@@ -2,7 +2,7 @@
 /**
  * Media options.
  *
- * @package    controlled-chaos
+ * @package    Controlled_Chaos_Plugin
  * @subpackage controlled-chaos
  * @since controlled-chaos 1.0.0
  */
@@ -20,7 +20,7 @@ if ( ! defined( 'WPINC' ) ) {
 class Controlled_Chaos_Media_Options {
 
     /**
-	 * Initialize the class.
+	 * Constructor method.
 	 *
 	 * @since    1.0.0
 	 */

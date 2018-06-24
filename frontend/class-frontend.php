@@ -1,40 +1,69 @@
 <?php
-
 /**
- * The public-facing functionality of the plugin.
+ * The frontend functionality of the plugin.
  *
- * @link       http://ccdzine.com
+ * @package    Controlled_Chaos_Plugin
+ * @subpackage Controlled_Chaos_Plugin\frontend
+ *
  * @since      1.0.0
- *
- * @package    controlled-chaos
- * @subpackage Controlled_Chaos\public
+ * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Plugin_Public;
+namespace CC_Plugin\Frontend;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+// Bail if in the admin.
+if ( is_admin() ) {
+	return;
+}
+
 /**
- * The public-facing functionality of the plugin.
+ * The frontend functionality of the plugin.
  *
- * @package    controlled-chaos
- * @subpackage Controlled_Chaos\public
- * @author     Greg Sweet <greg@ccdzine.com>
+ * @since  1.0.0
+ * @access public
  */
-class Controlled_Chaos_Public {
+class Frontend {
 
 	/**
-	 * Initialize the class.
+	 * Get an instance of the plugin class.
 	 *
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return object Returns the instance.
+	 */
+	public static function instance() {
+
+		// Varialbe for the instance to be used outside the class.
+		static $instance = null;
+
+		if ( is_null( $instance ) ) {
+
+			// Set variable for new instance.
+			$instance = new self;
+
+			// Frontend dependencies.
+			$instance->dependencies();
+			
+		}
+
+		// Return the instance.
+		return $instance;
+
+	}
+
+	/**
+	 * Constructor method.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return self
 	 */
 	public function __construct() {
-
-		// Frontend dependencies.
-		$this->dependencies();
 
 		// Get inline options.
 		$jquery  = get_option( 'ccp_inline_jquery' );
@@ -75,37 +104,34 @@ class Controlled_Chaos_Public {
 	/**
 	 * Frontend dependencies.
 	 * 
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
 	 */
 	public function dependencies() {
 
 		require_once plugin_dir_path( __FILE__ ) . 'class-head-scripts.php';
-		require_once plugin_dir_path( __FILE__ ) . 'class-public-images.php';
 
-		/**
-		 * Meta tags.
-		 * 
-		 * @since    1.0.0
-		 */
+		// Meta tags.
 		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-url.php';
-		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-name.php';
-		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-type.php';
 		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-title.php';
 		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-description.php';
-		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-image.php';
 		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-author.php';
+		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-image.php';
 
 	}
 
 	/**
-	 * Enqueue the stylesheets for the public-facing side of the site.
+	 * Enqueue the stylesheets for the frontend of the site.
 	 *
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
 	 */
 	public function enqueue_styles() {
 
 		// Non-vendor plugin styles.
-		wp_enqueue_style( 'controlled-chaos-plugin', plugin_dir_url( __FILE__ ) . 'assets/css/public.css', [], CCP_VERSION, 'all' );
+		wp_enqueue_style( 'controlled-chaos-plugin', plugin_dir_url( __FILE__ ) . 'assets/css/frontend.css', [], CCP_VERSION, 'all' );
 
 		// Fancybox 3.
 		if ( get_option( 'ccp_enqueue_fancybox_styles' ) ) {
@@ -141,7 +167,9 @@ class Controlled_Chaos_Public {
 	/**
 	 * Add styles inline if option selected.
 	 *
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
 	 */
 	public function get_styles() {
 
@@ -184,12 +212,14 @@ class Controlled_Chaos_Public {
 	/**
 	 * Enqueue scripts traditionally by default.
 	 *
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
 	 */
 	public function enqueue_scripts() {
 
 		// Non-vendor plugin script.
-		wp_enqueue_script( 'controlled-chaos-plugin', plugin_dir_url( __FILE__ ) . 'assets/js/public.js', [ 'jquery' ], CCP_VERSION, true );
+		wp_enqueue_script( 'controlled-chaos-plugin', plugin_dir_url( __FILE__ ) . 'assets/js/frontend.js', [ 'jquery' ], CCP_VERSION, true );
 
 		// Fancybox 3.
 		if ( get_option( 'ccp_enqueue_fancybox_script' ) ) {
@@ -219,7 +249,9 @@ class Controlled_Chaos_Public {
 	/**
 	 * Deregister jQuery if inline is option selected.
 	 *
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
 	 */
 	public function deregister_jquery() {
 
@@ -234,7 +266,9 @@ class Controlled_Chaos_Public {
 	/**
 	 * Add jQuery inline if option selected.
 	 *
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return string
 	 */
 	public function get_jquery() {
 
@@ -251,7 +285,9 @@ class Controlled_Chaos_Public {
 	/**
 	 * Add scripts inline if option selected.
 	 *
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
 	 */
 	public function get_scripts() {
 
@@ -297,19 +333,22 @@ class Controlled_Chaos_Public {
 	/**
 	 * Meta tags for SEO and embedded links.
 	 * 
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
 	 */
 	public function meta_tags() {
 
-		if ( class_exists( 'ACF_Pro' ) ) {
+		if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
 
 			$disable_tags = get_field( 'ccp_disable_meta_tags', 'option' );
 
 			if ( false == $disable_tags ) {
 				
-				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-tags-standard.php';
-				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-tags-open-graph.php';
-				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-tags-twitter.php';
+				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/meta-tags-standard.php';
+				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/meta-tags-open-graph.php';
+				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/meta-tags-twitter.php';
+				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/meta-tags-dublin-core.php';
 
 			}
 
@@ -319,9 +358,10 @@ class Controlled_Chaos_Public {
 
 			if ( ! $disable_tags ) {
 				
-				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-tags-standard.php';
-				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-tags-open-graph.php';
-				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-tags-twitter.php';
+				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/meta-tags-standard.php';
+				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/meta-tags-open-graph.php';
+				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/meta-tags-twitter.php';
+				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/meta-tags-dublin-core.php';
 
 			}
 
@@ -332,7 +372,9 @@ class Controlled_Chaos_Public {
 	/**
 	 * Add Fancybox attributes to attachment page image link.
 	 * 
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return string
 	 */
 	public function attachment_fancybox() {
 
@@ -350,5 +392,18 @@ class Controlled_Chaos_Public {
 
 }
 
-// Run the public class.
-$ccp_public = new Controlled_Chaos_Public();
+/**
+ * Put an instance of the class into a function.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return object Returns an instance of the class.
+ */
+function ccp_frontend() {
+
+	return Frontend::instance();
+
+}
+
+// Run an instance of the class.
+ccp_frontend();

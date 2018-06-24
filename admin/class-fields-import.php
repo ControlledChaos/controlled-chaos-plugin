@@ -7,8 +7,8 @@
  * @link       http://ccdzine.com
  * @since      1.0.0
  *
- * @package    controlled-chaos
- * @subpackage Controlled_Chaos\admin
+ * @package    Controlled_Chaos_Plugin
+ * @subpackage Controlled_Chaos_Plugin\admin
  */
 
 namespace CC_Plugin\Fields_Import;
@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 class Controlled_Chaos_Fields_Import {
 
 	/**
-     * Initialize the class.
+     * Constructor method.
 	 * 
 	 * @since      1.0.0
      */

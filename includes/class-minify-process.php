@@ -3,7 +3,7 @@
  * Minify HTML source code.
  *
  * @package    Controlled_Chaos
- * @subpackage Controlled_Chaos\includes
+ * @subpackage Controlled_Chaos_Plugin\includes
  * 
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
@@ -35,7 +35,7 @@ class Controlled_Chaos_Minify {
 	protected $html;
 
 	/**
-	 * Initialize the class.
+	 * Constructor method.
 	 *
 	 * @since  1.0.0
 	 * @access public

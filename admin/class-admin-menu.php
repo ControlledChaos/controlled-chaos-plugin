@@ -6,8 +6,8 @@
  * @link       http://ccdzine.com
  * @since      1.0.0
  *
- * @package    controlled-chaos
- * @subpackage Controlled_Chaos\admin
+ * @package    Controlled_Chaos_Plugin
+ * @subpackage Controlled_Chaos_Plugin\admin
  */
 
 namespace CC_Plugin\Admin_Menu;
@@ -20,14 +20,14 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Admin menu functions.
  *
- * @package    controlled-chaos
- * @subpackage Controlled_Chaos\admin
+ * @package    Controlled_Chaos_Plugin
+ * @subpackage Controlled_Chaos_Plugin\admin
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 class Controlled_Chaos_Admin_Menu {
 
     /**
-	 * Initialize the class.
+	 * Constructor method.
 	 *
 	 * @since    1.0.0
 	 */
@@ -37,7 +37,7 @@ class Controlled_Chaos_Admin_Menu {
         add_action( 'admin_menu', [ $this, 'hide' ] );
         
         // Hide ACF field groups UI.
-        if ( class_exists( 'ACF_Pro' ) ) {
+        if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
 
             $options = get_field( 'ccp_admin_hide_links', 'option' );
             if ( $options && in_array( 'fields', $options ) ) {
@@ -51,7 +51,7 @@ class Controlled_Chaos_Admin_Menu {
          */
         
         // Get links option.
-        if ( class_exists( 'ACF_Pro' ) ) {
+        if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
             $links = get_field( 'ccp_links_manager', 'option' );
         } else {
             $links = get_option( 'ccp_hide_links' );
@@ -86,7 +86,7 @@ class Controlled_Chaos_Admin_Menu {
         /**
          * If Advanced Custom Fields Pro is active.
          */
-        if ( class_exists( 'ACF_Pro' ) ) {
+        if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
 
             // Get the multiple checkbox field.
             $options = get_field( 'ccp_admin_hide_links', 'option' );
@@ -156,7 +156,7 @@ class Controlled_Chaos_Admin_Menu {
     
         global $submenu, $menu;
 
-        if ( class_exists( 'ACF_Pro' ) ) {
+        if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
 
             $menus_link   = get_field( 'ccp_menus_link_position', 'option' );
             $widgets_link = get_field( 'ccp_widgets_link_position', 'option' );
@@ -232,7 +232,7 @@ class Controlled_Chaos_Admin_Menu {
 
         global $current_screen;
 
-        if ( class_exists( 'ACF_Pro' ) ) {
+        if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
 
             $menus_link   = get_field( 'ccp_menus_link_position', 'option' );
             $widgets_link = get_field( 'ccp_widgets_link_position', 'option' );

@@ -4,8 +4,8 @@
  * 
  * Also provides front-end avatar management via a shortcode and bbPress support.
  * 
- * @package    controlled-chaos
- * @subpackage Controlled_Chaos\includes\users
+ * @package    Controlled_Chaos_Plugin
+ * @subpackage Controlled_Chaos_Plugin\includes\users
  *
  * @since      1.0.0
  * @author	   Jared Atchison
@@ -497,7 +497,7 @@ class User_Avatars {
  *
  * @since  1.0.0
  * @access public
- * @return object Returns the instance of the class.
+ * @return object Returns an instance of the class.
  */
 function ccp_avatars() {
 

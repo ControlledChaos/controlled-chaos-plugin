@@ -3,7 +3,7 @@
 /**
  * Plugin and site settings.
  *
- * @package    controlled-chaos
+ * @package    Controlled_Chaos_Plugin
  * @subpackage controlled-chaos
  * @since controlled-chaos 1.0.0
  */
@@ -18,14 +18,14 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Plugin and site settings.
  *
- * @package    controlled-chaos
- * @subpackage Controlled_Chaos\admin
+ * @package    Controlled_Chaos_Plugin
+ * @subpackage Controlled_Chaos_Plugin\admin
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 class Controlled_Chaos_Settings {
 
     /**
-	 * Initialize the class.
+	 * Constructor method.
 	 *
 	 * @since    1.0.0
 	 */
@@ -294,7 +294,7 @@ class Controlled_Chaos_Settings {
 		);
 	
 		// Site Settings section.
-		if ( class_exists( 'ACF_Pro' ) ) {
+		if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
 
 			add_settings_section( 'ccp-registered-fields-activate', __( 'Registered Fields Activation', 'controlled-chaos-plugin' ), [ $this, 'registered_fields_activate' ], 'ccp-registered-fields-activate' );
 			
@@ -534,7 +534,7 @@ class Controlled_Chaos_Settings {
 	 */
 	public function registered_fields_activate() {
 
-		if ( class_exists( 'ACF_Pro' ) ) {
+		if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
 
 			echo sprintf( '<p>%1s</p>', esc_html( 'The Controlled Chaos plugin registers custom fields for Advanced Custom Fields Pro that can be imported for editing. These built-in field goups must be deactivated for the imported field groups to take effect.', 'controlled-chaos-plugin' ) );
 
@@ -544,7 +544,7 @@ class Controlled_Chaos_Settings {
 
 	public function registered_fields_page_callback( $args ) {
 		
-		if ( class_exists( 'ACF_Pro' ) ) {
+		if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
 
 			$html = '<p><input type="checkbox" id="ccp_acf_activate_settings_page" name="ccp_acf_activate_settings_page" value="1" ' . checked( 1, get_option( 'ccp_acf_activate_settings_page' ), false ) . '/>';
 			
@@ -572,10 +572,10 @@ class Controlled_Chaos_Settings {
 	 */
     public function site_settings_page() {
 
-		if ( class_exists( 'ACF_Pro' ) || class_exists( 'acf_admin_options_page' ) ) {
+		if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
 
-			$title     = apply_filters( 'site_settings_page_name', get_bloginfo( 'name' ) );
-			$position  = get_field( 'ccp_settings_link_position', 'option' );
+			$title      = apply_filters( 'site_settings_page_name', get_bloginfo( 'name' ) );
+			$position   = get_field( 'ccp_settings_link_position', 'option' );
 			$link_label = get_field( 'ccp_settings_page_link_label', 'option' );
 
 			if ( $link_label ) {
@@ -589,7 +589,7 @@ class Controlled_Chaos_Settings {
 				$settings = apply_filters( 'controlled_chaos_site_settings_page_top', [
 					'page_title' => $title . __( ' Settings', 'controlled-chaos-plugin' ),
 					'menu_title' => $label,
-					'menu_slug'  => 'controlled-chaos-settings',
+					'menu_slug'  => CCP_ADMIN_SLUG . '-settings',
 					'icon_url'   => 'dashicons-admin-settings',
 					'position'   => 59,
 					'capability' => 'manage_options',
@@ -603,7 +603,7 @@ class Controlled_Chaos_Settings {
 				$settings = apply_filters( 'controlled_chaos_site_settings_page_default', [
 					'page_title' => $title . __( ' Settings', 'controlled-chaos-plugin' ),
 					'menu_title' => $label,
-					'menu_slug'  => 'controlled-chaos-settings',
+					'menu_slug'  => CCP_ADMIN_SLUG . '-settings',
 					'parent'     => 'options-general.php',
 					'capability' => 'manage_options'
 				] );
@@ -634,7 +634,7 @@ class Controlled_Chaos_Settings {
 					$label,
 					$label,
 					'manage_options',
-					'controlled-chaos-settings',
+					CCP_ADMIN_SLUG . '-settings',
 					[ $this, 'settings_site_output' ],
 					$icon,
 					3
@@ -644,7 +644,7 @@ class Controlled_Chaos_Settings {
 					$label,
 					$label,
 					'manage_options',
-					'controlled-chaos-settings',
+					CCP_ADMIN_SLUG . '-settings',
 					[ $this, 'settings_site_output' ]
 				);
 			}

@@ -2,8 +2,8 @@
 /**
  * Functions for post types and taxonomies.
  * 
- * @package    controlled-chaos
- * @subpackage Controlled_Chaos\includes\post-types-taxes
+ * @package    Controlled_Chaos_Plugin
+ * @subpackage Controlled_Chaos_Plugin\includes\post-types-taxes
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
@@ -49,7 +49,7 @@ class Post_Type_Tax_Functions {
 	}
 
 	/**
-	 * Initialize the class.
+	 * Constructor method.
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -185,7 +185,7 @@ class Post_Type_Tax_Functions {
  *
  * @since  1.0.0
  * @access public
- * @return object Returns the instance of the class.
+ * @return object Returns an instance of the class.
  */
 function ccp_type_taxe_functions() {
 

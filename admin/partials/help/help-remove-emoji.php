@@ -3,7 +3,7 @@
 /**
  * Content for the Remove Emoji Script help tab.
  *
- * @package    controlled-chaos
+ * @package    Controlled_Chaos_Plugin
  * @subpackage controlled-chaos
  * @since controlled-chaos 1.0.0
  */

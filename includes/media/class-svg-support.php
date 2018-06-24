@@ -1,12 +1,16 @@
 <?php
 /**
  * SVG image upload support.
+ * 
+ * The funtionality is taken from the SVG Support plugin.
  *
- * @package    controlled-chaos
- * @subpackage Controlled_Chaos\includes\media
+ * @package    Controlled_Chaos_Plugin
+ * @subpackage Controlled_Chaos_Plugin\includes\media
  * 
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
+ * 
+ * @link       https://wordpress.org/plugins/svg-support/
  */
 
 namespace CC_Plugin\Includes\Media;
@@ -48,7 +52,7 @@ class SVG_Support {
 	}
 
     /**
-	 * Initialize the class.
+	 * Constructor method.
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -77,10 +81,6 @@ class SVG_Support {
      * Add SVG image upload support to the media library.
 	 * 
 	 * The option to add SVG support is in Setting > Media.
-	 * 
-	 * Comments on the following methods ar not fully informed.
-	 * The funtionality is taken from the SVG Support plugin v2.3.15.
-	 * @link https://wordpress.org/plugins/svg-support/
 	 * 
 	 * @since  1.0.0
 	 * @access public
@@ -270,7 +270,7 @@ class SVG_Support {
  *
  * @since  1.0.0
  * @access public
- * @return object Returns the instance of the class.
+ * @return object Returns an instance of the class.
  */
 function svg_support() {
 
