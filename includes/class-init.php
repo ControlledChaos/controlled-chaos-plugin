@@ -25,7 +25,7 @@ include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
  * @since  1.0.0
  * @access public
  */
-class Includes {
+class Init {
 
 	/**
 	 * Get an instance of the plugin class.
@@ -130,11 +130,11 @@ class Includes {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_includes() {
+function ccp_init() {
 
-	return Includes::instance();
+	return Init::instance();
 
 }
 
 // Run an instance of the class.
-ccp_includes();
+ccp_init();
