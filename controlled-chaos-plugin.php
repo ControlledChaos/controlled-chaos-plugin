@@ -3,16 +3,16 @@
  * Controlled Chaos starter plugin
  * 
  * Change this header information to suit your needs.
+ * @see         README.md Renaming instrunctions are in the README file.
  * 
- * @package   Controlled_Chaos
- * @version   1.0.0
- * @author    Greg Sweet <greg@ccdzine.com>
- * @copyright Copyright © 2018, Greg Sweet
- * @link      https://github.com/ControlledChaos/Controlled-Chaos-Plugin
- * @license   GPL-3.0+ http://www.gnu.org/licenses/gpl-3.0.txt
+ * @package     Controlled_Chaos_Plugin
+ * @version     1.0.0
+ * @author      Greg Sweet <greg@ccdzine.com>
+ * @copyright   Copyright © 2018, Greg Sweet
+ * @link        https://github.com/ControlledChaos/Controlled-Chaos-Plugin
+ * @license     GPL-3.0+ http://www.gnu.org/licenses/gpl-3.0.txt
  *
- * @wordpress-plugin
- * Plugin Name: Controlled Chaos
+ * Plugin Name: Controlled Chaos Plugin
  * Plugin URI:  https://github.com/ControlledChaos/Controlled-Chaos-Plugin
  * Description: A WordPress starter/boilerplate for site-specific plugins.
  * Version:     1.0.0
@@ -41,6 +41,8 @@ if ( ! defined( 'CCP_VERSION' ) ) {
 }
 
 /**
+ * Universal slug partial for admin pages.
+ * 
  * This URL slug is used in various plugin admin & settings pages.
  * 
  * The prefix will change in your search & replace in renaming the plugin.
@@ -57,6 +59,8 @@ if ( ! defined( 'CCP_ADMIN_SLUG' ) ) {
 /**
  * Define default meta image path.
  * 
+ * Change the path and file name to suit your needs.
+ * 
  * @since  1.0.0
  * @return string Returns the URL of the image.
  */
@@ -69,6 +73,9 @@ if ( ! defined( 'CCP_DEFAULT_META_IMAGE' ) ) {
 
 /**
  * The core plugin class.
+ * 
+ * Simply gets the initialization class file plus the
+ * activation and deactivation classes.
  *
  * @since  1.0.0
  * @access public
@@ -120,7 +127,7 @@ class Controlled_Chaos_Plugin {
 	private function dependencies() {
 
 		// The hub of all other dependency files.
-		require_once plugin_dir_path( __FILE__ ) . 'includes/class-includes.php';
+		require_once plugin_dir_path( __FILE__ ) . 'includes/class-init.php';
 
 		// Include the activation class.
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-activate.php';
@@ -209,7 +216,11 @@ function controlled_chaos_about_link( $links ) {
 	if ( ! is_network_admin() ) {
 		// Create new settings link array as a variable.
 		$about_page = [
-			sprintf( '<a href="%1s" class="controlled-chaos-about-link">%2s</a>', admin_url( 'plugins.php?page=controlled-chaos-page' ), esc_attr( 'Documentation', 'controlled-chaos-plugin' ) ),
+			sprintf( 
+				'<a href="%1s" class="' . CCP_ADMIN_SLUG . '-page-link">%2s</a>', 
+				admin_url( 'plugins.php?page=' . CCP_ADMIN_SLUG . '-page' ), 
+				esc_attr( 'Documentation', 'controlled-chaos-plugin' ) 
+			),
 		];
 
 		// Merge the new settings array with the default array.
@@ -238,12 +249,25 @@ function controlled_chaos_settings_links( $links, $file ) {
 
 		// Add links to settings pages.
 		if ( ! is_network_admin() ) {
-			$links[] = sprintf( '<a href="%1s" class="controlled-chaos-about-link">%2s</a>', admin_url( 'options-general.php?page=' . CCP_ADMIN_SLUG . '-settings' ), esc_attr( 'Site Settings', 'controlled-chaos-plugin' ) );
-			$links[] = sprintf( '<a href="%1s" class="controlled-chaos-about-link">%2s</a>', admin_url( 'options-general.php?page=' . CCP_ADMIN_SLUG . '-scripts' ), esc_attr( 'Script Options', 'controlled-chaos-plugin' ) );
+			$links[] = sprintf( 
+				'<a href="%1s" class="' . CCP_ADMIN_SLUG . '-settings-link">%2s</a>', 
+				admin_url( 'options-general.php?page=' . CCP_ADMIN_SLUG . '-settings' ), 
+				esc_attr( 'Site Settings', 'controlled-chaos-plugin' ) 
+			);
+			$links[] = sprintf( 
+				'<a href="%1s" class="' . CCP_ADMIN_SLUG . '-scripts-link">%2s</a>', 
+				admin_url( 'options-general.php?page=' . CCP_ADMIN_SLUG . '-scripts' ), 
+				esc_attr( 'Script Options', 'controlled-chaos-plugin' ) 
+			);
 		}
 		
 		// Add a placeholder for an upgrade link.
-		$links[] = sprintf( '<a href="%1s" title="%2s" class="controlled-chaos-upgrade-link" style="color: #888; cursor: default;">%3s</a>', ''/* Add URL here */, __( 'Upgrade not available', 'controlled-chaos-plugin' ), esc_attr( 'Upgrade', 'controlled-chaos-plugin' ) );
+		$links[] = sprintf( 
+			'<a href="%1s" title="%2s" class="' . CCP_ADMIN_SLUG . '-upgrade-link" style="color: #888; cursor: default;">%3s</a>', 
+			''/* Add upgrade URL here */, 
+			__( 'Upgrade not available', 'controlled-chaos-plugin' ), 
+			esc_attr( 'Upgrade', 'controlled-chaos-plugin' ) 
+		);
 
 	}
 
@@ -251,4 +275,4 @@ function controlled_chaos_settings_links( $links, $file ) {
 	return $links;
 
 }
-add_filter( 'plugin_row_meta', 'controlled_chaos_settings_links', 10, 2);
+add_filter( 'plugin_row_meta', 'controlled_chaos_settings_links', 10, 2 );

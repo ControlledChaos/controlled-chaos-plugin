@@ -72,7 +72,7 @@ class Controlled_Chaos_Admin_Pages {
             __( 'Site Plugin', 'controlled-chaos-plugin' ),
             __( 'Site Plugin', 'controlled-chaos-plugin' ),
             'manage_options', 
-            'controlled-chaos-page', 
+            CCP_ADMIN_SLUG . '-page', 
             [ $this, 'about_plugin_output' ]
         );
 

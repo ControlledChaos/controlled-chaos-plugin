@@ -74,7 +74,7 @@ class Controlled_Chaos_Settings {
 			__( 'Script Options', 'controlled-chaos-plugin' ),
 			__( 'Script Options', 'controlled-chaos-plugin' ),
 			'manage_options',
-			'controlled-chaos-scripts',
+			CCP_ADMIN_SLUG . '-scripts',
 			[ $this, 'settings_scripts_output' ]
 		);
 
