@@ -5,7 +5,7 @@
  * Also provides front-end avatar management via a shortcode and bbPress support.
  * 
  * @package    Controlled_Chaos_Plugin
- * @subpackage Controlled_Chaos_Plugin\includes\users
+ * @subpackage Controlled_Chaos_Plugin\Includes\Users
  *
  * @since      1.0.0
  * @author	   Jared Atchison

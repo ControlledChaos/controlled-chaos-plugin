@@ -3,7 +3,7 @@
  * Media functionality.
  *
  * @package    Controlled_Chaos_Plugin
- * @subpackage Controlled_Chaos_Plugin\includes\media
+ * @subpackage Controlled_Chaos_Plugin\Includes\Media
  * 
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
@@ -103,6 +103,13 @@ class Media {
 
 		// For link embedding and sharing on social sites.
 		add_image_size( __( 'Meta Image', 'controlled-chaos-plugin' ), 1200, 630, true );
+
+		/**
+		 * For use as featured image in admin columns.
+		 * 
+		 * @see admin/class-admin-pages.php
+		 */
+		add_image_size( __( 'Column Thumbnail', 'controlled-chaos-plugin' ), 48, 48, true );
 
 	}
 

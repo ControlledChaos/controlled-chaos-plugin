@@ -5,7 +5,7 @@
  * The funtionality is taken from the SVG Support plugin.
  *
  * @package    Controlled_Chaos_Plugin
- * @subpackage Controlled_Chaos_Plugin\includes\media
+ * @subpackage Controlled_Chaos_Plugin\Includes\Media
  * 
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>

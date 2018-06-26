@@ -151,7 +151,7 @@ final class ACF_Site_Settings_Fields {
 					[
 						'key'               => 'field_5a0c802257d57',
 						'label'             => __( 'Menus Link', 'controlled-chaos-plugin' ),
-						'name'              => 'ccp_menus_link_position',
+						'name'              => 'ccp_menus_position',
 						'type'              => 'button_group',
 						'instructions'      => __( 'Select the position of the Menus page link.', 'controlled-chaos-plugin' ),
 						'required'          => 0,
@@ -173,7 +173,7 @@ final class ACF_Site_Settings_Fields {
 					[
 						'key'               => 'field_5a0c808757d58',
 						'label'             => __( 'Widgets Link', 'controlled-chaos-plugin' ),
-						'name'              => 'ccp_widgets_link_position',
+						'name'              => 'ccp_widgets_position',
 						'type'              => 'button_group',
 						'instructions'      => __( 'Select the position of the Widgets page link.', 'controlled-chaos-plugin' ),
 						'required'          => 0,

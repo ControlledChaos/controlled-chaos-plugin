@@ -1,28 +1,59 @@
 <?php
-
 /**
- * Dashboard functions.
+ * Dashboard functionality.
  *
- * @link       http://ccdzine.com
+ * @package    Controlled_Chaos
+ * @subpackage Controlled_Chaos_Plugin\Admin
+ * 
  * @since      1.0.0
- *
- * @package    Controlled_Chaos_Plugin
- * @subpackage Controlled_Chaos_Plugin\admin
+ * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Dashboard;
+namespace CC_Plugin\Admin;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-class Controlled_Chaos_Dashboard {
+/**
+ * Dashboard functionality.
+ * 
+ * @since  1.0.0
+ * @access public
+ */
+class Dashboard {
+
+    /**
+	 * Get an instance of the plugin class.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return object Returns the instance.
+	 */
+	public static function instance() {
+
+		// Varialbe for the instance to be used outside the class.
+		static $instance = null;
+
+		if ( is_null( $instance ) ) {
+
+			// Set variable for new instance.
+			$instance = new self;
+			
+		}
+
+		// Return the instance.
+		return $instance;
+
+	}
 
     /**
 	 * Constructor method.
 	 *
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return self
 	 */
     public function __construct() {
 
@@ -40,47 +71,80 @@ class Controlled_Chaos_Dashboard {
     /**
      * Add custom post types to "At a Glance" dashboard widget.
      *
-     * @since    1.0.0
+     * @since  1.0.0
+	 * @access public
+	 * @return void
      */
     public function at_glance() {
 
-        $args = [
+        // Post type query arguments.
+        $args       = [
             'public'   => true,
             '_builtin' => false
         ];
+
+        // The type of output to return, either 'names' or 'objects'.
         $output     = 'object';
+
+        // The operator (and/or) to use with multiple $args.
         $operator   = 'and';
+
+        // Get post types according to above.
         $post_types = get_post_types( $args, $output, $operator );
 
+        // Prepare an entry for each post type mathing the query.
         foreach ( $post_types as $post_type ) {
+            
+            // Count the number of posts.
+            $count  = wp_count_posts( $post_type->name );
 
-            $num_posts = wp_count_posts( $post_type->name );
-            $num       = number_format_i18n( $num_posts->publish );
-            $text      = _n( $post_type->labels->singular_name, $post_type->labels->name, intval( $num_posts->publish ) );
+            // Get the number of published posts.
+            $number = number_format_i18n( $count->publish );
 
+            // Get the plural or single name based on the count.
+            $name   = _n( $post_type->labels->singular_name, $post_type->labels->name, intval( $count->publish ) );
+
+            // Supply an edit link if the user can edit posts.
             if ( current_user_can( 'edit_posts' ) ) {
-                $output = '<a href="edit.php?post_type=' . $post_type->name . '">' . $num . ' ' . $text . '</a>';
-                    echo '<li class="post-count ' . $post_type->name . '-count">' . $output . '</li>';
-                } else {
-                $output = '<span>' . $num . ' ' . $text . '</span>';
-                    echo '<li class="post-count ' . $post_type->name . '-count">' . $output . '</li>';
-                }
+                echo sprintf( 
+                    '<li class="post-count %1s-count"><a href="edit.php?post_type=%2s">%3s %4s</a></li>', 
+                    $post_type->name, 
+                    $post_type->name, 
+                    $number, 
+                    $name
+                );
+
+            // Otherwise just the count and post type name.
+            } else {
+                echo sprintf( 
+                    '<li class="post-count %1s-count">%2s %3s</li>', 
+                    $post_type->name, 
+                    $number, 
+                    $name
+                );
+
+            }
         }
 
     }
 
     /**
      * Remove Dashboard metaboxes.
+     * 
+     * Check for the Advanced Custom Fields PRO plugin, or the Options Page
+	 * addon for free ACF. Use ACF options from the ACF 'Site Settings' page,
+     * otherwise use the options from the standard 'Site Settings' page.
      *
-     * @since    1.0.0
+     * @since  1.0.0
+	 * @access public
+     * @global array wp_meta_boxes The metaboxes array holds all the widgets for wp-admin.
+	 * @return void
      */
     public function metaboxes() {
 
         global $wp_meta_boxes;
 
-        /**
-         * If Advanced Custom Fields Pro is active.
-         */
+        // If Advanced Custom Fields Pro is active.
         if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
 
             // Get the multiple checkbox field.
@@ -110,7 +174,8 @@ class Controlled_Chaos_Dashboard {
             if ( $hide && in_array( 'activity', $hide ) ) {
                 remove_meta_box( 'dashboard_activity', 'dashboard', 'normal' );
             }
-
+        
+        // If Advanced Custom Fields is not active.
         } else {
 
             /**
@@ -156,15 +221,19 @@ class Controlled_Chaos_Dashboard {
     /**
      * Remove contextual help content.
      * 
-     * Much of the default help content does not
-     * apply to the cleaned up Dashboard
+     * Much of the default help content does not apply to 
+     * the cleaned up Dashboard so we'll remove it.
      *
-     * @since    1.0.0
+     * @since  1.0.0
+	 * @access public
+	 * @return void
      */
     public function remove_help() {
 
+        // Get the screen ID to target the Dashboard.
         $screen = get_current_screen();
         
+        // Bail if not on the Dashboard screen.
         if ( $screen->id != 'dashboard' ) {
 			return;
 		}
@@ -183,4 +252,18 @@ class Controlled_Chaos_Dashboard {
 
 }
 
-$controlled_chaos_bashboard = new Controlled_Chaos_Dashboard;
+/**
+ * Put an instance of the class into a function.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return object Returns an instance of the class.
+ */
+function ccp_dashboard() {
+
+	return Dashboard::instance();
+
+}
+
+// Run an instance of the class.
+ccp_dashboard();

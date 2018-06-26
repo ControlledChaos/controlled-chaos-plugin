@@ -3,7 +3,7 @@
  * The core plugin class.
  * 
  * @package    Controlled_Chaos_Plugin
- * @subpackage Controlled_Chaos_Plugin\includes
+ * @subpackage Controlled_Chaos_Plugin\Includes
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
@@ -105,19 +105,8 @@ class Init {
 		// User avatars.
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/users/class-user-avatars.php';
 
-		// Minify HTML source code.
-		$minify = get_option( 'ccp_html_minify' );
-
-		if ( $minify ) {
-			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-minify-process.php';
-		}
-
-		// Include the RTL (right to left) test if option selected.
-		$rtl = get_option( 'ccp_rtl_test' );
-
-		if ( $rtl ) {
-			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-rtl-test.php';
-		}
+		// Dev and maintenance tools.
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/tools/class-tools.php';
 
 	}
 

@@ -8,7 +8,7 @@
  * @since      1.0.0
  *
  * @package    Controlled_Chaos_Plugin
- * @subpackage Controlled_Chaos_Plugin\includes
+ * @subpackage Controlled_Chaos_Plugin\Includes
  */
 
 // If this file is called directly, abort.

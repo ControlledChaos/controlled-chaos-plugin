@@ -21,8 +21,9 @@ if ( isset( $_GET[ 'tab' ] ) ) {
 } ?>
 
 <div class="wrap">
-	<?php echo sprintf( '<h1>%1s %2s</h1>', get_bloginfo( 'name' ), esc_html__( 'Settings', 'controlled-chaos-plugin' ) ); ?>
+	<?php echo sprintf( '<h1 class="wp-heading-inline">%1s %2s</h1>', get_bloginfo( 'name' ), esc_html__( 'Settings', 'controlled-chaos-plugin' ) ); ?>
     <p class="description"><?php esc_html_e( 'Customize the way WordPress is used.', 'controlled-chaos-plugin' ); ?></p>
+    <hr class="wp-header-end">
     <h2 class="nav-tab-wrapper">
 		<a href="?page=<?php echo CCP_ADMIN_SLUG; ?>-settings&tab=dashboard" class="nav-tab <?php echo $active_tab == 'dashboard' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Dashboard', 'controlled-chaos-plugin' ); ?></a>
         <a href="?page=<?php echo CCP_ADMIN_SLUG; ?>-settings&tab=admin-menu" class="nav-tab <?php echo $active_tab == 'admin-menu' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Admin Menu', 'controlled-chaos-plugin' ); ?></a>

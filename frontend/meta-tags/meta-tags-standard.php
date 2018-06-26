@@ -3,7 +3,7 @@
  * Standard meta tags.
  *
  * @package    Controlled_Chaos_Plugin
- * @subpackage Controlled_Chaos_Plugin\includes\meta_tags
+ * @subpackage Controlled_Chaos_Plugin\Frontend\Meta_Tags
  * @since      controlled-chaos 1.0.0
  */
 

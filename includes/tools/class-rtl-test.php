@@ -8,7 +8,7 @@
  * This file must not be namespaced.
  * 
  * @package    Controlled_Chaos_Plugin
- * @subpackage Controlled_Chaos_Plugin\includes
+ * @subpackage Controlled_Chaos_Plugin\Includes
  *
  * @since      1.0.0
  * @author     Automattic

@@ -20,8 +20,9 @@ if ( isset( $_GET[ 'tab' ] ) ) {
     $active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'introduction';
 } ?>
 <div class="wrap">
-	<?php echo sprintf( '<h1>%1s %2s</h1>', get_bloginfo( 'name' ), esc_html__( 'Plugin', 'controlled-chaos-plugin' ) ); ?>
+	<?php echo sprintf( '<h1 class="wp-heading-inline">%1s %2s</h1>', get_bloginfo( 'name' ), esc_html__( 'Plugin', 'controlled-chaos-plugin' ) ); ?>
     <p class="description"><?php esc_html_e( 'What it does and how to use it.', 'controlled-chaos-plugin' ); ?></p>
+	<hr class="wp-header-end">
 	<h2 class="nav-tab-wrapper">
 		<a href="?page=<?php echo CCP_ADMIN_SLUG; ?>-page&tab=introduction" class="nav-tab <?php echo $active_tab == 'introduction' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Introduction', 'controlled-chaos-plugin' ); ?></a>
         <a href="?page=<?php echo CCP_ADMIN_SLUG; ?>-page&tab=site-settings" class="nav-tab <?php echo $active_tab == 'site-settings' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Site Settings', 'controlled-chaos-plugin' ); ?></a>

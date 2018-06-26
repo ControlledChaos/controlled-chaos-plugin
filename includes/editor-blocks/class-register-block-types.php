@@ -3,7 +3,7 @@
  * Register custom editor blocks.
  *
  * @package    Controlled_Chaos_Plugin
- * @subpackage Controlled_Chaos_Plugin\includes
+ * @subpackage Controlled_Chaos_Plugin\Includes\Editor_Blocks
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
