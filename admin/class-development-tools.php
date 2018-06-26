@@ -79,6 +79,8 @@ class Admin_Tools {
 	 * Uses the universal slug partial for admin pages. Set this
      * slug in the core plugin file.
 	 * 
+	 * Adds a contextual help section.
+	 * 
 	 * @since  1.0.0
 	 * @access public
 	 * @return void
@@ -113,19 +115,19 @@ class Admin_Tools {
 	}
 
 	/**
-     * Output for the Script Options page contextual help tab.
+     * Output for the development page contextual help section.
 	 * 
 	 * @since      1.0.0
      */
     public function help_development() {
 
-		// Add to the plugin settings pages.
+		// Add to the development page.
 		$screen = get_current_screen();
 		if ( $screen->id != $this->help_development ) {
 			return;
 		}
 		
-		// More Information.
+		// More information.
 		$screen->add_help_tab( [
 			'id'       => 'help_dev_info',
 			'title'    => __( 'More Information', 'controlled-chaos-plugin' ),
@@ -140,7 +142,7 @@ class Admin_Tools {
     }
     
     /**
-     * Get More Information help content.
+     * Get more information help tab content.
 	 * 
 	 * @since      1.0.0
      */
@@ -151,7 +153,7 @@ class Admin_Tools {
     }
     
     /**
-     * Get More Information page contextual tab sidebar content.
+     * Get development page contextual tab sidebar content.
 	 * 
 	 * @since      1.0.0
      */

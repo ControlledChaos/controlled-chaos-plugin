@@ -90,6 +90,8 @@ class Admin_Pages {
      * 
      * Uses the universal slug partial for admin pages. Set this
      * slug in the core plugin file.
+     * 
+     * Adds a contextual help section.
      *
      * @since  1.0.0
 	 * @access public
@@ -97,7 +99,7 @@ class Admin_Pages {
      */
     public function about_plugin() {
 
-        $this->help_scripts = add_submenu_page(
+        $this->help_about_plugin = add_submenu_page(
             'plugins.php', 
             __( 'Site Plugin', 'controlled-chaos-plugin' ),
             __( 'Site Plugin', 'controlled-chaos-plugin' ),
@@ -107,7 +109,7 @@ class Admin_Pages {
         );
 
         // Add content to the Help tab.
-		add_action( 'load-' . $this->help_scripts, [ $this, 'help_scripts' ] );
+		add_action( 'load-' . $this->help_about_plugin, [ $this, 'help_about_plugin' ] );
 
     }
 
@@ -125,49 +127,49 @@ class Admin_Pages {
     }
 
     /**
-     * Output for the Script Options page contextual help tab.
+     * Add tabs to the about page contextual help section.
 	 * 
 	 * @since      1.0.0
      */
-    public function help_scripts() {
+    public function help_about_plugin() {
 
-		// Add to the plugin settings pages.
+		// Add to the about page.
 		$screen = get_current_screen();
-		if ( $screen->id != $this->help_scripts ) {
+		if ( $screen->id != $this->help_about_plugin ) {
 			return;
 		}
 		
-		// More Information.
+		// More information tab.
 		$screen->add_help_tab( [
-			'id'       => 'help_info',
+			'id'       => 'help_plugin_info',
 			'title'    => __( 'More Information', 'controlled-chaos-plugin' ),
 			'content'  => null,
-			'callback' => [ $this, 'help_info' ]
+			'callback' => [ $this, 'help_plugin_info' ]
 		] );
 		
 		$screen->set_help_sidebar(
-			$this->help_info_sidebar()
+			$this->help_about_page_sidebar()
 		);
 		
     }
     
     /**
-     * Get More Information help content.
+     * Get more information help tab content.
 	 * 
 	 * @since      1.0.0
      */
-	public function help_info() { 
+	public function help_plugin_info() { 
 		
 		// include_once plugin_dir_path( __FILE__ ) . 'partials/help/help-inline-scripts.php';
 	
     }
     
     /**
-     * Get More Information page contextual tab sidebar content.
+     * Get the about page contextual tab sidebar content.
 	 * 
 	 * @since      1.0.0
      */
-    public function help_info_sidebar() {
+    public function help_about_page_sidebar() {
 
 		$html = '';
 
