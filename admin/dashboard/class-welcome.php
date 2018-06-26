@@ -55,7 +55,39 @@ class Welcome {
 	 * @access public
 	 * @return void // Constructor method is empty.
 	 */
-    public function __construct() {}
+    public function __construct() {
+
+		// Remove the welcome panel dismiss button.
+		$dismiss = get_option( 'ccp_remove_welcome_dismiss' );
+		if ( $dismiss ) {
+			add_action( 'admin_head', [ $this, 'dismiss' ] );
+		}
+
+	}
+
+	/**
+	 * Remove the welcome panel dismiss button if option selected.
+	 */
+	public function dismiss() {
+
+		$dismiss = '
+			<style>
+				/*
+				* Welcome panel user dismiss option
+				* is disabled in the Customizer
+				*/
+				a.welcome-panel-close, #wp_welcome_panel-hide, .metabox-prefs label[for="wp_welcome_panel-hide"] {
+					display: none !important;
+				}
+				.welcome-panel {
+					display: block !important;
+				}
+			</style>
+			';
+
+		echo $dismiss;
+
+	}
 
 }
 

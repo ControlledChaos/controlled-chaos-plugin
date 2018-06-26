@@ -68,6 +68,9 @@ class Dashboard {
 
         // Remove contextual help content.
         add_action( 'admin_head', [ $this, 'remove_help' ] );
+        
+        // Enqueue dashboard stylesheet.
+		add_action( 'admin_enqueue_scripts', [ $this, 'styles' ] );
 
     }
 
@@ -79,6 +82,9 @@ class Dashboard {
 	 * @return void
 	 */
 	private function dependencies() {
+
+        // Get the dashboard widget class.
+        require plugin_dir_path( __FILE__ ) . 'class-dashboard-widget.php';
 
         // Get the welcome panel class.
         require plugin_dir_path( __FILE__ ) . 'class-welcome.php';
@@ -266,6 +272,15 @@ class Dashboard {
 		);
 
     }
+    
+    /**
+	 * Enqueue dashboard stylesheet.
+	 */
+	public function styles() {
+
+		// wp_enqueue_style( 'ccp_dashboard', get_theme_file_uri( '/includes/widgets/dashboard/assets/css/dashboard.css' ), [], null, 'screen' );
+
+	}
 
 }
 
