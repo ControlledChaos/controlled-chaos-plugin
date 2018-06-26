@@ -15,13 +15,6 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-// Settings saved notice.
-if ( isset( $_GET['settings-updated'] ) ) { ?>
-<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible">
-	<p><strong><?php _e( 'Script settings saved.', 'controlled-chaos-plugin' ); ?></strong></p>
-</div>
-<?php }
-
 $active_tab = 'general';
 if ( isset( $_GET[ 'tab' ] ) ) {
     $active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'general';
