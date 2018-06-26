@@ -626,7 +626,7 @@ class Controlled_Chaos_Settings {
 			if ( $link_icon ) {
 				$icon = $link_icon;
 			}  else {
-				$icon = __( 'dashicons-admin-generic', 'controlled-chaos-plugin' );
+				$icon = __( 'dashicons-admin-settings', 'controlled-chaos-plugin' );
 			}
 
 			if ( $position ) {
