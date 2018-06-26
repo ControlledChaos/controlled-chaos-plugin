@@ -66,7 +66,7 @@ class Controlled_Chaos_Site_Settings {
 			'ccp-site-dashboard'
 		);
 
-		// Hide Welcome panel.
+		// Hide the Welcome panel.
 		add_settings_field(
 			'ccp_hide_welcome',
 			__( 'Hide Welcome', 'controlled-chaos-plugin' ),
@@ -79,6 +79,21 @@ class Controlled_Chaos_Site_Settings {
 		register_setting(
 			'ccp_dashboard',
 			'ccp_hide_welcome'
+		);
+
+		// Hide the Welcome panel dismiss button.
+		add_settings_field(
+			'ccp_remove_welcome_dismiss',
+			__( 'Remove Dismiss', 'controlled-chaos-plugin' ),
+			[ $this, 'ccp_remove_welcome_dismiss_callback' ],
+			'ccp-site-dashboard',
+			'ccp-site-dashboard',
+			[ esc_html__( 'Remove the Welcome panel dismiss button', 'controlled-chaos-plugin' ) ]
+		);
+
+		register_setting(
+			'ccp_dashboard',
+			'ccp_remove_welcome_dismiss'
 		);
 
 		// Hide WordPress News widget.
@@ -497,6 +512,25 @@ class Controlled_Chaos_Site_Settings {
 		$html = '<p><input type="checkbox" id="ccp_hide_welcome" name="ccp_hide_welcome" value="1" ' . checked( 1, $option, false ) . '/>';
 		
 		$html .= '<label for="ccp_hide_welcome"> '  . $args[0] . '</label></p>';
+
+		echo $html;
+
+	}
+
+	/**
+	 * Remove Welcome dismiss.
+	 * 
+	 * @param  array $args Extra arguments passed into the callback function.
+	 * @return string
+	 * @since  1.0.0
+	 */
+	public function ccp_remove_welcome_dismiss_callback( $args ) {
+
+		$option = get_option( 'ccp_remove_welcome_dismiss' );
+
+		$html = '<p><input type="checkbox" id="ccp_remove_welcome_dismiss" name="ccp_remove_welcome_dismiss" value="1" ' . checked( 1, $option, false ) . '/>';
+		
+		$html .= '<label for="ccp_remove_welcome_dismiss"> '  . $args[0] . '</label></p>';
 
 		echo $html;
 
