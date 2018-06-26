@@ -97,7 +97,7 @@ class Admin_Pages {
      */
     public function about_plugin() {
 
-        add_submenu_page(
+        $this->help_scripts = add_submenu_page(
             'plugins.php', 
             __( 'Site Plugin', 'controlled-chaos-plugin' ),
             __( 'Site Plugin', 'controlled-chaos-plugin' ),
@@ -105,6 +105,9 @@ class Admin_Pages {
             CCP_ADMIN_SLUG . '-page', 
             [ $this, 'about_plugin_output' ]
         );
+
+        // Add content to the Help tab.
+		add_action( 'load-' . $this->help_scripts, [ $this, 'help_scripts' ] );
 
     }
 
@@ -120,6 +123,57 @@ class Admin_Pages {
         require plugin_dir_path( __FILE__ ) . 'partials/plugin-page-about.php';
 
     }
+
+    /**
+     * Output for the Script Options page contextual help tab.
+	 * 
+	 * @since      1.0.0
+     */
+    public function help_scripts() {
+
+		// Add to the plugin settings pages.
+		$screen = get_current_screen();
+		if ( $screen->id != $this->help_scripts ) {
+			return;
+		}
+		
+		// More Information.
+		$screen->add_help_tab( [
+			'id'       => 'help_info',
+			'title'    => __( 'More Information', 'controlled-chaos-plugin' ),
+			'content'  => null,
+			'callback' => [ $this, 'help_info' ]
+		] );
+		
+		$screen->set_help_sidebar(
+			$this->help_info_sidebar()
+		);
+		
+    }
+    
+    /**
+     * Get More Information help content.
+	 * 
+	 * @since      1.0.0
+     */
+	public function help_info() { 
+		
+		// include_once plugin_dir_path( __FILE__ ) . 'partials/help/help-inline-scripts.php';
+	
+    }
+    
+    /**
+     * Get More Information page contextual tab sidebar content.
+	 * 
+	 * @since      1.0.0
+     */
+    public function help_info_sidebar() {
+
+		$html = '';
+
+		return $html;
+
+	}
 
     /**
      * Replace default post title placeholders.
