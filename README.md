@@ -1,6 +1,6 @@
 # Controlled Chaos
 
-A head start for site-specific WordPress plugins. Can be used as is without further development.
+An object-oriented starter for site-specific WordPress plugins. Can be used as is without further development.
 
 ![Gutenberg Ready](https://img.shields.io/badge/Gutenberg-ready-blue.svg)
 ![WordPress](https://img.shields.io/wordpress/v/akismet.svg?style=flat-square)
