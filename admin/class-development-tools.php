@@ -148,7 +148,7 @@ class Admin_Tools {
      */
 	public function help_dev_info_output() { 
 		
-		// include_once plugin_dir_path( __FILE__ ) . 'partials/help/help-inline-scripts.php';
+		include_once plugin_dir_path( __FILE__ ) . 'partials/help/help-dev-info.php';
 	
     }
     
