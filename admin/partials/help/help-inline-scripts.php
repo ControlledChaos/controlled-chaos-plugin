@@ -1,14 +1,15 @@
 <?php
-
 /**
  * Content for the Inline Scripts help tab.
  *
- * @package    Controlled_Chaos_Plugin
- * @subpackage controlled-chaos
- * @since controlled-chaos 1.0.0
+ * @package    Controlled_Chaos
+ * @subpackage Controlled_Chaos_Plugin\Admin\Partials\Help
+ * 
+ * @since      1.0.0
+ * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Settings\Help\Inline_Scripts;
+namespace CC_Plugin\Admin\Partials\Help;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {

@@ -160,7 +160,7 @@ class Admin_Pages {
      */
 	public function help_plugin_info() { 
 		
-		// include_once plugin_dir_path( __FILE__ ) . 'partials/help/help-inline-scripts.php';
+		include_once plugin_dir_path( __FILE__ ) . 'partials/help/help-plugin-info.php';
 	
     }
     
