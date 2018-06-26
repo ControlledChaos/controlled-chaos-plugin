@@ -3,7 +3,7 @@
  * Dublin Core meta tags.
  *
  * @package    Controlled_Chaos_Plugin
- * @subpackage Controlled_Chaos_Plugin\includes\meta_tags
+ * @subpackage Controlled_Chaos_Plugin\Frontend\Meta_Tags
  * 
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>

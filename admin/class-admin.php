@@ -1,15 +1,15 @@
 <?php
 /**
- * Controlled Chaos admin functions.
+ * Admin functiontionality and settings.
  *
  * @package    Controlled_Chaos
- * @subpackage Controlled_Chaos_Plugin\Plugin_Admin
+ * @subpackage Controlled_Chaos_Plugin\Admin
  * 
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Plugin_Admin;
+namespace CC_Plugin\Admin;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -18,16 +18,43 @@ if ( ! defined( 'WPINC' ) ) {
 
 // Bail if not in the admin.
 if ( ! is_admin() ) {
-	return;
+	//return;
 }
 
 /**
- * The admin-specific functionality of the plugin.
+ * Admin functiontionality and settings.
  * 
  * @since  1.0.0
  * @access public
  */
-class Controlled_Chaos_Admin {
+class Admin {
+
+	/**
+	 * Get an instance of the plugin class.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return object Returns the instance.
+	 */
+	public static function instance() {
+
+		// Varialbe for the instance to be used outside the class.
+		static $instance = null;
+
+		if ( is_null( $instance ) ) {
+
+			// Set variable for new instance.
+			$instance = new self;
+
+			// Require the core plugin class files.
+			$instance->dependencies();
+			
+		}
+
+		// Return the instance.
+		return $instance;
+
+	}
 
 	/**
 	 * Constructor method.
@@ -37,9 +64,6 @@ class Controlled_Chaos_Admin {
 	 * @return self
 	 */
 	public function __construct() {
-
-		// Admin file dependencies.
-		$this->dependencies();
 
 		// Remove theme & plugin editor links.
 		add_action( 'admin_init', [ $this, 'remove_editor_links' ] );
@@ -352,5 +376,18 @@ class Controlled_Chaos_Admin {
 
 }
 
-// Run the admin class.
-$ccp_admin = new Controlled_Chaos_Admin();
+/**
+ * Put an instance of the class into a function.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return object Returns an instance of the class.
+ */
+function ccp_admin() {
+
+	return Admin::instance();
+
+}
+
+// Run an instance of the class.
+ccp_admin();

@@ -3,7 +3,7 @@
  * Functions for post types and taxonomies.
  * 
  * @package    Controlled_Chaos_Plugin
- * @subpackage Controlled_Chaos_Plugin\includes\post-types-taxes
+ * @subpackage Controlled_Chaos_Plugin\Includes\Post_Types_Taxes
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>

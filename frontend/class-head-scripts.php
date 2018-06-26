@@ -3,7 +3,7 @@
  * Head scripts.
  *
  * @package    Controlled_Chaos_Plugin
- * @subpackage Controlled_Chaos_Plugin\frontend
+ * @subpackage Controlled_Chaos_Plugin\Frontend
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
@@ -68,6 +68,8 @@ class Head_Scripts {
 
     /**
      * Remove WP versions from stylesheets and scripts.
+	 * 
+	 * Only if the option is selected on the Script Options page.
 	 * 
 	 * @since  1.0.0
 	 * @access public

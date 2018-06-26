@@ -1,16 +1,15 @@
 <?php
-
 /**
  * Admin menu functions.
  *
- * @link       http://ccdzine.com
+ * @package    Controlled_Chaos
+ * @subpackage Controlled_Chaos_Plugin\Admin
+ * 
  * @since      1.0.0
- *
- * @package    Controlled_Chaos_Plugin
- * @subpackage Controlled_Chaos_Plugin\admin
+ * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Admin_Menu;
+namespace CC_Plugin\Admin;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -20,16 +19,41 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Admin menu functions.
  *
- * @package    Controlled_Chaos_Plugin
- * @subpackage Controlled_Chaos_Plugin\admin
- * @author     Greg Sweet <greg@ccdzine.com>
+ * @since  1.0.0
+ * @access public
  */
-class Controlled_Chaos_Admin_Menu {
+class Admin_Menu {
+
+    /**
+	 * Get an instance of the plugin class.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return object Returns the instance.
+	 */
+	public static function instance() {
+
+		// Varialbe for the instance to be used outside the class.
+		static $instance = null;
+
+		if ( is_null( $instance ) ) {
+
+			// Set variable for new instance.
+            $instance = new self;
+            
+		}
+
+		// Return the instance.
+		return $instance;
+
+	}
 
     /**
 	 * Constructor method.
 	 *
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return self
 	 */
     public function __construct() {
 
@@ -79,12 +103,18 @@ class Controlled_Chaos_Admin_Menu {
     /**
      * Remove menu items.
      * 
-     * @since    1.0.0
+     * Check for the Advanced Custom Fields PRO plugin, or the Options Page
+	 * addon for free ACF. Use ACF options from the ACF 'Site Settings' page,
+     * otherwise use the options from the standard 'Site Settings' page.
+     * 
+     * @since  1.0.0
+	 * @access public
+	 * @return void
      */
     public function hide() {
 
         /**
-         * If Advanced Custom Fields Pro is active.
+         * If Advanced Custom Fields is active.
          */
         if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
 
@@ -114,7 +144,7 @@ class Controlled_Chaos_Admin_Menu {
         } else {
 
             /**
-             * Get WordPress fields, not ACF.
+             * If Advanced Custom Fields is not active.
              */
 
             // Get options.
@@ -148,116 +178,203 @@ class Controlled_Chaos_Admin_Menu {
     }
 
     /**
-     * Move the menu items.
+     * Menus and Widgets menu position.
      * 
-     * @since    1.0.0
+     * Check for the Advanced Custom Fields PRO plugin, or the Options Page
+	 * addon for free ACF. Use ACF options from the ACF 'Site Settings' page,
+     * otherwise use the options from the standard 'Site Settings' page.
+     * 
+     * @since  1.0.0
+	 * @access public
+     * @global object menu The admin menu array.
+     * @global object submenuThe admin submenu array.
+	 * @return void
      */
     public function menus_widgets() {
     
-        global $submenu, $menu;
+        global $menu, $submenu;
 
+        // If ACF is active.
         if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
 
-            $menus_link   = get_field( 'ccp_menus_link_position', 'option' );
-            $widgets_link = get_field( 'ccp_widgets_link_position', 'option' );
+            // Get the ACF field registered by this plugin.
+            $menus_link   = get_field( 'ccp_menus_position', 'option' );
+            $widgets_link = get_field( 'ccp_widgets_position', 'option' );
             
+            // Remove Menus and Widgets as submenu items of Appearances.
             if ( isset( $submenu['themes.php'] ) ) {
-        
+                
+                // Look for menu items under Appearances.
                 foreach ( $submenu['themes.php'] as $key => $item ) {
+
+                    // Unset Menus if it is found.
                     if ( $item[2] === 'nav-menus.php' && 'default' != $menus_link ) {
                         unset($submenu['themes.php'][$key] );
                     }
+
+                    // Unset Widgets if it is found.
                     if ( $item[2] === 'widgets.php' && 'default' != $widgets_link ) {
                         unset( $submenu['themes.php'][$key] );
                     }
+
                 }
 
             }
 
+            // Get the current user info.
             $user = wp_get_current_user();
 
+            // If the user can access the theme editor, remove that page.
             if ( in_array( 'editor', $user->roles ) ) {
                 unset( $menu[60] );
             }
 
+            // Add a new top-level Menus page.
             if ( 'default' != $menus_link ) {
-                add_menu_page( __( 'Menus', 'controlled-chaos-plugin' ), __( 'Menus', 'controlled-chaos-plugin' ), 'delete_others_pages', 'nav-menus.php', '', 'dashicons-list-view', 61 );
+                add_menu_page( 
+                    __( 'Menus', 'controlled-chaos-plugin' ), 
+                    __( 'Menus', 'controlled-chaos-plugin' ), 
+                    'delete_others_pages', 
+                    'nav-menus.php', 
+                    '', 
+                    'dashicons-list-view', 
+                    61 
+                );
             }
 
+            // Add a new top-level Widgets page.
             if ( 'default' != $widgets_link ) {
-                add_menu_page( __( 'Widgets', 'controlled-chaos-plugin' ), __( 'Widgets', 'controlled-chaos-plugin' ), 'delete_others_pages', 'widgets.php', '', 'dashicons-welcome-widgets-menus', 62 );
+                add_menu_page( 
+                    __( 'Widgets', 'controlled-chaos-plugin' ), 
+                    __( 'Widgets', 'controlled-chaos-plugin' ), 
+                    'delete_others_pages', 
+                    'widgets.php', 
+                    '', 
+                    'dashicons-welcome-widgets-menus', 
+                    62 
+                );
             }
         
+        // If ACF is not active.
         } else {
 
+            // Get the options from the standard fields.
             $menus_link   = get_option( 'ccp_menus_position' );
             $widgets_link = get_option( 'ccp_widgets_position' );
 
+            // Remove Menus and Widgets as submenu items of Appearances.
             if ( isset( $submenu['themes.php'] ) ) {
-        
+                
+                // Look for menu items under Appearances.
                 foreach ( $submenu['themes.php'] as $key => $item ) {
+
+                    // Unset Menus if it is found.
                     if ( $item[2] === 'nav-menus.php' && $menus_link ) {
                         unset($submenu['themes.php'][$key] );
                     }
+
+                    // Unset Widgets if it is found.
                     if ( $item[2] === 'widgets.php' && $widgets_link ) {
                         unset( $submenu['themes.php'][$key] );
                     }
+
                 }
 
             }
 
+            // Get the current user info.
             $user = wp_get_current_user();
 
+            // If the user can access the theme editor, remove that page.
             if ( in_array( 'editor', $user->roles ) ) {
                 unset( $menu[60] );
             }
 
+            // Add a new top-level Menus page.
             if ( $menus_link ) {
-                add_menu_page( __( 'Menus', 'controlled-chaos-plugin' ), __( 'Menus', 'controlled-chaos-plugin' ), 'delete_others_pages', 'nav-menus.php', '', 'dashicons-list-view', 61 );
+                add_menu_page( 
+                    __( 'Menus', 'controlled-chaos-plugin' ), 
+                    __( 'Menus', 'controlled-chaos-plugin' ), 
+                    'delete_others_pages', 
+                    'nav-menus.php', 
+                    '', 
+                    'dashicons-list-view', 
+                    61 
+                );
             }
 
+            // Add a new top-level Widgets page.
             if ( $widgets_link ) {
-                add_menu_page( __( 'Widgets', 'controlled-chaos-plugin' ), __( 'Widgets', 'controlled-chaos-plugin' ), 'delete_others_pages', 'widgets.php', '', 'dashicons-welcome-widgets-menus', 62 );
+                add_menu_page( 
+                    __( 'Widgets', 'controlled-chaos-plugin' ), 
+                    __( 'Widgets', 'controlled-chaos-plugin' ), 
+                    'delete_others_pages', 
+                    'widgets.php', 
+                    '', 
+                    'dashicons-welcome-widgets-menus', 
+                    62 
+                );
             }
 
         }
     }
     
     /**
-     * Set the new parent file URL.
+     * Set the new Menus and Widgets parent file URL.
      * 
-     * @since    1.0.0
+     * Check for the Advanced Custom Fields PRO plugin, or the Options Page
+	 * addon for free ACF. Use ACF options from the ACF 'Site Settings' page,
+     * otherwise use the options from the standard 'Site Settings' page.
+     * 
+     * @since  1.0.0
+	 * @access public
+     * @param  object $parent_file Looks for a parent of the current screen.
+     * @global object current_screen Holds the result of WP_Screen.
+	 * @return array Returns the parent page in admin page array (appearances or self).
      */
     public function set_parent_file( $parent_file ) {
 
+        // Get the current screen to check for parent.
         global $current_screen;
 
+        // If ACF is active.
         if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
 
-            $menus_link   = get_field( 'ccp_menus_link_position', 'option' );
-            $widgets_link = get_field( 'ccp_widgets_link_position', 'option' );
-        
+            // Get the ACF field registered by this plugin.
+            $menus_link   = get_field( 'ccp_menus_position', 'option' );
+            $widgets_link = get_field( 'ccp_widgets_position', 'option' );
+            
+            // Set Menus parent as self.
             if ( $current_screen->base == 'nav-menus' && 'default' != $menus_link ) {
                 $parent_file = 'nav-menus.php';
             }
 
+            // Set Widgets parent as self.
             if ( $current_screen->base == 'widgets' && 'default' != $widgets_link ) {
                 $parent_file = 'widgets.php';
             }
+
+            // Return the new parent URL.
             return $parent_file;
-            
+        
+        // If ACF is not active.
         } else {
 
+            // Get the options from the standard fields.
             $menus_link   = get_option( 'ccp_menus_position' );
             $widgets_link = get_option( 'ccp_widgets_position' );
 
+            // Set Menus parent as self.
             if ( $current_screen->base == 'nav-menus' && $menus_link ) {
                 $parent_file = 'nav-menus.php';
             }
 
+            // Set Widgets parent as self.
             if ( $current_screen->base == 'widgets' && $widgets_link ) {
                 $parent_file = 'widgets.php';
             }
+
+            // Return the new parent URL.
             return $parent_file;
 
         }
@@ -265,26 +382,50 @@ class Controlled_Chaos_Admin_Menu {
     }
     
     /**
-     * Set the user capability for the pages.
+     * Set the user capability for the new Menus and Widgets pages.
      * 
-     * @since    1.0.0
+     * @since  1.0.0
+	 * @access public
+     * @param  array $caps Current user capabilities.
+     * @param  mixed $cap Allowed user role.
+     * @param  array $args Arguments for admin menu entries.
+     * @param  object $user Current user info.
+	 * @return array Returns the new capabilities.
      */
     public function set_capability( $caps, $cap, $args, $user ) {
 
+        // Get the URL requented by the user.
         $url = $_SERVER['REQUEST_URI'];
-    
+        
+        // Allow Editors access to the Menus page.
         if ( strpos( $url, 'nav-menus.php' ) !== false && in_array( 'edit_theme_options', $cap ) && in_array( 'editor', $user->roles ) ) {
             $caps['edit_theme_options'] = true;
         }
 
+        // Allow Editors access to the Widgets page.
         if ( strpos( $url, 'widgets.php' ) !== false && in_array( 'edit_theme_options', $cap ) && in_array( 'editor', $user->roles ) ) {
             $caps['edit_theme_options'] = true;
         }
 
+        // Return the new capabilities.
         return $caps;
 
     }
 
 }
 
-$controlled_chaos_admin_menu = new Controlled_Chaos_Admin_Menu;
+/**
+ * Put an instance of the class into a function.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return object Returns an instance of the class.
+ */
+function ccp_admin_menu() {
+
+	return Admin_Menu::instance();
+
+}
+
+// Run an instance of the class.
+ccp_admin_menu();

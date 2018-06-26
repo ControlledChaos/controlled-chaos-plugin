@@ -201,7 +201,7 @@ class Controlled_Chaos_Settings {
 		add_settings_section( 'ccp-scripts-general', __( 'General Options', 'controlled-chaos-plugin' ), [ $this, 'scripts_general_section_callback' ], 'ccp-scripts-general' );
 
 		// Inline scripts.
-		add_settings_field( 'ccp_inline_scripts', __( 'Inline scripts', 'controlled-chaos-plugin' ), [ $this, 'ccp_inline_scripts_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Add script contents to footer', 'controlled-chaos-plugin' ) ] );
+		add_settings_field( 'ccp_inline_scripts', __( 'Inline Scripts', 'controlled-chaos-plugin' ), [ $this, 'ccp_inline_scripts_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Add script contents to footer', 'controlled-chaos-plugin' ) ] );
 
 		register_setting(
 			'ccp-scripts-general',
@@ -209,7 +209,7 @@ class Controlled_Chaos_Settings {
 		);
 
 		// Inline styles.
-		add_settings_field( 'ccp_inline_styles', __( 'Inline styles', 'controlled-chaos-plugin' ), [ $this, 'ccp_inline_styles_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Add script-related CSS contents to head', 'controlled-chaos-plugin' ) ] );
+		add_settings_field( 'ccp_inline_styles', __( 'Inline Styles', 'controlled-chaos-plugin' ), [ $this, 'ccp_inline_styles_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Add script-related CSS contents to head', 'controlled-chaos-plugin' ) ] );
 
 		register_setting(
 			'ccp-scripts-general',
@@ -233,7 +233,7 @@ class Controlled_Chaos_Settings {
 		);
 
 		// Remove emoji script.
-		add_settings_field( 'ccp_remove_emoji_script', __( 'Emoji script', 'controlled-chaos-plugin' ), [ $this, 'remove_emoji_script_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Remove emoji script from <head>', 'controlled-chaos-plugin' ) ] );
+		add_settings_field( 'ccp_remove_emoji_script', __( 'Emoji Script', 'controlled-chaos-plugin' ), [ $this, 'remove_emoji_script_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Remove emoji script from <head>', 'controlled-chaos-plugin' ) ] );
 
 		register_setting(
 			'ccp-scripts-general',
@@ -241,7 +241,7 @@ class Controlled_Chaos_Settings {
 		);
 		
 		// Remove WordPress version appended to script links.
-		add_settings_field( 'ccp_remove_script_version', __( 'Script versions', 'controlled-chaos-plugin' ), [ $this, 'remove_script_version_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Remove WordPress version from script and stylesheet links in <head>', 'controlled-chaos-plugin' ) ] );
+		add_settings_field( 'ccp_remove_script_version', __( 'Script Versions', 'controlled-chaos-plugin' ), [ $this, 'remove_script_version_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Remove WordPress version from script and stylesheet links in <head>', 'controlled-chaos-plugin' ) ] );
 
 		register_setting(
 			'ccp-scripts-general',
@@ -614,7 +614,7 @@ class Controlled_Chaos_Settings {
 		} else {
 
 			$link_label = get_option( 'ccp_settings_page_link_label' );
-			$position  = get_option( 'ccp_settings_position' );
+			$position   = get_option( 'ccp_settings_position' );
 			$link_icon  = get_option( 'ccp_settings_page_link_icon' );
 
 			if ( $link_label ) {
@@ -640,7 +640,8 @@ class Controlled_Chaos_Settings {
 					3
 				);
 			} else {
-				add_options_page(
+				add_submenu_page(
+					'index.php',
 					$label,
 					$label,
 					'manage_options',

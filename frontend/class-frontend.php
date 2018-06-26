@@ -3,7 +3,7 @@
  * The frontend functionality of the plugin.
  *
  * @package    Controlled_Chaos_Plugin
- * @subpackage Controlled_Chaos_Plugin\frontend
+ * @subpackage Controlled_Chaos_Plugin\Frontend
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
@@ -333,6 +333,11 @@ class Frontend {
 	/**
 	 * Meta tags for SEO and embedded links.
 	 * 
+	 * Check for the Advanced Custom Fields PRO plugin, or the Options Page
+	 * addon for free ACF, then check if meta tags have been disabled from 
+	 * the ACF 'Site Settings' page. Otherwise check if meta tags have been 
+	 * disabled from the standard 'Site Settings' page.
+	 * 
 	 * @since  1.0.0
 	 * @access public
 	 * @return void
@@ -372,6 +377,8 @@ class Frontend {
 	/**
 	 * Add Fancybox attributes to attachment page image link.
 	 * 
+	 * You may want to minimize the script for production sites.
+	 * 
 	 * @since  1.0.0
 	 * @access public
 	 * @return string
@@ -382,7 +389,7 @@ class Frontend {
 
 			<script>
 			jQuery(document).ready(function() {
-				jQuery('p.attachment > a').attr('data-fancybox', '');
+				jQuery( 'p.attachment > a' ).attr( 'data-fancybox', '' );
 			});
 			</script>
 

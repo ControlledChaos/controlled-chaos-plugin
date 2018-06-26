@@ -3,7 +3,7 @@
  * Minify HTML source code.
  *
  * @package    Controlled_Chaos
- * @subpackage Controlled_Chaos_Plugin\includes
+ * @subpackage Controlled_Chaos_Plugin\Includes
  * 
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
