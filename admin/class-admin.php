@@ -46,7 +46,7 @@ class Admin {
 			// Set variable for new instance.
 			$instance = new self;
 
-			// Require the core plugin class files.
+			// Require the class files.
 			$instance->dependencies();
 			
 		}
@@ -101,7 +101,7 @@ class Admin {
 	private function dependencies() {
 
 		// Functions for dasboard widgets, excluding the welcome panel.
-		require plugin_dir_path( __FILE__ ) . 'class-dashboard.php';
+		require plugin_dir_path( __FILE__ ) . 'dashboard/class-dashboard.php';
 
 		// Functions for admin menu item positions and visibility.
 		require plugin_dir_path( __FILE__ ) . 'class-admin-menu.php';

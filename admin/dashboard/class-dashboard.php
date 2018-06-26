@@ -3,13 +3,13 @@
  * Dashboard functionality.
  *
  * @package    Controlled_Chaos
- * @subpackage Controlled_Chaos_Plugin\Admin
+ * @subpackage Controlled_Chaos_Plugin\Admin\Dashboard
  * 
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Admin;
+namespace CC_Plugin\Admin\Dashboard;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -39,7 +39,10 @@ class Dashboard {
 		if ( is_null( $instance ) ) {
 
 			// Set variable for new instance.
-			$instance = new self;
+            $instance = new self;
+            
+            // Require the class files.
+			$instance->dependencies();
 			
 		}
 
@@ -65,6 +68,20 @@ class Dashboard {
 
         // Remove contextual help content.
         add_action( 'admin_head', [ $this, 'remove_help' ] );
+
+    }
+
+    /**
+	 * Class dependency files.
+	 *
+	 * @since  1.0.0
+	 * @access private
+	 * @return void
+	 */
+	private function dependencies() {
+
+        // Get the welcome panel class.
+        require plugin_dir_path( __FILE__ ) . 'class-welcome.php';
 
     }
 
