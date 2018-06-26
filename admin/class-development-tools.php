@@ -85,7 +85,7 @@ class Admin_Tools {
 	 */
 	public function dev_tools_page() {
 
-		add_submenu_page( 
+		$this->help_development = add_submenu_page( 
 			'tools.php', 
 			__( 'Website Development', 'controlled-chaos-plugin' ), 
 			__( 'Site Development', 'controlled-chaos-plugin' ), 
@@ -93,6 +93,9 @@ class Admin_Tools {
 			CCP_ADMIN_SLUG . '-dev-tools', 
 			[ $this, 'dev_tools_output' ] 
 		);
+
+		// Add content to the Help tab.
+		add_action( 'load-' . $this->help_development, [ $this, 'help_development' ] );
 
 	}
 
@@ -106,6 +109,57 @@ class Admin_Tools {
 	public function dev_tools_output() {
 
 		require plugin_dir_path( __FILE__ ) . 'partials/settings-page-development.php';
+
+	}
+
+	/**
+     * Output for the Script Options page contextual help tab.
+	 * 
+	 * @since      1.0.0
+     */
+    public function help_development() {
+
+		// Add to the plugin settings pages.
+		$screen = get_current_screen();
+		if ( $screen->id != $this->help_development ) {
+			return;
+		}
+		
+		// More Information.
+		$screen->add_help_tab( [
+			'id'       => 'help_dev_info',
+			'title'    => __( 'More Information', 'controlled-chaos-plugin' ),
+			'content'  => null,
+			'callback' => [ $this, 'help_dev_info_output' ]
+		] );
+		
+		$screen->set_help_sidebar(
+			$this->help_dev_info_sidebar()
+		);
+		
+    }
+    
+    /**
+     * Get More Information help content.
+	 * 
+	 * @since      1.0.0
+     */
+	public function help_dev_info_output() { 
+		
+		// include_once plugin_dir_path( __FILE__ ) . 'partials/help/help-inline-scripts.php';
+	
+    }
+    
+    /**
+     * Get More Information page contextual tab sidebar content.
+	 * 
+	 * @since      1.0.0
+     */
+    public function help_dev_info_sidebar() {
+
+		$html = '';
+
+		return $html;
 
 	}
 
