@@ -154,7 +154,8 @@ class Admin_Pages {
 			'content'  => null,
 			'callback' => [ $this, 'help_convert_plugin' ]
 		] );
-		
+        
+        // Add a help sidebar.
 		$screen->set_help_sidebar(
 			$this->help_about_page_sidebar()
 		);
@@ -184,13 +185,29 @@ class Admin_Pages {
     }
     
     /**
-     * Get the about page contextual tab sidebar content.
+     * The about page contextual tab sidebar content.
 	 * 
 	 * @since      1.0.0
      */
     public function help_about_page_sidebar() {
 
-		$html = '';
+        $html  = sprintf( '<h4>%1s</h4>', __( 'Author Credits', 'controlled-chaos-plugin' ) );
+        $html .= sprintf( 
+            '<p>%1s %2s.</p>', 
+            __( 'This plugin was originally written by', 'controlled-chaos-plugin' ), 
+            'Greg Sweet'
+        );
+        $html .= sprintf( 
+            '<p>%1s <br /><a href="%2s" target="_blank">%3s</a> <br />%4s</p>', 
+            __( 'Visit:', 'controlled-chaos-plugin' ), 
+            'http://ccdzine.com/', 
+            'Controlled Chaos Design', 
+            __( 'for more free downloads.', 'controlled-chaos-plugin' )
+        );
+        $html .= sprintf( 
+            '<p>%1s</p>', 
+            __( 'Change this sidebar to give yourself credit for the hard work you did customizing this plugin.', 'controlled-chaos-plugin' )
+         );
 
 		return $html;
 

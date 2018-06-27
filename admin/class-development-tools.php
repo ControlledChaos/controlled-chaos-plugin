@@ -135,6 +135,7 @@ class Admin_Tools {
 			'callback' => [ $this, 'help_dev_info_output' ]
 		] );
 		
+		// Add a help sidebar.
 		$screen->set_help_sidebar(
 			$this->help_dev_info_sidebar()
 		);
