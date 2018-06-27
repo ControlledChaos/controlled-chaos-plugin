@@ -90,6 +90,13 @@ class Media {
 		// Add SVG media upload support.
 		include_once plugin_dir_path( dirname( __FILE__ ) ) . 'media/class-svg-support.php';
 
+		// Replace WP gallery shortcode if Fancybox option is used.
+		$fancybox = get_option( 'ccp_enqueue_fancybox_script' );
+
+		if ( $fancybox ) {
+			require_once plugin_dir_path( __FILE__ ) . 'class-gallery-shortcode.php';
+		}
+
 	}
 
 	/**
