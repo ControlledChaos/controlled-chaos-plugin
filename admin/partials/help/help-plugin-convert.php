@@ -16,9 +16,8 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 } ?>
 <h3><?php _e( 'Converting the plugin for your website', 'controlled-chaos-plugin' ); ?></h3>
-<hr />
 <h4><?php _e( 'Directories and file names', 'controlled-chaos-plugin' ); ?></h4>
-<p><?php _e( '', 'controlled-chaos-plugin' ); ?></p>
+<p><?php _e( 'The names for directories and files are descriptive enough to describe what they do yet generic enough that they likely will not need to be changed. However, you may want to remove some files, such as that in which this code is written.', 'controlled-chaos-plugin' ); ?></p>
 <h4><?php _e( 'Renaming the code', 'controlled-chaos-plugin' ); ?></h4>
 <p><?php _e( 'To rename this plugin to convert it specifically for a single website, first rename this file and rename the plugin folder with the same name as this file. Then use a find &amp; replace function to look for the following...', 'controlled-chaos-plugin' ); ?></p>
 <ol>

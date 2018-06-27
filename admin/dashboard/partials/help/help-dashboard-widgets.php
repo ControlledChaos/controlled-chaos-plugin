@@ -1,6 +1,6 @@
 <?php
 /**
- * Content for the dev More Information help tab.
+ * Content for the Dashboard Widgets help tab.
  *
  * @package    Controlled_Chaos
  * @subpackage Controlled_Chaos_Plugin\Admin\Partials\Help
@@ -9,11 +9,10 @@
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Admin\Partials\Help;
+namespace CC_Plugin\Admin\Dashboard\Partials\Help;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
 } ?>
-<h3><?php _e( 'More Information', 'controlled-chaos-plugin' ); ?></h3>
-<p><?php _e( '', 'controlled-chaos-plugin' ); ?></p>
+<h3><?php _e( 'Dashboard Widgets', 'controlled-chaos-plugin' ); ?></h3>

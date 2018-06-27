@@ -68,6 +68,9 @@ class Dashboard {
 
         // Remove contextual help content.
         add_action( 'admin_head', [ $this, 'remove_help' ] );
+
+        // Add contextual help content.
+        add_action( 'admin_head', [ $this, 'add_help' ] );
         
         // Enqueue dashboard stylesheet.
 		add_action( 'admin_enqueue_scripts', [ $this, 'styles' ] );
@@ -265,6 +268,7 @@ class Dashboard {
         $screen->remove_help_tab( 'overview' );
         $screen->remove_help_tab( 'help-content' );
         $screen->remove_help_tab( 'help-layout' );
+        $screen->remove_help_tab( 'help-navigation' );
 
         // Remove the help sidebar.
         $screen->set_help_sidebar(
@@ -272,13 +276,116 @@ class Dashboard {
 		);
 
     }
+
+    /**
+     * Add contextual help content.
+     *
+     * @since  1.0.0
+	 * @access public
+	 * @return void
+     */
+    public function add_help() {
+
+        // Get the screen ID to target the Dashboard.
+        $screen = get_current_screen();
+        
+        // Bail if not on the Dashboard screen.
+        if ( $screen->id != 'dashboard' ) {
+			return;
+        }
+        
+        // Dashboard widget tab.
+		$screen->add_help_tab( [
+			'id'       => 'help_welcome_panel',
+			'title'    => __( 'Welcome Panel', 'controlled-chaos-plugin' ),
+			'content'  => null,
+			'callback' => [ $this, 'help_welcome_panel' ]
+        ] );
+        
+        // Dashboard widget tab.
+		$screen->add_help_tab( [
+			'id'       => 'help_dashboard_widgets',
+			'title'    => __( 'Dashboard Widgets', 'controlled-chaos-plugin' ),
+			'content'  => null,
+			'callback' => [ $this, 'help_dashboard_widgets' ]
+		] );
+        
+        // Add a new sidebar.
+		$screen->set_help_sidebar(
+			$this->help_dashboard_sidebar()
+		);
+
+    }
+
+    /**
+     * Get welcome panel help tab content.
+	 * 
+	 * @since      1.0.0
+     */
+	public function help_welcome_panel() { 
+		
+        include_once plugin_dir_path( __FILE__ ) . 'partials/help/help-welcome-panel.php';
+	
+    }
+
+    /**
+     * Get dashboard widget help tab content.
+	 * 
+	 * @since      1.0.0
+     */
+	public function help_dashboard_widgets() { 
+		
+        include_once plugin_dir_path( __FILE__ ) . 'partials/help/help-dashboard-widgets.php';
+	
+    }
+
+    /**
+     * The dashboard widget contextual tab sidebar content.
+     * 
+     * Uses the universal slug partial for admin pages. Set this
+     * slug in the core plugin file.
+	 * 
+	 * @since      1.0.0
+     */
+    public function help_dashboard_sidebar() {
+
+        $html  = sprintf( 
+            '<h4>%1s %2s</h4>', 
+            __( 'Custom Dashboard for', 'controlled-chaos-plugin' ), 
+             get_bloginfo( 'name' ) 
+        );
+
+        $html .= '<hr />';
+
+        $html .= sprintf( 
+            '<p>%1s <a href="%2s">%3s</a></p>', 
+            __( 'Customize your' ), 
+            esc_url( 'http://localhost/controlledchaos/wp-admin/index.php?page=' . CCP_ADMIN_SLUG . '-settings' ), 
+            __( 'Dashboard Settings' ) 
+        );
+
+		return $html;
+
+	}
     
     /**
 	 * Enqueue dashboard stylesheet.
+     * 
+     * Uncomment to enqueue the stylesheet.
+     * 
+     * @since  1.0.0
+	 * @access public
+	 * @return void
 	 */
 	public function styles() {
 
-		// wp_enqueue_style( 'ccp_dashboard', get_theme_file_uri( '/includes/widgets/dashboard/assets/css/dashboard.css' ), [], null, 'screen' );
+        // Get the screen ID to target the Dashboard.
+        $screen = get_current_screen();
+        
+        // Enqueue only on the Dashboard screen.
+        if ( $screen->id == 'dashboard' ) {
+            // wp_enqueue_style( 'ccp_dashboard', get_theme_file_uri( '/includes/widgets/dashboard/assets/css/dashboard.css' ), [], null, 'screen' );
+        }
 
 	}
 

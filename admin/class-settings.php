@@ -131,6 +131,7 @@ class Controlled_Chaos_Settings {
 			'callback' => [ $this, 'help_remove_emoji' ]
 		] );
 		
+		// Add a help sidebar.
 		$screen->set_help_sidebar(
 			$this->help_scripts_sidebar()
 		);
@@ -604,7 +605,7 @@ class Controlled_Chaos_Settings {
 					'page_title' => $title . __( ' Settings', 'controlled-chaos-plugin' ),
 					'menu_title' => $label,
 					'menu_slug'  => CCP_ADMIN_SLUG . '-settings',
-					'parent'     => 'options-general.php',
+					'parent'     => 'index.php',
 					'capability' => 'manage_options'
 				] );
 				acf_add_options_page( $settings );

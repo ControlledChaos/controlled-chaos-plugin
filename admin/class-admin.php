@@ -101,22 +101,22 @@ class Admin {
 	private function dependencies() {
 
 		// Functions for dasboard widgets, excluding the welcome panel.
-		require plugin_dir_path( __FILE__ ) . 'dashboard/class-dashboard.php';
+		require_once plugin_dir_path( __FILE__ ) . 'dashboard/class-dashboard.php';
 
 		// Functions for admin menu item positions and visibility.
-		require plugin_dir_path( __FILE__ ) . 'class-admin-menu.php';
+		require_once plugin_dir_path( __FILE__ ) . 'class-admin-menu.php';
 
 		// Add development tools page.
-		require plugin_dir_path( __FILE__ ) . 'class-development-tools.php';
+		require_once plugin_dir_path( __FILE__ ) . 'class-development-tools.php';
 
 		// Add menus to the admin toolbar.
-		require plugin_dir_path( __FILE__ ) . 'class-toolbar-menus.php';
+		require_once plugin_dir_path( __FILE__ ) . 'class-toolbar-menus.php';
 
 		// Functions for various admin pages and edit screens.
-		require plugin_dir_path( __FILE__ ) . 'class-admin-pages.php';
+		require_once plugin_dir_path( __FILE__ ) . 'class-admin-pages.php';
 
 		// Register setting sections and fields for plugin functionality.
-		require plugin_dir_path( __FILE__ ) . 'class-settings.php';
+		require_once plugin_dir_path( __FILE__ ) . 'class-settings.php';
 
 		// Include custom fields for Advanced Custom Fields Pro, if active.
 		if ( class_exists( 'acf_pro' ) && ! get_option( 'ccp_acf_activate_settings_page' ) ) {
@@ -129,15 +129,10 @@ class Admin {
 		}
 
 		// Filter by page template.
-		require plugin_dir_path( __FILE__ ) . 'class-admin-template-filter.php';
+		require_once plugin_dir_path( __FILE__ ) . 'class-admin-template-filter.php';
 
 		// Fields for the Media Settings page.
-		require plugin_dir_path( __FILE__ ) . 'class-media-options.php';
-
-		// Replace WP gallery shortcode if Fancybox option is used.
-		if ( get_option( 'ccp_enqueue_fancybox_script' ) ) {
-			require plugin_dir_path( __FILE__ ) . 'class-gallery-shortcode.php';
-		}
+		require_once plugin_dir_path( __FILE__ ) . 'class-media-options.php';
 
 	}
 
