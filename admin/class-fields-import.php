@@ -2,34 +2,64 @@
 /**
  * Import custom fields.
  *
- * Hat tip: ACF PHP Recovery Tool plugin, https://github.com/BeAPI/ACF-PHP-Recovery.
- *
- * @link       http://ccdzine.com
+ * @package    Controlled_Chaos
+ * @subpackage Controlled_Chaos_Plugin\Admin
+ * 
  * @since      1.0.0
- *
- * @package    Controlled_Chaos_Plugin
- * @subpackage Controlled_Chaos_Plugin\admin
+ * @author     Greg Sweet <greg@ccdzine.com>
+ * 
+ * @link       https://github.com/BeAPI/ACF-PHP-Recovery
  */
 
-namespace CC_Plugin\Fields_Import;
+namespace CC_Plugin\Admin;
 
-// Restrict direct access
-if ( ! defined( 'ABSPATH' ) ) exit;
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
 
 /**
  * Import custom fields.
  * 
- * @since controlled-chaos 1.0.0
+ * @since  1.0.0
+ * @access public
  */
-class Controlled_Chaos_Fields_Import {
+final class Fields_Import {
+
+	/**
+	 * Get an instance of the plugin class.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return object Returns the instance.
+	 */
+	public static function instance() {
+
+		// Varialbe for the instance to be used outside the class.
+		static $instance = null;
+
+		if ( is_null( $instance ) ) {
+
+			// Set variable for new instance.
+			$instance = new self;
+			
+		}
+
+		// Return the instance.
+		return $instance;
+
+	}
 
 	/**
      * Constructor method.
-	 * 
-	 * @since      1.0.0
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return self
      */
     public function __construct() {
 
+		// Add the user interface for fields import.
 		add_action( 'admin_menu', [ $this, 'import_page' ], 100 );
 
 	}
@@ -37,7 +67,9 @@ class Controlled_Chaos_Fields_Import {
 	/**
 	 * Add admin page.
 	 * 
-	 * @since controlled-chaos 1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
 	 */
 	public function import_page() {
 
@@ -54,7 +86,10 @@ class Controlled_Chaos_Fields_Import {
 	/**
 	 * Page output.
 	 * 
-	 * @since controlled-chaos 1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @global object wpdb provide an interface with the WordPress database.
+	 * @return void
 	 */
 	public function page_output() {
 
@@ -123,4 +158,18 @@ class Controlled_Chaos_Fields_Import {
 
 }
 
-$ccp_fields_import = new Controlled_Chaos_Fields_Import;
+/**
+ * Put an instance of the class into a function.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return object Returns an instance of the class.
+ */
+function ccp_fields_import() {
+
+	return Fields_Import::instance();
+
+}
+
+// Run an instance of the class.
+ccp_fields_import();
