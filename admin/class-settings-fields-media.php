@@ -1,6 +1,6 @@
 <?php
 /**
- * Media options.
+ * Settings fields for media options.
  *
  * @package    Controlled_Chaos_Plugin
  * @subpackage Admin
@@ -17,7 +17,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 /**
- * Media options.
+ * Settings fields for media options.
  * 
  * @since  1.0.0
  * @access public
