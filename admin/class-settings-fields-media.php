@@ -22,7 +22,7 @@ if ( ! defined( 'WPINC' ) ) {
  * @since  1.0.0
  * @access public
  */
-class Media_Options {
+class Settings_Fields_Media {
 
     /**
 	 * Get an instance of the plugin class.
@@ -278,11 +278,11 @@ class Media_Options {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_media_options() {
+function ccp_settings_fields_media() {
 
-	return Media_Options::instance();
+	return Settings_Fields_Media::instance();
 
 }
 
 // Run an instance of the class.
-ccp_media_options();
+ccp_settings_fields_media();
