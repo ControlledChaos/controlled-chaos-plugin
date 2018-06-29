@@ -76,35 +76,34 @@
 .ui-tabs {
     /* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
     position: relative;
-    padding: .2em;
+    padding: 0;
     
     .ui-tabs-nav {
         margin: 0;
-        padding: .2em .2em 0;
+        padding: 0;
+        border-bottom: 1px solid #ccc;
 
         h2 {
-            border-bottom: 1px solid #ccc;
             margin: 0;
-            padding-top: 9px;
-            padding-bottom: 0;
-            line-height: inherit;
+            padding: 0;
+            line-height: 1;
         }
 
         li {
+            display: inline-block;
             list-style: none;
-            float: left;
             position: relative;
-            top: 0;
-            margin: 1px .5em 0 0;
+            top: 5px;
+            margin: 0;
             border-bottom-width: 0;
             padding: 0;
             white-space: nowrap;
 
-            .nav-tab {
-                float: left;
+            a {
+                display: block;
                 border: 1px solid #ccc;
                 border-bottom: none;
-                margin-left: 0;
+                margin: 1px .2em 0 0;
                 padding: 5px 10px;
                 font-size: 14px;
                 line-height: 24px;
@@ -128,6 +127,7 @@
         li.ui-tabs-active a,
         li.ui-tabs-active a:focus,
         li.ui-tabs-active a:focus:active,
+        li.ui-tabs-active a:active,
         li.ui-tabs-active a:hover {
             border-bottom: 1px solid #f1f1f1;
             background: #f1f1f1;

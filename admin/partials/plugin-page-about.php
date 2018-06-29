@@ -27,16 +27,16 @@ if ( isset( $_GET[ 'tab' ] ) ) {
 	<div id="tabs">
 		<ul>
 			<li>
-				<h2><a class="nav-tab" href="#into"><?php esc_html_e( 'Introduction', 'controlled-chaos-plugin' ); ?></a></h2>
+				<h2><a href="#into"><?php esc_html_e( 'Introduction', 'controlled-chaos-plugin' ); ?></a></h2>
 			</li>
 			<li>
-				<h2><a class="nav-tab" href="#settings"><?php esc_html_e( 'Site Settings', 'controlled-chaos-plugin' ); ?></a></h2>
+				<h2><a href="#settings"><?php esc_html_e( 'Site Settings', 'controlled-chaos-plugin' ); ?></a></h2>
 			</li>
 			<li>
-				<h2><a class="nav-tab" href="#scripts"><?php esc_html_e( 'Script Options', 'controlled-chaos-plugin' ); ?></a></h2>
+				<h2><a href="#scripts"><?php esc_html_e( 'Script Options', 'controlled-chaos-plugin' ); ?></a></h2>
 			</li>
 			<li>
-				<h2><a class="nav-tab" href="#media"><?php esc_html_e( 'Media Options', 'controlled-chaos-plugin' ); ?></a></h2>
+				<h2><a href="#media"><?php esc_html_e( 'Media Options', 'controlled-chaos-plugin' ); ?></a></h2>
 			</li>
 		</ul>
 		<div id="into">

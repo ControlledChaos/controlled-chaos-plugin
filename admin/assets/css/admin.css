@@ -63,38 +63,37 @@
 .ui-tabs {
   /* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
   position: relative;
-  padding: .2em;
+  padding: 0;
 }
 
 .ui-tabs .ui-tabs-nav {
   margin: 0;
-  padding: .2em .2em 0;
+  padding: 0;
+  border-bottom: 1px solid #ccc;
 }
 
 .ui-tabs .ui-tabs-nav h2 {
-  border-bottom: 1px solid #ccc;
   margin: 0;
-  padding-top: 9px;
-  padding-bottom: 0;
-  line-height: inherit;
+  padding: 0;
+  line-height: 1;
 }
 
 .ui-tabs .ui-tabs-nav li {
+  display: inline-block;
   list-style: none;
-  float: left;
   position: relative;
-  top: 0;
-  margin: 1px .5em 0 0;
+  top: 5px;
+  margin: 0;
   border-bottom-width: 0;
   padding: 0;
   white-space: nowrap;
 }
 
-.ui-tabs .ui-tabs-nav li .nav-tab {
-  float: left;
+.ui-tabs .ui-tabs-nav li a {
+  display: block;
   border: 1px solid #ccc;
   border-bottom: none;
-  margin-left: 0;
+  margin: 1px .2em 0 0;
   padding: 5px 10px;
   font-size: 14px;
   line-height: 24px;
@@ -116,11 +115,12 @@
 .ui-tabs .ui-tabs-nav li.ui-tabs-active a,
 .ui-tabs .ui-tabs-nav li.ui-tabs-active a:focus,
 .ui-tabs .ui-tabs-nav li.ui-tabs-active a:focus:active,
+.ui-tabs .ui-tabs-nav li.ui-tabs-active a:active,
 .ui-tabs .ui-tabs-nav li.ui-tabs-active a:hover {
   border-bottom: 1px solid #f1f1f1;
   background: #f1f1f1;
   -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   color: #000;
 }
 
