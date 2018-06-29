@@ -115,7 +115,7 @@ class Admin {
 		require_once plugin_dir_path( __FILE__ ) . 'class-admin-menu.php';
 
 		// Add menus to the admin toolbar.
-		require_once plugin_dir_path( __FILE__ ) . 'class-toolbar-menus.php';
+		require_once plugin_dir_path( __FILE__ ) . 'class-admin-toolbar-menus.php';
 
 		// Functions for various admin pages and edit screens.
 		require_once plugin_dir_path( __FILE__ ) . 'class-admin-pages.php';
