@@ -1,0 +1,162 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+
+ /**
+  * PLUGINS
+  * 
+  * For the installed plugins and the add new plugins screens.
+  */
+
+/* This provides better distinction between active and inactive plugins. */
+.plugins {
+
+    tr.inactive *,
+    .plugins a.delete {
+        background: #f3f3f3;
+        color: #777777;
+    }
+
+    tr.inactive .activate a:hover {
+        color: #76a91d;
+    }
+
+    tr.active .deactivate a:hover,
+    tr.inactive .delete a:hover {
+        color: #aa0000;
+    }
+
+    a.delete:hover {
+        color: #aa0000 !important;
+    }
+
+}
+
+.row-actions {
+
+    span.delete a {
+        background: #f3f3f3;
+        color: #777777;
+    }
+
+    span.delete a:hover {
+        color: #aa0000 !important;
+    }
+
+}
+
+/**
+ * MEDIA
+ * 
+ * For the media library and media uploads screens.
+ */
+
+/* Fix SVGs not showing correctly as featured images. */
+#postimagediv .inside .svg img {
+    width: 100%;
+}
+
+/**
+ * MISCELLANEOUS
+ */
+
+/* Easily copy the code of registered ACF fields on the Registered Fields screen. */
+.import-registered-field-groups-arrays {
+    -webkit-user-select: all;
+    -moz-user-select: all;
+    -ms-user-select: all;
+    user-select: all;
+}
+
+/**
+ * JQUERY TABS
+ */
+
+.ui-tabs {
+    /* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
+    position: relative;
+    padding: .2em;
+    
+    .ui-tabs-nav {
+        margin: 0;
+        padding: .2em .2em 0;
+
+        h2 {
+            border-bottom: 1px solid #ccc;
+            margin: 0;
+            padding-top: 9px;
+            padding-bottom: 0;
+            line-height: inherit;
+        }
+
+        li {
+            list-style: none;
+            float: left;
+            position: relative;
+            top: 0;
+            margin: 1px .5em 0 0;
+            border-bottom-width: 0;
+            padding: 0;
+            white-space: nowrap;
+
+            .nav-tab {
+                float: left;
+                border: 1px solid #ccc;
+                border-bottom: none;
+                margin-left: 0;
+                padding: 5px 10px;
+                font-size: 14px;
+                line-height: 24px;
+                background: #e5e5e5;
+                color: #555;
+            }
+
+        }
+
+        .ui-tabs-anchor {
+            float: left;
+            padding: .5em 1em;
+            text-decoration: none;
+        }
+
+        li.ui-tabs-active {
+            margin-bottom: -1px;
+            padding-bottom: 1px;
+        }
+
+        li.ui-tabs-active a,
+        li.ui-tabs-active a:focus,
+        li.ui-tabs-active a:focus:active,
+        li.ui-tabs-active a:hover {
+            border-bottom: 1px solid #f1f1f1;
+            background: #f1f1f1;
+            -webkit-box-shadow: none;
+                    box-shadow: none;
+            color: #000;
+        }
+
+        li.ui-tabs-active .ui-tabs-anchor,
+        li.ui-state-disabled .ui-tabs-anchor,
+        li.ui-tabs-loading .ui-tabs-anchor {
+            cursor: pointer;
+        }
+    
+    }
+
+    .ui-tabs-nav ~ div {
+        clear: both;
+    }
+
+    .ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor {
+        cursor: pointer;
+    }
+
+    .ui-tabs-panel {
+        display: block;
+        border-width: 0;
+        padding: 1em 1.4em;
+        background: none;
+    }
+
+}
