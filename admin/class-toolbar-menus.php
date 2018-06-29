@@ -1,28 +1,59 @@
 <?php
-
 /**
- * Register menus for the admin bar.
- *
- * @link       http://ccdzine.com
- * @since      1.0.0
+ * Register admin toolbar menus.
  *
  * @package    Controlled_Chaos_Plugin
- * @subpackage Controlled_Chaos_Plugin\Includes
+ * @subpackage Admin
+ * 
+ * @since      1.0.0
+ * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Admin_Toolbar;
+namespace CC_Plugin\Admin;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-class Controlled_Chaos_Adminbar_Menus {
+/**
+ * Register menus for the admin toolbar.
+ * 
+ * @since  1.0.0
+ * @access public
+ */
+class Adminbar_Menus {
+
+	/**
+	 * Get an instance of the plugin class.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return object Returns the instance.
+	 */
+	public static function instance() {
+
+		// Varialbe for the instance to be used outside the class.
+		static $instance = null;
+
+		if ( is_null( $instance ) ) {
+
+			// Set variable for new instance.
+			$instance = new self;
+			
+		}
+
+		// Return the instance.
+		return $instance;
+
+	}
 
 	/**
 	 * Constructor method.
 	 *
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return self
 	 */
     public function __construct() {
 
@@ -44,7 +75,9 @@ class Controlled_Chaos_Adminbar_Menus {
 	/**
 	 * Register menus for the admin bar.
 	 *
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
 	 */
 	public function register() {
 
@@ -64,7 +97,9 @@ class Controlled_Chaos_Adminbar_Menus {
 	/**
 	 * Menu in the main part of the admin toolbar.
 	 * 
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
 	 */
 	public function admin_menu_main( $wp_admin_bar ) {
 		
@@ -120,7 +155,9 @@ class Controlled_Chaos_Adminbar_Menus {
 	/**
 	 * Menu under the site name in the admin toolbar.
 	 * 
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
 	 */
 	public function admin_menu_site( $wp_admin_bar ) {
 
@@ -177,7 +214,9 @@ class Controlled_Chaos_Adminbar_Menus {
 	/**
 	 * Menu under the account name in the admin toolbar.
 	 * 
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
 	 */
 	public function admin_menu_account( $wp_admin_bar ) {
 
@@ -234,7 +273,9 @@ class Controlled_Chaos_Adminbar_Menus {
 	/**
 	 * Menu in the main part of the frontend toolbar.
 	 * 
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
 	 */
 	public function frontend_menu_main( $wp_admin_bar ) {
 		
@@ -291,7 +332,9 @@ class Controlled_Chaos_Adminbar_Menus {
 	/**
 	 * Menu under the site name in the frontend toolbar.
 	 * 
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
 	 */
 	public function frontend_menu_site( $wp_admin_bar ) {
 
@@ -348,7 +391,9 @@ class Controlled_Chaos_Adminbar_Menus {
 	/**
 	 * Menu under the account name in the frontend toolbar.
 	 * 
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
 	 */
 	public function frontend_menu_account( $wp_admin_bar ) {
 
@@ -404,4 +449,18 @@ class Controlled_Chaos_Adminbar_Menus {
 
 }
 
-$ccp_adminbar_menus = new Controlled_Chaos_Adminbar_Menus;
+/**
+ * Put an instance of the class into a function.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return object Returns an instance of the class.
+ */
+function ccp_adminbar_menus() {
+
+	return Adminbar_Menus::instance();
+
+}
+
+// Run an instance of the class.
+ccp_adminbar_menus();

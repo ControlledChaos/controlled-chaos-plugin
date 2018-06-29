@@ -4,8 +4,8 @@
  * 
  * Rewrites the WordPress gallery shortcode with data attributes for Fancybox 3.
  *
- * @package    Controlled_Chaos
- * @subpackage Controlled_Chaos_Plugin\Includes\Media
+ * @package    Controlled_Chaos_Plugin
+ * @subpackage Includes\Media
  * 
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>

@@ -2,8 +2,8 @@
 /**
  * Register taxonomies.
  *
- * @package    Controlled_Chaos_Plugin
- * @subpackage Controlled_Chaos_Plugin\Includes\Post_Types_Taxes
+ * @package    Controlled_Chaos_Plugin_Plugin
+ * @subpackage Includes\Post_Types_Taxes
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>

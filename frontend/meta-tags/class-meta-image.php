@@ -2,8 +2,8 @@
 /**
  * Image meta tag.
  *
- * @package    Controlled_Chaos_Plugin
- * @subpackage Controlled_Chaos_Plugin\Frontend\Meta_Tags
+ * @package    Controlled_Chaos_Plugin_Plugin
+ * @subpackage Frontend\Meta_Tags
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>

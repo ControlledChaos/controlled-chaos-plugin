@@ -1,14 +1,15 @@
 <?php
-
 /**
  * Plugin and site settings.
  *
  * @package    Controlled_Chaos_Plugin
- * @subpackage controlled-chaos
- * @since controlled-chaos 1.0.0
+ * @subpackage Admin
+ * 
+ * @since      1.0.0
+ * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Settings;
+namespace CC_Plugin\Admin;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -18,21 +19,46 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Plugin and site settings.
  *
- * @package    Controlled_Chaos_Plugin
- * @subpackage Controlled_Chaos_Plugin\admin
- * @author     Greg Sweet <greg@ccdzine.com>
+ * @since  1.0.0
+ * @access public
  */
-class Controlled_Chaos_Settings {
+class Settings {
+
+	/**
+	 * Get an instance of the plugin class.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return object Returns the instance.
+	 */
+	public static function instance() {
+
+		// Varialbe for the instance to be used outside the class.
+		static $instance = null;
+
+		if ( is_null( $instance ) ) {
+
+			// Set variable for new instance.
+			$instance = new self;
+
+			// Settings dependencies.
+			$instance->dependencies();
+			
+		}
+
+		// Return the instance.
+		return $instance;
+
+	}
 
     /**
 	 * Constructor method.
 	 *
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return self
 	 */
     public function __construct() {
-
-		// Settings dependencies.
-		$this->dependencies();
 
 		// Add scripts settings page.
 		add_action( 'admin_menu', [ $this, 'scripts_settings_page' ] );
@@ -54,9 +80,11 @@ class Controlled_Chaos_Settings {
 	/**
 	 * Admin file dependencies.
 	 *
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access private
+	 * @return void
 	 */
-	public function dependencies() {
+	private function dependencies() {
 
 		// Fields for the Site Settings page.
 		require plugin_dir_path( __FILE__ ) . 'class-site-settings-fields.php';
@@ -66,7 +94,9 @@ class Controlled_Chaos_Settings {
 	/**
 	 * Add scripts settings page.
 	 *
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
 	 */
     public function scripts_settings_page() {
 
@@ -86,7 +116,9 @@ class Controlled_Chaos_Settings {
 	/**
 	 * Script Options page output.
 	 *
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
 	 */
     public function settings_scripts_output() {
 		
@@ -97,7 +129,9 @@ class Controlled_Chaos_Settings {
 	/**
      * Output for the Script Options page contextual help tab.
 	 * 
-	 * @since      1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
      */
     public function help_scripts() {
 
@@ -141,7 +175,9 @@ class Controlled_Chaos_Settings {
 	/**
      * Get Inline Scripts help content.
 	 * 
-	 * @since      1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
      */
 	public function help_inline_scripts() { 
 		
@@ -152,7 +188,9 @@ class Controlled_Chaos_Settings {
 	/**
      * Get Inline jQuery help content.
 	 * 
-	 * @since      1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
      */
 	public function help_inline_jquery() { 
 		
@@ -163,7 +201,9 @@ class Controlled_Chaos_Settings {
 	/**
      * Get Remove Emoji Script help content.
 	 * 
-	 * @since      1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
      */
 	public function help_remove_emoji() { 
 		
@@ -174,7 +214,9 @@ class Controlled_Chaos_Settings {
 	/**
      * Get Script Options page contextual tab sidebar content.
 	 * 
-	 * @since      1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
      */
     public function help_scripts_sidebar() {
 
@@ -192,7 +234,9 @@ class Controlled_Chaos_Settings {
 	/**
 	 * Register settings via the WordPress Settings API.
 	 * 
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
 	 */
 	public function settings() {
 
@@ -314,6 +358,7 @@ class Controlled_Chaos_Settings {
 	 * General section callback.
 	 * 
 	 * @since  1.0.0
+	 * @access public
 	 * @return string
 	 */
 	public function scripts_general_section_callback( $args ) {
@@ -327,7 +372,9 @@ class Controlled_Chaos_Settings {
 	/**
 	 * Inline jQuery.
 	 * 
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return string
 	 */
 	public function ccp_inline_jquery_callback( $args ) {
 
@@ -344,7 +391,9 @@ class Controlled_Chaos_Settings {
 	/**
 	 * Include jQuery Migrate.
 	 * 
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return string
 	 */
 	public function ccp_jquery_migrate_callback( $args ) {
 
@@ -363,7 +412,9 @@ class Controlled_Chaos_Settings {
 	/**
 	 * Inline scripts.
 	 * 
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return string
 	 */
 	public function ccp_inline_scripts_callback( $args ) {
 
@@ -380,7 +431,9 @@ class Controlled_Chaos_Settings {
 	/**
 	 * Inline styles.
 	 * 
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return string
 	 */
 	public function ccp_inline_styles_callback( $args ) {
 
@@ -397,7 +450,9 @@ class Controlled_Chaos_Settings {
 	/**
 	 * Remove emoji script.
 	 * 
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return string
 	 */
 	public function remove_emoji_script_callback( $args ) {
 
@@ -416,7 +471,9 @@ class Controlled_Chaos_Settings {
 	/**
 	 * Script options and enqueue settings.
 	 * 
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return string
 	 */
 	public function remove_script_version_callback( $args ) {
 
@@ -433,7 +490,9 @@ class Controlled_Chaos_Settings {
 	/**
 	 * Minify HTML source code.
 	 * 
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return string
 	 */
 	public function html_minify_callback( $args ) {
 
@@ -450,7 +509,9 @@ class Controlled_Chaos_Settings {
 	/**
 	 * Vendor section callback.
 	 * 
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return string
 	 */
 	public function scripts_vendor_section_callback( $args ) {
 
@@ -463,7 +524,9 @@ class Controlled_Chaos_Settings {
 	/**
 	 * Use Slick.
 	 * 
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return string
 	 */
 	public function enqueue_slick_callback( $args ) {
 
@@ -480,7 +543,9 @@ class Controlled_Chaos_Settings {
 	/**
 	 * Use Tabslet.
 	 * 
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return string
 	 */
 	public function enqueue_tabslet_callback( $args ) {
 
@@ -497,7 +562,9 @@ class Controlled_Chaos_Settings {
 	/**
 	 * Use Sticky-kit.
 	 * 
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return string
 	 */
 	public function enqueue_stickykit_callback( $args ) {
 
@@ -514,7 +581,9 @@ class Controlled_Chaos_Settings {
 	/**
 	 * Use Tooltipster.
 	 * 
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return string
 	 */
 	public function enqueue_tooltipster_callback( $args ) {
 
@@ -531,7 +600,9 @@ class Controlled_Chaos_Settings {
 	/**
 	 * Site Settings section.
 	 * 
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return string
 	 */
 	public function registered_fields_activate() {
 
@@ -543,6 +614,13 @@ class Controlled_Chaos_Settings {
 
 	}
 
+	/**
+	 * Site Settings section callback.
+	 * 
+	 * @since  1.0.0
+	 * @access public
+	 * @return string
+	 */
 	public function registered_fields_page_callback( $args ) {
 		
 		if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
@@ -565,11 +643,14 @@ class Controlled_Chaos_Settings {
 	 * then a default WordPress admin page and the WP Settings
 	 * API will be used.
 	 * 
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 * 
 	 * @todo  Think about whether this is a good idea. Maybe it's
 	 *        better to simply provide a sample ACF page. ACF is
 	 *        certainly faster for further development but do we
 	 *        want the dependency?
-	 * @since 1.0.0
 	 */
     public function site_settings_page() {
 
@@ -658,7 +739,9 @@ class Controlled_Chaos_Settings {
 	/**
 	 * Site Settings page output.
 	 *
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
 	 */
     public function settings_site_output() {
 		
@@ -669,7 +752,9 @@ class Controlled_Chaos_Settings {
 	/**
 	 * Include jQuery Migrate.
 	 *
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
 	 */
     public function include_jquery_migrate( $scripts ) {
 		
@@ -683,5 +768,18 @@ class Controlled_Chaos_Settings {
 
 }
 
-// Run the settings class.
-$controlled_chaos_settings = new Controlled_Chaos_Settings;
+/**
+ * Put an instance of the class into a function.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return object Returns an instance of the class.
+ */
+function ccp_settings() {
+
+	return Settings::instance();
+
+}
+
+// Run an instance of the class.
+ccp_settings();

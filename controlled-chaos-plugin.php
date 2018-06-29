@@ -3,7 +3,6 @@
  * Controlled Chaos starter plugin
  * 
  * Change this header information to suit your needs.
- * @see         README.md Renaming instrunctions are in the README file.
  * 
  * @package     Controlled_Chaos_Plugin
  * @version     1.0.0

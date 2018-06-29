@@ -7,8 +7,8 @@
  * @link       http://ccdzine.com
  * @since      1.0.0
  *
- * @package    Controlled_Chaos_Plugin
- * @subpackage Controlled_Chaos_Plugin\Includes
+ * @package    Controlled_Chaos_Plugin_Plugin
+ * @subpackage Includes
  */
 
 // If this file is called directly, abort.

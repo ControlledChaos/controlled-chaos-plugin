@@ -3,7 +3,7 @@
 /**
  * Content for the Inline jQuery help tab.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Controlled_Chaos_Plugin_Plugin
  * @subpackage controlled-chaos
  * @since controlled-chaos 1.0.0
  */
