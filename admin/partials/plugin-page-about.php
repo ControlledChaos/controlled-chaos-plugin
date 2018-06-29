@@ -30,13 +30,22 @@ if ( isset( $_GET[ 'tab' ] ) ) {
         <a href="?page=<?php echo CCP_ADMIN_SLUG; ?>-page&tab=script-options" class="nav-tab <?php echo $active_tab == 'script-options' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Script Options', 'controlled-chaos-plugin' ); ?></a>
 		<a href="?page=<?php echo CCP_ADMIN_SLUG; ?>-page&tab=media-options" class="nav-tab <?php echo $active_tab == 'media-options' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Media Options', 'controlled-chaos-plugin' ); ?></a>
     </h2>
-	<?php if ( $active_tab == 'introduction' ) {
-		include_once plugin_dir_path( __FILE__ ) . 'plugin-page-intro.php';;
+	<?php 
+
+	// If on the Introduction tab then get the page info file.
+	if ( $active_tab == 'introduction' ) {
+		include_once plugin_dir_path( __FILE__ ) . 'plugin-page-intro.php';
+
+	// If on the Site Settings tab then get the page info file.
 	} elseif ( $active_tab == 'site-settings' ) {
-		include_once plugin_dir_path( __FILE__ ) . 'plugin-page-site-settings.php';;
+		include_once plugin_dir_path( __FILE__ ) . 'plugin-page-site-settings.php';
+
+	// If on the Script Options tab then get the page info file.
 	} elseif ( $active_tab == 'script-options' ) {
-		include_once plugin_dir_path( __FILE__ ) . 'plugin-page-script-options.php';;
+		include_once plugin_dir_path( __FILE__ ) . 'plugin-page-script-options.php';
+
+	// If on the Media Options tab then get the page info file.
 	} elseif ( $active_tab == 'media-options' ) {
-		include_once plugin_dir_path( __FILE__ ) . 'plugin-page-media-options.php';;
+		include_once plugin_dir_path( __FILE__ ) . 'plugin-page-media-options.php';
 	} ?>
 </div>
