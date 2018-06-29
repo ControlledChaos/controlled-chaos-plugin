@@ -3,11 +3,13 @@
  * Plugin and site settings.
  *
  * @package    Controlled_Chaos_Plugin
- * @subpackage controlled-chaos
- * @since	   controlled-chaos 1.0.0
+ * @subpackage Admin
+ * 
+ * @since      1.0.0
+ * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Site_Settings;
+namespace CC_Plugin\Admin;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -17,22 +19,48 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Plugin and site settings.
  *
- * @package    Controlled_Chaos_Plugin
- * @subpackage Controlled_Chaos_Plugin\admin
- * @author     Greg Sweet <greg@ccdzine.com>
+ * @since  1.0.0
+ * @access public
  */
-class Controlled_Chaos_Site_Settings {
+class Site_Settings {
 
 	/**
-     * Holds the values to be used in the fields callbacks
-     */
-    private $options;
+	 * Holds the values to be used in the fields callbacks.
+	 *
+	 * @var array
+	 */
+	private $options;
+	
+	/**
+	 * Get an instance of the plugin class.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return object Returns the instance.
+	 */
+	public static function instance() {
+
+		// Varialbe for the instance to be used outside the class.
+		static $instance = null;
+
+		if ( is_null( $instance ) ) {
+
+			// Set variable for new instance.
+			$instance = new self;
+			
+		}
+
+		// Return the instance.
+		return $instance;
+
+	}
 
 	/**
 	 * Constructor method.
 	 * 
+	 * @since  1.0.0
+	 * @access public
 	 * @return self
-	 * @since 1.0.0
 	 */
     public function __construct() {
 
@@ -46,9 +74,11 @@ class Controlled_Chaos_Site_Settings {
 	/**
 	 * Plugin site settings.
 	 * 
+	 * @since  1.0.0
+	 * @access public
 	 * @return void
+	 * 
 	 * @link  https://codex.wordpress.org/Settings_API
-	 * @since 1.0.0
 	 */
 	public function settings() {
 
@@ -406,9 +436,10 @@ class Controlled_Chaos_Site_Settings {
 	/**
 	 * Settings page position.
 	 * 
+	 * @since  1.0.0
+	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
 	 * @return string
-	 * @since  1.0.0
 	 */
 	public function ccp_settings_position_callback( $args ) {
 
@@ -425,9 +456,10 @@ class Controlled_Chaos_Site_Settings {
 	/**
 	 * Settings page link label.
 	 * 
-	 * @param  array $args Extra arguments passed into the callback function.
-	 * @return mixed 
 	 * @since  1.0.0
+	 * @access public
+	 * @param  array $args Extra arguments passed into the callback function.
+	 * @return string
 	 */
 	public function ccp_settings_page_link_label_callback( $args ) {
 
@@ -444,9 +476,10 @@ class Controlled_Chaos_Site_Settings {
 	/**
 	 * Settings page link icon.
 	 * 
-	 * @param  array $args Extra arguments passed into the callback function.
-	 * @return mixed 
 	 * @since  1.0.0
+	 * @access public
+	 * @param  array $args Extra arguments passed into the callback function.
+	 * @return string
 	 */
 	public function ccp_settings_page_link_icon_callback( $args ) {
 
@@ -463,9 +496,10 @@ class Controlled_Chaos_Site_Settings {
 	/**
 	 * Menus link position.
 	 * 
+	 * @since  1.0.0
+	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
 	 * @return string
-	 * @since  1.0.0
 	 */
 	public function ccp_menus_position_callback( $args ) {
 
@@ -482,9 +516,10 @@ class Controlled_Chaos_Site_Settings {
 	/**
 	 * Widgets link position.
 	 * 
+	 * @since  1.0.0
+	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
 	 * @return string
-	 * @since  1.0.0
 	 */
 	public function ccp_widgets_position_callback( $args ) {
 
@@ -501,9 +536,10 @@ class Controlled_Chaos_Site_Settings {
 	/**
 	 * Hide Welcome panel.
 	 * 
+	 * @since  1.0.0
+	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
 	 * @return string
-	 * @since  1.0.0
 	 */
 	public function ccp_hide_welcome_callback( $args ) {
 
@@ -520,9 +556,10 @@ class Controlled_Chaos_Site_Settings {
 	/**
 	 * Remove Welcome dismiss.
 	 * 
+	 * @since  1.0.0
+	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
 	 * @return string
-	 * @since  1.0.0
 	 */
 	public function ccp_remove_welcome_dismiss_callback( $args ) {
 
@@ -539,9 +576,10 @@ class Controlled_Chaos_Site_Settings {
 	/**
 	 * Hide WordPress News widget.
 	 * 
+	 * @since  1.0.0
+	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
 	 * @return string
-	 * @since  1.0.0
 	 */
 	public function ccp_hide_wp_news_callback( $args ) {
 
@@ -558,9 +596,10 @@ class Controlled_Chaos_Site_Settings {
 	/**
 	 * Hide Quick Draft (QuickPress) widget.
 	 * 
+	 * @since  1.0.0
+	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
 	 * @return string
-	 * @since  1.0.0
 	 */
 	public function ccp_hide_quickpress_callback( $args ) {
 
@@ -577,9 +616,10 @@ class Controlled_Chaos_Site_Settings {
 	/**
 	 * Hide At a Glance widget.
 	 * 
+	 * @since  1.0.0
+	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
 	 * @return string
-	 * @since  1.0.0
 	 */
 	public function ccp_hide_at_glance_callback( $args ) {
 
@@ -596,9 +636,10 @@ class Controlled_Chaos_Site_Settings {
 	/**
 	 * Hide Activity widget.
 	 * 
+	 * @since  1.0.0
+	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
 	 * @return string
-	 * @since  1.0.0
 	 */
 	public function ccp_hide_activity_callback( $args ) {
 
@@ -615,9 +656,10 @@ class Controlled_Chaos_Site_Settings {
 	/**
 	 * Hide Appearance link.
 	 * 
+	 * @since  1.0.0
+	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
 	 * @return string
-	 * @since  1.0.0
 	 */
 	public function ccp_hide_appearance_callback( $args ) {
 
@@ -634,9 +676,10 @@ class Controlled_Chaos_Site_Settings {
 	/**
 	 * Hide Plugins link.
 	 * 
+	 * @since  1.0.0
+	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
 	 * @return string
-	 * @since  1.0.0
 	 */
 	public function ccp_hide_plugins_callback( $args ) {
 
@@ -653,9 +696,10 @@ class Controlled_Chaos_Site_Settings {
 	/**
 	 * Hide Users link.
 	 * 
+	 * @since  1.0.0
+	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
 	 * @return string
-	 * @since  1.0.0
 	 */
 	public function ccp_hide_users_callback( $args ) {
 
@@ -672,9 +716,10 @@ class Controlled_Chaos_Site_Settings {
 	/**
 	 * Hide Tools link.
 	 * 
+	 * @since  1.0.0
+	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
 	 * @return string
-	 * @since  1.0.0
 	 */
 	public function ccp_hide_tools_callback( $args ) {
 
@@ -691,9 +736,10 @@ class Controlled_Chaos_Site_Settings {
 	/**
 	 * Show/Hide Links Manager link.
 	 * 
+	 * @since  1.0.0
+	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
 	 * @return string
-	 * @since  1.0.0
 	 */
 	public function ccp_hide_links_callback( $args ) {
 
@@ -710,9 +756,10 @@ class Controlled_Chaos_Site_Settings {
 	/**
 	 * Admin footer credit.
 	 * 
+	 * @since  1.0.0
+	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
 	 * @return string
-	 * @since  1.0.0
 	 */
 	public function ccp_footer_credit_callback( $args ) {
 
@@ -729,9 +776,10 @@ class Controlled_Chaos_Site_Settings {
 	/**
 	 * Admin footer link.
 	 * 
+	 * @since  1.0.0
+	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
 	 * @return string
-	 * @since  1.0.0
 	 */
 	public function ccp_footer_link_callback( $args ) {
 
@@ -748,9 +796,10 @@ class Controlled_Chaos_Site_Settings {
 	/**
 	 * Disable meta tags.
 	 * 
+	 * @since  1.0.0
+	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
 	 * @return string
-	 * @since  1.0.0
 	 */
 	public function ccp_disable_meta_callback( $args ) {
 
@@ -766,4 +815,18 @@ class Controlled_Chaos_Site_Settings {
 
 }
 
-$ccp_site_settings = new Controlled_Chaos_Site_Settings;
+/**
+ * Put an instance of the class into a function.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return object Returns an instance of the class.
+ */
+function ccp_site_settings() {
+
+	return Site_Settings::instance();
+
+}
+
+// Run an instance of the class.
+ccp_site_settings();

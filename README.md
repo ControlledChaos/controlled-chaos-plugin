@@ -1,6 +1,6 @@
 # Controlled Chaos
 
-An object-oriented starter for site-specific WordPress plugins. Can be used as is without further development.
+An object-oriented WordPress starter plugin for building custom-tailored websites. This is a tool, a means to an end. But it can be used as is without further development.
 
 ![Gutenberg Ready](https://img.shields.io/badge/Gutenberg-ready-blue.svg)
 ![WordPress](https://img.shields.io/wordpress/v/akismet.svg?style=flat-square)
@@ -10,7 +10,12 @@ An object-oriented starter for site-specific WordPress plugins. Can be used as i
 
 ## Dependencies
 
-Short array syntax requires PHP 5.4+
+I can't say precicely but I will say this:
+
+* This plugin was written in a WordPress 4.9+ environment with no concern for backwards compatitbility.
+* This plugin was written on a local server running PHP 7.0
+* The short array syntax ( "[]" rather than "array()" ) requires PHP 5.4+
+* Run a modern system and you'll be fine.
 
 To take advantage of all of its features, this plugin is recommended for use with Advanced Custom Fields PRO or the free version of ACF plus the Options Page addon.
 
@@ -25,11 +30,15 @@ UI & UX JS plugins ready to use
 * Tooltipster - [https://github.com/iamceege/tooltipster](https://github.com/iamceege/tooltipster)
 * FitVids - [https://github.com/davatron5000/FitVids.js](https://github.com/davatron5000/FitVids.js)
 
-### Starter Settings Pages
+### Admin Pages & Help Tabs
 
 One settings page via the default WordPress method and one settings page using the Advanced Custom Fields Options Page method (if ACF is active).
 
 ### Sample Custom Post Type
+
+Rename and duplicate as needed.
+
+### Sample Custom Taxonomy
 
 Rename and duplicate as needed.
 

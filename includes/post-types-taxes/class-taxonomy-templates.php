@@ -6,8 +6,8 @@
  * the same way that templates can be used for post types.
  * The template is registered in the file header.
  * 
- * @package    Controlled_Chaos_Plugin
- * @subpackage Controlled_Chaos_Plugin\Includes\Post_Types_Taxes
+ * @package    Controlled_Chaos_Plugin_Plugin
+ * @subpackage Includes\Post_Types_Taxes
  *
  * @since      1.0.0
  * @author     Hassan Derakhshandeh

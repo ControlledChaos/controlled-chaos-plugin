@@ -2,8 +2,8 @@
 /**
  * Content for the Welcome Panel help tab.
  *
- * @package    Controlled_Chaos
- * @subpackage Controlled_Chaos_Plugin\Admin\Partials\Help
+ * @package    Controlled_Chaos_Plugin
+ * @subpackage Admin\Partials\Help
  * 
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>

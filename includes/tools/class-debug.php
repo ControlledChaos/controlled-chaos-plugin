@@ -2,8 +2,8 @@
 /**
  * The core plugin class.
  * 
- * @package    Controlled_Chaos_Plugin
- * @subpackage Controlled_Chaos_Plugin\Includes\Tools
+ * @package    Controlled_Chaos_Plugin_Plugin
+ * @subpackage Includes\Tools
  *
  * @since      1.0.0
  * @author     SO WP

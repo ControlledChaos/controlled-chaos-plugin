@@ -2,8 +2,8 @@
 /**
  * Define the internationalization functionality.
  *
- * @package    Controlled_Chaos_Plugin
- * @subpackage Controlled_Chaos_Plugin\Includes
+ * @package    Controlled_Chaos_Plugin_Plugin
+ * @subpackage Includes
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>

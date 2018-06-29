@@ -2,13 +2,14 @@
 /**
  * Site settings page output.
  *
- *
  * @package    Controlled_Chaos_Plugin
- * @subpackage controlled-chaos
- * @since controlled-chaos 1.0.0
+ * @subpackage Admin\Partials
+ * 
+ * @since      1.0.0
+ * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Settings_Page_Site;
+namespace CC_Plugin\Admin\Partials;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {

@@ -3,11 +3,13 @@
  * Media options.
  *
  * @package    Controlled_Chaos_Plugin
- * @subpackage controlled-chaos
- * @since controlled-chaos 1.0.0
+ * @subpackage Admin
+ * 
+ * @since      1.0.0
+ * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Media_Options;
+namespace CC_Plugin\Admin;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -16,13 +18,42 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Media options.
+ * 
+ * @since  1.0.0
+ * @access public
  */
-class Controlled_Chaos_Media_Options {
+class Media_Options {
+
+    /**
+	 * Get an instance of the plugin class.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return object Returns the instance.
+	 */
+	public static function instance() {
+
+		// Varialbe for the instance to be used outside the class.
+		static $instance = null;
+
+		if ( is_null( $instance ) ) {
+
+			// Set variable for new instance.
+			$instance = new self;
+			
+		}
+
+		// Return the instance.
+		return $instance;
+
+	}
 
     /**
 	 * Constructor method.
 	 *
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return self
 	 */
     public function __construct() {
 
@@ -37,7 +68,9 @@ class Controlled_Chaos_Media_Options {
     /**
 	 * Media settings.
 	 * 
-	 * @since    1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
 	 */
 	public function settings() {
 
@@ -98,7 +131,9 @@ class Controlled_Chaos_Media_Options {
     /**
      * Medium crop field.
      * 
-     * @since    1.0.0
+     * @since  1.0.0
+	 * @access public
+	 * @return string
      */
     public function medium_crop( $args ) {
 
@@ -113,7 +148,9 @@ class Controlled_Chaos_Media_Options {
     /**
      * Large crop field.
      * 
-     * @since    1.0.0
+     * @since  1.0.0
+	 * @access public
+	 * @return string
      */
     public function large_crop( $args ) {
 
@@ -128,7 +165,9 @@ class Controlled_Chaos_Media_Options {
     /**
      * Update crop options.
      * 
-     * @since    1.0.0
+     * @since  1.0.0
+	 * @access public
+	 * @return void
      */
     public function crop() {
 
@@ -148,6 +187,10 @@ class Controlled_Chaos_Media_Options {
 
     /**
      * Add warning about using SVG images.
+     * 
+     * @since  1.0.0
+	 * @access public
+	 * @return string
      */
     public function svg_notice() {
 
@@ -159,6 +202,10 @@ class Controlled_Chaos_Media_Options {
 
     /**
      * SVG options.
+     * 
+     * @since  1.0.0
+	 * @access public
+	 * @return string
      * 
      * @since    1.0.0
      */
@@ -174,6 +221,10 @@ class Controlled_Chaos_Media_Options {
 
     /**
      * Fancybox settings description.
+     * 
+     * @since  1.0.0
+	 * @access public
+	 * @return string
      */
     public function fancybox_description() {
 
@@ -187,7 +238,9 @@ class Controlled_Chaos_Media_Options {
     /**
      * Fancybox script field.
      * 
-     * @since    1.0.0
+     * @since  1.0.0
+	 * @access public
+	 * @return string
      */
     public function fancybox_script( $args ) {
 
@@ -202,7 +255,9 @@ class Controlled_Chaos_Media_Options {
     /**
      * Fancybox styles field.
      * 
-     * @since    1.0.0
+     * @since  1.0.0
+	 * @access public
+	 * @return string
      */
     public function fancybox_styles( $args ) {
 
@@ -216,4 +271,18 @@ class Controlled_Chaos_Media_Options {
 
 }
 
-$controlled_chaos_media_options = new Controlled_Chaos_Media_Options;
+/**
+ * Put an instance of the class into a function.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return object Returns an instance of the class.
+ */
+function ccp_media_options() {
+
+	return Media_Options::instance();
+
+}
+
+// Run an instance of the class.
+ccp_media_options();

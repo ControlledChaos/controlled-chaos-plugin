@@ -6,8 +6,8 @@
  * at which several tools for the website development process
  * are provieded.
  *
- * @package    Controlled_Chaos
- * @subpackage Controlled_Chaos_Plugin\Admin
+ * @package    Controlled_Chaos_Plugin
+ * @subpackage Admin
  * 
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
@@ -117,7 +117,9 @@ class Admin_Tools {
 	/**
      * Output for the development page contextual help section.
 	 * 
-	 * @since      1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
      */
     public function help_development() {
 
@@ -145,7 +147,9 @@ class Admin_Tools {
     /**
      * Get more information help tab content.
 	 * 
-	 * @since      1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
      */
 	public function help_dev_info_output() { 
 		
@@ -156,7 +160,9 @@ class Admin_Tools {
     /**
      * Get development page contextual tab sidebar content.
 	 * 
-	 * @since      1.0.0
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
      */
     public function help_dev_info_sidebar() {
 

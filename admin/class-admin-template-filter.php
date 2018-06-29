@@ -2,8 +2,8 @@
 /**
  * Filter post types by page template.
  *
- * @package    Controlled_Chaos
- * @subpackage Controlled_Chaos_Plugin\Admin
+ * @package    Controlled_Chaos_Plugin
+ * @subpackage Admin
  * 
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>

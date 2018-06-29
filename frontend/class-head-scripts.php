@@ -2,8 +2,8 @@
 /**
  * Head scripts.
  *
- * @package    Controlled_Chaos_Plugin
- * @subpackage Controlled_Chaos_Plugin\Frontend
+ * @package    Controlled_Chaos_Plugin_Plugin
+ * @subpackage Frontend
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
