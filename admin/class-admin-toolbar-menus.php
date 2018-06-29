@@ -22,7 +22,7 @@ if ( ! defined( 'WPINC' ) ) {
  * @since  1.0.0
  * @access public
  */
-class Adminbar_Menus {
+class Admin_Toolbar_Menus {
 
 	/**
 	 * Get an instance of the plugin class.
@@ -456,11 +456,11 @@ class Adminbar_Menus {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_adminbar_menus() {
+function ccp_admin_toolbar_menus() {
 
-	return Adminbar_Menus::instance();
+	return Admin_Toolbar_Menus::instance();
 
 }
 
 // Run an instance of the class.
-ccp_adminbar_menus();
+ccp_admin_toolbar_menus();
