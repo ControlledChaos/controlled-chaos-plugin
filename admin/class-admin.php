@@ -99,6 +99,14 @@ class Admin {
 	 * @return void
 	 */
 	private function dependencies() {
+		
+		// The core settings class for the plugin.
+		require_once plugin_dir_path( __FILE__ ) . 'class-settings.php';
+
+		// Include custom fields for Advanced Custom Fields Pro, if active.
+		if ( class_exists( 'acf_pro' ) && ! get_option( 'ccp_acf_activate_settings_page' ) ) {
+			include_once plugin_dir_path( __FILE__ ) . 'class-settings-acf-fields.php';
+		}
 
 		// Functions for dasboard widgets, excluding the welcome panel.
 		require_once plugin_dir_path( __FILE__ ) . 'dashboard/class-dashboard.php';
@@ -106,22 +114,11 @@ class Admin {
 		// Functions for admin menu item positions and visibility.
 		require_once plugin_dir_path( __FILE__ ) . 'class-admin-menu.php';
 
-		// Add development tools page.
-		require_once plugin_dir_path( __FILE__ ) . 'class-development-tools.php';
-
 		// Add menus to the admin toolbar.
 		require_once plugin_dir_path( __FILE__ ) . 'class-toolbar-menus.php';
 
 		// Functions for various admin pages and edit screens.
 		require_once plugin_dir_path( __FILE__ ) . 'class-admin-pages.php';
-
-		// Register setting sections and fields for plugin functionality.
-		require_once plugin_dir_path( __FILE__ ) . 'class-settings.php';
-
-		// Include custom fields for Advanced Custom Fields Pro, if active.
-		if ( class_exists( 'acf_pro' ) && ! get_option( 'ccp_acf_activate_settings_page' ) ) {
-			include_once plugin_dir_path( __FILE__ ) . 'class-settings-acf-fields.php';
-		}
 
 		// Import custom fields for editing, if ACF Pro is active.
 		if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
@@ -130,9 +127,6 @@ class Admin {
 
 		// Filter by page template.
 		require_once plugin_dir_path( __FILE__ ) . 'class-admin-template-filter.php';
-
-		// Fields for the Media Settings page.
-		require_once plugin_dir_path( __FILE__ ) . 'class-media-options.php';
 
 	}
 

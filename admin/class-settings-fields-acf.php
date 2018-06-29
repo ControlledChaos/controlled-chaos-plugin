@@ -17,7 +17,7 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Site settings page field groups.
  */
-final class ACF_Site_Settings_Fields {
+final class Settings_Fields_ACF {
 
 	/**
 	 * Get an instance of the plugin class.
@@ -497,11 +497,11 @@ final class ACF_Site_Settings_Fields {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_acf_site_settings_fields() {
+function ccp_settings_fields_acf() {
 
-	return ACF_Site_Settings_Fields::instance();
+	return Settings_Fields_ACF::instance();
 
 }
 
 // Run an instance of the class.
-ccp_acf_site_settings_fields();
+ccp_settings_fields_acf();

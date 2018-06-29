@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin and site settings.
+ * Settings for site customization.
  *
  * @package    Controlled_Chaos_Plugin
  * @subpackage Admin
@@ -17,12 +17,12 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 /**
- * Plugin and site settings.
+ * Settings for site customization.
  *
  * @since  1.0.0
  * @access public
  */
-class Site_Settings {
+class Settings_Fields_Site {
 
 	/**
 	 * Holds the values to be used in the fields callbacks.
@@ -822,11 +822,11 @@ class Site_Settings {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_site_settings() {
+function ccp_settings_fields_site() {
 
-	return Site_Settings::instance();
+	return Settings_Fields_Site::instance();
 
 }
 
 // Run an instance of the class.
-ccp_site_settings();
+ccp_settings_fields_site();
