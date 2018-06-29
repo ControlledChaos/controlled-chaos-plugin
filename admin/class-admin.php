@@ -354,12 +354,11 @@ class Admin {
 	 */
 	public function enqueue_scripts() {
 
-		/**
-		 * No custom admin scripts out of the box.
-		 * 
-		 * This is provided for site-specific development.
-		 */
-		// wp_enqueue_script( 'controlled-chaos-plugin-admin', plugin_dir_url( __FILE__ ) . 'assets/js/admin.js', [ 'jquery' ], CCP_VERSION, true );
+		// Enqueue jQuery tabs from WordPress.
+		wp_enqueue_script( 'jquery-ui-tabs' );
+
+		// Enqueue scripts for functionality of this plugin.
+		wp_enqueue_script( 'controlled-chaos-plugin-admin', plugin_dir_url( __FILE__ ) . 'assets/js/admin.js', [ 'jquery' ], CCP_VERSION, true );
 
 	}
 

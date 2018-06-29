@@ -7,6 +7,12 @@
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
+ * 
+ * @link       Slick       https://github.com/kenwheeler/slick
+ * @link       Tabslet     https://github.com/vdw/Tabslet
+ * @link       Sticky-kit  https://github.com/leafo/sticky-kit
+ * @link       Tooltipster https://github.com/iamceege/tooltipster
+ * @link       Fancybox    http://fancyapps.com/fancybox/3/
  */
 
 namespace CC_Plugin\Frontend;
@@ -112,7 +118,7 @@ class Frontend {
 
 		require_once plugin_dir_path( __FILE__ ) . 'class-head-scripts.php';
 
-		// Meta tags.
+		// Meta tags for SEO.
 		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-url.php';
 		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-title.php';
 		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-description.php';
