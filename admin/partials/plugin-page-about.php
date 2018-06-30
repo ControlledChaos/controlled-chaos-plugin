@@ -58,7 +58,7 @@ if ( isset( $_GET[ 'tab' ] ) ) {
 			<li>
 				<h2>
 					<a href="#media">
-						<span class="dashicons dashicons-format-image"></span> <?php esc_html_e( 'Media Options', 'controlled-chaos-plugin' ); ?>
+						<span class="dashicons dashicons-admin-media"></span> <?php esc_html_e( 'Media Options', 'controlled-chaos-plugin' ); ?>
 					</a>
 				</h2>
 			</li>
