@@ -69,6 +69,7 @@
 .ui-tabs .ui-tabs-nav {
   margin: 0;
   padding: 0;
+  padding: 9px 0 0 .4em;
   border-bottom: 1px solid #ccc;
 }
 
@@ -82,7 +83,7 @@
   display: inline-block;
   list-style: none;
   position: relative;
-  top: 5px;
+  top: 1px;
   margin: 0;
   border-bottom-width: 0;
   padding: 0;
@@ -99,17 +100,7 @@
   line-height: 24px;
   background: #e5e5e5;
   color: #555;
-}
-
-.ui-tabs .ui-tabs-nav .ui-tabs-anchor {
-  float: left;
-  padding: .5em 1em;
   text-decoration: none;
-}
-
-.ui-tabs .ui-tabs-nav li.ui-tabs-active {
-  margin-bottom: -1px;
-  padding-bottom: 1px;
 }
 
 .ui-tabs .ui-tabs-nav li.ui-tabs-active a,

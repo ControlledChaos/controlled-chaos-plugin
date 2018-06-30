@@ -81,6 +81,7 @@
     .ui-tabs-nav {
         margin: 0;
         padding: 0;
+        padding: 9px 0 0 .4em;
         border-bottom: 1px solid #ccc;
 
         h2 {
@@ -93,7 +94,7 @@
             display: inline-block;
             list-style: none;
             position: relative;
-            top: 5px;
+            top: 1px;
             margin: 0;
             border-bottom-width: 0;
             padding: 0;
@@ -109,19 +110,9 @@
                 line-height: 24px;
                 background: #e5e5e5;
                 color: #555;
+                text-decoration: none;
             }
 
-        }
-
-        .ui-tabs-anchor {
-            float: left;
-            padding: .5em 1em;
-            text-decoration: none;
-        }
-
-        li.ui-tabs-active {
-            margin-bottom: -1px;
-            padding-bottom: 1px;
         }
 
         li.ui-tabs-active a,

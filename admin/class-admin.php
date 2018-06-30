@@ -105,7 +105,7 @@ class Admin {
 
 		// Include custom fields for Advanced Custom Fields Pro, if active.
 		if ( class_exists( 'acf_pro' ) && ! get_option( 'ccp_acf_activate_settings_page' ) ) {
-			include_once plugin_dir_path( __FILE__ ) . 'class-settings-acf-fields.php';
+			include_once plugin_dir_path( __FILE__ ) . 'class-settings-fields-acf.php';
 		}
 
 		// Functions for dasboard widgets, excluding the welcome panel.
@@ -293,8 +293,8 @@ class Admin {
 		 */
 		} else {
 
-			$credit = get_option( 'ccp_footer_credit' );
-			$link   = get_option( 'ccp_footer_link' );
+			$credit = sanitize_text_field( get_option( 'ccp_footer_credit' ) );
+			$link   = esc_url_raw( get_option( 'ccp_footer_link' ) );
 
 			// If a name and a URL are provided.
 			if ( $credit && $link ) {

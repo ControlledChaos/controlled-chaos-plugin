@@ -24,7 +24,7 @@ if ( isset( $_GET[ 'tab' ] ) ) {
 	<?php echo sprintf( '<h1 class="wp-heading-inline">%1s %2s</h1>', get_bloginfo( 'name' ), esc_html__( 'Plugin', 'controlled-chaos-plugin' ) ); ?>
     <p class="description"><?php esc_html_e( 'What it does and how to use it.', 'controlled-chaos-plugin' ); ?></p>
 	<hr class="wp-header-end">
-	<div id="tabs">
+	<div class="ccp_tabbed-content">
 		<ul>
 			<li>
 				<h2><a href="#into"><?php esc_html_e( 'Introduction', 'controlled-chaos-plugin' ); ?></a></h2>

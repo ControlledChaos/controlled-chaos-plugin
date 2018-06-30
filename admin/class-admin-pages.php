@@ -423,11 +423,11 @@ class Admin_Pages {
 
             // If the post has a featured image.
             if ( $post_featured_image ) {
-                echo '<img src="' . $post_featured_image . '" style="width: 48px;" />';
+                echo '<img src="' . esc_url( $post_featured_image ) . '" style="width: 48px;" />';
             
             // If the post doen't have a featured image then use the fallback image.
             } else {
-                echo '<img src="' . plugins_url( 'images/featured-image-placeholder.png', __FILE__ ) . '" style="width: 48px;" />';
+                echo '<img src="' . esc_url( plugins_url( 'images/featured-image-placeholder.png', __FILE__ ) ) . '" style="width: 48px;" />';
             }
             
         }

@@ -6,8 +6,6 @@ An object-oriented WordPress starter plugin for building custom-tailored website
 ![WordPress](https://img.shields.io/wordpress/v/akismet.svg?style=flat-square)
 ![PHP version from PHP-Eye](https://img.shields.io/php-eye/symfony/symfony.svg?style=flat-square)
 
-![Controlled Chaos Plugin cover image](https://raw.githubusercontent.com/ControlledChaos/controlled-chaos-plugin/master/controlled-chaos-plugin-readme-header.jpg)
-
 ## Dependencies
 
 I can't say precicely but I will say this:

@@ -1,0 +1,26 @@
+/**
+ * Fontend styles.
+ */
+
+ /* Touch up native Fancybox styles */
+.fancybox-caption-wrap {
+	padding: 30px !important;
+}
+
+button.fancybox-arrow:hover,
+button.fancybox-arrow:focus,
+button.fancybox-arrow:active {
+	background: transparent !important;
+}
+
+.fancybox-thumbs {
+	background: #2a2a2a !important;
+}
+
+.fancybox-thumbs > ul > li {
+	border-color: transparent !important;
+}
+
+.logged-in.admin-bar .fancybox-container {
+	top: 32px !important;
+}
