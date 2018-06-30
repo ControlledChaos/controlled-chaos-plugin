@@ -16,6 +16,14 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+$settings_icon = get_option( 'ccp_settings_page_link_icon' );
+
+if ( $settings_icon ) {
+	$settings = sanitize_text_field( $settings_icon );
+} else {
+	$settings = 'dashicons-admin-settings';
+}
+
 $active_tab = 'introduction';
 if ( isset( $_GET[ 'tab' ] ) ) {
     $active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'introduction';
@@ -27,16 +35,32 @@ if ( isset( $_GET[ 'tab' ] ) ) {
 	<div class="ccp_tabbed-content">
 		<ul>
 			<li>
-				<h2><a href="#into"><?php esc_html_e( 'Introduction', 'controlled-chaos-plugin' ); ?></a></h2>
+				<h2>
+					<a href="#into">
+						<span class="dashicons dashicons-welcome-learn-more"></span> <?php esc_html_e( 'Introduction', 'controlled-chaos-plugin' ); ?>
+					</a>
+				</h2>
 			</li>
 			<li>
-				<h2><a href="#settings"><?php esc_html_e( 'Site Settings', 'controlled-chaos-plugin' ); ?></a></h2>
+				<h2>
+					<a href="#settings">
+						<span class="dashicons <?php echo esc_attr( $settings ) ?>"></span> <?php esc_html_e( 'Site Settings', 'controlled-chaos-plugin' ); ?>
+					</a>
+				</h2>
 			</li>
 			<li>
-				<h2><a href="#scripts"><?php esc_html_e( 'Script Options', 'controlled-chaos-plugin' ); ?></a></h2>
+				<h2>
+					<a href="#scripts">
+						<span class="dashicons dashicons-editor-code"></span> <?php esc_html_e( 'Script Options', 'controlled-chaos-plugin' ); ?>
+					</a>
+				</h2>
 			</li>
 			<li>
-				<h2><a href="#media"><?php esc_html_e( 'Media Options', 'controlled-chaos-plugin' ); ?></a></h2>
+				<h2>
+					<a href="#media">
+						<span class="dashicons dashicons-format-image"></span> <?php esc_html_e( 'Media Options', 'controlled-chaos-plugin' ); ?>
+					</a>
+				</h2>
 			</li>
 		</ul>
 		<div id="into">
