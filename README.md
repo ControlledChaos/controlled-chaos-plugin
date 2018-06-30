@@ -1,32 +1,58 @@
-# Controlled Chaos
+# Controlled Chaos Plugin
 
-An object-oriented WordPress starter plugin for building custom-tailored websites. This is a tool, a means to an end. But it can be used as is without further development.
+An object-oriented WordPress starter plugin for building custom-tailored websites.
 
 ![Gutenberg Ready](https://img.shields.io/badge/Gutenberg-ready-blue.svg)
 ![WordPress](https://img.shields.io/wordpress/v/akismet.svg?style=flat-square)
 ![PHP version from PHP-Eye](https://img.shields.io/php-eye/symfony/symfony.svg?style=flat-square)
 
-## Dependencies
+## Plugin Overview
 
-I can't say precicely but I will say this:
+This is a tool — a means to an end. But it can be used as is without further development.
+
+### Introduction
+
+Howdy, folks. My name is Greg Sweet. I am sole proprietor and chief bottle washer at [Controlled Chaos Design](http://ccdzine.com/).
+
+I built this plugin as a starter for client sites, including features that I use often, the code for which I repeatedly copyied from my [Gist library](https://gist.github.com/ControlledChaos). It is not intended to be a plug-and-play type of thing, although it can be used as such. This is more of a developer's tool. I have commented thouroughly on the code and documentec the files to the best of my ability. I have learned by looking at the code of others so I have kept this in mind when writing the code for this plugin.
+
+### Approach
+
+Although this plugin comes with my business name incorporated into it, I am not trying to put my branding stink all over your project. It has to have a name so I used my own. However, since I need to rename the plugin for my clients' websites, I have made every effort to use a simple, uniform naming system that can be quicky renamed for your project.
+
+Not every feature included with this plugin will be needed for my projects or yours. And one big reason for writing a site-specific plugin is to include only what the site needs and eliminate the overhead of plugins and themes that offer things that you don't need. So why have I packed so much into this plugin? Well, I find it to be much quicker and easier to remove unnecessary code that it is to write, or even copy & paste, new code into a project. And being that you will rename this plugin and that it will update to overwrite your changes, modifications can be made ad libidum.
+
+## Compatibility
 
 * This plugin was written in a WordPress 4.9+ environment with no concern for backwards compatitbility.
 * This plugin was written on a local server running PHP 7.0
 * The short array syntax ( "[]" rather than "array()" ) requires PHP 5.4+
-* Run a modern system and you'll be fine.
+* Run a modern setup and you'll be fine.
 
-To take advantage of all of its features, this plugin is recommended for use with Advanced Custom Fields PRO or the free version of ACF plus the Options Page addon.
+Sample editor blocks are included in preparation for WordPress 5.0 with it's new user interface. Until that release, the [Gutenberg plugin](https://wordpress.org/plugins/gutenberg/) is required to use the blocks.
+
+For a nicer user experience, this plugin is recommended for use with [Advanced Custom Fields PRO](https://www.advancedcustomfields.com/pro/) or the [free version of ACF](https://wordpress.org/plugins/advanced-custom-fields/) plus the [Options Page](https://www.advancedcustomfields.com/add-ons/options-page/) addon. However, most of the ACF features are duplicated, with identical field database names, using the [WordPress Settings API](https://developer.wordpress.org/plugins/settings/settings-api/) to reduce third-party dependencies.
+
+## Functionality
+
+So, what the heck does this thing do? Why might it be preferable to other plugin boilerplates?
 
 ### jQuery Plugins
 
-UI & UX JS plugins ready to use
+I have included several frontend UI/UX plugins that I typically use on client sites. They are enqueued via opt-in checkboxes on the Script Options page, except for Fancybox, which is opted in on the Media Settings page.
 
-* Fancybox 3 - [https://github.com/fancyapps/fancybox](https://github.com/fancyapps/fancybox)
-* Slick - [https://github.com/kenwheeler/slick](https://github.com/kenwheeler/slick)
-* Tabslet - [https://github.com/vdw/Tabslet](https://github.com/vdw/Tabslet)
-* Sticky-kit - [https://github.com/leafo/sticky-kit](https://github.com/leafo/sticky-kit)
-* Tooltipster - [https://github.com/iamceege/tooltipster](https://github.com/iamceege/tooltipster)
-* FitVids - [https://github.com/davatron5000/FitVids.js](https://github.com/davatron5000/FitVids.js)
+* Fancybox 3 - [https://github.com/fancyapps/fancybox](https://github.com/fancyapps/fancybox)  
+  *"Lightbox script for displaying images, videos and more."*
+* Slick - [https://github.com/kenwheeler/slick](https://github.com/kenwheeler/slick)  
+  *"The last carousel you'll ever need."*
+* Tabslet - [https://github.com/vdw/Tabslet](https://github.com/vdw/Tabslet)  
+  *"Yet another jQuery plugin for tabs."*
+* Sticky-kit - [https://github.com/leafo/sticky-kit](https://github.com/leafo/sticky-kit)  
+  *"For creating smart sticky elements."*
+* Tooltipster - [https://github.com/iamceege/tooltipster](https://github.com/iamceege/tooltipster)  
+  *"Flexible, extensible, and modern tooltips."*
+* FitVids - [https://github.com/davatron5000/FitVids.js](https://github.com/davatron5000/FitVids.js)  
+  *"For fluid width video embeds."*
 
 ### Admin Pages & Help Tabs
 
