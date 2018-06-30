@@ -58,18 +58,6 @@
 }
 
 /**
- * MISCELLANEOUS
- */
-
-/* Easily copy the code of registered ACF fields on the Registered Fields screen. */
-.import-registered-field-groups-arrays {
-    -webkit-user-select: all;
-    -moz-user-select: all;
-    -ms-user-select: all;
-    user-select: all;
-}
-
-/**
  * JQUERY TABS
  */
 .nav-tab-wrapper {
@@ -161,4 +149,25 @@
         background: none;
     }
 
+}
+
+/**
+ * MISCELLANEOUS
+ */
+
+/* Easily copy the code of registered ACF fields on the Registered Fields screen. */
+.import-registered-field-groups-arrays {
+    -webkit-user-select: all;
+    -moz-user-select: all;
+    -ms-user-select: all;
+    user-select: all;
+}
+
+/**
+ * Some of the unordered lists in the admin pages
+ * look better with bullets.
+ */
+.ccp_bullet-list {
+    list-style: disc;
+    margin-left: 1em;
 }
