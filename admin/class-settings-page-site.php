@@ -100,7 +100,7 @@ class Settings_Page_Site {
 					'menu_title' => $label,
 					'menu_slug'  => CCP_ADMIN_SLUG . '-settings',
 					'icon_url'   => 'dashicons-admin-settings',
-					'position'   => 59,
+					'position'   => 3,
 					'capability' => 'manage_options',
 					'redirect'   => false
 				] );
@@ -122,9 +122,9 @@ class Settings_Page_Site {
 
 		} else {
 
-			$link_label = get_option( 'ccp_settings_page_link_label' );
+			$link_label = sanitize_text_field( get_option( 'ccp_settings_page_link_label' ) );
 			$position   = get_option( 'ccp_settings_position' );
-			$link_icon  = get_option( 'ccp_settings_page_link_icon' );
+			$link_icon  = sanitize_text_field( get_option( 'ccp_settings_page_link_icon' ) );
 
 			if ( $link_label ) {
 				$label = $link_label;

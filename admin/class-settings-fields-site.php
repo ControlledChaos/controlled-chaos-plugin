@@ -485,7 +485,7 @@ class Settings_Fields_Site {
 
 		$option = get_option( 'ccp_settings_page_link_icon' );
 
-		$html = '<p><input type="text" size="50" id="ccp_settings_page_link_icon" name="ccp_settings_page_link_icon" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( __( 'dashicons-admin-generic', 'controlled-chaos-plugin' ) ) . '" /><br />';
+		$html = '<p><input type="text" size="50" id="ccp_settings_page_link_icon" name="ccp_settings_page_link_icon" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( __( 'dashicons-admin-settings', 'controlled-chaos-plugin' ) ) . '" /><br />';
 		
 		$html .= '<label for="ccp_settings_page_link_icon"> ' . $args[0] . '</label></p>';
 

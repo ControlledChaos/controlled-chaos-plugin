@@ -1,3 +1,6 @@
+/**
+ * Tabify the #tabs wrapper.
+ */
 jQuery(document).ready(function ($) {
-	$('#tabs').tabs();
+	$( '.ccp_tabbed-content' ).tabs();
 });
