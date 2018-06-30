@@ -30,8 +30,8 @@ if ( isset( $_GET[ 'tab' ] ) ) {
     <?php endif; ?>
     <hr class="wp-header-end">
     <h2 class="nav-tab-wrapper">
-        <a href="?page=<?php echo CCP_ADMIN_SLUG; ?>-scripts&tab=general" class="nav-tab <?php echo $active_tab == 'general' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'General', 'controlled-chaos-plugin' ); ?></a>
-        <a href="?page=<?php echo CCP_ADMIN_SLUG; ?>-scripts&tab=vendor" class="nav-tab <?php echo $active_tab == 'vendor' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Vendor', 'controlled-chaos-plugin' ); ?></a>
+        <a href="?page=<?php echo CCP_ADMIN_SLUG; ?>-scripts&tab=general" class="nav-tab <?php echo $active_tab == 'general' ? 'nav-tab-active' : ''; ?>"><span class="dashicons dashicons-admin-tools"></span> <?php esc_html_e( 'General', 'controlled-chaos-plugin' ); ?></a>
+        <a href="?page=<?php echo CCP_ADMIN_SLUG; ?>-scripts&tab=vendor" class="nav-tab <?php echo $active_tab == 'vendor' ? 'nav-tab-active' : ''; ?>"><span class="dashicons dashicons-admin-plugins"></span> <?php esc_html_e( 'Vendor', 'controlled-chaos-plugin' ); ?></a>
     </h2>
     <form action="options.php" method="post">
         <?php if ( $active_tab == 'general' ) {

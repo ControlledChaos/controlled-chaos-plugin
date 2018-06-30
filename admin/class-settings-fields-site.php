@@ -225,28 +225,20 @@ class Settings_Fields_Site {
 			'ccp_settings_page_link_label'
 		);
 
-		/**
-		 * Settings page link icon if set to top level.
-		 * 
-		 * @todo Show or hide the field with JavaScript on the position option checkbox
-		 *       rather than checking if the position option is set.
-		 */
-		$position = get_option( 'ccp_settings_position' );
-		if ( $position ) :
-			add_settings_field(
-				'ccp_settings_page_link_icon',
-				__( 'Settings Page Icon', 'controlled-chaos-plugin' ),
-				[ $this, 'ccp_settings_page_link_icon_callback' ],
-				'ccp-site-admin-menu',
-				'ccp-site-admin-menu',
-				[ esc_html__( 'Enter a Dashicons class for the icon of the link to this page', 'controlled-chaos-plugin' ) ]
-			);
-			
-			register_setting(
-				'ccp-site-admin-menu',
-				'ccp_settings_page_link_icon'
-			);
-		endif;
+		// Settings page link icon if set to top level.
+		add_settings_field(
+			'ccp_settings_page_link_icon',
+			__( 'Settings Page Icon', 'controlled-chaos-plugin' ),
+			[ $this, 'ccp_settings_page_link_icon_callback' ],
+			'ccp-site-admin-menu',
+			'ccp-site-admin-menu',
+			[ esc_html__( 'Enter a Dashicons class for the icon of the link to this page', 'controlled-chaos-plugin' ) ]
+		);
+		
+		register_setting(
+			'ccp-site-admin-menu',
+			'ccp_settings_page_link_icon'
+		);
 
 		// Menus link position.
 		add_settings_field(
@@ -487,7 +479,9 @@ class Settings_Fields_Site {
 
 		$html = '<p><input type="text" size="50" id="ccp_settings_page_link_icon" name="ccp_settings_page_link_icon" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( __( 'dashicons-admin-settings', 'controlled-chaos-plugin' ) ) . '" /><br />';
 		
-		$html .= '<label for="ccp_settings_page_link_icon"> ' . $args[0] . '</label></p>';
+		$html .= '<label for="ccp_settings_page_link_icon"> ' . $args[0] . '</label>';
+
+		$html .= '<br /><span class="description">' . esc_html( 'Takes affect in the admin menu only if the page is top level. Always takes affect on the plugin page tab for Site Settings.' ) . '</span></p>';
 
 		echo $html;
 

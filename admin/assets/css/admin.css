@@ -60,6 +60,10 @@
 /**
  * JQUERY TABS
  */
+.nav-tab-wrapper a .dashicons {
+  vertical-align: bottom;
+}
+
 .ui-tabs {
   /* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
   position: relative;
@@ -101,6 +105,10 @@
   background: #e5e5e5;
   color: #555;
   text-decoration: none;
+}
+
+.ui-tabs .ui-tabs-nav li a .dashicons {
+  vertical-align: bottom;
 }
 
 .ui-tabs .ui-tabs-nav li.ui-tabs-active a,

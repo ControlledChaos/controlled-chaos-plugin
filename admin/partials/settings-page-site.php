@@ -26,10 +26,10 @@ if ( isset( $_GET[ 'tab' ] ) ) {
     <p class="description"><?php esc_html_e( 'Customize the way WordPress is used.', 'controlled-chaos-plugin' ); ?></p>
     <hr class="wp-header-end">
     <h2 class="nav-tab-wrapper">
-		<a href="?page=<?php echo CCP_ADMIN_SLUG; ?>-settings&tab=dashboard" class="nav-tab <?php echo $active_tab == 'dashboard' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Dashboard', 'controlled-chaos-plugin' ); ?></a>
-        <a href="?page=<?php echo CCP_ADMIN_SLUG; ?>-settings&tab=admin-menu" class="nav-tab <?php echo $active_tab == 'admin-menu' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Admin Menu', 'controlled-chaos-plugin' ); ?></a>
-        <a href="?page=<?php echo CCP_ADMIN_SLUG; ?>-settings&tab=admin-pages" class="nav-tab <?php echo $active_tab == 'admin-pages' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Admin Pages', 'controlled-chaos-plugin' ); ?></a>
-		<a href="?page=<?php echo CCP_ADMIN_SLUG; ?>-settings&tab=meta-seo" class="nav-tab <?php echo $active_tab == 'meta-seo' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Meta/SEO', 'controlled-chaos-plugin' ); ?></a>
+		<a href="?page=<?php echo CCP_ADMIN_SLUG; ?>-settings&tab=dashboard" class="nav-tab <?php echo $active_tab == 'dashboard' ? 'nav-tab-active' : ''; ?>"><span class="dashicons dashicons-dashboard"></span> <?php esc_html_e( 'Dashboard', 'controlled-chaos-plugin' ); ?></a>
+        <a href="?page=<?php echo CCP_ADMIN_SLUG; ?>-settings&tab=admin-menu" class="nav-tab <?php echo $active_tab == 'admin-menu' ? 'nav-tab-active' : ''; ?>"><span class="dashicons dashicons-menu"></span> <?php esc_html_e( 'Admin Menu', 'controlled-chaos-plugin' ); ?></a>
+        <a href="?page=<?php echo CCP_ADMIN_SLUG; ?>-settings&tab=admin-pages" class="nav-tab <?php echo $active_tab == 'admin-pages' ? 'nav-tab-active' : ''; ?>"><span class="dashicons dashicons-admin-page"></span> <?php esc_html_e( 'Admin Pages', 'controlled-chaos-plugin' ); ?></a>
+		<a href="?page=<?php echo CCP_ADMIN_SLUG; ?>-settings&tab=meta-seo" class="nav-tab <?php echo $active_tab == 'meta-seo' ? 'nav-tab-active' : ''; ?>"><span class="dashicons dashicons-tag"></span> <?php esc_html_e( 'Meta/SEO', 'controlled-chaos-plugin' ); ?></a>
     </h2>
 	<form method="post" action="options.php">
         <?php if ( $active_tab == 'dashboard' ) {
