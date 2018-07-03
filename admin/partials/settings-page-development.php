@@ -1,10 +1,10 @@
 <?php
 /**
  * Development subpage output.
- * 
+ *
  * @package    Controlled_Chaos_Plugin
  * @subpackage Admin\Partials
- * 
+ *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
@@ -14,7 +14,7 @@ namespace CC_Plugin\Admin\Partials;
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
-} 
+}
 
 // Settings saved notice.
 if ( isset( $_GET['settings-updated'] ) ) { ?>

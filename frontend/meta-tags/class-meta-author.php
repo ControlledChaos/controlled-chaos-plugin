@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Author meta tag.
- * 
+ *
  * @since  1.0.0
  * @access public
  */
@@ -40,7 +40,7 @@ class Meta_Author {
 
 			// Set variable for new instance.
 			$instance = new self;
-			
+
 		}
 
 		// Return the instance.
@@ -64,7 +64,7 @@ class Meta_Author {
 
 	/**
 	 * Author meta tag.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @global object post The post object for the current post.
@@ -86,7 +86,7 @@ class Meta_Author {
 		// For posts, get the author's display name from the ID.
 		if ( is_single() ) {
 			$author = get_the_author_meta( 'display_name', $author_id );
-		
+
 		// Otherwise use the website name.
 		} else {
 			$author = get_bloginfo( 'name' );
@@ -97,7 +97,7 @@ class Meta_Author {
 
 		// Echo the author display name in the meta tag.
 		echo $author_tag;
-			
+
 	}
 
 }

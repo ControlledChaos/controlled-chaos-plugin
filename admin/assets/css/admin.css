@@ -53,6 +53,10 @@
   vertical-align: bottom;
 }
 
+.backend-tabbed-content > div {
+  max-width: 1200px;
+}
+
 .ui-tabs {
   /* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
   position: relative;

@@ -1,9 +1,9 @@
 <?php
 /**
  * Add an avatar upload field to user profiles.
- * 
+ *
  * Also provides front-end avatar management via a shortcode and bbPress support.
- * 
+ *
  * @package    Controlled_Chaos_Plugin_Plugin
  * @subpackage Includes\Users
  *
@@ -23,7 +23,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Add an avatar upload field to user profiles.
- * 
+ *
  * @since  1.0.0
  * @access public
  */
@@ -54,7 +54,7 @@ class User_Avatars {
 
 			// Set variable for new instance.
 			$instance = new self;
-			
+
 		}
 
 		// Return the instance.
@@ -142,11 +142,11 @@ class User_Avatars {
 	 *
 	 * @since  1.0.0
 	 * @access public
-	 * @param  string $avatar 
+	 * @param  string $avatar
 	 * @param  int/string/object $id_or_email
-	 * @param  int $size 
+	 * @param  int $size
 	 * @param  string $default
-	 * @param  boolean $alt 
+	 * @param  boolean $alt
 	 * @return string
 	 */
 	public function get_avatar( $avatar = '', $id_or_email, $size = 96, $default = '', $alt = false ) {
@@ -230,7 +230,7 @@ class User_Avatars {
 				if ( empty( $options['ccp_user_avatars_caps'] ) || current_user_can( 'upload_files' ) ) {
 					// Nonce security ftw.
 					wp_nonce_field( 'ccp_user_avatar_nonce', '_ccp_user_avatar_nonce', false );
-					
+
 					// File upload input.
 					echo '<input type="file" name="basic-user-avatar" id="basic-local-avatar" /><br />';
 
@@ -246,7 +246,7 @@ class User_Avatars {
 						echo '<span class="description">' . __( 'No local avatar is set. Set up your avatar at Gravatar.com.', 'controlled-chaos-plugin' ) . '</span>';
 					} else {
 						echo '<span class="description">' . __( 'You do not have media management permissions. To change your local avatar, contact the site administrator.', 'controlled-chaos-plugin' ) . '</span>';
-					}	
+					}
 				}
 				?>
 				</td>
@@ -292,11 +292,11 @@ class User_Avatars {
 				wp_die( 'For security reasons, the extension ".php" cannot be in your file name.' );
 
 			// Make user_id known to unique_filename_callback function.
-			$this->user_id_being_edited = $user_id; 
+			$this->user_id_being_edited = $user_id;
 			$avatar = wp_handle_upload( $_FILES['basic-user-avatar'], [ 'mimes' => $mimes, 'test_form' => false, 'unique_filename_callback' => [ $this, 'unique_filename_callback' ] ] );
 
 			// Handle failures.
-			if ( empty( $avatar['file'] ) ) {  
+			if ( empty( $avatar['file'] ) ) {
 				switch ( $avatar['error'] ) {
 				case 'File type does not meet security guidelines. Try another.' :
 					add_action( 'user_profile_update_errors', create_function( '$a', '$a->add("avatar_error",__("Please upload a valid image file for the avatar.","basic-user-avatars"));' ) );
@@ -347,7 +347,7 @@ class User_Avatars {
 			if ( empty( $options['ccp_user_avatars_caps'] ) || current_user_can( 'upload_files' ) ) {
 				// Nonce security ftw.
 				wp_nonce_field( 'ccp_user_avatar_nonce', '_ccp_user_avatar_nonce', false );
-				
+
 				// File upload input.
 				echo '<p><input type="file" name="basic-user-avatar" id="basic-local-avatar" /></p>';
 
@@ -363,7 +363,7 @@ class User_Avatars {
 					echo '<p class="description">' . __( 'No local avatar is set. Set up your avatar at Gravatar.com.', 'controlled-chaos-plugin' ) . '</p>';
 				} else {
 					echo '<p class="description">' . __( 'You do not have media management permissions. To change your local avatar, contact the site administrator.', 'controlled-chaos-plugin' ) . '</p>';
-				}	
+				}
 			}
 			?>
 			<input type="submit" name="manage_avatar_submit" value="<?php _e( 'Update Avatar', 'controlled-chaos-plugin' ); ?>" />
@@ -398,7 +398,7 @@ class User_Avatars {
 				if ( empty( $options['ccp_user_avatars_caps'] ) || current_user_can( 'upload_files' ) ) {
 					// Nonce security ftw.
 					wp_nonce_field( 'ccp_user_avatar_nonce', '_ccp_user_avatar_nonce', false );
-					
+
 					// File upload input.
 					echo '<br /><input type="file" name="basic-user-avatar" id="basic-local-avatar" /><br />';
 
@@ -414,7 +414,7 @@ class User_Avatars {
 						echo '<span class="description" style="margin-left:0;">' . __( 'No local avatar is set. Set up your avatar at Gravatar.com.', 'controlled-chaos-plugin' ) . '</span>';
 					} else {
 						echo '<span class="description" style="margin-left:0;">' . __( 'You do not have media management permissions. To change your local avatar, contact the site administrator.', 'controlled-chaos-plugin' ) . '</span>';
-					}	
+					}
 				}
 
 			echo '</fieldset>';
@@ -426,7 +426,7 @@ class User_Avatars {
 	}
 
 	/**
-	 * Remove the custom get_avatar hook for the default avatar list output on 
+	 * Remove the custom get_avatar hook for the default avatar list output on
 	 * the Discussion Settings page.
 	 *
 	 * @since  1.0.0

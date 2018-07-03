@@ -1,7 +1,7 @@
 <?php
 /**
  * Description meta tag.
- * 
+ *
  * Conditionally gets information or content from the current page.
  *
  * @package    Controlled_Chaos_Plugin_Plugin
@@ -20,7 +20,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Description meta tag.
- * 
+ *
  * @since  1.0.0
  * @access public
  */
@@ -42,7 +42,7 @@ class Meta_Description {
 
 			// Set variable for new instance.
 			$instance = new self;
-			
+
 		}
 
 		// Return the instance.
@@ -52,7 +52,7 @@ class Meta_Description {
 
 	/**
 	 * Constructor magic method.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return self
@@ -66,7 +66,7 @@ class Meta_Description {
 
 	/**
 	 * Description meta tag.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return string
@@ -98,7 +98,7 @@ class Meta_Description {
 
 			/**
 			 * Check for content in the ACF blog description field.
-			 * 
+			 *
 			 * An additional parameter of 'option' must be included to target the options page.
 			 */
 			$acf_blog_desc = get_field( 'ccp_meta_blog_description', 'option' );
@@ -128,12 +128,12 @@ class Meta_Description {
 		$search_query     = get_search_query();
 
 		// Default search description: "Searching for $search_query".
-		$search_desc      = wp_strip_all_tags( 
-			sprintf( 
-				'%1s \'%2s\'', 
+		$search_desc      = wp_strip_all_tags(
+			sprintf(
+				'%1s \'%2s\'',
 				__( 'Showing results for', 'controlled-chaos-plugin' ),
-				$search_query 
-			) 
+				$search_query
+			)
 		);
 
 		// Apply a filter to hard-coded text.
@@ -158,7 +158,7 @@ class Meta_Description {
 		} elseif ( has_excerpt() ) {
 			$description = $manual_excerpt;
 		// Use the auto excerpt if no manual excerpt is found.
-		} else { 
+		} else {
 			$description = $auto_excerpt;
 		}
 
@@ -167,7 +167,7 @@ class Meta_Description {
 
 		// Echo the conditional description in the meta tag.
 		echo $meta_description;
-			
+
 	}
 
 }

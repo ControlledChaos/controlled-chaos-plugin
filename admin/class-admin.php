@@ -4,7 +4,7 @@
  *
  * @package    Controlled_Chaos_Plugin
  * @subpackage Admin
- * 
+ *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
@@ -23,7 +23,7 @@ if ( ! is_admin() ) {
 
 /**
  * Admin functiontionality and settings.
- * 
+ *
  * @since  1.0.0
  * @access public
  */
@@ -48,7 +48,7 @@ class Admin {
 
 			// Require the class files.
 			$instance->dependencies();
-			
+
 		}
 
 		// Return the instance.
@@ -99,7 +99,7 @@ class Admin {
 	 * @return void
 	 */
 	private function dependencies() {
-		
+
 		// The core settings class for the plugin.
 		require_once plugin_dir_path( __FILE__ ) . 'class-settings.php';
 
@@ -148,7 +148,7 @@ class Admin {
 
 	/**
 	 * Redirect theme & plugin editor pages.
-	 * 
+	 *
 	 * A temporary redirect to the dashboard is created.
 	 *
 	 * @since  1.0.0
@@ -175,7 +175,7 @@ class Admin {
 	 * @access public
 	 * @param  object $wp_admin_bar
 	 * @return void
-	 * 
+	 *
 	 * @todo Make this optional on the Site Settings screen.
 	 */
 	public function remove_wp_logo( $wp_admin_bar ) {
@@ -191,7 +191,7 @@ class Admin {
 	 * @access public
 	 * @global object wp_admin_bar
 	 * @return void
-	 * 
+	 *
 	 * @todo Make this optional on the Site Settings screen.
 	 */
 	public function adminbar_search() {
@@ -208,7 +208,7 @@ class Admin {
 	 * @since  1.0.0
 	 * @access public
 	 * @return void
-	 * 
+	 *
 	 * @todo Make this optional on the Site Settings screen.
 	 */
 	public function admin_only_updates() {
@@ -222,17 +222,17 @@ class Admin {
 
 	/**
 	 * Developer credits in the admin footer text.
-	 * 
+	 *
 	 * Give yourself credit for your work and provide your clients
 	 * with a link to your site.
-	 * 
+	 *
 	 * Replaces the "Thank you for creating with WordPress" text
 	 * in the #wpfooter div at the bottom of all admin screens.
-	 * 
+	 *
 	 * The output strings contain a trailing space after the period
-	 * because other plugins may also tap into the footer. a high 
+	 * because other plugins may also tap into the footer. a high
 	 * priority is used on the hook in attempt to put our text first.
-	 * 
+	 *
 	 * This replaces text inside the default paragraph (<<p>>) tags.
 	 *
 	 * @since  1.0.0
@@ -247,7 +247,7 @@ class Admin {
 		/**
 		 * If the Advanced Custom Fields Pro plugin is active then
 		 * we use the input from the fields on the ACF options page.
-		 * 
+		 *
 		 * @since  1.0.0
 		 */
 		if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
@@ -261,34 +261,34 @@ class Admin {
 
 			// If a name and a URL are provided.
 			if ( $credit && $link ) {
-				$footer = sprintf( 
-					'%1s %2s <a href="%3s" target="_blank">%4s</a>. ', 
-					$site, 
-					esc_html__( 'website designed & developed by', 'controlled-chaos-plugin' ), 
-					esc_url( $link ), 
-					$credit 
+				$footer = sprintf(
+					'%1s %2s <a href="%3s" target="_blank">%4s</a>. ',
+					$site,
+					esc_html__( 'website designed & developed by', 'controlled-chaos-plugin' ),
+					esc_url( $link ),
+					$credit
 				);
 			// If only a name is provided.
 			} elseif ( $credit ) {
-				$footer = sprintf( 
-					'%1s %2s %3s. ', 
-					$site, 
-					esc_html__( 'website designed & developed by', 'controlled-chaos-plugin' ), 
-					$credit 
+				$footer = sprintf(
+					'%1s %2s %3s. ',
+					$site,
+					esc_html__( 'website designed & developed by', 'controlled-chaos-plugin' ),
+					$credit
 				);
 			// If no input we use the name of the site.
 			} else {
-				$footer = sprintf( 
-					'%1s %2s. ', 
-					$site, 
-					esc_html__( 'website powered by WordPress', 'controlled-chaos-plugin' ) 
+				$footer = sprintf(
+					'%1s %2s. ',
+					$site,
+					esc_html__( 'website powered by WordPress', 'controlled-chaos-plugin' )
 				);
 			}
-		
+
 		/**
 		 * If the Advanced Custom Fields Pro plugin is not active then
 		 * we use the input from the fields on the WordPress options page.
-		 * 
+		 *
 		 * @since  1.0.0
 		 */
 		} else {
@@ -298,27 +298,27 @@ class Admin {
 
 			// If a name and a URL are provided.
 			if ( $credit && $link ) {
-				$footer = sprintf( 
-					'%1s %2s <a href="%3s" target="_blank">%4s</a>. ', 
-					$site, 
-					esc_html__( 'website designed & developed by', 'controlled-chaos-plugin' ), 
-					esc_url( $link ), 
-					$credit 
+				$footer = sprintf(
+					'%1s %2s <a href="%3s" target="_blank">%4s</a>. ',
+					$site,
+					esc_html__( 'website designed & developed by', 'controlled-chaos-plugin' ),
+					esc_url( $link ),
+					$credit
 				);
 			// If only a name is provided.
 			} elseif ( $credit ) {
-				$footer = sprintf( 
-					'%1s %2s %3s. ', 
-					$site, 
-					esc_html__( 'website designed & developed by', 'controlled-chaos-plugin' ), 
-					$credit 
+				$footer = sprintf(
+					'%1s %2s %3s. ',
+					$site,
+					esc_html__( 'website designed & developed by', 'controlled-chaos-plugin' ),
+					$credit
 				);
 			// If no input we use the name of the site.
 			} else {
-				$footer = sprintf( 
-					'%1s %2s. ', 
-					$site, 
-					esc_html__( 'website powered by WordPress', 'controlled-chaos-plugin' ) 
+				$footer = sprintf(
+					'%1s %2s. ',
+					$site,
+					esc_html__( 'website powered by WordPress', 'controlled-chaos-plugin' )
 				);
 			}
 

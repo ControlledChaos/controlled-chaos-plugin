@@ -38,7 +38,7 @@ final class Settings_Fields_ACF {
 
 			// Register settings page fields.
     		$instance->settings_fields();
-			
+
 		}
 
 		// Return the instance.
@@ -57,7 +57,7 @@ final class Settings_Fields_ACF {
 
 	/**
 	 * Register settings page fields.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return void
@@ -132,7 +132,7 @@ final class Settings_Fields_ACF {
 					[
 						'key'               => 'field_5aad41ffad3e6',
 						'label'             => __( 'Settings Page Label', 'controlled-chaos-plugin' ),
-						'name'              => 'ccp_settings_page_link_label',
+						'name'              => 'ccp_site_settings_link_label',
 						'type'              => 'text',
 						'instructions'      => __( '', 'controlled-chaos-plugin' ),
 						'required'          => 0,

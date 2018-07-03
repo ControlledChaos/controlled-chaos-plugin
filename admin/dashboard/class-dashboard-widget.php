@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
  * Dashboard widget.
- * 
+ *
  * @since IntegratePress 1.0.0
  */
 class Dashboard_Widget {
@@ -35,7 +35,7 @@ class Dashboard_Widget {
 
 			// Set variable for new instance.
             $instance = new self;
-			
+
 		}
 
 		// Return the instance.
@@ -62,7 +62,7 @@ class Dashboard_Widget {
 
 	/**
 	 * Register the dashboard widget area.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return void
@@ -83,7 +83,7 @@ class Dashboard_Widget {
 
 	/**
 	 * Create the dashdoard widget.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return void
@@ -98,7 +98,7 @@ class Dashboard_Widget {
 
 	/**
 	 * Dashboard widget output.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return mixed
@@ -111,10 +111,10 @@ class Dashboard_Widget {
 
 		} else {
 
-			$placeholder = sprintf( 
-				'<p><a href="%1s">%2s</a> %3s.</p>', 
-				admin_url( 'widgets.php' ), 
-				__( 'Add a widget', 'controlled-chaos-plugin' ), 
+			$placeholder = sprintf(
+				'<p><a href="%1s">%2s</a> %3s.</p>',
+				admin_url( 'widgets.php' ),
+				__( 'Add a widget', 'controlled-chaos-plugin' ),
 				__( 'to this area', 'controlled-chaos-plugin' )
 			);
 

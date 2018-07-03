@@ -4,10 +4,10 @@
  *
  * @package    Controlled_Chaos_Plugin
  * @subpackage Includes
- * 
+ *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
- * 
+ *
  * @todo       Work out the errors thrown when the file is namespaced
  */
 
@@ -20,7 +20,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Minify HTML source code.
- * 
+ *
  * @since  1.0.0
  * @access public
  */
@@ -140,7 +140,7 @@ class Controlled_Chaos_Minify {
 						$strip = false;
 					} else {
 						$strip = true;
-						
+
 						/**
 						 * Remove any empty attributes, except action, alt, content, src.
 						 */
@@ -148,7 +148,7 @@ class Controlled_Chaos_Minify {
 
 						/**
 						 * Remove any space before the end of self-closing XHTML tags.
-						 * 
+						 *
 						 * JavaScript excluded.
 						 */
 						$content = str_replace( ' />', '/>', $content );

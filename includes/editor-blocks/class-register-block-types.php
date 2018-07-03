@@ -40,7 +40,7 @@ class Register_Blocks {
 
 			// Set variable for new instance.
 			$instance = new self;
-			
+
 		}
 
 		// Return the instance.
@@ -67,7 +67,7 @@ class Register_Blocks {
 
 	/**
 	 * Enqueue sample block backend assets.
-	 * 
+	 *
 	 * `wp-blocks`: includes block type registration and related functions.
 	 * `wp-element`: includes the WordPress Element abstraction for describing the structure of your blocks.
 	 * `wp-i18n`: To internationalize the block's text.

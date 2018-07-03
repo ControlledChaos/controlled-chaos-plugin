@@ -4,7 +4,7 @@
  *
  * @package    Controlled_Chaos_Plugin
  * @subpackage Admin\Partials
- * 
+ *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
@@ -15,7 +15,14 @@ namespace CC_Plugin\Admin\Partials;
 if ( ! defined( 'WPINC' ) ) {
 	die;
 } ?>
-<h3><?php _e( 'General Options', 'controlled-chaos-plugin' ); ?></h3>
+<h3><?php _e( 'Script Inclusion and Loading', 'controlled-chaos-plugin' ); ?></h3>
+<?php echo sprintf(
+	'<p>%1s <a href="%2s">%3s</a> %4s</p>',
+	__( 'This plugin is equipped with', 'controlled-chaos-plugin' ),
+	esc_url( admin_url( 'options-general.php?page=' . CCP_ADMIN_SLUG . '-scripts' ) ),
+	__( 'an admin page', 'controlled-chaos-plugin' ),
+	__( 'for enqueueing third-party scripts included in the plugin, as well as for script loading options.', 'controlled-chaos-plugin' )
+ ); ?>
 <h3><?php _e( 'Included Vendor Scripts', 'controlled-chaos-plugin' ); ?></h3>
 <p><?php _e( 'UI &amp; UX JS plugins ready to use', 'controlled-chaos-plugin' ); ?></p>
 <ul>

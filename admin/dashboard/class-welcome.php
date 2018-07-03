@@ -4,7 +4,7 @@
  *
  * @package    Controlled_Chaos_Plugin
  * @subpackage Admin\Dashboard
- * 
+ *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Welcome panel functionality.
- * 
+ *
  * @since  1.0.0
  * @access public
  */
@@ -40,7 +40,7 @@ class Welcome {
 
 			// Set variable for new instance.
             $instance = new self;
-			
+
 		}
 
 		// Return the instance.

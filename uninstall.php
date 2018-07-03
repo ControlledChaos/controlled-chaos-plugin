@@ -1,10 +1,10 @@
 <?php
 /**
  * Fired when the plugin is uninstalled.
- * 
+ *
  * @package    Controlled_Chaos_Plugin
  * @subpackage Admin
- * 
+ *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
@@ -16,7 +16,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 
 /**
  * Uninstall avatars.
- * 
+ *
  * During uninstallation, remove the custom field from the users
  * and delete the local avatars.
  *

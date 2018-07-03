@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Title meta tag.
- * 
+ *
  * @since  1.0.0
  * @access public
  */
@@ -40,7 +40,7 @@ class Meta_Title {
 
 			// Set variable for new instance.
 			$instance = new self;
-			
+
 		}
 
 		// Return the instance.
@@ -50,7 +50,7 @@ class Meta_Title {
 
 	/**
 	 * Constructor magic method.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return self
@@ -64,7 +64,7 @@ class Meta_Title {
 
 	/**
 	 * Conditionally get the title to use in meta tag.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @global object post The post object for the current post.
@@ -79,20 +79,20 @@ class Meta_Title {
 		$author_id = $post->post_author;
 
 		// Custom author title.
-		$author_title = sprintf( 
-			'%1s %2s', 
-			__( 'Posts by', 'controlled-chaos-plugin' ), 
-			get_the_author_meta( 'display_name', $author_id ) 
+		$author_title = sprintf(
+			'%1s %2s',
+			__( 'Posts by', 'controlled-chaos-plugin' ),
+			get_the_author_meta( 'display_name', $author_id )
 		);
 
 		// Apply a filter to author archive title.
 		$author_meta = apply_filters( 'ccp_author_meta_title', $author_title );
 
 		// Custom search title.
-		$search_title = sprintf( 
-			'%1s %2s', 
-			__( 'Searching', 'controlled-chaos-plugin' ), 
-			get_bloginfo( 'name' ) 
+		$search_title = sprintf(
+			'%1s %2s',
+			__( 'Searching', 'controlled-chaos-plugin' ),
+			get_bloginfo( 'name' )
 		);
 
 		// Apply a filter to search title.
@@ -101,23 +101,23 @@ class Meta_Title {
 		// Use the website name on the front page and 404 error page.
 		if ( is_front_page() || is_404() ) {
 			$title = esc_html( get_bloginfo( 'name' ) );
-		
+
 		// Use the Posts Page title for the blog index.
 		} elseif ( is_home() ) {
 			$title = esc_html( get_the_title( get_option( 'page_for_posts' ) ) );
-		
+
 		// Use custom text for author pages.
 		} elseif ( is_author() ) {
 			$title = esc_html( $author_meta );
-		
+
 		// Use the acrhive title for the acrhive pages.
 		} elseif ( is_archive() ) {
 			$title = esc_html( the_archive_title() );
-		
+
 		// Use custom text for search pages.
 		} elseif ( is_search() ) {
 			$title = esc_html( $search_meta );
-		
+
 		// For all else, singular, use the post title.
 		} else {
 			$title = esc_html( get_the_title() );

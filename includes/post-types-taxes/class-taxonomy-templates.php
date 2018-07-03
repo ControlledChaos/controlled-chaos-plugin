@@ -1,20 +1,20 @@
 <?php
 /**
  * Taxonomy templates.
- * 
- * Enables themes to use custom templates for taxonomies in 
+ *
+ * Enables themes to use custom templates for taxonomies in
  * the same way that templates can be used for post types.
  * The template is registered in the file header.
- * 
+ *
  * @package    Controlled_Chaos_Plugin_Plugin
  * @subpackage Includes\Post_Types_Taxes
  *
  * @since      1.0.0
  * @author     Hassan Derakhshandeh
  * @author     Greg Sweet <greg@ccdzine.com>
- * 
+ *
  * @example    In the template header: {Taxonomy Singular Label} Template: Grid
- * 
+ *
  * @link       https://wordpress.org/plugins/custom-taxonomy-templates/
  * @link       https://developer.wordpress.org/themes/template-files-section/page-template-files/#creating-page-templates-for-specific-post-types
  */
@@ -28,7 +28,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Taxonomy templates.
- * 
+ *
  * @since  1.0.0
  * @access public
  */
@@ -42,7 +42,7 @@ final class Taxonomy_Templates {
 
 	/**
 	 * Constructor magic method.
-     * 
+     *
      * @since  1.0.0
 	 * @access public
 	 * @return self
@@ -131,7 +131,7 @@ final class Taxonomy_Templates {
 	 * @return void
 	 */
 	public function save_option( $term_id ) {
-		
+
 		if ( isset( $_POST['custom-taxonomy-template'] ) ) {
 			$template = trim( $_POST['custom-taxonomy-template'] );
 
@@ -176,7 +176,7 @@ final class Taxonomy_Templates {
 	public function edit_template_option( $tag, $taxonomy ) {
 
 		$category_templates = $this->get_templates( $taxonomy );
-		
+
 		if ( empty( $category_templates ) ) {
 			return;
 		}
@@ -247,7 +247,7 @@ final class Taxonomy_Templates {
 		$templates = [];
 		$theme     = wp_get_theme( $template );
 		$files     = (array) $theme->get_files( 'php', 1 );
-                
+
 		foreach ( $files as $file => $full_path ) {
 
 			if ( ! preg_match("#({$tax->labels->singular_name}|{$tax->name}) Template:(.*)$#mi", file_get_contents( $full_path ), $header ) )

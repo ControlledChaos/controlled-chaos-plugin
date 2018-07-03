@@ -4,7 +4,7 @@
  *
  * @package    Controlled_Chaos_Plugin
  * @subpackage Admin
- * 
+ *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
@@ -21,7 +21,7 @@ if ( ! defined( 'WPINC' ) ) {
  *
  * @since  1.0.0
  * @access public
- * 
+ *
  * @todo   Make this feature optional.
  */
 class Filter_By_Template {
@@ -42,14 +42,14 @@ class Filter_By_Template {
 
 			// Set variable for new instance.
 			$instance = new self;
-			
+
 		}
 
 		// Return the instance.
 		return $instance;
 
 	}
-	
+
 	/**
 	 * Constructor method.
 	 *
@@ -58,13 +58,13 @@ class Filter_By_Template {
 	 * @return self
 	 */
 	public function __construct() {
-		
+
 		// Dropdown select box.
 		add_action( 'restrict_manage_posts', [ $this, 'filter_dropdown' ] );
 
 		// Perform the filtering.
 		add_filter( 'request', [ $this, 'filter_post_list' ] );
-		
+
 		// Add new column to post list.
 		add_filter( 'manage_posts_columns', [ $this, 'template_columns_head' ], 9 );
 		add_filter( 'manage_pages_columns', [ $this, 'template_columns_head' ], 9 );
@@ -74,10 +74,10 @@ class Filter_By_Template {
 		add_action( 'manage_pages_custom_column', [ $this, 'template_columns_content' ], 9, 2 );
 
 	}
-	
+
 	/**
 	 * The filter dropdown select box.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return void
@@ -92,7 +92,7 @@ class Filter_By_Template {
 		// If a page template has been selected show posts using that template.
 		if ( isset( $_GET['page_template_filter'] ) ) {
 			$template = $_GET['page_template_filter'];
-		
+
 		// Otherwise show all posts.
 		} else {
 			$template = 'all';
@@ -104,14 +104,14 @@ class Filter_By_Template {
 			<option value="all"><?php _e( 'All Page Templates', 'controlled-chaos-plugin' ); ?></option>
 			<option value="default" <?php echo ( $template == 'default' ) ? ' selected="selected" ' : ''; ?>><?php echo _e( 'Default Template', 'controlled-chaos-plugin' ); ?></option>
 			<?php page_template_dropdown( $template ); ?>
-		</select>		
+		</select>
 		<?php
 
 	}
-	
+
 	/**
 	 * Perform the filtering.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @param  array $vars
@@ -128,7 +128,7 @@ class Filter_By_Template {
 		if ( $template == '' || $template == 'all' ) {
 			return $vars;
 		}
-		
+
 		$vars = array_merge(
 			$vars,
 			[
@@ -143,12 +143,12 @@ class Filter_By_Template {
 		);
 
 		return $vars;
-	
+
 	}
 
 	/**
 	 * Add new Template column to post list.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @param  array $columns
@@ -158,15 +158,15 @@ class Filter_By_Template {
 
 		// The column heading name to new `template` column.
 		$columns['template'] = __( 'Template', 'controlled-chaos-plugin' );
-		
+
 		// Return the heading name.
 		return $columns;
-		
+
 	}
-	
+
 	/**
 	 * Template column content.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @param  string $column_name
@@ -180,19 +180,19 @@ class Filter_By_Template {
 
 			// Get the post template by post ID.
 			$template = get_post_meta( $post_id, '_wp_page_template' , true );
-			
+
 			// If a template has been applied to the post.
 	        if ( $template ) {
 
 				// If it's the default template.
 	        	if ( $template == 'default' ) {
 
-					echo sprintf( 
-						'<span title="%1s">%2s</span>', 
-						__( 'Default Template', 'controlled-chaos-plugin' ), 
-						__( 'Default Template', 'controlled-chaos-plugin' ) 
+					echo sprintf(
+						'<span title="%1s">%2s</span>',
+						__( 'Default Template', 'controlled-chaos-plugin' ),
+						__( 'Default Template', 'controlled-chaos-plugin' )
 					);
-				
+
 				// If it's not the default template.
 	        	} else {
 
@@ -201,30 +201,30 @@ class Filter_By_Template {
 
 					// If the template is found.
 	        		if ( isset( $templates[ $template ] ) ) {
-	        			echo sprintf( 
-							'<span title="%1s %2s">%3s</span>', 
-							__( 'Template file:', 'controlled-chaos-plugin' ), 
-							$template, 
-							$templates[ $template ] 
+	        			echo sprintf(
+							'<span title="%1s %2s">%3s</span>',
+							__( 'Template file:', 'controlled-chaos-plugin' ),
+							$template,
+							$templates[ $template ]
 						);
-					
+
 					// If the template cannot be found.
-	        		} else {	        			
-	        			echo sprintf( 
-							'<span title="%1s">%2s</span>', 
-							__( 'This template file does not exist', 'controlled-chaos-plugin' ), 
-							$template 
+	        		} else {
+	        			echo sprintf(
+							'<span title="%1s">%2s</span>',
+							__( 'This template file does not exist', 'controlled-chaos-plugin' ),
+							$template
 						);
 					}
-					
+
 	        	}
-	            
+
 			}
-			
+
 		}
-		
+
 	}
-	
+
 }
 
 /**

@@ -4,7 +4,7 @@
  *
  * @package    Controlled_Chaos_Plugin
  * @subpackage Admin
- * 
+ *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
@@ -40,7 +40,7 @@ class Settings_Page_Scripts {
 
 			// Set variable for new instance.
 			$instance = new self;
-			
+
 		}
 
 		// Return the instance.
@@ -64,7 +64,7 @@ class Settings_Page_Scripts {
 
 	/**
 	 * Add scripts settings page.
-	 * 
+	 *
 	 * Uses the universal slug partial for admin pages. Set this
      * slug in the core plugin file.
 	 *
@@ -95,14 +95,14 @@ class Settings_Page_Scripts {
 	 * @return void
 	 */
     public function page_output() {
-		
+
 		require plugin_dir_path( __FILE__ ) . 'partials/settings-page-scripts.php';
 
 	}
 
 	/**
      * Output for the Script Options page contextual help tab.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return void
@@ -114,7 +114,7 @@ class Settings_Page_Scripts {
 		if ( $screen->id != $this->page_help_section ) {
 			return;
 		}
-		
+
 		// Inline Scripts.
 		$screen->add_help_tab( [
 			'id'       => 'inline_scripts',
@@ -122,7 +122,7 @@ class Settings_Page_Scripts {
 			'content'  => null,
 			'callback' => [ $this, 'help_inline_scripts' ]
 		] );
-		
+
 		// Inline Scripts.
 		$screen->add_help_tab( [
 			'id'       => 'inline_jquery',
@@ -130,7 +130,7 @@ class Settings_Page_Scripts {
 			'content'  => null,
 			'callback' => [ $this, 'help_inline_jquery' ]
 		] );
-		
+
 		// Remove Emoji Scripts.
 		$screen->add_help_tab( [
 			'id'       => 'remove_emoji',
@@ -138,56 +138,56 @@ class Settings_Page_Scripts {
 			'content'  => null,
 			'callback' => [ $this, 'help_remove_emoji' ]
 		] );
-		
+
 		// Add a help sidebar.
 		$screen->set_help_sidebar(
 			$this->page_help_section_sidebar()
 		);
-		
+
 	}
 
 	/**
      * Get Inline Scripts help content.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return void
      */
-	public function help_inline_scripts() { 
-		
+	public function help_inline_scripts() {
+
 		include_once plugin_dir_path( __FILE__ ) . 'partials/help/help-inline-scripts.php';
-	
+
 	}
 
 	/**
      * Get Inline jQuery help content.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return void
      */
-	public function help_inline_jquery() { 
-		
+	public function help_inline_jquery() {
+
 		include_once plugin_dir_path( __FILE__ ) . 'partials/help/help-inline-jquery.php';
-	
+
 	}
 
 	/**
      * Get Remove Emoji Script help content.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return void
      */
-	public function help_remove_emoji() { 
-		
+	public function help_remove_emoji() {
+
 		include_once plugin_dir_path( __FILE__ ) . 'partials/help/help-remove-emoji.php';
-	
+
 	}
 
 	/**
      * Get Script Options page contextual tab sidebar content.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return void

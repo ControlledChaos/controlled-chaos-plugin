@@ -1,7 +1,7 @@
 <?php
 /**
  * The core plugin class.
- * 
+ *
  * @package    Controlled_Chaos_Plugin_Plugin
  * @subpackage Includes
  *
@@ -92,11 +92,13 @@ class Init {
 
 		/**
 		 * Register custom editor blocks.
-		 * 
-		 * Remove conditional statement when Gutenberg is in core?
+		 *
+		 * @todo Remove conditional statement when Gutenberg is in core?
 		 */
 		if ( is_plugin_active( 'gutenberg/gutenberg.php' ) ) {
+
 			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/editor-blocks/class-register-block-types.php';
+
 		}
 
 		// Post types and taxonomies.

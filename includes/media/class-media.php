@@ -4,7 +4,7 @@
  *
  * @package    Controlled_Chaos_Plugin_Plugin
  * @subpackage Includes\Media
- * 
+ *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
@@ -77,10 +77,10 @@ class Media {
 		add_filter( 'the_content_feed', [ $this, 'rss_featured_images' ] );
 
 	}
-	
+
 	/**
 	 * Get class dependencies.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access private
 	 * @return void
@@ -101,7 +101,7 @@ class Media {
 
 	/**
 	 * Add image sizes.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return void
@@ -113,7 +113,7 @@ class Media {
 
 		/**
 		 * For use as featured image in admin columns.
-		 * 
+		 *
 		 * @see admin/class-admin-pages.php
 		 */
 		add_image_size( __( 'Column Thumbnail', 'controlled-chaos-plugin' ), 48, 48, true );
@@ -122,15 +122,15 @@ class Media {
 
 	/**
 	 * Add Fancybox data attributes to image links in the content.
-	 * 
-	 * Note: As of this comment on June 22, 2018 this function only works with 
+	 *
+	 * Note: As of this comment on June 22, 2018 this function only works with
 	 * images in the classic editor, not with the new block editor images.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @param string $content
 	 * @return string
-	 * 
+	 *
 	 * @todo Review this after WordPress 5.0 is released or if/when the new block
 	 *       editor adds the option to link to the full size image.
 	 */
@@ -153,7 +153,7 @@ class Media {
 					// Replace the instance with the lightbox and title(caption) references. Won't fail if caption is empty.
 					$string  = '<a href="' . $val[1] . '.' . $val[2] . '"><img' . $val[3] . 'class="' . $val[4] . 'wp-image-' . $val[5] . '" /></a>';
 					$replace = '<a href="' . $val[1] . '.' . $val[2] . '" data-fancybox data-type="image" title="' . $slimbox_caption . '"><img' . $val[3] . 'class="' . $val[4] . 'wp-image-' . $val[5] . '" /></a>';
-					
+
 					$fancy_content = str_replace( $string, $replace, $content );
 
 					return $fancy_content;
@@ -163,19 +163,19 @@ class Media {
 			}
 
 			return $content;
-		
+
 	}
 
 	/**
      * Default link when adding an image.
-	 * 
+	 *
 	 * Note: As of this comment on June 21, 2018 the `image_default_link_type`
 	 * option only works with the classic editor, not with the new block editor.
      *
      * @since  1.0.0
 	 * @access public
 	 * @return void
-	 * 
+	 *
 	 * @todo Review this after WordPress 5.0 is released or if/when the new block
 	 *       editor adds the option to link to the full size image.
      */
@@ -191,14 +191,14 @@ class Media {
 
     /**
      * Default gallery images link.
-	 * 
-	 * Note: As of this comment on June 21, 2018 this function only works with 
+	 *
+	 * Note: As of this comment on June 21, 2018 this function only works with
 	 * galleries in the classic editor, not with the new block editor galleries.
      *
      * @since  1.0.0
 	 * @access public
 	 * @return mixed[] Modifies the WordPress gallery shortcode.
-	 * 
+	 *
 	 * @todo Review this after WordPress 5.0 is released or if/when the new block
 	 *       editor adds the option to link to the full size images.
      */
@@ -228,7 +228,7 @@ class Media {
 
 		/**
 		 * Use this layout only if the post has a featured image.
-		 * 
+		 *
 		 * The image and the content/excerpt are in separate <div> tags
 		 * to get the content below the image.
 		 */
@@ -239,7 +239,7 @@ class Media {
 		// Return the filered post content.
 		return $content;
 	}
-	
+
 }
 
 /**

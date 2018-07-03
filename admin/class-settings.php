@@ -4,7 +4,7 @@
  *
  * @package    Controlled_Chaos_Plugin
  * @subpackage Admin
- * 
+ *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Admin functiontionality and settings.
- * 
+ *
  * @since  1.0.0
  * @access public
  */
@@ -43,7 +43,7 @@ class Settings {
 
 			// Require the class files.
 			$instance->dependencies();
-			
+
 		}
 
 		// Return the instance.
@@ -56,7 +56,7 @@ class Settings {
 	 *
 	 * @since  1.0.0
 	 * @access public
-	 * @return void Constructor method is empty. 
+	 * @return void Constructor method is empty.
 	 */
 	public function __construct() {}
 
@@ -71,7 +71,7 @@ class Settings {
 
 		/**
 		 * Settings pages.
-		 * 
+		 *
 		 * @since  1.0.0
 		 */
 
@@ -86,7 +86,7 @@ class Settings {
 
 		/**
 		 * Settings fields.
-		 * 
+		 *
 		 * @since  1.0.0
 		 */
 

@@ -7,7 +7,7 @@
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
- * 
+ *
  * @link       Slick       https://github.com/kenwheeler/slick
  * @link       Tabslet     https://github.com/vdw/Tabslet
  * @link       Sticky-kit  https://github.com/leafo/sticky-kit
@@ -54,7 +54,7 @@ class Frontend {
 
 			// Frontend dependencies.
 			$instance->dependencies();
-			
+
 		}
 
 		// Return the instance.
@@ -97,7 +97,7 @@ class Frontend {
 			add_action( 'wp_footer', [ $this, 'get_scripts' ], 11 );
 		} else {
 			add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
-		}		
+		}
 
 		// Add meta tags to <head> if not disabled.
 		add_action( 'wp_head', [ $this, 'meta_tags' ] );
@@ -109,7 +109,7 @@ class Frontend {
 
 	/**
 	 * Frontend dependencies.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return void
@@ -338,12 +338,12 @@ class Frontend {
 
 	/**
 	 * Meta tags for SEO and embedded links.
-	 * 
+	 *
 	 * Check for the Advanced Custom Fields PRO plugin, or the Options Page
-	 * addon for free ACF, then check if meta tags have been disabled from 
-	 * the ACF 'Site Settings' page. Otherwise check if meta tags have been 
+	 * addon for free ACF, then check if meta tags have been disabled from
+	 * the ACF 'Site Settings' page. Otherwise check if meta tags have been
 	 * disabled from the standard 'Site Settings' page.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return void
@@ -355,7 +355,7 @@ class Frontend {
 			$disable_tags = get_field( 'ccp_disable_meta_tags', 'option' );
 
 			if ( false == $disable_tags ) {
-				
+
 				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/meta-tags-standard.php';
 				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/meta-tags-open-graph.php';
 				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/meta-tags-twitter.php';
@@ -368,7 +368,7 @@ class Frontend {
 			$disable_tags = get_option( 'ccp_disable_meta' );
 
 			if ( ! $disable_tags ) {
-				
+
 				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/meta-tags-standard.php';
 				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/meta-tags-open-graph.php';
 				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/meta-tags-twitter.php';
@@ -382,9 +382,9 @@ class Frontend {
 
 	/**
 	 * Add Fancybox attributes to attachment page image link.
-	 * 
+	 *
 	 * You may want to minimize the script for production sites.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return string

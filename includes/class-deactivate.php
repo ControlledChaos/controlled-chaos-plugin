@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin deactivation class.
- * 
+ *
  * This file must not be namespaced.
  *
  * @link       http://ccdzine.com

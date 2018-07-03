@@ -4,10 +4,10 @@
  *
  * @package    Controlled_Chaos_Plugin
  * @subpackage Admin
- * 
+ *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
- * 
+ *
  * @link       https://github.com/BeAPI/ACF-PHP-Recovery
  */
 
@@ -20,7 +20,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Import custom fields.
- * 
+ *
  * @since  1.0.0
  * @access public
  */
@@ -42,7 +42,7 @@ final class Fields_Import {
 
 			// Set variable for new instance.
 			$instance = new self;
-			
+
 		}
 
 		// Return the instance.
@@ -66,7 +66,7 @@ final class Fields_Import {
 
 	/**
 	 * Add admin page.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return void
@@ -85,7 +85,7 @@ final class Fields_Import {
 
 	/**
 	 * Page output.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @global object wpdb provide an interface with the WordPress database.
@@ -153,7 +153,7 @@ final class Fields_Import {
 		}
 
 		include_once plugin_dir_path( __FILE__ ) . 'partials/fields-import-page.php';
-		
+
 	}
 
 }

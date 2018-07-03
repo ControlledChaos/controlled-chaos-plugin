@@ -4,7 +4,7 @@
  *
  * @package    Controlled_Chaos_Plugin
  * @subpackage Admin\Dashboard
- * 
+ *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Dashboard functionality.
- * 
+ *
  * @since  1.0.0
  * @access public
  */
@@ -40,10 +40,10 @@ class Dashboard {
 
 			// Set variable for new instance.
             $instance = new self;
-            
+
             // Require the class files.
 			$instance->dependencies();
-			
+
 		}
 
 		// Return the instance.
@@ -71,7 +71,7 @@ class Dashboard {
 
         // Add contextual help content.
         add_action( 'admin_head', [ $this, 'add_help' ] );
-        
+
         // Enqueue dashboard stylesheet.
 		add_action( 'admin_enqueue_scripts', [ $this, 'styles' ] );
 
@@ -120,7 +120,7 @@ class Dashboard {
 
         // Prepare an entry for each post type mathing the query.
         foreach ( $post_types as $post_type ) {
-            
+
             // Count the number of posts.
             $count  = wp_count_posts( $post_type->name );
 
@@ -132,20 +132,20 @@ class Dashboard {
 
             // Supply an edit link if the user can edit posts.
             if ( current_user_can( 'edit_posts' ) ) {
-                echo sprintf( 
-                    '<li class="post-count %1s-count"><a href="edit.php?post_type=%2s">%3s %4s</a></li>', 
-                    $post_type->name, 
-                    $post_type->name, 
-                    $number, 
+                echo sprintf(
+                    '<li class="post-count %1s-count"><a href="edit.php?post_type=%2s">%3s %4s</a></li>',
+                    $post_type->name,
+                    $post_type->name,
+                    $number,
                     $name
                 );
 
             // Otherwise just the count and post type name.
             } else {
-                echo sprintf( 
-                    '<li class="post-count %1s-count">%2s %3s</li>', 
-                    $post_type->name, 
-                    $number, 
+                echo sprintf(
+                    '<li class="post-count %1s-count">%2s %3s</li>',
+                    $post_type->name,
+                    $number,
                     $name
                 );
 
@@ -156,7 +156,7 @@ class Dashboard {
 
     /**
      * Remove Dashboard metaboxes.
-     * 
+     *
      * Check for the Advanced Custom Fields PRO plugin, or the Options Page
 	 * addon for free ACF. Use ACF options from the ACF 'Site Settings' page,
      * otherwise use the options from the standard 'Site Settings' page.
@@ -200,7 +200,7 @@ class Dashboard {
             if ( $hide && in_array( 'activity', $hide ) ) {
                 remove_meta_box( 'dashboard_activity', 'dashboard', 'normal' );
             }
-        
+
         // If Advanced Custom Fields is not active.
         } else {
 
@@ -246,8 +246,8 @@ class Dashboard {
 
     /**
      * Remove contextual help content.
-     * 
-     * Much of the default help content does not apply to 
+     *
+     * Much of the default help content does not apply to
      * the cleaned up Dashboard so we'll remove it.
      *
      * @since  1.0.0
@@ -258,12 +258,12 @@ class Dashboard {
 
         // Get the screen ID to target the Dashboard.
         $screen = get_current_screen();
-        
+
         // Bail if not on the Dashboard screen.
         if ( $screen->id != 'dashboard' ) {
 			return;
 		}
-        
+
         // Remove individual content tabs.
         $screen->remove_help_tab( 'overview' );
         $screen->remove_help_tab( 'help-content' );
@@ -288,12 +288,12 @@ class Dashboard {
 
         // Get the screen ID to target the Dashboard.
         $screen = get_current_screen();
-        
+
         // Bail if not on the Dashboard screen.
         if ( $screen->id != 'dashboard' ) {
 			return;
         }
-        
+
         // Dashboard widget tab.
 		$screen->add_help_tab( [
 			'id'       => 'help_welcome_panel',
@@ -301,7 +301,7 @@ class Dashboard {
 			'content'  => null,
 			'callback' => [ $this, 'help_welcome_panel' ]
         ] );
-        
+
         // Dashboard widget tab.
 		$screen->add_help_tab( [
 			'id'       => 'help_dashboard_widgets',
@@ -309,7 +309,7 @@ class Dashboard {
 			'content'  => null,
 			'callback' => [ $this, 'help_dashboard_widgets' ]
 		] );
-        
+
         // Add a new sidebar.
 		$screen->set_help_sidebar(
 			$this->help_dashboard_sidebar()
@@ -319,60 +319,60 @@ class Dashboard {
 
     /**
      * Get welcome panel help tab content.
-	 * 
+	 *
 	 * @since      1.0.0
      */
-	public function help_welcome_panel() { 
-		
+	public function help_welcome_panel() {
+
         include_once plugin_dir_path( __FILE__ ) . 'partials/help/help-welcome-panel.php';
-	
+
     }
 
     /**
      * Get dashboard widget help tab content.
-	 * 
+	 *
 	 * @since      1.0.0
      */
-	public function help_dashboard_widgets() { 
-		
+	public function help_dashboard_widgets() {
+
         include_once plugin_dir_path( __FILE__ ) . 'partials/help/help-dashboard-widgets.php';
-	
+
     }
 
     /**
      * The dashboard widget contextual tab sidebar content.
-     * 
+     *
      * Uses the universal slug partial for admin pages. Set this
      * slug in the core plugin file.
-	 * 
+	 *
 	 * @since      1.0.0
      */
     public function help_dashboard_sidebar() {
 
-        $html  = sprintf( 
-            '<h4>%1s %2s</h4>', 
-            __( 'Custom Dashboard for', 'controlled-chaos-plugin' ), 
-             get_bloginfo( 'name' ) 
+        $html  = sprintf(
+            '<h4>%1s %2s</h4>',
+            __( 'Custom Dashboard for', 'controlled-chaos-plugin' ),
+             get_bloginfo( 'name' )
         );
 
         $html .= '<hr />';
 
-        $html .= sprintf( 
-            '<p>%1s <a href="%2s">%3s</a></p>', 
-            __( 'Customize your' ), 
-            esc_url( 'http://localhost/controlledchaos/wp-admin/index.php?page=' . CCP_ADMIN_SLUG . '-settings' ), 
-            __( 'Dashboard Settings' ) 
+        $html .= sprintf(
+            '<p>%1s <a href="%2s">%3s</a></p>',
+            __( 'Customize your' ),
+            esc_url( 'http://localhost/controlledchaos/wp-admin/index.php?page=' . CCP_ADMIN_SLUG . '-settings' ),
+            __( 'Dashboard Settings' )
         );
 
 		return $html;
 
 	}
-    
+
     /**
 	 * Enqueue dashboard stylesheet.
-     * 
+     *
      * Uncomment to enqueue the stylesheet.
-     * 
+     *
      * @since  1.0.0
 	 * @access public
 	 * @return void
@@ -381,7 +381,7 @@ class Dashboard {
 
         // Get the screen ID to target the Dashboard.
         $screen = get_current_screen();
-        
+
         // Enqueue only on the Dashboard screen.
         if ( $screen->id == 'dashboard' ) {
             // wp_enqueue_style( 'ccp_dashboard', get_theme_file_uri( '/includes/widgets/dashboard/assets/css/dashboard.css' ), [], null, 'screen' );
