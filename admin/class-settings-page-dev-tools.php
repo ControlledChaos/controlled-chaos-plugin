@@ -1,14 +1,14 @@
 <?php
 /**
  * Settings page for site development.
- * 
+ *
  * This class adds an admin page under Tools in the admin menu
  * at which several tools for the website development process
  * are provieded.
  *
  * @package    Controlled_Chaos_Plugin
  * @subpackage Admin
- * 
+ *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
@@ -44,7 +44,7 @@ class Settings_Page_Dev_Tools {
 
 			// Set variable for new instance.
 			$instance = new self;
-			
+
 		}
 
 		// Return the instance.
@@ -68,25 +68,25 @@ class Settings_Page_Dev_Tools {
 
 	/**
 	 * Add development subpage to Tools in the admin menu.
-	 * 
+	 *
 	 * Uses the universal slug partial for admin pages. Set this
      * slug in the core plugin file.
-	 * 
+	 *
 	 * Adds a contextual help section.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return void
 	 */
 	public function settings_page() {
 
-		$this->page_help_section = add_submenu_page( 
-			'tools.php', 
-			__( 'Website Development', 'controlled-chaos-plugin' ), 
-			__( 'Site Development', 'controlled-chaos-plugin' ), 
-			'manage_options', 
-			CCP_ADMIN_SLUG . '-dev-tools', 
-			[ $this, 'page_output' ] 
+		$this->page_help_section = add_submenu_page(
+			'tools.php',
+			__( 'Website Development', 'controlled-chaos-plugin' ),
+			__( 'Site Development', 'controlled-chaos-plugin' ),
+			'manage_options',
+			CCP_ADMIN_SLUG . '-dev-tools',
+			[ $this, 'page_output' ]
 		);
 
 		// Add content to the Help tab.
@@ -96,7 +96,7 @@ class Settings_Page_Dev_Tools {
 
 	/**
 	 * Get development subpage output.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return void
@@ -109,7 +109,7 @@ class Settings_Page_Dev_Tools {
 
 	/**
      * Output for the development page contextual help section.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return void
@@ -121,7 +121,7 @@ class Settings_Page_Dev_Tools {
 		if ( $screen->id != $this->page_help_section ) {
 			return;
 		}
-		
+
 		// More information.
 		$screen->add_help_tab( [
 			'id'       => 'help_dev_info',
@@ -129,30 +129,30 @@ class Settings_Page_Dev_Tools {
 			'content'  => null,
 			'callback' => [ $this, 'help_dev_info_output' ]
 		] );
-		
+
 		// Add a help sidebar.
 		$screen->set_help_sidebar(
 			$this->help_dev_info_sidebar()
 		);
-		
+
     }
-    
+
     /**
      * Get more information help tab content.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return void
      */
-	public function help_dev_info_output() { 
-		
+	public function help_dev_info_output() {
+
 		include_once plugin_dir_path( __FILE__ ) . 'partials/help/help-dev-info.php';
-	
+
     }
-    
+
     /**
      * Get development page contextual tab sidebar content.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return void

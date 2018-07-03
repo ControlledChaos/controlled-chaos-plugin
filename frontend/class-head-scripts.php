@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Head scripts.
- * 
+ *
  * @since  1.0.0
  * @access public
  */
@@ -40,7 +40,7 @@ class Head_Scripts {
 
 			// Set variable for new instance.
 			$instance = new self;
-			
+
 		}
 
 		// Return the instance.
@@ -68,16 +68,16 @@ class Head_Scripts {
 
     /**
      * Remove WP versions from stylesheets and scripts.
-	 * 
+	 *
 	 * Only if the option is selected on the Script Options page.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @param  string $src Path to the file.
 	 * @return null
      */
 	public function remove_ver_css_js( $src ) {
-        
+
 		if ( get_option( 'ccp_remove_script_verion' ) && strpos( $src, 'ver=' ) ) {
 			$src = remove_query_arg( 'ver', $src );
 		}
@@ -88,7 +88,7 @@ class Head_Scripts {
 
 	/**
 	 * Disable emoji script.
-	 * 
+	 *
 	 * Emojis will still work in modern browsers. This removes the script
 	 * that makes emojis work in old browser.
 	 *

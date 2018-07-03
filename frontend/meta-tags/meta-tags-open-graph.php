@@ -4,10 +4,10 @@
  *
  * @package    Controlled_Chaos_Plugin_Plugin
  * @subpackage Frontend\Meta_Tags
- * 
+ *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
- * 
+ *
  * @link       http://ogp.me/
  */
 

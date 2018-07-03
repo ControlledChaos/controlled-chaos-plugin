@@ -1,15 +1,15 @@
 <?php
 /**
  * Fancybox galleries shortcode.
- * 
+ *
  * Rewrites the WordPress gallery shortcode with data attributes for Fancybox 3.
  *
  * @package    Controlled_Chaos_Plugin
  * @subpackage Includes\Media
- * 
+ *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
- * 
+ *
  * @todo       Review this after WordPress 5.0 is released or if/when the new block
  *             editor adds the option to link to the full size image.
  */
@@ -23,7 +23,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Fancybox galleries shortcode.
- * 
+ *
  * @since  1.0.0
  * @access public
  */
@@ -45,7 +45,7 @@ class Gallery_Shortcode {
 
 			// Set variable for new instance.
 			$instance = new self;
-			
+
 		}
 
 		// Return the instance.
@@ -114,8 +114,8 @@ class Gallery_Shortcode {
 		}
 
 		$html5 = current_theme_supports( 'html5', 'gallery' );
-		$atts  = apply_filters( 
-			'ccd_fancybox_atts', 
+		$atts  = apply_filters(
+			'ccd_fancybox_atts',
 				shortcode_atts( [
 
 				// Default parameters.
@@ -146,10 +146,10 @@ class Gallery_Shortcode {
 				'captions'   => 'title',
 				'protected'  => 'false'
 
-			], 
-			$attr, 
-			'gallery' 
-			) 
+			],
+			$attr,
+			'gallery'
+			)
 		);
 
 		$id = intval( $atts['id'] );
@@ -157,12 +157,12 @@ class Gallery_Shortcode {
 		if ( ! empty( $atts['include'] ) ) {
 
 			$_attachments = get_posts( [
-				'include'        => $atts['include'], 
-				'post_status'    => 'inherit', 
-				'post_type'      => 'attachment', 
-				'post_mime_type' => 'image', 
-				'order'          => $atts['order'], 
-				'orderby'        => $atts['orderby'] 
+				'include'        => $atts['include'],
+				'post_status'    => 'inherit',
+				'post_type'      => 'attachment',
+				'post_mime_type' => 'image',
+				'order'          => $atts['order'],
+				'orderby'        => $atts['orderby']
 			] );
 
 			$attachments = [];
@@ -174,24 +174,24 @@ class Gallery_Shortcode {
 		} elseif ( ! empty( $atts['exclude'] ) ) {
 
 			$attachments = get_children( [
-				'post_parent'    => $id, 
-				'exclude'        => $atts['exclude'], 
-				'post_status'    => 'inherit', 
-				'post_type'      => 'attachment', 
-				'post_mime_type' => 'image', 
-				'order'          => $atts['order'], 
-				'orderby'        => $atts['orderby'] 
+				'post_parent'    => $id,
+				'exclude'        => $atts['exclude'],
+				'post_status'    => 'inherit',
+				'post_type'      => 'attachment',
+				'post_mime_type' => 'image',
+				'order'          => $atts['order'],
+				'orderby'        => $atts['orderby']
 			] );
 
 		} else {
 
 			$attachments = get_children( [
-				'post_parent'    => $id, 
-				'post_status'    => 'inherit', 
-				'post_type'      => 'attachment', 
-				'post_mime_type' => 'image', 
-				'order'          => $atts['order'], 
-				'orderby'        => $atts['orderby'] 
+				'post_parent'    => $id,
+				'post_status'    => 'inherit',
+				'post_type'      => 'attachment',
+				'post_mime_type' => 'image',
+				'order'          => $atts['order'],
+				'orderby'        => $atts['orderby']
 			] );
 
 		}
@@ -374,13 +374,13 @@ class Gallery_Shortcode {
 
 			if ( ! empty( $atts['link'] ) && 'file' === $atts['link'] ) {
 
-				$image_output = sprintf( 
-					'<a class="%1s-link" href="%2s" data-type="image" data-fancybox="group-%3s"%4s>%5s</a>', 
-					$selector, 
-					wp_get_attachment_url( $id ), 
-					$selector, 
-					$caption, 
-					wp_get_attachment_image( $id, $atts['size'], false, $attr ) 
+				$image_output = sprintf(
+					'<a class="%1s-link" href="%2s" data-type="image" data-fancybox="group-%3s"%4s>%5s</a>',
+					$selector,
+					wp_get_attachment_url( $id ),
+					$selector,
+					$caption,
+					wp_get_attachment_image( $id, $atts['size'], false, $attr )
 				);
 
 			} elseif ( ! empty( $atts['link'] ) && 'none' === $atts['link'] ) {
@@ -400,7 +400,7 @@ class Gallery_Shortcode {
 				} else {
 					$orientation = 'landscape';
 				}
-				
+
 			}
 
 			$output .= "<{$itemtag} class='gallery-item'>";

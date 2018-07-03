@@ -4,7 +4,7 @@
  *
  * @package    Controlled_Chaos_Plugin
  * @subpackage Admin
- * 
+ *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
@@ -40,7 +40,7 @@ class Admin_Pages {
 
 			// Set variable for new instance.
             $instance = new self;
-            
+
 		}
 
 		// Return the instance.
@@ -87,10 +87,10 @@ class Admin_Pages {
 
     /**
      * Add an about page for the plugin.
-     * 
+     *
      * Uses the universal slug partial for admin pages. Set this
      * slug in the core plugin file.
-     * 
+     *
      * Adds a contextual help section.
      *
      * @since  1.0.0
@@ -99,14 +99,42 @@ class Admin_Pages {
      */
     public function about_plugin() {
 
-        $this->help_about_plugin = add_submenu_page(
-            'plugins.php', 
-            __( 'Site Plugin', 'controlled-chaos-plugin' ),
-            __( 'Site Plugin', 'controlled-chaos-plugin' ),
-            'manage_options', 
-            CCP_ADMIN_SLUG . '-page', 
-            [ $this, 'about_plugin_output' ]
-        );
+        $link_label = sanitize_text_field( get_option( 'ccp_site_plugin_link_label' ) );
+        $position   = get_option( 'ccp_site_plugin_position' );
+        $link_icon  = sanitize_text_field( get_option( 'ccp_site_plugin_link_icon' ) );
+
+        if ( $link_label ) {
+            $label = $link_label;
+        }  else {
+            $label = __( 'Site Plugin', 'controlled-chaos-plugin' );
+        }
+
+        if ( $link_icon ) {
+            $icon = $link_icon;
+        }  else {
+            $icon = __( 'dashicons-welcome-learn-more', 'controlled-chaos-plugin' );
+        }
+
+        if ( $position ) {
+            $this->help_about_plugin = add_menu_page(
+                $label,
+                $label,
+                'manage_options',
+                CCP_ADMIN_SLUG . '-page',
+                [ $this, 'about_plugin_output' ],
+                $icon,
+                3
+            );
+        } else {
+            $this->help_about_plugin = add_submenu_page(
+                'plugins.php',
+                $label,
+                $label,
+                'manage_options',
+                CCP_ADMIN_SLUG . '-page',
+                [ $this, 'about_plugin_output' ]
+            );
+        }
 
         // Add content to the Help tab.
 		add_action( 'load-' . $this->help_about_plugin, [ $this, 'help_about_plugin' ] );
@@ -128,7 +156,7 @@ class Admin_Pages {
 
     /**
      * Add tabs to the about page contextual help section.
-	 * 
+	 *
 	 * @since      1.0.0
      */
     public function help_about_plugin() {
@@ -138,7 +166,7 @@ class Admin_Pages {
 		if ( $screen->id != $this->help_about_plugin ) {
 			return;
 		}
-		
+
 		// More information tab.
 		$screen->add_help_tab( [
 			'id'       => 'help_plugin_info',
@@ -146,7 +174,7 @@ class Admin_Pages {
 			'content'  => null,
 			'callback' => [ $this, 'help_plugin_info' ]
 		] );
-        
+
         // Convert plugin tab.
 		$screen->add_help_tab( [
 			'id'       => 'help_convert_plugin',
@@ -154,58 +182,58 @@ class Admin_Pages {
 			'content'  => null,
 			'callback' => [ $this, 'help_convert_plugin' ]
 		] );
-        
+
         // Add a help sidebar.
 		$screen->set_help_sidebar(
 			$this->help_about_page_sidebar()
 		);
-		
+
     }
-    
+
     /**
      * Get more information help tab content.
-	 * 
+	 *
 	 * @since      1.0.0
      */
-	public function help_plugin_info() { 
-		
+	public function help_plugin_info() {
+
 		include_once plugin_dir_path( __FILE__ ) . 'partials/help/help-plugin-info.php';
-	
+
     }
 
     /**
      * Get convert plugin help tab content.
-	 * 
+	 *
 	 * @since      1.0.0
      */
-	public function help_convert_plugin() { 
-		
+	public function help_convert_plugin() {
+
 		include_once plugin_dir_path( __FILE__ ) . 'partials/help/help-plugin-convert.php';
-	
+
     }
-    
+
     /**
      * The about page contextual tab sidebar content.
-	 * 
+	 *
 	 * @since      1.0.0
      */
     public function help_about_page_sidebar() {
 
         $html  = sprintf( '<h4>%1s</h4>', __( 'Author Credits', 'controlled-chaos-plugin' ) );
-        $html .= sprintf( 
-            '<p>%1s %2s.</p>', 
-            __( 'This plugin was originally written by', 'controlled-chaos-plugin' ), 
+        $html .= sprintf(
+            '<p>%1s %2s.</p>',
+            __( 'This plugin was originally written by', 'controlled-chaos-plugin' ),
             'Greg Sweet'
         );
-        $html .= sprintf( 
-            '<p>%1s <br /><a href="%2s" target="_blank">%3s</a> <br />%4s</p>', 
-            __( 'Visit:', 'controlled-chaos-plugin' ), 
-            'http://ccdzine.com/', 
-            'Controlled Chaos Design', 
+        $html .= sprintf(
+            '<p>%1s <br /><a href="%2s" target="_blank">%3s</a> <br />%4s</p>',
+            __( 'Visit:', 'controlled-chaos-plugin' ),
+            'http://ccdzine.com/',
+            'Controlled Chaos Design',
             __( 'for more free downloads.', 'controlled-chaos-plugin' )
         );
-        $html .= sprintf( 
-            '<p>%1s</p>', 
+        $html .= sprintf(
+            '<p>%1s</p>',
             __( 'Change this sidebar to give yourself credit for the hard work you did customizing this plugin.', 'controlled-chaos-plugin' )
          );
 
@@ -222,7 +250,7 @@ class Admin_Pages {
 	 * @return object Returns the title placeholder.
      * @throws Non-Object Throws an error on attachment edit screens since
      *         there is no placeholder, so that post type is nullified.
-     * 
+     *
      * @todo   Review this if or when a check becomes available for the
      *         new WordPress block editor (Gutenberg).
      */
@@ -234,15 +262,15 @@ class Admin_Pages {
         // Post type: post.
         if ( 'post' == $screen->post_type ) {
             $post_title = esc_html__( 'Post Title', 'controlled-chaos-plugin' );
-        
+
         // Post type: page.
         } elseif ( 'page' == $screen->post_type ) {
             $post_title = esc_html__( 'Page Title', 'controlled-chaos-plugin' );
-        
+
         // Post type: attachment.
         } elseif ( $screen->post_type == 'attachment' ) {
             $post_title = null;
-        
+
         // Post type: custom, unidentified.
         } else {
             $post_title = esc_html__( 'Enter Title', 'controlled-chaos-plugin' );
@@ -250,7 +278,7 @@ class Admin_Pages {
 
         // Apply a filter conditional modification.
         $title = apply_filters( 'ccp_post_title_placeholders', $post_title );
-        
+
         // Return the new placeholder.
         return $title;
     }
@@ -270,7 +298,7 @@ class Admin_Pages {
 
     /**
      * Make excerpts visible by default if used as meta descriptions.
-     * 
+     *
      * Add your post types as necessary.
      *
      * @since  1.0.0
@@ -278,7 +306,7 @@ class Admin_Pages {
      * @param  array $hidden
      * @param  object $screen
 	 * @return array Unsets the hidden value in the screen base array.
-     * 
+     *
      * @todo   Programmatically apply to all registered post types.
      * @todo   Review this if or when a check becomes available for the
      *         new WordPress block editor (Gutenberg) as the classic
@@ -309,7 +337,7 @@ class Admin_Pages {
 
     /**
 	 * Add page break button to visual editor.
-     * 
+     *
 	 * Used for creating a "Read More" link on your blog page and archive pages.
      *
      * @since  1.0.0
@@ -317,7 +345,7 @@ class Admin_Pages {
      * @param  array $buttons
      * @param  string $id
      * @return array Returns the TinyMCE buttons array.
-     * 
+     *
      * @todo   Review this if or when a check becomes available for the
      *         new WordPress block editor (Gutenberg) since page breaks
      *         will be included.
@@ -329,7 +357,7 @@ class Admin_Pages {
         }
 
         array_splice( $buttons, 13, 0, 'wp_page' );
-        
+
         return $buttons;
 
 	}
@@ -351,7 +379,7 @@ class Admin_Pages {
 
         /**
          * Column thumbnail size.
-         * 
+         *
          * @see includes/media/class-media.php
          */
         $size  = 'Column Thumbnail';
@@ -374,7 +402,7 @@ class Admin_Pages {
 
     /**
      * Add a new post admin column for the featured image.
-     * 
+     *
      * @since  1.0.0
 	 * @access public
      * @param  array $defaults Gets the array of default admin columns.
@@ -398,7 +426,7 @@ class Admin_Pages {
 
     /**
      * Add the featured image to post admin columns
-     * 
+     *
      * @since  1.0.0
 	 * @access public
      * @param  string $column_name
@@ -415,7 +443,7 @@ class Admin_Pages {
 
             /**
              * The image tag to be added to the column/post row.
-             * 
+             *
              * The tag uses a style attribute for the width, and no width
              * or height attributes are used, because the image size may
              * be filtered externally to use a different aspect ratio.
@@ -424,12 +452,12 @@ class Admin_Pages {
             // If the post has a featured image.
             if ( $post_featured_image ) {
                 echo '<img src="' . esc_url( $post_featured_image ) . '" style="width: 48px;" />';
-            
+
             // If the post doen't have a featured image then use the fallback image.
             } else {
-                echo '<img src="' . esc_url( plugins_url( 'images/featured-image-placeholder.png', __FILE__ ) ) . '" style="width: 48px;" />';
+                echo '<img src="' . esc_url( plugins_url( 'assets/images/featured-image-placeholder.png', __FILE__ ) ) . '" style="width: 48px;" />';
             }
-            
+
         }
 
     }

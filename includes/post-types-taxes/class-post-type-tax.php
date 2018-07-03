@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Post types and taxonomies class.
- * 
+ *
  * @since  1.0.0
  * @access public
  */
@@ -43,7 +43,7 @@ class Post_Types_Taxes {
 
 			// Get class dependencies.
 			$instance->dependencies();
-			
+
 		}
 
 		// Return the instance.
@@ -62,7 +62,7 @@ class Post_Types_Taxes {
 
 	/**
      * Class dependency files.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access private
 	 * @return void

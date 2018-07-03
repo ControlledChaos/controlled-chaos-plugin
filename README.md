@@ -1,10 +1,10 @@
 # Controlled Chaos Plugin
 
-An object-oriented WordPress starter plugin for building custom-tailored websites.
+A feature-packed WordPress starter plugin for building custom-tailored websites.
 
 ![Gutenberg Ready](https://img.shields.io/badge/Gutenberg-ready-blue.svg)
 ![WordPress](https://img.shields.io/wordpress/v/akismet.svg?style=flat-square)
-![PHP version from PHP-Eye](https://img.shields.io/php-eye/symfony/symfony.svg?style=flat-square)
+![PHP version](https://img.shields.io/php-eye/symfony/symfony.svg?style=flat-square)
 
 ## Plugin Overview
 
@@ -12,9 +12,9 @@ This is a tool — a means to an end. But it can be used as is without further d
 
 ### Introduction
 
-Howdy, folks. My name is Greg Sweet. I am sole proprietor and chief bottle washer at [Controlled Chaos Design](http://ccdzine.com/).
+Howdy, folks. My name is Greg Sweet. I am sole proprietor, chief cook and bottle washer at [Controlled Chaos Design](http://ccdzine.com/).
 
-I built this plugin as a starter for client sites, including features that I use often, the code for which I repeatedly copyied from my [Gist library](https://gist.github.com/ControlledChaos). It is not intended to be a plug-and-play type of thing, although it can be used as such. This is more of a developer's tool. I have commented thouroughly on the code and documentec the files to the best of my ability. I have learned by looking at the code of others so I have kept this in mind when writing the code for this plugin.
+I built this plugin as a starter for client sites, including features that I use often, the code for which I repeatedly copyied from my [gist library](https://gist.github.com/ControlledChaos). It is not intended to be a plug-and-play type of thing, although it can be used as such. This is more of a developer's tool. I have commented thouroughly on the code and documentec the files to the best of my ability. I have learned by looking at the code of others so I have kept this in mind when writing the code for this plugin.
 
 ### Approach
 
@@ -41,17 +41,17 @@ So, what the heck does this thing do? Why might it be preferable to other plugin
 
 I have included several frontend UI/UX plugins that I typically use on client sites. They are enqueued via opt-in checkboxes on the Script Options page, except for Fancybox, which is opted in on the Media Settings page.
 
-* Fancybox 3 - [https://github.com/fancyapps/fancybox](https://github.com/fancyapps/fancybox)  
+* Fancybox 3 - [https://github.com/fancyapps/fancybox](https://github.com/fancyapps/fancybox)
   *"Lightbox script for displaying images, videos and more."*
-* Slick - [https://github.com/kenwheeler/slick](https://github.com/kenwheeler/slick)  
+* Slick - [https://github.com/kenwheeler/slick](https://github.com/kenwheeler/slick)
   *"The last carousel you'll ever need."*
-* Tabslet - [https://github.com/vdw/Tabslet](https://github.com/vdw/Tabslet)  
+* Tabslet - [https://github.com/vdw/Tabslet](https://github.com/vdw/Tabslet)
   *"Yet another jQuery plugin for tabs."*
-* Sticky-kit - [https://github.com/leafo/sticky-kit](https://github.com/leafo/sticky-kit)  
+* Sticky-kit - [https://github.com/leafo/sticky-kit](https://github.com/leafo/sticky-kit)
   *"For creating smart sticky elements."*
-* Tooltipster - [https://github.com/iamceege/tooltipster](https://github.com/iamceege/tooltipster)  
+* Tooltipster - [https://github.com/iamceege/tooltipster](https://github.com/iamceege/tooltipster)
   *"Flexible, extensible, and modern tooltips."*
-* FitVids - [https://github.com/davatron5000/FitVids.js](https://github.com/davatron5000/FitVids.js)  
+* FitVids - [https://github.com/davatron5000/FitVids.js](https://github.com/davatron5000/FitVids.js)
   *"For fluid width video embeds."*
 
 ### Admin Pages & Help Tabs

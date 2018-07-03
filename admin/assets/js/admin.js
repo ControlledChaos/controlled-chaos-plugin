@@ -7,11 +7,11 @@
  */
 
 /**
- * Tabify the .ccp_tabbed-content wrapper.
+ * Tabify the .backend-tabbed-content wrapper.
  * 
  * @since  1.0.0
  * @access public
  */
-jQuery(document).ready( function ($) {
-	$( '.ccp_tabbed-content' ).tabs();
+jQuery(document).ready( function($) {
+	$( '.backend-tabbed-content' ).tabs();
 });

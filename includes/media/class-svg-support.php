@@ -1,15 +1,15 @@
 <?php
 /**
  * SVG image upload support.
- * 
+ *
  * The funtionality is taken from the SVG Support plugin.
  *
  * @package    Controlled_Chaos_Plugin_Plugin
  * @subpackage Includes\Media
- * 
+ *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
- * 
+ *
  * @link       https://wordpress.org/plugins/svg-support/
  */
 
@@ -79,9 +79,9 @@ class SVG_Support {
 
 	/**
      * Add SVG image upload support to the media library.
-	 * 
+	 *
 	 * The option to add SVG support is in Setting > Media.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @param object $image
@@ -111,7 +111,7 @@ class SVG_Support {
 
 	/**
      * Add SVG image upload support to the media library.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @param object $filetype_ext_data
@@ -133,7 +133,7 @@ class SVG_Support {
 
 	/**
 	 * Begin SVG support upon upload activation.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return void
@@ -150,7 +150,7 @@ class SVG_Support {
 
 	/**
 	 * Adjust the image preview.
-	 * 
+	 *
 	 * Targets SVG image thumbnails in the media library.
 	 *
 	 * @since  1.0.0
@@ -165,7 +165,7 @@ class SVG_Support {
 
 	/**
 	 * Add SVG file types to the accepted library file types.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @param array $mimes Default file types.
@@ -190,7 +190,7 @@ class SVG_Support {
 
 	/**
 	 * Output the SVG image instance after upload.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return mixed
@@ -210,7 +210,7 @@ class SVG_Support {
 
 	/**
 	 * Undocumented function
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @param string $content
@@ -245,7 +245,7 @@ class SVG_Support {
 	 *
 	 * Fixes uploads for these 2 version of WordPress.
 	 * Issue was fixed in 4.7.3 core.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @param string $content
@@ -262,7 +262,7 @@ class SVG_Support {
 			return compact( 'ext', 'type', 'proper_filename' );
 
 	}
-	
+
 }
 
 /**

@@ -4,7 +4,7 @@
  *
  * @package    Controlled_Chaos_Plugin
  * @subpackage Admin
- * 
+ *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Register menus for the admin toolbar.
- * 
+ *
  * @since  1.0.0
  * @access public
  */
@@ -40,7 +40,7 @@ class Admin_Toolbar_Menus {
 
 			// Set variable for new instance.
 			$instance = new self;
-			
+
 		}
 
 		// Return the instance.
@@ -64,7 +64,7 @@ class Admin_Toolbar_Menus {
 		add_action( 'admin_bar_menu', [ $this, 'admin_menu_main' ], 35 );
 		add_action( 'admin_bar_menu', [ $this, 'admin_menu_site' ], 35 );
 		add_action( 'admin_bar_menu', [ $this, 'admin_menu_account' ], 35 );
-		
+
 		// Add the menus to the frontend toolbar.
 		add_action( 'admin_bar_menu', [ $this, 'frontend_menu_main' ], 35 );
 		add_action( 'admin_bar_menu', [ $this, 'frontend_menu_site' ], 35 );
@@ -96,13 +96,13 @@ class Admin_Toolbar_Menus {
 
 	/**
 	 * Menu in the main part of the admin toolbar.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return void
 	 */
 	public function admin_menu_main( $wp_admin_bar ) {
-		
+
 		if ( is_admin() && is_user_logged_in() && ( $locations = get_nav_menu_locations() ) && isset( $locations[ 'ccp_admin_toolbar_main' ] ) ) {
 
 			$menu = wp_get_nav_menu_object( $locations[ 'ccp_admin_toolbar_main' ] );
@@ -154,7 +154,7 @@ class Admin_Toolbar_Menus {
 
 	/**
 	 * Menu under the site name in the admin toolbar.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return void
@@ -213,7 +213,7 @@ class Admin_Toolbar_Menus {
 
 	/**
 	 * Menu under the account name in the admin toolbar.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return void
@@ -272,13 +272,13 @@ class Admin_Toolbar_Menus {
 
 	/**
 	 * Menu in the main part of the frontend toolbar.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return void
 	 */
 	public function frontend_menu_main( $wp_admin_bar ) {
-		
+
 		if ( ! is_admin() && is_user_logged_in() && ( $locations = get_nav_menu_locations() ) && isset( $locations[ 'ccp_frontend_toolbar_main' ] ) ) {
 
 			$menu = wp_get_nav_menu_object( $locations[ 'ccp_frontend_toolbar_main' ] );
@@ -325,13 +325,13 @@ class Admin_Toolbar_Menus {
 				}
 			}
 		}
-		
-		
+
+
 	}
 
 	/**
 	 * Menu under the site name in the frontend toolbar.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return void
@@ -390,7 +390,7 @@ class Admin_Toolbar_Menus {
 
 	/**
 	 * Menu under the account name in the frontend toolbar.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return void

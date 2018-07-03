@@ -7,7 +7,7 @@
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
- * 
+ *
  * @link       https://codex.wordpress.org/Function_Reference/register_post_type
  */
 
@@ -20,7 +20,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Register post types.
- * 
+ *
  * @since  1.0.0
  * @access public
  */
@@ -28,7 +28,7 @@ final class Post_Types_Register {
 
     /**
 	 * Constructor magic method.
-     * 
+     *
      * @since  1.0.0
 	 * @access public
 	 * @return self
@@ -42,7 +42,7 @@ final class Post_Types_Register {
 
     /**
      * Register custom post types.
-     * 
+     *
      * @since  1.0.0
 	 * @access public
 	 * @return void
@@ -51,7 +51,7 @@ final class Post_Types_Register {
 
         /**
          * Post Type: Sample custom post (Custom Posts).
-         * 
+         *
          * Renaming:
          * Search case "Custom Post" and replace with your post type capitalized name.
          * Search case "custom post" and replace with your post type lowercase name.
@@ -109,18 +109,18 @@ final class Post_Types_Register {
             'query_var'           => 'ccp_post_type',
             'menu_position'       => 5,
             'menu_icon'           => 'dashicons-lightbulb',
-            'supports'            => [ 
-                'title', 
-                'editor', 
-                'thumbnail', 
-                'excerpt', 
-                'trackbacks', 
-                'custom-fields', 
-                'comments', 
-                'revisions', 
-                'author', 
-                'page-attributes', 
-                'post-formats' 
+            'supports'            => [
+                'title',
+                'editor',
+                'thumbnail',
+                'excerpt',
+                'trackbacks',
+                'custom-fields',
+                'comments',
+                'revisions',
+                'author',
+                'page-attributes',
+                'post-formats'
             ],
             'taxonomies'          => [
                 'category',
@@ -133,7 +133,7 @@ final class Post_Types_Register {
             'ccp_post_type',
             $args
         );
-        
+
     }
 
 }

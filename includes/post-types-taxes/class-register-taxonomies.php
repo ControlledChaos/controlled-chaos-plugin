@@ -7,7 +7,7 @@
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
- * 
+ *
  * @link       https://codex.wordpress.org/Function_Reference/register_taxonomy
  */
 
@@ -20,7 +20,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Register taxonomies.
- * 
+ *
  * @since  1.0.0
  * @access public
  */
@@ -28,7 +28,7 @@ final class Taxonomies_Register {
 
     /**
 	 * Constructor magic method.
-     * 
+     *
      * @since  1.0.0
 	 * @access public
 	 * @return self
@@ -42,7 +42,7 @@ final class Taxonomies_Register {
 
     /**
      * Register custom taxonomies.
-     * 
+     *
      * @since  1.0.0
 	 * @access public
 	 * @return void
@@ -51,7 +51,7 @@ final class Taxonomies_Register {
 
         /**
          * Taxonomy: Sample taxonomy (Taxonomy).
-         * 
+         *
          * Renaming:
          * Search case "Taxonomy" and replace with your post type singular name.
          * Search case "Taxonomies" and replace with your post type plural name.
@@ -109,7 +109,7 @@ final class Taxonomies_Register {
             ],
             $args
         );
-        
+
     }
 
 }

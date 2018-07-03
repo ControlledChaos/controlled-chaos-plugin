@@ -4,7 +4,7 @@
  *
  * @package    Controlled_Chaos_Plugin
  * @subpackage Admin
- * 
+ *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
@@ -40,7 +40,7 @@ class Settings_Fields_Scripts {
 
 			// Set variable for new instance.
 			$instance = new self;
-			
+
 		}
 
 		// Return the instance.
@@ -59,7 +59,7 @@ class Settings_Fields_Scripts {
 
 		// Register settings.
 		add_action( 'admin_init', [ $this, 'settings' ] );
-		
+
 		// Include jQuery Migrate.
 		$migrate = get_option( 'ccp_jquery_migrate' );
 		if ( ! $migrate ) {
@@ -70,7 +70,7 @@ class Settings_Fields_Scripts {
 
 	/**
 	 * Register settings via the WordPress Settings API.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return void
@@ -121,7 +121,7 @@ class Settings_Fields_Scripts {
 			'ccp-scripts-general',
 			'ccp_remove_emoji_script'
 		);
-		
+
 		// Remove WordPress version appended to script links.
 		add_settings_field( 'ccp_remove_script_version', __( 'Script Versions', 'controlled-chaos-plugin' ), [ $this, 'remove_script_version_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Remove WordPress version from script and stylesheet links in <head>', 'controlled-chaos-plugin' ) ] );
 
@@ -174,12 +174,12 @@ class Settings_Fields_Scripts {
 			'ccp-scripts-vendor',
 			'ccp_enqueue_tooltipster'
 		);
-	
+
 		// Site Settings section.
 		if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
 
 			add_settings_section( 'ccp-registered-fields-activate', __( 'Registered Fields Activation', 'controlled-chaos-plugin' ), [ $this, 'registered_fields_activate' ], 'ccp-registered-fields-activate' );
-			
+
 			add_settings_field( 'ccp_acf_activate_settings_page', __( 'Site Settings Page', 'controlled-chaos-plugin' ), [ $this, 'registered_fields_page_callback' ], 'ccp-registered-fields-activate', 'ccp-registered-fields-activate', [ __( 'Deactive the field group for the "Site Settings" options page.', 'controlled-chaos-plugin' ) ] );
 
 			register_setting(
@@ -193,7 +193,7 @@ class Settings_Fields_Scripts {
 
 	/**
 	 * General section callback.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return string
@@ -208,7 +208,7 @@ class Settings_Fields_Scripts {
 
 	/**
 	 * Inline jQuery.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return string
@@ -218,7 +218,7 @@ class Settings_Fields_Scripts {
 		$option = get_option( 'ccp_inline_jquery' );
 
 		$html = '<p><input type="checkbox" id="ccp_inline_jquery" name="ccp_inline_jquery" value="1" ' . checked( 1, $option, false ) . '/>';
-		
+
 		$html .= '<label for="ccp_inline_jquery"> '  . $args[0] . '</label></p>';
 
 		echo $html;
@@ -227,7 +227,7 @@ class Settings_Fields_Scripts {
 
 	/**
 	 * Include jQuery Migrate.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return string
@@ -237,7 +237,7 @@ class Settings_Fields_Scripts {
 		$option = get_option( 'ccp_jquery_migrate' );
 
 		$html = '<p><input type="checkbox" id="ccp_jquery_migrate" name="ccp_jquery_migrate" value="1" ' . checked( 1, $option, false ) . '/>';
-		
+
 		$html .= '<label for="ccp_jquery_migrate"> '  . $args[0] . '</label><br />';
 
 		$html .= '<small><em>Some outdated plugins and themes may be dependent on an old version of jQuery</em></small></p>';
@@ -248,7 +248,7 @@ class Settings_Fields_Scripts {
 
 	/**
 	 * Inline scripts.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return string
@@ -258,7 +258,7 @@ class Settings_Fields_Scripts {
 		$option = get_option( 'ccp_inline_scripts' );
 
 		$html = '<p><input type="checkbox" id="ccp_inline_scripts" name="ccp_inline_scripts" value="1" ' . checked( 1, $option, false ) . '/>';
-		
+
 		$html .= '<label for="ccp_inline_scripts"> '  . $args[0] . '</label></p>';
 
 		echo $html;
@@ -267,7 +267,7 @@ class Settings_Fields_Scripts {
 
 	/**
 	 * Inline styles.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return string
@@ -277,7 +277,7 @@ class Settings_Fields_Scripts {
 		$option = get_option( 'ccp_inline_styles' );
 
 		$html = '<p><input type="checkbox" id="ccp_inline_styles" name="ccp_inline_styles" value="1" ' . checked( 1, $option, false ) . '/>';
-		
+
 		$html .= '<label for="ccp_inline_styles"> '  . $args[0] . '</label></p>';
 
 		echo $html;
@@ -286,7 +286,7 @@ class Settings_Fields_Scripts {
 
 	/**
 	 * Remove emoji script.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return string
@@ -296,7 +296,7 @@ class Settings_Fields_Scripts {
 		$option = get_option( 'ccp_remove_emoji_script' );
 
 		$html = '<p><input type="checkbox" id="ccp_remove_emoji_script" name="ccp_remove_emoji_script" value="1" ' . checked( 1, $option, false ) . '/>';
-		
+
 		$html .= '<label for="ccp_remove_emoji_script"> '  . $args[0] . '</label><br />';
 
 		$html .= '<small><em>Emojis will still work in modern browsers</em></small></p>';
@@ -307,7 +307,7 @@ class Settings_Fields_Scripts {
 
 	/**
 	 * Script options and enqueue settings.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return string
@@ -317,7 +317,7 @@ class Settings_Fields_Scripts {
 		$option = get_option( 'ccp_remove_script_version' );
 
 		$html = '<p><input type="checkbox" id="ccp_remove_script_version" name="ccp_remove_script_version" value="1" ' . checked( 1, $option, false ) . '/>';
-		
+
 		$html .= '<label for="ccp_remove_script_version"> '  . $args[0] . '</label></p>';
 
 		echo $html;
@@ -326,7 +326,7 @@ class Settings_Fields_Scripts {
 
 	/**
 	 * Minify HTML source code.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return string
@@ -336,7 +336,7 @@ class Settings_Fields_Scripts {
 		$option = get_option( 'ccp_html_minify' );
 
 		$html = '<p><input type="checkbox" id="ccp_html_minify" name="ccp_html_minify" value="1" ' . checked( 1, $option, false ) . '/>';
-		
+
 		$html .= '<label for="ccp_html_minify"> '  . $args[0] . '</label></p>';
 
 		echo $html;
@@ -345,7 +345,7 @@ class Settings_Fields_Scripts {
 
 	/**
 	 * Vendor section callback.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return string
@@ -360,7 +360,7 @@ class Settings_Fields_Scripts {
 
 	/**
 	 * Use Slick.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return string
@@ -370,7 +370,7 @@ class Settings_Fields_Scripts {
 		$option = get_option( 'ccp_enqueue_slick' );
 
 		$html = '<p><input type="checkbox" id="ccp_enqueue_slick" name="ccp_enqueue_slick" value="1" ' . checked( 1, $option, false ) . '/>';
-		
+
 		$html .= '<label for="ccp_enqueue_slick"> '  . $args[0] . '</label>';
 
 		echo $html;
@@ -379,7 +379,7 @@ class Settings_Fields_Scripts {
 
 	/**
 	 * Use Tabslet.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return string
@@ -389,7 +389,7 @@ class Settings_Fields_Scripts {
 		$option = get_option( 'ccp_enqueue_tabslet' );
 
 		$html = '<p><input type="checkbox" id="ccp_enqueue_tabslet" name="ccp_enqueue_tabslet" value="1" ' . checked( 1, $option, false ) . '/>';
-		
+
 		$html .= '<label for="ccp_enqueue_tabslet"> '  . $args[0] . '</label>';
 
 		echo $html;
@@ -398,7 +398,7 @@ class Settings_Fields_Scripts {
 
 	/**
 	 * Use Sticky-kit.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return string
@@ -408,7 +408,7 @@ class Settings_Fields_Scripts {
 		$option = get_option( 'ccp_enqueue_stickykit' );
 
 		$html = '<p><input type="checkbox" id="ccp_enqueue_stickykit" name="ccp_enqueue_stickykit" value="1" ' . checked( 1, $option, false ) . '/>';
-		
+
 		$html .= '<label for="ccp_enqueue_stickykit"> '  . $args[0] . '</label>';
 
 		echo $html;
@@ -417,7 +417,7 @@ class Settings_Fields_Scripts {
 
 	/**
 	 * Use Tooltipster.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return string
@@ -427,7 +427,7 @@ class Settings_Fields_Scripts {
 		$option = get_option( 'ccp_enqueue_tooltipster' );
 
 		$html = '<p><input type="checkbox" id="ccp_enqueue_tooltipster" name="ccp_enqueue_tooltipster" value="1" ' . checked( 1, $option, false ) . '/>';
-		
+
 		$html .= '<label for="ccp_enqueue_tooltipster"> '  . $args[0] . '</label>';
 
 		echo $html;
@@ -436,7 +436,7 @@ class Settings_Fields_Scripts {
 
 	/**
 	 * Site Settings section.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return string
@@ -453,21 +453,21 @@ class Settings_Fields_Scripts {
 
 	/**
 	 * Site Settings section callback.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return string
 	 */
 	public function registered_fields_page_callback( $args ) {
-		
+
 		if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
 
 			$html = '<p><input type="checkbox" id="ccp_acf_activate_settings_page" name="ccp_acf_activate_settings_page" value="1" ' . checked( 1, get_option( 'ccp_acf_activate_settings_page' ), false ) . '/>';
-			
+
 			$html .= '<label for="ccp_acf_activate_settings_page"> '  . $args[0] . '</label></p>';
-			
+
 			echo $html;
-			
+
 		}
 
 	}
@@ -480,7 +480,7 @@ class Settings_Fields_Scripts {
 	 * @return void
 	 */
     public function include_jquery_migrate( $scripts ) {
-		
+
 		if ( ! empty( $scripts->registered['jquery'] ) ) {
 
 			$scripts->registered['jquery']->deps = array_diff( $scripts->registered['jquery']->deps, [ 'jquery-migrate' ] );

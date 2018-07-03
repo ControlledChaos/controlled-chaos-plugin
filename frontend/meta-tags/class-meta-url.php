@@ -1,7 +1,7 @@
 <?php
 /**
  * URL meta tag.
- * 
+ *
  * Conditionally gets the URL of the current page.
  *
  * @package    Controlled_Chaos_Plugin_Plugin
@@ -20,7 +20,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * URL meta tag.
- * 
+ *
  * @since  1.0.0
  * @access public
  */
@@ -42,7 +42,7 @@ class Meta_URL {
 
 			// Set variable for new instance.
 			$instance = new self;
-			
+
 		}
 
 		// Return the instance.
@@ -52,7 +52,7 @@ class Meta_URL {
 
 	/**
 	 * Constructor magic method.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return self
@@ -70,10 +70,10 @@ class Meta_URL {
 	/**
 	 * Get the page number of paged URLs and combine with
 	 * the "page" segment of the URL.
-	 * 
+	 *
 	 * Using the `template_redirect` hook to avoid errors
 	 * thrown for trying to get objects before the query.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return mixed Returns the ID integer of queried objects.
@@ -97,7 +97,7 @@ class Meta_URL {
 
 	/**
 	 * Conditional content for the URL meta tag.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return string Returns the appropriate URL.
@@ -126,35 +126,35 @@ class Meta_URL {
 		// If in a category archive and on the first page.
 		} elseif ( is_category() ) {
 			$url = esc_url( get_category_link( $id ) );
-		
+
 		// If in a tag archive and not on the first page.
 		} elseif ( is_tag() && is_paged() ) {
 			$url = esc_url( get_tag_link( $id ) . $this->page() );
-		
+
 		// If in a tag archive and on the first page.
 		} elseif ( is_tag() ) {
 			$url = esc_url( get_tag_link( $id ) );
-		
+
 		// If in a taxonomy archive and not on the first page.
 		} elseif ( is_tax() && is_paged() ) {
 			$url = esc_url( get_term_link( $id ) . $this->page() );
-		
+
 		// If in a taxonomy archive and on the first page.
 		} elseif ( is_tax() ) {
 			$url = esc_url( get_term_link( $id ) );
-		
+
 		// If in an author archive and not on the first page.
 		} elseif ( is_author() && is_paged() ) {
 			$url = esc_url( get_author_posts_url( $id ) . $this->page() );
-		
+
 		// If in an author archive and on the first page.
 		} elseif ( is_author() ) {
 			$url = esc_url( get_author_posts_url( $id ) );
-		
+
 		// If in a day archive and not on the first page.
 		} elseif ( is_day() && is_paged() ) {
 			$url = esc_url( get_day_link( get_the_time( 'Y' ), get_the_time( 'm' ), get_the_time( 'd' ) ) . $this->page() );
-		
+
 		// If in a day archive and on the first page.
 		} elseif ( is_day() ) {
 			$url = esc_url( get_day_link( get_the_time( 'Y' ), get_the_time( 'm' ), get_the_time( 'd' ) ) );
@@ -162,23 +162,23 @@ class Meta_URL {
 		// If in a month archive and not on the first page.
 		} elseif ( is_month() && is_paged() ) {
 			$url = esc_url( get_day_link( get_the_time( 'Y' ), get_the_time( 'm' ) ) . $this->page() );
-		
+
 		// If in a month archive and on the first page.
 		} elseif ( is_month() ) {
 			$url = esc_url( get_month_link( get_the_time( 'Y' ), get_the_time( 'm' ) ) );
-		
+
 		// If in a year archive and not on the first page.
 		} elseif ( is_year() && is_paged() ) {
 			$url = esc_url( get_day_link( get_the_time( 'Y' ) ) . $this->page() );
-		
+
 		// If in a year archive and on the first page.
 		} elseif ( is_year() ) {
 			$url = esc_url( get_year_link( get_the_time( 'Y' ) ) );
-		
+
 		// For search pages, get the permalink for current terms of the query.
 		} elseif ( is_search() ) {
 			$url = esc_url( get_search_link() );
-		
+
 		// For everything else (singular) get the permalink.
 		} else {
 			$url = esc_url( get_the_permalink() );

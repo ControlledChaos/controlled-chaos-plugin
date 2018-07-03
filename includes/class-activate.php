@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin activation class.
- * 
+ *
  * This file must not be namespaced.
  *
  * @package    Controlled_Chaos_Plugin_Plugin

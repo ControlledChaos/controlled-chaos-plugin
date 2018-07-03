@@ -1,14 +1,14 @@
 <?php
 /**
  * Various tools included.
- * 
+ *
  * @package    Controlled_Chaos_Plugin_Plugin
  * @subpackage Includes\Tools
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
- * 
- * @todo       Apply a filter to return true or false for 
+ *
+ * @todo       Apply a filter to return true or false for
  *             hiding the Development Tools admin page.
  */
 

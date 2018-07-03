@@ -1,7 +1,7 @@
 <?php
 /**
  * Functions for post types and taxonomies.
- * 
+ *
  * @package    Controlled_Chaos_Plugin_Plugin
  * @subpackage Includes\Post_Types_Taxes
  *
@@ -40,7 +40,7 @@ class Post_Type_Tax_Functions {
 
 			// Set variable for new instance.
 			$instance = new self;
-			
+
 		}
 
 		// Return the instance.
@@ -56,7 +56,7 @@ class Post_Type_Tax_Functions {
 	 * @return self
 	 */
 	public function __construct() {
-	
+
 		// Replace "Post" in the update messages.
 		add_filter( 'post_updated_messages', [ $this, 'update_messages' ], 99 );
 
@@ -70,7 +70,7 @@ class Post_Type_Tax_Functions {
 	 *
 	 * Example: where the edit screen reads "Post updated" and "View post"
 	 * it would read "Project updated" and "View project" for post type Project.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @global object post
@@ -88,59 +88,59 @@ class Post_Type_Tax_Functions {
 				'_builtin' => false
 			],
 			'objects' );
-		
+
 		foreach ( $post_types as $post_type => $post_object ) {
 
 			$messages[ $post_type ] = [
 				0  => '', /* Unused. Messages start at index 1 */
 
-				1  => sprintf( 
-					__( '%1s updated. <a href="%2s">View %3s</a>', 'controlled-chaos-plugin' ), $post_object->labels->singular_name, 
-					esc_url( get_permalink( $post_ID ) ), 
-					$post_object->labels->singular_name 
+				1  => sprintf(
+					__( '%1s updated. <a href="%2s">View %3s</a>', 'controlled-chaos-plugin' ), $post_object->labels->singular_name,
+					esc_url( get_permalink( $post_ID ) ),
+					$post_object->labels->singular_name
 				),
 				2  => __( 'Custom field updated.', 'controlled-chaos-plugin' ),
 				3  => __( 'Custom field deleted.', 'controlled-chaos-plugin' ),
-				4  => sprintf( 
-					__( '1%s updated.', 'controlled-chaos-plugin' ), 
-					$post_object->labels->singular_name 
-				),				
-				5  => isset( $_GET['revision']) ? sprintf( 
-					__( '%1s restored to revision from %2s', 'controlled-chaos-plugin' ), 
-					$post_object->labels->singular_name, 
-					wp_post_revision_title( (int) $_GET['revision'], false ) 
+				4  => sprintf(
+					__( '1%s updated.', 'controlled-chaos-plugin' ),
+					$post_object->labels->singular_name
+				),
+				5  => isset( $_GET['revision']) ? sprintf(
+					__( '%1s restored to revision from %2s', 'controlled-chaos-plugin' ),
+					$post_object->labels->singular_name,
+					wp_post_revision_title( (int) $_GET['revision'], false )
 					) : false,
-				6  => sprintf( 
-					__( '%1s published. <a href="%2s">View %3s</a>', 'controlled-chaos-plugin' ), 
-					$post_object->labels->singular_name, 
-					esc_url( get_permalink( $post_ID ) ), 
-					$post_object->labels->singular_name 
+				6  => sprintf(
+					__( '%1s published. <a href="%2s">View %3s</a>', 'controlled-chaos-plugin' ),
+					$post_object->labels->singular_name,
+					esc_url( get_permalink( $post_ID ) ),
+					$post_object->labels->singular_name
 				),
-				7  => sprintf( 
-					__( '%1s saved.', 'controlled-chaos-plugin' ), 
-					$post_object->labels->singular_name 
-				),				
-				8  => sprintf( 
-					__( '%1s submitted. <a target="_blank" href="%2s">Preview %3s</a>', 'controlled-chaos-plugin' ), 
-					$post_object->labels->singular_name, 
-					esc_url( add_query_arg( 'preview', 'true', 
-					get_permalink( $post_ID ) ) ), 
-					$post_object->labels->singular_name 
+				7  => sprintf(
+					__( '%1s saved.', 'controlled-chaos-plugin' ),
+					$post_object->labels->singular_name
 				),
-				9  => sprintf( 
-					__( '%1s scheduled for: <strong>%2s</strong>. <a target="_blank" href="%3s">Preview %4s</a>', 'controlled-chaos-plugin'  ), 
-					$post_object->labels->singular_name, 
-					date_i18n( __( 'M j, Y @ G:i', 'controlled-chaos-plugin' ), 
-					strtotime( $post->post_date ) ), 
-					esc_url( get_permalink( $post_ID ) ), 
-					$post_object->labels->singular_name 
+				8  => sprintf(
+					__( '%1s submitted. <a target="_blank" href="%2s">Preview %3s</a>', 'controlled-chaos-plugin' ),
+					$post_object->labels->singular_name,
+					esc_url( add_query_arg( 'preview', 'true',
+					get_permalink( $post_ID ) ) ),
+					$post_object->labels->singular_name
 				),
-				10 => sprintf( 
-					__( '%1s draft updated. <a target="_blank" href="%2s">Preview %3s</a>', 'controlled-chaos-plugin'  ), 
-					$post_object->labels->singular_name, 
-					esc_url( add_query_arg( 'preview', 'true', 
-					get_permalink( $post_ID ) ) ), 
-					$post_object->labels->singular_name 
+				9  => sprintf(
+					__( '%1s scheduled for: <strong>%2s</strong>. <a target="_blank" href="%3s">Preview %4s</a>', 'controlled-chaos-plugin'  ),
+					$post_object->labels->singular_name,
+					date_i18n( __( 'M j, Y @ G:i', 'controlled-chaos-plugin' ),
+					strtotime( $post->post_date ) ),
+					esc_url( get_permalink( $post_ID ) ),
+					$post_object->labels->singular_name
+				),
+				10 => sprintf(
+					__( '%1s draft updated. <a target="_blank" href="%2s">Preview %3s</a>', 'controlled-chaos-plugin'  ),
+					$post_object->labels->singular_name,
+					esc_url( add_query_arg( 'preview', 'true',
+					get_permalink( $post_ID ) ) ),
+					$post_object->labels->singular_name
 				),
 			];
 
@@ -151,24 +151,24 @@ class Post_Type_Tax_Functions {
 
 	/**
 	 * Replace post type title placeholders in classic editor.
-	 * 
+	 *
 	 * Has no affect on the WordPress block editor.
-	 * 
-	 * No text choices have been made. This is included as a 
+	 *
+	 * No text choices have been made. This is included as a
 	 * head start in development of a site-specific plugin.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @param string $title
 	 * @return string Returns conditional text.
-	 * 
+	 *
 	 * @todo Add a check for the block or classic editor?
 	 */
 	public function title_placeholders( $title ) {
 
 		// Get the current post edit screen.
 		$screen = get_current_screen();
-		
+
 		if ( '' == $screen->post_type ) {
 			$title = __( '', 'controlled-chaos-plugin' );
 		} elseif ( '' == $screen->post_type ) {

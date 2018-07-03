@@ -4,7 +4,7 @@
  *
  * @package    Controlled_Chaos_Plugin
  * @subpackage Admin\Partials
- * 
+ *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
@@ -15,6 +15,14 @@ namespace CC_Plugin\Admin\Partials;
 if ( ! defined( 'WPINC' ) ) {
 	die;
 } ?>
+<h3><?php _e( 'Website settings', 'controlled-chaos-plugin' ); ?></h3>
+<?php echo sprintf(
+	'<p>%1s <a href="%2s">%3s</a> %4s</p>',
+	__( 'The plugin is equipped with', 'controlled-chaos-plugin' ),
+	esc_url( admin_url( '?page=' . CCP_ADMIN_SLUG . '-settings' ) ),
+	__( 'an admin page', 'controlled-chaos-plugin' ),
+	__( 'for customizing the user interface of WordPress, as well as other useful features.', 'controlled-chaos-plugin' )
+ ); ?>
 <h3><?php _e( 'Clean Up the Admin', 'controlled-chaos-plugin' ); ?></h3>
 <ul>
 <li><?php _e( 'Remove dashboard widgets: WordPress news, quick press', 'controlled-chaos-plugin' ); ?></li>

@@ -1,15 +1,15 @@
 <?php
 /**
  * Live theme test.
- * 
+ *
  * @package    Controlled_Chaos_Plugin_Plugin
  * @subpackage Includes\Tools
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
- * 
+ *
  * @todo       Make this file object oriented.
- * @todo       Apply a filter to return true or false for 
+ * @todo       Apply a filter to return true or false for
  *             hiding the Development Tools admin page.
  */
 
@@ -26,15 +26,15 @@ function themedrive_is_enabled() {
 
 // Admin Panel
 function themedrive_add_pages() {
-    add_theme_page( 
-        __( 'Live Theme Test', 'controlled-chaos-plugin' ), 
-        __( 'Theme Test', 'controlled-chaos-plugin' ), 
-        'edit_theme_options', 
-        CCP_ADMIN_SLUG . '-theme-test', 
+    add_theme_page(
+        __( 'Live Theme Test', 'controlled-chaos-plugin' ),
+        __( 'Theme Test', 'controlled-chaos-plugin' ),
+        'edit_theme_options',
+        CCP_ADMIN_SLUG . '-theme-test',
         'themedrive_options_page' );
 }
 add_action( 'admin_menu', 'themedrive_add_pages' );
-  
+
 function themedrive_get_theme() {
 
     $gettheme = get_option( 'td_themes' );
@@ -46,7 +46,7 @@ function themedrive_get_theme() {
     }
 
 }
-  
+
 function themedrive_get_level() {
 
     $getlevel = get_option( 'td_level' );
@@ -57,7 +57,7 @@ function themedrive_get_level() {
         return 'level_10';
     }
 }
-  
+
 function themedrive_determine_theme() {
 
     if ( ! isset($_GET['theme'] ) ) {
@@ -140,7 +140,7 @@ function themedrive_get_stylesheet( $stylesheet ) {
     return $theme['Stylesheet'];
 
 }
-  
+
 function themedrive_switcher() {
 
     $themes = wp_get_themes();
@@ -174,28 +174,28 @@ function themedrive_switcher() {
         $select .= '</select>' . "\n\n";
 
     }
-    //  echo $tp; 
+    //  echo $tp;
 
     echo $select;
 
     if ( themedrive_is_enabled() ) {
         $get_theme  = wp_get_theme();
         $theme_name = $get_theme->get( 'Name' );
-        
-        echo sprintf( 
-            '<p><strong><span style="color: #199e26"><span class="dashicons dashicons-visibility" style="vertical-align: text-top"></span> %1s %2s</span></strong></p>', 
-            __( 'Live Theme Test is enabled with', 'controlled-chaos-plugin' ), 
-            $theme_name 
+
+        echo sprintf(
+            '<p><strong><span style="color: #199e26"><span class="dashicons dashicons-visibility" style="vertical-align: text-top"></span> %1s %2s</span></strong></p>',
+            __( 'Live Theme Test is enabled with', 'controlled-chaos-plugin' ),
+            $theme_name
         );
     } else {
         $get_theme  = wp_get_theme();
         $theme_name = $get_theme->get( 'Name' );
 
-        echo sprintf( 
-            '<p><strong><span style="color: #d00"><span class="dashicons dashicons-hidden" style="vertical-align: text-top"></span> %1s</span>. %2s %3s</strong></p>', 
-            __( 'Live Theme Test is disabled', 'controlled-chaos-plugin' ), 
-            __( 'The active theme is', 'controlled-chaos-plugin' ), 
-            $theme_name 
+        echo sprintf(
+            '<p><strong><span style="color: #d00"><span class="dashicons dashicons-hidden" style="vertical-align: text-top"></span> %1s</span>. %2s %3s</strong></p>',
+            __( 'Live Theme Test is disabled', 'controlled-chaos-plugin' ),
+            __( 'The active theme is', 'controlled-chaos-plugin' ),
+            $theme_name
         );
     }
 
@@ -212,7 +212,7 @@ function TTD_filters () {
 
 // Options Page
 function themedrive_options_page() {
-        
+
     global $themedrive_localversion;
     global $wp_themedrive_plugin_url;
 
@@ -230,17 +230,17 @@ function themedrive_options_page() {
 
         $access_level = (int)$_POST['access_level'];
         update_option( 'td_level', $access_level );
-        
+
         $get_theme      = wp_get_theme();
         $get_theme_name = $get_theme->get( 'Name' );
 
-        $msg_status = sprintf( 
-            '%1s %2s %3s. <a href="%4s" target="_blank">%5s</a>', 
-            __( 'Live theme test is enabled with', 'controlled-chaos-plugin' ), 
-            $get_theme_name, 
-            __( 'theme', 'controlled-chaos-plugin' ), 
-            esc_url( site_url() ), 
-            __( 'View Site', 'controlled-chaos-plugin' ) 
+        $msg_status = sprintf(
+            '%1s %2s %3s. <a href="%4s" target="_blank">%5s</a>',
+            __( 'Live theme test is enabled with', 'controlled-chaos-plugin' ),
+            $get_theme_name,
+            __( 'theme', 'controlled-chaos-plugin' ),
+            esc_url( site_url() ),
+            __( 'View Site', 'controlled-chaos-plugin' )
         );
 
         // Show message
@@ -267,18 +267,18 @@ function themedrive_options_page() {
 
     $imgpath = $wp_themedrive_plugin_url . 'i';
 
-?>  
+?>
 <div class="wrap" >
     <h2><?php _e( 'Live Theme Test', 'controlled-chaos-plugin' ); ?></h2>
     <?php $action_url; ?>
-    <?php if ( ! isset( $action_url) ) 
+    <?php if ( ! isset( $action_url) )
         $action_url = '';
     ?>
     <form name="form_apu" method="post" action="<?php echo $action_url ?>">
     <?php wp_nonce_field( 'theme-drive' ); ?>
         <h2><?php _e( 'Instructions', 'controlled-chaos-plugin' ); ?></h2>
         <ol>
-            <li><?php _e( 'Select a theme to preview live on the site from the select box below (lists all installed themes).', 'controlled-chaos-plugin' ); ?></li> 	
+            <li><?php _e( 'Select a theme to preview live on the site from the select box below (lists all installed themes).', 'controlled-chaos-plugin' ); ?></li>
             <li><?php _e( 'Enable theme test', 'controlled-chaos-plugin' ); ?></li>
             <li><?php _e( 'Once the theme is ready to go live, disable theme test and activate the theme on the Themes page.', 'controlled-chaos-plugin' ); ?></li>
         </ol>

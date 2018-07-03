@@ -4,9 +4,9 @@
  *
  * Adds a button to the admin bar that allow super admins
  * to switch the text direction of the site.
- * 
+ *
  * This file must not be namespaced.
- * 
+ *
  * @package    Controlled_Chaos_Plugin_Plugin
  * @subpackage Includes
  *
@@ -41,7 +41,7 @@ class Controlled_Chaos_RTL_Test {
 
 			// Set variable for new instance.
 			$instance = new self;
-			
+
 		}
 
 		// Return the instance.
@@ -65,7 +65,7 @@ class Controlled_Chaos_RTL_Test {
 
 	/**
 	 * Add a switcher button to the admin toolbar.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @global object wp_admin_bar Most likely instance of WP_Admin_Bar but this is filterable.
@@ -100,7 +100,7 @@ class Controlled_Chaos_RTL_Test {
 
 	/**
 	 * Save the currently chosen direction on a per-user basis.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @global WP_Locale $wp_locale Locale object.

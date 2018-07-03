@@ -4,7 +4,7 @@
  *
  * @package    Controlled_Chaos_Plugin
  * @subpackage Admin
- * 
+ *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
@@ -40,7 +40,7 @@ class Admin_Menu {
 
 			// Set variable for new instance.
             $instance = new self;
-            
+
 		}
 
 		// Return the instance.
@@ -59,7 +59,7 @@ class Admin_Menu {
 
         // Remove menu items.
         add_action( 'admin_menu', [ $this, 'hide' ] );
-        
+
         // Hide ACF field groups UI.
         if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
 
@@ -73,7 +73,7 @@ class Admin_Menu {
         /**
          * Show/Hide Links Manager link.
          */
-        
+
         // Get links option.
         if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
             $links = get_field( 'ccp_links_manager', 'option' );
@@ -102,11 +102,11 @@ class Admin_Menu {
 
     /**
      * Remove menu items.
-     * 
+     *
      * Check for the Advanced Custom Fields PRO plugin, or the Options Page
 	 * addon for free ACF. Use ACF options from the ACF 'Site Settings' page,
      * otherwise use the options from the standard 'Site Settings' page.
-     * 
+     *
      * @since  1.0.0
 	 * @access public
 	 * @return void
@@ -179,11 +179,11 @@ class Admin_Menu {
 
     /**
      * Menus and Widgets menu position.
-     * 
+     *
      * Check for the Advanced Custom Fields PRO plugin, or the Options Page
 	 * addon for free ACF. Use ACF options from the ACF 'Site Settings' page,
      * otherwise use the options from the standard 'Site Settings' page.
-     * 
+     *
      * @since  1.0.0
 	 * @access public
      * @global object menu The admin menu array.
@@ -191,7 +191,7 @@ class Admin_Menu {
 	 * @return void
      */
     public function menus_widgets() {
-    
+
         global $menu, $submenu;
 
         // If ACF is active.
@@ -200,10 +200,10 @@ class Admin_Menu {
             // Get the ACF field registered by this plugin.
             $menus_link   = get_field( 'ccp_menus_position', 'option' );
             $widgets_link = get_field( 'ccp_widgets_position', 'option' );
-            
+
             // Remove Menus and Widgets as submenu items of Appearances.
             if ( isset( $submenu['themes.php'] ) ) {
-                
+
                 // Look for menu items under Appearances.
                 foreach ( $submenu['themes.php'] as $key => $item ) {
 
@@ -231,30 +231,30 @@ class Admin_Menu {
 
             // Add a new top-level Menus page.
             if ( 'default' != $menus_link ) {
-                add_menu_page( 
-                    __( 'Menus', 'controlled-chaos-plugin' ), 
-                    __( 'Menus', 'controlled-chaos-plugin' ), 
-                    'delete_others_pages', 
-                    'nav-menus.php', 
-                    '', 
-                    'dashicons-list-view', 
-                    61 
+                add_menu_page(
+                    __( 'Menus', 'controlled-chaos-plugin' ),
+                    __( 'Menus', 'controlled-chaos-plugin' ),
+                    'delete_others_pages',
+                    'nav-menus.php',
+                    '',
+                    'dashicons-list-view',
+                    61
                 );
             }
 
             // Add a new top-level Widgets page.
             if ( 'default' != $widgets_link ) {
-                add_menu_page( 
-                    __( 'Widgets', 'controlled-chaos-plugin' ), 
-                    __( 'Widgets', 'controlled-chaos-plugin' ), 
-                    'delete_others_pages', 
-                    'widgets.php', 
-                    '', 
-                    'dashicons-welcome-widgets-menus', 
-                    62 
+                add_menu_page(
+                    __( 'Widgets', 'controlled-chaos-plugin' ),
+                    __( 'Widgets', 'controlled-chaos-plugin' ),
+                    'delete_others_pages',
+                    'widgets.php',
+                    '',
+                    'dashicons-welcome-widgets-menus',
+                    62
                 );
             }
-        
+
         // If ACF is not active.
         } else {
 
@@ -264,7 +264,7 @@ class Admin_Menu {
 
             // Remove Menus and Widgets as submenu items of Appearances.
             if ( isset( $submenu['themes.php'] ) ) {
-                
+
                 // Look for menu items under Appearances.
                 foreach ( $submenu['themes.php'] as $key => $item ) {
 
@@ -292,40 +292,40 @@ class Admin_Menu {
 
             // Add a new top-level Menus page.
             if ( $menus_link ) {
-                add_menu_page( 
-                    __( 'Menus', 'controlled-chaos-plugin' ), 
-                    __( 'Menus', 'controlled-chaos-plugin' ), 
-                    'delete_others_pages', 
-                    'nav-menus.php', 
-                    '', 
-                    'dashicons-list-view', 
-                    61 
+                add_menu_page(
+                    __( 'Menus', 'controlled-chaos-plugin' ),
+                    __( 'Menus', 'controlled-chaos-plugin' ),
+                    'delete_others_pages',
+                    'nav-menus.php',
+                    '',
+                    'dashicons-list-view',
+                    61
                 );
             }
 
             // Add a new top-level Widgets page.
             if ( $widgets_link ) {
-                add_menu_page( 
-                    __( 'Widgets', 'controlled-chaos-plugin' ), 
-                    __( 'Widgets', 'controlled-chaos-plugin' ), 
-                    'delete_others_pages', 
-                    'widgets.php', 
-                    '', 
-                    'dashicons-welcome-widgets-menus', 
-                    62 
+                add_menu_page(
+                    __( 'Widgets', 'controlled-chaos-plugin' ),
+                    __( 'Widgets', 'controlled-chaos-plugin' ),
+                    'delete_others_pages',
+                    'widgets.php',
+                    '',
+                    'dashicons-welcome-widgets-menus',
+                    62
                 );
             }
 
         }
     }
-    
+
     /**
      * Set the new Menus and Widgets parent file URL.
-     * 
+     *
      * Check for the Advanced Custom Fields PRO plugin, or the Options Page
 	 * addon for free ACF. Use ACF options from the ACF 'Site Settings' page,
      * otherwise use the options from the standard 'Site Settings' page.
-     * 
+     *
      * @since  1.0.0
 	 * @access public
      * @param  object $parent_file Looks for a parent of the current screen.
@@ -343,7 +343,7 @@ class Admin_Menu {
             // Get the ACF field registered by this plugin.
             $menus_link   = get_field( 'ccp_menus_position', 'option' );
             $widgets_link = get_field( 'ccp_widgets_position', 'option' );
-            
+
             // Set Menus parent as self.
             if ( $current_screen->base == 'nav-menus' && 'default' != $menus_link ) {
                 $parent_file = 'nav-menus.php';
@@ -356,7 +356,7 @@ class Admin_Menu {
 
             // Return the new parent URL.
             return $parent_file;
-        
+
         // If ACF is not active.
         } else {
 
@@ -380,10 +380,10 @@ class Admin_Menu {
         }
 
     }
-    
+
     /**
      * Set the user capability for the new Menus and Widgets pages.
-     * 
+     *
      * @since  1.0.0
 	 * @access public
      * @param  array $caps Current user capabilities.
@@ -396,7 +396,7 @@ class Admin_Menu {
 
         // Get the URL requented by the user.
         $url = $_SERVER['REQUEST_URI'];
-        
+
         // Allow Editors access to the Menus page.
         if ( strpos( $url, 'nav-menus.php' ) !== false && in_array( 'edit_theme_options', $cap ) && in_array( 'editor', $user->roles ) ) {
             $caps['edit_theme_options'] = true;

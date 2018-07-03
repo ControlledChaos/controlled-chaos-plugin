@@ -4,7 +4,7 @@
  *
  * @package    Controlled_Chaos_Plugin
  * @subpackage Admin
- * 
+ *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
@@ -30,7 +30,7 @@ class Settings_Fields_Site {
 	 * @var array
 	 */
 	private $options;
-	
+
 	/**
 	 * Get an instance of the plugin class.
 	 *
@@ -47,7 +47,7 @@ class Settings_Fields_Site {
 
 			// Set variable for new instance.
 			$instance = new self;
-			
+
 		}
 
 		// Return the instance.
@@ -57,7 +57,7 @@ class Settings_Fields_Site {
 
 	/**
 	 * Constructor method.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return self
@@ -73,21 +73,21 @@ class Settings_Fields_Site {
 
 	/**
 	 * Plugin site settings.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return void
-	 * 
+	 *
 	 * @link  https://codex.wordpress.org/Settings_API
 	 */
 	public function settings() {
 
 		/**
 		 * Dashboard settings.
-		 * 
+		 *
 		 * @since 1.0.0
 		 */
-		
+
 		// Dashboard settings section.
 		add_settings_section(
 			'ccp-site-dashboard',
@@ -188,7 +188,7 @@ class Settings_Fields_Site {
 
 		/**
 		 * Admin menu settings.
-		 * 
+		 *
 		 * @since 1.0.0
 		 */
 
@@ -200,21 +200,26 @@ class Settings_Fields_Site {
 			'ccp-site-admin-menu'
 		);
 
-		// Settings page position.
+		// Site Settings page position.
 		add_settings_field(
-			'ccp_settings_position',
-			__( 'Settings Page Position', 'controlled-chaos-plugin' ),
-			[ $this, 'ccp_settings_position_callback' ],
+			'ccp_site_settings_position',
+			__( 'Site Settings Position', 'controlled-chaos-plugin' ),
+			[ $this, 'ccp_site_settings_position_callback' ],
 			'ccp-site-admin-menu',
 			'ccp-site-admin-menu',
 			[ esc_html__( 'Make this settings page a top-level link.', 'controlled-chaos-plugin' ) ]
 		);
 
-		// Settings page link label.
+		register_setting(
+			'ccp-site-admin-menu',
+			'ccp_site_settings_position'
+		);
+
+		// Site Settings page link label.
 		add_settings_field(
-			'ccp_settings_page_link_label',
-			__( 'Settings Page Label', 'controlled-chaos-plugin' ),
-			[ $this, 'ccp_settings_page_link_label_callback' ],
+			'ccp_site_settings_link_label',
+			__( 'Site Settings Label', 'controlled-chaos-plugin' ),
+			[ $this, 'ccp_site_settings_link_label_callback' ],
 			'ccp-site-admin-menu',
 			'ccp-site-admin-menu',
 			[ esc_html__( 'Change the label of the link to this page', 'controlled-chaos-plugin' ) ]
@@ -222,22 +227,67 @@ class Settings_Fields_Site {
 
 		register_setting(
 			'ccp-site-admin-menu',
-			'ccp_settings_page_link_label'
+			'ccp_site_settings_link_label'
 		);
 
-		// Settings page link icon if set to top level.
+		// Site Settings page link icon if set to top level.
 		add_settings_field(
-			'ccp_settings_page_link_icon',
-			__( 'Settings Page Icon', 'controlled-chaos-plugin' ),
-			[ $this, 'ccp_settings_page_link_icon_callback' ],
+			'ccp_site_settings_link_icon',
+			__( 'Site Settings Icon', 'controlled-chaos-plugin' ),
+			[ $this, 'ccp_site_settings_link_icon_callback' ],
 			'ccp-site-admin-menu',
 			'ccp-site-admin-menu',
 			[ esc_html__( 'Enter a Dashicons class for the icon of the link to this page', 'controlled-chaos-plugin' ) ]
 		);
-		
+
 		register_setting(
 			'ccp-site-admin-menu',
-			'ccp_settings_page_link_icon'
+			'ccp_site_settings_link_icon'
+		);
+
+		// Site Plugin page position.
+		add_settings_field(
+			'ccp_site_plugin_position',
+			__( 'Site Plugin Position', 'controlled-chaos-plugin' ),
+			[ $this, 'ccp_site_plugin_position_callback' ],
+			'ccp-site-admin-menu',
+			'ccp-site-admin-menu',
+			[ esc_html__( 'Make the site-specific plugin settings page a top-level link.', 'controlled-chaos-plugin' ) ]
+		);
+
+		register_setting(
+			'ccp-site-admin-menu',
+			'ccp_site_plugin_position'
+		);
+
+		// Site Plugin page link label.
+		add_settings_field(
+			'ccp_site_plugin_link_label',
+			__( 'Site Plugin Label', 'controlled-chaos-plugin' ),
+			[ $this, 'ccp_site_plugin_link_label_callback' ],
+			'ccp-site-admin-menu',
+			'ccp-site-admin-menu',
+			[ esc_html__( 'Change the label of the link to the site-specific plugin page', 'controlled-chaos-plugin' ) ]
+		);
+
+		register_setting(
+			'ccp-site-admin-menu',
+			'ccp_site_plugin_link_label'
+		);
+
+		// Site Plugin page link icon if set to top level.
+		add_settings_field(
+			'ccp_site_plugin_link_icon',
+			__( 'Site Plugin Icon', 'controlled-chaos-plugin' ),
+			[ $this, 'ccp_site_plugin_link_icon_callback' ],
+			'ccp-site-admin-menu',
+			'ccp-site-admin-menu',
+			[ esc_html__( 'Enter a Dashicons class for the icon of the link to the site-specific plugin page', 'controlled-chaos-plugin' ) ]
+		);
+
+		register_setting(
+			'ccp-site-admin-menu',
+			'ccp_site_plugin_link_icon'
 		);
 
 		// Menus link position.
@@ -268,11 +318,6 @@ class Settings_Fields_Site {
 		register_setting(
 			'ccp-site-admin-menu',
 			'ccp_widgets_position'
-		);
-
-		register_setting(
-			'ccp-site-admin-menu',
-			'ccp_settings_position'
 		);
 
 		// Hide Appearance link.
@@ -352,7 +397,7 @@ class Settings_Fields_Site {
 
 		/**
 		 * Admin pages settings.
-		 * 
+		 *
 		 * @since 1.0.0
 		 */
 
@@ -396,7 +441,7 @@ class Settings_Fields_Site {
 
 		/**
 		 * Meta & SEO settings.
-		 * 
+		 *
 		 * @since 1.0.0
 		 */
 
@@ -426,60 +471,122 @@ class Settings_Fields_Site {
 	}
 
 	/**
-	 * Settings page position.
-	 * 
+	 * Site Settings page position.
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
 	 * @return string
 	 */
-	public function ccp_settings_position_callback( $args ) {
+	public function ccp_site_settings_position_callback( $args ) {
 
-		$option = get_option( 'ccp_settings_position' );
+		$option = get_option( 'ccp_site_settings_position' );
 
-		$html = '<p><input type="checkbox" id="ccp_settings_position" name="ccp_settings_position" value="1" ' . checked( 1, $option, false ) . '/>';
-		
-		$html .= '<label for="ccp_settings_position"> '  . $args[0] . '</label></p>';
+		$html = '<p><input type="checkbox" id="ccp_site_settings_position" name="ccp_site_settings_position" value="1" ' . checked( 1, $option, false ) . '/>';
+
+		$html .= '<label for="ccp_site_settings_position"> '  . $args[0] . '</label></p>';
 
 		echo $html;
 
 	}
 
 	/**
-	 * Settings page link label.
-	 * 
+	 * Site Settings page link label.
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
 	 * @return string
 	 */
-	public function ccp_settings_page_link_label_callback( $args ) {
+	public function ccp_site_settings_link_label_callback( $args ) {
 
-		$option = get_option( 'ccp_settings_page_link_label' );
+		$option = get_option( 'ccp_site_settings_link_label' );
 
-		$html = '<p><input type="text" size="50" id="ccp_settings_page_link_label" name="ccp_settings_page_link_label" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( __( 'Site Settings', 'controlled-chaos-plugin' ) ) . '" /><br />';
-		
-		$html .= '<label for="ccp_settings_page_link_label"> ' . $args[0] . '</label></p>';
+		$html = '<p><input type="text" size="50" id="ccp_site_settings_link_label" name="ccp_site_settings_link_label" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( __( 'Site Settings', 'controlled-chaos-plugin' ) ) . '" /><br />';
+
+		$html .= '<label for="ccp_site_settings_link_label"> ' . $args[0] . '</label></p>';
 
 		echo $html;
 
 	}
 
 	/**
-	 * Settings page link icon.
-	 * 
+	 * Site Settings page link icon.
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
 	 * @return string
 	 */
-	public function ccp_settings_page_link_icon_callback( $args ) {
+	public function ccp_site_settings_link_icon_callback( $args ) {
 
-		$option = get_option( 'ccp_settings_page_link_icon' );
+		$option = get_option( 'ccp_site_settings_link_icon' );
 
-		$html = '<p><input type="text" size="50" id="ccp_settings_page_link_icon" name="ccp_settings_page_link_icon" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( __( 'dashicons-admin-settings', 'controlled-chaos-plugin' ) ) . '" /><br />';
-		
-		$html .= '<label for="ccp_settings_page_link_icon"> ' . $args[0] . '</label>';
+		$html = '<p><input type="text" size="50" id="ccp_site_settings_link_icon" name="ccp_site_settings_link_icon" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( __( 'dashicons-admin-settings', 'controlled-chaos-plugin' ) ) . '" /><br />';
+
+		$html .= '<label for="ccp_site_settings_link_icon"> ' . $args[0] . '</label>';
+
+		$html .= '<br /><span class="description">' . esc_html( 'Takes affect in the admin menu only if the page is top level. Always takes affect on the plugin page tab for Site Settings.' ) . '</span></p>';
+
+		echo $html;
+
+	}
+
+	/**
+	 * Site Plugin page position.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @param  array $args Extra arguments passed into the callback function.
+	 * @return string
+	 */
+	public function ccp_site_plugin_position_callback( $args ) {
+
+		$option = get_option( 'ccp_site_plugin_position' );
+
+		$html = '<p><input type="checkbox" id="ccp_site_plugin_position" name="ccp_site_plugin_position" value="1" ' . checked( 1, $option, false ) . '/>';
+
+		$html .= '<label for="ccp_site_plugin_position"> '  . $args[0] . '</label></p>';
+
+		echo $html;
+
+	}
+
+	/**
+	 * Site Plugin page link label.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @param  array $args Extra arguments passed into the callback function.
+	 * @return string
+	 */
+	public function ccp_site_plugin_link_label_callback( $args ) {
+
+		$option = get_option( 'ccp_site_plugin_link_label' );
+
+		$html = '<p><input type="text" size="50" id="ccp_site_plugin_link_label" name="ccp_site_plugin_link_label" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( __( 'Site Plugin', 'controlled-chaos-plugin' ) ) . '" /><br />';
+
+		$html .= '<label for="ccp_site_plugin_link_label"> ' . $args[0] . '</label></p>';
+
+		echo $html;
+
+	}
+
+	/**
+	 * Site Plugin page link icon.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @param  array $args Extra arguments passed into the callback function.
+	 * @return string
+	 */
+	public function ccp_site_plugin_link_icon_callback( $args ) {
+
+		$option = get_option( 'ccp_site_plugin_link_icon' );
+
+		$html = '<p><input type="text" size="50" id="ccp_site_settings_link_icon" name="ccp_site_plugin_link_icon" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( __( 'dashicons-welcome-learn-more', 'controlled-chaos-plugin' ) ) . '" /><br />';
+
+		$html .= '<label for="ccp_site_plugin_link_icon"> ' . $args[0] . '</label>';
 
 		$html .= '<br /><span class="description">' . esc_html( 'Takes affect in the admin menu only if the page is top level. Always takes affect on the plugin page tab for Site Settings.' ) . '</span></p>';
 
@@ -489,7 +596,7 @@ class Settings_Fields_Site {
 
 	/**
 	 * Menus link position.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
@@ -500,7 +607,7 @@ class Settings_Fields_Site {
 		$option = get_option( 'ccp_menus_position' );
 
 		$html = '<p><input type="checkbox" id="ccp_menus_position" name="ccp_menus_position" value="1" ' . checked( 1, $option, false ) . '/>';
-		
+
 		$html .= '<label for="ccp_menus_position"> '  . $args[0] . '</label></p>';
 
 		echo $html;
@@ -509,7 +616,7 @@ class Settings_Fields_Site {
 
 	/**
 	 * Widgets link position.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
@@ -520,7 +627,7 @@ class Settings_Fields_Site {
 		$option = get_option( 'ccp_widgets_position' );
 
 		$html = '<p><input type="checkbox" id="ccp_widgets_position" name="ccp_widgets_position" value="1" ' . checked( 1, $option, false ) . '/>';
-		
+
 		$html .= '<label for="ccp_widgets_position"> '  . $args[0] . '</label></p>';
 
 		echo $html;
@@ -529,7 +636,7 @@ class Settings_Fields_Site {
 
 	/**
 	 * Hide Welcome panel.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
@@ -540,7 +647,7 @@ class Settings_Fields_Site {
 		$option = get_option( 'ccp_hide_welcome' );
 
 		$html = '<p><input type="checkbox" id="ccp_hide_welcome" name="ccp_hide_welcome" value="1" ' . checked( 1, $option, false ) . '/>';
-		
+
 		$html .= '<label for="ccp_hide_welcome"> '  . $args[0] . '</label></p>';
 
 		echo $html;
@@ -549,7 +656,7 @@ class Settings_Fields_Site {
 
 	/**
 	 * Remove Welcome dismiss.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
@@ -560,7 +667,7 @@ class Settings_Fields_Site {
 		$option = get_option( 'ccp_remove_welcome_dismiss' );
 
 		$html = '<p><input type="checkbox" id="ccp_remove_welcome_dismiss" name="ccp_remove_welcome_dismiss" value="1" ' . checked( 1, $option, false ) . '/>';
-		
+
 		$html .= '<label for="ccp_remove_welcome_dismiss"> '  . $args[0] . '</label></p>';
 
 		echo $html;
@@ -569,7 +676,7 @@ class Settings_Fields_Site {
 
 	/**
 	 * Hide WordPress News widget.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
@@ -580,7 +687,7 @@ class Settings_Fields_Site {
 		$option = get_option( 'ccp_hide_wp_news' );
 
 		$html = '<p><input type="checkbox" id="ccp_hide_wp_news" name="ccp_hide_wp_news" value="1" ' . checked( 1, $option, false ) . '/>';
-		
+
 		$html .= '<label for="ccp_hide_wp_news"> '  . $args[0] . '</label></p>';
 
 		echo $html;
@@ -589,7 +696,7 @@ class Settings_Fields_Site {
 
 	/**
 	 * Hide Quick Draft (QuickPress) widget.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
@@ -600,7 +707,7 @@ class Settings_Fields_Site {
 		$option = get_option( 'ccp_hide_quickpress' );
 
 		$html = '<p><input type="checkbox" id="ccp_hide_quickpress" name="ccp_hide_quickpress" value="1" ' . checked( 1, $option, false ) . '/>';
-		
+
 		$html .= '<label for="ccp_hide_quickpress"> '  . $args[0] . '</label></p>';
 
 		echo $html;
@@ -609,7 +716,7 @@ class Settings_Fields_Site {
 
 	/**
 	 * Hide At a Glance widget.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
@@ -620,7 +727,7 @@ class Settings_Fields_Site {
 		$option = get_option( 'ccp_hide_at_glance' );
 
 		$html = '<p><input type="checkbox" id="ccp_hide_at_glance" name="ccp_hide_at_glance" value="1" ' . checked( 1, $option, false ) . '/>';
-		
+
 		$html .= '<label for="ccp_hide_at_glance"> '  . $args[0] . '</label></p>';
 
 		echo $html;
@@ -629,7 +736,7 @@ class Settings_Fields_Site {
 
 	/**
 	 * Hide Activity widget.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
@@ -640,7 +747,7 @@ class Settings_Fields_Site {
 		$option = get_option( 'ccp_hide_activity' );
 
 		$html = '<p><input type="checkbox" id="ccp_hide_activity" name="ccp_hide_activity" value="1" ' . checked( 1, $option, false ) . '/>';
-		
+
 		$html .= '<label for="ccp_hide_activity"> '  . $args[0] . '</label></p>';
 
 		echo $html;
@@ -649,7 +756,7 @@ class Settings_Fields_Site {
 
 	/**
 	 * Hide Appearance link.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
@@ -660,7 +767,7 @@ class Settings_Fields_Site {
 		$option = get_option( 'ccp_hide_appearance' );
 
 		$html = '<p><input type="checkbox" id="ccp_hide_appearance" name="ccp_hide_appearance" value="1" ' . checked( 1, $option, false ) . '/>';
-		
+
 		$html .= '<label for="ccp_hide_appearance"> '  . $args[0] . '</label></p>';
 
 		echo $html;
@@ -669,7 +776,7 @@ class Settings_Fields_Site {
 
 	/**
 	 * Hide Plugins link.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
@@ -680,7 +787,7 @@ class Settings_Fields_Site {
 		$option = get_option( 'ccp_hide_plugins' );
 
 		$html = '<p><input type="checkbox" id="ccp_hide_plugins" name="ccp_hide_plugins" value="1" ' . checked( 1, $option, false ) . '/>';
-		
+
 		$html .= '<label for="ccp_hide_plugins"> '  . $args[0] . '</label></p>';
 
 		echo $html;
@@ -689,7 +796,7 @@ class Settings_Fields_Site {
 
 	/**
 	 * Hide Users link.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
@@ -700,7 +807,7 @@ class Settings_Fields_Site {
 		$option = get_option( 'ccp_hide_users' );
 
 		$html = '<p><input type="checkbox" id="ccp_hide_users" name="ccp_hide_users" value="1" ' . checked( 1, $option, false ) . '/>';
-		
+
 		$html .= '<label for="ccp_hide_users"> '  . $args[0] . '</label></p>';
 
 		echo $html;
@@ -709,7 +816,7 @@ class Settings_Fields_Site {
 
 	/**
 	 * Hide Tools link.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
@@ -720,7 +827,7 @@ class Settings_Fields_Site {
 		$option = get_option( 'ccp_hide_tools' );
 
 		$html = '<p><input type="checkbox" id="ccp_hide_tools" name="ccp_hide_tools" value="1" ' . checked( 1, $option, false ) . '/>';
-		
+
 		$html .= '<label for="ccp_hide_tools"> ' . $args[0] . '</label></p>';
 
 		echo $html;
@@ -729,7 +836,7 @@ class Settings_Fields_Site {
 
 	/**
 	 * Show/Hide Links Manager link.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
@@ -740,7 +847,7 @@ class Settings_Fields_Site {
 		$option = get_option( 'ccp_hide_links' );
 
 		$html = '<p><input type="checkbox" id="ccp_hide_links" name="ccp_hide_links" value="1" ' . checked( 1, $option, false ) . '/>';
-		
+
 		$html .= '<label for="ccp_hide_links"> ' . $args[0] . '</label></p>';
 
 		echo $html;
@@ -749,7 +856,7 @@ class Settings_Fields_Site {
 
 	/**
 	 * Admin footer credit.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
@@ -760,7 +867,7 @@ class Settings_Fields_Site {
 		$option = get_option( 'ccp_footer_credit' );
 
 		$html = '<p><input type="text" size="50" id="ccp_footer_credit" name="ccp_footer_credit" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( __( 'Your name/agency', 'controlled-chaos-plugin' ) ) . '" /><br />';
-		
+
 		$html .= '<label for="ccp_footer_credit"> ' . $args[0] . '</label></p>';
 
 		echo $html;
@@ -769,7 +876,7 @@ class Settings_Fields_Site {
 
 	/**
 	 * Admin footer link.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
@@ -780,7 +887,7 @@ class Settings_Fields_Site {
 		$option = get_option( 'ccp_footer_link' );
 
 		$html = '<p><input type="text" size="50" id="ccp_footer_link" name="ccp_footer_link" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( 'http://example.com/' ) . '" /><br />';
-		
+
 		$html .= '<label for="ccp_footer_link"> ' . $args[0] . '</label></p>';
 
 		echo $html;
@@ -789,7 +896,7 @@ class Settings_Fields_Site {
 
 	/**
 	 * Disable meta tags.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @param  array $args Extra arguments passed into the callback function.
@@ -800,7 +907,7 @@ class Settings_Fields_Site {
 		$option = get_option( 'ccp_disable_meta' );
 
 		$html = '<p><input type="checkbox" id="ccp_disable_meta" name="ccp_disable_meta" value="1" ' . checked( 1, $option, false ) . '/>';
-		
+
 		$html .= '<label for="ccp_disable_meta"> '  . $args[0] . '</label></p>';
 
 		echo $html;

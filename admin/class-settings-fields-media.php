@@ -4,7 +4,7 @@
  *
  * @package    Controlled_Chaos_Plugin
  * @subpackage Admin
- * 
+ *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Settings fields for media options.
- * 
+ *
  * @since  1.0.0
  * @access public
  */
@@ -40,7 +40,7 @@ class Settings_Fields_Media {
 
 			// Set variable for new instance.
 			$instance = new self;
-			
+
 		}
 
 		// Return the instance.
@@ -59,7 +59,7 @@ class Settings_Fields_Media {
 
         // Media settings.
         add_action( 'admin_init', [ $this, 'settings' ] );
-        
+
         // Hard crop default image sizes.
         add_action( 'after_setup_theme', [ $this, 'crop' ] );
 
@@ -67,7 +67,7 @@ class Settings_Fields_Media {
 
     /**
 	 * Media settings.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return void
@@ -109,7 +109,7 @@ class Settings_Fields_Media {
         add_settings_section( 'ccp-media-settings', __( 'Fancybox', 'controlled-chaos-plugin' ), [ $this, 'fancybox_description' ], 'media' );
 
         add_settings_field( 'ccp_enqueue_fancybox_script', __( 'Enqueue Fancybox script', 'controlled-chaos-plugin' ), [ $this, 'fancybox_script' ], 'media', 'ccp-media-settings', [ __( 'Needed for lightbox functionality.', 'controlled-chaos-plugin' ) ] );
-        
+
         if ( ! current_theme_supports( 'ccd-fancybox' ) ) {
             add_settings_field( 'ccp_enqueue_fancybox_styles', __( 'Enqueue Fancybox styles', 'controlled-chaos-plugin' ), [ $this, 'fancybox_styles' ], 'media', 'ccp-media-settings', [ __( 'Leave unchecked to use a custom stylesheet in a theme.', 'controlled-chaos-plugin' ) ] );
         }
@@ -125,12 +125,12 @@ class Settings_Fields_Media {
                 'ccp_enqueue_fancybox_styles'
             );
         }
-        
+
     }
 
     /**
      * Medium crop field.
-     * 
+     *
      * @since  1.0.0
 	 * @access public
 	 * @return string
@@ -138,7 +138,7 @@ class Settings_Fields_Media {
     public function medium_crop( $args ) {
 
         $html = '<p><input type="checkbox" id="ccp_hard_crop_medium" name="ccp_hard_crop_medium" value="1" ' . checked( 1, get_option( 'ccp_hard_crop_medium' ), false ) . '/>';
-        
+
         $html .= '<label for="ccp_hard_crop_medium"> '  . $args[0] . '</label></p>';
 
         echo $html;
@@ -147,7 +147,7 @@ class Settings_Fields_Media {
 
     /**
      * Large crop field.
-     * 
+     *
      * @since  1.0.0
 	 * @access public
 	 * @return string
@@ -155,16 +155,16 @@ class Settings_Fields_Media {
     public function large_crop( $args ) {
 
         $html = '<p><input type="checkbox" id="ccp_hard_crop_large" name="ccp_hard_crop_large" value="1" ' . checked( 1, get_option( 'ccp_hard_crop_large' ), false ) . '/>';
-        
+
         $html .= '<label for="ccp_hard_crop_large"> '  . $args[0] . '</label></p>';
 
         echo $html;
-        
+
     }
 
     /**
      * Update crop options.
-     * 
+     *
      * @since  1.0.0
 	 * @access public
 	 * @return void
@@ -187,7 +187,7 @@ class Settings_Fields_Media {
 
     /**
      * Add warning about using SVG images.
-     * 
+     *
      * @since  1.0.0
 	 * @access public
 	 * @return string
@@ -202,17 +202,17 @@ class Settings_Fields_Media {
 
     /**
      * SVG options.
-     * 
+     *
      * @since  1.0.0
 	 * @access public
 	 * @return string
-     * 
+     *
      * @since    1.0.0
      */
     public function svg_support( $args ) {
 
         $html = '<p><input type="checkbox" id="ccp_add_svg_support" name="ccp_add_svg_support" value="1" ' . checked( 1, get_option( 'ccp_add_svg_support' ), false ) . '/>';
-        
+
         $html .= '<label for="ccp_add_svg_support"> '  . $args[0] . '</label></p>';
 
         echo $html;
@@ -221,7 +221,7 @@ class Settings_Fields_Media {
 
     /**
      * Fancybox settings description.
-     * 
+     *
      * @since  1.0.0
 	 * @access public
 	 * @return string
@@ -237,7 +237,7 @@ class Settings_Fields_Media {
 
     /**
      * Fancybox script field.
-     * 
+     *
      * @since  1.0.0
 	 * @access public
 	 * @return string
@@ -245,7 +245,7 @@ class Settings_Fields_Media {
     public function fancybox_script( $args ) {
 
         $html = '<p><input type="checkbox" id="ccp_enqueue_fancybox_script" name="ccp_enqueue_fancybox_script" value="1" ' . checked( 1, get_option( 'ccp_enqueue_fancybox_script' ), false ) . '/>';
-        
+
         $html .= '<label for="ccp_enqueue_fancybox_script"> '  . $args[0] . '</label></p>';
 
         echo $html;
@@ -254,7 +254,7 @@ class Settings_Fields_Media {
 
     /**
      * Fancybox styles field.
-     * 
+     *
      * @since  1.0.0
 	 * @access public
 	 * @return string
@@ -262,7 +262,7 @@ class Settings_Fields_Media {
     public function fancybox_styles( $args ) {
 
         $html = '<p><input type="checkbox" id="ccp_enqueue_fancybox_styles" name="ccp_enqueue_fancybox_styles" value="1" ' . checked( 1, get_option( 'ccp_enqueue_fancybox_styles' ), false ) . '/>';
-        
+
         $html .= '<label for="ccp_enqueue_fancybox_styles"> '  . $args[0] . '</label></p>';
 
         echo $html;

@@ -27,7 +27,7 @@ if ( isset( $_GET[ 'tab' ] ) ) {
         <a href="edit.php?post_type=acf-field-group&page=acf-theme-fields&tab=ccp-registered-fields-activation" class="nav-tab <?php echo $active_tab == 'ccp-registered-fields-activation' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Activation', 'controlled-chaos-plugin' ); ?></a>
     </h2>
     <?php if ( $active_tab == 'ccp-registered-fields-import' ) :
-        
+
         // Check the version of ACF.
         $acf_version = explode( '.', acf_get_setting( 'version' ) );
         if ( $acf_version[0] != '5' ) : ?>
@@ -102,7 +102,7 @@ if ( isset( $_GET[ 'tab' ] ) ) {
         <pre class="import-registered-field-groups-arrays">
         <?php echo var_export( $acf_local->groups ); ?>
         </pre>
-        
+
         <?php else : ?>
 
         <p><strong><?php _e( 'No field groups found in files.', 'controlled-chaos-plugin' ); ?></strong></p>

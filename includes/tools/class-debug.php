@@ -1,14 +1,14 @@
 <?php
 /**
  * The core plugin class.
- * 
+ *
  * @package    Controlled_Chaos_Plugin_Plugin
  * @subpackage Includes\Tools
  *
  * @since      1.0.0
  * @author     SO WP
  * @author     Greg Sweet <greg@ccdzine.com>
- * 
+ *
  * @link       https://github.com/ControlledChaos/so-turn-on-debug
  */
 
@@ -20,7 +20,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 /**
- * 
+ *
  * We used the premium [WP Rocket](https://rocket.me) plugin as an example
  * on how to write to the wp-config file, like they do when setting WP_CACHE to true
  *
@@ -165,7 +165,7 @@ function set_ccp_wp_debug_off( $turn_it_off ) {
 	 * Filter allow to change the value of WP_DEBUG constant
 	 *
 	 * @since 1.0.0
-	 * 
+	 *
 	 * @param string $turn_it_on The value of WP_DEBUG constant
 	*/
 	apply_filters( 'ccp_set_wp_debug_define', $turn_it_off );

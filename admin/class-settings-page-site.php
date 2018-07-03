@@ -4,7 +4,7 @@
  *
  * @package    Controlled_Chaos_Plugin
  * @subpackage Admin
- * 
+ *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
@@ -40,7 +40,7 @@ class Settings_Page_Site {
 
 			// Set variable for new instance.
 			$instance = new self;
-			
+
 		}
 
 		// Return the instance.
@@ -64,16 +64,16 @@ class Settings_Page_Site {
 
 	/**
 	 * Add a page for site settings.
-	 * 
+	 *
 	 * If the Advanced Custom Fields Pro plugin is active then
 	 * an ACF options page and ACF fields will be used. If not
 	 * then a default WordPress admin page and the WP Settings
 	 * API will be used.
-	 * 
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return void
-	 * 
+	 *
 	 * @todo  Think about whether this is a good idea. Maybe it's
 	 *        better to simply provide a sample ACF page. ACF is
 	 *        certainly faster for further development but do we
@@ -85,7 +85,7 @@ class Settings_Page_Site {
 
 			$title      = apply_filters( 'site_settings_page_name', get_bloginfo( 'name' ) );
 			$position   = get_field( 'ccp_settings_link_position', 'option' );
-			$link_label = get_field( 'ccp_settings_page_link_label', 'option' );
+			$link_label = get_field( 'ccp_site_settings_link_label', 'option' );
 
 			if ( $link_label ) {
 				$label = $link_label;
@@ -94,7 +94,7 @@ class Settings_Page_Site {
 			}
 
 			if ( 'top' == $position ) {
-					
+
 				$settings = apply_filters( 'controlled_chaos_site_settings_page_top', [
 					'page_title' => $title . __( ' Settings', 'controlled-chaos-plugin' ),
 					'menu_title' => $label,
@@ -122,9 +122,9 @@ class Settings_Page_Site {
 
 		} else {
 
-			$link_label = sanitize_text_field( get_option( 'ccp_settings_page_link_label' ) );
-			$position   = get_option( 'ccp_settings_position' );
-			$link_icon  = sanitize_text_field( get_option( 'ccp_settings_page_link_icon' ) );
+			$link_label = sanitize_text_field( get_option( 'ccp_site_settings_link_label' ) );
+			$position   = get_option( 'ccp_site_settings_position' );
+			$link_icon  = sanitize_text_field( get_option( 'ccp_site_settings_link_icon' ) );
 
 			if ( $link_label ) {
 				$label = $link_label;
@@ -171,7 +171,7 @@ class Settings_Page_Site {
 	 * @return void
 	 */
     public function page_output() {
-		
+
 		require plugin_dir_path( __FILE__ ) . 'partials/settings-page-site.php';
 
 	}

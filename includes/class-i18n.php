@@ -46,7 +46,7 @@ class i18n {
 
 			// Load the text domain.
 			$instance->load_plugin_textdomain();
-			
+
 		}
 
 		// Return the instance.
