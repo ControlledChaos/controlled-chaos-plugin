@@ -35,7 +35,7 @@ if ( ! defined( 'WPINC' ) ) {
 ); ?>
 <?php echo sprintf(
 	'<p>%1s <a href="%2s" target="_blank">%3s</a>%4s</p>',
-	__( 'I built this plugin as a starter for client sites, including features that I use often, the code for which I repeatedly copyied from my', 'controlled-chaos-plugin' ),
+	__( 'I built this plugin as a starter for client sites, including features that I use often, the code for which I repeatedly copied from my', 'controlled-chaos-plugin' ),
 	esc_url( 'https://gist.github.com/ControlledChaos' ),
 	__( 'gist library', 'controlled-chaos-plugin' ),
 	__( '. It is not intended to be a plug-and-play type of thing, although it can be used as such. This is more of a developer\'s tool. I have commented thouroughly on the code and documentec the files to the best of my ability. I have learned by looking at the code of others so I have kept this in mind when writing the code for this plugin.', 'controlled-chaos-plugin' )
