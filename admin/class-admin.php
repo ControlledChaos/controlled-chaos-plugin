@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 // Bail if not in the admin.
 if ( ! is_admin() ) {
-	//return;
+	return;
 }
 
 /**

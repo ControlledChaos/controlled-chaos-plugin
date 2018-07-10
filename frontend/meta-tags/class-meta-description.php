@@ -4,7 +4,7 @@
  *
  * Conditionally gets information or content from the current page.
  *
- * @package    Controlled_Chaos_Plugin_Plugin
+ * @package    Controlled_Chaos_Plugin
  * @subpackage Frontend\Meta_Tags
  *
  * @since      1.0.0

@@ -4,7 +4,7 @@
  *
  * The funtionality is taken from the SVG Support plugin.
  *
- * @package    Controlled_Chaos_Plugin_Plugin
+ * @package    Controlled_Chaos_Plugin
  * @subpackage Includes\Media
  *
  * @since      1.0.0

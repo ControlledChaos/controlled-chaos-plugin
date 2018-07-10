@@ -2,7 +2,7 @@
 /**
  * Register taxonomies.
  *
- * @package    Controlled_Chaos_Plugin_Plugin
+ * @package    Controlled_Chaos_Plugin
  * @subpackage Includes\Post_Types_Taxes
  *
  * @since      1.0.0

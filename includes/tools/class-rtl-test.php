@@ -7,7 +7,7 @@
  *
  * This file must not be namespaced.
  *
- * @package    Controlled_Chaos_Plugin_Plugin
+ * @package    Controlled_Chaos_Plugin
  * @subpackage Includes
  *
  * @since      1.0.0

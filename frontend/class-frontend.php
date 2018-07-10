@@ -2,7 +2,7 @@
 /**
  * The frontend functionality of the plugin.
  *
- * @package    Controlled_Chaos_Plugin_Plugin
+ * @package    Controlled_Chaos_Plugin
  * @subpackage Frontend
  *
  * @since      1.0.0
