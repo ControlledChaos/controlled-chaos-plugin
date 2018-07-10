@@ -8,11 +8,11 @@
  * @version     1.0.0
  * @author      Greg Sweet <greg@ccdzine.com>
  * @copyright   Copyright © 2018, Greg Sweet
- * @link        https://github.com/ControlledChaos/Controlled-Chaos-Plugin
+ * @link        https://github.com/ControlledChaos/controlled-chaos-plugin
  * @license     GPL-3.0+ http://www.gnu.org/licenses/gpl-3.0.txt
  *
  * Plugin Name: Controlled Chaos Plugin
- * Plugin URI:  https://github.com/ControlledChaos/Controlled-Chaos-Plugin
+ * Plugin URI:  https://github.com/ControlledChaos/controlled-chaos-plugin
  * Description: A WordPress starter/boilerplate for site-specific plugins.
  * Version:     1.0.0
  * Author:      Controlled Chaos Design
