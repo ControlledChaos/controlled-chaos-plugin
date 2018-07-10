@@ -186,8 +186,8 @@ class Admin_Menu {
      *
      * @since  1.0.0
 	 * @access public
-     * @global object menu The admin menu array.
-     * @global object submenuThe admin submenu array.
+     * @global array menu The admin menu array.
+     * @global array submenu The admin submenu array.
 	 * @return void
      */
     public function menus_widgets() {
