@@ -2,7 +2,7 @@
 /**
  * Live theme test.
  *
- * @package    Controlled_Chaos_Plugin_Plugin
+ * @package    Controlled_Chaos_Plugin
  * @subpackage Includes\Tools
  *
  * @since      1.0.0

@@ -2,7 +2,7 @@
 /**
  * Twitter card meta tags.
  *
- * @package    Controlled_Chaos_Plugin_Plugin
+ * @package    Controlled_Chaos_Plugin
  * @subpackage Frontend\Meta_Tags
  *
  * @since      1.0.0

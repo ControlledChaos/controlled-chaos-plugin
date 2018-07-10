@@ -2,7 +2,7 @@
 /**
  * Media functionality.
  *
- * @package    Controlled_Chaos_Plugin_Plugin
+ * @package    Controlled_Chaos_Plugin
  * @subpackage Includes\Media
  *
  * @since      1.0.0
