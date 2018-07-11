@@ -212,19 +212,17 @@ function deactivate_controlled_chaos() {
  */
 function controlled_chaos_about_link( $links ) {
 
-	if ( ! is_network_admin() ) {
-		// Create new settings link array as a variable.
-		$about_page = [
-			sprintf(
-				'<a href="%1s" class="' . CCP_ADMIN_SLUG . '-page-link">%2s</a>',
-				admin_url( 'plugins.php?page=' . CCP_ADMIN_SLUG . '-page' ),
-				esc_attr( 'Documentation', 'controlled-chaos-plugin' )
-			),
-		];
+	// Create new settings link array as a variable.
+	$about_page = [
+		sprintf(
+			'<a href="%1s" class="' . CCP_ADMIN_SLUG . '-page-link">%2s</a>',
+			admin_url( 'plugins.php?page=' . CCP_ADMIN_SLUG . '-page' ),
+			esc_attr( 'Documentation', 'controlled-chaos-plugin' )
+		),
+	];
 
-		// Merge the new settings array with the default array.
-		return array_merge( $about_page, $links );
-	}
+	// Merge the new settings array with the default array.
+	return array_merge( $about_page, $links );
 
 }
 // Filter the default settings links with new array.
@@ -247,18 +245,16 @@ function controlled_chaos_settings_links( $links, $file ) {
 	if ( $file == plugin_basename( __FILE__ ) ) {
 
 		// Add links to settings pages.
-		if ( ! is_network_admin() ) {
-			$links[] = sprintf(
-				'<a href="%1s" class="' . CCP_ADMIN_SLUG . '-settings-link">%2s</a>',
-				admin_url( 'options-general.php?page=' . CCP_ADMIN_SLUG . '-settings' ),
-				esc_attr( 'Site Settings', 'controlled-chaos-plugin' )
-			);
-			$links[] = sprintf(
-				'<a href="%1s" class="' . CCP_ADMIN_SLUG . '-scripts-link">%2s</a>',
-				admin_url( 'options-general.php?page=' . CCP_ADMIN_SLUG . '-scripts' ),
-				esc_attr( 'Script Options', 'controlled-chaos-plugin' )
-			);
-		}
+		$links[] = sprintf(
+			'<a href="%1s" class="' . CCP_ADMIN_SLUG . '-settings-link">%2s</a>',
+			admin_url( 'options-general.php?page=' . CCP_ADMIN_SLUG . '-settings' ),
+			esc_attr( 'Site Settings', 'controlled-chaos-plugin' )
+		);
+		$links[] = sprintf(
+			'<a href="%1s" class="' . CCP_ADMIN_SLUG . '-scripts-link">%2s</a>',
+			admin_url( 'options-general.php?page=' . CCP_ADMIN_SLUG . '-scripts' ),
+			esc_attr( 'Script Options', 'controlled-chaos-plugin' )
+		);
 
 		// Add a placeholder for an upgrade link.
 		$links[] = sprintf(
