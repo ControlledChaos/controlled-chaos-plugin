@@ -88,3 +88,9 @@ Supplied as reference. More to come.
 
 * Add option to hard crop the medium and/or large image sizes
 * Add option to allow SVG uploads to the Media Library
+
+## Extensibility
+
+The settings pages are equipped with filters for addon plugins to integrate easily.
+
+The [Controlled Chaos Addon](https://github.com/ControlledChaos/controlled-chaos-addon) plugin is built as a starter plugin for extending this plugin.
