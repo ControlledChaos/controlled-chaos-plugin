@@ -80,10 +80,10 @@ class Settings_Fields_Dev_Tools {
 
 		// Site development settings section.
 		add_settings_section(
-			'site-development',
-			__( 'Site Development', 'controlled-chaos-plugin' ),
+			'ccp-site-development-general',
+			__( 'General Website Development', 'controlled-chaos-plugin' ),
 			[ $this, 'site_development_section_callback' ],
-			'site-development'
+			'ccp-site-development-general'
 		);
 
 		// Site development settings field.
@@ -91,14 +91,14 @@ class Settings_Fields_Dev_Tools {
 			'ccp_site_development',
 			__( 'Debug Mode', 'controlled-chaos-plugin' ),
 			[ $this, 'ccp_site_development_callback' ],
-			'site-development',
-			'site-development',
+			'ccp-site-development-general',
+			'ccp-site-development-general',
 			[ esc_html__( 'Put the site in Debug Mode via wp-config.', 'controlled-chaos-plugin' ) ]
 		);
 
 		// Register the Site development field.
 		register_setting(
-			'site-development',
+			'ccp-site-development-general',
 			'ccp_site_development'
 		);
 
@@ -107,14 +107,14 @@ class Settings_Fields_Dev_Tools {
 			'ccp_theme_test',
 			__( 'Live Theme Test', 'controlled-chaos-plugin' ),
 			[ $this, 'ccp_theme_test_callback' ],
-			'site-development',
-			'site-development',
+			'ccp-site-development-general',
+			'ccp-site-development-general',
 			[ esc_html__( 'Find the theme test page under Appearances.', 'controlled-chaos-plugin' ) ]
 		);
 
 		// Register the live theme test field.
 		register_setting(
-			'site-development',
+			'ccp-site-development-general',
 			'ccp_theme_test'
 		);
 
@@ -123,14 +123,14 @@ class Settings_Fields_Dev_Tools {
 			'ccp_rtl_test',
 			__( 'RTL (Right to Left) Test', 'controlled-chaos-plugin' ),
 			[ $this, 'ccp_rtl_test_callback' ],
-			'site-development',
-			'site-development',
+			'ccp-site-development-general',
+			'ccp-site-development-general',
 			[ esc_html__( 'Add RTL button to the toolbar to test layout in languages that read right to left.', 'controlled-chaos-plugin' ) ]
 		);
 
 		// Register the RTL test field.
 		register_setting(
-			'site-development',
+			'ccp-site-development-general',
 			'ccp_rtl_test'
 		);
 
