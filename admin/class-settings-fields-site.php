@@ -2,6 +2,9 @@
 /**
  * Settings for site customization.
  *
+ * Uses the CCA_PARENT_PREFIX constant to get the options prefix
+ * used in the parent plugin.
+ *
  * @package    Controlled_Chaos_Plugin
  * @subpackage Admin
  *
@@ -65,9 +68,7 @@ class Settings_Fields_Site {
     public function __construct() {
 
 		// Register settings sections and fields.
-		if ( is_admin() ) {
-			add_action( 'admin_init', [ $this, 'settings' ] );
-		}
+		add_action( 'admin_init', [ $this, 'settings' ] );
 
 	}
 
