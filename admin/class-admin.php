@@ -357,8 +357,11 @@ class Admin {
 		// Enqueue jQuery tabs from WordPress.
 		wp_enqueue_script( 'jquery-ui-tabs' );
 
-		// Enqueue scripts for functionality of this plugin.
-		wp_enqueue_script( 'controlled-chaos-plugin-admin', plugin_dir_url( __FILE__ ) . 'assets/js/admin.js', [ 'jquery' ], CCP_VERSION, true );
+		// Enqueue Conditionalize for conditional form fields.
+		wp_enqueue_script( 'conditionalize', plugin_dir_url( __FILE__ ) . 'assets/js/admin.js', [ 'jquery' ], CCP_VERSION, true );
+
+		// Enqueue scripts for backend functionality of this plugin.
+		wp_enqueue_script( CCP_ADMIN_SLUG . 'admin', plugin_dir_url( __FILE__ ) . 'assets/js/conditionize.flexible.jquery.min.js', [ 'jquery' ], CCP_VERSION, true );
 
 	}
 
