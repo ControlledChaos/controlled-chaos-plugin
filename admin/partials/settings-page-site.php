@@ -80,16 +80,16 @@ $page_tabs = apply_filters( 'ccp_tabs_site_settings', $tabs );
  * @since  1.0.0
  * @return void
  */
-if ( $active_tab == 'dashboard' ) {
+if ( 'dashboard' == $active_tab  ) {
     $section = 'ccp-site-dashboard';
     $fields  = 'ccp_dashboard';
-} elseif ( $active_tab == 'admin-menu' ) {
+} elseif ( 'admin-menu' == $active_tab ) {
     $section = 'ccp-site-admin-menu';
     $fields  = 'ccp-site-admin-menu';
-} elseif ( $active_tab == 'admin-pages' ) {
+} elseif ( 'admin-pages' == $active_tab ) {
     $section = 'ccp-site-admin-pages';
     $fields  = 'ccp-site-admin-pages';
-} elseif ( $active_tab == 'meta-seo' ) {
+} elseif ( 'meta-seo' == $active_tab ) {
     $section = 'ccp-site-meta-seo';
     $fields  = 'ccp-site-meta-seo';
 } else {

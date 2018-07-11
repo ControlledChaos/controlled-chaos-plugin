@@ -64,10 +64,10 @@ $page_tabs = apply_filters( 'ccp_tabs_script_options', $tabs );
  * @since  1.0.0
  * @return void
  */
-if ( $active_tab == 'general' ) {
+if ( 'general' == $active_tab ) {
     $section = 'ccp-scripts-general';
     $fields  = 'ccp-scripts-general';
-} elseif ( $active_tab == 'vendor' ) {
+} elseif ( 'vendor' == $active_tab ) {
     $section = 'ccp-scripts-vendor';
     $fields  = 'ccp-scripts-vendor';
 } else {
