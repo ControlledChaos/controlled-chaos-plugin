@@ -22,19 +22,10 @@ if ( ! defined( 'WPINC' ) ) {
  * @since  1.0.0
  * @return void
  */
-
-// The active tab when page is opened, without URL query.
-$active_tab = 'dashboard';
-
-// Set the active tab.
 if ( isset( $_GET[ 'tab' ] ) ) {
-
-    if ( isset( $_GET[ 'tab' ] ) ) {
-        $active_tab = $_GET[ 'tab' ];
-    } else {
-        $active_tab = 'dashboard';
-    }
-
+    $active_tab = $_GET[ 'tab' ];
+} else {
+    $active_tab = 'dashboard';
 }
 
 /**
@@ -89,16 +80,16 @@ $page_tabs = apply_filters( 'ccp_tabs_site_settings', $tabs );
  * @since  1.0.0
  * @return void
  */
-if ( $active_tab == 'dashboard' ) {
+if ( 'dashboard' == $active_tab  ) {
     $section = 'ccp-site-dashboard';
     $fields  = 'ccp_dashboard';
-} elseif ( $active_tab == 'admin-menu' ) {
+} elseif ( 'admin-menu' == $active_tab ) {
     $section = 'ccp-site-admin-menu';
     $fields  = 'ccp-site-admin-menu';
-} elseif ( $active_tab == 'admin-pages' ) {
+} elseif ( 'admin-pages' == $active_tab ) {
     $section = 'ccp-site-admin-pages';
     $fields  = 'ccp-site-admin-pages';
-} elseif ( $active_tab == 'meta-seo' ) {
+} elseif ( 'meta-seo' == $active_tab ) {
     $section = 'ccp-site-meta-seo';
     $fields  = 'ccp-site-meta-seo';
 } else {
@@ -133,7 +124,11 @@ $button = apply_filters( 'ccp_save_site_settings', $save );
 
 ?>
 <div class="wrap">
-	<?php echo sprintf( '<h1 class="wp-heading-inline">%1s %2s</h1>', get_bloginfo( 'name' ), esc_html__( 'Settings', 'controlled-chaos-plugin' ) ); ?>
+	<?php echo sprintf(
+        '<h1 class="wp-heading-inline">%1s %2s</h1>',
+        get_bloginfo( 'name' ),
+        esc_html__( 'Settings', 'controlled-chaos-plugin' )
+    ); ?>
     <p class="description"><?php esc_html_e( 'Customize the way WordPress is used.', 'controlled-chaos-plugin' ); ?></p>
     <hr class="wp-header-end">
     <h2 class="nav-tab-wrapper">
