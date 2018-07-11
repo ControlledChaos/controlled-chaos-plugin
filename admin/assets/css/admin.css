@@ -50,7 +50,7 @@
  * JQUERY TABS
  */
 .nav-tab-wrapper a .dashicons {
-  vertical-align: bottom;
+  vertical-align: text-top;
 }
 
 .backend-tabbed-content > div {
