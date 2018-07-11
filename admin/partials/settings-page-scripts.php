@@ -86,9 +86,9 @@ $do_fields  = apply_filters( 'ccp_fields_script_options', $fields );
  * @since  1.0.0
  * @return string Returns the button label.
  */
-if ( 'dashboard' == $active_tab  ) {
+if ( 'general' == $active_tab  ) {
     $save = __( 'Save General', 'controlled-chaos-plugin' );
-} elseif ( 'admin-menu' == $active_tab ) {
+} elseif ( 'vendor' == $active_tab ) {
     $save = __( 'Save Vendor', 'controlled-chaos-plugin' );
 } else {
     $save = __( 'Save Settings', 'controlled-chaos-plugin' );
