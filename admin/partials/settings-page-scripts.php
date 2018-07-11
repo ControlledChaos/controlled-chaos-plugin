@@ -16,11 +16,88 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-$active_tab = 'general';
+/**
+ * Active tab switcher.
+ *
+ * @since  1.0.0
+ * @return void
+ */
 if ( isset( $_GET[ 'tab' ] ) ) {
-    $active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'general';
-} ?>
+    $active_tab = $_GET[ 'tab' ];
+} else {
+    $active_tab = 'general';
+}
 
+/**
+ * Set up the page tabs as an array for adding tabs
+ * from another plugin or from a theme.
+ *
+ * @since  1.0.0
+ * @return array
+ */
+$tabs = [
+
+    // General options tab.
+    sprintf(
+        '<a href="?page=%1s-scripts&tab=general" class="nav-tab %2s"><span class="dashicons dashicons-admin-tools"></span> %3s</a>',
+        CCP_ADMIN_SLUG,
+        $active_tab == 'general' ? 'nav-tab-active' : '',
+        esc_html__( 'General', 'controlled-chaos-plugin' )
+    ),
+
+    // Vendor options tab.
+    sprintf(
+        '<a href="?page=%1s-scripts&tab=vendor" class="nav-tab %2s"><span class="dashicons dashicons-admin-plugins"></span> %3s</a>',
+        CCP_ADMIN_SLUG,
+        $active_tab == 'vendor' ? 'nav-tab-active' : '',
+        esc_html__( 'Vendor', 'controlled-chaos-plugin' )
+    )
+
+];
+
+// Apply a filter to the tabs array for adding tabs.
+$page_tabs = apply_filters( 'ccp_tabs_script_options', $tabs );
+
+/**
+ * Do settings section and fields by tab.
+ *
+ * @since  1.0.0
+ * @return void
+ */
+if ( $active_tab == 'general' ) {
+    $section = 'ccp-scripts-general';
+    $fields  = 'ccp-scripts-general';
+} elseif ( $active_tab == 'vendor' ) {
+    $section = 'ccp-scripts-vendor';
+    $fields  = 'ccp-scripts-vendor';
+} else {
+    $section = null;
+    $fields  = null;
+}
+
+// Apply filters to the sections and fields for new tabs.
+$do_section = apply_filters( 'ccp_section_script_options', $section );
+$do_fields  = apply_filters( 'ccp_fields_script_options', $fields );
+
+
+/**
+ * Conditional save button text by tab.
+ *
+ * @since  1.0.0
+ * @return string Returns the button label.
+ */
+if ( 'dashboard' == $active_tab  ) {
+    $save = __( 'Save General', 'controlled-chaos-plugin' );
+} elseif ( 'admin-menu' == $active_tab ) {
+    $save = __( 'Save Vendor', 'controlled-chaos-plugin' );
+} else {
+    $save = __( 'Save Settings', 'controlled-chaos-plugin' );
+}
+
+// Apply a filter for new tabs added by another plugin or from a theme.
+$button = apply_filters( 'ccp_save_script_options', $save );
+
+?>
 <div class="wrap">
     <h1 class="wp-heading-inline"><?php esc_html_e( 'Script Options', 'controlled-chaos-plugin' ); ?></h1>
     <?php if ( is_rtl() ) : ?>
@@ -30,22 +107,13 @@ if ( isset( $_GET[ 'tab' ] ) ) {
     <?php endif; ?>
     <hr class="wp-header-end">
     <h2 class="nav-tab-wrapper">
-        <a href="?page=<?php echo CCP_ADMIN_SLUG; ?>-scripts&tab=general" class="nav-tab <?php echo $active_tab == 'general' ? 'nav-tab-active' : ''; ?>"><span class="dashicons dashicons-admin-tools"></span> <?php esc_html_e( 'General', 'controlled-chaos-plugin' ); ?></a>
-        <a href="?page=<?php echo CCP_ADMIN_SLUG; ?>-scripts&tab=vendor" class="nav-tab <?php echo $active_tab == 'vendor' ? 'nav-tab-active' : ''; ?>"><span class="dashicons dashicons-admin-plugins"></span> <?php esc_html_e( 'Vendor', 'controlled-chaos-plugin' ); ?></a>
+        <?php echo implode( $page_tabs ); ?>
     </h2>
-    <form action="options.php" method="post">
-        <?php if ( $active_tab == 'general' ) {
-            settings_fields( 'ccp-scripts-general' );
-            do_settings_sections( 'ccp-scripts-general' );
-            $save = __( 'Save General', 'controlled-chaos-plugin' );
-        } elseif ( $active_tab == 'vendor' ) {
-            settings_fields( 'ccp-scripts-vendor' );
-            do_settings_sections( 'ccp-scripts-vendor' );
-            $save = __( 'Save Vendor', 'controlled-chaos-plugin' );
-        } ?>
-        <?php if ( $active_tab == 'general' || $active_tab == 'vendor' ) : ?>
-        <p class="submit"><?php submit_button( $save, 'primary', '', false, [] ); ?></p>
-    <?php endif; ?>
+    <form method="post" action="options.php">
+        <?php
+        settings_fields( $do_fields );
+        do_settings_sections( $do_section );
+        ?>
+        <p class="submit"><?php submit_button( $button, 'primary', '', false, [] ); ?></p>
     </form>
-    <?php echo sprintf( '<p class="description">%1s <a href="%2s" target="_blank">%3s</a>.</p>', esc_html__( 'The Controlled Chaos plugin is developed by' ), esc_url( 'http://ccdzine.com/' ),esc_html__( 'Controlled Chaos Design' ) ); ?>
 </div>
