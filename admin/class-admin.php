@@ -117,6 +117,11 @@ class Admin {
 		// The core settings class for the plugin.
 		require_once plugin_dir_path( __FILE__ ) . 'class-settings.php';
 
+		// Add icons to the titles of ACF tab and accordion fields, if active.
+		if ( class_exists( 'acf_pro' ) && ! get_option( 'ccp_acf_activate_settings_page' ) ) {
+			include_once plugin_dir_path( __FILE__ ) . 'class-acf-tab-icons.php';
+		}
+
 		// Include custom fields for Advanced Custom Fields Pro, if active.
 		if ( class_exists( 'acf_pro' ) && ! get_option( 'ccp_acf_activate_settings_page' ) ) {
 			include_once plugin_dir_path( __FILE__ ) . 'class-settings-fields-acf.php';
@@ -363,6 +368,15 @@ class Admin {
 		 * @since 1.0.0
 		 */
 		wp_enqueue_style( CCP_ADMIN_SLUG . '-admin', plugin_dir_url( __FILE__ ) . 'assets/css/admin.css', [], CCP_VERSION, 'all' );
+
+		/**
+		 * Enqueue Advanced Custom Fields styles.
+		 * 
+		 * Only if the free or pro version of the plugin is active.
+		 */
+		if ( class_exists( 'acf' ) ) {
+			wp_enqueue_style( CCP_ADMIN_SLUG . '-acf', plugin_dir_url( __FILE__ ) . 'assets/css/acf.css', [], CCP_VERSION, 'all' );
+		}
 
 		/**
 		 * Enqueue the custom welcome panel styles.
