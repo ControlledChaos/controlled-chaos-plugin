@@ -108,7 +108,7 @@ final class Post_Types_Register {
             ],
             'query_var'           => 'ccp_post_type',
             'menu_position'       => 5,
-            'menu_icon'           => 'dashicons-lightbulb',
+            'menu_icon'           => 'dashicons-admin-post',
             'supports'            => [
                 'title',
                 'editor',
