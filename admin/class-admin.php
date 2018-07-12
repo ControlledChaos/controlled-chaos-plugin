@@ -341,7 +341,26 @@ class Admin {
 	 */
 	public function enqueue_styles() {
 
-		wp_enqueue_style( 'controlled-chaos-plugin-admin', plugin_dir_url( __FILE__ ) . 'assets/css/admin.css', [], CCP_VERSION, 'all' );
+		/**
+		 * Enqueue the general backend styles.
+		 *
+		 * Included are just a few style rules for features added by this plugin.
+		 *
+		 * @since 1.0.0
+		 */
+		wp_enqueue_style( CCP_ADMIN_SLUG . '-admin', plugin_dir_url( __FILE__ ) . 'assets/css/admin.css', [], CCP_VERSION, 'all' );
+
+		/**
+		 * Enqueue the custom welcome panel styles.
+		 *
+		 * Will only enqueue if the option is selected to use the panel.
+		 *
+		 * @since 1.0.0
+		 */
+		$welcome = get_option( 'ccp_custom_welcome' );
+		if ( $welcome ) {
+			wp_enqueue_style( CCP_ADMIN_SLUG . '-welcome', plugin_dir_url( __FILE__ ) . 'assets/css/welcome.css', [], CCP_VERSION, 'all' );
+		}
 
 	}
 
@@ -358,10 +377,10 @@ class Admin {
 		wp_enqueue_script( 'jquery-ui-tabs' );
 
 		// Enqueue Conditionalize for conditional form fields.
-		wp_enqueue_script( 'conditionalize', plugin_dir_url( __FILE__ ) . 'assets/js/admin.js', [ 'jquery' ], CCP_VERSION, true );
+		wp_enqueue_script( CCP_ADMIN_SLUG . '-conditionalize', plugin_dir_url( __FILE__ ) . 'assets/js/admin.js', [ 'jquery' ], CCP_VERSION, true );
 
 		// Enqueue scripts for backend functionality of this plugin.
-		wp_enqueue_script( CCP_ADMIN_SLUG . 'admin', plugin_dir_url( __FILE__ ) . 'assets/js/conditionize.flexible.jquery.min.js', [ 'jquery' ], CCP_VERSION, true );
+		wp_enqueue_script( CCP_ADMIN_SLUG . '-admin', plugin_dir_url( __FILE__ ) . 'assets/js/conditionize.flexible.jquery.min.js', [ 'jquery' ], CCP_VERSION, true );
 
 	}
 
