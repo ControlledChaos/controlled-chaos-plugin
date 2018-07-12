@@ -97,31 +97,6 @@ $tabs = [
 // Apply a filter to the tabs array for adding tabs.
 $page_tabs = apply_filters( 'ccp_tabs_page_about', $tabs );
 
-function ccp_content_page_about() {
-
-	$html = '<div id="intro"><!-- Introduction content -->';
-		include_once plugin_dir_path( __FILE__ ) . 'plugin-page-intro.php';
-	$html .= '</div>';
-	$html .= '<div id="settings"><!-- Site Settings content -->';
-		include_once plugin_dir_path( __FILE__ ) . 'plugin-page-site-settings.php';
-	$html .= '</div>';
-	$html .= '<div id="scripts"><!-- Script Options content -->';
-		include_once plugin_dir_path( __FILE__ ) . 'plugin-page-script-options.php';
-	$html .= '</div>';
-	$html .= '<div id="media"><!-- Media Options content -->';
-		include_once plugin_dir_path( __FILE__ ) . 'plugin-page-media-options.php';
-	$html .= '</div>';
-	$html .= '<div id="tools"><!-- Dev Tools content -->';
-		include_once plugin_dir_path( __FILE__ ) . 'plugin-page-dev-tools.php';
-	$html .= '</div><!-- End content -->';
-
-	// Apply a filter to the content array for adding content.
-	$page_content = apply_filters( 'ccp_content_page_about', $html );
-
-	return $page_content;
-
-}
-
 ?>
 <!-- Default WordPress page wrapper -->
 <div class="wrap">
@@ -136,7 +111,25 @@ function ccp_content_page_about() {
 		<ul>
 			<?php echo implode( $page_tabs ); ?>
 		</ul>
+		<?php // Hook for adding tabbed content.
+		do_action( 'ccp_content_page_about_before' ); ?>
 		<!-- Begin content -->
-		<?php ccp_content_page_about(); ?>
+		<div id="intro"><!-- Introduction content -->
+			<?php include_once plugin_dir_path( __FILE__ ) . 'plugin-page-intro.php'; ?>
+		</div>
+		<div id="settings"><!-- Site Settings content -->
+			<?php include_once plugin_dir_path( __FILE__ ) . 'plugin-page-site-settings.php'; ?>
+		</div>
+		<div id="scripts"><!-- Script Options content -->
+			<?php include_once plugin_dir_path( __FILE__ ) . 'plugin-page-script-options.php'; ?>
+		</div>
+		<div id="media"><!-- Media Options content -->
+			<?php include_once plugin_dir_path( __FILE__ ) . 'plugin-page-media-options.php'; ?>
+		</div>
+		<div id="tools"><!-- Dev Tools content -->
+			<?php include_once plugin_dir_path( __FILE__ ) . 'plugin-page-dev-tools.php'; ?>
+		</div>
+		<?php // Hook for adding tabbed content.
+		do_action( 'ccp_content_page_about_after' ); ?>
 	</div><!-- End jQuery tabbed content -->
 </div><!-- End WordPress page wrapper -->
