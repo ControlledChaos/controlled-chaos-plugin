@@ -86,7 +86,7 @@ Supplied as reference. More to come.
 
 ### Custom Welcome Panel
 
-An optional welcome panel with three widget areas.
+An optional welcome panel with three widget areas and loaded with hooks for adding content.
 
 ### Media Options
 
