@@ -1,0 +1,764 @@
+@font-face {
+  font-family: 'accordions';
+  src:  url('fonts/accordions.eot?v59oa3');
+  src:  url('fonts/accordions.eot?v59oa3#iefix') format('embedded-opentype'),
+    url('fonts/accordions.ttf?v59oa3') format('truetype'),
+    url('fonts/accordions.woff?v59oa3') format('woff'),
+    url('fonts/accordions.svg?v59oa3#accordions') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="accordions-"], [class*=" accordions-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'accordions' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.accordions-margin-left-right:before {
+  content: "\e900";
+}
+.accordions-margin-top-bottom:before {
+  content: "\e95d";
+}
+.accordions-resize-smaller:before {
+  content: "\e901";
+}
+.accordions-resize-bigger:before {
+  content: "\e902";
+}
+.accordions-chevron-up:before {
+  content: "\e903";
+}
+.accordions-chevron-right:before {
+  content: "\e904";
+}
+.accordions-chevron-down:before {
+  content: "\e905";
+}
+.accordions-chevron-left:before {
+  content: "\e906";
+}
+.accordions-chevron-thin-up:before {
+  content: "\e907";
+}
+.accordions-chevron-thin-right:before {
+  content: "\e908";
+}
+.accordions-chevron-thin-down:before {
+  content: "\e909";
+}
+.accordions-chevron-thin-left:before {
+  content: "\e90a";
+}
+.accordions-chevron-circled-up:before {
+  content: "\e90b";
+}
+.accordions-chevron-circled-right:before {
+  content: "\e90c";
+}
+.accordions-chevron-circled-down:before {
+  content: "\e90d";
+}
+.accordions-chevron-circled-left:before {
+  content: "\e90e";
+}
+.accordions-triangle-up:before {
+  content: "\e90f";
+}
+.accordions-triangle-right:before {
+  content: "\e910";
+}
+.accordions-triangle-down:before {
+  content: "\e911";
+}
+.accordions-triangle-left:before {
+  content: "\e912";
+}
+.accordions-align-bottom:before {
+  content: "\e913";
+}
+.accordions-align-horizontal-middle:before {
+  content: "\e914";
+}
+.accordions-align-left:before {
+  content: "\e915";
+}
+.accordions-align-right:before {
+  content: "\e916";
+}
+.accordions-align-top:before {
+  content: "\e917";
+}
+.accordions-align-vertical-middle:before {
+  content: "\e918";
+}
+.accordions-team-user-people-circled:before {
+  content: "\e919";
+}
+.accordions-team-user-people:before {
+  content: "\e91a";
+}
+.accordions-team-users-people:before {
+  content: "\e91b";
+}
+.accordions-vCard:before {
+  content: "\e91c";
+}
+.accordions-man-user-people:before {
+  content: "\e91d";
+}
+.accordions-location-pin:before {
+  content: "\e91e";
+}
+.accordions-location-map-pin:before {
+  content: "\e91f";
+}
+.accordions-location-pin-map:before {
+  content: "\e9c6";
+}
+.accordions-address:before {
+  content: "\e920";
+}
+.accordions-globe-earth:before {
+  content: "\e921";
+}
+.accordions-map:before {
+  content: "\e922";
+}
+.accordions-compass:before {
+  content: "\e923";
+}
+.accordions-direction:before {
+  content: "\e924";
+}
+.accordions-paper-plane:before {
+  content: "\e925";
+}
+.accordions-aircraft:before {
+  content: "\e926";
+}
+.accordions-controller-play:before {
+  content: "\e927";
+}
+.accordions-controller-record-bullet-full:before {
+  content: "\e928";
+}
+.accordions-controller-stop:before {
+  content: "\e929";
+}
+.accordions-computer-desktop-tv:before {
+  content: "\e92a";
+}
+.accordions-computer-laptop-notebook:before {
+  content: "\e92b";
+}
+.accordions-computer-tablet:before {
+  content: "\e92c";
+}
+.accordions-computer-mobile-smartphone:before {
+  content: "\e92d";
+}
+.accordions-computer-keyboard:before {
+  content: "\e92e";
+}
+.accordions-computer-publish:before {
+  content: "\e92f";
+}
+.accordions-computer-printer-fax:before {
+  content: "\e930";
+}
+.accordions-computer-mouse:before {
+  content: "\e931";
+}
+.accordions-computer-disk-save:before {
+  content: "\e932";
+}
+.accordions-link:before {
+  content: "\e933";
+}
+.accordions-glass-search:before {
+  content: "\e934";
+}
+.accordions-signal-wifi:before {
+  content: "\e935";
+}
+.accordions-rss:before {
+  content: "\e936";
+}
+.accordions-browser:before {
+  content: "\e937";
+}
+.accordions-folder:before {
+  content: "\e938";
+}
+.accordions-folder-images:before {
+  content: "\e939";
+}
+.accordions-folder-music:before {
+  content: "\e93a";
+}
+.accordions-folder-video:before {
+  content: "\e93b";
+}
+.accordions-archive:before {
+  content: "\e93c";
+}
+.accordions-code:before {
+  content: "\e93d";
+}
+.accordions-database:before {
+  content: "\e93e";
+}
+.accordions-inbox:before {
+  content: "\e93f";
+}
+.accordions-download:before {
+  content: "\e940";
+}
+.accordions-upload:before {
+  content: "\e941";
+}
+.accordions-upload-cloud:before {
+  content: "\e942";
+}
+.accordions-uninstall:before {
+  content: "\e943";
+}
+.accordions-install:before {
+  content: "\e944";
+}
+.accordions-trash:before {
+  content: "\e945";
+}
+.accordions-layers:before {
+  content: "\e946";
+}
+.accordions-attachment:before {
+  content: "\e947";
+}
+.accordions-book-open:before {
+  content: "\e948";
+}
+.accordions-text-list:before {
+  content: "\e9ce";
+}
+.accordions-text-clipping:before {
+  content: "\e9cf";
+}
+.accordions-text-light:before {
+  content: "\e9d0";
+}
+.accordions-text-align-left:before {
+  content: "\e9d1";
+}
+.accordions-text-align-center:before {
+  content: "\e9d2";
+}
+.accordions-text-align-right:before {
+  content: "\e9d3";
+}
+.accordions-text-align-justify:before {
+  content: "\e9d4";
+}
+.accordions-index-card:before {
+  content: "\e9d5";
+}
+.accordions-calendar-blank:before {
+  content: "\e949";
+}
+.accordions-calendar-days:before {
+  content: "\e9d6";
+}
+.accordions-calendar-weeks:before {
+  content: "\e9d7";
+}
+.accordions-book-closed:before {
+  content: "\e94a";
+}
+.accordions-box:before {
+  content: "\e94b";
+}
+.accordions-briefcase:before {
+  content: "\e94c";
+}
+.accordions-blackboard:before {
+  content: "\e94d";
+}
+.accordions-camera:before {
+  content: "\e94e";
+}
+.accordions-image-filled:before {
+  content: "\e94f";
+}
+.accordions-image:before {
+  content: "\e950";
+}
+.accordions-images:before {
+  content: "\e951";
+}
+.accordions-message-pencil:before {
+  content: "\e952";
+}
+.accordions-edit-pencil:before {
+  content: "\e953";
+}
+.accordions-pencil-big:before {
+  content: "\e954";
+}
+.accordions-brush:before {
+  content: "\e955";
+}
+.accordions-brush-big:before {
+  content: "\e956";
+}
+.accordions-color-fan:before {
+  content: "\e957";
+}
+.accordions-color-palette:before {
+  content: "\e958";
+}
+.accordions-color-drop:before {
+  content: "\e959";
+}
+.accordions-color-bucket:before {
+  content: "\e95a";
+}
+.accordions-color-brush:before {
+  content: "\e9d8";
+}
+.accordions-color-text:before {
+  content: "\e9cd";
+}
+.accordions-email-sign:before {
+  content: "\e95b";
+}
+.accordions-email-envelope:before {
+  content: "\e95c";
+}
+.accordions-phone:before {
+  content: "\e9d9";
+}
+.accordions-phone-old:before {
+  content: "\e95e";
+}
+.accordions-calculator-phone-mobile:before {
+  content: "\e95f";
+}
+.accordions-phone-mobile-old:before {
+  content: "\e960";
+}
+.accordions-phone-booth:before {
+  content: "\e961";
+}
+.accordions-thermometer:before {
+  content: "\e962";
+}
+.accordions-sun-lightup:before {
+  content: "\e963";
+}
+.accordions-sun-adjust:before {
+  content: "\e964";
+}
+.accordions-water-raindrops:before {
+  content: "\e965";
+}
+.accordions-moon:before {
+  content: "\e966";
+}
+.accordions-cloud-open:before {
+  content: "\e967";
+}
+.accordions-cloud-filled:before {
+  content: "\e968";
+}
+.accordions-clouds-filled:before {
+  content: "\e969";
+}
+.accordions-tree:before {
+  content: "\e96a";
+}
+.accordions-air-waves:before {
+  content: "\e96b";
+}
+.accordions-area-mountains:before {
+  content: "\e96c";
+}
+.accordions-awareness-ribbon:before {
+  content: "\e96d";
+}
+.accordions-trophy:before {
+  content: "\e96e";
+}
+.accordions-medal:before {
+  content: "\e96f";
+}
+.accordions-graduation:before {
+  content: "\e970";
+}
+.accordions-price-ribbon:before {
+  content: "\e971";
+}
+.accordions-bookmark:before {
+  content: "\e972";
+}
+.accordions-bookmarks:before {
+  content: "\e973";
+}
+.accordions-shield:before {
+  content: "\e974";
+}
+.accordions-eye:before {
+  content: "\e975";
+}
+.accordions-battery:before {
+  content: "\e976";
+}
+.accordions-flashlight:before {
+  content: "\e977";
+}
+.accordions-music-note-filled:before {
+  content: "\e978";
+}
+.accordions-music-note-single:before {
+  content: "\e979";
+}
+.accordions-music-notes:before {
+  content: "\e97a";
+}
+.accordions-microphone-modern:before {
+  content: "\e97b";
+}
+.accordions-microphone-old:before {
+  content: "\e97c";
+}
+.accordions-voicemail:before {
+  content: "\e97d";
+}
+.accordions-sound-mixer:before {
+  content: "\e97e";
+}
+.accordions-bell:before {
+  content: "\e97f";
+}
+.accordions-megaphone:before {
+  content: "\e980";
+}
+.accordions-mask:before {
+  content: "\e981";
+}
+.accordions-power-plug:before {
+  content: "\e982";
+}
+.accordions-key:before {
+  content: "\e983";
+}
+.accordions-lock-open:before {
+  content: "\e984";
+}
+.accordions-lock-closed:before {
+  content: "\e985";
+}
+.accordions-clock:before {
+  content: "\e986";
+}
+.accordions-stopwatch:before {
+  content: "\e987";
+}
+.accordions-hourglass:before {
+  content: "\e988";
+}
+.accordions-time-slot:before {
+  content: "\e989";
+}
+.accordions-graph-lines:before {
+  content: "\e98a";
+}
+.accordions-graph-bar:before {
+  content: "\e98b";
+}
+.accordions-graph-pie:before {
+  content: "\e98c";
+}
+.accordions-cog:before {
+  content: "\e98d";
+}
+.accordions-copy-background:before {
+  content: "\e98e";
+}
+.accordions-pattern:before {
+  content: "\e9da";
+}
+.accordions-pattern-selection:before {
+  content: "\e9db";
+}
+.accordions-border:before {
+  content: "\e98f";
+}
+.accordions-drink:before {
+  content: "\e990";
+}
+.accordions-bowl:before {
+  content: "\e991";
+}
+.accordions-bucket:before {
+  content: "\e992";
+}
+.accordions-message:before {
+  content: "\e993";
+}
+.accordions-messages:before {
+  content: "\e994";
+}
+.accordions-message-typing:before {
+  content: "\e995";
+}
+.accordions-bullet-filled:before {
+  content: "\e996";
+}
+.accordions-help-question-filled:before {
+  content: "\e997";
+}
+.accordions-info-filled:before {
+  content: "\e998";
+}
+.accordions-close-filled:before {
+  content: "\e999";
+}
+.accordions-minus-filled:before {
+  content: "\e99a";
+}
+.accordions-plus-filled:before {
+  content: "\e99b";
+}
+.accordions-clapperboard:before {
+  content: "\e99c";
+}
+.accordions-news-text:before {
+  content: "\e99d";
+}
+.accordions-documents:before {
+  content: "\e99e";
+}
+.accordions-clipboard:before {
+  content: "\e99f";
+}
+.accordions-shopping-bag:before {
+  content: "\e9a0";
+}
+.accordions-shopping-basket:before {
+  content: "\e9a1";
+}
+.accordions-shopping-cart:before {
+  content: "\e9a2";
+}
+.accordions-shopping-shop:before {
+  content: "\e9a3";
+}
+.accordions-wallet:before {
+  content: "\e9a4";
+}
+.accordions-credit-card:before {
+  content: "\e9a5";
+}
+.accordions-suitcase:before {
+  content: "\e9a6";
+}
+.accordions-eraser-delete:before {
+  content: "\e9a7";
+}
+.accordions-feather:before {
+  content: "\e9a8";
+}
+.accordions-flag:before {
+  content: "\e9a9";
+}
+.accordions-funnel:before {
+  content: "\e9aa";
+}
+.accordions-game-controller:before {
+  content: "\e9ab";
+}
+.accordions-gauge-speed:before {
+  content: "\e9ac";
+}
+.accordions-hand:before {
+  content: "\e9ad";
+}
+.accordions-heart:before {
+  content: "\e9ae";
+}
+.accordions-lab-flask:before {
+  content: "\e9af";
+}
+.accordions-life-belt:before {
+  content: "\e9b0";
+}
+.accordions-light-bulb:before {
+  content: "\e9b1";
+}
+.accordions-magnet:before {
+  content: "\e9b2";
+}
+.accordions-warning-filled:before {
+  content: "\e9b3";
+}
+.accordions-notification:before {
+  content: "\e9b4";
+}
+.accordions-pin:before {
+  content: "\e9b5";
+}
+.accordions-price-tag:before {
+  content: "\e9b6";
+}
+.accordions-radio:before {
+  content: "\e9b7";
+}
+.accordions-rocket:before {
+  content: "\e9b8";
+}
+.accordions-ruler:before {
+  content: "\e9b9";
+}
+.accordions-scissors:before {
+  content: "\e9ba";
+}
+.accordions-share-alternitive:before {
+  content: "\e9bb";
+}
+.accordions-networking:before {
+  content: "\e9dc";
+}
+.accordions-share-network:before {
+  content: "\e9bc";
+}
+.accordions-star-filled:before {
+  content: "\e9bd";
+}
+.accordions-flag2:before {
+  content: "\e9be";
+}
+.accordions-switch:before {
+  content: "\e9bf";
+}
+.accordions-cloud-thunder:before {
+  content: "\e9c0";
+}
+.accordions-ticket:before {
+  content: "\e9c1";
+}
+.accordions-home:before {
+  content: "\e9c2";
+}
+.accordions-tools:before {
+  content: "\e9c3";
+}
+.accordions-traffic-cone:before {
+  content: "\e9c4";
+}
+.accordions-cup-basket:before {
+  content: "\e9c5";
+}
+.accordions-video-filmstrip:before {
+  content: "\e9dd";
+}
+.accordions-video-playing:before {
+  content: "\e9de";
+}
+.accordions-video-start:before {
+  content: "\e9df";
+}
+.accordions-margin-right:before {
+  content: "\e9c8";
+}
+.accordions-margin-bottom:before {
+  content: "\e9c9";
+}
+.accordions-margin-top:before {
+  content: "\e9ca";
+}
+.accordions-margin-left:before {
+  content: "\e9cb";
+}
+.accordions-margin-all:before {
+  content: "\e9cc";
+}
+.accordions-layout-header:before {
+  content: "\e9e0";
+}
+.accordions-layout-footer:before {
+  content: "\e9e1";
+}
+.accordions-layout-sidebar:before {
+  content: "\e9e2";
+}
+.accordions-facebook-filled:before {
+  content: "\e9c7";
+}
+.accordions-facebook:before {
+  content: "\e9e3";
+}
+.accordions-youtube-filled:before {
+  content: "\e9e5";
+}
+.accordions-youtube:before {
+  content: "\e9e4";
+}
+.accordions-twitter-filled:before {
+  content: "\e9e7";
+}
+.accordions-twitter:before {
+  content: "\e9e6";
+}
+.accordions-google-filled:before {
+  content: "\e9e8";
+}
+.accordions-google:before {
+  content: "\e9e9";
+}
+.accordions-google-plus-filled:before {
+  content: "\e9ea";
+}
+.accordions-google-plus:before {
+  content: "\e9eb";
+}
+.accordions-pinterest-filled:before {
+  content: "\e9ee";
+}
+.accordions-pinterest:before {
+  content: "\e9ef";
+}
+.accordions-instagram-filled:before {
+  content: "\e9f0";
+}
+.accordions-instagram:before {
+  content: "\e9f1";
+}
+.accordions-linkedin-filled:before {
+  content: "\e9ec";
+}
+.accordions-linkedin:before {
+  content: "\e9ed";
+}
+.accordions-flickr-filled:before {
+  content: "\e9f2";
+}
+.accordions-flickr:before {
+  content: "\e9f3";
+}
+.accordions-five-hundred-px-filled:before {
+  content: "\e9f4";
+}
+.accordions-five-hundred-px:before {
+  content: "\e9f5";
+}
