@@ -43,7 +43,7 @@ $subheading = apply_filters( 'ccp_welcome_subheading', $subheading );
 		esc_html__( 'Welcome,', 'controlled-chaos-addon' ),
 		$user_name
 	); ?>
-	<p class="about-description"><?php _e( 'This is your custom welcome panel.' ); ?></p>
+	<p class="about-description"><?php _e( 'Put your welcome message here.' ); ?></p>
 	<?php echo $subheading; ?>
 	<p><?php _e( 'Use this to provide handy links to manage content, informational widgets, or maybe an instructional video.' ); ?></p>
 
