@@ -97,7 +97,22 @@ class Settings_Fields_Site {
 			'ccp-site-dashboard'
 		);
 
-		// Hide the Welcome panel.
+		// Use the custom welcome panel.
+		add_settings_field(
+			'ccp_custom_welcome',
+			__( 'Custom Welcome', 'controlled-chaos-plugin' ),
+			[ $this, 'ccp_custom_welcome_callback' ],
+			'ccp-site-dashboard',
+			'ccp-site-dashboard',
+			[ esc_html__( 'Use the custom Welcome panel on the Dashboard', 'controlled-chaos-plugin' ) ]
+		);
+
+		register_setting(
+			'ccp_dashboard',
+			'ccp_custom_welcome'
+		);
+
+		// Hide the welcome panel.
 		add_settings_field(
 			'ccp_hide_welcome',
 			__( 'Hide Welcome', 'controlled-chaos-plugin' ),
@@ -112,7 +127,7 @@ class Settings_Fields_Site {
 			'ccp_hide_welcome'
 		);
 
-		// Hide the Welcome panel dismiss button.
+		// Hide the welcome panel dismiss button.
 		add_settings_field(
 			'ccp_remove_welcome_dismiss',
 			__( 'Remove Dismiss', 'controlled-chaos-plugin' ),
@@ -636,7 +651,27 @@ class Settings_Fields_Site {
 	}
 
 	/**
-	 * Hide Welcome panel.
+	 * Use custom welcome panel.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @param  array $args Extra arguments passed into the callback function.
+	 * @return string
+	 */
+	public function ccp_custom_welcome_callback( $args ) {
+
+		$option = get_option( 'ccp_custom_welcome' );
+
+		$html = '<p><input type="checkbox" id="ccp_custom_welcome" name="ccp_custom_welcome" value="1" ' . checked( 1, $option, false ) . '/>';
+
+		$html .= '<label for="ccp_custom_welcome"> '  . $args[0] . '</label></p>';
+
+		echo $html;
+
+	}
+
+	/**
+	 * Hide welcome panel.
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -656,7 +691,7 @@ class Settings_Fields_Site {
 	}
 
 	/**
-	 * Remove Welcome dismiss.
+	 * Remove welcome dismiss.
 	 *
 	 * @since  1.0.0
 	 * @access public

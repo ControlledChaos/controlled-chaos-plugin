@@ -341,7 +341,26 @@ class Admin {
 	 */
 	public function enqueue_styles() {
 
+		/**
+		 * Enqueue the general backend styles.
+		 *
+		 * Included are just a few style rules for features added by this plugin.
+		 *
+		 * @since 1.0.0
+		 */
 		wp_enqueue_style( CCP_ADMIN_SLUG . '-admin', plugin_dir_url( __FILE__ ) . 'assets/css/admin.css', [], CCP_VERSION, 'all' );
+
+		/**
+		 * Enqueue the custom welcome panel styles.
+		 *
+		 * Will only enqueue if the option is selected to use the panel.
+		 *
+		 * @since 1.0.0
+		 */
+		$welcome = get_option( 'ccp_custom_welcome' );
+		if ( $welcome ) {
+			wp_enqueue_style( CCP_ADMIN_SLUG . '-welcome', plugin_dir_url( __FILE__ ) . 'assets/css/welcome.css', [], CCP_VERSION, 'all' );
+		}
 
 	}
 
