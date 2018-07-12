@@ -73,7 +73,7 @@ $tabs = [
 
 	// Script Options tab.
     sprintf(
-        '<li><a href="%1s"><span class="dashicons dashicons-welcome-learn-more"></span> %2s</a></li>',
+        '<li><a href="%1s"><span class="dashicons dashicons-editor-code"></span> %2s</a></li>',
         '#scripts',
         esc_html__( 'Script Options', 'controlled-chaos-plugin' )
 	),
