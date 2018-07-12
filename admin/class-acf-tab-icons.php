@@ -64,14 +64,20 @@ final class ACF_Tab_Icons {
 	 */
 	public function __construct() {
 
-		// Include the field.
-		add_action( 'acf/input/admin_enqueue_scripts', [ $this, 'acf_title_icon_admin_enqueue_scripts' ], 11 );
+		// Enqueue scripts and styles for the icon field..
+		add_action( 'acf/input/admin_enqueue_scripts', [ $this, 'enqueue_scripts_styles' ], 11 );
 
-		add_action( 'acf/render_field_settings/type=accordion', [ $this, 'dhz_title_icon_render_field_settings' ], 11 );
-		add_action( 'acf/render_field_settings/type=tab', [ $this, 'dhz_title_icon_render_field_settings' ], 11 );
+		// Register the field settings for the accordion field.
+		add_action( 'acf/render_field_settings/type=accordion', [ $this, 'icon_register_field_settings' ], 11 );
 
-		add_filter( 'acf/prepare_field/type=accordion', [ $this, 'dhz_acf_title_icon_prepare_field' ], 11 );
-		add_filter( 'acf/prepare_field/type=tab', [ $this, 'dhz_acf_title_icon_prepare_field' ], 11 );
+		// Register the field settings for the tab field.
+		add_action( 'acf/render_field_settings/type=tab', [ $this, 'icon_register_field_settings' ], 11 );
+
+		// Prepare the field settings for the accordion field.
+		add_filter( 'acf/prepare_field/type=accordion', [ $this, 'icon_render_field' ], 11 );
+
+		// Prepare the field settings for the tab field.
+		add_filter( 'acf/prepare_field/type=tab', [ $this, 'icon_render_field' ], 11 );
 
 	}
 
@@ -84,38 +90,38 @@ final class ACF_Tab_Icons {
 	 * @global object wp_styles
 	 * @return void
 	 */
-	public function acf_title_icon_admin_enqueue_scripts() {
+	public function enqueue_scripts_styles() {
 
 		global $wp_scripts, $wp_styles;
 
-		// Register ACF Title Icons CSS from theme folder.
-		if ( file_exists( get_theme_file_path() . '/acf-title-icons/style.css' ) ) {
-			wp_register_style( 'acf-title-icons', get_theme_file_uri() . '/acf-title-icons/style.css', [], CCP_VERSION );
+		// Register tab icons CSS from theme folder.
+		if ( file_exists( get_theme_file_path( 'assets/fonts/icons/afc-icons.css' ) ) ) {
+			wp_register_style( 'acf-tab-icons', get_theme_file_uri( 'assets/fonts/icons/afc-icons.css' ), [], CCP_VERSION );
 
-		// Register ACF Title Icons CSS from plugin folder.
+		// Register tab icons CSS from plugin folder.
 		} else {
-			wp_register_style( 'acf-title-icons', plugin_dir_url( __FILE__ ) . 'assets/images/icons/style.css', [], CCP_VERSION );
+			wp_register_style( 'acf-tab-icons', plugin_dir_url( __FILE__ ) . 'assets/fonts/icons/afc-icons.css', [], CCP_VERSION );
 		}
 
 		// Enqueue styles & scripts.
-		wp_enqueue_style( 'acf-title-icons' );
+		wp_enqueue_style( 'acf-tab-icons' );
 
 	}
 
 	/**
-	 * Undocumented function
+	 * Register the tab icon field settings.
 	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @param  object $field
 	 * @return void
 	 */
-	public function dhz_title_icon_render_field_settings( $field ) {
+	public function icon_register_field_settings( $field ) {
 
 		if ( file_exists( get_theme_file_path() . '/acf-title-icons/selection.json' ) ) {
 			$json_file = file_get_contents( get_theme_file_uri( '/acf-title-icons/selection.json' ) );
 		} else {
-			$json_file = file_get_contents( plugin_dir_url( __FILE__ ) . 'assets/images/icons/selection.json' );
+			$json_file = file_get_contents( plugin_dir_url( __FILE__ ) . 'assets/fonts/icons/selection.json' );
 		}
 
 		$json_content = json_decode( $json_file, true );
@@ -146,10 +152,10 @@ final class ACF_Tab_Icons {
 
 		}
 
-		// icon select
+		// Select the icon for the tab.
 		acf_render_field_setting( $field, [
 			'label'			=> __( 'Icon', 'controlled-chaos-plugin' ),
-			'instructions'	=> __( 'Select an icon you want to show before the title.', 'controlled-chaos-plugin' ),
+			'instructions'	=> __( 'Select an icon you want to show before the tab text.', 'controlled-chaos-plugin' ),
 			'type'			=> 'select',
 			'id'			=> $field['ID'] . 'accordion-select',
 			'name'			=> 'icon_class',
@@ -160,10 +166,10 @@ final class ACF_Tab_Icons {
 			'ajax'			=> 0,
 		] );
 
-		// icon only
+		// Option to show only the icon, not text.
 		acf_render_field_setting( $field, [
 			'label'			=> __( 'Show icon only', 'controlled-chaos-plugin'),
-			'instructions'	=> __( 'If set to <em>Yes</em>, you will see only the icon and no title.', 'controlled-chaos-plugin'),
+			'instructions'	=> __( 'If set to <em>Yes</em>, you will see only the icon and no text.', 'controlled-chaos-plugin'),
 			'name'			=> 'show_icon_only',
 			'type'			=> 'true_false',
 			'ui'			=> 1,
@@ -171,14 +177,14 @@ final class ACF_Tab_Icons {
 	}
 
 	/**
-	 * Undocumented function
+	 * Render the tab icon field settings.
 	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @param  object $field
 	 * @return void
 	 */
-	public function dhz_acf_title_icon_prepare_field( $field ) {
+	public function icon_render_field( $field ) {
 
 		if ( array_key_exists( 'icon_class', $field ) && ! $field['icon_class'] == '' ) {
 
