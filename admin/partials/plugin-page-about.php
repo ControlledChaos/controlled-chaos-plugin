@@ -80,7 +80,7 @@ $tabs = [
 
 	// Media Options tab.
     sprintf(
-        '<li><a href="%1s"><span class="dashicons dashicons-welcome-learn-more"></span> %2s</a></li>',
+        '<li><a href="%1s"><span class="dashicons dashicons-admin-media"></span> %2s</a></li>',
         '#media',
         esc_html__( 'Media Options', 'controlled-chaos-plugin' )
 	),
