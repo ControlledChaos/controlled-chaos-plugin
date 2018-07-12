@@ -53,7 +53,7 @@ class Dashboard_Widget {
 	public function __construct() {
 
 		// Register the dashboard widget area.
-		add_action( 'widgets_init', [ $this, 'widget_area' ] );
+		add_action( 'widgets_init', [ $this, 'widget_area' ], 25 );
 
 		// Create the dashdoard widget.
 		add_action( 'wp_dashboard_setup', [ $this, 'dashboard_widget' ] );

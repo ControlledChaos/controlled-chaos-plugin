@@ -64,7 +64,7 @@ class Welcome {
 		}
 
 		// Register the welcome panel areas.
-		add_action( 'widgets_init', [ $this, 'widget_areas' ] );
+		add_action( 'widgets_init', [ $this, 'widget_areas' ], 25 );
 
 		// Use the custom Welcome panel if option selected.
 		$welcome = get_option( 'ccp_custom_welcome' );

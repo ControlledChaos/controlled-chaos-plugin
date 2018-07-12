@@ -27,9 +27,9 @@ $user_name    = $current_user->display_name;
 // Add a filterable subheading.
 $subheading = sprintf(
 	'<h3>%1s %2s %3s.</h3>',
-	esc_html__( 'This is your custom', 'controlled-chaos-addon' ),
+	esc_html__( 'This is your custom', 'controlled-chaos-plugin' ),
 	get_bloginfo( 'name' ),
-	esc_html__( 'welcome panel', 'controlled-chaos-addon' )
+	esc_html__( 'welcome panel', 'controlled-chaos-plugin' )
 );
 $subheading = apply_filters( 'ccp_welcome_subheading', $subheading );
 
@@ -40,7 +40,7 @@ $subheading = apply_filters( 'ccp_welcome_subheading', $subheading );
 
 	<?php echo sprintf(
 		'<h2>%1s %2s.</h2>',
-		esc_html__( 'Welcome,', 'controlled-chaos-addon' ),
+		esc_html__( 'Welcome,', 'controlled-chaos-plugin' ),
 		$user_name
 	); ?>
 	<p class="about-description"><?php _e( 'Put your welcome message here.' ); ?></p>
@@ -61,7 +61,7 @@ $subheading = apply_filters( 'ccp_welcome_subheading', $subheading );
 
 					$placeholder = sprintf(
 						'<h3>%1s</h3>',
-						esc_html( 'Column One', 'controlled-chaos-addon' )
+						esc_html( 'Column One', 'controlled-chaos-plugin' )
 					);
 					$placeholder .= sprintf(
 						'<p><a href="%1s">%2s</a> %3s.</p>',
@@ -87,7 +87,7 @@ $subheading = apply_filters( 'ccp_welcome_subheading', $subheading );
 
 					$placeholder = sprintf(
 						'<h3>%1s</h3>',
-						esc_html( 'Column Two', 'controlled-chaos-addon' )
+						esc_html( 'Column Two', 'controlled-chaos-plugin' )
 					);
 					$placeholder .= sprintf(
 						'<p><a href="%1s">%2s</a> %3s.</p>',
@@ -113,7 +113,7 @@ $subheading = apply_filters( 'ccp_welcome_subheading', $subheading );
 
 					$placeholder = sprintf(
 						'<h3>%1s</h3>',
-						esc_html( 'Column Three', 'controlled-chaos-addon' )
+						esc_html( 'Column Three', 'controlled-chaos-plugin' )
 					);
 					$placeholder .= sprintf(
 						'<p><a href="%1s">%2s</a> %3s.</p>',
