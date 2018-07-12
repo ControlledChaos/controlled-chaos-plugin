@@ -83,6 +83,20 @@ class Admin {
 		// Credits in admin footer.
 		add_filter( 'admin_footer_text', [ $this, 'admin_footer' ], 1 );
 
+		/**
+		 * Backend search form template.
+		 *
+		 * The necessity for this came from a search widget in the custom welcome
+		 * panel with the Twenty Seventeen theme activated. The SVG used in the
+		 * theme template does not display. So the thought here is to use a basic
+		 * form as a reset.
+		 *
+		 * Filters have also been applied for changing placeholder and button text.
+		 *
+		 * @since 1.0.0
+		 */
+		add_filter( 'get_search_form', [ $this, 'search_form' ] );
+
 		// Enqueue the stylesheets for the admin area.
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_styles' ] );
 
@@ -361,6 +375,40 @@ class Admin {
 		if ( $welcome ) {
 			wp_enqueue_style( CCP_ADMIN_SLUG . '-welcome', plugin_dir_url( __FILE__ ) . 'assets/css/welcome.css', [], CCP_VERSION, 'all' );
 		}
+
+	}
+
+	/**
+	 * Get the backend search form template.
+	 *
+	 * @since  1.0.0
+	 * @return mixed Returns the HTML of the search form.
+	 */
+	public function get_search_form() {
+
+		ob_start();
+
+		require plugin_dir_path( __FILE__ ) . 'partials/searchform.php';
+
+		$form = ob_get_clean();
+
+		return $form;
+
+	}
+
+	/**
+	 * Output the backend search form.
+	 *
+	 * @since  1.0.0
+	 * @param  mixed $form
+	 * @return mixed Returns the HTML of the search form.
+	 */
+	public function search_form( $form ) {
+
+		// Get the HTML of the form.
+		$form = $this->get_search_form();
+
+		return $form;
 
 	}
 
