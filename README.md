@@ -84,6 +84,10 @@ Supplied as reference. More to come.
 * Add custom post types to the At a Glance widget
 * Custom admin footer message
 
+### Custom Welcome Panel
+
+An optional welcome panel with three widget areas and loaded with hooks for adding content.
+
 ### Media Options
 
 * Add option to hard crop the medium and/or large image sizes
