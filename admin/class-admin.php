@@ -124,7 +124,7 @@ class Admin {
 
 		// Include custom fields for Advanced Custom Fields Pro, if active.
 		if ( class_exists( 'acf_pro' ) && ! get_option( 'ccp_acf_activate_settings_page' ) ) {
-			include_once plugin_dir_path( __FILE__ ) . 'class-settings-fields-acf.php';
+			include_once plugin_dir_path( __FILE__ ) . 'class-settings-fields-site-acf.php';
 		}
 
 		// Functions for dasboard widgets, excluding the welcome panel.

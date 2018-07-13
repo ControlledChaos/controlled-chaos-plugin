@@ -130,7 +130,7 @@ class Settings_Fields_Site {
 		// Hide the welcome panel dismiss button.
 		add_settings_field(
 			'ccp_remove_welcome_dismiss',
-			__( 'Remove Dismiss', 'controlled-chaos-plugin' ),
+			__( 'Remove Welcome Dismiss', 'controlled-chaos-plugin' ),
 			[ $this, 'ccp_remove_welcome_dismiss_callback' ],
 			'ccp-site-dashboard',
 			'ccp-site-dashboard',
@@ -253,7 +253,7 @@ class Settings_Fields_Site {
 			[ $this, 'ccp_site_settings_link_icon_callback' ],
 			'ccp-site-admin-menu',
 			'ccp-site-admin-menu',
-			[ esc_html__( 'Enter a Dashicons class for the icon of the link to this page', 'controlled-chaos-plugin' ) ]
+			[ esc_html__( 'Enter a Dashicons CSS class for the icon of the link to this page', 'controlled-chaos-plugin' ) ]
 		);
 
 		register_setting(
@@ -268,7 +268,7 @@ class Settings_Fields_Site {
 			[ $this, 'ccp_site_plugin_position_callback' ],
 			'ccp-site-admin-menu',
 			'ccp-site-admin-menu',
-			[ esc_html__( 'Make the site-specific plugin settings page a top-level link.', 'controlled-chaos-plugin' ) ]
+			[ esc_html__( 'Make the site-specific plugin admin page a top-level link.', 'controlled-chaos-plugin' ) ]
 		);
 
 		register_setting(
@@ -298,7 +298,7 @@ class Settings_Fields_Site {
 			[ $this, 'ccp_site_plugin_link_icon_callback' ],
 			'ccp-site-admin-menu',
 			'ccp-site-admin-menu',
-			[ esc_html__( 'Enter a Dashicons class for the icon of the link to the site-specific plugin page', 'controlled-chaos-plugin' ) ]
+			[ esc_html__( 'Enter a Dashicons CSS class for the icon of the link to the site-specific plugin page', 'controlled-chaos-plugin' ) ]
 		);
 
 		register_setting(

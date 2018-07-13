@@ -57,8 +57,21 @@ class Welcome {
 	 */
     public function __construct() {
 
-		// Remove the welcome panel dismiss button.
-		$dismiss = get_option( 'ccp_remove_welcome_dismiss' );
+		/**
+		 * Remove the welcome panel dismiss button.
+		 *
+		 * @since 1.0.0
+		 */
+
+		// If ACF is active, get the field from the ACF options page.
+		if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
+			$dismiss = get_field( 'ccp_remove_welcome_dismiss', 'option' );
+
+		// If ACF is not active, get the field from the WordPress options page.
+		} else {
+			$dismiss = get_option( 'ccp_remove_welcome_dismiss' );
+		}
+
 		if ( $dismiss ) {
 			add_action( 'admin_head', [ $this, 'dismiss' ] );
 		}
@@ -66,8 +79,17 @@ class Welcome {
 		// Register the welcome panel areas.
 		add_action( 'widgets_init', [ $this, 'widget_areas' ], 25 );
 
-		// Use the custom Welcome panel if option selected.
-		$welcome = get_option( 'ccp_custom_welcome' );
+		/**
+		 * Use the custom Welcome panel if option selected.
+		 */
+
+		// If ACF is active, get the field from the ACF options page.
+		if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
+			$welcome = get_field( 'ccp_custom_welcome', 'option' );
+		} else {
+			$welcome = get_option( 'ccp_custom_welcome' );
+		}
+
 		if ( $welcome ) {
 			remove_action( 'welcome_panel', 'wp_welcome_panel' );
 			add_action( 'welcome_panel', [ $this, 'welcome_panel' ], 25 );

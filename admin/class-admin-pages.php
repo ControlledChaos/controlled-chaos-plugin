@@ -99,23 +99,96 @@ class Admin_Pages {
      */
     public function about_plugin() {
 
-        $link_label = sanitize_text_field( get_option( 'ccp_site_plugin_link_label' ) );
-        $position   = get_option( 'ccp_site_plugin_position' );
-        $link_icon  = sanitize_text_field( get_option( 'ccp_site_plugin_link_icon' ) );
+        /**
+         * Get the menu position of the plugin page.
+         *
+         * @since  1.0.0
+         * @return bool Returns true or false for both ACF field and WP field.
+         */
 
+        // If ACF is active, get the field from the ACF options page.
+        if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
+
+            // Get the field.
+            $acf_position = get_field( 'ccp_site_plugin_link_position', 'option' );
+
+            // Return true if the field is set to `top`.
+            if ( 'top' == $acf_position ) {
+                $position = true;
+
+            // Otherwise return `false`.
+            } else {
+                $position = false;
+            }
+
+        // If ACF is not active, get the field from the WordPress options page.
+        } else {
+
+            // Get the field.
+            $position = get_option( 'ccp_site_plugin_position' );
+        }
+
+        /**
+         * Get the menu label for the plugin page.
+         *
+         * @since  1.0.0
+         * @return string Returns the text of the label.
+         */
+
+        // If ACF is active, get the field from the ACF options page.
+        if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
+
+            // Get the field.
+            $link_label = get_field( 'ccp_site_plugin_link_label', 'option' );
+
+        // If ACF is not active, get the field from the WordPress options page.
+        } else {
+
+            // Get the field.
+            $link_label = sanitize_text_field( get_option( 'ccp_site_plugin_link_label' ) );
+        }
+
+        // If one of the label fields above is not empty the use that label.
         if ( $link_label ) {
             $label = $link_label;
+
+        // Otherwise use Site Plugin as the label.
         }  else {
             $label = __( 'Site Plugin', 'controlled-chaos-plugin' );
         }
 
+        /**
+         * Get the menu icon for the plugin page.
+         *
+         * Applies only if menu position is set to top level.
+         *
+         * @since  1.0.0
+         * @return string Returns a CSS class of Dashicons icon.
+         */
+
+        // If ACF is active, get the field from the ACF options page.
+        if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
+
+            // Get the field.
+            $link_icon  = get_field( 'ccp_site_plugin_link_icon', 'option' );
+
+        // If ACF is not active, get the field from the WordPress options page.
+        } else {
+
+            // Get the field.
+            $link_icon  = sanitize_text_field( get_option( 'ccp_site_plugin_link_icon' ) );
+        }
+
+        // If one of the icon fields above is not empty the use that CSS class.
         if ( $link_icon ) {
             $icon = $link_icon;
+
+        // Otherwise use the scholar's cap icon to imply instruction.
         }  else {
             $icon = __( 'dashicons-welcome-learn-more', 'controlled-chaos-plugin' );
         }
 
-        if ( $position ) {
+        if ( true == $position ) {
             $this->help_about_plugin = add_menu_page(
                 $label,
                 $label,
