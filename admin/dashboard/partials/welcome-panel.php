@@ -38,7 +38,7 @@ $about_desc = apply_filters( 'ccp_welcome_about', __( 'Put your welcome message 
 
 ?>
 <?php do_action( 'ccp_before_welcome_panel_content' ); ?>
-<div class="welcome-panel-content">
+<div class="welcome-panel-content custom">
 	<?php do_action( 'ccp_welcome_panel_content_before' ); ?>
 
 	<?php echo sprintf(
