@@ -371,8 +371,6 @@ class Dashboard {
     /**
 	 * Enqueue dashboard stylesheet.
      *
-     * Uncomment to enqueue the stylesheet.
-     *
      * @since  1.0.0
 	 * @access public
 	 * @return void
@@ -384,7 +382,7 @@ class Dashboard {
 
         // Enqueue only on the Dashboard screen.
         if ( $screen->id == 'dashboard' ) {
-            // wp_enqueue_style( 'ccp_dashboard', get_theme_file_uri( '/includes/widgets/dashboard/assets/css/dashboard.css' ), [], null, 'screen' );
+            wp_enqueue_style( CCP_ADMIN_SLUG . '-dashboard', plugin_dir_url( __FILE__ ) .  'assets/css/dashboard.css', [], null, 'screen' );
         }
 
 	}

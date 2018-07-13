@@ -1,0 +1,28 @@
+/**
+ * Custom welcome panel styles
+ *
+ * This stylesheet is enqueued in the functions file.
+ */
+
+.welcome-panel .welcome-panel-content.custom {
+
+	.welcome-panel-column-container {
+
+		.welcome-panel-column {
+
+			&.welcome-panel-last {}
+		}
+
+		h3 {}
+
+		p {}
+
+		ul {}
+
+		li {}
+	}
+
+	h2 {}
+
+	.about-description{}
+}
