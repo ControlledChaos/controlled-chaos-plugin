@@ -8,7 +8,7 @@ A feature-packed WordPress starter plugin for building custom-tailored websites.
 
 ## Plugin Overview
 
-This is a tool — a means to an end. But it can be used as is without further development.
+This is a tool — a means to an end. Not intended to be used as is, without further development.
 
 ### Introduction
 

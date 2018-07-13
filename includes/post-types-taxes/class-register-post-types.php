@@ -56,6 +56,7 @@ final class Post_Types_Register {
          * Search case "Custom Post" and replace with your post type capitalized name.
          * Search case "custom post" and replace with your post type lowercase name.
          * Search case "ccp_post_type" and replace with your post type database name.
+         * Search case "custom-posts" and replace with your post type archive permalink slug.
          */
 
         $labels = [
