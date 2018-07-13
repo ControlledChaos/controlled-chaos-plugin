@@ -33,6 +33,9 @@ $subheading = sprintf(
 );
 $subheading = apply_filters( 'ccp_welcome_subheading', $subheading );
 
+// Add a filterable description.
+$about_desc = apply_filters( 'ccp_welcome_about', __( 'Put your welcome message here.', 'controlled-chaos-plugin' ) );
+
 ?>
 <?php do_action( 'ccp_before_welcome_panel_content' ); ?>
 <div class="welcome-panel-content">
@@ -43,7 +46,7 @@ $subheading = apply_filters( 'ccp_welcome_subheading', $subheading );
 		esc_html__( 'Welcome,', 'controlled-chaos-plugin' ),
 		$user_name
 	); ?>
-	<p class="about-description"><?php _e( 'Put your welcome message here.' ); ?></p>
+	<p class="about-description"><?php echo $about_desc; ?></p>
 	<?php echo $subheading; ?>
 	<p><?php _e( 'Use this to provide handy links to manage content, informational widgets, or maybe an instructional video.' ); ?></p>
 
