@@ -88,10 +88,10 @@ final class Settings_Fields_ACF {
 					],
 					[
 						'key'               => 'field_5b4807983ccaf',
-						'label'             => 'Custom Welcome',
+						'label'             => __( 'Custom Welcome', 'controlled-chaos-plugin' ),
 						'name'              => 'ccp_custom_welcome',
 						'type'              => 'true_false',
-						'instructions'      => 'Use the custom Welcome panel on the Dashboard',
+						'instructions'      => __( 'Use the custom Welcome panel on the Dashboard', 'controlled-chaos-plugin' ),
 						'required'          => 0,
 						'conditional_logic' => 0,
 						'wrapper'           => [
@@ -107,10 +107,10 @@ final class Settings_Fields_ACF {
 					],
 					[
 						'key'               => 'field_5b48081b3ccb0',
-						'label'             => 'Remove Welcome Dismiss',
+						'label'             => __( 'Remove Welcome Dismiss', 'controlled-chaos-plugin' ),
 						'name'              => 'ccp_remove_welcome_dismiss',
 						'type'              => 'true_false',
-						'instructions'      => 'Remove the Welcome panel dismiss button',
+						'instructions'      => __( '', 'controlled-chaos-plugin' ),
 						'required'          => 0,
 						'conditional_logic' => 0,
 						'wrapper'           => [
@@ -118,7 +118,7 @@ final class Settings_Fields_ACF {
 							'class' => '',
 							'id'    => '',
 						],
-						'message'           => '',
+						'message'           => __( 'Remove the Welcome panel dismiss button.', 'controlled-chaos-plugin' ),
 						'default_value'     => 0,
 						'ui'                => 0,
 						'ui_on_text'        => '',
@@ -210,10 +210,10 @@ final class Settings_Fields_ACF {
 					],
 					[
 						'key'               => 'field_5b4809a3f4f0b',
-						'label'             => 'Site Settings Icon',
+						'label'             => __( 'Site Settings Icon', 'controlled-chaos-plugin' ),
 						'name'              => 'ccp_site_settings_link_icon',
 						'type'              => 'text',
-						'instructions'      => 'Enter a Dashicons CSS class for the icon of the link to this page.',
+						'instructions'      => __( 'Enter a Dashicons CSS class for the icon of the link to this page.', 'controlled-chaos-plugin' ),
 						'required'          => 0,
 						'conditional_logic' => 0,
 						'wrapper'           => [
@@ -229,10 +229,10 @@ final class Settings_Fields_ACF {
 					],
 					[
 						'key'               => 'field_5b480aa335a20',
-						'label'             => 'Site Plugin Position',
+						'label'             => __( 'Site Plugin Position', 'controlled-chaos-plugin' ),
 						'name'              => 'ccp_site_plugin_link_position',
 						'type'              => 'button_group',
-						'instructions'      => 'Make the site-specific plugin admin page a top-level link.',
+						'instructions'      => __( 'Make the site-specific plugin admin page a top-level link.', 'controlled-chaos-plugin' ),
 						'required'          => 0,
 						'conditional_logic' => 0,
 						'wrapper'           => [
@@ -241,8 +241,8 @@ final class Settings_Fields_ACF {
 							'id'    => '',
 						],
 						'choices'           => [
-							'default' => 'Default/Show',
-							'top'     => 'Top Level/Hide',
+							'default' => __( 'Default/Show', 'controlled-chaos-plugin' ),
+							'top'     => __( 'Top Level/Hide', 'controlled-chaos-plugin' ),
 						],
 						'allow_null'        => 0,
 						'default_value'     => 'default',
@@ -251,10 +251,10 @@ final class Settings_Fields_ACF {
 					],
 					[
 						'key'               => 'field_5b480b0d35a21',
-						'label'             => 'Site Plugin Label',
+						'label'             => __( 'Site Plugin Label', 'controlled-chaos-plugin' ),
 						'name'              => 'ccp_site_plugin_link_label',
 						'type'              => 'text',
-						'instructions'      => 'Change the label of the link to this page.',
+						'instructions'      => __( 'Change the label of the link to this page.', 'controlled-chaos-plugin' ),
 						'required'          => 0,
 						'conditional_logic' => 0,
 						'wrapper'           => [
@@ -263,17 +263,17 @@ final class Settings_Fields_ACF {
 							'id'    => '',
 						],
 						'default_value'     => '',
-						'placeholder'       => 'Site Settings',
+						'placeholder'       => __( 'Site Settings', 'controlled-chaos-plugin' ),
 						'prepend'           => '',
 						'append'            => '',
 						'maxlength'         => '',
 					],
 					[
 						'key'               => 'field_5b480b4f35a22',
-						'label'             => 'Site Plugin Icon',
+						'label'             => __( 'Site Plugin Icon', 'controlled-chaos-plugin' ),
 						'name'              => 'ccp_site_plugin_link_icon',
 						'type'              => 'text',
-						'instructions'      => 'Enter a Dashicons CSS class for the icon of the link to this page.',
+						'instructions'      => __( 'Enter a Dashicons CSS class for the icon of the link to this page.', 'controlled-chaos-plugin' ),
 						'required'          => 0,
 						'conditional_logic' => 0,
 						'wrapper'           => [
