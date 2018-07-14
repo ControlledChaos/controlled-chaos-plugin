@@ -71,35 +71,16 @@ class Frontend {
 	 */
 	public function __construct() {
 
-		// Get inline options.
-		$jquery  = get_option( 'ccp_inline_jquery' );
-		$scripts = get_option( 'ccp_inline_scripts' );
-		$styles  = get_option( 'ccp_inline_styles' );
-
-		// Enqueue styles or add them inline.
-		if ( $styles ) {
-			add_action( 'wp_head', [ $this, 'get_styles' ] );
-		} else {
-			add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_styles' ] );
-		}
-
 		// Deregister Dashicons for users not logged in.
 		add_action( 'wp_enqueue_scripts', [ $this, 'deregister_dashicons' ] );
 
-		/**
-		 * Enqueue scripts or add them inline.
-		 */
+		// Get inline options.
+		$jquery  = get_option( 'ccp_inline_jquery' );
 
 		// Inline jQuery.
 		if ( $jquery ) {
 			add_action( 'wp_enqueue_scripts', [ $this, 'deregister_jquery' ] );
 			add_action( 'wp_footer', [ $this, 'get_jquery' ], 1 );
-		}
-
-		if ( $scripts ) {
-			add_action( 'wp_footer', [ $this, 'get_scripts' ], 11 );
-		} else {
-			add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
 		}
 
 		// Add Fancybox attributes to attachment page image link.
@@ -116,99 +97,33 @@ class Frontend {
 	 */
 	public function dependencies() {
 
+		// Get inline options.
+		$scripts = get_option( 'ccp_inline_scripts' );
+		$styles  = get_option( 'ccp_inline_styles' );
+
+		// Add styles inline if option selected.
+		if ( $styles ) {
+			require_once plugin_dir_path( __FILE__ ) . 'class-styles-inline.php';
+
+		// Otherwise enqueue styles.
+		} else {
+			require_once plugin_dir_path( __FILE__ ) . 'class-styles-enqueue.php';
+		}
+
+		// Add scripts inline if option selected.
+		if ( $scripts ) {
+			require_once plugin_dir_path( __FILE__ ) . 'class-scripts-inline.php';
+
+		// Otherwise enqueue scripts.
+		} else {
+			require_once plugin_dir_path( __FILE__ ) . 'class-scripts-enqueue.php';
+		}
+
 		// Clean up some scripts in the `head` section.
 		require_once plugin_dir_path( __FILE__ ) . 'class-head-scripts.php';
 
 		// Meta tags for SEO.
 		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-tags.php';
-
-	}
-
-	/**
-	 * Enqueue the stylesheets for the frontend of the site.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @return void
-	 */
-	public function enqueue_styles() {
-
-		// Non-vendor plugin styles.
-		wp_enqueue_style( CCP_ADMIN_SLUG, plugin_dir_url( __FILE__ ) . 'assets/css/frontend.css', [], CCP_VERSION, 'all' );
-
-		// Fancybox 3.
-		if ( get_option( 'ccp_enqueue_fancybox_styles' ) ) {
-
-			/**
-			 * Bail if the current theme supports ccd-fancybox by
-			 * including its own copy of the Fancybox stylesheet.
-			 */
-			if ( current_theme_supports( 'ccd-fancybox' ) ) {
-				return;
-			} else {
-				wp_enqueue_style( CCP_ADMIN_SLUG . '-fancybox', plugin_dir_url( __FILE__ ) . 'assets/css/jquery.fancybox.min.css', [], CCP_VERSION, 'all' );
-			}
-		}
-
-		// Slick.
-		if ( get_option( 'ccp_enqueue_slick' ) ) {
-			wp_enqueue_style( CCP_ADMIN_SLUG . '-slick', plugin_dir_url( __FILE__ ) . 'assets/css/slick.min.css', [], CCP_VERSION, 'all' );
-		}
-
-		// Slick theme.
-		if ( get_option( 'ccp_enqueue_slick' ) ) {
-			wp_enqueue_style( CCP_ADMIN_SLUG . '-slick-theme', plugin_dir_url( __FILE__ ) . 'assets/css/slick-theme.css', [], CCP_VERSION, 'all' );
-		}
-
-		// Tooltipster.
-		if ( get_option( 'ccp_enqueue_tooltipster' ) ) {
-			wp_enqueue_style( CCP_ADMIN_SLUG . '-tooltipster', plugin_dir_url( __FILE__ ) . 'assets/css/tooltipster.bundle.min.css', [], CCP_VERSION, 'all' );
-		}
-
-	}
-
-	/**
-	 * Add styles inline if option selected.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @return void
-	 */
-	public function get_styles() {
-
-		$fancybox    = file_get_contents( esc_html( plugin_dir_path( __FILE__ ) . 'assets/css/jquery.fancybox.min.css' ) );
-		$slick       = file_get_contents( esc_html( plugin_dir_path( __FILE__ ) . 'assets/css/slick.min.css' ) );
-		$slick_theme = file_get_contents( esc_html( plugin_dir_path( __FILE__ ) . 'assets/css/slick-theme.min.css' ) );
-		$tooltipster = file_get_contents( esc_html( plugin_dir_path( __FILE__ ) . 'assets/css/tooltipster.bundle.min.css' ) );
-
-		// Fancybox 3.
-		if ( get_option( 'ccp_enqueue_fancybox_styles' ) ) {
-
-			/**
-			 * Bail if the current theme supports ccd-fancybox by
-			 * including its own copy of the Fancybox stylesheet.
-			 */
-			if ( current_theme_supports( 'ccd-fancybox' ) ) {
-				return;
-			} else {
-				echo '<!-- Fancybox 3 Scripts --><style>' . $fancybox . '</style>';
-			}
-		}
-
-		// Slick.
-		if ( get_option( 'ccp_enqueue_slick' ) ) {
-			echo '<!-- Slick Scripts --><style>' . $slick . '</style>';
-		}
-
-		// Slick theme.
-		if ( get_option( 'ccp_enqueue_slick' ) ) {
-			echo '<!-- Tabslet Scripts --><style>' . $slick_theme . '</style>';
-		}
-
-		// Tooltipster.
-		if ( get_option( 'ccp_enqueue_tooltipster' ) ) {
-			echo '<!-- Tooltipster Scripts --><style>' . $tooltipster . '</style>';
-		}
 
 	}
 
@@ -224,43 +139,6 @@ class Frontend {
 		if ( ! is_user_logged_in() ) {
 			wp_deregister_style( 'dashicons' );
 		}
-
-	}
-
-	/**
-	 * Enqueue scripts traditionally by default.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @return void
-	 */
-	public function enqueue_scripts() {
-
-		// Non-vendor plugin script. Uncomment to use.
-		// wp_enqueue_script( CCP_ADMIN_SLUG, plugin_dir_url( __FILE__ ) . 'assets/js/frontend.js', [ 'jquery' ], CCP_VERSION, true );
-
-		// Fancybox 3.
-		if ( get_option( 'ccp_enqueue_fancybox_script' ) ) {
-			wp_enqueue_script( CCP_ADMIN_SLUG . '-fancybox', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.fancybox.min.js', [ 'jquery' ], CCP_VERSION, true );
-		}
-
-		// Slick.
-		if ( get_option( 'ccp_enqueue_slick' ) ) {
-			wp_enqueue_script( CCP_ADMIN_SLUG . '-slick', plugin_dir_url( __FILE__ ) . 'assets/js/slick.min.js', [ 'jquery' ], CCP_VERSION, true );
-		}
-
-		// Tabslet.
-		if ( get_option( 'ccp_enqueue_tabslet' ) ) {
-			wp_enqueue_script( CCP_ADMIN_SLUG . '-tabslet', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.tabslet.min.js', [ 'jquery' ], CCP_VERSION, true );
-		}
-
-		// Tooltipster.
-		if ( get_option( 'ccp_enqueue_tooltipster' ) ) {
-			wp_enqueue_script( CCP_ADMIN_SLUG . '-tooltipster', plugin_dir_url( __FILE__ ) . 'assets/js/tooltipster.bundle.min.js', [ 'jquery' ], CCP_VERSION, true );
-		}
-
-		// FitVids.
-		wp_enqueue_script( CCP_ADMIN_SLUG . '-fitvids', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.fitvids.min.js', [ 'jquery' ], CCP_VERSION, true );
 
 	}
 
@@ -296,54 +174,6 @@ class Frontend {
 
 			echo '<!-- jQuery --><script>' . $jquery . '</script>';
 
-		}
-
-	}
-
-	/**
-	 * Add scripts inline if option selected.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @return void
-	 */
-	public function get_scripts() {
-
-		$fancybox    = file_get_contents( esc_html( plugin_dir_path( __FILE__ ) . 'assets/js/jquery.fancybox.min.js' ) );
-		$slick       = file_get_contents( esc_html( plugin_dir_path( __FILE__ ) . 'assets/js/slick.min.js' ) );
-		$tabslet     = file_get_contents( esc_html( plugin_dir_path( __FILE__ ) . 'assets/js/jquery.tabslet.min.js' ) );
-		$tooltipster = file_get_contents( esc_html( plugin_dir_path( __FILE__ ) . 'assets/js/tooltipster.bundle.min.js' ) );
-		$stickykit   = file_get_contents( esc_html( plugin_dir_path( __FILE__ ) . 'assets/js/sticky-kit.min.js' ) );
-		$fitvids     = file_get_contents( esc_html( plugin_dir_path( __FILE__ ) . 'assets/js/jquery.fitvids.min.js' ) );
-
-		// Fancybox 3.
-		if ( get_option( 'ccp_enqueue_fancybox_script' ) ) {
-			echo '<!-- Fancybox 3 Scripts --><script>' . $fancybox . '</script>';
-		}
-
-		// Slick.
-		if ( get_option( 'ccp_enqueue_slick' ) ) {
-			echo '<!-- Slick Scripts --><script>' . $slick . '</script>';
-		}
-
-		// Tabslet.
-		if ( get_option( 'ccp_enqueue_tabslet' ) ) {
-			echo '<!-- Tabslet Scripts --><script>' . $tabslet . '</script>';
-		}
-
-		// Tooltipster.
-		if ( get_option( 'ccp_enqueue_tooltipster' ) ) {
-			echo '<!-- Tooltipster Scripts --><script>' . $tooltipster . '</script>';
-		}
-
-		// Sticky-kit.
-		if ( get_option( 'ccp_enqueue_stickykit' ) ) {
-			echo '<!-- Sticky-kit Scripts --><script>' . $stickykit . '</script>';
-		}
-
-		// FitVids.
-		if ( ! is_front_page() ) {
-			echo '<!-- FitVids Scripts --><script>' . $fitvids . '</script>';
 		}
 
 	}

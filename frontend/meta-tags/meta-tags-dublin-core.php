@@ -42,3 +42,4 @@ if ( ! defined( 'WPINC' ) ) {
 <meta name="DC.Publisher" content="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" />
 <meta name="DC.Rights" content="<?php echo esc_attr( sprintf( '© Copyright %1s %2s. %3s.', get_the_time( 'Y' ), get_bloginfo( 'name' ), esc_attr__( 'All rights reserved', 'controlled-chaos-plugin' ) ) ); ?>" />
 <meta name="DC.Language" content="<?php echo esc_attr( get_locale() ); ?>" />
+
