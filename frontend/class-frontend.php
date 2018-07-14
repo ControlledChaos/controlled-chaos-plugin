@@ -83,6 +83,9 @@ class Frontend {
 			add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_styles' ] );
 		}
 
+		// Deregister Dashicons for users not logged in.
+		add_action( 'wp_enqueue_scripts', [ $this, 'deregister_dashicons' ] );
+
 		/**
 		 * Enqueue scripts or add them inline.
 		 */
@@ -99,9 +102,6 @@ class Frontend {
 			add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
 		}
 
-		// Add meta tags to <head> if not disabled.
-		add_action( 'wp_head', [ $this, 'meta_tags' ] );
-
 		// Add Fancybox attributes to attachment page image link.
 		add_action( 'wp_footer', [ $this, 'attachment_fancybox' ] );
 
@@ -116,14 +116,11 @@ class Frontend {
 	 */
 	public function dependencies() {
 
+		// Clean up some scripts in the `head` section.
 		require_once plugin_dir_path( __FILE__ ) . 'class-head-scripts.php';
 
 		// Meta tags for SEO.
-		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-url.php';
-		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-title.php';
-		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-description.php';
-		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-author.php';
-		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-image.php';
+		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-tags.php';
 
 	}
 
@@ -211,6 +208,21 @@ class Frontend {
 		// Tooltipster.
 		if ( get_option( 'ccp_enqueue_tooltipster' ) ) {
 			echo '<!-- Tooltipster Scripts --><style>' . $tooltipster . '</style>';
+		}
+
+	}
+
+	/**
+	 * Deregister Dashicons for users not logged in.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+	public function deregister_dashicons() {
+
+		if ( ! is_user_logged_in() ) {
+			wp_deregister_style( 'dashicons' );
 		}
 
 	}
@@ -332,50 +344,6 @@ class Frontend {
 		// FitVids.
 		if ( ! is_front_page() ) {
 			echo '<!-- FitVids Scripts --><script>' . $fitvids . '</script>';
-		}
-
-	}
-
-	/**
-	 * Meta tags for SEO and embedded links.
-	 *
-	 * Check for the Advanced Custom Fields PRO plugin, or the Options Page
-	 * addon for free ACF, then check if meta tags have been disabled from
-	 * the ACF 'Site Settings' page. Otherwise check if meta tags have been
-	 * disabled from the standard 'Site Settings' page.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @return void
-	 */
-	public function meta_tags() {
-
-		if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
-
-			$disable_tags = get_field( 'ccp_disable_meta_tags', 'option' );
-
-			if ( false == $disable_tags ) {
-
-				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/meta-tags-standard.php';
-				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/meta-tags-open-graph.php';
-				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/meta-tags-twitter.php';
-				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/meta-tags-dublin-core.php';
-
-			}
-
-		} else {
-
-			$disable_tags = get_option( 'ccp_disable_meta' );
-
-			if ( ! $disable_tags ) {
-
-				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/meta-tags-standard.php';
-				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/meta-tags-open-graph.php';
-				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/meta-tags-twitter.php';
-				include_once plugin_dir_path( __FILE__ ) . 'meta-tags/meta-tags-dublin-core.php';
-
-			}
-
 		}
 
 	}
