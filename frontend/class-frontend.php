@@ -83,6 +83,9 @@ class Frontend {
 			add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_styles' ] );
 		}
 
+		// Deregister Dashicons for users not logged in.
+		add_action( 'wp_enqueue_scripts', [ $this, 'deregister_dashicons' ] );
+
 		/**
 		 * Enqueue scripts or add them inline.
 		 */
@@ -211,6 +214,21 @@ class Frontend {
 		// Tooltipster.
 		if ( get_option( 'ccp_enqueue_tooltipster' ) ) {
 			echo '<!-- Tooltipster Scripts --><style>' . $tooltipster . '</style>';
+		}
+
+	}
+
+	/**
+	 * Deregister Dashicons for users not logged in.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+	public function deregister_dashicons() {
+
+		if ( ! is_user_logged_in() ) {
+			wp_deregister_style( 'dashicons' );
 		}
 
 	}
