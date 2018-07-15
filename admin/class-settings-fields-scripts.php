@@ -370,8 +370,13 @@ class Settings_Fields_Scripts {
 		$option = get_option( 'ccp_enqueue_slick' );
 
 		$html = '<p><input type="checkbox" id="ccp_enqueue_slick" name="ccp_enqueue_slick" value="1" ' . checked( 1, $option, false ) . '/>';
-
-		$html .= '<label for="ccp_enqueue_slick"> '  . $args[0] . '</label>';
+		$html .= sprintf(
+			'<label for="ccp_enqueue_slick"> %1s</label> <a href="%2s" target="_blank" class="tooltip" title="%3s"><span class="dashicons dashicons-editor-help"></span></a>',
+			$args[0],
+			esc_attr( esc_url( 'http://kenwheeler.github.io/slick/' ) ),
+			esc_attr( __( 'Learn more about Slick', 'controlled-chaos-plugin' ) )
+		);
+		$html .= '</p>';
 
 		echo $html;
 
@@ -389,8 +394,13 @@ class Settings_Fields_Scripts {
 		$option = get_option( 'ccp_enqueue_tabslet' );
 
 		$html = '<p><input type="checkbox" id="ccp_enqueue_tabslet" name="ccp_enqueue_tabslet" value="1" ' . checked( 1, $option, false ) . '/>';
-
-		$html .= '<label for="ccp_enqueue_tabslet"> '  . $args[0] . '</label>';
+		$html .= sprintf(
+			'<label for="ccp_enqueue_tabslet"> %1s</label> <a href="%2s" target="_blank" class="tooltip" title="%3s"><span class="dashicons dashicons-editor-help"></span></a>',
+			$args[0],
+			esc_attr( esc_url( 'http://vdw.github.io/Tabslet/' ) ),
+			esc_attr( __( 'Learn more about Tabslet', 'controlled-chaos-plugin' ) )
+		);
+		$html .= '</p>';
 
 		echo $html;
 
@@ -408,8 +418,13 @@ class Settings_Fields_Scripts {
 		$option = get_option( 'ccp_enqueue_stickykit' );
 
 		$html = '<p><input type="checkbox" id="ccp_enqueue_stickykit" name="ccp_enqueue_stickykit" value="1" ' . checked( 1, $option, false ) . '/>';
-
-		$html .= '<label for="ccp_enqueue_stickykit"> '  . $args[0] . '</label>';
+		$html .= sprintf(
+			'<label for="ccp_enqueue_stickykit"> %1s</label> <a href="%2s" target="_blank" class="tooltip" title="%3s"><span class="dashicons dashicons-editor-help"></span></a>',
+			$args[0],
+			esc_attr( esc_url( 'http://leafo.net/sticky-kit/' ) ),
+			esc_attr( __( 'Learn more about Sticky-kit', 'controlled-chaos-plugin' ) )
+		);
+		$html .= '</p>';
 
 		echo $html;
 
@@ -427,8 +442,13 @@ class Settings_Fields_Scripts {
 		$option = get_option( 'ccp_enqueue_tooltipster' );
 
 		$html = '<p><input type="checkbox" id="ccp_enqueue_tooltipster" name="ccp_enqueue_tooltipster" value="1" ' . checked( 1, $option, false ) . '/>';
-
-		$html .= '<label for="ccp_enqueue_tooltipster"> '  . $args[0] . '</label>';
+		$html .= sprintf(
+			'<label for="ccp_enqueue_tooltipster"> %1s</label> <a href="%2s" target="_blank" class="tooltip" title="%3s"><span class="dashicons dashicons-editor-help"></span></a>',
+			$args[0],
+			esc_attr( esc_url( 'http://iamceege.github.io/tooltipster/' ) ),
+			esc_attr( __( 'Learn more about Tooltipster', 'controlled-chaos-plugin' ) )
+		);
+		$html .= '</p>';
 
 		echo $html;
 
