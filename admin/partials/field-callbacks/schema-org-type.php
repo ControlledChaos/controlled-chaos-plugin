@@ -207,6 +207,6 @@ foreach( $types as $type => $value ) {
 }
 
 $html .= '</select>';
-$html .= '<label for="schema_org_type"> '  . $args[0] . '</label></p>';
+$html .= '<label for="schema_org_type"> '  . $args[0] . '</label> <a href="https://schema.org/docs/full.html#C.Organization" target="_blank" class="tooltip" title="' . esc_attr( __( 'Read documentation for organization types', 'controlled-chaos-plugin' ) ) . '"><span class="dashicons dashicons-editor-help"></span></a></p>';
 
 echo $html;

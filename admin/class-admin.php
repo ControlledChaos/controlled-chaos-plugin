@@ -370,9 +370,24 @@ class Admin {
 		wp_enqueue_style( CCP_ADMIN_SLUG . '-admin', plugin_dir_url( __FILE__ ) . 'assets/css/admin.css', [], CCP_VERSION, 'all' );
 
 		/**
+		 * Enqueue the jQuery tooltips styles.
+		 *
+		 * These are the default styles from jQuery. Design the as you see fir
+		 * to jive with your backend styles.
+		 *
+		 * For more control over tooltips, replace jQuery tooltips with Tooltipster,
+		 * which is included with this plugin.
+		 *
+		 * @since 1.0.0
+		 */
+		wp_enqueue_style( CCP_ADMIN_SLUG . '-tooltips', plugin_dir_url( __FILE__ ) . 'assets/css/tooltips.min.css', [], CCP_VERSION, 'all' );
+
+		/**
 		 * Enqueue Advanced Custom Fields styles.
-		 * 
+		 *
 		 * Only if the free or pro version of the plugin is active.
+		 *
+		 * @since 1.0.0
 		 */
 		if ( class_exists( 'acf' ) ) {
 			wp_enqueue_style( CCP_ADMIN_SLUG . '-acf', plugin_dir_url( __FILE__ ) . 'assets/css/acf.css', [], CCP_VERSION, 'all' );
@@ -437,6 +452,14 @@ class Admin {
 
 		// Enqueue jQuery tabs from WordPress.
 		wp_enqueue_script( 'jquery-ui-tabs' );
+
+		/**
+		 * Enqueue jQuery tooltips from WordPress.
+		 *
+		 * For more control over tooltips, replace jQuery tooltips with Tooltipster,
+		 * which is included with this plugin.
+		 */
+		wp_enqueue_script( 'jquery-ui-tooltip' );
 
 		// Enqueue Conditionalize for conditional form fields.
 		wp_enqueue_script( CCP_ADMIN_SLUG . '-conditionalize', plugin_dir_url( __FILE__ ) . 'assets/js/admin.js', [ 'jquery' ], CCP_VERSION, true );
