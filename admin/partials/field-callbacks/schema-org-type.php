@@ -194,9 +194,9 @@ $types = [
 	'SportsOrganization'  => __( 'Sports Organization', 'controlled-chaos-plugin' )
 ];
 
-$options = get_option( 'ccp_meta_type' );
+$options = get_option( 'schema_org_type' );
 
-$html = '<p><select id="ccp_meta_type" name="ccp_meta_type">';
+$html = '<p><select id="schema_org_type" name="schema_org_type">';
 
 foreach( $types as $type => $value ) {
 
@@ -207,6 +207,6 @@ foreach( $types as $type => $value ) {
 }
 
 $html .= '</select>';
-$html .= '<label for="ccp_meta_type"> '  . $args[0] . '</label></p>';
+$html .= '<label for="schema_org_type"> '  . $args[0] . '</label></p>';
 
 echo $html;

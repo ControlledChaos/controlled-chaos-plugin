@@ -1,6 +1,6 @@
 <?php
 /**
- * Settings for site customization.
+ * Settings for the Site Settings page.
  *
  * @package    Controlled_Chaos_Plugin
  * @subpackage Admin
@@ -17,7 +17,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 /**
- * Settings for site customization.
+ * Settings for the Site Settings page.
  *
  * @since  1.0.0
  * @access public
@@ -81,7 +81,17 @@ class Settings_Fields_Site {
 	 */
 	private function dependencies() {
 
+		// Callbacks for the Dashboard tab.
 		require plugin_dir_path( __FILE__ ) . 'partials/field-callbacks/class-dashboard-callbacks.php';
+
+		// Callbacks for the Admin Menu tab.
+		require plugin_dir_path( __FILE__ ) . 'partials/field-callbacks/class-admin-menu-callbacks.php';
+
+		// Callbacks for the Admin Pages tab.
+		require plugin_dir_path( __FILE__ ) . 'partials/field-callbacks/class-admin-pages-callbacks.php';
+
+		// Callbacks for the Meta/SEO tab.
+		require plugin_dir_path( __FILE__ ) . 'partials/field-callbacks/class-meta-seo-callbacks.php';
 
 	}
 
@@ -129,7 +139,7 @@ class Settings_Fields_Site {
 		add_settings_field(
 			'ccp_hide_welcome',
 			__( 'Hide Welcome', 'controlled-chaos-plugin' ),
-			[ $this, 'ccp_hide_welcome_callback' ],
+			[ Partials\Field_Callbacks\Dashboard_Callbacks::instance(), 'hide_welcome' ],
 			'ccp-site-dashboard',
 			'ccp-site-dashboard',
 			[ esc_html__( 'Hide the Welcome panel on the Dashboard', 'controlled-chaos-plugin' ) ]
@@ -144,7 +154,7 @@ class Settings_Fields_Site {
 		add_settings_field(
 			'ccp_remove_welcome_dismiss',
 			__( 'Remove Welcome Dismiss', 'controlled-chaos-plugin' ),
-			[ $this, 'ccp_remove_welcome_dismiss_callback' ],
+			[ Partials\Field_Callbacks\Dashboard_Callbacks::instance(), 'remove_welcome_dismiss' ],
 			'ccp-site-dashboard',
 			'ccp-site-dashboard',
 			[ esc_html__( 'Remove the Welcome panel dismiss button', 'controlled-chaos-plugin' ) ]
@@ -159,7 +169,7 @@ class Settings_Fields_Site {
 		add_settings_field(
 			'ccp_hide_wp_news',
 			__( 'Hide WordPress News', 'controlled-chaos-plugin' ),
-			[ $this, 'ccp_hide_wp_news_callback' ],
+			[ Partials\Field_Callbacks\Dashboard_Callbacks::instance(), 'hide_wp_news' ],
 			'ccp-site-dashboard',
 			'ccp-site-dashboard',
 			[ esc_html__( 'Hide the WordPress News widget on the Dashboard', 'controlled-chaos-plugin' ) ]
@@ -174,7 +184,7 @@ class Settings_Fields_Site {
 		add_settings_field(
 			'ccp_hide_quickpress',
 			__( 'Hide Quick Draft', 'controlled-chaos-plugin' ),
-			[ $this, 'ccp_hide_quickpress_callback' ],
+			[ Partials\Field_Callbacks\Dashboard_Callbacks::instance(), 'hide_quickpress' ],
 			'ccp-site-dashboard',
 			'ccp-site-dashboard',
 			[ esc_html__( 'Hide the Quick Draft widget on the Dashboard', 'controlled-chaos-plugin' ) ]
@@ -189,7 +199,7 @@ class Settings_Fields_Site {
 		add_settings_field(
 			'ccp_hide_at_glance',
 			__( 'Hide At a Glance', 'controlled-chaos-plugin' ),
-			[ $this, 'ccp_hide_at_glance_callback' ],
+			[ Partials\Field_Callbacks\Dashboard_Callbacks::instance(), 'hide_at_glance' ],
 			'ccp-site-dashboard',
 			'ccp-site-dashboard',
 			[ esc_html__( 'Hide the At a Glance widget on the Dashboard', 'controlled-chaos-plugin' ) ]
@@ -204,7 +214,7 @@ class Settings_Fields_Site {
 		add_settings_field(
 			'ccp_hide_activity',
 			__( 'Hide Activity', 'controlled-chaos-plugin' ),
-			[ $this, 'ccp_hide_activity_callback' ],
+			[ Partials\Field_Callbacks\Dashboard_Callbacks::instance(), 'hide_activity' ],
 			'ccp-site-dashboard',
 			'ccp-site-dashboard',
 			[ esc_html__( 'Hide the Activity widget on the Dashboard', 'controlled-chaos-plugin' ) ]
@@ -233,7 +243,7 @@ class Settings_Fields_Site {
 		add_settings_field(
 			'ccp_site_settings_position',
 			__( 'Site Settings Position', 'controlled-chaos-plugin' ),
-			[ $this, 'ccp_site_settings_position_callback' ],
+			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'site_settings_position' ],
 			'ccp-site-admin-menu',
 			'ccp-site-admin-menu',
 			[ esc_html__( 'Make this settings page a top-level link.', 'controlled-chaos-plugin' ) ]
@@ -248,7 +258,7 @@ class Settings_Fields_Site {
 		add_settings_field(
 			'ccp_site_settings_link_label',
 			__( 'Site Settings Label', 'controlled-chaos-plugin' ),
-			[ $this, 'ccp_site_settings_link_label_callback' ],
+			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'site_settings_link_label' ],
 			'ccp-site-admin-menu',
 			'ccp-site-admin-menu',
 			[ esc_html__( 'Change the label of the link to this page', 'controlled-chaos-plugin' ) ]
@@ -263,7 +273,7 @@ class Settings_Fields_Site {
 		add_settings_field(
 			'ccp_site_settings_link_icon',
 			__( 'Site Settings Icon', 'controlled-chaos-plugin' ),
-			[ $this, 'ccp_site_settings_link_icon_callback' ],
+			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'site_settings_link_icon' ],
 			'ccp-site-admin-menu',
 			'ccp-site-admin-menu',
 			[ esc_html__( 'Enter a Dashicons CSS class for the icon of the link to this page', 'controlled-chaos-plugin' ) ]
@@ -278,7 +288,7 @@ class Settings_Fields_Site {
 		add_settings_field(
 			'ccp_site_plugin_position',
 			__( 'Site Plugin Position', 'controlled-chaos-plugin' ),
-			[ $this, 'ccp_site_plugin_position_callback' ],
+			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'site_plugin_position' ],
 			'ccp-site-admin-menu',
 			'ccp-site-admin-menu',
 			[ esc_html__( 'Make the site-specific plugin admin page a top-level link.', 'controlled-chaos-plugin' ) ]
@@ -293,7 +303,7 @@ class Settings_Fields_Site {
 		add_settings_field(
 			'ccp_site_plugin_link_label',
 			__( 'Site Plugin Label', 'controlled-chaos-plugin' ),
-			[ $this, 'ccp_site_plugin_link_label_callback' ],
+			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'site_plugin_link_label' ],
 			'ccp-site-admin-menu',
 			'ccp-site-admin-menu',
 			[ esc_html__( 'Change the label of the link to the site-specific plugin page', 'controlled-chaos-plugin' ) ]
@@ -308,7 +318,7 @@ class Settings_Fields_Site {
 		add_settings_field(
 			'ccp_site_plugin_link_icon',
 			__( 'Site Plugin Icon', 'controlled-chaos-plugin' ),
-			[ $this, 'ccp_site_plugin_link_icon_callback' ],
+			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'site_plugin_link_icon' ],
 			'ccp-site-admin-menu',
 			'ccp-site-admin-menu',
 			[ esc_html__( 'Enter a Dashicons CSS class for the icon of the link to the site-specific plugin page', 'controlled-chaos-plugin' ) ]
@@ -323,7 +333,7 @@ class Settings_Fields_Site {
 		add_settings_field(
 			'ccp_menus_position',
 			__( 'Menus Position', 'controlled-chaos-plugin' ),
-			[ $this, 'ccp_menus_position_callback' ],
+			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'menus_position' ],
 			'ccp-site-admin-menu',
 			'ccp-site-admin-menu',
 			[ esc_html__( 'Make Menus a top-level link', 'controlled-chaos-plugin' ) ]
@@ -338,7 +348,7 @@ class Settings_Fields_Site {
 		add_settings_field(
 			'ccp_widgets_position',
 			__( 'Widgets Position', 'controlled-chaos-plugin' ),
-			[ $this, 'ccp_widgets_position_callback' ],
+			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'widgets_position' ],
 			'ccp-site-admin-menu',
 			'ccp-site-admin-menu',
 			[ esc_html__( 'Make Widgets a top-level link', 'controlled-chaos-plugin' ) ]
@@ -353,7 +363,7 @@ class Settings_Fields_Site {
 		add_settings_field(
 			'ccp_hide_appearance',
 			__( 'Hide Appearance', 'controlled-chaos-plugin' ),
-			[ $this, 'ccp_hide_appearance_callback' ],
+			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'hide_appearance' ],
 			'ccp-site-admin-menu',
 			'ccp-site-admin-menu',
 			[ esc_html__( 'Hide the Appearance link in the admin menu', 'controlled-chaos-plugin' ) ]
@@ -368,7 +378,7 @@ class Settings_Fields_Site {
 		add_settings_field(
 			'ccp_hide_plugins',
 			__( 'Hide Plugins', 'controlled-chaos-plugin' ),
-			[ $this, 'ccp_hide_plugins_callback' ],
+			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'hide_plugins' ],
 			'ccp-site-admin-menu',
 			'ccp-site-admin-menu',
 			[ esc_html__( 'Hide the Plugins link in the admin menu', 'controlled-chaos-plugin' ) ]
@@ -383,7 +393,7 @@ class Settings_Fields_Site {
 		add_settings_field(
 			'ccp_hide_users',
 			__( 'Hide Users', 'controlled-chaos-plugin' ),
-			[ $this, 'ccp_hide_users_callback' ],
+			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'hide_users' ],
 			'ccp-site-admin-menu',
 			'ccp-site-admin-menu',
 			[ esc_html__( 'Hide the Users link in the admin menu', 'controlled-chaos-plugin' ) ]
@@ -398,7 +408,7 @@ class Settings_Fields_Site {
 		add_settings_field(
 			'ccp_hide_tools',
 			__( 'Hide Tools', 'controlled-chaos-plugin' ),
-			[ $this, 'ccp_hide_tools_callback' ],
+			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'hide_tools' ],
 			'ccp-site-admin-menu',
 			'ccp-site-admin-menu',
 			[ esc_html__( 'Hide the Tools link in the admin menu', 'controlled-chaos-plugin' ) ]
@@ -413,7 +423,7 @@ class Settings_Fields_Site {
 		add_settings_field(
 			'ccp_hide_links',
 			__( 'Restore Links Manager', 'controlled-chaos-plugin' ),
-			[ $this, 'ccp_hide_links_callback' ],
+			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'hide_links' ],
 			'ccp-site-admin-menu',
 			'ccp-site-admin-menu',
 			[ esc_html__( 'The old Links Manager is hidden by default in newer WordPress installations', 'controlled-chaos-plugin' ) ]
@@ -442,7 +452,7 @@ class Settings_Fields_Site {
 		add_settings_field(
 			'ccp_footer_credit',
 			__( 'Admin Footer Credit', 'controlled-chaos-plugin' ),
-			[ $this, 'ccp_footer_credit_callback' ],
+			[ Partials\Field_Callbacks\Admin_Pages_Callbacks::instance(), 'footer_credit' ],
 			'ccp-site-admin-pages',
 			'ccp-site-admin-pages',
 			[ esc_html__( 'The "developed by" credit.', 'controlled-chaos-plugin' ) ]
@@ -457,7 +467,7 @@ class Settings_Fields_Site {
 		add_settings_field(
 			'ccp_footer_link',
 			__( 'Admin Footer Link', 'controlled-chaos-plugin' ),
-			[ $this, 'ccp_footer_link_callback' ],
+			[ Partials\Field_Callbacks\Admin_Pages_Callbacks::instance(), 'footer_link' ],
 			'ccp-site-admin-pages',
 			'ccp-site-admin-pages',
 			[ esc_html__( 'Link to the website devoloper.', 'controlled-chaos-plugin' ) ]
@@ -486,7 +496,7 @@ class Settings_Fields_Site {
 		add_settings_field(
 			'ccp_meta_disable',
 			__( 'Meta Tags', 'controlled-chaos-plugin' ),
-			[ $this, 'ccp_meta_disable_callback' ],
+			[ Partials\Field_Callbacks\Meta_SEO_Callbacks::instance(), 'disable_meta' ],
 			'ccp-site-meta-seo',
 			'ccp-site-meta-seo',
 			[ esc_html__( 'Disable if your theme includes SEO meta tags or if you plan on using an SEO plugin.', 'controlled-chaos-plugin' ) ]
@@ -499,9 +509,9 @@ class Settings_Fields_Site {
 
 		// Organization Schema type.
 		add_settings_field(
-			'ccp_meta_type',
+			'schema_org_type',
 			__( 'Organization Type', 'controlled-chaos-plugin' ),
-			[ $this, 'ccp_meta_type_callback' ],
+			[ Partials\Field_Callbacks\Meta_SEO_Callbacks::instance(), 'schema_org_type' ],
 			'ccp-site-meta-seo',
 			'ccp-site-meta-seo',
 			[ esc_html__( 'Select a category that generally applies to this website.', 'controlled-chaos-plugin' ) ]
@@ -509,487 +519,8 @@ class Settings_Fields_Site {
 
 		register_setting(
 			'ccp-site-meta-seo',
-			'ccp_meta_type'
+			'schema_org_type'
 		);
-
-	}
-
-	/**
-	 * Site Settings page position.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  array $args Extra arguments passed into the callback function.
-	 * @return string
-	 */
-	public function ccp_site_settings_position_callback( $args ) {
-
-		$option = get_option( 'ccp_site_settings_position' );
-
-		$html = '<p><input type="checkbox" id="ccp_site_settings_position" name="ccp_site_settings_position" value="1" ' . checked( 1, $option, false ) . '/>';
-
-		$html .= '<label for="ccp_site_settings_position"> '  . $args[0] . '</label></p>';
-
-		echo $html;
-
-	}
-
-	/**
-	 * Site Settings page link label.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  array $args Extra arguments passed into the callback function.
-	 * @return string
-	 */
-	public function ccp_site_settings_link_label_callback( $args ) {
-
-		$option = get_option( 'ccp_site_settings_link_label' );
-
-		$html = '<p><input type="text" size="50" id="ccp_site_settings_link_label" name="ccp_site_settings_link_label" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( __( 'Site Settings', 'controlled-chaos-plugin' ) ) . '" /><br />';
-
-		$html .= '<label for="ccp_site_settings_link_label"> ' . $args[0] . '</label></p>';
-
-		echo $html;
-
-	}
-
-	/**
-	 * Site Settings page link icon.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  array $args Extra arguments passed into the callback function.
-	 * @return string
-	 */
-	public function ccp_site_settings_link_icon_callback( $args ) {
-
-		$option = get_option( 'ccp_site_settings_link_icon' );
-
-		$html = '<p><input type="text" size="50" id="ccp_site_settings_link_icon" name="ccp_site_settings_link_icon" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( __( 'dashicons-admin-settings', 'controlled-chaos-plugin' ) ) . '" /><br />';
-
-		$html .= '<label for="ccp_site_settings_link_icon"> ' . $args[0] . '</label>';
-
-		$html .= '<br /><span class="description">' . esc_html( 'Takes affect in the admin menu only if the page is top level. Always takes affect on the plugin page tab for Site Settings.' ) . '</span></p>';
-
-		echo $html;
-
-	}
-
-	/**
-	 * Site Plugin page position.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  array $args Extra arguments passed into the callback function.
-	 * @return string
-	 */
-	public function ccp_site_plugin_position_callback( $args ) {
-
-		$option = get_option( 'ccp_site_plugin_position' );
-
-		$html = '<p><input type="checkbox" id="ccp_site_plugin_position" name="ccp_site_plugin_position" value="1" ' . checked( 1, $option, false ) . '/>';
-
-		$html .= '<label for="ccp_site_plugin_position"> '  . $args[0] . '</label></p>';
-
-		echo $html;
-
-	}
-
-	/**
-	 * Site Plugin page link label.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  array $args Extra arguments passed into the callback function.
-	 * @return string
-	 */
-	public function ccp_site_plugin_link_label_callback( $args ) {
-
-		$option = get_option( 'ccp_site_plugin_link_label' );
-
-		$html = '<p><input type="text" size="50" id="ccp_site_plugin_link_label" name="ccp_site_plugin_link_label" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( __( 'Site Plugin', 'controlled-chaos-plugin' ) ) . '" /><br />';
-
-		$html .= '<label for="ccp_site_plugin_link_label"> ' . $args[0] . '</label></p>';
-
-		echo $html;
-
-	}
-
-	/**
-	 * Site Plugin page link icon.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  array $args Extra arguments passed into the callback function.
-	 * @return string
-	 */
-	public function ccp_site_plugin_link_icon_callback( $args ) {
-
-		$option = get_option( 'ccp_site_plugin_link_icon' );
-
-		$html = '<p><input type="text" size="50" id="ccp_site_settings_link_icon" name="ccp_site_plugin_link_icon" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( __( 'dashicons-welcome-learn-more', 'controlled-chaos-plugin' ) ) . '" /><br />';
-
-		$html .= '<label for="ccp_site_plugin_link_icon"> ' . $args[0] . '</label>';
-
-		$html .= '<br /><span class="description">' . esc_html( 'Takes affect in the admin menu only if the page is top level. Always takes affect on the plugin page tab for Site Settings.' ) . '</span></p>';
-
-		echo $html;
-
-	}
-
-	/**
-	 * Menus link position.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  array $args Extra arguments passed into the callback function.
-	 * @return string
-	 */
-	public function ccp_menus_position_callback( $args ) {
-
-		$option = get_option( 'ccp_menus_position' );
-
-		$html = '<p><input type="checkbox" id="ccp_menus_position" name="ccp_menus_position" value="1" ' . checked( 1, $option, false ) . '/>';
-
-		$html .= '<label for="ccp_menus_position"> '  . $args[0] . '</label></p>';
-
-		echo $html;
-
-	}
-
-	/**
-	 * Widgets link position.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  array $args Extra arguments passed into the callback function.
-	 * @return string
-	 */
-	public function ccp_widgets_position_callback( $args ) {
-
-		$option = get_option( 'ccp_widgets_position' );
-
-		$html = '<p><input type="checkbox" id="ccp_widgets_position" name="ccp_widgets_position" value="1" ' . checked( 1, $option, false ) . '/>';
-
-		$html .= '<label for="ccp_widgets_position"> '  . $args[0] . '</label></p>';
-
-		echo $html;
-
-	}
-
-	/**
-	 * Use custom welcome panel.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  array $args Extra arguments passed into the callback function.
-	 * @return string
-	 */
-	public function ccp_custom_welcome_callback( $args ) {
-
-		$option = get_option( 'ccp_custom_welcome' );
-
-		$html = '<p><input type="checkbox" id="ccp_custom_welcome" name="ccp_custom_welcome" value="1" ' . checked( 1, $option, false ) . '/>';
-
-		$html .= '<label for="ccp_custom_welcome"> '  . $args[0] . '</label></p>';
-
-		echo $html;
-
-	}
-
-	/**
-	 * Hide welcome panel.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  array $args Extra arguments passed into the callback function.
-	 * @return string
-	 */
-	public function ccp_hide_welcome_callback( $args ) {
-
-		$option = get_option( 'ccp_hide_welcome' );
-
-		$html = '<p><input type="checkbox" id="ccp_hide_welcome" name="ccp_hide_welcome" value="1" ' . checked( 1, $option, false ) . '/>';
-
-		$html .= '<label for="ccp_hide_welcome"> '  . $args[0] . '</label></p>';
-
-		echo $html;
-
-	}
-
-	/**
-	 * Remove welcome dismiss.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  array $args Extra arguments passed into the callback function.
-	 * @return string
-	 */
-	public function ccp_remove_welcome_dismiss_callback( $args ) {
-
-		$option = get_option( 'ccp_remove_welcome_dismiss' );
-
-		$html = '<p><input type="checkbox" id="ccp_remove_welcome_dismiss" name="ccp_remove_welcome_dismiss" value="1" ' . checked( 1, $option, false ) . '/>';
-
-		$html .= '<label for="ccp_remove_welcome_dismiss"> '  . $args[0] . '</label></p>';
-
-		echo $html;
-
-	}
-
-	/**
-	 * Hide WordPress News widget.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  array $args Extra arguments passed into the callback function.
-	 * @return string
-	 */
-	public function ccp_hide_wp_news_callback( $args ) {
-
-		$option = get_option( 'ccp_hide_wp_news' );
-
-		$html = '<p><input type="checkbox" id="ccp_hide_wp_news" name="ccp_hide_wp_news" value="1" ' . checked( 1, $option, false ) . '/>';
-
-		$html .= '<label for="ccp_hide_wp_news"> '  . $args[0] . '</label></p>';
-
-		echo $html;
-
-	}
-
-	/**
-	 * Hide Quick Draft (QuickPress) widget.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  array $args Extra arguments passed into the callback function.
-	 * @return string
-	 */
-	public function ccp_hide_quickpress_callback( $args ) {
-
-		$option = get_option( 'ccp_hide_quickpress' );
-
-		$html = '<p><input type="checkbox" id="ccp_hide_quickpress" name="ccp_hide_quickpress" value="1" ' . checked( 1, $option, false ) . '/>';
-
-		$html .= '<label for="ccp_hide_quickpress"> '  . $args[0] . '</label></p>';
-
-		echo $html;
-
-	}
-
-	/**
-	 * Hide At a Glance widget.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  array $args Extra arguments passed into the callback function.
-	 * @return string
-	 */
-	public function ccp_hide_at_glance_callback( $args ) {
-
-		$option = get_option( 'ccp_hide_at_glance' );
-
-		$html = '<p><input type="checkbox" id="ccp_hide_at_glance" name="ccp_hide_at_glance" value="1" ' . checked( 1, $option, false ) . '/>';
-
-		$html .= '<label for="ccp_hide_at_glance"> '  . $args[0] . '</label></p>';
-
-		echo $html;
-
-	}
-
-	/**
-	 * Hide Activity widget.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  array $args Extra arguments passed into the callback function.
-	 * @return string
-	 */
-	public function ccp_hide_activity_callback( $args ) {
-
-		$option = get_option( 'ccp_hide_activity' );
-
-		$html = '<p><input type="checkbox" id="ccp_hide_activity" name="ccp_hide_activity" value="1" ' . checked( 1, $option, false ) . '/>';
-
-		$html .= '<label for="ccp_hide_activity"> '  . $args[0] . '</label></p>';
-
-		echo $html;
-
-	}
-
-	/**
-	 * Hide Appearance link.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  array $args Extra arguments passed into the callback function.
-	 * @return string
-	 */
-	public function ccp_hide_appearance_callback( $args ) {
-
-		$option = get_option( 'ccp_hide_appearance' );
-
-		$html = '<p><input type="checkbox" id="ccp_hide_appearance" name="ccp_hide_appearance" value="1" ' . checked( 1, $option, false ) . '/>';
-
-		$html .= '<label for="ccp_hide_appearance"> '  . $args[0] . '</label></p>';
-
-		echo $html;
-
-	}
-
-	/**
-	 * Hide Plugins link.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  array $args Extra arguments passed into the callback function.
-	 * @return string
-	 */
-	public function ccp_hide_plugins_callback( $args ) {
-
-		$option = get_option( 'ccp_hide_plugins' );
-
-		$html = '<p><input type="checkbox" id="ccp_hide_plugins" name="ccp_hide_plugins" value="1" ' . checked( 1, $option, false ) . '/>';
-
-		$html .= '<label for="ccp_hide_plugins"> '  . $args[0] . '</label></p>';
-
-		echo $html;
-
-	}
-
-	/**
-	 * Hide Users link.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  array $args Extra arguments passed into the callback function.
-	 * @return string
-	 */
-	public function ccp_hide_users_callback( $args ) {
-
-		$option = get_option( 'ccp_hide_users' );
-
-		$html = '<p><input type="checkbox" id="ccp_hide_users" name="ccp_hide_users" value="1" ' . checked( 1, $option, false ) . '/>';
-
-		$html .= '<label for="ccp_hide_users"> '  . $args[0] . '</label></p>';
-
-		echo $html;
-
-	}
-
-	/**
-	 * Hide Tools link.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  array $args Extra arguments passed into the callback function.
-	 * @return string
-	 */
-	public function ccp_hide_tools_callback( $args ) {
-
-		$option = get_option( 'ccp_hide_tools' );
-
-		$html = '<p><input type="checkbox" id="ccp_hide_tools" name="ccp_hide_tools" value="1" ' . checked( 1, $option, false ) . '/>';
-
-		$html .= '<label for="ccp_hide_tools"> ' . $args[0] . '</label></p>';
-
-		echo $html;
-
-	}
-
-	/**
-	 * Show/Hide Links Manager link.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  array $args Extra arguments passed into the callback function.
-	 * @return string
-	 */
-	public function ccp_hide_links_callback( $args ) {
-
-		$option = get_option( 'ccp_hide_links' );
-
-		$html = '<p><input type="checkbox" id="ccp_hide_links" name="ccp_hide_links" value="1" ' . checked( 1, $option, false ) . '/>';
-
-		$html .= '<label for="ccp_hide_links"> ' . $args[0] . '</label></p>';
-
-		echo $html;
-
-	}
-
-	/**
-	 * Admin footer credit.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  array $args Extra arguments passed into the callback function.
-	 * @return string
-	 */
-	public function ccp_footer_credit_callback( $args ) {
-
-		$option = get_option( 'ccp_footer_credit' );
-
-		$html = '<p><input type="text" size="50" id="ccp_footer_credit" name="ccp_footer_credit" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( __( 'Your name/agency', 'controlled-chaos-plugin' ) ) . '" /><br />';
-
-		$html .= '<label for="ccp_footer_credit"> ' . $args[0] . '</label></p>';
-
-		echo $html;
-
-	}
-
-	/**
-	 * Admin footer link.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  array $args Extra arguments passed into the callback function.
-	 * @return string
-	 */
-	public function ccp_footer_link_callback( $args ) {
-
-		$option = get_option( 'ccp_footer_link' );
-
-		$html = '<p><input type="text" size="50" id="ccp_footer_link" name="ccp_footer_link" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( 'http://example.com/' ) . '" /><br />';
-
-		$html .= '<label for="ccp_footer_link"> ' . $args[0] . '</label></p>';
-
-		echo $html;
-
-	}
-
-	/**
-	 * Disable meta tags.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  array $args Extra arguments passed into the callback function.
-	 * @return string
-	 */
-	public function ccp_meta_disable_callback( $args ) {
-
-		$option = get_option( 'ccp_meta_disable' );
-
-		$html = '<p><input type="checkbox" id="ccp_meta_disable" name="ccp_meta_disable" value="1" ' . checked( 1, $option, false ) . '/>';
-
-		$html .= '<label for="ccp_meta_disable"> '  . $args[0] . '</label></p>';
-
-		echo $html;
-
-	}
-
-	/**
-	 * Organization Schema type callback.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  array $args
-	 * @return string Returns the select box of options.
-	 */
-	public function  ccp_meta_type_callback( $args ) {
-
-		// Get the field file.
-		include_once plugin_dir_path( __FILE__ ) . 'partials/field-callbacks/meta-org-type.php';
 
 	}
 
