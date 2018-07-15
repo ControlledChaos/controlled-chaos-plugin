@@ -108,7 +108,7 @@ class Settings_Fields_Site {
 		);
 
 		register_setting(
-			'ccp_dashboard',
+			'ccp-site-dashboard',
 			'ccp_custom_welcome'
 		);
 
@@ -123,7 +123,7 @@ class Settings_Fields_Site {
 		);
 
 		register_setting(
-			'ccp_dashboard',
+			'ccp-site-dashboard',
 			'ccp_hide_welcome'
 		);
 
@@ -138,7 +138,7 @@ class Settings_Fields_Site {
 		);
 
 		register_setting(
-			'ccp_dashboard',
+			'ccp-site-dashboard',
 			'ccp_remove_welcome_dismiss'
 		);
 
@@ -153,7 +153,7 @@ class Settings_Fields_Site {
 		);
 
 		register_setting(
-			'ccp_dashboard',
+			'ccp-site-dashboard',
 			'ccp_hide_wp_news'
 		);
 
@@ -168,7 +168,7 @@ class Settings_Fields_Site {
 		);
 
 		register_setting(
-			'ccp_dashboard',
+			'ccp-site-dashboard',
 			'ccp_hide_quickpress'
 		);
 
@@ -183,7 +183,7 @@ class Settings_Fields_Site {
 		);
 
 		register_setting(
-			'ccp_dashboard',
+			'ccp-site-dashboard',
 			'ccp_hide_at_glance'
 		);
 
@@ -198,7 +198,7 @@ class Settings_Fields_Site {
 		);
 
 		register_setting(
-			'ccp_dashboard',
+			'ccp-site-dashboard',
 			'ccp_hide_activity'
 		);
 
