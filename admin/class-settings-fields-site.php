@@ -513,7 +513,7 @@ class Settings_Fields_Site {
 
 		$types = [
 			// First option save null.
-			null,
+			null          => __( 'Select one&hellip;', 'controlled-chaos-plugin' ),
 			'Airline'     => __( 'Airline', 'controlled-chaos-plugin' ),
 			'Corporation' => __( 'Corporation', 'controlled-chaos-plugin' ),
 
