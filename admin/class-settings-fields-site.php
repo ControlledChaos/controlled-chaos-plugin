@@ -484,7 +484,7 @@ class Settings_Fields_Site {
 			'ccp_meta_disable'
 		);
 
-		// Disable meta tags.
+		// Organization Schema type.
 		add_settings_field(
 			'ccp_meta_type',
 			__( 'Organization Type', 'controlled-chaos-plugin' ),
