@@ -70,6 +70,13 @@ final class Settings_Fields_ACF {
 				'key'    => 'group_5a0c7ff7764ca',
 				'title'  => __( 'Settings Page', 'controlled-chaos-plugin' ),
 				'fields' => [
+
+					/**
+					 * Dashboard tab settings.
+					 *
+					 * @since 1.0.0
+					 */
+
 					[
 						'key'               => 'field_5a0c8d7232b94',
 						'label'             => __( 'Dashboard', 'controlled-chaos-plugin' ),
@@ -151,6 +158,13 @@ final class Settings_Fields_ACF {
 						'toggle'            => 1,
 						'return_format'     => 'value',
 					],
+
+					/**
+					 * Admin Menu tab settings.
+					 *
+					 * @since 1.0.0
+					 */
+
 					[
 						'key'               => 'field_5a0c800f57d56',
 						'label'             => __( 'Admin Menu', 'controlled-chaos-plugin' ),
@@ -377,6 +391,13 @@ final class Settings_Fields_ACF {
 						'ui_on_text'        => __( 'Enabled', 'controlled-chaos-plugin' ),
 						'ui_off_text'       => __( 'Disabled', 'controlled-chaos-plugin' ),
 					],
+
+					/**
+					 * Admin Pages tab settings.
+					 *
+					 * @since 1.0.0
+					 */
+
 					[
 						'key'               => 'field_5a0cbb3873e55',
 						'label'             => __( 'Admin Pages', 'controlled-chaos-plugin' ),
@@ -428,6 +449,13 @@ final class Settings_Fields_ACF {
 						'default_value'     => '',
 						'placeholder'       => '',
 					],
+
+					/**
+					 * Meta/SEO tab settings.
+					 *
+					 * @since 1.0.0
+					 */
+
 					[
 						'key'               => 'field_5a1989a036067',
 						'label'             => __( 'Meta/SEO', 'controlled-chaos-plugin' ),
