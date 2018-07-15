@@ -100,9 +100,9 @@ class Meta_Tags {
 	public function meta_tags() {
 
 		if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
-			$disable_tags = get_field( 'ccp_disable_meta_tags', 'option' );
+			$disable_tags = get_field( 'ccp_meta_disable_tags', 'option' );
 		} else {
-			$disable_tags = get_option( 'ccp_disable_meta' );
+			$disable_tags = get_option( 'ccp_meta_disable' );
 		}
 
 		if ( ! $disable_tags || false == $disable_tags ) {

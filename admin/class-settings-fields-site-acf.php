@@ -91,7 +91,7 @@ final class Settings_Fields_ACF {
 						'label'             => __( 'Custom Welcome', 'controlled-chaos-plugin' ),
 						'name'              => 'ccp_custom_welcome',
 						'type'              => 'true_false',
-						'instructions'      => __( 'Use the custom Welcome panel on the Dashboard', 'controlled-chaos-plugin' ),
+						'instructions'      => __( '', 'controlled-chaos-plugin' ),
 						'required'          => 0,
 						'conditional_logic' => 0,
 						'wrapper'           => [
@@ -99,7 +99,7 @@ final class Settings_Fields_ACF {
 							'class' => '',
 							'id'    => '',
 						],
-						'message'           => '',
+						'message'           => __( 'Use the custom Welcome panel on the Dashboard', 'controlled-chaos-plugin' ),
 						'default_value'     => 0,
 						'ui'                => 0,
 						'ui_on_text'        => '',
@@ -447,7 +447,7 @@ final class Settings_Fields_ACF {
 					[
 						'key'               => 'field_5a237090744c4',
 						'label'             => __( 'Meta Tags', 'controlled-chaos-plugin' ),
-						'name'              => 'ccp_disable_meta_tags',
+						'name'              => 'ccp_meta_disable_tags',
 						'type'              => 'true_false',
 						'instructions'      => __( 'Disable if you plan on using Yoast SEO or a similarly awful plugin.', 'controlled-chaos-plugin' ),
 						'required'          => 0,

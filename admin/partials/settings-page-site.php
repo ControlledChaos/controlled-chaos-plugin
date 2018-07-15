@@ -82,7 +82,7 @@ $page_tabs = apply_filters( 'ccp_tabs_site_settings', $tabs );
  */
 if ( 'dashboard' == $active_tab  ) {
     $section = 'ccp-site-dashboard';
-    $fields  = 'ccp_dashboard';
+    $fields  = 'ccp-site-dashboard';
 } elseif ( 'admin-menu' == $active_tab ) {
     $section = 'ccp-site-admin-menu';
     $fields  = 'ccp-site-admin-menu';
