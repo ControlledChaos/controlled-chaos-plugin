@@ -447,7 +447,7 @@ final class Settings_Fields_ACF {
 					[
 						'key'               => 'field_5a237090744c4',
 						'label'             => __( 'Meta Tags', 'controlled-chaos-plugin' ),
-						'name'              => 'ccp_disable_meta_tags',
+						'name'              => 'ccp_meta_disable_tags',
 						'type'              => 'true_false',
 						'instructions'      => __( 'Disable if you plan on using Yoast SEO or a similarly awful plugin.', 'controlled-chaos-plugin' ),
 						'required'          => 0,
