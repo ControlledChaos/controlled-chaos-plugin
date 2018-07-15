@@ -92,7 +92,7 @@ An optional welcome panel with three widget areas and loaded with hooks for addi
 
 The Site Settings page for managing various features of this plugin has been duplicated as an ACF options page. This page will be used instead of the native settings page if the Advanced Custom Fields PRO plugin is active, or Advanced Custom Fields free plus the Options Page addon.
 
-Included is a tool to import the ACF settings field registered by this plugin so that you can add to them or edit them.
+Included is a tool to import the ACF settings fields registered by this plugin so that you can add to them or edit them.
 
 ### Media Options
 
