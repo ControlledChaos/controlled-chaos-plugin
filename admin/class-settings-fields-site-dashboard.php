@@ -120,6 +120,21 @@ class Settings_Fields_Site_Dashboard {
 			'ccp_custom_welcome'
 		);
 
+		// Hide the try Gutenberg panel.
+		add_settings_field(
+			'ccp_hide_try_gutenberg',
+			__( 'Hide Try Gutenberg', 'controlled-chaos-plugin' ),
+			[ Partials\Field_Callbacks\Dashboard_Callbacks::instance(), 'hide_try_gutenberg' ],
+			'ccp-site-dashboard',
+			'ccp-site-dashboard',
+			[ esc_html__( 'Hide the "Try Gutenberg" panel on the Dashboard', 'controlled-chaos-plugin' ) ]
+		);
+
+		register_setting(
+			'ccp-site-dashboard',
+			'ccp_hide_try_gutenberg'
+		);
+
 		// Hide the welcome panel.
 		add_settings_field(
 			'ccp_hide_welcome',

@@ -145,6 +145,7 @@ final class Settings_Fields_ACF {
 							'id'    => '',
 						],
 						'choices'           => [
+							'gutenberg' => __( 'Try Gutenberg', 'controlled-chaos-plugin' ),
 							'welcome'   => __( 'Welcome', 'controlled-chaos-plugin' ),
 							'news'      => __( 'WordPress News', 'controlled-chaos-plugin' ),
 							'quick'     => __( 'Quick Press', 'controlled-chaos-plugin' ),

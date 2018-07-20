@@ -73,7 +73,7 @@ class Dashboard {
         add_action( 'admin_head', [ $this, 'add_help' ] );
 
         // Enqueue dashboard stylesheet.
-		add_action( 'admin_enqueue_scripts', [ $this, 'styles' ] );
+        add_action( 'admin_enqueue_scripts', [ $this, 'styles' ] );
 
     }
 
@@ -181,6 +181,11 @@ class Dashboard {
                 remove_action( 'welcome_panel', 'wp_welcome_panel' );
             }
 
+            // Hide the try Gutenberg panel.
+            if ( $hide && in_array( 'gutenberg', $hide ) ) {
+                remove_action( 'try_gutenberg_panel', 'wp_try_gutenberg_panel' );
+            }
+
             // Hide the WordPress News widget.
             if ( $hide && in_array( 'news', $hide ) ) {
                 unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
@@ -210,6 +215,7 @@ class Dashboard {
 
             // Get options.
             $welcome    = get_option( 'ccp_hide_welcome' );
+            $gutenberg  = get_option( 'ccp_hide_try_gutenberg' );
             $wp_news    = get_option( 'ccp_hide_wp_news' );
             $quickpress = get_option( 'ccp_hide_quickpress' );
             $at_glance  = get_option( 'ccp_hide_at_glance' );
@@ -218,6 +224,11 @@ class Dashboard {
             // Hide the Welcome panel.
             if ( $welcome ) {
                 remove_action( 'welcome_panel', 'wp_welcome_panel' );
+            }
+
+            // Hide the try Gutenberg panel.
+            if ( $gutenberg ) {
+                remove_action( 'try_gutenberg_panel', 'wp_try_gutenberg_panel' );
             }
 
             // Hide the WordPress News widget.
