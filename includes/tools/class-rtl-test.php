@@ -26,7 +26,7 @@
 class Controlled_Chaos_RTL_Test {
 
 	/**
-	 * Get an instance of the plugin class.
+	 * Get an instance of the class.
 	 *
 	 * @since  1.0.0
 	 * @access public

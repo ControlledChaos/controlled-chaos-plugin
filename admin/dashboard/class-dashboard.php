@@ -25,7 +25,7 @@ if ( ! defined( 'WPINC' ) ) {
 class Dashboard {
 
     /**
-	 * Get an instance of the plugin class.
+	 * Get an instance of the class.
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -171,7 +171,10 @@ class Dashboard {
         global $wp_meta_boxes;
 
         // If Advanced Custom Fields Pro is active.
-        if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
+        if ( class_exists( 'acf_pro' )
+
+        // Or if free ACF plus the Options Page addon are active.
+        || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
 
             // Get the multiple checkbox field.
             $hide = get_field( 'ccp_dashboard_hide_widgets', 'option' );

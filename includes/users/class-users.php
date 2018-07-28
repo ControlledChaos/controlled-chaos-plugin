@@ -1,15 +1,16 @@
 <?php
 /**
- * Date published meta tag.
+ * Wordpress user functionality.
  *
  * @package    Controlled_Chaos_Plugin
- * @subpackage Frontend\Meta_Tags
+ * @subpackage Includes\Users
  *
  * @since      1.0.0
+ * @author	   Jared Atchison
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Frontend\Meta_Tags;
+namespace CC_Plugin\Includes\Users;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -17,12 +18,12 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 /**
- * Date published meta tag.
+ * Wordpress user functionality.
  *
  * @since  1.0.0
  * @access public
  */
-class Meta_Date_Published {
+class Users {
 
 	/**
 	 * Get an instance of the class.
@@ -41,6 +42,9 @@ class Meta_Date_Published {
 			// Set variable for new instance.
 			$instance = new self;
 
+			// Require the class files.
+			$instance->dependencies();
+
 		}
 
 		// Return the instance.
@@ -55,35 +59,19 @@ class Meta_Date_Published {
 	 * @access public
 	 * @return self
 	 */
-	public function __construct() {
-
-		// Add published date to the meta tag.
-		add_action( 'ccp_meta_date_pub_tag', [ $this, 'date' ] );
-
-	}
+	public function __construct() {}
 
 	/**
-	 * Published date meta tag.
+	 * Class dependency files.
 	 *
 	 * @since  1.0.0
-	 * @access public
-	 * @global object post The post object for the current post.
-	 * @return string
+	 * @access private
+	 * @return void
 	 */
-	public function date() {
+	private function dependencies() {
 
-		// Bail on error pages.
-		if ( is_404() ) {
-			return;
-		}
-
-		// Get the current post.
-		global $post;
-
-		$date_tag = get_the_date( 'Y-m-d' );
-
-		// Echo the date in the meta tag.
-		echo $date_tag;
+		// User avatars.
+		require_once plugin_dir_path( __FILE__ ) . 'class-user-avatars.php';
 
 	}
 
@@ -96,11 +84,11 @@ class Meta_Date_Published {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_meta_date_pub() {
+function ccp_users() {
 
-	return Meta_Date_Published::instance();
+	return Users::instance();
 
 }
 
 // Run an instance of the class.
-ccp_meta_date_pub();
+ccp_users();

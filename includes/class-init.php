@@ -28,7 +28,7 @@ include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 class Init {
 
 	/**
-	 * Get an instance of the plugin class.
+	 * Get an instance of the class.
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -104,8 +104,8 @@ class Init {
 		// Post types and taxonomies.
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/post-types-taxes/class-post-type-tax.php';
 
-		// User avatars.
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/users/class-user-avatars.php';
+		// User funtionality.
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/users/class-users.php';
 
 		// Dev and maintenance tools.
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/tools/class-tools.php';

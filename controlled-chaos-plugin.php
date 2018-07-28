@@ -82,7 +82,7 @@ if ( ! defined( 'CCP_DEFAULT_META_IMAGE' ) ) {
 class Controlled_Chaos_Plugin {
 
 	/**
-	 * Get an instance of the plugin class.
+	 * Get an instance of the class.
 	 *
 	 * @since  1.0.0
 	 * @access public

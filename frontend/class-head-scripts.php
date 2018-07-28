@@ -25,7 +25,7 @@ if ( ! defined( 'WPINC' ) ) {
 class Head_Scripts {
 
 	/**
-	 * Get an instance of the plugin class.
+	 * Get an instance of the class.
 	 *
 	 * @since  1.0.0
 	 * @access public

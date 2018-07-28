@@ -29,7 +29,7 @@ if ( ! defined( 'WPINC' ) ) {
 class Settings_Page_Dev_Tools {
 
 	/**
-	 * Get an instance of the plugin class.
+	 * Get an instance of the class.
 	 *
 	 * @since  1.0.0
 	 * @access public

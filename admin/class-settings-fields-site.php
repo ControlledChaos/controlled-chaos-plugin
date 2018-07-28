@@ -32,7 +32,7 @@ class Settings_Fields_Site {
 	private $options;
 
 	/**
-	 * Get an instance of the plugin class.
+	 * Get an instance of the class.
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -50,6 +50,9 @@ class Settings_Fields_Site {
 
 			// Require the class files.
 			$instance->dependencies();
+
+			// Site settings defaults.
+			$instance->site_settings();
 
 		}
 
@@ -87,6 +90,43 @@ class Settings_Fields_Site {
 
 		// Callbacks for the Meta/SEO tab.
 		require plugin_dir_path( __FILE__ ) . 'class-settings-fields-site-meta-seo.php';
+
+	}
+
+	/**
+	 * Undocumented function
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return array
+	 */
+	public function site_settings() {
+
+		$defaults = [
+			'custom_welcome'      => false,
+			'try_gutenberg'       => false,
+			'welcome'             => false,
+			'dismiss'             => false,
+			'wp_news'             => false,
+			'quickpress'          => false,
+			'at_glance'           => false,
+			'activity'            => false,
+			'settings_position'   => false,
+			'settings_link_label' => __( 'Site Settings', 'controlled-chaos-plugin' ),
+			'settings_link_icon'  => 'dashicons-welcome-learn-more',
+			'plugin_position'     => false,
+			'plugin_link_label'   => false,
+			'plugin_link_icon'    => false,
+			'menus_position'      => false,
+			'widgets_position'    => false,
+			'appearance'          => false,
+			'plugins'             => false,
+			'users'               => false,
+			'tools'               => false,
+			'links'               => false
+		];
+
+		return apply_filters ( 'ccp_site_settings', $defaults );
 
 	}
 

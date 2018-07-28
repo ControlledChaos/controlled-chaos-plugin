@@ -30,7 +30,7 @@ if ( ! is_admin() ) {
 class Admin {
 
 	/**
-	 * Get an instance of the plugin class.
+	 * Get an instance of the class.
 	 *
 	 * @since  1.0.0
 	 * @access public

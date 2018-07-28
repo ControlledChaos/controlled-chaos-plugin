@@ -36,7 +36,7 @@ if ( is_admin() ) {
 class Frontend {
 
 	/**
-	 * Get an instance of the plugin class.
+	 * Get an instance of the class.
 	 *
 	 * @since  1.0.0
 	 * @access public

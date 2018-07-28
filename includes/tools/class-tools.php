@@ -31,7 +31,7 @@ include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 class Tools {
 
 	/**
-	 * Get an instance of the plugin class.
+	 * Get an instance of the class.
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -64,7 +64,12 @@ class Tools {
 	 * @access public
 	 * @return void Constructor method is empty.
 	 */
-	public function __construct() {}
+	public function __construct() {
+
+		add_filter( 'acf/settings/save_json', [ $this, 'acf_json_save_point' ], 20 );
+		add_filter( 'acf/settings/load_json', [ $this, 'acf_json_load_point' ], 20 );
+
+	}
 
 	/**
 	 * Load the required dependencies for this plugin.
@@ -100,6 +105,32 @@ class Tools {
 		if ( $theme_test ) {
 			include_once plugin_dir_path( dirname( __FILE__ ) ) . 'tools/class-theme-test.php';
 		}
+
+	}
+
+	public function acf_json_save_point( $path ) {
+
+		// update path
+		$path = plugin_dir_path( __DIR__ ) . '/acf-json';
+
+
+		// return
+		return $path;
+
+	}
+
+	public function acf_json_load_point( $paths ) {
+
+		// remove original path (optional)
+		unset( $paths[0] );
+
+
+		// append path
+		$paths[] = plugin_dir_path( __DIR__ ) . '/acf-json';
+
+
+		// return
+		return $paths;
 
 	}
 
