@@ -129,11 +129,11 @@ class Admin_Menu_Callbacks {
 	 */
 	public function site_plugin_position( $args ) {
 
-		$option = get_option( 'ccp_site_plugin_position' );
+		$option = get_option( 'ccp_site_plugin_link_position' );
 
-		$html = '<p><input type="checkbox" id="ccp_site_plugin_position" name="ccp_site_plugin_position" value="1" ' . checked( 1, $option, false ) . '/>';
+		$html = '<p><input type="checkbox" id="ccp_site_plugin_link_position" name="ccp_site_plugin_link_position" value="1" ' . checked( 1, $option, false ) . '/>';
 
-		$html .= '<label for="ccp_site_plugin_position"> '  . $args[0] . '</label></p>';
+		$html .= '<label for="ccp_site_plugin_link_position"> '  . $args[0] . '</label></p>';
 
 		echo $html;
 

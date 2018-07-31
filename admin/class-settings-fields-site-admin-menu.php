@@ -152,7 +152,7 @@ class Settings_Fields_Site_Admin_Menu {
 
 		// Site Plugin page position.
 		add_settings_field(
-			'ccp_site_plugin_position',
+			'ccp_site_plugin_link_position',
 			__( 'Site Plugin Position', 'controlled-chaos-plugin' ),
 			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'site_plugin_position' ],
 			'ccp-site-admin-menu',
@@ -162,7 +162,7 @@ class Settings_Fields_Site_Admin_Menu {
 
 		register_setting(
 			'ccp-site-admin-menu',
-			'ccp_site_plugin_position'
+			'ccp_site_plugin_link_position'
 		);
 
 		// Site Plugin page link label.
