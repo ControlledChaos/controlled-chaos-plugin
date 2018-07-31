@@ -293,6 +293,41 @@ function ccp_deactivate_plugin() {
  */
 function ccp_about_link( $links ) {
 
+	/**
+	 * Site settings page link depends on the admin menu setting.
+	 *
+	 * @since  1.0.0
+	 * @return string returns the URL of the page with parent or not.
+	 */
+
+	// If Advanced Custom Fields is active.
+	if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
+
+		// Get the field.
+		$acf_position = get_field( 'ccp_site_plugin_link_position', 'option' );
+
+		// Return true if the field is set to `top`.
+		if ( 'top' == $acf_position ) {
+			$position = true;
+
+		// Otherwise return `false`.
+		} else {
+			$position = false;
+		}
+
+	// If ACF is not active, get the field from the WordPress options page.
+	} else {
+
+		// Get the field.
+		$position = get_option( 'ccp_site_plugin_link_position' );
+	}
+
+	if ( true == $position ) {
+		$url = admin_url( 'index.php?page=' . CCP_ADMIN_SLUG . '-settings' );
+	} else {
+		$url = admin_url( 'admin.php?page=' . CCP_ADMIN_SLUG . '-settings' );
+	}
+
 	// Create new settings link array as a variable.
 	$about_page = [
 		sprintf(
@@ -323,12 +358,47 @@ add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'ccp_about_lin
  */
 function ccp_settings_links( $links, $file ) {
 
+	/**
+	 * Site settings page link depends on the admin menu setting.
+	 *
+	 * @since  1.0.0
+	 * @return string returns the URL of the page with parent or not.
+	 */
+
+	// If Advanced Custom Fields is active.
+	if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
+
+		// Get the field.
+		$acf_position = get_field( 'ccp_settings_link_position', 'option' );
+
+		// Return true if the field is set to `top`.
+		if ( 'top' == $acf_position ) {
+			$position = true;
+
+		// Otherwise return `false`.
+		} else {
+			$position = false;
+		}
+
+	// If ACF is not active, get the field from the WordPress options page.
+	} else {
+
+		// Get the field.
+		$position = get_option( 'ccp_site_settings_position' );
+	}
+
+	if ( $position || true == $position ) {
+		$url = admin_url( 'admin.php?page=' . CCP_ADMIN_SLUG . '-settings' );
+	} else {
+		$url = admin_url( 'index.php?page=' . CCP_ADMIN_SLUG . '-settings' );
+	}
+
 	if ( $file == plugin_basename( __FILE__ ) ) {
 
 		// Add links to settings pages.
 		$links[] = sprintf(
 			'<a href="%1s" class="' . CCP_ADMIN_SLUG . '-settings-link">%2s</a>',
-			admin_url( 'options-general.php?page=' . CCP_ADMIN_SLUG . '-settings' ),
+			$url,
 			esc_attr( 'Site Settings', 'controlled-chaos-plugin' )
 		);
 		$links[] = sprintf(
