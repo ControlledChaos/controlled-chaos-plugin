@@ -71,7 +71,7 @@ class Enqueue_Frontend_Styles {
 	public function styles() {
 
 		// Non-vendor plugin styles.
-		wp_enqueue_style( CCP_ADMIN_SLUG, plugin_dir_url( __FILE__ ) . 'assets/css/frontend.css', [], CCP_VERSION, 'all' );
+		wp_enqueue_style( CCP_ADMIN_SLUG, CCP_URL . 'assets/css/frontend.css', [], CCP_VERSION, 'all' );
 
 		// Fancybox 3.
 		if ( get_option( 'ccp_enqueue_fancybox_styles' ) ) {
@@ -83,23 +83,23 @@ class Enqueue_Frontend_Styles {
 			if ( current_theme_supports( 'ccd-fancybox' ) ) {
 				return;
 			} else {
-				wp_enqueue_style( CCP_ADMIN_SLUG . '-fancybox', plugin_dir_url( __FILE__ ) . 'assets/css/jquery.fancybox.min.css', [], CCP_VERSION, 'all' );
+				wp_enqueue_style( CCP_ADMIN_SLUG . '-fancybox', CCP_URL . 'assets/css/jquery.fancybox.min.css', [], CCP_VERSION, 'all' );
 			}
 		}
 
 		// Slick.
 		if ( get_option( 'ccp_enqueue_slick' ) ) {
-			wp_enqueue_style( CCP_ADMIN_SLUG . '-slick', plugin_dir_url( __FILE__ ) . 'assets/css/slick.min.css', [], CCP_VERSION, 'all' );
+			wp_enqueue_style( CCP_ADMIN_SLUG . '-slick', CCP_URL . 'assets/css/slick.min.css', [], CCP_VERSION, 'all' );
 		}
 
 		// Slick theme.
 		if ( get_option( 'ccp_enqueue_slick' ) ) {
-			wp_enqueue_style( CCP_ADMIN_SLUG . '-slick-theme', plugin_dir_url( __FILE__ ) . 'assets/css/slick-theme.css', [], CCP_VERSION, 'all' );
+			wp_enqueue_style( CCP_ADMIN_SLUG . '-slick-theme', CCP_URL . 'assets/css/slick-theme.css', [], CCP_VERSION, 'all' );
 		}
 
 		// Tooltipster.
 		if ( get_option( 'ccp_enqueue_tooltipster' ) ) {
-			wp_enqueue_style( CCP_ADMIN_SLUG . '-tooltipster', plugin_dir_url( __FILE__ ) . 'assets/css/tooltipster.bundle.min.css', [], CCP_VERSION, 'all' );
+			wp_enqueue_style( CCP_ADMIN_SLUG . '-tooltipster', CCP_URL . 'assets/css/tooltipster.bundle.min.css', [], CCP_VERSION, 'all' );
 		}
 
 	}

@@ -115,37 +115,37 @@ class Admin {
 	private function dependencies() {
 
 		// The core settings class for the plugin.
-		require_once plugin_dir_path( __FILE__ ) . 'class-settings.php';
+		require_once CCP_PATH . 'admin/class-settings.php';
 
 		// Add icons to the titles of ACF tab and accordion fields, if active.
 		if ( class_exists( 'acf_pro' ) && ! get_option( 'ccp_acf_activate_settings_page' ) ) {
-			include_once plugin_dir_path( __FILE__ ) . 'class-acf-tab-icons.php';
+			include_once CCP_PATH . 'admin/class-acf-tab-icons.php';
 		}
 
 		// Include custom fields for Advanced Custom Fields Pro, if active.
 		if ( class_exists( 'acf_pro' ) && ! get_option( 'ccp_acf_activate_settings_page' ) ) {
-			include_once plugin_dir_path( __FILE__ ) . 'class-settings-fields-site-acf.php';
+			include_once CCP_PATH . 'admin/class-settings-fields-site-acf.php';
 		}
 
 		// Functions for dasboard widgets, excluding the welcome panel.
-		require_once plugin_dir_path( __FILE__ ) . 'dashboard/class-dashboard.php';
+		require_once CCP_PATH . 'admin/dashboard/class-dashboard.php';
 
 		// Functions for admin menu item positions and visibility.
-		require_once plugin_dir_path( __FILE__ ) . 'class-admin-menu.php';
+		require_once CCP_PATH . 'admin/class-admin-menu.php';
 
 		// Add menus to the admin toolbar.
-		require_once plugin_dir_path( __FILE__ ) . 'class-admin-toolbar-menus.php';
+		require_once CCP_PATH . 'admin/class-admin-toolbar-menus.php';
 
 		// Functions for various admin pages and edit screens.
-		require_once plugin_dir_path( __FILE__ ) . 'class-admin-pages.php';
+		require_once CCP_PATH . 'admin/class-admin-pages.php';
 
 		// Import custom fields for editing, if ACF Pro is active.
 		if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
-			include_once plugin_dir_path( __FILE__ ) . 'class-fields-import.php';
+			include_once CCP_PATH . 'admin/class-fields-import.php';
 		}
 
 		// Filter by page template.
-		require_once plugin_dir_path( __FILE__ ) . 'class-admin-template-filter.php';
+		require_once CCP_PATH . 'admin/class-admin-template-filter.php';
 
 	}
 
@@ -367,7 +367,7 @@ class Admin {
 		 *
 		 * @since 1.0.0
 		 */
-		wp_enqueue_style( CCP_ADMIN_SLUG . '-admin', plugin_dir_url( __FILE__ ) . 'assets/css/admin.css', [], CCP_VERSION, 'all' );
+		wp_enqueue_style( CCP_ADMIN_SLUG . '-admin', CCP_URL . 'assets/css/admin.css', [], CCP_VERSION, 'all' );
 
 		/**
 		 * Enqueue the jQuery tooltips styles.
@@ -380,7 +380,7 @@ class Admin {
 		 *
 		 * @since 1.0.0
 		 */
-		wp_enqueue_style( CCP_ADMIN_SLUG . '-tooltips', plugin_dir_url( __FILE__ ) . 'assets/css/tooltips.min.css', [], CCP_VERSION, 'all' );
+		wp_enqueue_style( CCP_ADMIN_SLUG . '-tooltips', CCP_URL . 'assets/css/tooltips.min.css', [], CCP_VERSION, 'all' );
 
 		/**
 		 * Enqueue Advanced Custom Fields styles.
@@ -390,7 +390,7 @@ class Admin {
 		 * @since 1.0.0
 		 */
 		if ( class_exists( 'acf' ) ) {
-			wp_enqueue_style( CCP_ADMIN_SLUG . '-acf', plugin_dir_url( __FILE__ ) . 'assets/css/acf.css', [], CCP_VERSION, 'all' );
+			wp_enqueue_style( CCP_ADMIN_SLUG . '-acf', CCP_URL . 'assets/css/acf.css', [], CCP_VERSION, 'all' );
 		}
 
 		/**
@@ -402,7 +402,7 @@ class Admin {
 		 */
 		$welcome = get_option( 'ccp_custom_welcome' );
 		if ( $welcome ) {
-			wp_enqueue_style( CCP_ADMIN_SLUG . '-welcome', plugin_dir_url( __FILE__ ) . 'assets/css/welcome.css', [], CCP_VERSION, 'all' );
+			wp_enqueue_style( CCP_ADMIN_SLUG . '-welcome', CCP_URL . 'assets/css/welcome.css', [], CCP_VERSION, 'all' );
 		}
 
 	}
@@ -417,7 +417,7 @@ class Admin {
 
 		ob_start();
 
-		require plugin_dir_path( __FILE__ ) . 'partials/searchform.php';
+		require CCP_PATH . 'partials/searchform.php';
 
 		$form = ob_get_clean();
 
@@ -462,10 +462,10 @@ class Admin {
 		wp_enqueue_script( 'jquery-ui-tooltip' );
 
 		// Enqueue Conditionalize for conditional form fields.
-		wp_enqueue_script( CCP_ADMIN_SLUG . '-conditionalize', plugin_dir_url( __FILE__ ) . 'assets/js/admin.js', [ 'jquery' ], CCP_VERSION, true );
+		wp_enqueue_script( CCP_ADMIN_SLUG . '-conditionalize', CCP_URL . 'assets/js/admin.js', [ 'jquery' ], CCP_VERSION, true );
 
 		// Enqueue scripts for backend functionality of this plugin.
-		wp_enqueue_script( CCP_ADMIN_SLUG . '-admin', plugin_dir_url( __FILE__ ) . 'assets/js/conditionize.flexible.jquery.min.js', [ 'jquery' ], CCP_VERSION, true );
+		wp_enqueue_script( CCP_ADMIN_SLUG . '-admin', CCP_URL . 'assets/js/conditionize.flexible.jquery.min.js', [ 'jquery' ], CCP_VERSION, true );
 
 	}
 

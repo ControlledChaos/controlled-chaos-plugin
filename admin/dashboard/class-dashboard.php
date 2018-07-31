@@ -87,10 +87,10 @@ class Dashboard {
 	private function dependencies() {
 
         // Get the dashboard widget class.
-        require plugin_dir_path( __FILE__ ) . 'class-dashboard-widget.php';
+        require CCP_PATH . 'admin/dashboard/class-dashboard-widget.php';
 
         // Get the welcome panel class.
-        require plugin_dir_path( __FILE__ ) . 'class-welcome.php';
+        require CCP_PATH . 'admin/dashboard/class-welcome.php';
 
     }
 
@@ -338,7 +338,7 @@ class Dashboard {
      */
 	public function help_welcome_panel() {
 
-        include_once plugin_dir_path( __FILE__ ) . 'partials/help/help-welcome-panel.php';
+        include_once CCP_PATH . 'partials/help/help-welcome-panel.php';
 
     }
 
@@ -349,7 +349,7 @@ class Dashboard {
      */
 	public function help_dashboard_widgets() {
 
-        include_once plugin_dir_path( __FILE__ ) . 'partials/help/help-dashboard-widgets.php';
+        include_once CCP_PATH . 'partials/help/help-dashboard-widgets.php';
 
     }
 
@@ -396,7 +396,7 @@ class Dashboard {
 
         // Enqueue only on the Dashboard screen.
         if ( $screen->id == 'dashboard' ) {
-            wp_enqueue_style( CCP_ADMIN_SLUG . '-dashboard', plugin_dir_url( __FILE__ ) .  'assets/css/dashboard.css', [], null, 'screen' );
+            wp_enqueue_style( CCP_ADMIN_SLUG . '-dashboard', CCP_URL .  'assets/css/dashboard.css', [], null, 'screen' );
         }
 
 	}

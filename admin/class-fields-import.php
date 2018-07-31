@@ -152,7 +152,7 @@ final class Fields_Import {
 			while ( $num_import > 0 );
 		}
 
-		include_once plugin_dir_path( __FILE__ ) . 'partials/fields-import-page.php';
+		include_once CCP_PATH . 'partials/fields-import-page.php';
 
 	}
 

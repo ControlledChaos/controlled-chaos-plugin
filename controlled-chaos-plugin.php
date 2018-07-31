@@ -11,17 +11,33 @@
  * @link        https://github.com/ControlledChaos/controlled-chaos-plugin
  * @license     GPL-3.0+ http://www.gnu.org/licenses/gpl-3.0.txt
  *
- * Plugin Name: Controlled Chaos Plugin
- * Plugin URI:  https://github.com/ControlledChaos/controlled-chaos-plugin
- * Description: A WordPress starter/boilerplate for site-specific plugins.
- * Version:     1.0.0
- * Author:      Controlled Chaos Design
- * Author URI:  http://ccdzine.com/
- * License:     GPL-3.0+
- * License URI: https://www.gnu.org/licenses/gpl.txt
- * Text Domain: controlled-chaos-plugin
- * Domain Path: /languages
+ * Plugin Name:  Controlled Chaos Plugin
+ * Plugin URI:   https://github.com/ControlledChaos/controlled-chaos-plugin
+ * Description:  A WordPress starter/boilerplate for site-specific plugins.
+ * Version:      1.0.0
+ * Author:       Controlled Chaos Design
+ * Author URI:   http://ccdzine.com/
+ * License:      GPL-3.0+
+ * License URI:  https://www.gnu.org/licenses/gpl.txt
+ * Text Domain:  controlled-chaos-plugin
+ * Domain Path:  /languages
+ * Tested up to: 4.9.8
  */
+
+/*
+Controlled Chaos Plugin is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+any later version.
+
+Controlled Chaos Plugin is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Controlled Chaos Plugin. If not, see {URI to Plugin License}.
+*/
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -29,57 +45,15 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 /**
- * Keeping the version at 1.0.0 as this is a starter plugin but
- * you may want to start counting as you develop for your use case.
- *
- * @since  1.0.0
- * @return string Returns the latest plugin version.
- */
-if ( ! defined( 'CCP_VERSION' ) ) {
-	define( 'CCP_VERSION', '1.0.0' );
-}
-
-/**
- * Universal slug partial for admin pages.
- *
- * This URL slug is used for various plugin admin & settings pages.
- *
- * The prefix will change in your search & replace in renaming the plugin.
- * Change the second part of the define(), here as 'controlled-chaos-plugin',
- * to your preferred page slug.
- *
- * @since  1.0.0
- * @return string Returns the URL slug of the admin pages.
- */
-if ( ! defined( 'CCP_ADMIN_SLUG' ) ) {
-	define( 'CCP_ADMIN_SLUG', 'controlled-chaos-plugin' );
-}
-
-/**
- * Define default meta image path.
- *
- * Change the path and file name to suit your needs.
- *
- * @since  1.0.0
- * @return string Returns the URL of the image.
- */
-if ( ! defined( 'CCP_DEFAULT_META_IMAGE' ) ) {
-	define(
-		'CCP_DEFAULT_META_IMAGE',
-		plugins_url( 'frontend/assets/images/default-meta-image.jpg', __FILE__ )
-	);
-}
-
-/**
  * The core plugin class.
  *
- * Simply gets the initialization class file plus the
- * activation and deactivation classes.
+ * Defines constants, gets the initialization class file
+ * plus the activation and deactivation classes.
  *
  * @since  1.0.0
  * @access public
  */
-class Controlled_Chaos_Plugin {
+final class Controlled_Chaos_Plugin {
 
 	/**
 	 * Get an instance of the class.
@@ -98,8 +72,12 @@ class Controlled_Chaos_Plugin {
 			// Set variable for new instance.
 			$instance = new self;
 
+			// Define plugin constants.
+			$instance->constants();
+
 			// Require the core plugin class files.
 			$instance->dependencies();
+
 		}
 
 		// Return the instance.
@@ -117,6 +95,109 @@ class Controlled_Chaos_Plugin {
 	public function __construct() {}
 
 	/**
+	 * Throw error on object clone.
+	 *
+	 * @since  1.0.0
+	 * @access protected
+	 * @return void
+	 */
+	public function __clone() {
+
+		// Cloning instances of the class is forbidden.
+		_doing_it_wrong( __FUNCTION__, __( 'This is not allowed.', 'controlled-chaos-plugin' ), '1.0.0' );
+
+	}
+
+	/**
+	 * Disable unserializing of the class.
+	 *
+	 * @since  1.0.0
+	 * @access protected
+	 * @return void
+	 */
+	public function __wakeup() {
+
+		// Unserializing instances of the class is forbidden.
+		_doing_it_wrong( __FUNCTION__, __( 'This is not allowed.', 'controlled-chaos-plugin' ), '1.0.0' );
+
+	}
+
+	/**
+	 * Define plugin constants.
+	 *
+	 * @since  1.0.0
+	 * @access private
+	 * @return void
+	 */
+	private function constants() {
+
+		/**
+		 * Keeping the version at 1.0.0 as this is a starter plugin but
+		 * you may want to start counting as you develop for your use case.
+		 *
+		 * @since  1.0.0
+		 * @return string Returns the latest plugin version.
+		 */
+		if ( ! defined( 'CCP_VERSION' ) ) {
+			define( 'CCP_VERSION', '1.0.0' );
+		}
+
+		/**
+		 * Plugin folder path.
+		 *
+		 * @since  1.0.0
+		 * @return string Returns the filesystem directory path (with trailing slash)
+		 *                for the plugin __FILE__ passed in.
+		 */
+		if ( ! defined( 'CCP_PATH' ) ) {
+			define( 'CCP_PATH', plugin_dir_path( __FILE__ ) );
+		}
+
+		/**
+		 * Plugin folder URL.
+		 *
+		 * @since  1.0.0
+		 * @return string Returns the URL directory path (with trailing slash)
+		 *                for the plugin __FILE__ passed in.
+		 */
+		if ( ! defined( 'CCP_URL' ) ) {
+			define( 'CCP_URL', plugin_dir_url( __FILE__ ) );
+		}
+
+		/**
+		 * Universal slug partial for admin pages.
+		 *
+		 * This URL slug is used for various plugin admin & settings pages.
+		 *
+		 * The prefix will change in your search & replace in renaming the plugin.
+		 * Change the second part of the define(), here as 'controlled-chaos-plugin',
+		 * to your preferred page slug.
+		 *
+		 * @since  1.0.0
+		 * @return string Returns the URL slug of the admin pages.
+		 */
+		if ( ! defined( 'CCP_ADMIN_SLUG' ) ) {
+			define( 'CCP_ADMIN_SLUG', 'controlled-chaos-plugin' );
+		}
+
+		/**
+		 * Define default meta image path.
+		 *
+		 * Change the path and file name to suit your needs.
+		 *
+		 * @since  1.0.0
+		 * @return string Returns the URL of the image.
+		 */
+		if ( ! defined( 'CCP_DEFAULT_META_IMAGE' ) ) {
+			define(
+				'CCP_DEFAULT_META_IMAGE',
+				plugins_url( 'frontend/assets/images/default-meta-image.jpg', __FILE__ )
+			);
+		}
+
+	}
+
+	/**
 	 * Require the core plugin class files.
 	 *
 	 * @since  1.0.0
@@ -126,13 +207,13 @@ class Controlled_Chaos_Plugin {
 	private function dependencies() {
 
 		// The hub of all other dependency files.
-		require_once plugin_dir_path( __FILE__ ) . 'includes/class-init.php';
+		require_once CCP_PATH . 'includes/class-init.php';
 
 		// Include the activation class.
-		require_once plugin_dir_path( __FILE__ ) . 'includes/class-activate.php';
+		require_once CCP_PATH . 'includes/class-activate.php';
 
 		// Include the deactivation class.
-		require_once plugin_dir_path( __FILE__ ) . 'includes/class-deactivate.php';
+		require_once CCP_PATH . 'includes/class-deactivate.php';
 
 	}
 

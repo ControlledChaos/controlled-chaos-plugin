@@ -9,7 +9,9 @@
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Admin;
+namespace CC_Plugin\Admin\Partials;
+
+use CC_Plugin\Admin\Partials\Field_Callbacks\Dashboard_Callbacks as Callbacks;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -82,12 +84,12 @@ class Settings_Fields_Site_Dashboard {
 	private function dependencies() {
 
 		// Callbacks for the Dashboard tab.
-		require plugin_dir_path( __FILE__ ) . 'partials/field-callbacks/class-dashboard-callbacks.php';
+		require CCP_PATH . 'admin/partials/field-callbacks/class-dashboard-callbacks.php';
 
 	}
 
 	/**
-	 * Plugin site settings.
+	 * Dashboard settings.
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -109,7 +111,7 @@ class Settings_Fields_Site_Dashboard {
 		add_settings_field(
 			'ccp_custom_welcome',
 			__( 'Custom Welcome', 'controlled-chaos-plugin' ),
-			[ Partials\Field_Callbacks\Dashboard_Callbacks::instance(), 'custom_welcome' ],
+			[ Callbacks::instance(), 'custom_welcome' ],
 			'ccp-site-dashboard',
 			'ccp-site-dashboard',
 			[ esc_html__( 'Use the custom Welcome panel on the Dashboard', 'controlled-chaos-plugin' ) ]
@@ -124,7 +126,7 @@ class Settings_Fields_Site_Dashboard {
 		add_settings_field(
 			'ccp_hide_try_gutenberg',
 			__( 'Hide Try Gutenberg', 'controlled-chaos-plugin' ),
-			[ Partials\Field_Callbacks\Dashboard_Callbacks::instance(), 'hide_try_gutenberg' ],
+			[ Callbacks::instance(), 'hide_try_gutenberg' ],
 			'ccp-site-dashboard',
 			'ccp-site-dashboard',
 			[ esc_html__( 'Hide the "Try Gutenberg" panel on the Dashboard', 'controlled-chaos-plugin' ) ]
@@ -139,7 +141,7 @@ class Settings_Fields_Site_Dashboard {
 		add_settings_field(
 			'ccp_hide_welcome',
 			__( 'Hide Welcome', 'controlled-chaos-plugin' ),
-			[ Partials\Field_Callbacks\Dashboard_Callbacks::instance(), 'hide_welcome' ],
+			[ Callbacks::instance(), 'hide_welcome' ],
 			'ccp-site-dashboard',
 			'ccp-site-dashboard',
 			[ esc_html__( 'Hide the Welcome panel on the Dashboard', 'controlled-chaos-plugin' ) ]
@@ -154,7 +156,7 @@ class Settings_Fields_Site_Dashboard {
 		add_settings_field(
 			'ccp_remove_welcome_dismiss',
 			__( 'Remove Welcome Dismiss', 'controlled-chaos-plugin' ),
-			[ Partials\Field_Callbacks\Dashboard_Callbacks::instance(), 'remove_welcome_dismiss' ],
+			[ Callbacks::instance(), 'remove_welcome_dismiss' ],
 			'ccp-site-dashboard',
 			'ccp-site-dashboard',
 			[ esc_html__( 'Remove the Welcome panel dismiss button', 'controlled-chaos-plugin' ) ]
@@ -169,7 +171,7 @@ class Settings_Fields_Site_Dashboard {
 		add_settings_field(
 			'ccp_hide_wp_news',
 			__( 'Hide WordPress News', 'controlled-chaos-plugin' ),
-			[ Partials\Field_Callbacks\Dashboard_Callbacks::instance(), 'hide_wp_news' ],
+			[ Callbacks::instance(), 'hide_wp_news' ],
 			'ccp-site-dashboard',
 			'ccp-site-dashboard',
 			[ esc_html__( 'Hide the WordPress News widget on the Dashboard', 'controlled-chaos-plugin' ) ]
@@ -184,7 +186,7 @@ class Settings_Fields_Site_Dashboard {
 		add_settings_field(
 			'ccp_hide_quickpress',
 			__( 'Hide Quick Draft', 'controlled-chaos-plugin' ),
-			[ Partials\Field_Callbacks\Dashboard_Callbacks::instance(), 'hide_quickpress' ],
+			[ Callbacks::instance(), 'hide_quickpress' ],
 			'ccp-site-dashboard',
 			'ccp-site-dashboard',
 			[ esc_html__( 'Hide the Quick Draft widget on the Dashboard', 'controlled-chaos-plugin' ) ]
@@ -199,7 +201,7 @@ class Settings_Fields_Site_Dashboard {
 		add_settings_field(
 			'ccp_hide_at_glance',
 			__( 'Hide At a Glance', 'controlled-chaos-plugin' ),
-			[ Partials\Field_Callbacks\Dashboard_Callbacks::instance(), 'hide_at_glance' ],
+			[ Callbacks::instance(), 'hide_at_glance' ],
 			'ccp-site-dashboard',
 			'ccp-site-dashboard',
 			[ esc_html__( 'Hide the At a Glance widget on the Dashboard', 'controlled-chaos-plugin' ) ]
@@ -214,7 +216,7 @@ class Settings_Fields_Site_Dashboard {
 		add_settings_field(
 			'ccp_hide_activity',
 			__( 'Hide Activity', 'controlled-chaos-plugin' ),
-			[ Partials\Field_Callbacks\Dashboard_Callbacks::instance(), 'hide_activity' ],
+			[ Callbacks::instance(), 'hide_activity' ],
 			'ccp-site-dashboard',
 			'ccp-site-dashboard',
 			[ esc_html__( 'Hide the Activity widget on the Dashboard', 'controlled-chaos-plugin' ) ]

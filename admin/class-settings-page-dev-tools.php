@@ -103,7 +103,7 @@ class Settings_Page_Dev_Tools {
 	 */
 	public function page_output() {
 
-		require plugin_dir_path( __FILE__ ) . 'partials/settings-page-development.php';
+		require CCP_PATH . 'admin/partials/settings-page-development.php';
 
 	}
 
@@ -146,7 +146,7 @@ class Settings_Page_Dev_Tools {
      */
 	public function help_dev_info_output() {
 
-		include_once plugin_dir_path( __FILE__ ) . 'partials/help/help-dev-info.php';
+		include_once CCP_PATH . 'admin/partials/help/help-dev-info.php';
 
     }
 

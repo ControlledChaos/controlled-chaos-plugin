@@ -70,12 +70,12 @@ class Inline_Frontend_Scripts {
 	 */
 	public function scripts() {
 
-		$fancybox    = file_get_contents( esc_html( plugin_dir_path( __FILE__ ) . 'assets/js/jquery.fancybox.min.js' ) );
-		$slick       = file_get_contents( esc_html( plugin_dir_path( __FILE__ ) . 'assets/js/slick.min.js' ) );
-		$tabslet     = file_get_contents( esc_html( plugin_dir_path( __FILE__ ) . 'assets/js/jquery.tabslet.min.js' ) );
-		$tooltipster = file_get_contents( esc_html( plugin_dir_path( __FILE__ ) . 'assets/js/tooltipster.bundle.min.js' ) );
-		$stickykit   = file_get_contents( esc_html( plugin_dir_path( __FILE__ ) . 'assets/js/sticky-kit.min.js' ) );
-		$fitvids     = file_get_contents( esc_html( plugin_dir_path( __FILE__ ) . 'assets/js/jquery.fitvids.min.js' ) );
+		$fancybox    = file_get_contents( esc_html( CCP_PATH . 'frontend/assets/js/jquery.fancybox.min.js' ) );
+		$slick       = file_get_contents( esc_html( CCP_PATH . 'frontend/assets/js/slick.min.js' ) );
+		$tabslet     = file_get_contents( esc_html( CCP_PATH . 'frontend/assets/js/jquery.tabslet.min.js' ) );
+		$tooltipster = file_get_contents( esc_html( CCP_PATH . 'frontend/assets/js/tooltipster.bundle.min.js' ) );
+		$stickykit   = file_get_contents( esc_html( CCP_PATH . 'frontend/assets/js/sticky-kit.min.js' ) );
+		$fitvids     = file_get_contents( esc_html( CCP_PATH . 'frontend/assets/js/jquery.fitvids.min.js' ) );
 
 		// Fancybox 3.
 		if ( get_option( 'ccp_enqueue_fancybox_script' ) ) {

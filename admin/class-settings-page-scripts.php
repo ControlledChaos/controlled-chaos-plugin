@@ -96,7 +96,7 @@ class Settings_Page_Scripts {
 	 */
     public function page_output() {
 
-		require plugin_dir_path( __FILE__ ) . 'partials/settings-page-scripts.php';
+		require CCP_PATH . 'admin/partials/settings-page-scripts.php';
 
 	}
 
@@ -155,7 +155,7 @@ class Settings_Page_Scripts {
      */
 	public function help_inline_scripts() {
 
-		include_once plugin_dir_path( __FILE__ ) . 'partials/help/help-inline-scripts.php';
+		include_once CCP_PATH . 'admin/partials/help/help-inline-scripts.php';
 
 	}
 
@@ -168,7 +168,7 @@ class Settings_Page_Scripts {
      */
 	public function help_inline_jquery() {
 
-		include_once plugin_dir_path( __FILE__ ) . 'partials/help/help-inline-jquery.php';
+		include_once CCP_PATH . 'admin/partials/help/help-inline-jquery.php';
 
 	}
 
@@ -181,7 +181,7 @@ class Settings_Page_Scripts {
      */
 	public function help_remove_emoji() {
 
-		include_once plugin_dir_path( __FILE__ ) . 'partials/help/help-remove-emoji.php';
+		include_once CCP_PATH . 'admin/partials/help/help-remove-emoji.php';
 
 	}
 

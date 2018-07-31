@@ -94,7 +94,7 @@ class Media {
 		$fancybox = get_option( 'ccp_enqueue_fancybox_script' );
 
 		if ( $fancybox ) {
-			require_once plugin_dir_path( __FILE__ ) . 'class-gallery-shortcode.php';
+			require_once CCP_PATH . 'includes/media/class-gallery-shortcode.php';
 		}
 
 	}

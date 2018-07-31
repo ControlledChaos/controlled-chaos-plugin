@@ -88,6 +88,9 @@ final class Post_Types_Register {
             'parent_item_colon'     => __( 'Parent Custom Post', 'controlled-chaos-plugin' ),
         ];
 
+        // Apply a filter to labels for customization.
+        $labels = apply_filters( 'ccp_custom_posts_labels', $labels );
+
         $args = [
             'label'               => __( 'Custom Posts', 'controlled-chaos-plugin' ),
             'labels'              => $labels,
@@ -129,6 +132,9 @@ final class Post_Types_Register {
                 'ccp_taxonomy' // Change to your custom taxonomy name.
             ],
         ];
+
+        // Apply a filter to arguments for customization.
+        $args = apply_filters( 'ccp_custom_posts_args', $args );
 
         register_post_type(
             'ccp_post_type',

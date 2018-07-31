@@ -115,19 +115,19 @@ $page_tabs = apply_filters( 'ccp_tabs_page_about', $tabs );
 		do_action( 'ccp_content_page_about_before' ); ?>
 		<!-- Begin content -->
 		<div id="intro"><!-- Introduction content -->
-			<?php include_once plugin_dir_path( __FILE__ ) . 'plugin-page-intro.php'; ?>
+			<?php include_once CCP_PATH . 'admin/partials/plugin-page-intro.php'; ?>
 		</div>
 		<div id="settings"><!-- Site Settings content -->
-			<?php include_once plugin_dir_path( __FILE__ ) . 'plugin-page-site-settings.php'; ?>
+			<?php include_once CCP_PATH . 'admin/partials/plugin-page-site-settings.php'; ?>
 		</div>
 		<div id="scripts"><!-- Script Options content -->
-			<?php include_once plugin_dir_path( __FILE__ ) . 'plugin-page-script-options.php'; ?>
+			<?php include_once CCP_PATH . 'admin/partials//plugin-page-script-options.php'; ?>
 		</div>
 		<div id="media"><!-- Media Options content -->
-			<?php include_once plugin_dir_path( __FILE__ ) . 'plugin-page-media-options.php'; ?>
+			<?php include_once CCP_PATH . 'admin/partials/plugin-page-media-options.php'; ?>
 		</div>
 		<div id="tools"><!-- Dev Tools content -->
-			<?php include_once plugin_dir_path( __FILE__ ) . 'plugin-page-dev-tools.php'; ?>
+			<?php include_once CCP_PATH . 'admin/partials/plugin-page-dev-tools.php'; ?>
 		</div>
 		<?php // Hook for adding tabbed content.
 		do_action( 'ccp_content_page_about_after' ); ?>

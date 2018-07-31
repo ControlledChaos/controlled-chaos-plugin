@@ -75,13 +75,13 @@ class Meta_Tags {
 	public function dependencies() {
 
 		// Get classes that create the output.
-		include_once plugin_dir_path( __FILE__ ) . 'class-meta-url.php';
-		include_once plugin_dir_path( __FILE__ ) . 'class-meta-title.php';
-		include_once plugin_dir_path( __FILE__ ) . 'class-meta-description.php';
-		include_once plugin_dir_path( __FILE__ ) . 'class-meta-author.php';
-		include_once plugin_dir_path( __FILE__ ) . 'class-meta-date-published.php';
-		include_once plugin_dir_path( __FILE__ ) . 'class-meta-date-modified.php';
-		include_once plugin_dir_path( __FILE__ ) . 'class-meta-image.php';
+		include_once CCP_PATH . 'frontend/meta-tags/class-meta-url.php';
+		include_once CCP_PATH . 'frontend/meta-tags/class-meta-title.php';
+		include_once CCP_PATH . 'frontend/meta-tags/class-meta-description.php';
+		include_once CCP_PATH . 'frontend/meta-tags/class-meta-author.php';
+		include_once CCP_PATH . 'frontend/meta-tags/class-meta-date-published.php';
+		include_once CCP_PATH . 'frontend/meta-tags/class-meta-date-modified.php';
+		include_once CCP_PATH . 'frontend/meta-tags/class-meta-image.php';
 
 	}
 
@@ -107,11 +107,11 @@ class Meta_Tags {
 
 		if ( ! $disable_tags || false == $disable_tags ) {
 
-			include_once plugin_dir_path( __FILE__ ) . 'meta-tags-standard.php';
-			include_once plugin_dir_path( __FILE__ ) . 'meta-tags-schema.php';
-			include_once plugin_dir_path( __FILE__ ) . 'meta-tags-open-graph.php';
-			include_once plugin_dir_path( __FILE__ ) . 'meta-tags-twitter.php';
-			include_once plugin_dir_path( __FILE__ ) . 'meta-tags-dublin-core.php';
+			include_once CCP_PATH . 'frontend/meta-tags/meta-tags-standard.php';
+			include_once CCP_PATH . 'frontend/meta-tags/meta-tags-schema.php';
+			include_once CCP_PATH . 'frontend/meta-tags/meta-tags-open-graph.php';
+			include_once CCP_PATH . 'frontend/meta-tags/meta-tags-twitter.php';
+			include_once CCP_PATH . 'frontend/meta-tags/meta-tags-dublin-core.php';
 
 		}
 

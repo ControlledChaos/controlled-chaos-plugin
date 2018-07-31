@@ -175,7 +175,7 @@ class Welcome {
 	 */
 	public function welcome_panel() {
 
-		include_once plugin_dir_path( __FILE__ ) . 'partials/welcome-panel.php';
+		include_once CCP_PATH . 'admin/dashboard/partials/welcome-panel.php';
 
 	}
 

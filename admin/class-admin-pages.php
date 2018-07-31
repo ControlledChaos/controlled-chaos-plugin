@@ -223,7 +223,7 @@ class Admin_Pages {
      */
     public function about_plugin_output() {
 
-        require plugin_dir_path( __FILE__ ) . 'partials/plugin-page-about.php';
+        require CCP_PATH . 'admin/partials/plugin-page-about.php';
 
     }
 
@@ -270,7 +270,7 @@ class Admin_Pages {
      */
 	public function help_plugin_info() {
 
-		include_once plugin_dir_path( __FILE__ ) . 'partials/help/help-plugin-info.php';
+		include_once CCP_PATH . 'admin/partials/help/help-plugin-info.php';
 
     }
 
@@ -281,7 +281,7 @@ class Admin_Pages {
      */
 	public function help_convert_plugin() {
 
-		include_once plugin_dir_path( __FILE__ ) . 'partials/help/help-plugin-convert.php';
+		include_once CCP_PATH . 'admin/partials/help/help-plugin-convert.php';
 
     }
 

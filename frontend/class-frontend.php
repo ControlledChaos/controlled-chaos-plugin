@@ -103,27 +103,27 @@ class Frontend {
 
 		// Add styles inline if option selected.
 		if ( $styles ) {
-			require_once plugin_dir_path( __FILE__ ) . 'class-styles-inline.php';
+			require_once CCP_PATH . 'frontend/class-styles-inline.php';
 
 		// Otherwise enqueue styles.
 		} else {
-			require_once plugin_dir_path( __FILE__ ) . 'class-styles-enqueue.php';
+			require_once CCP_PATH . 'frontend/class-styles-enqueue.php';
 		}
 
 		// Add scripts inline if option selected.
 		if ( $scripts ) {
-			require_once plugin_dir_path( __FILE__ ) . 'class-scripts-inline.php';
+			require_once CCP_PATH . 'frontend/class-scripts-inline.php';
 
 		// Otherwise enqueue scripts.
 		} else {
-			require_once plugin_dir_path( __FILE__ ) . 'class-scripts-enqueue.php';
+			require_once CCP_PATH . 'frontend/class-scripts-enqueue.php';
 		}
 
 		// Clean up some scripts in the `head` section.
-		require_once plugin_dir_path( __FILE__ ) . 'class-head-scripts.php';
+		require_once CCP_PATH . 'frontend/class-head-scripts.php';
 
 		// Meta tags for SEO.
-		include_once plugin_dir_path( __FILE__ ) . 'meta-tags/class-meta-tags.php';
+		include_once CCP_PATH . 'frontend/meta-tags/class-meta-tags.php';
 
 	}
 
@@ -170,7 +170,7 @@ class Frontend {
 
 		if ( ! is_customize_preview() ) {
 
-			$jquery = file_get_contents( plugin_dir_path( __FILE__ ) . '/assets/js/jquery.min.js' );
+			$jquery = file_get_contents( CCP_PATH . '/assets/js/jquery.min.js' );
 
 			echo '<!-- jQuery --><script>' . $jquery . '</script>';
 

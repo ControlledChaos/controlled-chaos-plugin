@@ -179,7 +179,7 @@ class Settings_Page_Site {
 	 */
     public function page_output() {
 
-		require plugin_dir_path( __FILE__ ) . 'partials/settings-page-site.php';
+		require CCP_PATH . 'admin/partials/settings-page-site.php';
 
 	}
 

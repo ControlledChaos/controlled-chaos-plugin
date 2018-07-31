@@ -61,6 +61,14 @@ $tabs = [
         esc_html__( 'Admin Pages', 'controlled-chaos-plugin' )
     ),
 
+    // Users tab.
+    sprintf(
+        '<a href="?page=%1s-settings&tab=users" class="nav-tab %2s"><span class="dashicons dashicons-admin-users"></span> %3s</a>',
+        CCP_ADMIN_SLUG,
+        $active_tab == 'users' ? 'nav-tab-active' : '',
+        esc_html__( 'Site Users', 'controlled-chaos-plugin' )
+    ),
+
     // Meta/SEO tab.
     sprintf(
         '<a href="?page=%1s-settings&tab=meta-seo" class="nav-tab %2s"><span class="dashicons dashicons-tag"></span> %3s</a>',
@@ -89,6 +97,9 @@ if ( 'dashboard' == $active_tab  ) {
 } elseif ( 'admin-pages' == $active_tab ) {
     $section = 'ccp-site-admin-pages';
     $fields  = 'ccp-site-admin-pages';
+} elseif ( 'users' == $active_tab ) {
+    $section = 'ccp-site-users';
+    $fields  = 'ccp-site-users';
 } elseif ( 'meta-seo' == $active_tab ) {
     $section = 'ccp-site-meta-seo';
     $fields  = 'ccp-site-meta-seo';
@@ -113,6 +124,8 @@ if ( 'dashboard' == $active_tab  ) {
     $save = __( 'Save Menu', 'controlled-chaos-plugin' );
 } elseif ( 'admin-pages' == $active_tab ) {
     $save = __( 'Save Pages', 'controlled-chaos-plugin' );
+} elseif ( 'users' == $active_tab ) {
+    $save = __( 'Save Users', 'controlled-chaos-plugin' );
 } elseif ( 'meta-seo' == $active_tab ) {
     $save = __( 'Save Meta', 'controlled-chaos-plugin' );
 } else {

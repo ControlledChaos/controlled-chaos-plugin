@@ -70,16 +70,16 @@ class Post_Types_Taxes {
 	public function dependencies() {
 
 		// Resister cutsom post types.
-		require_once plugin_dir_path( __FILE__ ) . 'class-register-post-types.php';
+		require_once CCP_PATH . 'includes/post-types-taxes/class-register-post-types.php';
 
 		// Resister cutsom taxonomies.
-		require_once plugin_dir_path( __FILE__ ) . 'class-register-taxonomies.php';
+		require_once CCP_PATH . 'includes/post-types-taxes/class-register-taxonomies.php';
 
 		// Functions related to post types and taxonomies.
-		require_once plugin_dir_path( __FILE__ ) . 'class-post-type-tax-functions.php';
+		require_once CCP_PATH . 'includes/post-types-taxes/class-post-type-tax-functions.php';
 
 		// Capability to add custom taxonomy templates.
-		require_once plugin_dir_path( __FILE__ ) . 'class-taxonomy-templates.php';
+		require_once CCP_PATH . 'includes/post-types-taxes/class-taxonomy-templates.php';
 
 	}
 

@@ -100,7 +100,7 @@ final class ACF_Tab_Icons {
 
 		// Register tab icons CSS from plugin folder.
 		} else {
-			wp_register_style( 'acf-tab-icons', plugin_dir_url( __FILE__ ) . 'assets/fonts/icons/afc-icons.css', [], CCP_VERSION );
+			wp_register_style( 'acf-tab-icons', CCP_URL . 'assets/fonts/icons/afc-icons.css', [], CCP_VERSION );
 		}
 
 		// Enqueue styles & scripts.
@@ -121,7 +121,7 @@ final class ACF_Tab_Icons {
 		if ( file_exists( get_theme_file_path() . '/acf-title-icons/selection.json' ) ) {
 			$json_file = file_get_contents( get_theme_file_uri( '/acf-title-icons/selection.json' ) );
 		} else {
-			$json_file = file_get_contents( plugin_dir_url( __FILE__ ) . 'assets/fonts/icons/selection.json' );
+			$json_file = file_get_contents( CCP_URL . 'assets/fonts/icons/selection.json' );
 		}
 
 		$json_content = json_decode( $json_file, true );

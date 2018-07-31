@@ -97,9 +97,20 @@ class User_Avatars {
 	 */
 	public function admin_init() {
 
-		// Register/add the Discussion setting to restrict avatar upload capabilites
-		register_setting( 'discussion', 'ccp_user_avatars_caps', [ $this, 'sanitize_options' ] );
-		add_settings_field( 'basic-user-avatars-caps', __( 'Local Avatar Permissions', 'controlled-chaos-plugin' ), [ $this, 'avatar_settings_field' ], 'discussion', 'avatars' );
+		// Discussion setting to restrict avatar upload capabilites.
+		add_settings_field(
+			'basic-user-avatars-caps',
+			__( 'Local Avatar Permissions',	'controlled-chaos-plugin' ),
+			[ $this, 'avatar_settings_field' ],
+			'discussion',
+			'avatars',
+			[ esc_html__( 'Only allow users with file upload capabilities to upload local avatars (Authors and above).', 'controlled-chaos-plugin' ) ]
+		);
+
+		register_setting(
+			'discussion',
+			'ccp_user_avatars_caps'
+		);
 
 	}
 
@@ -110,30 +121,15 @@ class User_Avatars {
 	 * @access public
 	 * @return mixed
 	 */
-	public function avatar_settings_field() {
+	public function avatar_settings_field( $args ) {
 
-		$options = get_option( 'ccp_user_avatars_caps' ); ?>
-		<label for="ccp_user_avatars_caps">
-			<input type="checkbox" name="ccp_user_avatars_caps" id="ccp_user_avatars_caps" value="1" <?php checked( $options['ccp_user_avatars_caps'], 1 ); ?>/>
-			<?php _e( 'Only allow users with file upload capabilities to upload local avatars (Authors and above)', 'controlled-chaos-plugin' ); ?>
-		</label>
-		<?php
+		$option = get_option( 'ccp_user_avatars_caps' );
 
-	}
+		$html = '<p><input type="checkbox" id="ccp_user_avatars_caps" name="ccp_user_avatars_caps" value="1" ' . checked( 1, $option, false ) . '/>';
 
-	/**
-	 * Sanitize the Discussion settings option.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  array $input
-	 * @return array
-	 */
-	public function sanitize_options( $input ) {
+		$html .= '<label for="ccp_user_avatars_caps"> ' . $args[0] . '</label></p>';
 
-		$new_input['ccp_user_avatars_caps'] = empty( $input['ccp_user_avatars_caps'] ) ? 0 : 1;
-
-		return $new_input;
+		echo $html;
 
 	}
 
@@ -434,11 +430,22 @@ class User_Avatars {
 	 * @param  array $avatar_defaults
 	 * @return array
 	 */
-	public function avatar_defaults( $avatar_defaults ) {
+	public function avatar_defaults( $avatar_defaults = [] ) {
 
-		remove_action( 'get_avatar', [ $this, 'get_avatar' ] );
+		// remove_action( 'get_avatar', [ $this, 'get_avatar' ] );
 
-		return $avatar_defaults;
+		$new_avatar_defaults = $avatar_defaults;
+
+		// Maybe block Gravatars
+		if ( get_option( 'ccp_block_gravatar' ) ) {
+			$new_avatar_defaults = [
+				'mystery' => __( 'Mystery Person', 'controlled-chaos-plugin' ),
+				'blank'   => __( 'Blank', 'controlled-chaos-plugin' )
+			];
+		}
+
+		// Return avatar types, maybe without Gravatar options
+		return $new_avatar_defaults;
 
 	}
 

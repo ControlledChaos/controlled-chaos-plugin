@@ -1,16 +1,15 @@
 <?php
 /**
- * Wordpress user functionality.
+ * Callbacks for the Users tab on the Site Settings page.
  *
  * @package    Controlled_Chaos_Plugin
- * @subpackage Includes\Users
+ * @subpackage Admin\Partials\Field_Callbacks
  *
  * @since      1.0.0
- * @author	   Jared Atchison
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Includes\Users;
+namespace CC_Plugin\Admin\Partials\Field_Callbacks;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -18,12 +17,12 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 /**
- * Wordpress user functionality.
+ * Callbacks for the Users tab.
  *
  * @since  1.0.0
  * @access public
  */
-class Users {
+class Users_Callbacks {
 
 	/**
 	 * Get an instance of the class.
@@ -42,9 +41,6 @@ class Users {
 			// Set variable for new instance.
 			$instance = new self;
 
-			// Require the class files.
-			$instance->dependencies();
-
 		}
 
 		// Return the instance.
@@ -62,16 +58,22 @@ class Users {
 	public function __construct() {}
 
 	/**
-	 * Class dependency files.
+	 * Local avatars only (no Gravatars).
 	 *
 	 * @since  1.0.0
-	 * @access private
-	 * @return void
+	 * @access public
+	 * @param  array $args Extra arguments passed into the callback function.
+	 * @return string
 	 */
-	private function dependencies() {
+	public function block_gravatar( $args ) {
 
-		// User avatars.
-		require_once CCP_PATH . 'includes/users/class-user-avatars.php';
+		$option = get_option( 'ccp_block_gravatar' );
+
+		$html = '<p><input type="checkbox" id="ccp_block_gravatar" name="ccp_block_gravatar" value="1" ' . checked( 1, $option, false ) . '/>';
+
+		$html .= '<label for="ccp_block_gravatar"> ' . $args[0] . '</label></p>';
+
+		echo $html;
 
 	}
 
@@ -84,11 +86,11 @@ class Users {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_users() {
+function ccp_users_callbacks() {
 
-	return Users::instance();
+	return Users_Callbacks::instance();
 
 }
 
 // Run an instance of the class.
-ccp_users();
+ccp_users_callbacks();

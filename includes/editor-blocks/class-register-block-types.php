@@ -83,7 +83,7 @@ class Register_Blocks {
 			'ccp-sample-block-script', // Handle.
 			plugins_url( 'assets/js/sample-block.min.js', __FILE__ ), // Block.js: We register the block here.
 			[ 'wp-blocks', 'wp-i18n', 'wp-element' ], // Dependencies, defined above.
-			filemtime( plugin_dir_path( __FILE__ ) . 'assets/js/sample-block.min.js' ) // filemtime — Gets file modification time.
+			filemtime( CCP_PATH . 'includes/editor-blocks/assets/js/sample-block.min.js' ) // filemtime — Gets file modification time.
 		);
 
 		// Sample block styles.
@@ -91,7 +91,7 @@ class Register_Blocks {
 			'ccp-sample-block', // Handle.
 			plugins_url( 'assets/css/sample-block.min.css', __FILE__ ), // Block editor CSS.
 			[ 'wp-edit-blocks' ], // Dependency to include the CSS after it.
-			filemtime( plugin_dir_path( __FILE__ ) . 'assets/css/sample-block.min.css' ) // filemtime — Gets file modification time.
+			filemtime( CCP_PATH . 'includes/editor-blocks/assets/css/sample-block.min.css' ) // filemtime — Gets file modification time.
 		);
 
 	}
@@ -107,9 +107,9 @@ class Register_Blocks {
 
 		wp_enqueue_style(
 			'ccp-sample-block',
-			plugins_url( 'assets/css/sample-block.css', __FILE__ ),
+			plugins_url( 'includes/editor-blocks/assets/css/sample-block.css', __FILE__ ),
 			[ 'wp-blocks' ],
-			filemtime( plugin_dir_path( __FILE__ ) . 'assets/css/sample-block.css' )
+			filemtime( CCP_PATH . 'includes/editor-blocks/assets/css/sample-block.css' )
 		);
 
 	}

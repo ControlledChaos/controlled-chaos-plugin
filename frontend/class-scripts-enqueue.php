@@ -71,30 +71,30 @@ class Enqueue_Frontend_Scripts {
 	public function scripts() {
 
 		// Non-vendor plugin script. Uncomment to use.
-		// wp_enqueue_script( CCP_ADMIN_SLUG, plugin_dir_url( __FILE__ ) . 'assets/js/frontend.js', [ 'jquery' ], CCP_VERSION, true );
+		// wp_enqueue_script( CCP_ADMIN_SLUG, CCP_URL . 'assets/js/frontend.js', [ 'jquery' ], CCP_VERSION, true );
 
 		// Fancybox 3.
 		if ( get_option( 'ccp_enqueue_fancybox_script' ) ) {
-			wp_enqueue_script( CCP_ADMIN_SLUG . '-fancybox', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.fancybox.min.js', [ 'jquery' ], CCP_VERSION, true );
+			wp_enqueue_script( CCP_ADMIN_SLUG . '-fancybox', CCP_URL . 'assets/js/jquery.fancybox.min.js', [ 'jquery' ], CCP_VERSION, true );
 		}
 
 		// Slick.
 		if ( get_option( 'ccp_enqueue_slick' ) ) {
-			wp_enqueue_script( CCP_ADMIN_SLUG . '-slick', plugin_dir_url( __FILE__ ) . 'assets/js/slick.min.js', [ 'jquery' ], CCP_VERSION, true );
+			wp_enqueue_script( CCP_ADMIN_SLUG . '-slick', CCP_URL . 'assets/js/slick.min.js', [ 'jquery' ], CCP_VERSION, true );
 		}
 
 		// Tabslet.
 		if ( get_option( 'ccp_enqueue_tabslet' ) ) {
-			wp_enqueue_script( CCP_ADMIN_SLUG . '-tabslet', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.tabslet.min.js', [ 'jquery' ], CCP_VERSION, true );
+			wp_enqueue_script( CCP_ADMIN_SLUG . '-tabslet', CCP_URL . 'assets/js/jquery.tabslet.min.js', [ 'jquery' ], CCP_VERSION, true );
 		}
 
 		// Tooltipster.
 		if ( get_option( 'ccp_enqueue_tooltipster' ) ) {
-			wp_enqueue_script( CCP_ADMIN_SLUG . '-tooltipster', plugin_dir_url( __FILE__ ) . 'assets/js/tooltipster.bundle.min.js', [ 'jquery' ], CCP_VERSION, true );
+			wp_enqueue_script( CCP_ADMIN_SLUG . '-tooltipster', CCP_URL . 'assets/js/tooltipster.bundle.min.js', [ 'jquery' ], CCP_VERSION, true );
 		}
 
 		// FitVids.
-		wp_enqueue_script( CCP_ADMIN_SLUG . '-fitvids', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.fitvids.min.js', [ 'jquery' ], CCP_VERSION, true );
+		wp_enqueue_script( CCP_ADMIN_SLUG . '-fitvids', CCP_URL . 'assets/js/jquery.fitvids.min.js', [ 'jquery' ], CCP_VERSION, true );
 
 	}
 

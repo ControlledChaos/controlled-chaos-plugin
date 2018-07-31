@@ -82,7 +82,7 @@ class Settings_Fields_Site_Meta_SEO {
 	private function dependencies() {
 
 		// Callbacks for the Meta/SEO tab.
-		require plugin_dir_path( __FILE__ ) . 'partials/field-callbacks/class-meta-seo-callbacks.php';
+		require CCP_PATH . 'admin/partials/field-callbacks/class-meta-seo-callbacks.php';
 
 	}
 
