@@ -98,7 +98,7 @@ final class Controlled_Chaos_Plugin {
 	 * Throw error on object clone.
 	 *
 	 * @since  1.0.0
-	 * @access protected
+	 * @access public
 	 * @return void
 	 */
 	public function __clone() {
@@ -112,7 +112,7 @@ final class Controlled_Chaos_Plugin {
 	 * Disable unserializing of the class.
 	 *
 	 * @since  1.0.0
-	 * @access protected
+	 * @access public
 	 * @return void
 	 */
 	public function __wakeup() {
@@ -243,8 +243,8 @@ ccp_plugin();
  * @access public
  * @return void
  */
-register_activation_hook( __FILE__, '\activate_controlled_chaos' );
-register_deactivation_hook( __FILE__, '\deactivate_controlled_chaos' );
+register_activation_hook( __FILE__, '\ccp_activate_plugin' );
+register_deactivation_hook( __FILE__, '\ccp_deactivate_plugin' );
 
 /**
  * The code that runs during plugin activation.
@@ -253,7 +253,7 @@ register_deactivation_hook( __FILE__, '\deactivate_controlled_chaos' );
  * @access public
  * @return void
  */
-function activate_controlled_chaos() {
+function ccp_activate_plugin() {
 
 	// Run the activation class.
 	ccp_activate();
@@ -267,7 +267,7 @@ function activate_controlled_chaos() {
  * @access public
  * @return void
  */
-function deactivate_controlled_chaos() {
+function ccp_deactivate_plugin() {
 
 	// Run the deactivation class.
 	ccp_deactivate();
@@ -291,7 +291,7 @@ function deactivate_controlled_chaos() {
  *                 Returns an array of the settings link with the default plugin links.
  * @link   https://codex.wordpress.org/Plugin_API/Filter_Reference/plugin_action_links_(plugin_file_name)
  */
-function controlled_chaos_about_link( $links ) {
+function ccp_about_link( $links ) {
 
 	// Create new settings link array as a variable.
 	$about_page = [
@@ -307,7 +307,7 @@ function controlled_chaos_about_link( $links ) {
 
 }
 // Filter the default settings links with new array.
-add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'controlled_chaos_about_link' );
+add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'ccp_about_link' );
 
 /**
  * Add links to the plugin settings pages on the plugins page.
@@ -321,7 +321,7 @@ add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'controlled_ch
  *                 Returns an array of custom links with the default plugin links.
  * @link   https://codex.wordpress.org/Plugin_API/Filter_Reference/plugin_action_links_(plugin_file_name)
  */
-function controlled_chaos_settings_links( $links, $file ) {
+function ccp_settings_links( $links, $file ) {
 
 	if ( $file == plugin_basename( __FILE__ ) ) {
 
@@ -351,4 +351,4 @@ function controlled_chaos_settings_links( $links, $file ) {
 	return $links;
 
 }
-add_filter( 'plugin_row_meta', 'controlled_chaos_settings_links', 10, 2 );
+add_filter( 'plugin_row_meta', 'ccp_settings_links', 10, 2 );

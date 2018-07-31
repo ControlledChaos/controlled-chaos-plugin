@@ -256,8 +256,8 @@ final class Settings_Fields_ACF {
 							'id'    => '',
 						],
 						'choices'           => [
-							'default' => __( 'Default/Show', 'controlled-chaos-plugin' ),
-							'top'     => __( 'Top Level/Hide', 'controlled-chaos-plugin' ),
+							'default' => __( 'Under Plugins', 'controlled-chaos-plugin' ),
+							'top'     => __( 'Top Level', 'controlled-chaos-plugin' ),
 						],
 						'allow_null'        => 0,
 						'default_value'     => 'default',

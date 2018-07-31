@@ -75,6 +75,8 @@ class Admin_Pages {
         /**
          * Add featured image to admin post columns only if
          * Admin Columns free or pro plugin not activated.
+         *
+         * @link https://wordpress.org/plugins/codepress-admin-columns/
          */
         if ( ! class_exists( 'CPAC' ) || ! class_exists( 'ACP_Full' ) ) {
             add_filter( 'manage_posts_columns', [ $this, 'image_column_head' ] );
@@ -96,6 +98,8 @@ class Admin_Pages {
      * @since  1.0.0
 	 * @access public
 	 * @return void
+     *
+     * @todo   Sync up the ACF and WP menu position settings.
      */
     public function about_plugin() {
 
@@ -125,7 +129,7 @@ class Admin_Pages {
         } else {
 
             // Get the field.
-            $position = get_option( 'ccp_site_plugin_position' );
+            $position = get_option( 'ccp_site_plugin_link_position' );
         }
 
         /**
