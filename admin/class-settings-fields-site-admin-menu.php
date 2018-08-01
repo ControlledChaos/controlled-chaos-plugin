@@ -112,7 +112,7 @@ class Settings_Fields_Site_Admin_Menu {
 			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'site_settings_position' ],
 			'ccp-site-admin-menu',
 			'ccp-site-admin-menu',
-			[ esc_html__( 'Make this settings page a top-level link.', 'controlled-chaos-plugin' ) ]
+			[ esc_html__( 'Make this settings page a top-level link and hide other settings links.', 'controlled-chaos-plugin' ) ]
 		);
 
 		register_setting(

@@ -221,6 +221,9 @@ class Settings_Page_Site {
 					3
 				);
 
+				// Remove the default settings links at the bottom of the admin menu.
+				remove_menu_page( 'options-general.php' );
+
 			/**
 			 * If the position is default then create a page without an icon and
 			 * no parent as a submenu page under Dahboard (index.php).
