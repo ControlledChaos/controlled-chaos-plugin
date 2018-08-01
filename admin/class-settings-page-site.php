@@ -70,6 +70,9 @@ class Settings_Page_Site {
 	 * then a default WordPress admin page and the WP Settings
 	 * API will be used.
 	 *
+	 * Uses the universal slug partial for admin pages. Set this
+     * slug in the core plugin file.
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @global string pagenow Gets the current admin screen URL.
@@ -240,11 +243,19 @@ class Settings_Page_Site {
 				global $pagenow;
 
 				// If on the Dashboard submenu page and top level option is selected.
-				if ( $position && in_array( $pagenow, [ 'index.php' ] ) && ( $_GET['page'] == CCP_ADMIN_SLUG . '-settings' ) ) {
+				if (
+					$position
+					&& in_array( $pagenow, [ 'index.php' ] )
+					&& ( $_GET['page'] == CCP_ADMIN_SLUG . '-settings' )
+				) {
 					wp_redirect( admin_url( 'admin.php?page=' . CCP_ADMIN_SLUG . '-settings&tab=admin-menu' ), 302 );
 
 				// If on the top level page and top level option is not selected.
-				} elseif ( ! $position && in_array( $pagenow, [ 'admin.php' ] ) && ( $_GET['page'] == CCP_ADMIN_SLUG . '-settings' ) ) {
+				} elseif (
+					! $position
+					&& in_array( $pagenow, [ 'admin.php' ] )
+					&& ( $_GET['page'] == CCP_ADMIN_SLUG . '-settings' )
+				) {
 					wp_redirect( admin_url( 'index.php?page=' . CCP_ADMIN_SLUG . '-settings&tab=admin-menu' ), 302 );
 				}
 			}

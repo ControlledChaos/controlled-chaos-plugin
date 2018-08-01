@@ -64,6 +64,9 @@ class Enqueue_Frontend_Scripts {
 	/**
 	 * Enqueue scripts traditionally by default.
 	 *
+	 * Uses the universal slug partial for admin pages. Set this
+     * slug in the core plugin file.
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return void

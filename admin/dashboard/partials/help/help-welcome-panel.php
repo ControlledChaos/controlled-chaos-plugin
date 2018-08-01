@@ -2,6 +2,9 @@
 /**
  * Content for the Welcome Panel help tab.
  *
+ * Uses the universal slug partial for admin pages. Set this
+ * slug in the core plugin file.
+ *
  * @package    Controlled_Chaos_Plugin
  * @subpackage Admin\Partials\Help
  *

@@ -2,6 +2,9 @@
 /**
  * About page script options output.
  *
+ * Uses the universal slug partial for admin pages. Set this
+ * slug in the core plugin file.
+ *
  * @package    Controlled_Chaos_Plugin
  * @subpackage Admin\Partials
  *

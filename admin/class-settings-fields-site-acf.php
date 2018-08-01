@@ -58,6 +58,9 @@ final class Settings_Fields_ACF {
 	/**
 	 * Register settings page fields.
 	 *
+	 * Uses the universal slug partial for admin pages. Set this
+     * slug in the core plugin file.
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return void

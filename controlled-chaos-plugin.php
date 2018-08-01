@@ -284,6 +284,9 @@ function ccp_deactivate_plugin() {
  * If you would like to link the page elsewhere as you make it your own then
  * do so in admin/class-admin-pages.php, in the about_plugin method.
  *
+ * Uses the universal slug partial for admin pages. Set this
+ * slug in the core plugin file.
+ *
  * @param  array $links Default plugin links on the 'Plugins' admin page.
  * @since  1.0.0
  * @access public
@@ -348,6 +351,9 @@ add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'ccp_about_lin
  * Add links to the plugin settings pages on the plugins page.
  *
  * Change the links to those which fill your needs.
+ *
+ * Uses the universal slug partial for admin pages. Set this
+ * slug in the core plugin file.
  *
  * @param  array  $links Default plugin links on the 'Plugins' admin page.
  * @param  object $file Reference the root plugin file with header.
