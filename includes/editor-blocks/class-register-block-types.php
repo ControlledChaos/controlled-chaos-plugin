@@ -58,10 +58,10 @@ class Register_Blocks {
 	public function __construct() {
 
 		// Enqueue sample block backend assets.
-		add_action( 'enqueue_block_editor_assets', [ $this, 'sample_block_editor_assets' ] );
+		add_action( 'enqueue_block_editor_assets', [ $this, 'block_editor_assets' ] );
 
 		// Enqueue sample block frontend assets.
-		add_action( 'enqueue_block_assets', [ $this, 'sample_block_frontend_assets' ] );
+		add_action( 'enqueue_block_assets', [ $this, 'block_frontend_assets' ] );
 
 	}
 
@@ -76,7 +76,7 @@ class Register_Blocks {
 	 * @access public
 	 * @return void
 	 */
-	public function sample_block_editor_assets() {
+	public function block_editor_assets() {
 
 		// Sample block scripts.
 		wp_enqueue_script(
@@ -97,13 +97,13 @@ class Register_Blocks {
 	}
 
 	/**
-	 * Enqueue sample block frontend assets.
+	 * Enqueue frontend block assets.
 	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return void
 	 */
-	public function sample_block_frontend_assets() {
+	public function block_frontend_assets() {
 
 		wp_enqueue_style(
 			'ccp-sample-block',

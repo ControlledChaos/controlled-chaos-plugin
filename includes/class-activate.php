@@ -41,6 +41,9 @@ class Controlled_Chaos_Activate {
 			// Set variable for new instance.
 			$instance = new self;
 
+			// Activation function
+			$instance->activate();
+
 		}
 
 		// Return the instance.

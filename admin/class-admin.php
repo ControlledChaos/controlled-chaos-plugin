@@ -60,10 +60,10 @@ class Admin {
 	 * Constructor method.
 	 *
 	 * @since  1.0.0
-	 * @access public
+	 * @access private
 	 * @return self
 	 */
-	public function __construct() {
+	private function __construct() {
 
 		// Remove theme & plugin editor links.
 		add_action( 'admin_init', [ $this, 'remove_editor_links' ] );
@@ -370,7 +370,7 @@ class Admin {
 		 *
 		 * @since 1.0.0
 		 */
-		wp_enqueue_style( CCP_ADMIN_SLUG . '-admin', CCP_URL . 'assets/css/admin.css', [], CCP_VERSION, 'all' );
+		wp_enqueue_style( CCP_ADMIN_SLUG . '-admin', CCP_URL . 'admin/assets/css/admin.css', [], CCP_VERSION, 'all' );
 
 		/**
 		 * Enqueue the jQuery tooltips styles.
@@ -383,7 +383,7 @@ class Admin {
 		 *
 		 * @since 1.0.0
 		 */
-		wp_enqueue_style( CCP_ADMIN_SLUG . '-tooltips', CCP_URL . 'assets/css/tooltips.min.css', [], CCP_VERSION, 'all' );
+		wp_enqueue_style( CCP_ADMIN_SLUG . '-tooltips', CCP_URL . 'admin/assets/css/tooltips.min.css', [], CCP_VERSION, 'all' );
 
 		/**
 		 * Enqueue Advanced Custom Fields styles.
@@ -393,7 +393,7 @@ class Admin {
 		 * @since 1.0.0
 		 */
 		if ( class_exists( 'acf' ) ) {
-			wp_enqueue_style( CCP_ADMIN_SLUG . '-acf', CCP_URL . 'assets/css/acf.css', [], CCP_VERSION, 'all' );
+			wp_enqueue_style( CCP_ADMIN_SLUG . '-acf', CCP_URL . 'admin/assets/css/acf.css', [], CCP_VERSION, 'all' );
 		}
 
 		/**
@@ -405,7 +405,7 @@ class Admin {
 		 */
 		$welcome = get_option( 'ccp_custom_welcome' );
 		if ( $welcome ) {
-			wp_enqueue_style( CCP_ADMIN_SLUG . '-welcome', CCP_URL . 'assets/css/welcome.css', [], CCP_VERSION, 'all' );
+			wp_enqueue_style( CCP_ADMIN_SLUG . '-welcome', CCP_URL . 'admin/assets/css/welcome.css', [], CCP_VERSION, 'all' );
 		}
 
 	}

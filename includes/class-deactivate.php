@@ -41,6 +41,9 @@ class Controlled_Chaos_Deactivate {
 			// Set variable for new instance.
 			$instance = new self;
 
+			// Deactivation function
+			$instance->deactivate();
+
 		}
 
 		// Return the instance.

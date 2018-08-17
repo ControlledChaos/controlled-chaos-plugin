@@ -58,10 +58,10 @@ class i18n {
 	 * Constructor method.
 	 *
 	 * @since  1.0.0
-	 * @access public
+	 * @access private
 	 * @return void Constructor method is empty.
 	 */
-	public function __construct() {}
+	private function __construct() {}
 
 	/**
 	 * Load the plugin text domain for translation.

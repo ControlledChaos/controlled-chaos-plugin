@@ -89,10 +89,10 @@ final class Controlled_Chaos_Plugin {
 	 * Constructor method.
 	 *
 	 * @since  1.0.0
-	 * @access public
+	 * @access private
 	 * @return void Constructor method is empty.
 	 */
-	public function __construct() {}
+	private function __construct() {}
 
 	/**
 	 * Throw error on object clone.
@@ -290,58 +290,62 @@ function ccp_deactivate_plugin() {
  * @param  array $links Default plugin links on the 'Plugins' admin page.
  * @since  1.0.0
  * @access public
- * @return mixed[] Returns an HTML string for the settings page link.
- *                 Returns an array of the settings link with the default plugin links.
+ * @return mixed[] Returns an HTML string for the about page link.
+ *                 Returns an array of the about link with the default plugin links.
  * @link   https://codex.wordpress.org/Plugin_API/Filter_Reference/plugin_action_links_(plugin_file_name)
  */
 function ccp_about_link( $links ) {
 
 	/**
-	 * Site settings page link depends on the admin menu setting.
+	 * Site about page link depends on the admin menu setting.
 	 *
 	 * @since  1.0.0
 	 * @return string returns the URL of the page with parent or not.
 	 */
 
-	// If Advanced Custom Fields is active.
-	if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
+	if ( is_admin() ) {
 
-		// Get the field.
-		$acf_position = get_field( 'ccp_site_plugin_link_position', 'option' );
+		// If Advanced Custom Fields is active.
+		if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
 
-		// Return true if the field is set to `top`.
-		if ( 'top' == $acf_position ) {
-			$position = true;
+			// Get the field.
+			$acf_position = get_field( 'ccp_site_plugin_link_position', 'option' );
 
-		// Otherwise return `false`.
+			// Return true if the field is set to `top`.
+			if ( 'top' == $acf_position ) {
+				$position = true;
+
+			// Otherwise return `false`.
+			} else {
+				$position = false;
+			}
+
+		// If ACF is not active, get the field from the WordPress options page.
 		} else {
-			$position = false;
+
+			// Get the field.
+			$position = get_option( 'ccp_site_plugin_link_position' );
 		}
 
-	// If ACF is not active, get the field from the WordPress options page.
-	} else {
+		if ( true == $position ) {
+			$url = admin_url( 'index.php?page=' . CCP_ADMIN_SLUG . '-settings' );
+		} else {
+			$url = admin_url( 'admin.php?page=' . CCP_ADMIN_SLUG . '-settings' );
+		}
 
-		// Get the field.
-		$position = get_option( 'ccp_site_plugin_link_position' );
+		// Create new settings link array as a variable.
+		$about_page = [
+			sprintf(
+				'<a href="%1s" class="' . CCP_ADMIN_SLUG . '-page-link">%2s</a>',
+				admin_url( 'plugins.php?page=' . CCP_ADMIN_SLUG . '-page' ),
+				esc_attr( 'Documentation', 'controlled-chaos-plugin' )
+			),
+		];
+
+		// Merge the new settings array with the default array.
+		return array_merge( $about_page, $links );
+
 	}
-
-	if ( true == $position ) {
-		$url = admin_url( 'index.php?page=' . CCP_ADMIN_SLUG . '-settings' );
-	} else {
-		$url = admin_url( 'admin.php?page=' . CCP_ADMIN_SLUG . '-settings' );
-	}
-
-	// Create new settings link array as a variable.
-	$about_page = [
-		sprintf(
-			'<a href="%1s" class="' . CCP_ADMIN_SLUG . '-page-link">%2s</a>',
-			admin_url( 'plugins.php?page=' . CCP_ADMIN_SLUG . '-page' ),
-			esc_attr( 'Documentation', 'controlled-chaos-plugin' )
-		),
-	];
-
-	// Merge the new settings array with the default array.
-	return array_merge( $about_page, $links );
 
 }
 // Filter the default settings links with new array.
@@ -364,67 +368,71 @@ add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'ccp_about_lin
  */
 function ccp_settings_links( $links, $file ) {
 
-	/**
-	 * Site settings page link depends on the admin menu setting.
-	 *
-	 * @since  1.0.0
-	 * @return string returns the URL of the page with parent or not.
-	 */
+	if ( is_admin() ) {
 
-	// If Advanced Custom Fields is active.
-	if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
+		/**
+		 * Site settings page link depends on the admin menu setting.
+		 *
+		 * @since  1.0.0
+		 * @return string returns the URL of the page with parent or not.
+		 */
 
-		// Get the field.
-		$acf_position = get_field( 'ccp_settings_link_position', 'option' );
+		// If Advanced Custom Fields is active.
+		if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
 
-		// Return true if the field is set to `top`.
-		if ( 'top' == $acf_position ) {
-			$position = true;
+			// Get the field.
+			$acf_position = get_field( 'ccp_settings_link_position', 'option' );
 
-		// Otherwise return `false`.
+			// Return true if the field is set to `top`.
+			if ( 'top' == $acf_position ) {
+				$position = true;
+
+			// Otherwise return `false`.
+			} else {
+				$position = false;
+			}
+
+		// If ACF is not active, get the field from the WordPress options page.
 		} else {
-			$position = false;
+
+			// Get the field.
+			$position = get_option( 'ccp_site_settings_position' );
 		}
 
-	// If ACF is not active, get the field from the WordPress options page.
-	} else {
+		if ( $position || true == $position ) {
+			$url = admin_url( 'admin.php?page=' . CCP_ADMIN_SLUG . '-settings' );
+		} else {
+			$url = admin_url( 'index.php?page=' . CCP_ADMIN_SLUG . '-settings' );
+		}
 
-		// Get the field.
-		$position = get_option( 'ccp_site_settings_position' );
-	}
+		if ( $file == plugin_basename( __FILE__ ) ) {
 
-	if ( $position || true == $position ) {
-		$url = admin_url( 'admin.php?page=' . CCP_ADMIN_SLUG . '-settings' );
-	} else {
-		$url = admin_url( 'index.php?page=' . CCP_ADMIN_SLUG . '-settings' );
-	}
+			// Add links to settings pages.
+			$links[] = sprintf(
+				'<a href="%1s" class="' . CCP_ADMIN_SLUG . '-settings-link">%2s</a>',
+				$url,
+				esc_attr( 'Site Settings', 'controlled-chaos-plugin' )
+			);
+			$links[] = sprintf(
+				'<a href="%1s" class="' . CCP_ADMIN_SLUG . '-scripts-link">%2s</a>',
+				admin_url( 'options-general.php?page=' . CCP_ADMIN_SLUG . '-scripts' ),
+				esc_attr( 'Script Options', 'controlled-chaos-plugin' )
+			);
 
-	if ( $file == plugin_basename( __FILE__ ) ) {
+			// Add a placeholder for an upgrade link.
+			$links[] = sprintf(
+				'<a href="%1s" title="%2s" class="' . CCP_ADMIN_SLUG . '-upgrade-link" style="color: #888; cursor: default;">%3s</a>',
+				''/* Add upgrade URL here */,
+				__( 'Upgrade not available', 'controlled-chaos-plugin' ),
+				esc_attr( 'Upgrade', 'controlled-chaos-plugin' )
+			);
 
-		// Add links to settings pages.
-		$links[] = sprintf(
-			'<a href="%1s" class="' . CCP_ADMIN_SLUG . '-settings-link">%2s</a>',
-			$url,
-			esc_attr( 'Site Settings', 'controlled-chaos-plugin' )
-		);
-		$links[] = sprintf(
-			'<a href="%1s" class="' . CCP_ADMIN_SLUG . '-scripts-link">%2s</a>',
-			admin_url( 'options-general.php?page=' . CCP_ADMIN_SLUG . '-scripts' ),
-			esc_attr( 'Script Options', 'controlled-chaos-plugin' )
-		);
+		}
 
-		// Add a placeholder for an upgrade link.
-		$links[] = sprintf(
-			'<a href="%1s" title="%2s" class="' . CCP_ADMIN_SLUG . '-upgrade-link" style="color: #888; cursor: default;">%3s</a>',
-			''/* Add upgrade URL here */,
-			__( 'Upgrade not available', 'controlled-chaos-plugin' ),
-			esc_attr( 'Upgrade', 'controlled-chaos-plugin' )
-		);
+		// Return the full array of links.
+		return $links;
 
 	}
-
-	// Return the full array of links.
-	return $links;
 
 }
 add_filter( 'plugin_row_meta', 'ccp_settings_links', 10, 2 );
