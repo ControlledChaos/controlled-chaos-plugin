@@ -60,9 +60,6 @@ class Post_Type_Tax_Functions {
 		// Replace "Post" in the update messages.
 		add_filter( 'post_updated_messages', [ $this, 'update_messages' ], 99 );
 
-		// Replace post type title placeholders.
-		add_filter( 'enter_title_here', [ $this, 'title_placeholders' ] );
-
 	}
 
 	/**
@@ -147,35 +144,6 @@ class Post_Type_Tax_Functions {
 		}
 
 		return $messages;
-	}
-
-	/**
-	 * Replace post type title placeholders in classic editor.
-	 *
-	 * Has no affect on the WordPress block editor.
-	 *
-	 * No text choices have been made. This is included as a
-	 * head start in development of a site-specific plugin.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param string $title
-	 * @return string Returns conditional text.
-	 *
-	 * @todo Add a check for the block or classic editor?
-	 */
-	public function title_placeholders( $title ) {
-
-		// Get the current post edit screen.
-		$screen = get_current_screen();
-
-		if ( '' == $screen->post_type ) {
-			$title = __( '', 'controlled-chaos-plugin' );
-		} elseif ( '' == $screen->post_type ) {
-			$title = __( '', 'controlled-chaos-plugin' );
-		}
-
-		return $title;
 	}
 
 }
