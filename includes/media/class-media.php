@@ -88,7 +88,7 @@ class Media {
 	private function dependencies() {
 
 		// Add SVG media upload support.
-		include_once CCP_PATH . 'media/class-svg-support.php';
+		include_once CCP_PATH . 'includes/media/class-svg-support.php';
 
 		// Replace WP gallery shortcode if Fancybox option is used.
 		$fancybox = get_option( 'ccp_enqueue_fancybox_script' );

@@ -83,7 +83,7 @@ class Tools {
 		// Minify HTML source code.
 		$debug = get_option( 'ccp_debug_mode' );
 
-		require_once CCP_PATH . 'tools/class-debug.php';
+		require_once CCP_PATH . 'includes/tools/class-debug.php';
 
 		// Include the RTL (right to left) test if option selected.
 		$rtl = get_option( 'ccp_rtl_test' );
