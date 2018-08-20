@@ -25,7 +25,7 @@ include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
  * @since  1.0.0
  * @access public
  */
-class Init {
+final class Init {
 
 	/**
 	 * Get an instance of the class.
@@ -62,7 +62,7 @@ class Init {
 	 */
 	private function __construct() {
 
-		// Remove the capital P filter.
+		// Remove the Draconian capital P filter.
 		remove_filter( 'the_title', 'capital_P_dangit', 11 );
 		remove_filter( 'the_content', 'capital_P_dangit', 11 );
 		remove_filter( 'comment_text', 'capital_P_dangit', 31 );

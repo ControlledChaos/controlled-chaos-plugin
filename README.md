@@ -25,7 +25,7 @@ Not every feature included with this plugin will be needed for my projects or yo
 ## Compatibility
 
 * This plugin was written in a WordPress 4.9+ environment with no concern for backwards compatitbility.
-* This plugin was written on a local server running PHP 7.0
+* This plugin was written on a local server running PHP 7.1
 * The short array syntax ( "[]" rather than "array()" ) requires PHP 5.4+
 * Run a modern setup and you'll be fine.
 
