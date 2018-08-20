@@ -152,7 +152,7 @@ final class Fields_Import {
 			while ( $num_import > 0 );
 		}
 
-		include_once CCP_PATH . 'partials/fields-import-page.php';
+		include_once CCP_PATH . 'admin/partials/fields-import-page.php';
 
 	}
 
