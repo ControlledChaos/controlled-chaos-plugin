@@ -12,7 +12,12 @@
  * @since  1.0.0
  * @access public
  */
-jQuery(document).ready( function($) {
-	$( '.backend-tabbed-content' ).tabs();
-	$( '.tooltip' ).tooltip();
+jQuery(document).ready(function ($) {
+
+	// Add tab switching to the `backend-tabbed-content` class.
+	$('.backend-tabbed-content').tabs();
+
+	// Add tooltips to the `tooltip` class.
+	$('.tooltip').tooltip();
+
 });
