@@ -11,7 +11,7 @@
  * @link       https://codex.wordpress.org/Function_Reference/register_taxonomy
  */
 
-namespace CC_Plugin\Includes\Taxonomies_Taxes;
+namespace CC_Plugin\Includes\Post_Types_Taxes;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {

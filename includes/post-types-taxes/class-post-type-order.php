@@ -1,0 +1,764 @@
+<?php
+/**
+ * Drag & drop custom post and taxonomy orders.
+ *
+ * @package    Controlled_Chaos_Plugin
+ * @subpackage Includes\Post_Types_Taxes
+ *
+ * @since      1.0.0
+ * @author     Greg Sweet <greg@ccdzine.com>
+ */
+
+namespace CC_Plugin\Includes\Post_Types_Taxes;
+
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+
+/**
+ * Drag & drop custom post and taxonomy orders.
+ *
+ * @since  1.0.0
+ * @access public
+ */
+class Post_Types_Taxes_Order {
+
+    /**
+	 * Get an instance of the class.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return object Returns the instance.
+	 */
+	public static function instance() {
+
+		// Varialbe for the instance to be used outside the class.
+		static $instance = null;
+
+		if ( is_null( $instance ) ) {
+
+			// Set variable for new instance.
+            $instance = new self;
+
+            if ( ! get_option( 'ccp_order_install ' ) ) {
+                $instance->order_install();
+            }
+
+		}
+
+		// Return the instance.
+		return $instance;
+
+	}
+
+    /**
+	 * Constructor method.
+	 *
+	 * @since  1.0.0
+	 * @access private
+	 * @return self
+	 */
+    private function __construct() {
+
+        add_action( 'admin_menu', [ $this, 'admin_menu' ] );
+
+        add_action( 'admin_init', [ $this, 'refresh' ] );
+
+        add_action( 'admin_init', [ $this, 'update_options' ] );
+        add_action( 'admin_init', [ $this, 'load_script_css' ] );
+
+        add_action( 'wp_ajax_update-menu-order', [ $this, 'update_menu_order' ] );
+        add_action( 'wp_ajax_update-menu-order-tags', [ $this, 'update_menu_order_tags' ] );
+
+        add_action( 'pre_get_posts', [ $this, 'scporder_pre_get_posts' ] );
+
+        add_filter( 'get_previous_post_where', [ $this, 'scporder_previous_post_where' ] );
+        add_filter( 'get_previous_post_sort', [ $this, 'scporder_previous_post_sort' ] );
+        add_filter( 'get_next_post_where', [ $this, 'scporder_next_post_where' ] );
+        add_filter( 'get_next_post_sort', [ $this, 'scporder_next_post_sort' ] );
+
+        add_filter( 'get_terms_orderby', [ $this, 'scporder_get_terms_orderby' ], 10, 3 );
+        add_filter( 'wp_get_object_terms', [ $this, 'scporder_get_object_terms' ], 10, 3 );
+        add_filter( 'get_terms', [ $this, 'scporder_get_object_terms' ], 10, 3 );
+
+    }
+
+    /**
+     * Update options table on installation.
+     *
+     * @since  1.0.0
+	 * @access public
+     * @return void
+     */
+    public function order_install() {
+
+        global $wpdb;
+
+        $result = $wpdb->query( "DESCRIBE $wpdb->terms `term_order`" );
+
+        if ( ! $result ) {
+            $query  = "ALTER TABLE $wpdb->terms ADD `term_order` INT( 4 ) NULL DEFAULT '0'";
+            $result = $wpdb->query( $query );
+        }
+
+        update_option( 'ccp_order_install', 1 );
+
+    }
+
+    /**
+     * Add an options page for sort order settings.
+     *
+     * @since  1.0.0
+	 * @access public
+     * @return void
+     *
+     * @todo   Remove this if or when the settings are
+     *         moved to the Reading Settings page.
+     */
+    public function admin_menu() {
+
+        add_options_page(
+            __( 'Posts & Taxonomies Sort Order', 'controlled-chaos-plugin' ),
+            __( 'Sort Order', 'controlled-chaos-plugin' ),
+            'manage_options',
+            'sort-order-settings',
+            [ $this, 'admin_page' ]
+        );
+
+    }
+
+    /**
+     * Callback for the admin page.
+     * @since  1.0.0
+	 * @access public
+     * @return void
+     *
+     * @todo   Address this if or when the settings are
+     *         moved to the Reading Settings page.
+     */
+    public function admin_page() {
+
+        require CCP_PATH . 'admin/partials/plugin-page-order-settings.php';
+
+    }
+
+    /**
+     * Check where to load scripts.
+     *
+     * @since  1.0.0
+	 * @access public
+     * @return array Returns an array of selected post types and taxonomies.
+     */
+    public function _check_load_script_css() {
+
+        $active  = false;
+        $objects = $this->get_ccp_order_options_objects();
+        $tags    = $this->get_ccp_order_options_tags();
+
+        // Bail if no post types or taxonomies have been selected.
+        if ( empty( $objects ) && empty( $tags ) ) {
+            return false;
+        }
+
+        if ( isset( $_GET['orderby'] ) || strstr( $_SERVER['REQUEST_URI'], 'action=edit' ) || strstr( $_SERVER['REQUEST_URI'], 'wp-admin/post-new.php' ) ) {
+            return false;
+        }
+
+        // Set selected post types to true for custom sorting.
+        if ( ! empty( $objects ) ) {
+
+            // If the selected is a page or a custom post type.
+            if ( isset( $_GET['post_type'] ) && ! isset( $_GET['taxonomy'] ) && in_array( $_GET['post_type'], $objects ) ) {
+                $active = true;
+            }
+
+            // If the selected is a post.
+            if ( ! isset($_GET['post_type']) && strstr($_SERVER['REQUEST_URI'], 'wp-admin/edit.php') && in_array('post', $objects)) {
+                $active = true;
+            }
+
+        }
+
+        // Set selected taxonomies to true for custom sorting.
+        if ( ! empty( $tags ) ) {
+
+            if ( isset( $_GET['taxonomy'] ) && in_array( $_GET['taxonomy'], $tags ) ) {
+                $active = true;
+            }
+
+        }
+
+        // Return the array of selected post types and taxonomies.
+        return $active;
+
+    }
+
+    public function load_script_css() {
+
+        if ( $this->_check_load_script_css() ) {
+
+            wp_enqueue_script( 'jquery' );
+            wp_enqueue_script( 'jquery-ui-sortable' );
+            wp_enqueue_script( 'post-tax-order', CCP_URL . 'admin/assets/js/post-tax-order.js', [ 'jquery' ], null, true );
+
+        }
+
+    }
+
+    public function refresh() {
+
+        global $wpdb;
+
+        $objects = $this->get_ccp_order_options_objects();
+        $tags    = $this->get_ccp_order_options_tags();
+
+        if ( ! empty( $objects ) ) {
+
+            foreach ( $objects as $object ) {
+
+                $result = $wpdb->get_results( "
+					SELECT count(*) as cnt, max(menu_order) as max, min(menu_order) as min
+					FROM $wpdb->posts
+					WHERE post_type = '" . $object . "' AND post_status IN ('publish', 'pending', 'draft', 'private', 'future')
+                " );
+
+                if ( $result[0]->cnt == 0 || $result[0]->cnt == $result[0]->max )
+                    continue;
+
+                $results = $wpdb->get_results( "
+					SELECT ID
+					FROM $wpdb->posts
+					WHERE post_type = '" . $object . "' AND post_status IN ('publish', 'pending', 'draft', 'private', 'future')
+					ORDER BY menu_order ASC
+                " );
+
+                foreach ( $results as $key => $result ) {
+                    $wpdb->update(
+                        $wpdb->posts,
+                        [ 'menu_order' => $key + 1 ],
+                        [ 'ID'         => $result->ID ]
+                    );
+                }
+
+            }
+
+        }
+
+        if ( ! empty( $tags ) ) {
+
+            foreach ( $tags as $taxonomy ) {
+
+                $result = $wpdb->get_results( "
+					SELECT count(*) as cnt, max(term_order) as max, min(term_order) as min
+					FROM $wpdb->terms AS terms
+					INNER JOIN $wpdb->term_taxonomy AS term_taxonomy ON ( terms.term_id = term_taxonomy.term_id )
+					WHERE term_taxonomy.taxonomy = '" . $taxonomy . "'
+				" );
+                if ( $result[0]->cnt == 0 || $result[0]->cnt == $result[0]->max ) {
+                    continue;
+                }
+
+                $results = $wpdb->get_results( "
+					SELECT terms.term_id
+					FROM $wpdb->terms AS terms
+					INNER JOIN $wpdb->term_taxonomy AS term_taxonomy ON ( terms.term_id = term_taxonomy.term_id )
+					WHERE term_taxonomy.taxonomy = '" . $taxonomy . "'
+					ORDER BY term_order ASC
+                " );
+
+                foreach ( $results as $key => $result ) {
+                    $wpdb->update(
+                        $wpdb->terms,
+                        [ 'term_order' => $key + 1 ],
+                        [ 'term_id'    => $result->term_id ]
+                    );
+                }
+
+            }
+
+        }
+
+    }
+
+    public function update_menu_order() {
+
+        global $wpdb;
+
+        parse_str( $_POST['order'], $data );
+
+        if ( ! is_array( $data ) ) {
+            return false;
+        }
+
+        $id_arr = [];
+
+        foreach ( $data as $key => $values ) {
+            foreach ( $values as $position => $id ) {
+                $id_arr[] = $id;
+            }
+        }
+
+        $menu_order_arr = [];
+
+        foreach ( $id_arr as $key => $id ) {
+
+            $results = $wpdb->get_results( "SELECT menu_order FROM $wpdb->posts WHERE ID = " . intval( $id ) );
+
+            foreach ( $results as $result ) {
+                $menu_order_arr[] = $result->menu_order;
+            }
+        }
+
+        sort( $menu_order_arr );
+
+        foreach ( $data as $key => $values ) {
+            foreach ( $values as $position => $id ) {
+                $wpdb->update(
+                    $wpdb->posts,
+                    [ 'menu_order' => $menu_order_arr[$position] ],
+                    [ 'ID'         => intval( $id ) ]
+                );
+            }
+        }
+
+    }
+
+    public function update_menu_order_tags() {
+
+        global $wpdb;
+
+        parse_str( $_POST['order'], $data );
+
+        if ( ! is_array( $data ) ) {
+            return false;
+        }
+
+        $id_arr = [];
+
+        foreach ( $data as $key => $values ) {
+            foreach ( $values as $position => $id ) {
+                $id_arr[] = $id;
+            }
+        }
+
+        $menu_order_arr = [];
+
+        foreach ( $id_arr as $key => $id ) {
+
+            $results = $wpdb->get_results( "SELECT term_order FROM $wpdb->terms WHERE term_id = " . intval( $id ) );
+
+            foreach ( $results as $result ) {
+                $menu_order_arr[] = $result->term_order;
+            }
+        }
+
+        sort( $menu_order_arr );
+
+        foreach ( $data as $key => $values ) {
+            foreach ( $values as $position => $id ) {
+                $wpdb->update(
+                    $wpdb->terms,
+                    [ 'term_order' => $menu_order_arr[$position] ],
+                    [ 'term_id'    => intval( $id ) ]
+                );
+            }
+        }
+
+    }
+
+    public function update_options() {
+
+        global $wpdb;
+
+        if ( ! isset( $_POST['scporder_submit'] ) ) {
+            return false;
+        }
+
+        check_admin_referer( 'nonce_scporder' );
+
+        $input_options            = [];
+        $input_options['objects'] = isset( $_POST['objects'] ) ? $_POST['objects'] : '';
+        $input_options['tags']    = isset( $_POST['tags'] ) ? $_POST['tags'] : '';
+
+        update_option( 'ccp_order_options', $input_options );
+
+        $objects = $this->get_ccp_order_options_objects();
+        $tags    = $this->get_ccp_order_options_tags();
+
+        if ( ! empty( $objects ) ) {
+
+            foreach ( $objects as $object ) {
+
+                $result = $wpdb->get_results( "
+					SELECT count(*) as cnt, max(menu_order) as max, min(menu_order) as min
+					FROM $wpdb->posts
+					WHERE post_type = '" . $object . "' AND post_status IN ('publish', 'pending', 'draft', 'private', 'future')
+                " );
+
+                if ( $result[0]->cnt == 0 || $result[0]->cnt == $result[0]->max ) {
+                    continue;
+                }
+
+                if ( $object == 'page' ) {
+
+                    $results = $wpdb->get_results( "
+						SELECT ID
+						FROM $wpdb->posts
+						WHERE post_type = '" . $object . "' AND post_status IN ('publish', 'pending', 'draft', 'private', 'future')
+						ORDER BY post_title ASC
+                    " );
+
+                } else {
+
+                    $results = $wpdb->get_results( "
+						SELECT ID
+						FROM $wpdb->posts
+						WHERE post_type = '" . $object . "' AND post_status IN ('publish', 'pending', 'draft', 'private', 'future')
+						ORDER BY post_date DESC
+                    " );
+
+                }
+
+                foreach ( $results as $key => $result ) {
+                    $wpdb->update(
+                        $wpdb->posts,
+                        [ 'menu_order' => $key + 1 ],
+                        [ 'ID'         => $result->ID ]
+                    );
+                }
+
+            }
+
+        }
+
+        if ( ! empty( $tags ) ) {
+
+            foreach ( $tags as $taxonomy ) {
+
+                $result = $wpdb->get_results( "
+					SELECT count(*) as cnt, max(term_order) as max, min(term_order) as min
+					FROM $wpdb->terms AS terms
+					INNER JOIN $wpdb->term_taxonomy AS term_taxonomy ON ( terms.term_id = term_taxonomy.term_id )
+					WHERE term_taxonomy.taxonomy = '" . $taxonomy . "'
+                " );
+
+                if ( $result[0]->cnt == 0 || $result[0]->cnt == $result[0]->max ) {
+                    continue;
+                }
+
+                $results = $wpdb->get_results( "
+					SELECT terms.term_id
+					FROM $wpdb->terms AS terms
+					INNER JOIN $wpdb->term_taxonomy AS term_taxonomy ON ( terms.term_id = term_taxonomy.term_id )
+					WHERE term_taxonomy.taxonomy = '" . $taxonomy . "'
+					ORDER BY name ASC
+                " );
+
+                foreach ( $results as $key => $result ) {
+                    $wpdb->update(
+                        $wpdb->terms,
+                        [ 'term_order' => $key + 1 ],
+                        [ 'term_id'    => $result->term_id ]
+                    );
+                }
+
+            }
+
+        }
+
+        wp_redirect( 'admin.php?page=sort-order-settings&msg=update' );
+
+    }
+
+    public function scporder_previous_post_where( $where ) {
+
+        global $post;
+
+        $objects = $this->get_ccp_order_options_objects();
+
+        if ( empty( $objects ) ) {
+            return $where;
+        }
+
+        if ( isset( $post->post_type ) && in_array( $post->post_type, $objects ) ) {
+            $current_menu_order = $post->menu_order;
+            $where = "WHERE p.menu_order > '" . $current_menu_order . "' AND p.post_type = '" . $post->post_type . "' AND p.post_status = 'publish'";
+        }
+
+        return $where;
+
+    }
+
+    public function scporder_previous_post_sort( $orderby ) {
+
+        global $post;
+
+        $objects = $this->get_ccp_order_options_objects();
+
+        if ( empty( $objects ) ) {
+            return $orderby;
+        }
+
+        if ( isset( $post->post_type ) && in_array( $post->post_type, $objects ) ) {
+            $orderby = 'ORDER BY p.menu_order ASC LIMIT 1';
+        }
+
+        return $orderby;
+
+    }
+
+    public function scporder_next_post_where( $where ) {
+
+        global $post;
+
+        $objects = $this->get_ccp_order_options_objects();
+
+        if ( empty( $objects ) ) {
+            return $where;
+        }
+
+        if ( isset( $post->post_type ) && in_array( $post->post_type, $objects ) ) {
+            $current_menu_order = $post->menu_order;
+            $where = "WHERE p.menu_order < '" . $current_menu_order . "' AND p.post_type = '" . $post->post_type . "' AND p.post_status = 'publish'";
+        }
+
+        return $where;
+
+    }
+
+    public function scporder_next_post_sort( $orderby ) {
+
+        global $post;
+
+        $objects = $this->get_ccp_order_options_objects();
+
+        if ( empty( $objects ) ) {
+            return $orderby;
+        }
+
+        if ( isset( $post->post_type ) && in_array( $post->post_type, $objects ) ) {
+            $orderby = 'ORDER BY p.menu_order DESC LIMIT 1';
+        }
+
+        return $orderby;
+
+    }
+
+    public function scporder_pre_get_posts( $wp_query ) {
+
+        $objects = $this->get_ccp_order_options_objects();
+
+        if ( empty( $objects ) ) {
+            return false;
+        }
+
+        if ( is_admin() ) {
+            if ( isset( $wp_query->query['post_type'] ) && ! isset( $_GET['orderby'] ) ) {
+                if ( in_array( $wp_query->query['post_type'], $objects ) ) {
+                    $wp_query->set( 'orderby', 'menu_order' );
+                    $wp_query->set( 'order', 'ASC' );
+                }
+            }
+
+        } else {
+
+            $active = false;
+
+            if ( isset( $wp_query->query['post_type'] ) ) {
+                if ( ! is_array( $wp_query->query['post_type'] ) ) {
+                    if ( in_array( $wp_query->query['post_type'], $objects ) ) {
+                        $active = true;
+                    }
+                }
+
+            } else {
+                if ( in_array( 'post', $objects ) ) {
+                    $active = true;
+                }
+            }
+
+            if ( ! $active ) {
+                return false;
+            }
+
+            if ( isset( $wp_query->query['suppress_filters'] ) ) {
+
+                if ( $wp_query->get('orderby') == 'date' ) {
+                    $wp_query->set('orderby', 'menu_order');
+                }
+
+                if ( $wp_query->get('order') == 'DESC' ) {
+                    $wp_query->set('order', 'ASC');
+                }
+
+            } else {
+
+                if ( ! $wp_query->get( 'orderby' ) ) {
+                    $wp_query->set( 'orderby', 'menu_order' );
+                }
+
+                if ( ! $wp_query->get( 'order' ) ) {
+                    $wp_query->set( 'order', 'ASC' );
+                }
+
+            }
+        }
+    }
+
+    public function scporder_get_terms_orderby( $orderby, $args ) {
+
+        if ( is_admin() ) {
+            return $orderby;
+        }
+
+        $tags = $this->get_ccp_order_options_tags();
+
+        if ( ! isset($args['taxonomy'] ) ) {
+            return $orderby;
+        }
+
+        $taxonomy = $args['taxonomy'];
+        if ( ! in_array( $taxonomy, $tags ) ) {
+            return $orderby;
+        }
+
+        $orderby = 't.term_order';
+        return $orderby;
+
+    }
+
+    public function scporder_get_object_terms( $terms ) {
+
+        $tags = $this->get_ccp_order_options_tags();
+
+        if ( is_admin() && isset( $_GET['orderby'] ) ) {
+            return $terms;
+        }
+
+        foreach ( $terms as $key => $term ) {
+
+            if ( is_object( $term ) && isset( $term->taxonomy ) ) {
+
+                $taxonomy = $term->taxonomy;
+
+                if ( ! in_array( $taxonomy, $tags ) ) {
+                    return $terms;
+                }
+
+            } else {
+                return $terms;
+            }
+
+        }
+
+        usort( $terms, [ $this, 'taxcmp' ] );
+        return $terms;
+
+    }
+
+    public function taxcmp( $a, $b ) {
+
+        if ( $a->term_order == $b->term_order ) {
+            return 0;
+        }
+
+        return ( $a->term_order < $b->term_order ) ? -1 : 1;
+
+    }
+
+    public function get_ccp_order_options_objects() {
+
+        if ( $ccp_order_options = get_option( 'ccp_order_options' ) ) {
+            $ccp_order_options = get_option( 'ccp_order_options' );
+        } else {
+            $ccp_order_options = [];
+        }
+
+        if ( isset( $ccp_order_options['objects'] ) && is_array( $ccp_order_options['objects'] ) ) {
+            $objects = $ccp_order_options['objects'];
+        } else {
+            $objects = [];
+        }
+
+        return $objects;
+
+    }
+
+    public function get_ccp_order_options_tags() {
+
+        if ( $ccp_order_options = get_option( 'ccp_order_options' ) ) {
+            $ccp_order_options = get_option( 'ccp_order_options' );
+        } else {
+            $ccp_order_options = [];
+        }
+
+        if ( isset( $ccp_order_options['tags'] ) && is_array( $ccp_order_options['tags'] ) ) {
+            $tags = $ccp_order_options['tags'];
+        } else {
+            $tags = [];
+        }
+
+        return $tags;
+
+    }
+
+}
+
+/**
+ * Put an instance of the class into a function.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return object Returns an instance of the class.
+ */
+function ccp_post_types_taxes_order() {
+
+	return Post_Types_Taxes_Order::instance();
+
+}
+
+// Run an instance of the class.
+ccp_post_types_taxes_order();
+
+/**
+ * SCP Order Uninstall hook
+ */
+register_uninstall_hook( __FILE__, 'scporder_uninstall' );
+
+function scporder_uninstall() {
+
+    global $wpdb;
+
+    if ( function_exists( 'is_multisite' ) && is_multisite() ) {
+
+        $curr_blog = $wpdb->blogid;
+        $blogids   = $wpdb->get_col( "SELECT blog_id FROM $wpdb->blogs" );
+
+        foreach ( $blogids as $blog_id ) {
+            switch_to_blog( $blog_id );
+            scporder_uninstall_db();
+        }
+
+        switch_to_blog( $curr_blog );
+
+    } else {
+        scporder_uninstall_db();
+    }
+
+}
+
+function scporder_uninstall_db() {
+
+    global $wpdb;
+
+    $result = $wpdb->query( "DESCRIBE $wpdb->terms `term_order`" );
+
+    if ( $result ) {
+        $query  = "ALTER TABLE $wpdb->terms DROP `term_order`";
+        $result = $wpdb->query( $query );
+    }
+
+    delete_option( 'ccp_order_install' );
+
+}

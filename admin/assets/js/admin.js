@@ -10,14 +10,13 @@
  * Tabify the .backend-tabbed-content wrapper.
  *
  * @since  1.0.0
- * @access public
  */
-jQuery(document).ready(function ($) {
+jQuery(document).ready( function ($) {
 
 	// Add tab switching to the `backend-tabbed-content` class.
-	$('.backend-tabbed-content').tabs();
+	$( '.backend-tabbed-content' ).tabs();
 
 	// Add tooltips to the `tooltip` class.
-	$('.tooltip').tooltip();
+	$( '.tooltip' ).tooltip();
 
 });

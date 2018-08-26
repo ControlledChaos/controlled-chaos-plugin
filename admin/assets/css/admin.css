@@ -3,105 +3,105 @@
  * included in this file.
  */
 /**
-  * PLUGINS
-  * 
+  * Plugins screens.
+  *
   * For the installed plugins and the add new plugins screens.
   */
 /* This provides better distinction between active and inactive plugins. */
 .plugins tr.inactive *,
 .plugins .plugins a.delete {
-  background: #f3f3f3;
-  color: #777777;
+	background: #f3f3f3;
+	color: #777777;
 }
 
 .plugins tr.inactive .activate a:hover {
-  color: #76a91d;
+	color: #76a91d;
 }
 
 .plugins tr.active .deactivate a:hover,
 .plugins tr.inactive .delete a:hover {
-  color: #aa0000;
+	color: #aa0000;
 }
 
 .plugins a.delete:hover {
-  color: #aa0000 !important;
+	color: #aa0000 !important;
 }
 
 .row-actions span.delete a {
-  background: #f3f3f3;
-  color: #777777;
+	background: #f3f3f3;
+	color: #777777;
 }
 
 .row-actions span.delete a:hover {
-  color: #aa0000 !important;
+	color: #aa0000 !important;
 }
 
 /**
- * MEDIA
- * 
+ * Media library.
+ *
  * For the media library and media uploads screens.
  */
 /* Fix SVGs not showing correctly as featured images. */
 #postimagediv .inside .svg img {
-  width: 100%;
+	width: 100%;
 }
 
 /**
- * JQUERY TABS
+ * jQuery tabs.
  */
 .nav-tab-wrapper a .dashicons {
-  vertical-align: text-top;
+	vertical-align: text-top;
 }
 
 .backend-tabbed-content > div {
-  max-width: 1200px;
+	max-width: 1200px;
 }
 
 .ui-tabs {
-  /* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
-  position: relative;
-  padding: 0;
+	/* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
+	position: relative;
+	padding: 0;
 }
 
 .ui-tabs .ui-tabs-nav {
-  margin: 0;
-  padding: 0;
-  padding: 9px 0 0 .4em;
-  border-bottom: 1px solid #ccc;
+	margin: 0;
+	padding: 0;
+	padding: 9px 0 0 .4em;
+	border-bottom: 1px solid #ccc;
 }
 
 .ui-tabs .ui-tabs-nav h2 {
-  margin: 0;
-  padding: 0;
-  line-height: 1;
+	margin: 0;
+	padding: 0;
+	line-height: 1;
 }
 
 .ui-tabs .ui-tabs-nav li {
-  display: inline-block;
-  list-style: none;
-  position: relative;
-  top: 1px;
-  margin: 0;
-  border-bottom-width: 0;
-  padding: 0;
-  white-space: nowrap;
+	display: inline-block;
+	list-style: none;
+	position: relative;
+	top: 1px;
+	margin: 0;
+	border-bottom-width: 0;
+	padding: 0;
+	white-space: nowrap;
 }
 
 .ui-tabs .ui-tabs-nav li a {
-  display: block;
-  border: 1px solid #ccc;
-  border-bottom: none;
-  margin: 1px .2em 0 0;
-  padding: 5px 10px;
-  font-size: 14px;
-  line-height: 24px;
-  background: #e5e5e5;
-  color: #555;
-  text-decoration: none;
+	display: block;
+	border: 1px solid #ccc;
+	border-bottom: none;
+	margin: 1px .2em 0 0;
+	padding: 5px 10px;
+	font-size: 14px;
+	line-height: 24px;
+	background: #e5e5e5;
+	color: #555;
+	text-decoration: none;
 }
 
 .ui-tabs .ui-tabs-nav li a .dashicons {
-  vertical-align: bottom;
+	vertical-align: bottom;
 }
 
 .ui-tabs .ui-tabs-nav li.ui-tabs-active a,
@@ -109,43 +109,73 @@
 .ui-tabs .ui-tabs-nav li.ui-tabs-active a:focus:active,
 .ui-tabs .ui-tabs-nav li.ui-tabs-active a:active,
 .ui-tabs .ui-tabs-nav li.ui-tabs-active a:hover {
-  border-bottom: 1px solid #f1f1f1;
-  background: #f1f1f1;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  color: #000;
+	border-bottom: 1px solid #f1f1f1;
+	background: #f1f1f1;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	color: #000;
 }
 
 .ui-tabs .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor,
 .ui-tabs .ui-tabs-nav li.ui-state-disabled .ui-tabs-anchor,
 .ui-tabs .ui-tabs-nav li.ui-tabs-loading .ui-tabs-anchor {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .ui-tabs .ui-tabs-nav ~ div {
-  clear: both;
+	clear: both;
 }
 
 .ui-tabs .ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .ui-tabs .ui-tabs-panel {
-  display: block;
-  border-width: 0;
-  padding: 1em 1.4em;
-  background: none;
+	display: block;
+	border-width: 0;
+	padding: 1em 1.4em;
+	background: none;
 }
 
 /**
- * MISCELLANEOUS
+ * Post types order.
+ */
+.ui-sortable tr:hover {
+	cursor: move;
+}
+
+.ui-sortable tr.alternate {
+	background-color: #F9F9F9;
+}
+
+.ui-sortable tr.ui-sortable-helper {
+	background-color: #F9F9F9;
+	border-top: 1px solid #DFDFDF;
+}
+
+/**
+ * Miscellaneous.
  */
 /* Easily copy the code of registered ACF fields on the Registered Fields screen. */
 .import-registered-field-groups-arrays {
-  -webkit-user-select: all;
-  -moz-user-select: all;
-  -ms-user-select: all;
-  user-select: all;
+	-webkit-user-select: all;
+	-moz-user-select: all;
+	-ms-user-select: all;
+	user-select: all;
+}
+
+/* Styles for the sort order functionality */
+.ui-sortable tr:hover {
+	cursor: move;
+}
+
+.ui-sortable tr.alternate {
+	background-color: #F9F9F9;
+}
+
+.ui-sortable tr.ui-sortable-helper {
+	background-color: #F9F9F9;
+	border-top: 1px solid #DFDFDF;
 }
 
 /**
@@ -153,6 +183,6 @@
  * look better with bullets.
  */
 .ccp_bullet-list {
-  list-style: disc;
-  margin-left: 1em;
+	list-style: disc;
+	margin-left: 1em;
 }

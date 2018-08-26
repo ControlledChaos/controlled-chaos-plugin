@@ -78,6 +78,9 @@ class Post_Types_Taxes {
 		// Functions related to post types and taxonomies.
 		require_once CCP_PATH . 'includes/post-types-taxes/class-post-type-tax-functions.php';
 
+		// Drag & drop custom post and taxonomy orders.
+		require_once CCP_PATH . 'includes/post-types-taxes/class-post-type-order.php';
+
 		// Capability to add custom taxonomy templates.
 		require_once CCP_PATH . 'includes/post-types-taxes/class-taxonomy-templates.php';
 

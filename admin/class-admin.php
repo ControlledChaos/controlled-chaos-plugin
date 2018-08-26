@@ -370,7 +370,7 @@ class Admin {
 		 *
 		 * @since 1.0.0
 		 */
-		wp_enqueue_style( CCP_ADMIN_SLUG . '-admin', CCP_URL . 'admin/assets/css/admin.css', [], CCP_VERSION, 'all' );
+		wp_enqueue_style( CCP_ADMIN_SLUG . '-admin', CCP_URL . 'admin/assets/css/admin.min.css', [], CCP_VERSION, 'all' );
 
 		/**
 		 * Enqueue the jQuery tooltips styles.

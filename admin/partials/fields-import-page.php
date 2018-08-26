@@ -45,7 +45,7 @@ if ( isset( $_GET[ 'tab' ] ) ) {
             <?php } ?>
             </ul>
         </div>
-        <div class="notice notice-warning is-dismissible below-h2">
+        <div class="notice notice-success is-dismissible">
             <p><strong><?php esc_html_e( 'Next step:', 'controlled-chaos-plugin' ); ?></strong></p>
             <?php printf(
                 '<p><a href="%1s">%2s</a>%3s</p>',
