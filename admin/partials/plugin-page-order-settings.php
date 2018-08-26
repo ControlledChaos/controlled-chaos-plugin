@@ -38,6 +38,10 @@ if ( isset( $ccp_order_options['tags'] ) ) {
 } ?>
 <div class="wrap">
     <h1><?php _e( 'Posts & Taxonomies Sort Orders', 'controlled-chaos-plugin' ); ?></h1>
+    <p class="description"><?php _e( 'Add drag & drop sort order functionality to post types and taxonomies.', 'controlled-chaos-plugin' ); ?></p>
+    <hr />
+    <p><?php _e( 'When posts and taxonomies are selected for custom sort order functionality, the table rows on their respective admin management screen can be dragged up or down.', 'controlled-chaos-plugin' ); ?></p>
+    <p><?php _e( 'The order you set on the admin management screens will automatically set the order of the posts in the blog index pages and in archive pages.', 'controlled-chaos-plugin' ); ?></p>
     <?php if ( isset( $_GET['msg'] ) ) : ?>
         <div id="message" class="notice notice-success is-dismissible">
             <?php if ( $_GET['msg'] == 'update' ) {
@@ -123,7 +127,7 @@ if ( isset( $ccp_order_options['tags'] ) ) {
             </table>
         </div>
         <p class="submit">
-            <input type="submit" class="button-primary" name="scporder_submit" value="<?php _e( 'Set Orders', 'controlled-chaos-plugin' ); ?>">
+            <input type="submit" class="button-primary" name="scporder_submit" value="<?php _e( 'Save Changes', 'controlled-chaos-plugin' ); ?>">
         </p>
     </form>
 </div>
