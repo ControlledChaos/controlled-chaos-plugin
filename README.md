@@ -98,6 +98,12 @@ When posts types are selected for custom sort order functionality, the table row
 * Add option to hard crop the medium and/or large image sizes
 * Add option to allow SVG uploads to the Media Library
 
+### User Profiles
+
+The local user avatar option included here is in development and not currently functioning properly. Will update here when it's ready to use.
+
+Sample custom profile fields coming also.
+
 ### Developer tools
 
 Included are a few tools to help in the early stages of site development, or that can be used for making improvements and debugging.
