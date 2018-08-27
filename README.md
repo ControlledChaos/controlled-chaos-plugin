@@ -68,7 +68,7 @@ Included is a sample post type and a related sample taxonomy, both with all of t
 
 ### Sample Custom Editor (Gutenberg) Block
 
-The sample editor block, being as basic as a block can be, is not included as reference. The primary reason for including it is to establish the directory infrastructure for further block development.
+The sample editor block, being as basic as a block can be, is not included as reference. The primary reason for including it is to establish the directory infrastructure for further block development in your project.
 
 ### Clean Up the Admin
 
