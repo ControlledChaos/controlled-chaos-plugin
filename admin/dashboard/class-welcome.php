@@ -76,9 +76,6 @@ class Welcome {
 			add_action( 'admin_head', [ $this, 'dismiss' ] );
 		}
 
-		// Register the welcome panel areas.
-		add_action( 'widgets_init', [ $this, 'widget_areas' ], 25 );
-
 		/**
 		 * Use the custom Welcome panel if option selected.
 		 */
@@ -93,6 +90,9 @@ class Welcome {
 		if ( $welcome ) {
 			remove_action( 'welcome_panel', 'wp_welcome_panel' );
 			add_action( 'welcome_panel', [ $this, 'welcome_panel' ], 25 );
+
+			// Register the welcome panel areas.
+			add_action( 'widgets_init', [ $this, 'widget_areas' ], 25 );
 		}
 
 	}
