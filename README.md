@@ -8,25 +8,25 @@ A feature-packed WordPress starter plugin for building custom-tailored websites.
 
 ## Plugin Overview
 
-This is a tool — a means to an end. Not intended to be used as is, without further development.
+This is a tool — a means to an end. It is not intended to be used as is, without further development, however it can be used as such.
 
 ### Introduction
 
 Howdy, folks. My name is Greg Sweet. I am sole proprietor, chief cook and bottle washer at [Controlled Chaos Design](http://ccdzine.com/).
 
-I built this plugin as a starter for client sites, including features that I use often, the code for which I repeatedly copied from my [gist library](https://gist.github.com/ControlledChaos). It is not intended to be a plug-and-play type of thing, although it can be used as such. This is more of a developer's tool. I have commented thouroughly on the code and documentec the files to the best of my ability. I have learned by looking at the code of others so I have kept this in mind when writing the code for this plugin.
+I built this plugin as a starter for client sites, including features that I use often, the code for which I repeatedly copied from my [gist library](https://gist.github.com/ControlledChaos). It is not intended to be a plug-and-play type of thing, although it can be used as such. This is more of a developer's tool. I have commented thouroughly on the code and documented the files to the best of my ability. I have learned by looking at the code of others so I have kept this in mind when writing the code for this plugin.
 
 ### Approach
 
 Although this plugin comes with my business name incorporated into it, I am not trying to put my branding stink all over your project. It has to have a name so I used my own. However, since I need to rename the plugin for my clients' websites, I have made every effort to use a simple, uniform naming system that can be quicky renamed for your project.
 
-Not every feature included with this plugin will be needed for my projects or yours. And one big reason for writing a site-specific plugin is to include only what the site needs and eliminate the overhead of plugins and themes that offer things that you don't need. So why have I packed so much into this plugin? Well, I find it to be much quicker and easier to remove unnecessary code that it is to write, or even copy & paste, new code into a project. And being that you will rename this plugin and that it will update to overwrite your changes, modifications can be made ad libidum.
+Not every feature included with this plugin will be needed for my projects or yours. And one big reason for writing a site-specific plugin is to include only what the site needs and eliminate the overhead of plugins and themes that offer things that you don't need. So why have I packed so much into this plugin? Well, I find it to be much quicker and easier to remove unnecessary code that it is to write, or even copy & paste, new code into a project. And being that you will rename this plugin and that it will not update to overwrite your changes, modifications can be made ad libidum.
 
 ## Compatibility
 
 * This plugin was written in a WordPress 4.9+ environment with no concern for backwards compatitbility.
 * This plugin was written on a local server running PHP 7.1
-* The short array syntax ( "[]" rather than "array()" ) requires PHP 5.4+
+* The short array syntax ( `[]` rather than `array()` ) requires PHP 5.4+
 * Run a modern setup and you'll be fine.
 
 Sample editor blocks are included in preparation for WordPress 5.0 with it's new user interface. Until that release, the [Gutenberg plugin](https://wordpress.org/plugins/gutenberg/) is required to use the blocks.
@@ -56,23 +56,23 @@ I have included several frontend UI/UX plugins that I typically use on client si
 
 ### Admin Pages & Help Tabs
 
-One settings page via the default WordPress method and one settings page using the Advanced Custom Fields Options Page method (if ACF is active).
+The plugin comes with several admin pages for site administration and one demo admin page that can be used to include instructional information for clients, author credits adn upsells, whatever fills your project's needs. Demo contextual help tabs are included with the demo admin page.
 
-### Sample Custom Post Type
+One main page for website settings uses the Advanced Custom Fields options page method, if ACF Pro or ACF free plus the Options Page addon are active, otherwise it uses the default WordPress method. This site settings page can be extended with new tabbed content by adding it directly to your new version of this plugin, by implementing an addon plugin ([starter addon here](https://github.com/ControlledChaos/controlled-chaos-addon)), or by using Advanced Custom Fields Pro.
 
-Rename and duplicate as needed.
+### Sample Custom Post Type and Taxonomy
 
-### Sample Custom Taxonomy
+Included is a sample post type and a related sample taxonomy, both with all of the current possible arguments in the arrays. With a simple search and replace they can be reworked for your needs.
 
-Rename and duplicate as needed.
+### Sample Custom Editor (Gutenberg) Block
 
-### Sample Editor (Gutenberg) Block
-
-Supplied as reference. More to come.
+The sample editor block, being as basic as a block can be, is not included as reference. The primary reason for including it is to establish the directory infrastructure for further block development.
 
 ### Clean Up the Admin
 
-* Remove dashboard widgets: WordPress news, quick press
+Admin interface options include:
+
+* Remove dashboard widgets
 * Make Menus and Widgets top level menu items
 * Remove select admin menu items
 * Remove WordPress logo from admin bar
@@ -81,18 +81,9 @@ Supplied as reference. More to come.
 ### Enchance the Admin
 
 * Add three admin bar menus
+* Custom welcome panel with three widget areas and loaded with hooks for adding content.
 * Add custom post types to the At a Glance widget
 * Custom admin footer message
-
-### Custom Welcome Panel
-
-An optional welcome panel with three widget areas and loaded with hooks for adding content.
-
-### Advanced Custom Fields
-
-The Site Settings page for managing various features of this plugin has been duplicated as an ACF options page. This page will be used instead of the native settings page if the Advanced Custom Fields PRO plugin is active, or Advanced Custom Fields free plus the Options Page addon.
-
-Included is a tool to import the ACF settings fields registered by this plugin so that you can add to them or edit them.
 
 ### Drag & Drop Post Type Order
 
@@ -104,6 +95,15 @@ When posts types are selected for custom sort order functionality, the table row
 
 * Add option to hard crop the medium and/or large image sizes
 * Add option to allow SVG uploads to the Media Library
+
+### Developer tools
+
+Included are a few tools to help in the early stages of site development, or that can be used for making improvements and debugging.
+
+* Put WordPress into debug mode without FTP access (experimental)
+* Live theme testing for theme development on a live site
+* Right to left switcher for testing layouts with RTL languages.
+* ACF tool to import the settings fields registered by this plugin so that they can be further developed.
 
 ## Extensibility
 
