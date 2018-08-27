@@ -89,21 +89,21 @@ class Tools {
 		$rtl = get_option( 'ccp_rtl_test' );
 
 		if ( $rtl ) {
-			require_once CCP_PATH . 'tools/class-rtl-test.php';
+			require_once CCP_PATH . 'includes/tools/class-rtl-test.php';
 		}
 
 		// Minify HTML source code.
 		$minify = get_option( 'ccp_html_minify' );
 
 		if ( $minify ) {
-			require_once CCP_PATH . 'tools/class-minify-process.php';
+			require_once CCP_PATH . 'includes/tools/class-minify-process.php';
 		}
 
 		// Live theme test.
 		$theme_test = get_option( 'ccp_theme_test' );
 
 		if ( $theme_test ) {
-			include_once CCP_PATH . 'tools/class-theme-test.php';
+			include_once CCP_PATH . 'includes/tools/class-theme-test.php';
 		}
 
 	}
