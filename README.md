@@ -6,6 +6,8 @@ A feature-packed WordPress starter plugin for building custom-tailored websites.
 ![WordPress](https://img.shields.io/wordpress/v/akismet.svg?style=flat-square)
 ![PHP version](https://img.shields.io/php-eye/symfony/symfony.svg?style=flat-square)
 
+![](https://raw.githubusercontent.com/ControlledChaos/controlled-chaos-plugin/master/controlled-chaos-github-banner.jpg)
+
 ## Plugin Overview
 
 This is a tool — a means to an end. It is not intended to be used as is, without further development, however it can be used as such.
