@@ -99,7 +99,7 @@ $page_tabs = apply_filters( 'ccp_tabs_page_about', $tabs );
 
 ?>
 <!-- Default WordPress page wrapper -->
-<div class="wrap">
+<div class="wrap site-plugin-wrap">
 	<!-- Page heading -->
 	<?php echo sprintf( '<h1 class="wp-heading-inline">%1s %2s</h1>', get_bloginfo( 'name' ), esc_html__( 'Plugin', 'controlled-chaos-plugin' ) ); ?>
 	<!-- Page description -->
