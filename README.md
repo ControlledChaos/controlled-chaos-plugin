@@ -94,6 +94,12 @@ The Site Settings page for managing various features of this plugin has been dup
 
 Included is a tool to import the ACF settings fields registered by this plugin so that you can add to them or edit them.
 
+### Drag & Drop Post Type Order
+
+Option to add custom sort order functionality to blog index pages and post archive pages.
+
+When posts types are selected for custom sort order functionality, the table rows on their respective admin management screen can be dragged up or down. The order you set on the admin management screens will automatically be set on the front end.
+
 ### Media Options
 
 * Add option to hard crop the medium and/or large image sizes
