@@ -419,6 +419,27 @@ final class Settings_Fields_ACF {
 						'endpoint'          => 0,
 					],
 					[
+						'key'               => 'field_5b834989e850c',
+						'label'             => __( 'Drag & Drop Sort Order', 'controlled-chaos-plugin' ),
+						'name'              => 'ccp_use_custom_sort_order',
+						'type'              => 'true_false',
+						'instructions'      => __( 'When posts and taxonomies are selected for custom sort order functionality, the table rows on their respective admin management screen can be dragged up or down.
+
+						The order you set on the admin management screens will automatically set the order of the posts in the blog index pages and in archive pages.', 'controlled-chaos-plugin' ),
+						'required'          => 0,
+						'conditional_logic' => 0,
+						'wrapper'           => [
+							'width' => '',
+							'class' => '',
+							'id'    => '',
+						],
+						'message'           => __( 'Add drag & drop sort order functionality to post types and taxonomies.', 'controlled-chaos-plugin' ),
+						'default_value'     => 0,
+						'ui' => 1,
+						'ui_on_text'        => __( 'Yes', 'controlled-chaos-plugin' ),
+						'ui_off_text'       => __( 'No', 'controlled-chaos-plugin' ),
+					],
+					[
 						'key'               => 'field_5a0cbb5e73e56',
 						'label'             => __( 'Admin Footer Credit', 'controlled-chaos-plugin' ),
 						'name'              => 'ccp_admin_footer_credit',

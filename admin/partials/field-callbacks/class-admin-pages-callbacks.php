@@ -58,6 +58,26 @@ class Admin_Pages_Callbacks {
 	public function __construct() {}
 
 	/**
+	 * Use custom drag & drop sort order.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @param  array $args Extra arguments passed into the callback function.
+	 * @return string
+	 */
+	public function custom_sort_order( $args ) {
+
+		$option = get_option( 'ccp_use_custom_sort_order' );
+
+		$html = '<p><input type="checkbox" id="ccp_use_custom_sort_order" name="ccp_use_custom_sort_order" value="1" ' . checked( 1, $option, false ) . '/>';
+
+		$html .= '<label for="ccp_use_custom_sort_order"> '  . $args[0] . '</label></p>';
+
+		echo $html;
+
+	}
+
+	/**
 	 * Admin footer credit.
 	 *
 	 * @since  1.0.0

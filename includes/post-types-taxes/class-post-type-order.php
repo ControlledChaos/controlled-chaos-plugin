@@ -17,6 +17,27 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 /**
+ * Option to use custom sort orders.
+ *
+ * @since  1.0.0
+ * @return void
+ */
+
+// If Advanced Custom Fields is active.
+if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
+    $sort_order = get_field( 'ccp_use_custom_sort_order', 'option' );
+
+// If Advanced Custom Fields is not active.
+} else {
+    $sort_order = get_option( 'ccp_use_custom_sort_order' );
+}
+
+// Bail if the option to use sort order is not selected.
+if ( ! $sort_order || empty( $sort_order ) ) {
+    return;
+}
+
+/**
  * Drag & drop custom post and taxonomy orders.
  *
  * @since  1.0.0

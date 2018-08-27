@@ -105,6 +105,21 @@ class Settings_Fields_Site_Admin_Pages {
 			'ccp-site-admin-pages'
 		);
 
+		// Use custom sort order.
+		add_settings_field(
+			'ccp_use_custom_sort_order',
+			__( 'Drag & Drop Sort Order', 'controlled-chaos-plugin' ),
+			[ Partials\Field_Callbacks\Admin_Pages_Callbacks::instance(), 'custom_sort_order' ],
+			'ccp-site-admin-pages',
+			'ccp-site-admin-pages',
+			[ esc_html__( 'Add drag & drop sort order functionality to post types and taxonomies.', 'controlled-chaos-plugin' ) ]
+		);
+
+		register_setting(
+			'ccp-site-admin-pages',
+			'ccp_use_custom_sort_order'
+		);
+
 		// Admin footer credit.
 		add_settings_field(
 			'ccp_footer_credit',
