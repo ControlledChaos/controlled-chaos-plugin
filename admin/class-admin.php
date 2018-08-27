@@ -465,10 +465,10 @@ class Admin {
 		wp_enqueue_script( 'jquery-ui-tooltip' );
 
 		// Enqueue Conditionalize for conditional form fields.
-		wp_enqueue_script( CCP_ADMIN_SLUG . '-conditionalize', CCP_URL . 'assets/js/admin.js', [ 'jquery' ], CCP_VERSION, true );
+		wp_enqueue_script( CCP_ADMIN_SLUG . '-conditionalize', CCP_URL . 'admin/assets/js/admin.js', [ 'jquery' ], CCP_VERSION, true );
 
 		// Enqueue scripts for backend functionality of this plugin.
-		wp_enqueue_script( CCP_ADMIN_SLUG . '-admin', CCP_URL . 'assets/js/conditionize.flexible.jquery.min.js', [ 'jquery' ], CCP_VERSION, true );
+		wp_enqueue_script( CCP_ADMIN_SLUG . '-admin', CCP_URL . 'admin/assets/js/conditionize.flexible.jquery.min.js', [ 'jquery' ], CCP_VERSION, true );
 
 	}
 
