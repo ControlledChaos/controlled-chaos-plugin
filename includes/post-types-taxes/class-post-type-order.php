@@ -2,11 +2,17 @@
 /**
  * Drag & drop custom post and taxonomy orders.
  *
+ * This functionality is forked and reworked from the
+ * Simple Custom Post order plugin by Colorlib.
+ *
  * @package    Controlled_Chaos_Plugin
  * @subpackage Includes\Post_Types_Taxes
  *
  * @since      1.0.0
+ * @author     Colorlib
  * @author     Greg Sweet <greg@ccdzine.com>
+ *
+ * @link       https://wordpress.org/plugins/simple-custom-post-order/
  */
 
 namespace CC_Plugin\Includes\Post_Types_Taxes;
@@ -215,6 +221,13 @@ class Post_Types_Taxes_Order {
 
     }
 
+    /**
+     * Load script dependencies.
+     *
+     * @since  1.0.0
+	 * @access public
+     * @return void
+     */
     public function load_script_css() {
 
         if ( $this->_check_load_script_css() ) {
@@ -227,6 +240,13 @@ class Post_Types_Taxes_Order {
 
     }
 
+    /**
+     * Refresh the post order according to manual sorting.
+     *
+     * @since  1.0.0
+	 * @access public
+     * @return void
+     */
     public function refresh() {
 
         global $wpdb;
@@ -302,6 +322,13 @@ class Post_Types_Taxes_Order {
 
     }
 
+    /**
+     * Update the post order according to manual sorting.
+     *
+     * @since  1.0.0
+	 * @access public
+     * @return void
+     */
     public function update_menu_order() {
 
         global $wpdb;
@@ -345,6 +372,13 @@ class Post_Types_Taxes_Order {
 
     }
 
+    /**
+     * Update the yaxonomy order according to manual sorting.
+     *
+     * @since  1.0.0
+	 * @access public
+     * @return void
+     */
     public function update_menu_order_tags() {
 
         global $wpdb;
@@ -388,6 +422,13 @@ class Post_Types_Taxes_Order {
 
     }
 
+    /**
+     * Update the post and taxonomy order options.
+     *
+     * @since  1.0.0
+	 * @access public
+     * @return void
+     */
     public function update_options() {
 
         global $wpdb;
@@ -492,6 +533,14 @@ class Post_Types_Taxes_Order {
 
     }
 
+    /**
+     * Previous posts in new order.
+     *
+     * @since  1.0.0
+	 * @access public
+     * @param  array $where
+     * @return void
+     */
     public function scporder_previous_post_where( $where ) {
 
         global $post;
@@ -511,6 +560,14 @@ class Post_Types_Taxes_Order {
 
     }
 
+    /**
+     * Previous posts in new order.
+     *
+     * @since  1.0.0
+	 * @access public
+     * @param  array $orderby
+     * @return void
+     */
     public function scporder_previous_post_sort( $orderby ) {
 
         global $post;
@@ -529,6 +586,14 @@ class Post_Types_Taxes_Order {
 
     }
 
+    /**
+     * Next posts in new order.
+     *
+     * @since  1.0.0
+	 * @access public
+     * @param  array $where
+     * @return void
+     */
     public function scporder_next_post_where( $where ) {
 
         global $post;
@@ -548,6 +613,14 @@ class Post_Types_Taxes_Order {
 
     }
 
+    /**
+     * Next posts in new order.
+     *
+     * @since  1.0.0
+	 * @access public
+     * @param  array $where
+     * @return void
+     */
     public function scporder_next_post_sort( $orderby ) {
 
         global $post;
@@ -566,6 +639,14 @@ class Post_Types_Taxes_Order {
 
     }
 
+    /**
+     * Undocumented function
+     *
+     * @since  1.0.0
+	 * @access public
+     * @param  object $wp_query
+     * @return void
+     */
     public function scporder_pre_get_posts( $wp_query ) {
 
         $objects = $this->get_ccp_order_options_objects();
@@ -627,6 +708,15 @@ class Post_Types_Taxes_Order {
         }
     }
 
+    /**
+     * Undocumented function
+     *
+     * @since  1.0.0
+	 * @access public
+     * @param  array $orderby
+     * @param  array $args
+     * @return void
+     */
     public function scporder_get_terms_orderby( $orderby, $args ) {
 
         if ( is_admin() ) {
@@ -649,6 +739,14 @@ class Post_Types_Taxes_Order {
 
     }
 
+    /**
+     * Undocumented function
+     *
+     * @since  1.0.0
+	 * @access public
+     * @param  array $terms
+     * @return void
+     */
     public function scporder_get_object_terms( $terms ) {
 
         $tags = $this->get_ccp_order_options_tags();
@@ -678,6 +776,15 @@ class Post_Types_Taxes_Order {
 
     }
 
+    /**
+     * Undocumented function
+     *
+     * @since  1.0.0
+	 * @access public
+     * @param  array $a
+     * @param  array $b
+     * @return void
+     */
     public function taxcmp( $a, $b ) {
 
         if ( $a->term_order == $b->term_order ) {
@@ -688,6 +795,13 @@ class Post_Types_Taxes_Order {
 
     }
 
+    /**
+     * Undocumented function
+     *
+     * @since  1.0.0
+	 * @access public
+     * @return void
+     */
     public function get_ccp_order_options_objects() {
 
         if ( $ccp_order_options = get_option( 'ccp_order_options' ) ) {
@@ -706,6 +820,13 @@ class Post_Types_Taxes_Order {
 
     }
 
+    /**
+     * Undocumented function
+     *
+     * @since  1.0.0
+	 * @access public
+     * @return void
+     */
     public function get_ccp_order_options_tags() {
 
         if ( $ccp_order_options = get_option( 'ccp_order_options' ) ) {
