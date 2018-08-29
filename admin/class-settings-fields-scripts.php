@@ -167,7 +167,11 @@ class Settings_Fields_Scripts {
 			'ccp_enqueue_stickykit'
 		);
 
-		// Use Tooltipster.
+		/**
+		 * Use Tooltipster.
+		 *
+		 * @todo Add option to enqueue on the backend.
+		 */
 		add_settings_field( 'ccp_enqueue_tooltipster', __( 'Tooltipster', 'controlled-chaos-plugin' ), [ $this, 'enqueue_tooltipster_callback' ], 'ccp-scripts-vendor', 'ccp-scripts-vendor', [ esc_html__( 'Use Tooltipster script and stylesheet', 'controlled-chaos-plugin' ) ] );
 
 		register_setting(

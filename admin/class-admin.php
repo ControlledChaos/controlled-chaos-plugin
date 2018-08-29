@@ -461,6 +461,8 @@ class Admin {
 		 *
 		 * For more control over tooltips, replace jQuery tooltips with Tooltipster,
 		 * which is included with this plugin.
+		 *
+		 * @todo Conditionally enqueue this depending on backend Tooltipster.
 		 */
 		wp_enqueue_script( 'jquery-ui-tooltip' );
 
