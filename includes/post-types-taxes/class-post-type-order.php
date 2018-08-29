@@ -98,16 +98,16 @@ class Post_Types_Taxes_Order {
         add_action( 'wp_ajax_update-menu-order', [ $this, 'update_menu_order' ] );
         add_action( 'wp_ajax_update-menu-order-tags', [ $this, 'update_menu_order_tags' ] );
 
-        add_action( 'pre_get_posts', [ $this, 'scporder_pre_get_posts' ] );
+        add_action( 'pre_get_posts', [ $this, 'pre_get_posts' ] );
 
-        add_filter( 'get_previous_post_where', [ $this, 'scporder_previous_post_where' ] );
-        add_filter( 'get_previous_post_sort', [ $this, 'scporder_previous_post_sort' ] );
-        add_filter( 'get_next_post_where', [ $this, 'scporder_next_post_where' ] );
-        add_filter( 'get_next_post_sort', [ $this, 'scporder_next_post_sort' ] );
+        add_filter( 'get_previous_post_where', [ $this, 'previous_post_where' ] );
+        add_filter( 'get_previous_post_sort', [ $this, 'previous_post_sort' ] );
+        add_filter( 'get_next_post_where', [ $this, 'next_post_where' ] );
+        add_filter( 'get_next_post_sort', [ $this, 'next_post_sort' ] );
 
-        add_filter( 'get_terms_orderby', [ $this, 'scporder_get_terms_orderby' ], 10, 3 );
-        add_filter( 'wp_get_object_terms', [ $this, 'scporder_get_object_terms' ], 10, 3 );
-        add_filter( 'get_terms', [ $this, 'scporder_get_object_terms' ], 10, 3 );
+        add_filter( 'get_terms_orderby', [ $this, 'get_terms_orderby' ], 10, 3 );
+        add_filter( 'wp_get_object_terms', [ $this, 'get_object_terms' ], 10, 3 );
+        add_filter( 'get_terms', [ $this, 'get_object_terms' ], 10, 3 );
 
     }
 
@@ -180,8 +180,8 @@ class Post_Types_Taxes_Order {
     public function _check_load_script_css() {
 
         $active  = false;
-        $objects = $this->get_ccp_order_options_objects();
-        $tags    = $this->get_ccp_order_options_tags();
+        $objects = $this->get_order_options_objects();
+        $tags    = $this->get_order_options_tags();
 
         // Bail if no post types or taxonomies have been selected.
         if ( empty( $objects ) && empty( $tags ) ) {
@@ -251,8 +251,8 @@ class Post_Types_Taxes_Order {
 
         global $wpdb;
 
-        $objects = $this->get_ccp_order_options_objects();
-        $tags    = $this->get_ccp_order_options_tags();
+        $objects = $this->get_order_options_objects();
+        $tags    = $this->get_order_options_tags();
 
         if ( ! empty( $objects ) ) {
 
@@ -433,11 +433,11 @@ class Post_Types_Taxes_Order {
 
         global $wpdb;
 
-        if ( ! isset( $_POST['scporder_submit'] ) ) {
+        if ( ! isset( $_POST['ccp_posts_order_submit'] ) ) {
             return false;
         }
 
-        check_admin_referer( 'nonce_scporder' );
+        check_admin_referer( 'ccp_posts_order_nonce' );
 
         $input_options            = [];
         $input_options['objects'] = isset( $_POST['objects'] ) ? $_POST['objects'] : '';
@@ -445,8 +445,8 @@ class Post_Types_Taxes_Order {
 
         update_option( 'ccp_order_options', $input_options );
 
-        $objects = $this->get_ccp_order_options_objects();
-        $tags    = $this->get_ccp_order_options_tags();
+        $objects = $this->get_order_options_objects();
+        $tags    = $this->get_order_options_tags();
 
         if ( ! empty( $objects ) ) {
 
@@ -529,7 +529,7 @@ class Post_Types_Taxes_Order {
 
         }
 
-        wp_redirect( 'admin.php?page=sort-order-settings&msg=update' );
+        wp_redirect( 'options-general.php?page=sort-order-settings&msg=updated' );
 
     }
 
@@ -541,11 +541,11 @@ class Post_Types_Taxes_Order {
      * @param  array $where
      * @return void
      */
-    public function scporder_previous_post_where( $where ) {
+    public function previous_post_where( $where ) {
 
         global $post;
 
-        $objects = $this->get_ccp_order_options_objects();
+        $objects = $this->get_order_options_objects();
 
         if ( empty( $objects ) ) {
             return $where;
@@ -568,11 +568,11 @@ class Post_Types_Taxes_Order {
      * @param  array $orderby
      * @return void
      */
-    public function scporder_previous_post_sort( $orderby ) {
+    public function previous_post_sort( $orderby ) {
 
         global $post;
 
-        $objects = $this->get_ccp_order_options_objects();
+        $objects = $this->get_order_options_objects();
 
         if ( empty( $objects ) ) {
             return $orderby;
@@ -594,11 +594,11 @@ class Post_Types_Taxes_Order {
      * @param  array $where
      * @return void
      */
-    public function scporder_next_post_where( $where ) {
+    public function next_post_where( $where ) {
 
         global $post;
 
-        $objects = $this->get_ccp_order_options_objects();
+        $objects = $this->get_order_options_objects();
 
         if ( empty( $objects ) ) {
             return $where;
@@ -621,11 +621,11 @@ class Post_Types_Taxes_Order {
      * @param  array $where
      * @return void
      */
-    public function scporder_next_post_sort( $orderby ) {
+    public function next_post_sort( $orderby ) {
 
         global $post;
 
-        $objects = $this->get_ccp_order_options_objects();
+        $objects = $this->get_order_options_objects();
 
         if ( empty( $objects ) ) {
             return $orderby;
@@ -647,9 +647,9 @@ class Post_Types_Taxes_Order {
      * @param  object $wp_query
      * @return void
      */
-    public function scporder_pre_get_posts( $wp_query ) {
+    public function pre_get_posts( $wp_query ) {
 
-        $objects = $this->get_ccp_order_options_objects();
+        $objects = $this->get_order_options_objects();
 
         if ( empty( $objects ) ) {
             return false;
@@ -717,13 +717,13 @@ class Post_Types_Taxes_Order {
      * @param  array $args
      * @return void
      */
-    public function scporder_get_terms_orderby( $orderby, $args ) {
+    public function get_terms_orderby( $orderby, $args ) {
 
         if ( is_admin() ) {
             return $orderby;
         }
 
-        $tags = $this->get_ccp_order_options_tags();
+        $tags = $this->get_order_options_tags();
 
         if ( ! isset($args['taxonomy'] ) ) {
             return $orderby;
@@ -747,9 +747,9 @@ class Post_Types_Taxes_Order {
      * @param  array $terms
      * @return void
      */
-    public function scporder_get_object_terms( $terms ) {
+    public function get_object_terms( $terms ) {
 
-        $tags = $this->get_ccp_order_options_tags();
+        $tags = $this->get_order_options_tags();
 
         if ( is_admin() && isset( $_GET['orderby'] ) ) {
             return $terms;
@@ -802,7 +802,7 @@ class Post_Types_Taxes_Order {
 	 * @access public
      * @return void
      */
-    public function get_ccp_order_options_objects() {
+    public function get_order_options_objects() {
 
         if ( $ccp_order_options = get_option( 'ccp_order_options' ) ) {
             $ccp_order_options = get_option( 'ccp_order_options' );
@@ -827,7 +827,7 @@ class Post_Types_Taxes_Order {
 	 * @access public
      * @return void
      */
-    public function get_ccp_order_options_tags() {
+    public function get_order_options_tags() {
 
         if ( $ccp_order_options = get_option( 'ccp_order_options' ) ) {
             $ccp_order_options = get_option( 'ccp_order_options' );
@@ -866,9 +866,9 @@ ccp_post_types_taxes_order();
 /**
  * SCP Order Uninstall hook
  */
-register_uninstall_hook( __FILE__, 'scporder_uninstall' );
+register_uninstall_hook( __FILE__, 'uninstall' );
 
-function scporder_uninstall() {
+function uninstall() {
 
     global $wpdb;
 
@@ -879,18 +879,18 @@ function scporder_uninstall() {
 
         foreach ( $blogids as $blog_id ) {
             switch_to_blog( $blog_id );
-            scporder_uninstall_db();
+            uninstall_db();
         }
 
         switch_to_blog( $curr_blog );
 
     } else {
-        scporder_uninstall_db();
+        uninstall_db();
     }
 
 }
 
-function scporder_uninstall_db() {
+function uninstall_db() {
 
     global $wpdb;
 

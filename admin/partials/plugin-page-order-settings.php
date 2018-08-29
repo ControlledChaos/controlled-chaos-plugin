@@ -44,17 +44,17 @@ if ( isset( $ccp_order_options['tags'] ) ) {
     <p><?php _e( 'The order you set on the admin management screens will automatically set the order of the posts in the blog index pages and in archive pages.', 'controlled-chaos-plugin' ); ?></p>
     <?php if ( isset( $_GET['msg'] ) ) : ?>
         <div id="message" class="notice notice-success is-dismissible">
-            <?php if ( $_GET['msg'] == 'update' ) {
+            <?php if ( $_GET['msg'] == 'updated' ) {
                 echo sprintf(
                     '<p>%1s</p>',
-                    __( 'Orders Updated.', 'controlled-chaos-plugin' )
+                    __( 'Settings saved.', 'controlled-chaos-plugin' )
                 );
             } ?>
         </div>
     <?php endif; ?>
     <form method="post">
-        <?php if ( function_exists( 'wp_nonce_field' ) ) { wp_nonce_field( 'nonce_scporder' ); } ?>
-        <div id="scporder_select_objects">
+        <?php if ( function_exists( 'wp_nonce_field' ) ) { wp_nonce_field( 'ccp_posts_order_nonce' ); } ?>
+        <div id="posts_order_select">
             <table class="form-table">
                 <tbody>
                     <tr valign="top">
@@ -91,7 +91,7 @@ if ( isset( $ccp_order_options['tags'] ) ) {
                 </tbody>
             </table>
         </div>
-        <div id="scporder_select_tags">
+        <div id="terms_order_select">
             <table class="form-table">
                 <tbody>
                     <tr valign="top">
@@ -127,7 +127,7 @@ if ( isset( $ccp_order_options['tags'] ) ) {
             </table>
         </div>
         <p class="submit">
-            <input type="submit" class="button-primary" name="scporder_submit" value="<?php _e( 'Save Changes', 'controlled-chaos-plugin' ); ?>">
+            <input type="submit" class="button-primary" name="ccp_posts_order_submit" value="<?php _e( 'Save Changes', 'controlled-chaos-plugin' ); ?>">
         </p>
     </form>
 </div>
@@ -136,7 +136,7 @@ if ( isset( $ccp_order_options['tags'] ) ) {
 
     // Handle the Check All input for post types.
     $( '#ccp_order_check_all_post_types' ).on( 'click', function () {
-        var items = $( '#scporder_select_objects input' );
+        var items = $( '#posts_order_select input' );
         if ( $(this).is( ':checked' ) ) {
             $(items).prop( 'checked', true );
         } else {
@@ -146,7 +146,7 @@ if ( isset( $ccp_order_options['tags'] ) ) {
 
     // Handle the Check All input for taxonomies.
     $( '#ccp_order_check_all_taxonomies' ).on( 'click', function () {
-        var items = $( '#scporder_select_tags input' );
+        var items = $( '#terms_order_select input' );
         if ( $(this).is( ':checked' ) ) {
             $(items).prop( 'checked', true );
         } else {
