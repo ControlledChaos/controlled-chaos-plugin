@@ -166,7 +166,7 @@ class Post_Types_Taxes_Order {
      */
     public function admin_page() {
 
-        require CCP_PATH . 'admin/partials/plugin-page-order-settings.php';
+        require CCP_PATH . 'admin/partials/settings-page-posts-order.php';
 
     }
 
