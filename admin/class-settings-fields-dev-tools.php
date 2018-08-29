@@ -210,7 +210,7 @@ class Settings_Fields_Dev_Tools {
 
 		$html   = '<p><input type="checkbox" id="ccp_rtl_test" name="ccp_rtl_test" value="1" ' . checked( 1, $option, false ) . '/>';
 		$html  .= sprintf(
-			'<label for="ccp_rtl_test">%1s</label> <a href="%2s" target="_blank" title="%3s"><span class="dashicons dashicons-editor-help"></span></a></p>',
+			'<label for="ccp_rtl_test">%1s</label> <a href="%2s" target="_blank" class="tooltip" title="%3s"><span class="dashicons dashicons-editor-help"></span></a></p>',
 			$args[0],
 			esc_url( 'https://codex.wordpress.org/Right_to_Left_Language_Support' ),
 			__( 'Read more in the WordPress Codex', 'controlled-chaos-plugin' )
