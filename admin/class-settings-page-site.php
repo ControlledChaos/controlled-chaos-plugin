@@ -60,6 +60,9 @@ class Settings_Page_Site {
 		// Add the page to the admin menu.
 		add_action( 'admin_menu', [ $this, 'settings_page' ] );
 
+		// Add ACF documentation link to admin menu.
+		add_action( 'admin_menu', [ $this, 'acf_docs_link' ], 101 );
+
 	}
 
 	/**
@@ -211,7 +214,7 @@ class Settings_Page_Site {
 			 * with an icon and no parent, just under Dahboard (3).
 			 */
 			if ( $position ) {
-				add_menu_page(
+				$this->page_help_section = add_menu_page(
 					$label,
 					$label,
 					'manage_options',
@@ -224,12 +227,15 @@ class Settings_Page_Site {
 				// Remove the default settings links at the bottom of the admin menu.
 				remove_menu_page( 'options-general.php' );
 
+				// Add content to the Help tab.
+				add_action( 'load-' . $this->page_help_section, [ $this, 'page_help_section' ] );
+
 			/**
 			 * If the position is default then create a page without an icon and
 			 * no parent as a submenu page under Dahboard (index.php).
 			 */
 			} else {
-				add_submenu_page(
+				$this->page_help_section = add_submenu_page(
 					'index.php',
 					$label,
 					$label,
@@ -237,6 +243,9 @@ class Settings_Page_Site {
 					CCP_ADMIN_SLUG . '-settings',
 					[ $this, 'page_output' ]
 				);
+
+				// Add content to the Help tab.
+				add_action( 'load-' . $this->page_help_section, [ $this, 'page_help_section' ] );
 			}
 
 			// Redirect to new settings page URL when menu position is changed.
@@ -268,6 +277,66 @@ class Settings_Page_Site {
 	}
 
 	/**
+     * Output for the Site Settings page contextual help tab.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+     */
+    public function page_help_section() {
+
+		// Add to the plugin settings pages.
+		$screen = get_current_screen();
+		if ( $screen->id != $this->page_help_section ) {
+			return;
+		}
+
+		// Inline Scripts.
+		$screen->add_help_tab( [
+			'id'       => 'inline_scripts',
+			'title'    => __( 'ACF Notice', 'controlled-chaos-plugin' ),
+			'content'  => null,
+			'callback' => [ $this, 'help_acf_settings_notice' ]
+		] );
+
+		// Add a help sidebar.
+		$screen->set_help_sidebar(
+			$this->page_help_section_sidebar()
+		);
+
+	}
+
+	/**
+     * Get ACF Notice help content.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+     */
+	public function help_acf_settings_notice() {
+
+		include_once CCP_PATH . 'admin/partials/help/help-acf-notice.php';
+
+	}
+
+	/**
+     * Get Site Settings page contextual tab sidebar content.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+     */
+    public function page_help_section_sidebar() {
+
+		$html = '<ul>
+			<li><a href="https://www.advancedcustomfields.com/resources/" target="_blank" style="text-decoration: none;">' . __( 'ACF Documentation', 'controlled-chaos-plugin' ) . '</a></li>
+		</ul>';
+
+		return $html;
+
+	}
+
+	/**
 	 * Site Settings page output.
 	 *
 	 * @since  1.0.0
@@ -278,6 +347,28 @@ class Settings_Page_Site {
 
 		// Get the partial that contains the settings page HTML.
 		require CCP_PATH . 'admin/partials/settings-page-site.php';
+
+	}
+
+	/**
+	 * Add ACF documentation link to admin menu.
+	 *
+	 * Checks for the Advanced Custom Fields plugin,
+	 * both the Pro and free editions.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+	public function acf_docs_link() {
+
+		if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
+
+			global $submenu;
+			$url = 'https://www.advancedcustomfields.com/resources/';
+			$submenu['edit.php?post_type=acf-field-group'][] = [ __( 'Documentation', 'controlled-chaos-plugin' ), 'manage_options', $url ];
+
+		}
 
 	}
 
