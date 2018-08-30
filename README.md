@@ -117,4 +117,4 @@ Included are a few tools to help in the early stages of site development, or tha
 
 The settings pages are equipped with filters for addon plugins to integrate easily.
 
-The [Controlled Chaos Addon](https://github.com/ControlledChaos/controlled-chaos-addon) plugin is built as a starter plugin for extending this plugin. This may be especially useful for multisite installations where this plugin established base functionality accross the network and the addon plugins supply functionality specific to the member sites.
+The [Controlled Chaos Addon](https://github.com/ControlledChaos/controlled-chaos-addon) plugin is built as a starter plugin for extending this plugin. This may be especially useful for multisite installations where this plugin establishes base functionality accross the network and the addon plugins supply functionality specific to the member sites.
