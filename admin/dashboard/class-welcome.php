@@ -179,6 +179,25 @@ class Welcome {
 
 	}
 
+	/**
+	 * Enqueue he welcome panel stylesheet.
+     *
+     * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+	public function styles() {
+
+        // Get the screen ID to target the Dashboard.
+        $screen = get_current_screen();
+
+        // Enqueue only on the Dashboard screen.
+        if ( $screen->id == 'dashboard' ) {
+            wp_enqueue_style( CCP_ADMIN_SLUG . '-welcome', CCP_URL .  'assets/css/welcome.min.css', [], null, 'screen' );
+        }
+
+	}
+
 }
 
 /**

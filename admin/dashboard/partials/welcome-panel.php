@@ -49,6 +49,7 @@ $about_desc = apply_filters( 'ccp_welcome_about', __( 'Put your welcome message 
 	<p class="about-description"><?php echo $about_desc; ?></p>
 	<?php echo $subheading; ?>
 	<p><?php _e( 'Use this to provide handy links to manage content, informational widgets, or maybe an instructional video.' ); ?></p>
+	<p><?php _e( 'No CSS has been applied to this welcome panel. Add styles as necessary for your project.' ); ?></p>
 
 	<div class="welcome-panel-column-container">
 		<?php do_action( 'ccp_welcome_panel_column_container_before' ); ?>
