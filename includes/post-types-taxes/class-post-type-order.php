@@ -30,7 +30,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 
 // If Advanced Custom Fields is active.
-if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
+if ( ccp_acf_options() ) {
     $sort_order = get_field( 'ccp_use_custom_sort_order', 'option' );
 
 // If Advanced Custom Fields is not active.

@@ -93,7 +93,7 @@ class Settings_Page_Site {
     public function settings_page() {
 
 		// If the Advanced Custom Fields Pro plugin is active.
-		if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
+		if ( ccp_acf_options() ) {
 
 			// Use the site name in the title tag but apply a filter for customization.
 			$title      = apply_filters( 'site_settings_page_name', get_bloginfo( 'name' ) );
@@ -362,7 +362,7 @@ class Settings_Page_Site {
 	 */
 	public function acf_docs_link() {
 
-		if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
+		if ( ccp_acf_options() ) {
 
 			global $submenu;
 			$url = 'https://www.advancedcustomfields.com/resources/';

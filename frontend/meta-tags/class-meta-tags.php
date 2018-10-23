@@ -99,7 +99,7 @@ class Meta_Tags {
 	 */
 	public function meta_tags() {
 
-		if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
+		if ( ccp_acf_options() ) {
 			$disable_tags = get_field( 'ccp_meta_disable_tags', 'option' );
 		} else {
 			$disable_tags = get_option( 'ccp_meta_disable' );

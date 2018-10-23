@@ -94,7 +94,7 @@ class Meta_Description {
 		 * 'Site Settings' page the we'll use that, otherwise we'll look for a
 		 * description on the standard 'Site Settings' page.
 		 */
-		if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
+		if ( ccp_acf_options() ) {
 
 			/**
 			 * Check for content in the ACF blog description field.

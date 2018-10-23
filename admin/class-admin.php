@@ -123,7 +123,7 @@ class Admin {
 		}
 
 		// Include custom fields for Advanced Custom Fields Pro, if active.
-		if ( class_exists( 'acf_pro' ) && ! get_option( 'ccp_acf_activate_settings_page' ) ) {
+		if ( ccp_acf() ) {
 			include_once CCP_PATH . 'admin/class-settings-fields-site-acf.php';
 		}
 
@@ -140,7 +140,7 @@ class Admin {
 		require_once CCP_PATH . 'admin/class-admin-pages.php';
 
 		// Import custom fields for editing, if ACF Pro is active.
-		if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
+		if ( ccp_acf_options() ) {
 			include_once CCP_PATH . 'admin/class-fields-import.php';
 		}
 
@@ -269,7 +269,7 @@ class Admin {
 		 *
 		 * @since  1.0.0
 		 */
-		if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
+		if ( ccp_acf_options() ) {
 
 			/**
 			 * Get the fields registered by this plugin. An additional parameter
@@ -392,7 +392,7 @@ class Admin {
 		 *
 		 * @since 1.0.0
 		 */
-		if ( class_exists( 'acf' ) ) {
+		if ( ccp_acf() ) {
 			wp_enqueue_style( CCP_ADMIN_SLUG . '-acf', CCP_URL . 'admin/assets/css/acf.css', [], CCP_VERSION, 'all' );
 		}
 

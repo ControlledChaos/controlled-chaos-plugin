@@ -180,7 +180,7 @@ class Settings_Fields_Scripts {
 		);
 
 		// Site Settings section.
-		if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
+		if ( ccp_acf_options() ) {
 
 			add_settings_section( 'ccp-registered-fields-activate', __( 'Registered Fields Activation', 'controlled-chaos-plugin' ), [ $this, 'registered_fields_activate' ], 'ccp-registered-fields-activate' );
 
@@ -467,7 +467,7 @@ class Settings_Fields_Scripts {
 	 */
 	public function registered_fields_activate() {
 
-		if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
+		if ( ccp_acf_options() ) {
 
 			echo sprintf( '<p>%1s</p>', esc_html( 'The Controlled Chaos plugin registers custom fields for Advanced Custom Fields Pro that can be imported for editing. These built-in field goups must be deactivated for the imported field groups to take effect.', 'controlled-chaos-plugin' ) );
 
@@ -484,7 +484,7 @@ class Settings_Fields_Scripts {
 	 */
 	public function registered_fields_page_callback( $args ) {
 
-		if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
+		if ( ccp_acf_options() ) {
 
 			$html = '<p><input type="checkbox" id="ccp_acf_activate_settings_page" name="ccp_acf_activate_settings_page" value="1" ' . checked( 1, get_option( 'ccp_acf_activate_settings_page' ), false ) . '/>';
 

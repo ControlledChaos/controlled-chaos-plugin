@@ -64,7 +64,7 @@ class Welcome {
 		 */
 
 		// If ACF is active, get the field from the ACF options page.
-		if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
+		if ( ccp_acf_options() ) {
 			$dismiss = get_field( 'ccp_remove_welcome_dismiss', 'option' );
 
 		// If ACF is not active, get the field from the WordPress options page.
@@ -81,7 +81,7 @@ class Welcome {
 		 */
 
 		// If ACF is active, get the field from the ACF options page.
-		if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
+		if ( ccp_acf_options() ) {
 			$welcome = get_field( 'ccp_custom_welcome', 'option' );
 		} else {
 			$welcome = get_option( 'ccp_custom_welcome' );

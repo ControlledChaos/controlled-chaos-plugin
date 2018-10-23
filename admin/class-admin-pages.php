@@ -111,7 +111,7 @@ class Admin_Pages {
          */
 
         // If ACF is active, get the field from the ACF options page.
-        if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
+        if ( ccp_acf_options() ) {
 
             // Get the field.
             $acf_position = get_field( 'ccp_site_plugin_link_position', 'option' );
@@ -140,7 +140,7 @@ class Admin_Pages {
          */
 
         // If ACF is active, get the field from the ACF options page.
-        if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
+        if ( ccp_acf_options() ) {
 
             // Get the field.
             $link_label = get_field( 'ccp_site_plugin_link_label', 'option' );
@@ -171,7 +171,7 @@ class Admin_Pages {
          */
 
         // If ACF is active, get the field from the ACF options page.
-        if ( class_exists( 'acf_pro' ) || ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
+        if ( ccp_acf_options() ) {
 
             // Get the field.
             $link_icon  = get_field( 'ccp_site_plugin_link_icon', 'option' );
