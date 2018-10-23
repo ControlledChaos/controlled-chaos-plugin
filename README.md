@@ -3,6 +3,7 @@
 A feature-packed WordPress starter plugin for building custom-tailored websites.
 
 ![Gutenberg Ready](https://img.shields.io/badge/Gutenberg-ready-blue.svg)
+![ACF Pro Ready](https://img.shields.io/badge/ACF%20Pro-ready-00e4bc.svg)
 ![WordPress tested on verion 4.9.8](https://img.shields.io/badge/WordPress-tested%204.9.8-green.svg)
 ![PHP tested on version 7.2](https://img.shields.io/badge/PHP-tested%207.2-brightgreen.svg)
 
