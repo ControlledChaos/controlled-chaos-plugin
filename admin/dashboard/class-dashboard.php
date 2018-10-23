@@ -396,7 +396,7 @@ class Dashboard {
 
         // Enqueue only on the Dashboard screen.
         if ( $screen->id == 'dashboard' ) {
-            wp_enqueue_style( CCP_ADMIN_SLUG . '-dashboard', CCP_URL .  'assets/css/dashboard.min.css', [], null, 'screen' );
+            wp_enqueue_style( CCP_ADMIN_SLUG . '-dashboard', CCP_URL .  'admin/dashboard/assets/css/dashboard.min.css', [], null, 'screen' );
         }
 
 	}

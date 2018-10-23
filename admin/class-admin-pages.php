@@ -358,6 +358,7 @@ class Admin_Pages {
 
         // Return the new placeholder.
         return $title;
+
     }
 
     /**
