@@ -481,7 +481,7 @@ function ccp_acf_pro() {
  */
 function ccp_acf_options() {
 
-	if ( class_exists( 'acf' ) ) {
+	if ( class_exists( 'acf_pro' ) ) {
 		return true;
 	} elseif ( ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
 		return true;
