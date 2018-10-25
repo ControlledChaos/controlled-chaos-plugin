@@ -1,5 +1,5 @@
 *.log
-/*.yml
+*.yml
 wp-config.php
 wp-content/advanced-cache.php
 wp-content/backup-db/
@@ -18,5 +18,3 @@ wp-content/plugins/hello.php
 /sitemap.xml
 /sitemap.xml.gz
 
-git rm -r --cached .
-git add .
