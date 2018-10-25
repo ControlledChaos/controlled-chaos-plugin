@@ -20,6 +20,7 @@ body {
 	#project_title,
 	#project_tagline {
 		font-weight: normal;
+		text-shadow: none;
 	}
 
 	#project_tagline {
@@ -45,6 +46,10 @@ body {
 
 .inner {
 	max-width: 768px;
+}
+
+#main_content_wrap {
+	border: none;
 }
 
 #main_content {
@@ -75,5 +80,5 @@ body {
 }
 
 #footer_wrap {
-	background-color: #687530;
+	background: #687530;
 }
