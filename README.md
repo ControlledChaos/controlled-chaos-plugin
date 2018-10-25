@@ -40,6 +40,10 @@ Sample editor blocks are included in preparation for WordPress 5.0 with it's new
 
 For a nicer user experience, this plugin is recommended for use with [Advanced Custom Fields PRO](https://www.advancedcustomfields.com/pro/) or the [free version of ACF](https://wordpress.org/plugins/advanced-custom-fields/) plus the [Options Page](https://www.advancedcustomfields.com/add-ons/options-page/) addon. However, most of the ACF features are duplicated, with identical field database names, using the [WordPress Settings API](https://developer.wordpress.org/plugins/settings/settings-api/) to reduce third-party dependencies.
 
+### Gutenberg + ACF
+
+I will soon be testing the new Advanced Custom Fields method for registering Gutenberg blocks, and then build the directories in the plugin for adding your own custom blocks.
+
 ## Functionality
 
 So, what the heck does this thing do? Why might it be preferable to other plugin boilerplates?
