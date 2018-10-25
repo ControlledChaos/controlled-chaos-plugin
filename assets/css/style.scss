@@ -88,9 +88,13 @@ p, ul, li {
 
 	a {
 		color: #687530;
-		text-decoration: underline;
 		font-weight: bold;
 		font-weight: 600;
+
+		&:hover,
+		&:focus {
+			text-decoration: underline;
+		}
 	}
 
 	p img[src*="githubusercontent.com"] {
