@@ -42,7 +42,7 @@ For a nicer user experience, this plugin is recommended for use with [Advanced C
 
 ### Gutenberg + ACF
 
-I will soon be testing the new Advanced Custom Fields method for registering Gutenberg blocks, and then build the directories in the plugin for adding your own custom blocks.
+@todo I will soon be testing the new Advanced Custom Fields method for registering Gutenberg blocks, and then build the directories in the plugin for adding your own custom blocks.
 
 ## Functionality
 
