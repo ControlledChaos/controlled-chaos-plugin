@@ -32,7 +32,11 @@ Not every feature included with this plugin will be needed for my projects or yo
 * The short array syntax ( `[]` rather than `array()` ) requires PHP 5.4+
 * Run a modern setup and you'll be fine.
 
+### Gutenberg Editor
+
 Sample editor blocks are included in preparation for WordPress 5.0 with it's new user interface. Until that release, the [Gutenberg plugin](https://wordpress.org/plugins/gutenberg/) is required to use the blocks.
+
+### Advanced Custom Fields
 
 For a nicer user experience, this plugin is recommended for use with [Advanced Custom Fields PRO](https://www.advancedcustomfields.com/pro/) or the [free version of ACF](https://wordpress.org/plugins/advanced-custom-fields/) plus the [Options Page](https://www.advancedcustomfields.com/add-ons/options-page/) addon. However, most of the ACF features are duplicated, with identical field database names, using the [WordPress Settings API](https://developer.wordpress.org/plugins/settings/settings-api/) to reduce third-party dependencies.
 
