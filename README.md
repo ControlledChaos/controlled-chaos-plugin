@@ -2,10 +2,10 @@
 
 A feature-packed WordPress starter plugin for building custom-tailored websites.
 
-![Gutenberg Ready](https://img.shields.io/badge/Gutenberg-ready-00a0d2.svg)
-![ACF Pro Ready](https://img.shields.io/badge/ACF%20Pro-ready-00e4bc.svg)
 ![WordPress tested on verion 4.9.8](https://img.shields.io/badge/WordPress-tested%204.9.8-0073aa.svg)
 ![PHP tested on version 7.2](https://img.shields.io/badge/PHP-tested%207.2-8892bf.svg)
+![Gutenberg Ready](https://img.shields.io/badge/Gutenberg-ready-00a0d2.svg)
+![ACF Pro Ready](https://img.shields.io/badge/ACF%20Pro-ready-00e4bc.svg)
 
 ![](https://raw.githubusercontent.com/ControlledChaos/controlled-chaos-plugin/master/controlled-chaos-github-banner.jpg)
 
