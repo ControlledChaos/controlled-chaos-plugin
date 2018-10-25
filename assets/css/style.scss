@@ -3,6 +3,10 @@
 
 @import "{{ site.theme }}";
 
+#project_title {
+	font-weight: normal;
+}
+
 .inner {
 	max-width: 768px;
 }
