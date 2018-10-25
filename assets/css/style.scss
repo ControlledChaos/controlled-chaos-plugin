@@ -3,8 +3,24 @@
 
 @import "{{ site.theme }}";
 
-#project_title {
-	font-weight: normal;
+#header_wrap {
+	padding-bottom: 30px;
+	background: #403b42;
+
+	#project_title,
+	#project_tagline {
+		font-weight: normal;
+		display: none;
+	}
+
+	.zip_download_link,
+	.tar_download_link {
+		background-image: url(sprite_download.png);
+	}
+}
+
+#downloads {
+	bottom: -60px;
 }
 
 .inner {
@@ -24,10 +40,6 @@
 		font-weight: bold;
 		font-weight: 600;
 	}
-}
-
-#header_wrap {
-	background: #403b42;
 }
 
 #footer_wrap,
