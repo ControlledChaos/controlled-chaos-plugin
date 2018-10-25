@@ -3,6 +3,12 @@
 
 @import "{{ site.theme }}";
 
+@import url("https://use.typekit.net/zry0ihc.css");
+
+body {
+	font-family: proxima-nova, sans-serif;
+}
+
 #header_wrap {
 	padding-bottom: 30px;
 	background: #403b42;
