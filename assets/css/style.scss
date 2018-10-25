@@ -17,6 +17,10 @@ body {
 	padding-bottom: 30px;
 	background: #403b42;
 
+	.inner {
+		padding: 50px 10px 0px 10px;
+	}
+
 	#project_title,
 	#project_tagline {
 		font-weight: normal;
