@@ -12,10 +12,6 @@
 		font-weight: normal;
 	}
 
-	#project_tagline {
-		display: none;
-	}
-
 	.zip_download_link,
 	.tar_download_link {
 		background-image: url(sprite_download.png);
@@ -30,23 +26,27 @@
 	max-width: 768px;
 }
 
-#main_content_wrap .inner {
+#main_content {
+    padding-top: 80px;
 
-	h1, h2, h3, h4, h5, h6, p, ul {
-		font-weight: normal;
-		color: #403b42;
-	}
+	.inner {
 
-	h1:first-of-type,
-	p:first-of-type {
-		display: none;
-	}
+		h1, h2, h3, h4, h5, h6, p, ul {
+			font-weight: normal;
+			color: #403b42;
+		}
 
-	a {
-		color: #687530;
-		text-decoration: underline;
-		font-weight: bold;
-		font-weight: 600;
+		h1:first-of-type,
+		p:first-of-type {
+			display: none;
+		}
+
+		a {
+			color: #687530;
+			text-decoration: underline;
+			font-weight: bold;
+			font-weight: 600;
+		}
 	}
 }
 
