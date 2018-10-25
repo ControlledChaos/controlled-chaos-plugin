@@ -22,6 +22,12 @@ body {
 		font-weight: normal;
 	}
 
+	#forkme_banner {
+		background-color: #687530;
+		font-size: 16px;
+		font-weight: 500;
+	}
+
 	.zip_download_link,
 	.tar_download_link {
 		background-image: url(sprite_download.png);
@@ -63,7 +69,6 @@ body {
 	}
 }
 
-#footer_wrap,
-#forkme_banner {
+#footer_wrap {
 	background-color: #687530;
 }
