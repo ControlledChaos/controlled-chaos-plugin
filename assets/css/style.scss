@@ -29,24 +29,21 @@
 #main_content {
     padding-top: 80px;
 
-	.inner {
+	h1, h2, h3, h4, h5, h6, p, ul {
+		font-weight: normal;
+		color: #403b42;
+	}
 
-		h1, h2, h3, h4, h5, h6, p, ul {
-			font-weight: normal;
-			color: #403b42;
-		}
+	h1:first-of-type,
+	p:first-of-type {
+		display: none;
+	}
 
-		h1:first-of-type,
-		p:first-of-type {
-			display: none;
-		}
-
-		a {
-			color: #687530;
-			text-decoration: underline;
-			font-weight: bold;
-			font-weight: 600;
-		}
+	a {
+		color: #687530;
+		text-decoration: underline;
+		font-weight: bold;
+		font-weight: 600;
 	}
 }
 
