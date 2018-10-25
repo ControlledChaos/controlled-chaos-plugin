@@ -15,6 +15,10 @@ body {
 	font-size: 17px;
 }
 
+h1, h2, h3, h4, h5, h6, p, ul {
+	margin: 1em 0 0 0;
+}
+
 p, ul, li {
 	letter-spacing: normal;
 }
@@ -67,7 +71,6 @@ p, ul, li {
     padding-top: 80px;
 
 	h1, h2, h3, h4, h5, h6, p, ul {
-		margin: 1em 0 0 0;
 		font-weight: normal;
 		font-weight: 300;
 		color: #403b42;
