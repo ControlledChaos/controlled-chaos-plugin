@@ -5,7 +5,10 @@
 
 .inner {
 	max-width: 768px;
+}
 
+#main_content_wrap .inner {
+	
 	h1, h2, h3, h4, h5, h6, p, ul {
 		font-weight: normal;
 		color: #403b42;
@@ -13,6 +16,9 @@
 
 	a {
 		color: #687530;
+		text-decoration: underline;
+		font-weight: bold;
+		font-weight: 600;
 	}
 }
 
