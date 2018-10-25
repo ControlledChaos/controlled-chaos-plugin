@@ -37,8 +37,9 @@
 		color: #403b42;
 	}
 
+	h1:first-of-type,
 	p:first-of-type {
-		font-size: 1.325em;
+		display: none;
 	}
 
 	a {
