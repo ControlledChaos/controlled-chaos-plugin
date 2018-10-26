@@ -40,6 +40,12 @@ p, ul, li {
 		text-shadow: none;
 	}
 
+	#project_title {
+		background-image: url(github-pages-logo-01.png);
+		background-repeat: no-repeat;
+		padding-left: 90px;
+	}
+
 	#project_tagline {
 		font-size: 18px;
 		letter-spacing: 0.0125em;
