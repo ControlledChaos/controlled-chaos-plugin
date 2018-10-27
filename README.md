@@ -17,7 +17,7 @@ This is a tool — a means to an end. It is not intended to be used as is, witho
 
 Howdy, folks. My name is Greg Sweet. I am sole proprietor, chief cook and bottle washer at [Controlled Chaos Design](http://ccdzine.com/).
 
-I built this plugin as a starter for client sites, including features that I use often, the code for which I repeatedly copied from my [gist library](https://gist.github.com/ControlledChaos). It is not intended to be a plug-and-play type of thing, although it can be used as such. This is more of a developer's tool. I have commented thouroughly on the code and documented the files to the best of my ability. I have learned by looking at the code of others so I have kept this in mind when writing the code for this plugin.
+I built this plugin as a starter for client sites, including features that I use often, the code for which I repeatedly copied from my [gist library](https://gist.github.com/ControlledChaos). It is not intended to be a plug-and-play type of thing, although it can be used as such. This is more of a developer's tool. I have commented thouroughly on the code and documented the files to the best of my ability. I have learned by looking at the code of others so I have kept this in mind when writing the code for [this plugin](https://controlledchaos.github.io/controlled-chaos-plugin/).
 
 ### Approach
 
