@@ -223,7 +223,9 @@ class Settings_Fields_Scripts {
 
 		$html = '<p><input type="checkbox" id="ccp_inline_jquery" name="ccp_inline_jquery" value="1" ' . checked( 1, $option, false ) . '/>';
 
-		$html .= '<label for="ccp_inline_jquery"> '  . $args[0] . '</label></p>';
+		$html .= '<label for="ccp_inline_jquery"> '  . $args[0] . '</label><br />';
+
+		$html .= '<small><em>This may break the functionality of plugins that put scripts in the head</em>.</small></p>';
 
 		echo $html;
 
