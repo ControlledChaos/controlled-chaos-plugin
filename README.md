@@ -41,6 +41,7 @@ Sample editor blocks are included in preparation for WordPress 5.0 with it's new
 For a nicer user experience, this plugin is recommended for use with [Advanced Custom Fields PRO](https://www.advancedcustomfields.com/pro/) or the [free version of ACF](https://wordpress.org/plugins/advanced-custom-fields/) plus the [Options Page](https://www.advancedcustomfields.com/add-ons/options-page/) addon. However, most of the ACF features are duplicated, with identical field database names, using the [WordPress Settings API](https://developer.wordpress.org/plugins/settings/settings-api/) to reduce third-party dependencies.
 
 Settings page with ACF activated...
+
 ![Custom welcome panel](https://raw.githubusercontent.com/ControlledChaos/controlled-chaos-plugin/master/assets/images/ccp-acf-settings-01.jpg)
 
 ### Gutenberg + ACF
@@ -99,7 +100,8 @@ Admin interface options include:
 * Add custom post types to the At a Glance widget
 * Custom admin footer message
 
-Dashboard with custom welcome panel and sample dashboard widget.
+Dashboard with custom welcome panel and sample dashboard widget...
+
 ![Custom welcome panel](https://raw.githubusercontent.com/ControlledChaos/controlled-chaos-plugin/master/assets/images/ccp-custom-welcome.jpg)
 
 ### Drag & Drop Post Type Order
