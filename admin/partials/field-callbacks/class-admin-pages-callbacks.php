@@ -65,6 +65,26 @@ class Admin_Pages_Callbacks {
 	 * @param  array $args Extra arguments passed into the callback function.
 	 * @return string
 	 */
+	public function admin_header( $args ) {
+
+		$option = get_option( 'ccp_use_admin_header' );
+
+		$html = '<p><input type="checkbox" id="ccp_use_admin_header" name="ccp_use_admin_header" value="1" ' . checked( 1, $option, false ) . '/>';
+
+		$html .= '<label for="ccp_use_admin_header"> '  . $args[0] . '</label></p>';
+
+		echo $html;
+
+	}
+
+	/**
+	 * Use custom drag & drop sort order.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @param  array $args Extra arguments passed into the callback function.
+	 * @return string
+	 */
 	public function custom_sort_order( $args ) {
 
 		$option = get_option( 'ccp_use_custom_sort_order' );

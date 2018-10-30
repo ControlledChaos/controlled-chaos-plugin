@@ -95,8 +95,9 @@ Admin interface options include:
 
 ### Enchance the Admin
 
+* Add a header to admin pages, including site title, tagline, and a nav menu
 * Add three admin bar menus
-* Custom welcome panel with three widget areas and loaded with hooks for adding content.
+* Custom welcome panel with three widget areas and loaded with hooks for adding content
 * Add custom post types to the At a Glance widget
 * Custom admin footer message
 

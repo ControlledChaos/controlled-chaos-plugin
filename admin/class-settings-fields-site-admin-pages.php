@@ -105,6 +105,21 @@ class Settings_Fields_Site_Admin_Pages {
 			'ccp-site-admin-pages'
 		);
 
+		// Use the admin header.
+		add_settings_field(
+			'ccp_use_admin_header',
+			__( 'Admin Header', 'controlled-chaos-plugin' ),
+			[ Partials\Field_Callbacks\Admin_Pages_Callbacks::instance(), 'admin_header' ],
+			'ccp-site-admin-pages',
+			'ccp-site-admin-pages',
+			[ esc_html__( 'Add the site title, site tagline, and a nav menu to the top of admin pages.', 'controlled-chaos-plugin' ) ]
+		);
+
+		register_setting(
+			'ccp-site-admin-pages',
+			'ccp_use_admin_header'
+		);
+
 		// Use custom sort order.
 		add_settings_field(
 			'ccp_use_custom_sort_order',

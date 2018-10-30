@@ -60,6 +60,27 @@ class Admin_Pages {
         // Add an about page for the plugin.
         add_action( 'admin_menu', [ $this, 'about_plugin' ] );
 
+        // Add admin header.
+        if ( ccp_acf_options() ) {
+
+            // If the ACF free plus the Options Page addon or Pro plugin is active.
+            $admin_header = get_field( 'ccp_use_admin_header', 'option' );
+        } else {
+
+            // Otherwise look for the WP API setting.
+            $admin_header = get_option( 'ccp_use_admin_header' );
+        }
+
+        // If admin header option s selected.
+		if ( $admin_header ) {
+
+            // Register admin menu.
+            add_action( 'after_setup_theme', [ $this, 'admin_menus' ] );
+
+            // Include the admin header template.
+            add_action( 'in_admin_header', [ $this, 'admin_header' ] );
+        }
+
         // Replace default post title placeholders.
         add_filter( 'enter_title_here', [ $this, 'title_placeholders' ] );
 
@@ -316,7 +337,44 @@ class Admin_Pages {
 
 		return $html;
 
+    }
+
+    /**
+	 * Register admin menu if the admin header option is selected.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+	public function admin_menus() {
+
+		register_nav_menus( [
+			'admin-header' => __( 'Admin Header Menu', 'controlled-chaos-plugin' )
+		] );
+
 	}
+
+    /**
+	 * Adds a header to admin pages if the option is selected.
+     *
+     * First looks in the active theme for a template:
+     * template-parts/admin/admin-header.php
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return object Returns the HTML for the admin header.
+	 */
+	public function admin_header() {
+
+        $admin_header = locate_template( 'template-parts/admin/admin-header.php' );
+
+		if ( ! empty( $admin_header ) ) {
+			get_template_part( 'template-parts/admin/admin-header' );
+		} else {
+			include_once CCP_PATH . 'admin/partials/admin-header.php';
+		}
+
+    }
 
     /**
      * Replace default post title placeholders.
