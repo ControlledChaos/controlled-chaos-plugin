@@ -3,13 +3,13 @@
  * Admin header template.
  *
  * @package    Controlled_Chaos_Plugin
- * @subpackage Admin
+ * @subpackage Admin\Partials
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Admin;
+namespace CC_Plugin\Admin\Partials;
 
 // Restrict direct access
 if ( ! defined( 'ABSPATH' ) ) exit;

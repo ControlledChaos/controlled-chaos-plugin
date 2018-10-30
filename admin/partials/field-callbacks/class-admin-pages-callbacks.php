@@ -58,7 +58,7 @@ class Admin_Pages_Callbacks {
 	public function __construct() {}
 
 	/**
-	 * Use custom drag & drop sort order.
+	 * Use the admin header.
 	 *
 	 * @since  1.0.0
 	 * @access public
