@@ -31,11 +31,15 @@ if ( ! empty( $description ) ) {
 } else {
     $description = __( 'Add a tagline in Settings > General or change this in', 'controlled-chaos-plugin' ) . ' <code>controlled-chaos-plugin/admin/partials/admin-header.php</code>';
 } ?>
-<header class="cct-admin-header">
-    <div class="admin-site-title-description">
+<?php do_action( 'ccp_before_admin_header' ); ?>
+<header class="ccp-admin-header">
+    <?php do_action( 'ccp_before_admin_site_branding' ); ?>
+    <div class="admin-site-branding">
         <p class="admin-site-title" itemprop="name"><a href="<?php echo admin_url(); ?>"><?php echo $title; ?></a></p>
         <p class="admin-site-description"><?php echo $description; ?></p>
     </div>
+    <?php do_action( 'ccp_after_admin_site_branding' ); ?>
+    <?php do_action( 'ccp_before_admin_navigation' ); ?>
     <nav class="admin-navigation">
         <?php wp_nav_menu(
             array(
@@ -49,4 +53,6 @@ if ( ! empty( $description ) ) {
             )
         ); ?>
     </nav>
+    <?php do_action( 'ccp_after_admin_navigation' ); ?>
 </header>
+<?php do_action( 'ccp_after_admin_header' ); ?>
