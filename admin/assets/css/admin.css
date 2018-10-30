@@ -2,6 +2,20 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
+
+/**
+ * Admin header.
+ *
+ * Minimal styles applied to keep margins breaking admin menu layout.
+ */
+.ccp-admin-header {
+	padding-top: 2em;
+}
+
+.admin-site-title {
+	margin-top: 0;
+}
+
 /**
   * Plugins screens.
   *
