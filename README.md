@@ -11,7 +11,7 @@ A feature-packed WordPress starter plugin for building custom-tailored websites.
 
 ## Plugin Overview
 
-This is a tool — a means to an end. It is not intended to be used as is, without further development, however it can be used as such.
+Controlled Chaos Plugin is a tool — a means to an end. It is not intended to be used as is, without further development, however it can be used as such. I use it to build site-specific plugins for clients.
 
 ### Introduction
 
