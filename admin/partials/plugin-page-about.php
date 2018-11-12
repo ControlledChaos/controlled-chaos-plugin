@@ -104,8 +104,6 @@ $page_tabs = apply_filters( 'ccp_tabs_page_about', $tabs );
 	<?php echo sprintf( '<h1 class="wp-heading-inline">%1s %2s</h1>', get_bloginfo( 'name' ), esc_html__( 'Plugin', 'controlled-chaos-plugin' ) ); ?>
 	<!-- Page description -->
     <p class="description"><?php esc_html_e( 'A feature-packed WordPress starter plugin for building custom-tailored websites.', 'controlled-chaos-plugin' ); ?></p>
-	<!-- Ornamental divider -->
-	<hr class="wp-header-end">
 	<!-- Begin jQuery tabbed content -->
 	<div class="backend-tabbed-content">
 		<ul>

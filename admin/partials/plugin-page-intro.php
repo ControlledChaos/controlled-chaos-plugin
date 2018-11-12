@@ -24,6 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
 <h2><?php _e( 'Plugin Overview', 'controlled-chaos-plugin' ); ?></h2>
 
 <p><?php _e( 'This is a tool — a means to an end. But it can be used as is without further development.', 'controlled-chaos-plugin' ); ?></p>
+<p><?php esc_html_e( 'This page is provided for reference and as a framework for building your own informational page. If you do not use this page then it is recommended that you delete it and all associated files.', 'controlled-chaos-plugin' ); ?></p>
 
 <!-- Section heading -->
 <h3><?php _e( 'Introduction', 'controlled-chaos-plugin' ); ?></h3>
