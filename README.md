@@ -25,6 +25,10 @@ Although this plugin comes with my business name incorporated into it, I am not 
 
 Not every feature included with this plugin will be needed for my projects or yours. And one big reason for writing a site-specific plugin is to include only what the site needs and eliminate the overhead of plugins and themes that offer things that you don't need. So why have I packed so much into this plugin? Well, I find it to be much quicker and easier to remove unnecessary code that it is to write, or even copy & paste, new code into a project. And being that you will rename this plugin and that it will not update to overwrite your changes, modifications can be made ad libidum.
 
+### Requests
+
+If you would like to request development of a custom version of this plugin for your site, or to use as your own starter plugin, then contact Greg Sweet at [greg@ccdzine.com](mailto:greg@ccdzine.com).
+
 ## Compatibility
 
 * This plugin was written in a WordPress 4.9+ environment with no concern for backwards compatitbility.
