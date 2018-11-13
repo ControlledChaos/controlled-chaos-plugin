@@ -335,7 +335,7 @@ class Dashboard {
      */
 	public function help_welcome_panel() {
 
-        include_once CCP_PATH . 'partials/help/help-welcome-panel.php';
+        include_once CCP_PATH . 'admin/dashboard/partials/help/help-welcome-panel.php';
 
     }
 
@@ -346,7 +346,7 @@ class Dashboard {
      */
 	public function help_dashboard_widgets() {
 
-        include_once CCP_PATH . 'partials/help/help-dashboard-widgets.php';
+        include_once CCP_PATH . 'admin/dashboard/partials/help/help-dashboard-widgets.php';
 
     }
 
