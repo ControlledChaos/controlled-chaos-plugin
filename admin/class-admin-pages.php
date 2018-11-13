@@ -79,6 +79,9 @@ class Admin_Pages {
 
             // Include the admin header template.
             add_action( 'in_admin_header', [ $this, 'admin_header' ] );
+
+            // Include the admin header template.
+            add_action( 'admin_head', [ $this, 'admin_header_layout' ] );
         }
 
         // Replace default post title placeholders.
@@ -373,6 +376,53 @@ class Admin_Pages {
 		} else {
 			include_once CCP_PATH . 'admin/partials/admin-header.php';
 		}
+
+    }
+
+    /**
+	 * Add layout CSS if admin header is used.
+     *
+     * Repositions the screen options and help tabs to top
+     * of the page, above the header.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return object Returns the HTML for the admin header.
+	 */
+	public function admin_header_layout() {
+
+        // Begin the style block.
+        $style = '<style>';
+
+        // Make relative for putting screen options and help tabs at top.
+        $style .= '#wpcontent { position: relative }';
+
+        // Reset relative position.
+        $style .= '#wpbody { position: static }';
+
+        // Position screen meta content at top.
+        $style .= '#screen-meta { position: absolute; top: 0; left: 0; width: 100%; padding-top: 30px; z-index: 1000 }';
+
+        // Screen meta links position for RTL languages.
+        $style .= '.rtl #screen-meta { left: auto; right: 0; }';
+
+        // Position screen meta links at top, z-index above screen meta content.
+        $style .= '#screen-meta-links { position: absolute; top: 0; right: 0; z-index: 1001 }';
+
+        // Screen meta links position for RTL languages.
+        $style .= '.rtl #screen-meta-links { left: 0; right: auto; }';
+
+        // Add a top border to help because of top padding.
+        $style .= '#contextual-help-back { border-top: 1px solid #e1e1e1 }';
+
+        // End the style block.
+        $style .= '</style>';
+
+        // Apply a filter for custom admin themeing.
+        $style = apply_filters( 'ccp_admin_header_layout', $style );
+
+        // Render all styles.
+        echo $style;
 
     }
 
