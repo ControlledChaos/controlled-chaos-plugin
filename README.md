@@ -38,7 +38,7 @@ If you would like to request development of a custom version of this plugin for 
 
 ### Gutenberg Editor
 
-Sample editor blocks are included in preparation for WordPress 5.0 with it's new user interface. Until that release, the [Gutenberg plugin](https://wordpress.org/plugins/gutenberg/) is required to use the blocks.
+A sample editor block is included in preparation for WordPress 5.0 with it's new user interface for creating posts. This block doesn't really do anyhing, it is simply included to establish the editor block directory and class for further development. See below for Gutenberg + ACF.
 
 ### Advanced Custom Fields
 
