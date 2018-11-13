@@ -1,10 +1,20 @@
 /**
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
+ *
+ * @todo Nest this properly.
  */
 /**
  * Admin Header
  */
+.ccp-admin-header .admin-site-branding {
+  padding-top: 1.5em;
+}
+
+.ccp-admin-header .admin-site-branding .admin-site-title {
+  margin-top: 0;
+}
+
 .ccp-admin-header .admin-navigation .admin-navigation-list li {
   display: inline;
   margin-right: 0.75em;

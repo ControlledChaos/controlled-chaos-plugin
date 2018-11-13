@@ -12,7 +12,11 @@
 
     .admin-site-branding {
 
-        .admin-site-title {}
+		padding-top: 1.5em;
+
+        .admin-site-title {
+			margin-top: 0;
+		}
 
         .admin-site-description {}
     }
