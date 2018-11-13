@@ -4,31 +4,12 @@
  *
  * @todo Nest this properly.
  */
-
 /**
  * Admin Header
  */
-.ccp-admin-header {
-
-    .admin-site-branding {
-
-        .admin-site-title {}
-
-        .admin-site-description {}
-    }
-
-    .admin-navigation {
-
-        .admin-navigation-list {
-
-            li {
-                display: inline;
-                margin-right: 0.75em;
-
-                a {}
-            }
-        }
-    }
+.ccp-admin-header .admin-navigation .admin-navigation-list li {
+  display: inline;
+  margin-right: 0.75em;
 }
 
 /**
@@ -36,42 +17,33 @@
  *
  * For the installed plugins and the add new plugins screens.
  */
-
 /* This provides better distinction between active and inactive plugins. */
-.plugins {
-
-    tr.inactive *,
-    .plugins a.delete {
-        background: #f3f3f3;
-        color: #777777;
-    }
-
-    tr.inactive .activate a:hover {
-        color: #76a91d;
-    }
-
-    tr.active .deactivate a:hover,
-    tr.inactive .delete a:hover {
-        color: #aa0000;
-    }
-
-    a.delete:hover {
-        color: #aa0000 !important;
-    }
-
+.plugins tr.inactive *,
+.plugins .plugins a.delete {
+  background: #f3f3f3;
+  color: #777777;
 }
 
-.row-actions {
+.plugins tr.inactive .activate a:hover {
+  color: #76a91d;
+}
 
-    span.delete a {
-        background: #f3f3f3;
-        color: #777777;
-    }
+.plugins tr.active .deactivate a:hover,
+.plugins tr.inactive .delete a:hover {
+  color: #aa0000;
+}
 
-    span.delete a:hover {
-        color: #aa0000 !important;
-    }
+.plugins a.delete:hover {
+  color: #aa0000 !important;
+}
 
+.row-actions span.delete a {
+  background: #f3f3f3;
+  color: #777777;
+}
+
+.row-actions span.delete a:hover {
+  color: #aa0000 !important;
 }
 
 /**
@@ -79,25 +51,20 @@
  *
  * For the media library and media uploads screens.
  */
-
 /* Fix SVGs not showing correctly as featured images. */
 #postimagediv .inside .svg img {
-    width: 100%;
+  width: 100%;
 }
 
 /**
  * JQUERY TABS
  */
-.nav-tab-wrapper {
-    a {
-        .dashicons {
-            vertical-align: bottom;
-        }
-    }
+.nav-tab-wrapper a .dashicons {
+  vertical-align: bottom;
 }
 
 .backend-tabbed-content > div {
-    max-width: 1200px;
+  max-width: 1200px;
 }
 
 /**
@@ -105,59 +72,59 @@
  */
 .backend-tabbed-content.ui-widget-content,
 .backend-tabbed-content.ui-widget.ui-widget-content {
-	border: none;
-	background: inherit;
-	color: inherit;
+  border: none;
+  background: inherit;
+  color: inherit;
 }
 
 .backend-tabbed-content.ui-widget {
-	font-family: inherit;
+  font-family: inherit;
 }
 
 .nav-tab-wrapper a .dashicons {
-	vertical-align: text-top;
+  vertical-align: text-top;
 }
 
 .backend-tabbed-content > div {
-	max-width: 1200px;
+  max-width: 1200px;
 }
 
 .backend-tabbed-content .ui-widget-header {
-	border: none;
-	border-bottom: 1px solid #ddd;
-	background: inherit;
-	color: inherit;
-	font-weight: 700;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  background: inherit;
+  color: inherit;
+  font-weight: 700;
 }
 
 .backend-tabbed-content.ui-tabs {
-	/* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
-	position: relative;
-	padding: 0;
+  /* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
+  position: relative;
+  padding: 0;
 }
 
 .backend-tabbed-content.ui-tabs .ui-tabs-nav {
-	margin: 0;
-	padding: 0;
-	padding: 9px 0 0 .4em;
-	border-bottom: 1px solid #ccc;
+  margin: 0;
+  padding: 0;
+  padding: 9px 0 0 .4em;
+  border-bottom: 1px solid #ccc;
 }
 
 .backend-tabbed-content.ui-tabs .ui-tabs-nav h2 {
-	margin: 0;
-	padding: 0;
-	line-height: 1;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
 }
 
 .backend-tabbed-content.ui-tabs .ui-tabs-nav li {
-	display: inline-block;
-	list-style: none;
-	position: relative;
-	top: 1px;
-	margin: 0;
-	border-bottom-width: 0;
-	padding: 0;
-	white-space: nowrap;
+  display: inline-block;
+  list-style: none;
+  position: relative;
+  top: 1px;
+  margin: 0;
+  border-bottom-width: 0;
+  padding: 0;
+  white-space: nowrap;
 }
 
 .backend-tabbed-content .ui-button,
@@ -166,7 +133,7 @@
 .backend-tabbed-content .ui-widget-header .ui-state-default,
 html .backend-tabbed-content .ui-button.ui-state-disabled:active,
 html .backend-tabbed-content .ui-button.ui-state-disabled:hover {
-	border: none;
+  border: none;
 }
 
 .backend-tabbed-content .ui-button.ui-state-active:hover,
@@ -175,29 +142,29 @@ html .backend-tabbed-content .ui-button.ui-state-disabled:hover {
 .backend-tabbed-content .ui-widget-content .ui-state-active,
 .backend-tabbed-content .ui-widget-header .ui-state-active,
 .backend-tabbed-content a.ui-button:active {
-	border: none;
-	border-bottom-width: 1px;
-	background: inherit;
-	font-weight: 400;
-	color: inherit;
+  border: none;
+  border-bottom-width: 1px;
+  background: inherit;
+  font-weight: 400;
+  color: inherit;
 }
 
 .backend-tabbed-content.ui-tabs .ui-tabs-nav li a {
-	display: block;
-	border-radius: 3px 3px 0 0;
-	border: 1px solid #ccc;
-	border-bottom: none;
-	margin: 1px .2em 0 0;
-	padding: 5px 10px;
-	font-size: 14px;
-	line-height: 24px;
-	background: #e5e5e5;
-	color: #555;
-	text-decoration: none;
+  display: block;
+  border-radius: 3px 3px 0 0;
+  border: 1px solid #ccc;
+  border-bottom: none;
+  margin: 1px .2em 0 0;
+  padding: 5px 10px;
+  font-size: 14px;
+  line-height: 24px;
+  background: #e5e5e5;
+  color: #555;
+  text-decoration: none;
 }
 
 .backend-tabbed-content.ui-tabs .ui-tabs-nav li a .dashicons {
-	vertical-align: bottom;
+  vertical-align: bottom;
 }
 
 .backend-tabbed-content.ui-tabs .ui-tabs-nav li.ui-tabs-active a,
@@ -205,60 +172,59 @@ html .backend-tabbed-content .ui-button.ui-state-disabled:hover {
 .backend-tabbed-content.ui-tabs .ui-tabs-nav li.ui-tabs-active a:focus:active,
 .backend-tabbed-content.ui-tabs .ui-tabs-nav li.ui-tabs-active a:active,
 .backend-tabbed-content.ui-tabs .ui-tabs-nav li.ui-tabs-active a:hover {
-	border-bottom: 1px solid #f1f1f1;
-	background: #f1f1f1;
-	-webkit-box-shadow: none;
-	box-shadow: none;
-	color: #000;
+  border-bottom: 1px solid #f1f1f1;
+  background: #f1f1f1;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: #000;
 }
 
 .backend-tabbed-content.ui-tabs .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor,
 .backend-tabbed-content.ui-tabs .ui-tabs-nav li.ui-state-disabled .ui-tabs-anchor,
 .backend-tabbed-content.ui-tabs .ui-tabs-nav li.ui-tabs-loading .ui-tabs-anchor {
-	cursor: pointer;
+  cursor: pointer;
 }
 
-.backend-tabbed-content.ui-tabs .ui-tabs-nav~div {
-	clear: both;
+.backend-tabbed-content.ui-tabs .ui-tabs-nav ~ div {
+  clear: both;
 }
 
 .backend-tabbed-content.ui-tabs .ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .backend-tabbed-content.ui-tabs .ui-tabs-panel {
-	display: block;
-	border-width: 0;
-	padding: 1em 1.4em;
-	background: none;
+  display: block;
+  border-width: 0;
+  padding: 1em 1.4em;
+  background: none;
 }
 
 /**
  * Post types order.
  */
 .ui-sortable tr:hover {
-	cursor: move;
+  cursor: move;
 }
 
 .ui-sortable tr.alternate {
-	background-color: #F9F9F9;
+  background-color: #F9F9F9;
 }
 
 .ui-sortable tr.ui-sortable-helper {
-	background-color: #F9F9F9;
-	border-top: 1px solid #DFDFDF;
+  background-color: #F9F9F9;
+  border-top: 1px solid #DFDFDF;
 }
 
 /**
  * Miscellaneous
  */
-
 /* Easily copy the code of registered ACF fields on the Registered Fields screen. */
 .import-registered-field-groups-arrays {
-    -webkit-user-select: all;
-    -moz-user-select: all;
-    -ms-user-select: all;
-    user-select: all;
+  -webkit-user-select: all;
+  -moz-user-select: all;
+  -ms-user-select: all;
+  user-select: all;
 }
 
 /**
@@ -266,6 +232,6 @@ html .backend-tabbed-content .ui-button.ui-state-disabled:hover {
  * look better with bullets.
  */
 .ccp_bullet-list {
-    list-style: disc;
-    margin-left: 1em;
+  list-style: disc;
+  margin-left: 1em;
 }

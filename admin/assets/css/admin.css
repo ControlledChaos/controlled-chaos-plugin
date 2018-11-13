@@ -65,26 +65,56 @@
   max-width: 1200px;
 }
 
-.ui-tabs {
+/**
+ * jQuery tabs.
+ */
+.backend-tabbed-content.ui-widget-content,
+.backend-tabbed-content.ui-widget.ui-widget-content {
+  border: none;
+  background: inherit;
+  color: inherit;
+}
+
+.backend-tabbed-content.ui-widget {
+  font-family: inherit;
+}
+
+.nav-tab-wrapper a .dashicons {
+  vertical-align: text-top;
+}
+
+.backend-tabbed-content > div {
+  max-width: 1200px;
+}
+
+.backend-tabbed-content .ui-widget-header {
+  border: none;
+  border-bottom: 1px solid #ddd;
+  background: inherit;
+  color: inherit;
+  font-weight: 700;
+}
+
+.backend-tabbed-content.ui-tabs {
   /* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
   position: relative;
   padding: 0;
 }
 
-.ui-tabs .ui-tabs-nav {
+.backend-tabbed-content.ui-tabs .ui-tabs-nav {
   margin: 0;
   padding: 0;
   padding: 9px 0 0 .4em;
   border-bottom: 1px solid #ccc;
 }
 
-.ui-tabs .ui-tabs-nav h2 {
+.backend-tabbed-content.ui-tabs .ui-tabs-nav h2 {
   margin: 0;
   padding: 0;
   line-height: 1;
 }
 
-.ui-tabs .ui-tabs-nav li {
+.backend-tabbed-content.ui-tabs .ui-tabs-nav li {
   display: inline-block;
   list-style: none;
   position: relative;
@@ -95,8 +125,31 @@
   white-space: nowrap;
 }
 
-.ui-tabs .ui-tabs-nav li a {
+.backend-tabbed-content .ui-button,
+.backend-tabbed-content .ui-state-default,
+.backend-tabbed-content .ui-widget-content .ui-state-default,
+.backend-tabbed-content .ui-widget-header .ui-state-default,
+html .backend-tabbed-content .ui-button.ui-state-disabled:active,
+html .backend-tabbed-content .ui-button.ui-state-disabled:hover {
+  border: none;
+}
+
+.backend-tabbed-content .ui-button.ui-state-active:hover,
+.backend-tabbed-content .ui-button:active,
+.backend-tabbed-content .ui-state-active,
+.backend-tabbed-content .ui-widget-content .ui-state-active,
+.backend-tabbed-content .ui-widget-header .ui-state-active,
+.backend-tabbed-content a.ui-button:active {
+  border: none;
+  border-bottom-width: 1px;
+  background: inherit;
+  font-weight: 400;
+  color: inherit;
+}
+
+.backend-tabbed-content.ui-tabs .ui-tabs-nav li a {
   display: block;
+  border-radius: 3px 3px 0 0;
   border: 1px solid #ccc;
   border-bottom: none;
   margin: 1px .2em 0 0;
@@ -108,15 +161,15 @@
   text-decoration: none;
 }
 
-.ui-tabs .ui-tabs-nav li a .dashicons {
+.backend-tabbed-content.ui-tabs .ui-tabs-nav li a .dashicons {
   vertical-align: bottom;
 }
 
-.ui-tabs .ui-tabs-nav li.ui-tabs-active a,
-.ui-tabs .ui-tabs-nav li.ui-tabs-active a:focus,
-.ui-tabs .ui-tabs-nav li.ui-tabs-active a:focus:active,
-.ui-tabs .ui-tabs-nav li.ui-tabs-active a:active,
-.ui-tabs .ui-tabs-nav li.ui-tabs-active a:hover {
+.backend-tabbed-content.ui-tabs .ui-tabs-nav li.ui-tabs-active a,
+.backend-tabbed-content.ui-tabs .ui-tabs-nav li.ui-tabs-active a:focus,
+.backend-tabbed-content.ui-tabs .ui-tabs-nav li.ui-tabs-active a:focus:active,
+.backend-tabbed-content.ui-tabs .ui-tabs-nav li.ui-tabs-active a:active,
+.backend-tabbed-content.ui-tabs .ui-tabs-nav li.ui-tabs-active a:hover {
   border-bottom: 1px solid #f1f1f1;
   background: #f1f1f1;
   -webkit-box-shadow: none;
@@ -124,25 +177,41 @@
   color: #000;
 }
 
-.ui-tabs .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor,
-.ui-tabs .ui-tabs-nav li.ui-state-disabled .ui-tabs-anchor,
-.ui-tabs .ui-tabs-nav li.ui-tabs-loading .ui-tabs-anchor {
+.backend-tabbed-content.ui-tabs .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor,
+.backend-tabbed-content.ui-tabs .ui-tabs-nav li.ui-state-disabled .ui-tabs-anchor,
+.backend-tabbed-content.ui-tabs .ui-tabs-nav li.ui-tabs-loading .ui-tabs-anchor {
   cursor: pointer;
 }
 
-.ui-tabs .ui-tabs-nav ~ div {
+.backend-tabbed-content.ui-tabs .ui-tabs-nav ~ div {
   clear: both;
 }
 
-.ui-tabs .ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor {
+.backend-tabbed-content.ui-tabs .ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor {
   cursor: pointer;
 }
 
-.ui-tabs .ui-tabs-panel {
+.backend-tabbed-content.ui-tabs .ui-tabs-panel {
   display: block;
   border-width: 0;
   padding: 1em 1.4em;
   background: none;
+}
+
+/**
+ * Post types order.
+ */
+.ui-sortable tr:hover {
+  cursor: move;
+}
+
+.ui-sortable tr.alternate {
+  background-color: #F9F9F9;
+}
+
+.ui-sortable tr.ui-sortable-helper {
+  background-color: #F9F9F9;
+  border-top: 1px solid #DFDFDF;
 }
 
 /**
