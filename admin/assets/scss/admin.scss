@@ -3,11 +3,37 @@
  * included in this file.
  */
 
- /**
-  * PLUGINS
-  * 
-  * For the installed plugins and the add new plugins screens.
-  */
+/**
+ * Admin Header
+ */
+.ccp-admin-header {
+
+    .admin-site-branding {
+
+        .admin-site-title {}
+
+        .admin-site-description {}
+    }
+
+    .admin-navigation {
+
+        .admin-navigation-list {
+
+            li {
+                display: inline;
+                margin-right: 0.75em;
+
+                a {}
+            }
+        }
+    }
+}
+
+/**
+ * Plugins
+ *
+ * For the installed plugins and the add new plugins screens.
+ */
 
 /* This provides better distinction between active and inactive plugins. */
 .plugins {
@@ -47,8 +73,8 @@
 }
 
 /**
- * MEDIA
- * 
+ * Media
+ *
  * For the media library and media uploads screens.
  */
 
@@ -76,7 +102,7 @@
     /* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
     position: relative;
     padding: 0;
-    
+
     .ui-tabs-nav {
         margin: 0;
         padding: 0;
@@ -135,7 +161,7 @@
         li.ui-tabs-loading .ui-tabs-anchor {
             cursor: pointer;
         }
-    
+
     }
 
     .ui-tabs-nav ~ div {
@@ -156,7 +182,7 @@
 }
 
 /**
- * MISCELLANEOUS
+ * Miscellaneous
  */
 
 /* Easily copy the code of registered ACF fields on the Registered Fields screen. */
