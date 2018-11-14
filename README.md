@@ -58,7 +58,9 @@ So, what the heck does this thing do? Why might it be preferable to other plugin
 
 ### jQuery Plugins
 
-I have included several frontend UI/UX plugins that I typically use on client sites. They are enqueued via opt-in checkboxes on the Script Options page, except for Fancybox, which is opted in on the Media Settings page.
+I have included several frontend UI/UX plugins that I typically use on client sites. If you don't need them then you can easily remove them and their settings. If you would like to replace them with something similar then the infrastructure is ready for you to modify.
+
+The plugins are enqueued via opt-in checkboxes on the Script Options page, except for Fancybox, which is opted in on the Media Settings page.
 
 * Fancybox 3 - [https://github.com/fancyapps/fancybox](https://github.com/fancyapps/fancybox)
   *"Lightbox script for displaying images, videos and more."*
