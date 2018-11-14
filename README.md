@@ -135,6 +135,28 @@ Included are a few tools to help in the early stages of site development, or tha
 * Right to left switcher for testing layouts with RTL languages.
 * ACF tool to import the settings fields registered by this plugin so that they can be further developed.
 
+## Renaming the plugin
+
+First change the name of this file to reflect the new name of your plugin.
+
+Next change the information above in the plugin header and either change the plugin name in the License & Warranty notice or remove it.
+
+Following is a list of strings to find and replace in all plugin files.
+
+1. **Plugin name:** Find `Controlled_Chaos_Plugin` and replace with your plugin name, include underscores between words. This will change the primary plugin class name and the package name in file headers.
+
+2. **Namespace:** Find `CC_Plugin` and replace with something unique to your plugin name, include underscores between words.
+
+3. **Text domain:** Find controlled-chaos-plugin and replace with the new name of your primary plugin file (this file).
+
+4. **Constants:** Find `CCP` and replace with something unique to your plugin name. Use only uppercase letters.
+
+5. **General prefix:** Find `ccp` and replace with something unique to your plugin name. Use only lowercase letters. This will change the prefix of all filters and settings, and the prefix of functions outside of a class.
+
+6. **Author:** Find `Greg Sweet <greg@ccdzine.com>` and replace with your name and email address or those of your organization.
+
+Finally, remember to modify or remove the instructional information  admin pages, including contextual help tabs.
+
 ## Extensibility
 
 The settings pages are equipped with filters for addon plugins to integrate easily.
