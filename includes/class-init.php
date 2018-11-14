@@ -96,9 +96,11 @@ final class Init {
 		 * @todo Remove conditional statement when Gutenberg is in core?
 		 */
 		if ( is_plugin_active( 'gutenberg/gutenberg.php' ) ) {
-
 			require_once CCP_PATH . 'includes/editor-blocks/class-register-block-types.php';
+		}
 
+		if ( class_exists( 'FLBuilderLoader' ) ) {
+			require_once CCP_PATH . 'includes/beaver/class-beaver-builder.php';
 		}
 
 		// Post types and taxonomies.
