@@ -91,7 +91,7 @@ p, ul, li {
 	}
 
 	h1:first-of-type,
-	p:first-of-type {
+	h1 + p {
 		clip: rect(1px, 1px, 1px, 1px);
 		height: 1px;
 		overflow: hidden;
