@@ -144,9 +144,9 @@ Included are a few tools to help in the early stages of site development, or tha
 
 ## Renaming the plugin
 
-First change the name of this file to reflect the new name of your plugin.
+First change the name of the main plugin file to reflect the new name of your plugin.
 
-Next change the information above in the plugin header and either change the plugin name in the License & Warranty notice or remove it.
+Next change the information in the plugin header and either change the plugin name in the License & Warranty notice in the main plugin file, or remove it.
 
 Following is a list of strings to find and replace in all plugin files.
 
