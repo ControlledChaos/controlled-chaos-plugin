@@ -99,7 +99,8 @@ final class Init {
 			require_once CCP_PATH . 'includes/editor-blocks/class-register-block-types.php';
 		}
 
-		if ( class_exists( 'FLBuilderLoader' ) ) {
+		// Add Beaver Builder support.
+		if ( class_exists( 'FLBuilder' ) ) {
 			require_once CCP_PATH . 'includes/beaver/class-beaver-builder.php';
 		}
 

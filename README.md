@@ -6,6 +6,7 @@ A feature-packed WordPress starter plugin for building custom-tailored websites.
 ![PHP tested on version 7.2](https://img.shields.io/badge/PHP-tested%207.2-8892bf.svg?style=flat-square)
 ![Gutenberg Ready](https://img.shields.io/badge/Gutenberg-ready-00a0d2.svg?style=flat-square)
 ![ACF Pro Ready](https://img.shields.io/badge/ACF%20Pro-ready-00d3ae.svg?style=flat-square)
+![Beaver Builder Ready](https://img.shields.io/badge/Beaver%20Builder-ready-0e5a71.svg?style=flat-square)
 
 ![](https://raw.githubusercontent.com/ControlledChaos/controlled-chaos-plugin/master/assets/images/controlled-chaos-github-banner.jpg)
 
@@ -51,6 +52,10 @@ Settings page with ACF activated...
 ### Gutenberg + ACF
 
 @todo I will soon be testing the new Advanced Custom Fields method for registering Gutenberg blocks, and then build the directories in the plugin for adding your own custom blocks.
+
+### Beaver Builder
+
+Included here are the two example modules from the official Beaver Builder demo plugin for building custom builder modules. The directory structure of the demo has been retained, inside a `beaver` directory in this plugin, however the the code has been modified slightly to adhere to that of the rest of this plugin (e.g. short array syntax).
 
 ## Functionality
 

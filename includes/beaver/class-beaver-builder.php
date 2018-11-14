@@ -1,6 +1,12 @@
 <?php
 /**
- * An empty class provided for Beaver Builder customization.
+ * Provided for Beaver Builder customization.
+ *
+ * The example modules here are taken from the official Beaver
+ * Builder example plugin.
+ *
+ * No namespace since Beaver Builder is not namespaced and class
+ * references will throw an error without a namespace reference.
  *
  * @package    Controlled_Chaos_Plugin
  * @subpackage Includes\Beaver
@@ -9,43 +15,99 @@
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Includes\Beaver;
-
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
 /**
- * Define the core functionality of the plugin.
+ * Beaver Builder class.
  *
  * @since  1.0.0
  * @access public
  */
-class Beaver_Buiilder {
+class CCP_Beaver_Builder {
 
 	/**
 	 * Constructor method
 	 *
 	 * @since  1.0.0
-	 * @access private
+	 * @access public
 	 * @return self
 	 */
-	private function __construct() {
+	public function __construct() {
 
-		$this->dependencies();
+		add_action( 'plugins_loaded', [ $this, 'setup_hooks' ] );
 
 	}
 
 	/**
-	 * Load the required dependencies for this plugin.
+	 * Setup hooks if the builder is installed and activated.
 	 *
 	 * @since  1.0.0
-	 * @access private
+	 * @access public
 	 * @return void
 	 */
-	private function dependencies() {}
+	public function setup_hooks() {
+
+		// Load custom modules.
+		add_action( 'init', [ $this, 'load_modules' ] );
+
+		// Register custom fields.
+		add_filter( 'fl_builder_custom_fields', [ $this, 'register_fields' ] );
+
+		// Enqueue custom field assets.
+		add_action( 'init', [ $this, 'enqueue_field_assets' ] );
+
+	}
+
+	/**
+	 * Loads our custom modules.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+	static public function load_modules() {
+
+		require_once CCP_PATH . 'includes/beaver/modules/basic-example/basic-example.php';
+		require_once CCP_PATH . 'includes/beaver/modules/example/example.php';
+
+	}
+
+	/**
+	 * Registers our custom fields.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return string Returns the path to the module fields.
+	 */
+	static public function register_fields( $fields ) {
+
+		$fields['ccp-custom-beaver-field'] = CCP_PATH . 'includes/beaver/fields/custom-fields.php';
+		return $fields;
+
+	}
+
+	/**
+	 * Enqueues our custom field assets only if the builder UI is active.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+	static public function enqueue_field_assets() {
+
+		if ( ! FLBuilderModel::is_builder_active() ) {
+			return;
+		}
+
+		wp_enqueue_style( 'ccp-beaver-fields', CCP_URL . 'includes/beaver/assets/css/fields.css', [], '' );
+		wp_enqueue_script( 'ccp-beaver-fields', CCP_URL . 'includes/beaver/assets/js/fields.js', [], '', true );
+
+	}
 
 }
 
-$ccp_beaver = new Beaver_Buiilder;
+// Run the class.
+$ccp_beaver_builder = new CCP_Beaver_Builder;
