@@ -154,7 +154,7 @@ Following is a list of strings to find and replace in all plugin files.
 
 2. **Namespace:** Find `CC_Plugin` and replace with something unique to your plugin name, include underscores between words.
 
-3. **Text domain:** Find controlled-chaos-plugin and replace with the new name of your primary plugin file (this file).
+3. **Text domain:** Find `controlled-chaos-plugin` and replace with the new name of your primary plugin file (this file).
 
 4. **Constants:** Find `CCP` and replace with something unique to your plugin name. Use only uppercase letters.
 
