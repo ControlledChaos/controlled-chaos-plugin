@@ -155,7 +155,7 @@ class Post_Type_Tax_Functions {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_type_taxse_functions() {
+function ccp_type_taxes_functions() {
 
 	return Post_Type_Tax_Functions::instance();
 
