@@ -80,8 +80,7 @@ class Settings_Page_Dev_Tools {
 	 */
 	public function settings_page() {
 
-		$this->page_help_section = add_submenu_page(
-			'tools.php',
+		$this->page_help_section = add_management_page(
 			__( 'Website Development', 'controlled-chaos-plugin' ),
 			__( 'Site Development', 'controlled-chaos-plugin' ),
 			'manage_options',
