@@ -25,7 +25,7 @@ if ( ! defined( 'WPINC' ) ) {
 class Media {
 
 	/**
-	 * Get an instance of the class.
+	 * Instance of the class
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -41,7 +41,7 @@ class Media {
 			// Set variable for new instance.
 			$instance = new self;
 
-			// Get class dependencies.
+			// Get class dependencies
 			$instance->dependencies();
 
 		}
@@ -52,7 +52,7 @@ class Media {
 	}
 
     /**
-	 * Constructor method.
+	 * Constructor method
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -79,7 +79,7 @@ class Media {
 	}
 
 	/**
-	 * Get class dependencies.
+	 * Get class dependencies
 	 *
 	 * @since  1.0.0
 	 * @access private

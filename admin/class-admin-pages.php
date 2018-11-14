@@ -25,7 +25,7 @@ if ( ! defined( 'WPINC' ) ) {
 class Admin_Pages {
 
     /**
-	 * Get an instance of the class.
+	 * Instance of the class
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -49,7 +49,7 @@ class Admin_Pages {
 	}
 
 	/**
-	 * Constructor method.
+	 * Constructor method
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -414,6 +414,16 @@ class Admin_Pages {
 
         // Add a top border to help because of top padding.
         $style .= '#contextual-help-back { border-top: 1px solid #e1e1e1 }';
+
+        /**
+         * Block editor styles.
+         */
+        $style .= '.block-editor__container { position: static }';
+        // $style .= '.edit-post-header { position: sticky }';
+        // $style .= '.edit-post-layout { padding-top: 0; }';
+        // $style .= '.edit-post-sidebar { top: 32px; }';
+        $style .= '.gutenberg-editor-page .ccp-admin-header { padding-left: 20px; }';
+        $style .= '.gutenberg-editor-page .ccp-admin-header:before { content: ""; display: block; width: 100%; height: 56px; }';
 
         // End the style block.
         $style .= '</style>';

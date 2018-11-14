@@ -25,7 +25,7 @@ if ( ! defined( 'WPINC' ) ) {
 class Meta_Tags {
 
 	/**
-	 * Get an instance of the class.
+	 * Instance of the class
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -41,7 +41,7 @@ class Meta_Tags {
 			// Set variable for new instance.
 			$instance = new self;
 
-			// Frontend dependencies.
+			// Frontend dependencies
 			$instance->dependencies();
 
 		}
@@ -52,7 +52,7 @@ class Meta_Tags {
 	}
 
 	/**
-	 * Constructor method.
+	 * Constructor method
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -66,7 +66,7 @@ class Meta_Tags {
 	}
 
 		/**
-	 * Frontend dependencies.
+	 * Frontend dependencies
 	 *
 	 * @since  1.0.0
 	 * @access public

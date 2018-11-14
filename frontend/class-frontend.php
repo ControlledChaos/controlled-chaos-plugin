@@ -36,7 +36,7 @@ if ( is_admin() ) {
 class Frontend {
 
 	/**
-	 * Get an instance of the class.
+	 * Instance of the class
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -52,7 +52,7 @@ class Frontend {
 			// Set variable for new instance.
 			$instance = new self;
 
-			// Frontend dependencies.
+			// Frontend dependencies
 			$instance->dependencies();
 
 		}
@@ -63,7 +63,7 @@ class Frontend {
 	}
 
 	/**
-	 * Constructor method.
+	 * Constructor method
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -89,7 +89,7 @@ class Frontend {
 	}
 
 	/**
-	 * Frontend dependencies.
+	 * Frontend dependencies
 	 *
 	 * @since  1.0.0
 	 * @access public

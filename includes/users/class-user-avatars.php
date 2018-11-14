@@ -39,7 +39,7 @@ class User_Avatars {
 	private $user_id_being_edited;
 
 	/**
-	 * Get an instance of the class.
+	 * Instance of the class
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -63,7 +63,7 @@ class User_Avatars {
 	}
 
 	/**
-	 * Constructor method.
+	 * Constructor method
 	 *
 	 * @since  1.0.0
 	 * @access public

@@ -34,7 +34,7 @@ class Settings_Fields_Site_Dashboard {
 	private $options;
 
 	/**
-	 * Get an instance of the class.
+	 * Instance of the class
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -61,7 +61,7 @@ class Settings_Fields_Site_Dashboard {
 	}
 
 	/**
-	 * Constructor method.
+	 * Constructor method
 	 *
 	 * @since  1.0.0
 	 * @access public

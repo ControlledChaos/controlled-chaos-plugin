@@ -29,7 +29,7 @@ if ( ! defined( 'WPINC' ) ) {
 class SVG_Support {
 
 	/**
-	 * Get an instance of the class.
+	 * Instance of the class
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -52,7 +52,7 @@ class SVG_Support {
 	}
 
     /**
-	 * Constructor method.
+	 * Constructor method
 	 *
 	 * @since  1.0.0
 	 * @access public

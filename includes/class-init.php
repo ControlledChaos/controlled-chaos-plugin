@@ -28,7 +28,7 @@ include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 final class Init {
 
 	/**
-	 * Get an instance of the class.
+	 * Instance of the class
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -44,7 +44,7 @@ final class Init {
 			// Set variable for new instance.
 			$instance = new self;
 
-			// Get class dependencies.
+			// Get class dependencies
 			$instance->dependencies();
 		}
 
@@ -54,7 +54,7 @@ final class Init {
 	}
 
 	/**
-	 * Constructor method.
+	 * Constructor method
 	 *
 	 * @since  1.0.0
 	 * @access private

@@ -2,7 +2,7 @@
 /**
  * Functions for post types and taxonomies.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Site_Plugin
  * @subpackage Includes\Post_Types_Taxes
  *
  * @since      1.0.0
@@ -155,11 +155,11 @@ class Post_Type_Tax_Functions {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_type_taxe_functions() {
+function ccp_type_taxse_functions() {
 
 	return Post_Type_Tax_Functions::instance();
 
 }
 
 // Run an instance of the class.
-ccp_type_taxe_functions();
+ccp_type_taxes_functions();

@@ -25,7 +25,7 @@ if ( ! defined( 'WPINC' ) ) {
 class Controlled_Chaos_Deactivate {
 
 	/**
-	 * Get an instance of the class.
+	 * Instance of the class
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -52,7 +52,7 @@ class Controlled_Chaos_Deactivate {
 	}
 
 	/**
-	 * Constructor method.
+	 * Constructor method
 	 *
 	 * @since  1.0.0
 	 * @access public

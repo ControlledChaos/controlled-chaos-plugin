@@ -35,7 +35,7 @@ class Controlled_Chaos_Minify {
 	protected $html;
 
 	/**
-	 * Constructor method.
+	 * Constructor method
 	 *
 	 * @since  1.0.0
 	 * @access public

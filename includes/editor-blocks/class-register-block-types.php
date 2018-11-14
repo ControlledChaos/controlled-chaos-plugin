@@ -25,7 +25,7 @@ if ( ! defined( 'WPINC' ) ) {
 class Register_Blocks {
 
 	/**
-	 * Get an instance of the class.
+	 * Instance of the class
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -49,7 +49,7 @@ class Register_Blocks {
 	}
 
 	/**
-	 * Constructor method.
+	 * Constructor method
 	 *
 	 * @since  1.0.0
 	 * @access public

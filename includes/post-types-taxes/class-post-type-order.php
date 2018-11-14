@@ -52,7 +52,7 @@ if ( ! $sort_order || empty( $sort_order ) ) {
 class Post_Types_Taxes_Order {
 
     /**
-	 * Get an instance of the class.
+	 * Instance of the class
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -80,7 +80,7 @@ class Post_Types_Taxes_Order {
 	}
 
     /**
-	 * Constructor method.
+	 * Constructor method
 	 *
 	 * @since  1.0.0
 	 * @access private
@@ -222,7 +222,7 @@ class Post_Types_Taxes_Order {
     }
 
     /**
-     * Load script dependencies.
+     * Load script dependencies
      *
      * @since  1.0.0
 	 * @access public

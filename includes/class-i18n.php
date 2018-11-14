@@ -28,7 +28,7 @@ if ( ! defined( 'WPINC' ) ) {
 class i18n {
 
 	/**
-	 * Get an instance of the class.
+	 * Instance of the class
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -55,7 +55,7 @@ class i18n {
 	}
 
 	/**
-	 * Constructor method.
+	 * Constructor method
 	 *
 	 * @since  1.0.0
 	 * @access private

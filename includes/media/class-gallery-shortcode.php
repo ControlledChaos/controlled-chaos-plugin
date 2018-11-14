@@ -30,7 +30,7 @@ if ( ! defined( 'WPINC' ) ) {
 class Gallery_Shortcode {
 
 	/**
-	 * Get an instance of the class.
+	 * Instance of the class
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -54,7 +54,7 @@ class Gallery_Shortcode {
 	}
 
 	/**
-	 * Constructor method.
+	 * Constructor method
 	 *
 	 * @since  1.0.0
 	 * @access public

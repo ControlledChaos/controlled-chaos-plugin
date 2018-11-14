@@ -19,4 +19,8 @@ jQuery(document).ready( function ($) {
 	// Add tooltips to the `tooltip` class.
 	$( '.tooltip' ).tooltip();
 
+	if ( $('edit-post-layout').hasClass('is-sidebar-opened') ) {
+		$('.wp-admin').addClass('editor-sidebar-open');
+	}
+
 });

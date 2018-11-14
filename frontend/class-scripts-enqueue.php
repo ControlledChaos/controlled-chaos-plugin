@@ -25,7 +25,7 @@ if ( ! defined( 'WPINC' ) ) {
 class Enqueue_Frontend_Scripts {
 
 	/**
-	 * Get an instance of the class.
+	 * Instance of the class
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -49,7 +49,7 @@ class Enqueue_Frontend_Scripts {
 	}
 
 	/**
-	 * Constructor method.
+	 * Constructor method
 	 *
 	 * @since  1.0.0
 	 * @access public
