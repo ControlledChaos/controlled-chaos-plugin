@@ -157,6 +157,9 @@ Following is a list of strings to find and replace in all plugin files.
 
 Finally, remember to modify or remove the instructional information  admin pages, including contextual help tabs.
 
+See admin\partials - Check all files.
+See admin\partials\help - Check all files.
+
 ## Extensibility
 
 The settings pages are equipped with filters for addon plugins to integrate easily.
