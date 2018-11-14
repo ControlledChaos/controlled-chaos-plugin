@@ -126,6 +126,7 @@ When posts types are selected for custom sort order functionality, the table row
 
 * Option to hard crop the medium and/or large image sizes
 * Option to allow SVG uploads to the Media Library
+* Option to disable the Fancybox stylesheet to use your own.
 
 ### User Profiles
 
