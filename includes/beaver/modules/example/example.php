@@ -34,7 +34,7 @@ class CCP_Example_Module extends FLBuilderModule {
         parent::__construct( [
             'name'          => __( 'Example', 'controlled-chaos-plugin' ),
             'description'   => __( 'An example for coding new modules.', 'controlled-chaos-plugin' ),
-            'category'		=> __( 'Example Modules', 'controlled-chaos-plugin' ),
+            'category'      => __( 'Example Modules', 'controlled-chaos-plugin' ),
             'dir'           => CCP_PATH . 'includes/beaver/modules/example/',
             'url'           => CCP_URL . 'includes/beaver/modules/example/',
             'editor_export' => true, // Defaults to true and can be omitted.
