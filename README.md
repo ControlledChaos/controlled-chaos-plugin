@@ -55,7 +55,7 @@ Settings page with ACF activated...
 
 ### Beaver Builder
 
-Included here are the two example modules from the official Beaver Builder demo plugin for building custom builder modules. The directory structure of the demo has been retained, inside a `beaver` directory in this plugin, however the the code has been modified slightly to adhere to that of the rest of this plugin (e.g. short array syntax).
+Included here are the two example modules from the official Beaver Builder demo plugin for creating custom builder modules. The directory structure of the demo has been retained, inside a `beaver` directory in this plugin, however the the code has been modified slightly to adhere to that of the rest of this plugin (e.g. short array syntax).
 
 ## Functionality
 
