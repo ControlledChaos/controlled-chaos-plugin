@@ -124,8 +124,8 @@ When posts types are selected for custom sort order functionality, the table row
 
 ### Media Options
 
-* Add option to hard crop the medium and/or large image sizes
-* Add option to allow SVG uploads to the Media Library
+* Option to hard crop the medium and/or large image sizes
+* Option to allow SVG uploads to the Media Library
 
 ### User Profiles
 
