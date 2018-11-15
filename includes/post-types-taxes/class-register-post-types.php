@@ -91,7 +91,7 @@ final class Post_Types_Register {
         // Apply a filter to labels for customization.
         $labels = apply_filters( 'ccp_custom_posts_labels', $labels );
 
-        $args = [
+        $options = [
             'label'               => __( 'Custom Posts', 'controlled-chaos-plugin' ),
             'labels'              => $labels,
             'description'         => __( 'Custom post type description.', 'controlled-chaos-plugin' ),
@@ -134,11 +134,16 @@ final class Post_Types_Register {
         ];
 
         // Apply a filter to arguments for customization.
-        $args = apply_filters( 'ccp_custom_posts_args', $args );
+        $options = apply_filters( 'ccp_custom_posts_args', $options );
 
+        /**
+         * Register the post type
+         *
+         * Maximum 20 characters, cannot contain capital letters or spaces.
+         */
         register_post_type(
             'ccp_post_type',
-            $args
+            $options
         );
 
     }
@@ -146,4 +151,4 @@ final class Post_Types_Register {
 }
 
 // Run the class.
-new Post_Types_Register;
+$ccp_post_types = new Post_Types_Register;

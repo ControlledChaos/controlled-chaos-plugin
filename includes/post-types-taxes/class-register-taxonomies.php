@@ -81,7 +81,7 @@ final class Taxonomies_Register {
             'items_list'                 => __( 'Taxonomies List', 'controlled-chaos-plugin' )
         ];
 
-        $args = [
+        $options = [
             'label'              => __( 'Taxonomies', 'controlled-chaos-plugin' ),
             'labels'             => $labels,
             'public'             => true,
@@ -102,12 +102,15 @@ final class Taxonomies_Register {
             'show_in_quick_edit' => true
         ];
 
+        /**
+         * Register the taxonomy
+         */
         register_taxonomy(
             'ccp_taxonomy',
             [
                 'ccp_post_type'
             ],
-            $args
+            $options
         );
 
     }
@@ -115,4 +118,4 @@ final class Taxonomies_Register {
 }
 
 // Run the class.
-new Taxonomies_Register;
+$ccp_taxonomies = new Taxonomies_Register;
