@@ -106,7 +106,7 @@ Admin interface options include:
 
 ### Enchance the Admin
 
-* Add a header to admin pages, including site title, tagline, and a nav menu
+* Add a header to admin pages, including site title, tagline, and a nav menu (the admin header currently does not play nice with Gutenberg block editor pages)
 * Add three admin bar menus
 * Custom welcome panel with three widget areas and loaded with hooks for adding content
 * Add custom post types to the At a Glance widget
