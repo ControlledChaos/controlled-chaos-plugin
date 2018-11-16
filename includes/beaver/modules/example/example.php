@@ -54,7 +54,7 @@ class CCP_Example_Module extends FLBuilderModule {
 
         // Register and enqueue your own.
         $this->add_css('example-lib', $this->url . 'css/example-lib.css');
-        $this->add_js('example-lib', $this->url . 'js/example-lib.js', array(), '', true);
+        $this->add_js('example-lib', $this->url . 'js/example-lib.js', [], '', true);
 
     }
 
