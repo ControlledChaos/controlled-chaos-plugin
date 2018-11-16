@@ -63,6 +63,12 @@ Settings page with ACF activated...
 
 Included here are the two example modules from the official Beaver Builder demo plugin for creating custom builder modules. The directory structure of the demo has been retained, inside a `beaver` directory in this plugin, however the the code has been modified slightly to adhere to that of the rest of this plugin (e.g. short array syntax).
 
+### Elementor
+
+Preliminary support for an example custom Elementor widget, taken from the docs but not working.
+
+@todo Get my own widget working rather than copying the example from the Elemento docs.
+
 ## Functionality
 
 So, what the heck does this thing do? Why might it be preferable to other plugin boilerplates?
