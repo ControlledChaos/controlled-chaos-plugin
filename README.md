@@ -41,6 +41,10 @@ If you would like to request development of a custom version of this plugin for 
 
 A sample editor block is included in preparation for WordPress 5.0 with it's new user interface for creating posts. This block doesn't really do anyhing, it is simply included to establish the editor block directory and class for further development. See below for Gutenberg + ACF.
 
+### Classic Editor
+
+Included here is the option to disable the Gutenberg block editor and restore the classic TinyMCE editor. This is essentially a copy of WordPress' Classic Editor plugin with the option to activate and this plugin's Site Settings page.
+
 ### Advanced Custom Fields
 
 For a nicer user experience, this plugin is recommended for use with [Advanced Custom Fields PRO](https://www.advancedcustomfields.com/pro/) or the [free version of ACF](https://wordpress.org/plugins/advanced-custom-fields/) plus the [Options Page](https://www.advancedcustomfields.com/add-ons/options-page/) addon. However, most of the ACF features are duplicated, with identical field database names, using the [WordPress Settings API](https://developer.wordpress.org/plugins/settings/settings-api/) to reduce third-party dependencies.
