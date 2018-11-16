@@ -175,7 +175,7 @@ Following is a list of strings to find and replace in all plugin files.
 
 6. **Author:** Find `Greg Sweet <greg@ccdzine.com>` and replace with your name and email address or those of your organization.
 
-Finally, remember to modify or remove the instructional information  admin pages, including contextual help tabs.
+Finally, remember to modify or remove the instructional information in admin pages, including contextual help tabs.
 
 See admin\partials - Check all files.<br />
 See admin\partials\help - Check all files.
