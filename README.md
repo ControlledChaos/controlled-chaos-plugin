@@ -67,7 +67,7 @@ Included here are the two example modules from the official Beaver Builder demo 
 
 Preliminary support for an example custom Elementor widget, taken from the docs but not working.
 
-@todo Get my own widget working rather than copying the example from the Elemento docs.
+@todo Get my own widget working rather than copying the example from the Elementor docs.
 
 ## Functionality
 
