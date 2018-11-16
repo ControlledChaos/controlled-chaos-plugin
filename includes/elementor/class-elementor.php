@@ -14,6 +14,8 @@
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
+namespace CC_Plugin\Includes;
+
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
@@ -25,7 +27,7 @@ if ( ! defined( 'WPINC' ) ) {
  * @since  1.0.0
  * @access public
  */
-class Elementor_oEmbed_Widget extends \Elementor\Widget_Base {
+class CCP_Elementor extends \Elementor\Widget_Base {
 
 	/**
 	 * Get widget name.
@@ -50,7 +52,7 @@ class Elementor_oEmbed_Widget extends \Elementor\Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return __( 'oEmbed', 'plugin-name' );
+		return __( 'oEmbed', 'controlled-chaos-plugin' );
 	}
 
 	/**
@@ -92,7 +94,7 @@ class Elementor_oEmbed_Widget extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'content_section',
 			[
-				'label' => __( 'Content', 'plugin-name' ),
+				'label' => __( 'Content', 'controlled-chaos-plugin' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -100,10 +102,10 @@ class Elementor_oEmbed_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'url',
 			[
-				'label' => __( 'URL to embed', 'plugin-name' ),
+				'label' => __( 'URL to embed', 'controlled-chaos-plugin' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
 				'input_type' => 'url',
-				'placeholder' => __( 'https://your-link.com', 'plugin-name' ),
+				'placeholder' => __( 'https://your-link.com', 'controlled-chaos-plugin' ),
 			]
 		);
 

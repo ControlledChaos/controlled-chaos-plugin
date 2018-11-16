@@ -67,6 +67,9 @@ final class Init {
 		remove_filter( 'the_content', 'capital_P_dangit', 11 );
 		remove_filter( 'comment_text', 'capital_P_dangit', 31 );
 
+		// Load classes to extend plugins.
+		add_action( 'init', [ $this, 'plugin_support' ] );
+
 	}
 
 	/**
@@ -104,11 +107,6 @@ final class Init {
 			require_once CCP_PATH . 'includes/editor-blocks/class-register-block-types.php';
 		}
 
-		// Add Beaver Builder support.
-		if ( class_exists( 'FLBuilder' ) ) {
-			require_once CCP_PATH . 'includes/beaver/class-beaver-builder.php';
-		}
-
 		// Post types and taxonomies.
 		require_once CCP_PATH . 'includes/post-types-taxes/class-post-type-tax.php';
 
@@ -117,6 +115,27 @@ final class Init {
 
 		// Dev and maintenance tools.
 		require_once CCP_PATH . 'includes/tools/class-tools.php';
+
+	}
+
+	/**
+	 * Load classes to extend plugins.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+	public function plugin_support() {
+
+		// Add Beaver Builder support.
+		if ( class_exists( 'FLBuilder' ) ) {
+			include_once CCP_PATH . 'includes/beaver/class-beaver-builder.php';
+		}
+
+		// Add Elementor support.
+		if ( class_exists( '\Elementor\Plugin' ) ) {
+			include_once CCP_PATH . 'includes/elementor/class-elementor.php';
+		}
 
 	}
 
