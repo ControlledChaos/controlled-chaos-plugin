@@ -5,6 +5,8 @@
  * The example modules here are taken from the official Beaver
  * Builder example plugin.
  *
+ * @link       https://kb.wpbeaverbuilder.com/article/124-custom-module-developer-guide
+ *
  * No namespace since Beaver Builder is not namespaced and class
  * references will throw an error without a namespace reference.
  *
