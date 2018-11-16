@@ -182,7 +182,8 @@ class Dashboard {
             }
 
             // Hide the try Gutenberg panel.
-            if ( $hide && in_array( 'gutenberg', $hide ) ) {
+            $editor = get_field( 'ccp_classic_editor', 'option' );
+            if ( ( $hide && in_array( 'gutenberg', $hide ) ) || $editor ) {
                 remove_action( 'try_gutenberg_panel', 'wp_try_gutenberg_panel' );
             }
 
@@ -216,6 +217,7 @@ class Dashboard {
             // Get options.
             $welcome    = get_option( 'ccp_hide_welcome' );
             $gutenberg  = get_option( 'ccp_hide_try_gutenberg' );
+            $editor     = get_option( 'ccp_classic_editor' );
             $wp_news    = get_option( 'ccp_hide_wp_news' );
             $quickpress = get_option( 'ccp_hide_quickpress' );
             $at_glance  = get_option( 'ccp_hide_at_glance' );
@@ -227,7 +229,7 @@ class Dashboard {
             }
 
             // Hide the try Gutenberg panel.
-            if ( $gutenberg ) {
+            if ( $gutenberg || $editor ) {
                 remove_action( 'try_gutenberg_panel', 'wp_try_gutenberg_panel' );
             }
 

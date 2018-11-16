@@ -127,6 +127,12 @@ class Admin {
 			include_once CCP_PATH . 'admin/class-settings-fields-site-acf.php';
 		}
 
+		// Restore the TinyMCE editor.
+		$editor = get_option( 'ccp_classic_editor' );
+		if ( $editor ) {
+			include_once CCP_PATH . 'admin/classic-editor/classic-editor.php';
+		}
+
 		// Functions for dasboard widgets, excluding the welcome panel.
 		require_once CCP_PATH . 'admin/dashboard/class-dashboard.php';
 

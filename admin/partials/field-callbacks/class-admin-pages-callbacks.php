@@ -58,6 +58,26 @@ class Admin_Pages_Callbacks {
 	public function __construct() {}
 
 	/**
+	 * Restore the TinyMCE editor.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @param  array $args Extra arguments passed into the callback function.
+	 * @return string
+	 */
+	public function classic_editor( $args ) {
+
+		$option = get_option( 'ccp_classic_editor' );
+
+		$html = '<p><input type="checkbox" id="ccp_classic_editor" name="ccp_classic_editor" value="1" ' . checked( 1, $option, false ) . '/>';
+
+		$html .= '<label for="ccp_classic_editor"> '  . $args[0] . '</label></p>';
+
+		echo $html;
+
+	}
+
+	/**
 	 * Use the admin header.
 	 *
 	 * @since  1.0.0
