@@ -118,17 +118,21 @@ class Admin {
 		require_once CCP_PATH . 'admin/class-settings.php';
 
 		// Add icons to the titles of ACF tab and accordion fields, if active.
-		if ( class_exists( 'acf_pro' ) && ! get_option( 'ccp_acf_activate_settings_page' ) ) {
+		if ( ccp_acf_pro() && ! get_option( 'ccp_acf_activate_settings_page' ) ) {
 			include_once CCP_PATH . 'admin/class-acf-tab-icons.php';
 		}
 
 		// Include custom fields for Advanced Custom Fields Pro, if active.
-		if ( ccp_acf() ) {
+		if ( ccp_acf_pro() ) {
 			include_once CCP_PATH . 'admin/class-settings-fields-site-acf.php';
 		}
 
 		// Restore the TinyMCE editor.
-		$editor = get_option( 'ccp_classic_editor' );
+		if ( ccp_acf_pro() ) {
+			$editor = get_field( 'ccp_classic_editor', 'option' );
+		} else {
+			$editor = get_option( 'ccp_classic_editor' );
+		}
 		if ( $editor ) {
 			include_once CCP_PATH . 'admin/classic-editor/classic-editor.php';
 		}

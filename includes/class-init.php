@@ -95,7 +95,12 @@ final class Init {
 		 *
 		 * @todo Remove conditional statement when Gutenberg is in core?
 		 */
-		if ( is_plugin_active( 'gutenberg/gutenberg.php' ) ) {
+		if ( ccp_acf_pro() ) {
+			$editor = get_field( 'ccp_classic_editor', 'option' );
+		} else {
+			$editor = get_option( 'ccp_classic_editor' );
+		}
+		if ( ! $editor && is_plugin_active( 'gutenberg/gutenberg.php' ) ) {
 			require_once CCP_PATH . 'includes/editor-blocks/class-register-block-types.php';
 		}
 
