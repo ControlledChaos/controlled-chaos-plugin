@@ -18,7 +18,7 @@
  *             Gutenberg and Gutenberg is in core.
  */
 
-namespace CC_Plugin\Admin;
+// namespace CC_Plugin\Admin;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
