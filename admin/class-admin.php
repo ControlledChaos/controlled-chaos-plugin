@@ -7,6 +7,8 @@
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
+ *
+ * @todo       Add admin and user access checks.
  */
 
 namespace CC_Plugin\Admin;
@@ -14,11 +16,6 @@ namespace CC_Plugin\Admin;
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
-}
-
-// Bail if not in the admin.
-if ( ! is_admin() ) {
-	return;
 }
 
 /**
