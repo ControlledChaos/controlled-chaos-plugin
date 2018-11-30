@@ -233,15 +233,15 @@ class Posts_Per_Page {
 	public function view_settings() {
 
 		?>
-		<div class="wrap">
+		<div class="wrap posts-per-page">
 			<div class="icon32" id="icon-options-general"></div>
-			<h2><?php _e( 'Posts Per Page', 'controlled-chaos-plugin' ); ?></h2>
-			<h3><?php _e( 'Overview', 'controlled-chaos-plugin' ); ?></h3>
-			<p style="margin-left:12px;max-width:640px;"><?php _e( 'The settings below allow you to specify how many posts per page are displayed to readers depending on the which type of page is being viewed.' ); ?></p>
-			<p style="margin-left:12px;max-width:640px;"><?php _e( 'Different values can be set for your your main view, category views, tag views, author views, archive views, search views, and
+			<h1><?php _e( 'Posts Per Page', 'controlled-chaos-plugin' ); ?></h1>
+			<h2><?php _e( 'Overview', 'controlled-chaos-plugin' ); ?></h2>
+			<p><?php _e( 'The settings below allow you to specify how many posts per page are displayed to readers depending on the which type of page is being viewed.' ); ?></p>
+			<p><?php _e( 'Different values can be set for your your main view, category views, tag views, author views, archive views, search views, and
 			views for custom post types. For each of these views, a different setting is available for the first page and subsequent pages. In addition to these, a default value is available that
 			can be set for any other pages not covered by this.', 'controlled-chaos-plugin' ); ?></p>
-			<p style="margin-left:12px;max-width:640px;"><?php _e( 'The initial value used on activation was pulled from the setting <em>Blog Pages show at most</em> found in the', 'controlled-chaos-plugin' ); ?> <a href="<?php echo site_url( '/wp-admin/options-reading.php' ); ?>" title="Reading Settings"><?php _e( 'Reading Settings', 'controlled-chaos-plugin' ); ?></a></p>
+			<p><?php _e( 'The initial value used on activation was pulled from the setting <em>Blog Pages show at most</em> found in the', 'controlled-chaos-plugin' ); ?> <a href="<?php echo site_url( '/wp-admin/options-reading.php' ); ?>" title="Reading Settings"><?php _e( 'Reading Settings', 'controlled-chaos-plugin' ); ?></a></p>
 			<form method="post" action="options.php">
 				<?php
 					settings_fields( 'ccp_ppp_options' );
@@ -267,13 +267,13 @@ class Posts_Per_Page {
 		add_settings_section( 'ccp_ppp_section_main', '', [ $this, 'output_main_section_text' ], 'ccp_ppp' );
 		add_settings_section( 'ccp_ppp_section_custom', '', [ $this, 'output_custom_section_text' ], 'ccp_ppp_custom' );
 
-		add_settings_field( 'ccp_ppp_index_count',     __( 'Main Index posts per page:', 'controlled-chaos-plugin' ), [ $this, 'output_index_count_text' ],    'ccp_ppp', 'ccp_ppp_section_main' );
-		add_settings_field( 'ccp_ppp_category_count',  __( 'Category posts per page:', 'controlled-chaos-plugin' ),   [ $this, 'output_category_count_text' ], 'ccp_ppp', 'ccp_ppp_section_main' );
-		add_settings_field( 'ccp_ppp_archive_count',   __( 'Archive posts per page:', 'controlled-chaos-plugin' ),    [ $this, 'output_archive_count_text' ],  'ccp_ppp', 'ccp_ppp_section_main' );
-		add_settings_field( 'ccp_ppp_tag_count',       __( 'Tag posts per page:', 'controlled-chaos-plugin' ),        [ $this, 'output_tag_count_text' ],      'ccp_ppp', 'ccp_ppp_section_main' );
-		add_settings_field( 'ccp_ppp_author_count',    __( 'Author posts per page:', 'controlled-chaos-plugin' ),     [ $this, 'output_author_count_text' ],   'ccp_ppp', 'ccp_ppp_section_main' );
-		add_settings_field( 'ccp_ppp_search_count',    __( 'Search posts per page:', 'controlled-chaos-plugin' ),     [ $this, 'output_search_count_text' ],   'ccp_ppp', 'ccp_ppp_section_main' );
-		add_settings_field( 'ccp_ppp_default_count',   __( 'Default posts per page:', 'controlled-chaos-plugin' ),    [ $this, 'output_default_count_text' ],  'ccp_ppp', 'ccp_ppp_section_main' );
+		add_settings_field( 'ccp_ppp_index_count',     __( 'Main Index posts per page', 'controlled-chaos-plugin' ), [ $this, 'output_index_count_text' ],    'ccp_ppp', 'ccp_ppp_section_main' );
+		add_settings_field( 'ccp_ppp_category_count',  __( 'Category posts per page', 'controlled-chaos-plugin' ),   [ $this, 'output_category_count_text' ], 'ccp_ppp', 'ccp_ppp_section_main' );
+		add_settings_field( 'ccp_ppp_archive_count',   __( 'Archive posts per page', 'controlled-chaos-plugin' ),    [ $this, 'output_archive_count_text' ],  'ccp_ppp', 'ccp_ppp_section_main' );
+		add_settings_field( 'ccp_ppp_tag_count',       __( 'Tag posts per page', 'controlled-chaos-plugin' ),        [ $this, 'output_tag_count_text' ],      'ccp_ppp', 'ccp_ppp_section_main' );
+		add_settings_field( 'ccp_ppp_author_count',    __( 'Author posts per page', 'controlled-chaos-plugin' ),     [ $this, 'output_author_count_text' ],   'ccp_ppp', 'ccp_ppp_section_main' );
+		add_settings_field( 'ccp_ppp_search_count',    __( 'Search posts per page', 'controlled-chaos-plugin' ),     [ $this, 'output_search_count_text' ],   'ccp_ppp', 'ccp_ppp_section_main' );
+		add_settings_field( 'ccp_ppp_default_count',   __( 'Default posts per page', 'controlled-chaos-plugin' ),    [ $this, 'output_default_count_text' ],  'ccp_ppp', 'ccp_ppp_section_main' );
 
 		add_settings_field( 'ccp_ppp_post_type_count', '', [ $this, 'output_post_type_count_text' ], 'ccp_ppp_custom', 'ccp_ppp_section_custom' );
 
@@ -304,7 +304,7 @@ class Posts_Per_Page {
 	 */
 	public function output_main_section_text() {
 		?>
-		<h3><?php _e( 'Main Settings', 'controlled-chaos-plugin' ); ?></h3>
+		<h2><?php _e( 'Main Settings', 'controlled-chaos-plugin' ); ?></h2>
 		<p><?php _e( 'This section allows you to modify page view types that are
 		associated with WordPress by default. When an option is set to 0, it will not modify any page requests for
 		that view and will instead allow default values to pass through.', 'controlled-chaos-plugin' ); ?></p>
@@ -324,7 +324,7 @@ class Posts_Per_Page {
 	public function output_custom_section_text() {
 
 		?>
-		<h3><?php _e( 'Custom Post Type Specific Settings', 'controlled-chaos-plugin' ); ?></h3>
+		<h2><?php _e( 'Custom Post Type Specific Settings', 'controlled-chaos-plugin' ); ?></h2>
 		<p><?php _e( 'This section contains a list of all of your registered custom post
 		types. In order to not conflict with other plugins or themes, these are set to 0 by default. When an option is
 		set to 0, it will not modify any page requests for that custom post type archive. For Custom Posts Per Page to
@@ -373,9 +373,11 @@ class Posts_Per_Page {
 
 			?>
 			<tr>
-				<td><?php echo $this_post_data->labels->name; ?></td>
-				<td><input id="ccp_ppp_post_type_count[<?php echo esc_attr( $p ); ?>]" name="ccp_ppp_options[<?php echo esc_attr( $p ); ?>_count]" size="10" type="text" value="<?php echo esc_attr( $ccp_ppp_options[ $p . '_count' ] ); ?>" />
-					&nbsp;<input id="ccp_ppp_post_type_count[<?php echo esc_attr( $p ); ?>]" name="ccp_ppp_options[<?php echo esc_attr( $p ); ?>_count_paged]" size="10" type="text" value="<?php echo esc_attr( $ccp_ppp_options[ $p . '_count_paged' ] ); ?>" />
+				<th><?php echo $this_post_data->labels->name; ?></th>
+				<td>
+					<label for="ccp_ppp_post_type_count[<?php echo esc_attr( $p ); ?>]"><strong><?php _e( 'First Page:', 'tims' ); ?></strong> </label> <input id="ccp_ppp_post_type_count[<?php echo esc_attr( $p ); ?>]" name="ccp_ppp_options[<?php echo esc_attr( $p ); ?>_count]" size="3" type="text" value="<?php echo esc_attr( $ccp_ppp_options[ $p . '_count' ] ); ?>" />
+					&nbsp;
+					<label for="ccp_ppp_post_type_count[<?php echo esc_attr( $p ); ?>]"><strong><?php _e( 'Subsequent Pages:', 'tims' ); ?></strong></label> <input id="ccp_ppp_post_type_count[<?php echo esc_attr( $p ); ?>]" name="ccp_ppp_options[<?php echo esc_attr( $p ); ?>_count_paged]" size="3" type="text" value="<?php echo esc_attr( $ccp_ppp_options[ $p . '_count_paged' ] ); ?>" />
 				</td>
 			</tr>
 			<?php
@@ -395,8 +397,9 @@ class Posts_Per_Page {
 		$ccp_ppp_options = get_option( 'ccp_ppp_options', [ 'front_count' => 0, 'front_count_paged' => 0 ] );
 
 		?>
-		<input id="ccp_ppp_index_count[0]" name="ccp_ppp_options[front_count]" size="10" type="text" value="<?php echo esc_attr( $ccp_ppp_options[ 'front_count' ] ); ?>" />
-		&nbsp;<input id="ccp_ppp_index_count[1]" name="ccp_ppp_options[front_count_paged]" size="10" type="text" value="<?php echo esc_attr( $ccp_ppp_options[ 'front_count_paged' ] ); ?>" />
+		<label for="ccp_ppp_index_count[0]"><strong><?php _e( 'First Page:', 'tims' ); ?></strong> </label> <input id="ccp_ppp_index_count[0]" name="ccp_ppp_options[front_count]" size="3" type="text" value="<?php echo esc_attr( $ccp_ppp_options[ 'front_count' ] ); ?>" />
+		&nbsp;
+		<label for="ccp_ppp_index_count[1]"><strong><?php _e( 'Subsequent Pages:', 'tims' ); ?></strong> </label> <input id="ccp_ppp_index_count[1]" name="ccp_ppp_options[front_count_paged]" size="3" type="text" value="<?php echo esc_attr( $ccp_ppp_options[ 'front_count_paged' ] ); ?>" />
 		<?php
 	}
 
@@ -412,8 +415,9 @@ class Posts_Per_Page {
 		$ccp_ppp_options = get_option( 'ccp_ppp_options', [ 'category_count' => 0, 'category_count_paged' => 0 ] );
 
 		?>
-		<input id="cppppc_category_count[0]" name="ccp_ppp_options[category_count]" size="10" type="text" value="<?php echo esc_attr( $ccp_ppp_options[ 'category_count' ] ); ?>" />
-		&nbsp;<input id="cppppc_category_count[1]" name="ccp_ppp_options[category_count_paged]" size="10" type="text" value="<?php echo esc_attr( $ccp_ppp_options[ 'category_count_paged' ] ); ?>" />
+		<label for="cppppc_category_count[0]"><strong><?php _e( 'First Page:', 'tims' ); ?></strong> </label> <input id="cppppc_category_count[0]" name="ccp_ppp_options[category_count]" size="3" type="text" value="<?php echo esc_attr( $ccp_ppp_options[ 'category_count' ] ); ?>" />
+		&nbsp;
+		<label for="cppppc_category_count[1]"><strong><?php _e( 'Subsequent Pages:', 'tims' ); ?></strong> </label> <input id="cppppc_category_count[1]" name="ccp_ppp_options[category_count_paged]" size="3" type="text" value="<?php echo esc_attr( $ccp_ppp_options[ 'category_count_paged' ] ); ?>" />
 		<?php
 	}
 
@@ -429,8 +433,9 @@ class Posts_Per_Page {
 		$ccp_ppp_options = get_option( 'ccp_ppp_options', [ 'archive_count' => 0, 'archive_count_paged' => 0 ] );
 
 		?>
-		<input id="cppppc_archive_count[0]" name="ccp_ppp_options[archive_count]" size="10" type="text" value="<?php echo esc_attr( $ccp_ppp_options[ 'archive_count' ] ); ?>" />
-		&nbsp;<input id="cppppc_archive_count[1]" name="ccp_ppp_options[archive_count_paged]" size="10" type="text" value="<?php echo esc_attr( $ccp_ppp_options[ 'archive_count_paged' ] ); ?>" />
+		<label for="cppppc_archive_count[0]"><strong><?php _e( 'First Page:', 'tims' ); ?></strong> </label> <input id="cppppc_archive_count[0]" name="ccp_ppp_options[archive_count]" size="3" type="text" value="<?php echo esc_attr( $ccp_ppp_options[ 'archive_count' ] ); ?>" />
+		&nbsp;
+		<label for="cppppc_archive_count[1]"><strong><?php _e( 'Subsequent Pages:', 'tims' ); ?></strong> </label> <input id="cppppc_archive_count[1]" name="ccp_ppp_options[archive_count_paged]" size="3" type="text" value="<?php echo esc_attr( $ccp_ppp_options[ 'archive_count_paged' ] ); ?>" />
 		<?php
 	}
 
@@ -446,8 +451,9 @@ class Posts_Per_Page {
 		$ccp_ppp_options = get_option( 'ccp_ppp_options', [ 'tag_count' => 0, 'tag_count_paged' => 0 ] );
 
 		?>
-		<input id="ccp_ppp_tag_count[0]" name="ccp_ppp_options[tag_count]" size="10" type="text" value="<?php echo esc_attr( $ccp_ppp_options[ 'tag_count' ] ); ?>" />
-		&nbsp;<input id="ccp_ppp_tag_count[1]" name="ccp_ppp_options[tag_count_paged]" size="10" type="text" value="<?php echo esc_attr( $ccp_ppp_options[ 'tag_count_paged' ] ); ?>" />
+		<label for="ccp_ppp_tag_count[0]"><strong><?php _e( 'First Page:', 'tims' ); ?></strong> </label> <input id="ccp_ppp_tag_count[0]" name="ccp_ppp_options[tag_count]" size="3" type="text" value="<?php echo esc_attr( $ccp_ppp_options[ 'tag_count' ] ); ?>" />
+		&nbsp;
+		<label for="ccp_ppp_tag_count[1]"><strong><?php _e( 'Subsequent Pages:', 'tims' ); ?></strong> </label> <input id="ccp_ppp_tag_count[1]" name="ccp_ppp_options[tag_count_paged]" size="3" type="text" value="<?php echo esc_attr( $ccp_ppp_options[ 'tag_count_paged' ] ); ?>" />
 		<?php
 	}
 
@@ -463,8 +469,9 @@ class Posts_Per_Page {
 		$ccp_ppp_options = get_option( 'ccp_ppp_options', [ 'author_count' => 0, 'author_count_paged' => 0 ] );
 
 		?>
-		<input id="ccp_ppp_author_count[0]" name="ccp_ppp_options[author_count]" size="10" type="text" value="<?php echo esc_attr( $ccp_ppp_options[ 'author_count' ] ); ?>" />
-		&nbsp;<input id="ccp_ppp_author_count[1]" name="ccp_ppp_options[author_count_paged]" size="10" type="text" value="<?php echo esc_attr( $ccp_ppp_options[ 'author_count_paged' ] ); ?>" />
+		<label for="ccp_ppp_author_count[0]"><strong><?php _e( 'First Page:', 'tims' ); ?></strong> </label> <input id="ccp_ppp_author_count[0]" name="ccp_ppp_options[author_count]" size="3" type="text" value="<?php echo esc_attr( $ccp_ppp_options[ 'author_count' ] ); ?>" />
+		&nbsp;
+		<label for="ccp_ppp_author_count[1]"><strong><?php _e( 'Subsequent Pages:', 'tims' ); ?></strong> </label> <input id="ccp_ppp_author_count[1]" name="ccp_ppp_options[author_count_paged]" size="3" type="text" value="<?php echo esc_attr( $ccp_ppp_options[ 'author_count_paged' ] ); ?>" />
 		<?php
 	}
 
@@ -480,8 +487,9 @@ class Posts_Per_Page {
 		$ccp_ppp_options = get_option( 'ccp_ppp_options', [ 'search_count' => 0, 'search_count_paged' => 0 ] );
 
 		?>
-		<input id="cppppc_search_count[0]" name="ccp_ppp_options[search_count]" size="10" type="text" value="<?php echo esc_attr( $ccp_ppp_options[ 'search_count' ] ); ?>" />
-		&nbsp;<input id="cppppc_search_count[1]" name="ccp_ppp_options[search_count_paged]" size="10" type="text" value="<?php echo esc_attr( $ccp_ppp_options[ 'search_count_paged' ] ); ?>" />
+		<label for="cppppc_search_count[0]"><strong><?php _e( 'First Page:', 'tims' ); ?></strong> </label> <input id="cppppc_search_count[0]" name="ccp_ppp_options[search_count]" size="3" type="text" value="<?php echo esc_attr( $ccp_ppp_options[ 'search_count' ] ); ?>" />
+		&nbsp;
+		<label for="cppppc_search_count[1]"><strong><?php _e( 'Subsequent Pages:', 'tims' ); ?></strong> </label> <input id="cppppc_search_count[1]" name="ccp_ppp_options[search_count_paged]" size="3" type="text" value="<?php echo esc_attr( $ccp_ppp_options[ 'search_count_paged' ] ); ?>" />
 		<?php
 	}
 
@@ -497,8 +505,9 @@ class Posts_Per_Page {
 		$ccp_ppp_options = get_option( 'ccp_ppp_options', [ 'default_count' => 0, 'default_count_paged' => 0 ] );
 
 		?>
-		<input id="cppppc_default_count[0]" name="ccp_ppp_options[default_count]" size="10" type="text" value="<?php echo esc_attr( $ccp_ppp_options[ 'default_count' ] ); ?>" />
-		&nbsp;<input id="cppppc_default_count[1]" name="ccp_ppp_options[default_count_paged]" size="10" type="text" value="<?php echo esc_attr( $ccp_ppp_options[ 'default_count_paged' ] ); ?>" />
+		<label for="cppppc_default_count[0]"><strong><?php _e( 'First Page:', 'tims' ); ?></strong> </label> <input id="cppppc_default_count[0]" name="ccp_ppp_options[default_count]" size="3" type="text" value="<?php echo esc_attr( $ccp_ppp_options[ 'default_count' ] ); ?>" />
+		&nbsp;
+		<label for="cppppc_default_count[1]"><strong><?php _e( 'Subsequent Pages:', 'tims' ); ?></strong> </label> <input id="cppppc_default_count[1]" name="ccp_ppp_options[default_count_paged]" size="3" type="text" value="<?php echo esc_attr( $ccp_ppp_options[ 'default_count_paged' ] ); ?>" />
 		<?php
 	}
 
@@ -518,7 +527,7 @@ class Posts_Per_Page {
 			return;
 		}
 
-		$ccp_ppp_options   = get_option( 'ccp_ppp_options' );
+		$ccp_ppp_options = get_option( 'ccp_ppp_options' );
 		$all_post_types  = get_post_types( [ '_builtin' => false ] );
 		$post_type_array = [];
 
