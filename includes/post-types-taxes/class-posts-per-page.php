@@ -7,6 +7,7 @@
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
+ * @author     Jeremy Felt <jeremy.felt@gmail.com>
  */
 
 namespace CC_Plugin\Includes\Post_Types_Taxes;
@@ -21,6 +22,11 @@ if ( ! defined( 'WPINC' ) ) {
  *
  * Defines constants and variables, gets the initialization class file
  * plus the activation and deactivation classes.
+ *
+ * Originally from a plugin maintained by Jeremy Felt, 2011-2014.
+ *
+ * @link   https://jeremyfelt.com/wordpress/plugins/posts-per-page/
+ * @link   https://wordpress.org/plugins/custom-posts-per-page/
  *
  * @since  1.0.0
  * @access public
