@@ -15,6 +15,8 @@ A feature-packed WordPress starter plugin for building custom-tailored websites.
 
 Controlled Chaos Plugin is a tool — a means to an end. It is not intended to be used as is, without further development, however it can be used as such. I use it to build site-specific plugins for clients.
 
+GitHub page for this plugin: [https://controlledchaos.github.io/controlled-chaos-plugin/](https://controlledchaos.github.io/controlled-chaos-plugin/)
+
 ### Introduction
 
 Howdy, folks. My name is Greg Sweet. I am sole proprietor, chief cook and bottle washer at [Controlled Chaos Design](http://ccdzine.com/).
