@@ -345,7 +345,12 @@ class Posts_Per_Page {
 		$ccp_ppp_options = get_option( 'ccp_ppp_options' );
 
 		// Only get public post types.
-		$all_post_types  = get_post_types( [ 'public' => true, '_builtin' => false ] );
+		$args = [
+			'public'   => true,
+			'_builtin' => false
+		];
+		$args            = apply_filters( 'ccp_output_post_type_count_text', $args );
+		$all_post_types  = get_post_types( $args );
 
 		/* Quirky little workaround for displaying the settings in our table */
 		echo '</td><td></td></tr>';
