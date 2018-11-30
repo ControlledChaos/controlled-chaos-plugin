@@ -305,10 +305,10 @@ class Posts_Per_Page {
 	public function output_main_section_text() {
 		?>
 		<h3><?php _e( 'Main Settings', 'controlled-chaos-plugin' ); ?></h3>
-		<p style="max-width:640px;margin-left:12px;"><?php _e( 'This section allows you to modify page view types that are
+		<p><?php _e( 'This section allows you to modify page view types that are
 		associated with WordPress by default. When an option is set to 0, it will not modify any page requests for
 		that view and will instead allow default values to pass through.', 'controlled-chaos-plugin' ); ?></p>
-		<p style="max-width:460px;margin-left:12px;"><strong><?php _e( 'Please Note', 'controlled-chaos-plugin' ); ?>:</strong>
+		<p><strong><?php _e( 'Please Note', 'controlled-chaos-plugin' ); ?>:</strong>
 		<em><?php _e( 'For each setting, the box on the <strong>LEFT</strong> controls the the number of posts displayed on	the first page of that view while
 		the box on the <strong>RIGHT</strong> controls the number of posts seen on pages 2, 3, 4, etc... of that view.', 'controlled-chaos-plugin' ); ?></em></p>
 		<?php
@@ -325,7 +325,7 @@ class Posts_Per_Page {
 
 		?>
 		<h3><?php _e( 'Custom Post Type Specific Settings', 'controlled-chaos-plugin' ); ?></h3>
-		<p style="max-width:640px;margin-left:12px;"><?php _e( 'This section contains a list of all of your registered custom post
+		<p><?php _e( 'This section contains a list of all of your registered custom post
 		types. In order to not conflict with other plugins or themes, these are set to 0 by default. When an option is
 		set to 0, it will not modify any page requests for that custom post type archive. For Custom Posts Per Page to
 		control the number of posts to display, these will need to be changed.', 'custom-post-per-page' ); ?></p>
