@@ -344,7 +344,7 @@ class Posts_Per_Page {
 
 		$ccp_ppp_options = get_option( 'ccp_ppp_options' );
 
-		// Only get public post types.
+		// Arguments for post types displayed on the settings page.
 		$args = [
 			'public'   => true,
 			'_builtin' => false
