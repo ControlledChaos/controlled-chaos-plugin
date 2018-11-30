@@ -129,7 +129,7 @@ Dashboard with custom welcome panel and sample dashboard widget...
 
 ![Custom welcome panel](https://raw.githubusercontent.com/ControlledChaos/controlled-chaos-plugin/master/assets/images/ccp-custom-welcome.jpg)
 
-### Posts per Archive Page
+### Posts Per Archive Page
 
 Set the number of posts displayed on the various archive pages, including custom post types.
 
