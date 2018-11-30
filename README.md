@@ -129,6 +129,10 @@ Dashboard with custom welcome panel and sample dashboard widget...
 
 ![Custom welcome panel](https://raw.githubusercontent.com/ControlledChaos/controlled-chaos-plugin/master/assets/images/ccp-custom-welcome.jpg)
 
+### Posts per Page
+
+Set the number of posts displayed on the various archive pages, including custom post types.
+
 ### Drag & Drop Post Type Order
 
 Option to add custom sort order functionality to blog index pages and post archive pages.

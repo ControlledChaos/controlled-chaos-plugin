@@ -78,6 +78,9 @@ class Post_Types_Taxes {
 		// Functions related to post types and taxonomies.
 		require_once CCP_PATH . 'includes/post-types-taxes/class-post-type-tax-functions.php';
 
+		// Number of posts per archive page.
+		require_once CCP_PATH . 'includes/post-types-taxes/class-posts-per-page.php';
+
 		// Drag & drop custom post and taxonomy orders.
 		require_once CCP_PATH . 'includes/post-types-taxes/class-post-type-order.php';
 
