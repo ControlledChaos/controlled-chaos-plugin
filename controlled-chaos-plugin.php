@@ -7,6 +7,7 @@
  * @author      Greg Sweet <greg@ccdzine.com>
  * @copyright   Copyright © 2018, Greg Sweet
  * @link        https://github.com/ControlledChaos/controlled-chaos-plugin
+ * @link        https://controlledchaos.github.io/controlled-chaos-plugin/
  * @license     GPL-3.0+ http://www.gnu.org/licenses/gpl-3.0.txt
  *
  * Plugin Name:  Controlled Chaos Plugin
