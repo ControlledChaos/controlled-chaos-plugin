@@ -299,11 +299,16 @@ if ( ! class_exists( 'Controlled_Chaos_Plugin' ) ) :
 
 	}
 
+	// Begin plugin functionality.
+	ccp_plugin();
+
 // End the check for the plugin class.
 endif;
 
-// Begin plugin functionality.
-ccp_plugin();
+// Bail out now if the core class was not run.
+if ( ! function_exists( 'ccp_plugin' ) ) {
+	return;
+}
 
 /**
  * Register the activaction & deactivation hooks.
