@@ -17,9 +17,6 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-// Get plugins path to check for active plugins.
-include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-
 /**
  * If the Custom Posts per Page plugin is active then stop here.
  *
