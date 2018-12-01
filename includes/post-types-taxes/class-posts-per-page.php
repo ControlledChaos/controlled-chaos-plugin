@@ -17,6 +17,19 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+// Get plugins path to check for active plugins.
+include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
+/**
+ * If the Custom Posts per Page plugin is active then stop here.
+ *
+ * @since  1.0.0
+ * @return void
+ */
+if ( class_exists( 'Custom_Posts_Per_Page_Foghlaim' ) ) {
+	return;
+}
+
 /**
  * The core plugin class
  *
