@@ -119,46 +119,12 @@ class Posts_Per_Page {
 
 		register_activation_hook( __FILE__, [ $this, 'upgrade_check' ] );
 
-		add_action( 'admin_init', [ $this, 'upgrade_check' ] );
 		add_action( 'admin_init', [ $this, 'register_settings' ] );
 
 		add_action( 'admin_menu', [ $this, 'add_settings' ] );
 
 		if ( ! is_admin() ) {
 			add_action( 'pre_get_posts', [ $this, 'modify_query' ] );
-		}
-
-	}
-
-	/**
-	 * Our database 'upgrade' check.
-	 *
-	 * In version 1.3, we refactored the option names a bit, so a little
-	 * cleanup is needed if we detect and old version.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @return void
-	 */
-	public function upgrade_check() {
-
-		if ( '1.3' === get_option( 'ccp_ppp_upgrade', '1.3' ) ) {
-			$this->activate();
-
-			$ccp_ppp_options = get_option( 'ccp_ppp_options' );
-
-			if ( isset( $ccp_ppp_options['front_page_count'] ) ) {
-				$ccp_ppp_options['front_count'] = $ccp_ppp_options['front_page_count'];
-				unset( $ccp_ppp_options['front_page_count'] );
-			}
-
-			if ( isset( $ccp_ppp_options['index_count'] ) ) {
-				$ccp_ppp_options['front_count_paged'] = $ccp_ppp_options['index_count'];
-				unset( $ccp_ppp_options['index_count'] );
-			}
-
-			update_option( 'ccp_ppp_options', $ccp_ppp_options );
-			update_option( 'ccp_ppp_upgrade', '1.4' );
 		}
 
 	}
