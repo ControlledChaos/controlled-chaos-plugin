@@ -157,7 +157,8 @@ Sample custom profile fields coming also.
 
 Included are a few tools to help in the early stages of site development, or that can be used for making improvements and debugging.
 
-* Put WordPress into debug mode without FTP access (experimental)
+* Put WordPress into debug mode without FTP access (experimental).
+* Database reset tool (experimental).
 * Live theme testing for theme development on a live site
 * Right to left switcher for testing layouts with RTL languages.
 * ACF tool to import the settings fields registered by this plugin so that they can be further developed.
