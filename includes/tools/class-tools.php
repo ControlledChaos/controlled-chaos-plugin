@@ -106,6 +106,9 @@ class Tools {
 			include_once CCP_PATH . 'includes/tools/class-theme-test.php';
 		}
 
+		// Database reset.
+		require_once CCP_PATH . 'includes/tools/database-reset/database-reset.php';
+
 	}
 
 	public function acf_json_save_point( $path ) {

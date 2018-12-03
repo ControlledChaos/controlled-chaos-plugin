@@ -1,0 +1,24 @@
+#select-container {
+  width: 290px;
+}
+
+#select-all {
+  float: right;
+  margin-top: 6px;
+}
+
+#security-code {
+  font-weight: bold;
+  display: inline-block;
+  margin-left: 3px;
+}
+
+#loader {
+  margin-left: 10px;
+  position: absolute;
+  width: 28px;
+}
+
+#reactivate {
+  color: #21759B;
+}
