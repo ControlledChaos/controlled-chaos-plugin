@@ -118,6 +118,38 @@ class Settings_Fields_Dev_Tools {
 			'ccp_theme_test'
 		);
 
+		// Customizer reset settings field.
+		add_settings_field(
+			'ccp_customizer_reset',
+			__( 'Customizer Reset', 'controlled-chaos-plugin' ),
+			[ $this, 'ccp_customizer_reset_callback' ],
+			'ccp-site-development-general',
+			'ccp-site-development-general',
+			[ esc_html__( 'Add a reset button to the Customizer for getting a fresh start.', 'controlled-chaos-plugin' ) ]
+		);
+
+		// Register the Customizer reset field.
+		register_setting(
+			'ccp-site-development-general',
+			'ccp_customizer_reset'
+		);
+
+		// Database reset settings field.
+		add_settings_field(
+			'ccp_database_reset',
+			__( 'Database Reset', 'controlled-chaos-plugin' ),
+			[ $this, 'ccp_database_reset_callback' ],
+			'ccp-site-development-general',
+			'ccp-site-development-general',
+			[ esc_html__( 'Add a tool to reset select tables or all of the database.', 'controlled-chaos-plugin' ) ]
+		);
+
+		// Register the database reset field.
+		register_setting(
+			'ccp-site-development-general',
+			'ccp_database_reset'
+		);
+
 		// RTL (right to left) test settings field.
 		add_settings_field(
 			'ccp_rtl_test',
@@ -189,6 +221,50 @@ class Settings_Fields_Dev_Tools {
 		$html   = '<p><input type="checkbox" id="ccp_theme_test" name="ccp_theme_test" value="1" ' . checked( 1, $option, false ) . '/>';
 		$html  .= sprintf(
 			'<label for="ccp_theme_test">%1s</label></p>',
+			$args[0]
+		 );
+
+		echo $html;
+
+	}
+
+	/**
+	 * Customizer reset field callback.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @param  array $args Holds the settings field array.
+	 * @return string Returns the field HTML.
+	 */
+	public function ccp_customizer_reset_callback( $args ) {
+
+		$option = get_option( 'ccp_customizer_reset' );
+
+		$html   = '<p><input type="checkbox" id="ccp_customizer_reset" name="ccp_customizer_reset" value="1" ' . checked( 1, $option, false ) . '/>';
+		$html  .= sprintf(
+			'<label for="ccp_customizer_reset">%1s</label></p>',
+			$args[0]
+		 );
+
+		echo $html;
+
+	}
+
+	/**
+	 * Database reset field callback.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @param  array $args Holds the settings field array.
+	 * @return string Returns the field HTML.
+	 */
+	public function ccp_database_reset_callback( $args ) {
+
+		$option = get_option( 'ccp_database_reset' );
+
+		$html   = '<p><input type="checkbox" id="ccp_database_reset" name="ccp_database_reset" value="1" ' . checked( 1, $option, false ) . '/>';
+		$html  .= sprintf(
+			'<label for="ccp_database_reset">%1s</label></p>',
 			$args[0]
 		 );
 

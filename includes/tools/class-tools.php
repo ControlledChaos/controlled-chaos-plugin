@@ -107,7 +107,18 @@ class Tools {
 		}
 
 		// Database reset.
-		require_once CCP_PATH . 'includes/tools/database-reset/database-reset.php';
+		$database_reset = get_option( 'ccp_database_reset' );
+
+		if ( $database_reset ) {
+			require_once CCP_PATH . 'includes/tools/database-reset/database-reset.php';
+		}
+
+		// Customizer reset.
+		$customizer_reset = get_option( 'ccp_customizer_reset' );
+
+		if ( $customizer_reset ) {
+			require_once CCP_PATH . 'includes/tools/customizer-reset/customizer-reset.php';
+		}
 
 	}
 

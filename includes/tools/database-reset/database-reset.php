@@ -13,7 +13,6 @@
  *
  * @link       https://github.com/chrisberthe/wordpress-database-reset
  *
- * @todo       Add option to use this tool.
  * @todo       Make original plugin files consistent with this plugin.
  * @todo       Correct paths & URIs.
  * @todo       Test in a sacrificial install.
