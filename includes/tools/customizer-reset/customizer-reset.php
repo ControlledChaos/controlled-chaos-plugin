@@ -80,7 +80,7 @@ final class Customizer_Reset {
 
 		wp_localize_script( 'ccp-customizer-reset', '_CCPCustomizerReset', [
 			'reset'   => __( 'Reset', 'controlled-chaos-plugin' ),
-			'confirm' => __( 'Warning! This will remove all customizations made via customizer to this theme!\n\nThis action is irreversible!', 'controlled-chaos-plugin' ),
+			'confirm' => __( 'Warning! This will remove all changes made to this theme via the Customizer. This action is irreversible.', 'controlled-chaos-plugin' ),
 			'nonce'   => [
 				'reset' => wp_create_nonce( 'customizer-reset' ),
 			]
