@@ -57,7 +57,7 @@ final class Customizer_Reset {
 	 *
 	 * @since  1.0.0
 	 * @access public
-	 * @return void Constructor method is empty.
+	 * @return self
 	 */
 	private function __construct() {
 
@@ -136,7 +136,7 @@ final class Customizer_Reset {
 
 		$settings = $this->wp_customize->settings();
 
-		// remove theme_mod settings registered in customizer
+		// Remove theme_mod settings registered in customizer.
 		foreach ( $settings as $setting ) {
 			if ( 'theme_mod' == $setting->type ) {
 				remove_theme_mod( $setting->id );
