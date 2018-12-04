@@ -10,8 +10,6 @@
  * @author     Greg Sweet <greg@ccdzine.com>
  *
  * @link       https://github.com/wpzoom/customizer-reset
- *
- * @todo       Add option to use this tool.
  */
 
 namespace CC_Plugin\Includes\Tools\Customizer_Reset;
@@ -56,7 +54,7 @@ final class Customizer_Reset {
 	 * Constructor method
 	 *
 	 * @since  1.0.0
-	 * @access public
+	 * @access private
 	 * @return self
 	 */
 	private function __construct() {

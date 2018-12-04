@@ -1,6 +1,6 @@
 <?php
 /**
- * The core plugin class.
+ * The core plugin class
  *
  * @package    Controlled_Chaos_Plugin
  * @subpackage Includes
