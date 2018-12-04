@@ -148,7 +148,7 @@ class Meta_Description {
 		// Use the tagline for the front page.
 		if ( is_front_page() ) {
 			$description = $tagline_desc;
-		// Used the blog description established above for blog pages.
+		// Use the blog description established above for blog pages.
 		} elseif ( is_home() ) {
 			$description = $blog_desc;
 		// Use the search text above of the filtered text on search pages.
@@ -157,7 +157,7 @@ class Meta_Description {
 		// For post type pages check for a manual excerpt.
 		} elseif ( has_excerpt() ) {
 			$description = $manual_excerpt;
-		// Use the auto excerpt if no manual excerpt is found.
+		// Otherwise use the auto excerpt if no manual excerpt is found.
 		} else {
 			$description = $auto_excerpt;
 		}
