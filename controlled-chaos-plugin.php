@@ -20,7 +20,7 @@
  * License URI:  https://www.gnu.org/licenses/gpl.txt
  * Text Domain:  controlled-chaos-plugin
  * Domain Path:  /languages
- * Tested up to: 4.9.8
+ * Tested up to: 5.0.0
  */
 
 /**
