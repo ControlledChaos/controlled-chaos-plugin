@@ -1,6 +1,6 @@
 # Controlled Chaos Plugin
 
-A feature-packed WordPress starter plugin for building custom-tailored websites.
+A feature-packed WordPress or ClassicPress starter plugin for building custom-tailored websites.
 
 ![WordPress tested on version 5.0.0](https://img.shields.io/badge/WordPress-5.0.0-0073aa.svg?style=flat-square)
 ![ClassicPress tested on version 1.0.0-beta1](https://img.shields.io/badge/ClassicPress-1.0.0--beta1-03768e.svg?style=flat-square)
