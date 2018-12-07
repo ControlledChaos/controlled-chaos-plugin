@@ -517,8 +517,6 @@ add_filter( 'plugin_row_meta', 'ccp_settings_links', 10, 2 );
  * @since  1.0.0
  * @access public
  * @return bool Returns true if the WordPress version is 5.0 or greater.
- *
- * @todo   Address this if or when there is a check for ClassicPress.
  */
 function ccp_new_cms() {
 
@@ -526,6 +524,23 @@ function ccp_new_cms() {
 	$version = get_bloginfo( 'version' );
 
 	if ( $version >= 5.0 ) {
+		return true;
+	} else {
+		return false;
+	}
+
+}
+
+/**
+ * Check if the CMS is ClassicPress.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return bool Returns true if ClassicPress is running.
+ */
+function ccp_classicpress() {
+
+	if ( function_exists( 'classicpress_version' ) ) {
 		return true;
 	} else {
 		return false;

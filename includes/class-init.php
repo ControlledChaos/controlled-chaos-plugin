@@ -103,7 +103,7 @@ final class Init {
 		} else {
 			$editor = get_option( 'ccp_classic_editor' );
 		}
-		if ( ccp_new_cms() && ! $editor && is_plugin_active( 'gutenberg/gutenberg.php' ) ) {
+		if ( ( ccp_classicpress() || ccp_new_cms() ) && ! $editor || is_plugin_active( 'gutenberg/gutenberg.php' ) ) {
 			require_once CCP_PATH . 'includes/editor-blocks/class-register-block-types.php';
 		}
 
