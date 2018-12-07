@@ -22,11 +22,6 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-// Bail if in the admin.
-if ( is_admin() ) {
-	return;
-}
-
 /**
  * The frontend functionality of the plugin.
  *

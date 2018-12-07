@@ -425,9 +425,14 @@ class Admin {
 	 */
 	public function get_search_form() {
 
+		// Bail if not in admin.
+		if ( ! is_admin() ) {
+			return;
+		}
+
 		ob_start();
 
-		require CCP_PATH . 'partials/searchform.php';
+		require CCP_PATH . 'admin/partials/searchform.php';
 
 		$form = ob_get_clean();
 
@@ -443,6 +448,11 @@ class Admin {
 	 * @return mixed Returns the HTML of the search form.
 	 */
 	public function search_form( $form ) {
+
+		// Bail if not in admin.
+		if ( ! is_admin() ) {
+			return;
+		}
 
 		// Get the HTML of the form.
 		$form = $this->get_search_form();
