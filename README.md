@@ -47,7 +47,7 @@ A sample editor block is included in preparation for WordPress 5.0 with it's new
 
 ### Classic Editor
 
-Included here is the option to disable the Gutenberg block editor and restore the classic TinyMCE editor. This is essentially a copy of WordPress' Classic Editor plugin with the option to activate and this plugin's Site Settings page.
+Included here is the option to disable the Gutenberg block editor and restore the classic TinyMCE editor. This is essentially a copy of WordPress' Classic Editor plugin with the option to activate on this plugin's Site Settings page.
 
 @todo Add options to selectively disable the block editor by post type.
 
