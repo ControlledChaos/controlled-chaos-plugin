@@ -130,7 +130,7 @@ class Admin {
 		} else {
 			$editor = get_option( 'ccp_classic_editor' );
 		}
-		if ( $editor ) {
+		if ( ccp_new_cms() && $editor ) {
 			include_once CCP_PATH . 'admin/classic-editor/classic-editor.php';
 		}
 

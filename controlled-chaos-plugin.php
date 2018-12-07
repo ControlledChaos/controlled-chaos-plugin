@@ -512,6 +512,28 @@ function ccp_settings_links( $links, $file ) {
 add_filter( 'plugin_row_meta', 'ccp_settings_links', 10, 2 );
 
 /**
+ * Check if WordPress is 5.0 or greater.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return bool Returns true if the WordPress version is 5.0 or greater.
+ *
+ * @todo   Address this if or when there is a check for ClassicPress.
+ */
+function ccp_new_cms() {
+
+	// Get the WordPress version.
+	$version = get_bloginfo( 'version' );
+
+	if ( $version >= 5.0 ) {
+		return true;
+	} else {
+		return false;
+	}
+
+}
+
+/**
  * Check for Advanced Custom Fields.
  *
  * @since  1.0.0
