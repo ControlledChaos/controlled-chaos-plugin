@@ -43,7 +43,7 @@ If you would like to request development of a custom version of this plugin for 
 
 ### Gutenberg Editor
 
-A sample editor block is included in preparation for WordPress 5.0 with it's new user interface for creating posts. This block doesn't really do anyhing, it is simply included to establish the editor block directory and class for further development. See below for Gutenberg + ACF.
+A sample editor block is included for WordPress 5.0 with it's new user interface for creating posts. This block doesn't really do anyhing, it is simply included to establish the editor block directory and class for further development. See below for Gutenberg + ACF.
 
 ### Classic Editor
 
@@ -131,6 +131,12 @@ Admin interface options include:
 Dashboard with custom welcome panel and sample dashboard widget...
 
 ![Custom welcome panel](https://raw.githubusercontent.com/ControlledChaos/controlled-chaos-plugin/master/assets/images/ccp-custom-welcome.jpg)
+
+### Post Types on Front Page
+
+Select a custom post type to be displayed in place of latest posts on the front page.
+
+@todo Move this functionality from the Customizer.
 
 ### Posts Per Archive Page
 
