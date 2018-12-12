@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
  * @since  1.0.0
  * @access public
  */
-final class Taxonomies_Register {
+final class Taxes_Register {
 
     /**
 	 * Constructor magic method.
@@ -108,7 +108,7 @@ final class Taxonomies_Register {
         register_taxonomy(
             'ccp_taxonomy',
             [
-                'ccp_post_type'
+                'ccp_post_type' // Change to your post type name.
             ],
             $options
         );
@@ -118,4 +118,4 @@ final class Taxonomies_Register {
 }
 
 // Run the class.
-$ccp_taxonomies = new Taxonomies_Register;
+$ccp_taxes = new Taxes_Register;
