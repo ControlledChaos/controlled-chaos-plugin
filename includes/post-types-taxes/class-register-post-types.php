@@ -89,7 +89,7 @@ final class Post_Types_Register {
         ];
 
         // Apply a filter to labels for customization.
-        $labels = apply_filters( 'ccp_custom_posts_labels', $labels );
+        $labels = apply_filters( 'ccp_post_type_labels', $labels );
 
         $options = [
             'label'               => __( 'Custom Posts', 'controlled-chaos-plugin' ),
@@ -134,7 +134,7 @@ final class Post_Types_Register {
         ];
 
         // Apply a filter to arguments for customization.
-        $options = apply_filters( 'ccp_custom_posts_args', $options );
+        $options = apply_filters( 'ccp_post_type_args', $options );
 
         /**
          * Register the post type
