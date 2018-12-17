@@ -42,11 +42,11 @@ $about_desc = apply_filters( 'ccp_welcome_about', __( 'Put your welcome message 
 	<?php do_action( 'ccp_welcome_panel_content_before' ); ?>
 
 	<?php echo sprintf(
-		'<h2>%1s %2s.</h2>',
+		'<h2 class="welcome-panel-title">%1s %2s.</h2>',
 		esc_html__( 'Welcome,', 'controlled-chaos-plugin' ),
 		$user_name
 	); ?>
-	<p class="about-description"><?php echo $about_desc; ?></p>
+	<p class="welcome-panel-description"><?php echo $about_desc; ?></p>
 	<?php echo $subheading; ?>
 	<p><?php _e( 'Use this to provide handy links to manage content, informational widgets, or maybe an instructional video.' ); ?></p>
 	<p><?php _e( 'No CSS has been applied to this welcome panel. Add styles as necessary for your project.' ); ?></p>
