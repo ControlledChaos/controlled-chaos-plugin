@@ -271,6 +271,23 @@ class Admin {
 		$site = get_bloginfo( 'name' );
 
 		/**
+		 * Default message by CMS.
+		 *
+		 * The default message vaies whether WordPress or ClassicPress is used.
+		 *
+		 * @since  1.0.0
+		 */
+
+		// If the site is running ClassicPress.
+		if ( ccp_classicpress() ) {
+			$default = __( 'website powered by ClassicPress', 'controlled-chaos-plugin' );
+
+		// If the site is running WordPress.
+		} else {
+			$default = __( 'website powered by WordPress', 'controlled-chaos-plugin' );
+		}
+
+		/**
 		 * If the Advanced Custom Fields Pro plugin is active then
 		 * we use the input from the fields on the ACF options page.
 		 *
@@ -307,7 +324,7 @@ class Admin {
 				$footer = sprintf(
 					'%1s %2s. ',
 					$site,
-					esc_html__( 'website powered by WordPress', 'controlled-chaos-plugin' )
+					esc_html__( $default )
 				);
 			}
 
@@ -344,7 +361,7 @@ class Admin {
 				$footer = sprintf(
 					'%1s %2s. ',
 					$site,
-					esc_html__( 'website powered by WordPress', 'controlled-chaos-plugin' )
+					esc_html__( $default )
 				);
 			}
 
