@@ -53,7 +53,7 @@ Included here is the option to disable the Gutenberg block editor and restore th
 
 ### Advanced Custom Fields
 
-For a nicer user experience, this plugin is recommended for use with [Advanced Custom Fields PRO](https://www.advancedcustomfields.com/pro/) or the [free version of ACF](https://wordpress.org/plugins/advanced-custom-fields/) plus the [Options Page](https://www.advancedcustomfields.com/add-ons/options-page/) addon. However, most of the ACF features are duplicated, with identical field database names, using the [WordPress Settings API](https://developer.wordpress.org/plugins/settings/settings-api/) to reduce third-party dependencies.
+For a nicer user experience, this plugin is recommended for use with [Advanced Custom Fields PRO](https://www.advancedcustomfields.com/pro/) or the [free version of ACF](https://wordpress.org/plugins/advanced-custom-fields/) plus the [Options Page](https://www.advancedcustomfields.com/add-ons/options-page/) addon. However, most of the ACF features are duplicated, with identical field database names, using the [Settings API](https://developer.wordpress.org/plugins/settings/settings-api/) to reduce third-party dependencies.
 
 Settings page with ACF activated...
 
@@ -100,7 +100,7 @@ The plugins are enqueued via opt-in checkboxes on the Script Options page, excep
 
 The plugin comes with several admin pages for site administration and one demo admin page that can be used to include instructional information for clients, author credits adn upsells, whatever fills your project's needs. Demo contextual help tabs are included with the demo admin page.
 
-One main page for website settings uses the Advanced Custom Fields options page method, if ACF Pro or ACF free plus the Options Page addon are active, otherwise it uses the default WordPress method. This site settings page can be extended with new tabbed content by adding it directly to your new version of this plugin, by implementing an addon plugin ([starter addon here](https://github.com/ControlledChaos/controlled-chaos-addon)), or by using Advanced Custom Fields Pro.
+One main page for website settings uses the Advanced Custom Fields options page method, if ACF Pro or ACF free plus the Options Page addon are active, otherwise it uses the default method. This site settings page can be extended with new tabbed content by adding it directly to your new version of this plugin, by implementing an addon plugin ([starter addon here](https://github.com/ControlledChaos/controlled-chaos-addon)), or by using Advanced Custom Fields Pro.
 
 ### Sample Custom Post Type and Taxonomy
 
@@ -117,7 +117,7 @@ Admin interface options include:
 * Remove dashboard widgets
 * Make Menus and Widgets top level menu items
 * Remove select admin menu items
-* Remove WordPress logo from admin bar
+* Remove WordPress or ClassicPress logo from admin bar
 * Remove access to theme and plugin editors
 
 ### Enchance the Admin
@@ -164,7 +164,7 @@ Sample custom profile fields coming also.
 
 Included are a few tools to help in the early stages of site development, or that can be used for making improvements and debugging.
 
-* Put WordPress into debug mode without FTP access (experimental).
+* Put WordPress or ClassicPress into debug mode without FTP access (experimental).
 * Database reset tool (experimental).
 * Customizer reset tool.
 * Live theme testing for theme development on a live site.
