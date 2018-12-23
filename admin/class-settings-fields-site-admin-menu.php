@@ -292,7 +292,7 @@ class Settings_Fields_Site_Admin_Menu {
 			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'hide_links' ],
 			'ccp-site-admin-menu',
 			'ccp-site-admin-menu',
-			[ esc_html__( 'The old Links Manager is hidden by default in newer WordPress installations', 'controlled-chaos-plugin' ) ]
+			[ esc_html__( 'The old Links Manager is hidden by default in newer WordPress/ClassicPress installations', 'controlled-chaos-plugin' ) ]
 		);
 
 		register_setting(

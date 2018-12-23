@@ -289,7 +289,7 @@ class Settings_Fields_Dev_Tools {
 			'<label for="ccp_rtl_test">%1s</label> <a href="%2s" target="_blank" class="tooltip" title="%3s"><span class="dashicons dashicons-editor-help"></span></a></p>',
 			$args[0],
 			esc_url( 'https://codex.wordpress.org/Right_to_Left_Language_Support' ),
-			__( 'Read more in the WordPress Codex', 'controlled-chaos-plugin' )
+			__( 'Read more in the WordPress Codex (also applies to ClassicPress)', 'controlled-chaos-plugin' )
 		 );
 
 		echo $html;

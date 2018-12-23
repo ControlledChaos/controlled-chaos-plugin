@@ -17,5 +17,5 @@ if ( ! defined( 'WPINC' ) ) {
 } ?>
 <div>
 	<h3><?php _e( 'Remove Emoji Script', 'controlled-chaos-plugin' ); ?></h3>
-	<p><?php _e( 'WordPress includes this script to allow emojis to work in older browsers. If your users work with modern browsers than this script is unnecessary.' ); ?></p>
+	<p><?php _e( 'WordPress/ClassicPress includes this script to allow emojis to work in older browsers. If your users work with modern browsers than this script is unnecessary.' ); ?></p>
 </div>

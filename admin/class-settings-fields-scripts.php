@@ -69,7 +69,7 @@ class Settings_Fields_Scripts {
 	}
 
 	/**
-	 * Register settings via the WordPress Settings API.
+	 * Register settings via the WordPress/ClassicPress Settings API.
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -122,8 +122,8 @@ class Settings_Fields_Scripts {
 			'ccp_remove_emoji_script'
 		);
 
-		// Remove WordPress version appended to script links.
-		add_settings_field( 'ccp_remove_script_version', __( 'Script Versions', 'controlled-chaos-plugin' ), [ $this, 'remove_script_version_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Remove WordPress version from script and stylesheet links in <head>', 'controlled-chaos-plugin' ) ] );
+		// Remove WordPress/ClassicPress version appended to script links.
+		add_settings_field( 'ccp_remove_script_version', __( 'Script Versions', 'controlled-chaos-plugin' ), [ $this, 'remove_script_version_callback' ], 'ccp-scripts-general', 'ccp-scripts-general', [ esc_html__( 'Remove WordPress/ClassicPress version from script and stylesheet links in <head>', 'controlled-chaos-plugin' ) ] );
 
 		register_setting(
 			'ccp-scripts-general',

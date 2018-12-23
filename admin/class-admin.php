@@ -68,13 +68,13 @@ class Admin {
 		// Redirect theme & plugin editor pages.
 		add_action( 'admin_init', [ $this, 'redirect_editor_pages' ] );
 
-		// Remove the WordPress logo from the admin bar.
+		// Remove the WordPress/ClassicPress logo from the admin bar.
 		add_action( 'admin_bar_menu', [ $this, 'remove_wp_logo' ], 999 );
 
 		// Remove search from frontend admin toolbar.
 		add_action( 'wp_before_admin_bar_render', [ $this, 'adminbar_search' ] );
 
-		// Hide the WordPress update notification to all but admins.
+		// Hide the WordPress/ClassicPress update notification to all but admins.
 		add_action( 'admin_head', [ $this, 'admin_only_updates' ], 1 );
 
 		// Credits in admin footer.
@@ -195,7 +195,7 @@ class Admin {
 	}
 
 	/**
-	 * Remove the WordPress logo from the admin bar.
+	 * Remove the WordPress/ClassicPress logo from the admin bar.
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -229,7 +229,7 @@ class Admin {
 	}
 
 	/**
-	 * Hide the WordPress update notification to all but admins.
+	 * Hide the WordPress/ClassicPress update notification to all but admins.
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -252,7 +252,7 @@ class Admin {
 	 * Give yourself credit for your work and provide your clients
 	 * with a link to your site.
 	 *
-	 * Replaces the "Thank you for creating with WordPress" text
+	 * Replaces the "Thank you for creating with WordPress/ClassicPress" text
 	 * in the #wpfooter div at the bottom of all admin screens.
 	 *
 	 * The output strings contain a trailing space after the period
@@ -330,7 +330,7 @@ class Admin {
 
 		/**
 		 * If the Advanced Custom Fields Pro plugin is not active then
-		 * we use the input from the fields on the WordPress options page.
+		 * we use the input from the fields on the WordPress/ClassicPress options page.
 		 *
 		 * @since  1.0.0
 		 */
@@ -487,11 +487,11 @@ class Admin {
 	 */
 	public function enqueue_scripts() {
 
-		// Enqueue jQuery tabs from WordPress.
+		// Enqueue jQuery tabs from WordPress/ClassicPress.
 		wp_enqueue_script( 'jquery-ui-tabs' );
 
 		/**
-		 * Enqueue jQuery tooltips from WordPress.
+		 * Enqueue jQuery tooltips from WordPress/ClassicPress.
 		 *
 		 * For more control over tooltips, replace jQuery tooltips with Tooltipster,
 		 * which is included with this plugin.

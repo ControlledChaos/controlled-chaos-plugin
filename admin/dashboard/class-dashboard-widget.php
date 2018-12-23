@@ -2,9 +2,11 @@
 /**
  * Dashboard widget.
  *
- * @package WordPress
- * @subpackage IntegratePress
- * @since IntegratePress 1.0.0
+ * @package    Controlled_Chaos_Plugin
+ * @subpackage Admin\Dashboard
+ *
+ * @since      1.0.0
+ * @author     Greg Sweet <greg@ccdzine.com>
  */
 
 namespace CC_Plugin\Admin\Dashboard;

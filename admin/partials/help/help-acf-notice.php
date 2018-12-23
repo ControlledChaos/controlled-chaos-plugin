@@ -30,6 +30,6 @@ if ( ! defined( 'WPINC' ) ) {
 		esc_url( 'https://www.advancedcustomfields.com/add-ons/options-page/' ),
 		esc_html__( 'Options Page addon.', 'controlled-chaos-plugin' )
 	); ?>
-	<p><?php _e( 'One of the advantages of using ACF with the settings page is that the settings can be more easily added, editted, and rearranged than recoding this plugin using the WordPress Settings API. It is far easier to implement complicated settings fields, and has a nicer user interface than the native WordPress settings fields.', 'controlled-chaos-plugin' ); ?></p>
+	<p><?php _e( 'One of the advantages of using ACF with the settings page is that the settings can be more easily added, editted, and rearranged than recoding this plugin using the WordPress/ClassicPress Settings API. It is far easier to implement complicated settings fields, and has a nicer user interface than the native WordPress/ClassicPress settings fields.', 'controlled-chaos-plugin' ); ?></p>
 	<p><?php _e( 'This plugin comes equipped with an ACF fields import tool that will import the ACF fields registered by this plugin so that they can be modified.', 'controlled-chaos-plugin' ); ?></p>
 </div>

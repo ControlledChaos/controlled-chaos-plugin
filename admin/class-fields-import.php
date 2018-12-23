@@ -88,7 +88,7 @@ final class Fields_Import {
 	 *
 	 * @since  1.0.0
 	 * @access public
-	 * @global object wpdb provide an interface with the WordPress database.
+	 * @global object wpdb provide an interface with the WordPress/ClassicPress database.
 	 * @return void
 	 */
 	public function page_output() {

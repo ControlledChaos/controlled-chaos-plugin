@@ -70,8 +70,8 @@ class Settings_Page_Site {
 	 *
 	 * If the Advanced Custom Fields Pro plugin is active then
 	 * an ACF options page and ACF fields will be used. If not
-	 * then a default WordPress admin page and the WP Settings
-	 * API will be used.
+	 * then a default WordPress/ClassicPress admin page and the
+	 * Settings API will be used.
 	 *
 	 * Uses the universal slug partial for admin pages. Set this
      * slug in the core plugin file.
@@ -177,7 +177,7 @@ class Settings_Page_Site {
 		} else {
 
 			/**
-			 * Get the options firelds related to the WordPress settings page.
+			 * Get the options firelds related to the WordPress/ClassicPress settings page.
 			 *
 			 * @since  1.0.0
 			 */

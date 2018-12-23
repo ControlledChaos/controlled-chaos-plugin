@@ -3,7 +3,7 @@
  * About page output.
  *
  * This page uses the jQuery tabs from the jQuery UI suite that is included
- * with WordPress. Tabs are activated by targeting the `backend-tabbed-content`
+ * with WordPress/ClassicPress. Tabs are activated by targeting the `backend-tabbed-content`
  * in this plugin's admin.js file.
  *
  * @package    Controlled_Chaos_Plugin
@@ -98,12 +98,12 @@ $tabs = [
 $page_tabs = apply_filters( 'ccp_tabs_page_about', $tabs );
 
 ?>
-<!-- Default WordPress page wrapper -->
+<!-- Default WordPress/ClassicPress page wrapper -->
 <div class="wrap site-plugin-wrap">
 	<!-- Page heading -->
 	<?php echo sprintf( '<h1 class="wp-heading-inline">%1s %2s</h1>', get_bloginfo( 'name' ), esc_html__( 'Plugin', 'controlled-chaos-plugin' ) ); ?>
 	<!-- Page description -->
-    <p class="description"><?php esc_html_e( 'A feature-packed WordPress starter plugin for building custom-tailored websites.', 'controlled-chaos-plugin' ); ?></p>
+    <p class="description"><?php esc_html_e( 'A feature-packed WordPress or ClassicPress starter plugin for building custom-tailored websites.', 'controlled-chaos-plugin' ); ?></p>
 	<!-- Begin jQuery tabbed content -->
 	<div class="backend-tabbed-content">
 		<ul>
@@ -130,4 +130,4 @@ $page_tabs = apply_filters( 'ccp_tabs_page_about', $tabs );
 		<?php // Hook for adding tabbed content.
 		do_action( 'ccp_content_page_about_after' ); ?>
 	</div><!-- End jQuery tabbed content -->
-</div><!-- End WordPress page wrapper -->
+</div><!-- End WordPress/ClassicPress page wrapper -->

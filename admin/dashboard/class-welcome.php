@@ -67,7 +67,7 @@ class Welcome {
 		if ( ccp_acf_options() ) {
 			$dismiss = get_field( 'ccp_remove_welcome_dismiss', 'option' );
 
-		// If ACF is not active, get the field from the WordPress options page.
+		// If ACF is not active, get the field from the WordPress/ClassicPress options page.
 		} else {
 			$dismiss = get_option( 'ccp_remove_welcome_dismiss' );
 		}

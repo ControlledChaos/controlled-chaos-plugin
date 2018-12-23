@@ -149,7 +149,7 @@ class Admin_Pages {
                 $position = false;
             }
 
-        // If ACF is not active, get the field from the WordPress options page.
+        // If ACF is not active, get the field from the WordPress/ClassicPress options page.
         } else {
 
             // Get the field.
@@ -169,7 +169,7 @@ class Admin_Pages {
             // Get the field.
             $link_label = get_field( 'ccp_site_plugin_link_label', 'option' );
 
-        // If ACF is not active, get the field from the WordPress options page.
+        // If ACF is not active, get the field from the WordPress/ClassicPress options page.
         } else {
 
             // Get the field.
@@ -200,7 +200,7 @@ class Admin_Pages {
             // Get the field.
             $link_icon  = get_field( 'ccp_site_plugin_link_icon', 'option' );
 
-        // If ACF is not active, get the field from the WordPress options page.
+        // If ACF is not active, get the field from the WordPress/ClassicPress options page.
         } else {
 
             // Get the field.
