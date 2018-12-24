@@ -587,7 +587,7 @@ function ccp_acf_pro() {
  *
  * @since  1.0.0
  * @access public
- * @return bool Returns true if the ACF free plus the
+ * @return bool Returns true if ACF 4.0 free plus the
  *              Options Page addon or Pro plugin is active.
  */
 function ccp_acf_options() {
