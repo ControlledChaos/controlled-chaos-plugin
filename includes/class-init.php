@@ -46,6 +46,7 @@ final class Init {
 
 			// Get class dependencies
 			$instance->dependencies();
+
 		}
 
 		// Return the instance.
@@ -126,6 +127,11 @@ final class Init {
 	 * @return void
 	 */
 	public function plugin_support() {
+
+		// Add Advanced Custom Fields Support.
+		if ( ccp_acf() ) {
+			include_once CCP_PATH . 'includes/acf/class-extend-acf.php';
+		}
 
 		// Add Beaver Builder support.
 		if ( class_exists( 'FLBuilder' ) ) {
