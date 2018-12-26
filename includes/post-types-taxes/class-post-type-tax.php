@@ -57,6 +57,7 @@ class Post_Types_Taxes {
 	 * @since  1.0.0
 	 * @access public
 	 * @return void Constructor method is empty.
+	 *              Change to `self` if used.
 	 */
 	public function __construct() {}
 

@@ -138,6 +138,7 @@ if ( ! class_exists( 'Controlled_Chaos_Plugin' ) ) :
 		 * @since  1.0.0
 		 * @access private
 		 * @return void Constructor method is empty.
+	 *              Change to `self` if used.
 		 */
 		private function __construct() {}
 

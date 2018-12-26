@@ -60,6 +60,7 @@ class i18n {
 	 * @since  1.0.0
 	 * @access private
 	 * @return void Constructor method is empty.
+	 *              Change to `self` if used.
 	 */
 	private function __construct() {}
 
