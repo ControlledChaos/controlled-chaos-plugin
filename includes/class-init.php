@@ -44,7 +44,7 @@ final class Init {
 			// Set variable for new instance.
 			$instance = new self;
 
-			// Get class dependencies
+			// Get class dependencies.
 			$instance->dependencies();
 
 		}
