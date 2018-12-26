@@ -173,7 +173,7 @@ if ( ! class_exists( 'Controlled_Chaos_Plugin' ) ) :
 			 * Text domain
 			 *
 			 * @since  1.0.0
-			 * @return string Returns the latest plugin version.
+			 * @return string Returns the text domain of the plugin.
 			 *
 			 * @todo   Replace all strings with constant.
 			 */
