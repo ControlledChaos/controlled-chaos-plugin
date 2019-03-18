@@ -95,8 +95,6 @@ final class Fields_Import {
 
 		global $wpdb;
 
-		$acf_local = acf_local();
-
 		// Process the form.
 		if ( isset( $_POST['acf_php_recovery_action'] ) && $_POST['acf_php_recovery_action'] == 'import' && isset( $_POST['fieldsets']) && check_admin_referer( 'acf_php_recovery' ) ) {
 			$import_fieldsets = $_POST['fieldsets'];
@@ -108,7 +106,7 @@ final class Fields_Import {
 			$key_to_post_id = array();
 
 			// Now we can import the groups
-			foreach ( $acf_local->groups as $key => $group ) {
+			foreach ( acf()->local->groups as $key => $group ) {
 				$group['title'] = $group['title'] . __( ' (Imported)', 'controlled-chaos-plugin' );
 
 				// Only import those that were selected.
@@ -137,7 +135,7 @@ final class Fields_Import {
 			$imported_fields = array();
 			do {
 				$num_import = 0;
-				foreach ( $acf_local->fields as $key => $field ) {
+				foreach ( acf()->local->fields as $key => $field ) {
 					if ( ! in_array( $key, $imported_fields ) && in_array( $field['parent'], $field_parents ) ) {
 						$num_import           = $num_import + 1;
 						$field_parents[]      = $key;
