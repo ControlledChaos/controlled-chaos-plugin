@@ -41,7 +41,7 @@ If you would like to request development of a custom version of this plugin for 
 * The short array syntax ( `[]` rather than `array()` ) requires PHP 5.4+
 * Run a modern setup and you'll be fine.
 
-The plugin contains several compatibility functions. These check for WordPress 5.0 or higher (with the block editor), check if the site runs ClassicPress rather than WordPress, and several checks for Advanced Custom Fields, ACF Pro, and ACF 4.0 (old) plus the Pptions Page addon.
+The plugin contains several compatibility functions. These check for WordPress 5.0 or higher (with the block editor), check if the site runs ClassicPress rather than WordPress, and several checks for Advanced Custom Fields, ACF Pro, and ACF 4.0 (old) plus the Options Page addon.
 
 ### Gutenberg Editor
 
