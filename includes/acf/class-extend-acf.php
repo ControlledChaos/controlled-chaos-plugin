@@ -2,6 +2,8 @@
 /**
  * Provided to extend Advanced Custom Fields.
  *
+ * ACF version 4 or earlier is not supported.
+ *
  * @package    Controlled_Chaos_Plugin
  * @subpackage Includes\ACF
  *
@@ -9,21 +11,28 @@
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
+namespace CC_Plugin\Includes\ACF;
+
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-// Get plugins path to check for active plugins.
-include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+// Bail if ACF version 4 or earlier.
+if ( ! defined( 'ACF_VERSION' ) ) {
+	return;
+}
 
 /**
- * Define the core functionality of the plugin.
+ * Extend Advanced Custom Fields.
  *
  * @since  1.0.0
  * @access public
  */
 class Extend_ACF {
+
+	// Settings variable.
+	var $settings;
 
 	/**
 	 * Instance of the class
@@ -42,6 +51,9 @@ class Extend_ACF {
 			// Set variable for new instance.
 			$instance = new self;
 
+			// Get field classes.
+			$instance->include_fields();
+
 		}
 
 		// Return the instance.
@@ -54,8 +66,7 @@ class Extend_ACF {
 	 *
 	 * @since  1.0.0
 	 * @access private
-	 * @return void Constructor is empty.
-	 *              Change to `self` if used.
+	 * @return self
 	 */
 	private function __construct() {
 
@@ -68,7 +79,23 @@ class Extend_ACF {
 	}
 
 	/**
-	 * Enqueue ACF stylesheets for the admin area.
+	 * Include the fields
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+	public function include_fields() {
+
+		// Get the sample field class.
+		include_once CCP_PATH . 'includes/acf/fields/acf-sample-field/class-acf-sample-field.php';
+
+		include_once CCP_PATH . 'includes/acf/acf-field-name/acf-field-name.php';
+
+	}
+
+	/**
+	 * Enqueue general ACF stylesheets for the admin area.
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -76,12 +103,13 @@ class Extend_ACF {
 	 */
 	public function admin_styles() {
 
-		wp_enqueue_style( CCP_ADMIN_SLUG . '-acf-admin', CCP_URL . 'includes/acf/assets/css/admin.min.css', [], CCP_VERSION, 'screen' );
+		// Uncomment to enqueue.
+		// wp_enqueue_style( CCP_ADMIN_SLUG . '-acf-admin', CCP_URL . 'includes/acf/assets/css/admin.min.css', [], CCP_VERSION, 'screen' );
 
 	}
 
 	/**
-	 * Enqueue ACF JavaScript for the admin area.
+	 * Enqueue general ACF JavaScript for the admin area.
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -89,7 +117,8 @@ class Extend_ACF {
 	 */
 	public function admin_scripts() {
 
-		wp_enqueue_script( CCP_ADMIN_SLUG . '-acf-admin', CCP_URL . 'includes/acf/assets/js/admin.min.js', [ 'jquery' ], CCP_VERSION, true );
+		// Uncomment to enqueue.
+		// wp_enqueue_script( CCP_ADMIN_SLUG . '-acf-admin', CCP_URL . 'includes/acf/assets/js/admin.min.js', [ 'jquery' ], CCP_VERSION, true );
 
 	}
 
