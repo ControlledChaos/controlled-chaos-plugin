@@ -305,7 +305,7 @@ class Admin {
 			// If a name and a URL are provided.
 			if ( $credit && $link ) {
 				$footer = sprintf(
-					'%1s %2s <a href="%3s" target="_blank">%4s</a>. ',
+					'%1s %2s <a href="%3s" rel="nofollow" target="_blank">%4s</a>. ',
 					$site,
 					esc_html__( 'website designed & developed by', 'controlled-chaos-plugin' ),
 					esc_url( $link ),
@@ -342,7 +342,7 @@ class Admin {
 			// If a name and a URL are provided.
 			if ( $credit && $link ) {
 				$footer = sprintf(
-					'%1s %2s <a href="%3s" target="_blank">%4s</a>. ',
+					'%1s %2s <a href="%3s" rel="nofollow" target="_blank">%4s</a>. ',
 					$site,
 					esc_html__( 'website designed & developed by', 'controlled-chaos-plugin' ),
 					esc_url( $link ),
@@ -500,11 +500,11 @@ class Admin {
 		 */
 		wp_enqueue_script( 'jquery-ui-tooltip' );
 
-		// Enqueue Conditionalize for conditional form fields.
-		wp_enqueue_script( CCP_ADMIN_SLUG . '-conditionalize', CCP_URL . 'admin/assets/js/admin.js', [ 'jquery' ], CCP_VERSION, true );
-
 		// Enqueue scripts for backend functionality of this plugin.
-		wp_enqueue_script( CCP_ADMIN_SLUG . '-admin', CCP_URL . 'admin/assets/js/conditionize.flexible.jquery.min.js', [ 'jquery' ], CCP_VERSION, true );
+		wp_enqueue_script( CCP_ADMIN_SLUG . '-admin', CCP_URL . 'admin/assets/js/admin.js', [ 'jquery' ], CCP_VERSION, true );
+
+		// Enqueue Conditionalize for conditional form fields.
+		wp_enqueue_script( CCP_ADMIN_SLUG . '-conditionalize', CCP_URL . 'admin/assets/js/conditionize.flexible.jquery.min.js', [ 'jquery' ], CCP_VERSION, true );
 
 	}
 
