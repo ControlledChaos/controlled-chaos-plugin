@@ -27,7 +27,7 @@ if ( ! defined( 'WPINC' ) ) {
 <meta name="DC.Source" content="<?php echo esc_attr( esc_url( site_url() ) ); ?>" />
 <meta name="DC.Relation" content="<?php echo esc_attr( esc_url( site_url() ) ); ?>" scheme="IsPartOf" />
 <?php if ( is_404() ) : ?>
-<meta name="DC.Description" content="404 <?php esc_attr( _e( 'Not Found' ) ); ?>" />
+<meta name="DC.Description" content="404 <?php esc_attr( _e( 'Not Found', 'controlled-chaos-plugin' ) ); ?>" />
 <?php else : ?>
 <meta name="DC.Description" content="<?php esc_attr( do_action( 'ccp_meta_description_tag' ) ); ?>" />
 <?php endif; ?>
