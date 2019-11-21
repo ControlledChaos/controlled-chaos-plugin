@@ -82,24 +82,25 @@ final class Taxes_Register {
         ];
 
         $options = [
-            'label'              => __( 'Taxonomies', 'controlled-chaos-plugin' ),
-            'labels'             => $labels,
-            'public'             => true,
-            'hierarchical'       => false,
-            'label'              => 'Taxonomies',
-            'show_ui'            => true,
-            'show_in_menu'       => true,
-            'show_in_nav_menus'  => true,
-            'query_var'          => true,
-            'rewrite'            => [
+            'label'                 => __( 'Taxonomies', 'controlled-chaos-plugin' ),
+            'labels'                => $labels,
+            'public'                => true,
+            'hierarchical'          => false,
+            'label'                 => 'Taxonomies',
+            'show_ui'               => true,
+            'show_in_menu'          => true,
+            'show_in_nav_menus'     => true,
+            'query_var'             => true,
+            'rewrite'               => [
                 'slug'         => 'taxonomies',
                 'with_front'   => true,
                 'hierarchical' => false,
             ],
-            'show_admin_column'  => true,
-            'show_in_rest'       => true,
-            'rest_base'          => 'taxonomies',
-            'show_in_quick_edit' => true
+            'show_admin_column'     => true,
+            'show_in_rest'          => false,
+			'rest_base'             => 'taxonomies',
+			'rest_controller_class' => 'WP_REST_Terms_Controller',
+            'show_in_quick_edit'    => true
         ];
 
         /**
