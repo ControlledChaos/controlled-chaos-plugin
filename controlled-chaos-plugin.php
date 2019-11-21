@@ -11,7 +11,7 @@
  * @license     GPL-3.0+ http://www.gnu.org/licenses/gpl-3.0.txt
  *
  * Plugin Name:  Controlled Chaos Plugin
- * Plugin URI:   https://github.com/ControlledChaos/controlled-chaos-plugin
+ * Plugin URI:   https://controlledchaos.github.io/controlled-chaos-plugin/
  * Description:  A WordPress starter/boilerplate for site-specific plugins.
  * Version:      1.0.0
  * Author:       Controlled Chaos Design
@@ -20,7 +20,7 @@
  * License URI:  https://www.gnu.org/licenses/gpl.txt
  * Text Domain:  controlled-chaos-plugin
  * Domain Path:  /languages
- * Tested up to: 5.0.0
+ * Tested up to: 5.2.2
  */
 
 /**
@@ -136,11 +136,11 @@ if ( ! class_exists( 'Controlled_Chaos_Plugin' ) ) :
 		 * Constructor method
 		 *
 		 * @since  1.0.0
-		 * @access private
+		 * @access protected
 		 * @return void Constructor method is empty.
-	 *              Change to `self` if used.
+		 *              Change to `self` if used.
 		 */
-		private function __construct() {}
+		protected function __construct() {}
 
 		/**
 		 * Define plugin constants
@@ -240,10 +240,10 @@ if ( ! class_exists( 'Controlled_Chaos_Plugin' ) ) :
 		 * Throw error on object clone.
 		 *
 		 * @since  1.0.0
-		 * @access public
+		 * @access private
 		 * @return void
 		 */
-		public function __clone() {
+		private function __clone() {
 
 			// Cloning instances of the class is forbidden.
 			_doing_it_wrong( __FUNCTION__, __( 'This is not allowed.', 'controlled-chaos-plugin' ), '1.0.0' );
@@ -254,10 +254,10 @@ if ( ! class_exists( 'Controlled_Chaos_Plugin' ) ) :
 		 * Disable unserializing of the class.
 		 *
 		 * @since  1.0.0
-		 * @access public
+		 * @access private
 		 * @return void
 		 */
-		public function __wakeup() {
+		private function __wakeup() {
 
 			// Unserializing instances of the class is forbidden.
 			_doing_it_wrong( __FUNCTION__, __( 'This is not allowed.', 'controlled-chaos-plugin' ), '1.0.0' );
@@ -306,11 +306,6 @@ if ( ! class_exists( 'Controlled_Chaos_Plugin' ) ) :
 // End the check for the plugin class.
 endif;
 
-// Bail out now if the core class was not run.
-if ( ! function_exists( 'ccp_plugin' ) ) {
-	return;
-}
-
 /**
  * Register the activaction & deactivation hooks.
  *
@@ -333,6 +328,11 @@ function ccp_activate_plugin() {
 	// Run the activation class.
 	ccp_activate();
 
+}
+
+// Bail out now if the core class was not run.
+if ( ! function_exists( 'ccp_plugin' ) ) {
+	return;
 }
 
 /**
@@ -550,7 +550,7 @@ function ccp_classicpress() {
 }
 
 /**
- * Check for Advanced Custom Fields.
+ * Check for Advanced Custom Fields
  *
  * @since  1.0.0
  * @access public
@@ -567,7 +567,7 @@ function ccp_acf() {
 }
 
 /**
- * Check for Advanced Custom Fields Pro.
+ * Check for Advanced Custom Fields Pro
  *
  * @since  1.0.0
  * @access public
@@ -584,7 +584,7 @@ function ccp_acf_pro() {
 }
 
 /**
- * Check for Advanced Custom Fields options page.
+ * Check for Advanced Custom Fields options page
  *
  * @since  1.0.0
  * @access public
