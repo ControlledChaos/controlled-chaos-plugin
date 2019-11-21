@@ -1,6 +1,6 @@
 <?php
 /**
- * About page media options output.
+ * Dev tools page output.
  *
  * @package    Controlled_Chaos_Plugin
  * @subpackage Admin\Partials
