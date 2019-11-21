@@ -1,6 +1,6 @@
 <?php
 /**
- * The core plugin class
+ * Initialize the plugin
  *
  * @package    Controlled_Chaos_Plugin
  * @subpackage Includes
@@ -20,7 +20,7 @@ if ( ! defined( 'WPINC' ) ) {
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
 /**
- * Define the core functionality of the plugin.
+ * Begin the core functionality of the plugin.
  *
  * @since  1.0.0
  * @access public

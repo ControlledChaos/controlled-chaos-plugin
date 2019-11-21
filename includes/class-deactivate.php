@@ -4,11 +4,11 @@
  *
  * This file must not be namespaced.
  *
- * @link       http://ccdzine.com
- * @since      1.0.0
- *
  * @package    Controlled_Chaos_Plugin
  * @subpackage Includes
+ *
+ * @since      1.0.0
+ * @author     Greg Sweet <greg@ccdzine.com>
  */
 
 // If this file is called directly, abort.
