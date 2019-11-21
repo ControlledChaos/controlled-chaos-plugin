@@ -4,24 +4,30 @@
  *
  * @todo Nest this properly.
  */
+
+.wrap.posts-per-page {
+	max-width: 1024px;
+}
 /**
  * Admin Header
  */
-.ccp-admin-header .admin-site-branding {
-  padding-top: 1.5em;
-}
+.ccp-admin-header {
 
-.ccp-admin-header .admin-site-branding .admin-site-title {
-  margin-top: 0;
-}
+	.admin-site-branding {
+		padding-top: 1.5em;
 
-.ccp-admin-header .admin-navigation .admin-navigation-list {
-  margin-bottom: 0;
-}
+		.admin-site-title {
+			margin-top: 0;
+		}
+	}
 
-.ccp-admin-header .admin-navigation .admin-navigation-list li {
-  display: inline;
-  margin-right: 0.75em;
+	.admin-navigation {
+
+		.admin-navigation-list li {
+			display: inline;
+			margin-right: 0.75em;
+		}
+	}
 }
 
 /**

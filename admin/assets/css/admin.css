@@ -4,10 +4,10 @@
  *
  * @todo Nest this properly.
  */
-
 .wrap.posts-per-page {
-	max-width: 1024px;
+  max-width: 1024px;
 }
+
 /**
  * Admin Header
  */

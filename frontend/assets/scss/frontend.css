@@ -6,7 +6,9 @@
   padding: 30px !important;
 }
 
-button.fancybox-arrow:hover, button.fancybox-arrow:focus, button.fancybox-arrow:active {
+button.fancybox-arrow:hover,
+button.fancybox-arrow:focus,
+button.fancybox-arrow:active {
   background: transparent !important;
 }
 
