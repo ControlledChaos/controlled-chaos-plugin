@@ -76,7 +76,11 @@ class Meta_Title {
 		global $post;
 
 		// Get the author ID.
-		$author_id = $post->post_author;
+		if ( is_404() ) {
+			$author_id = '';
+		} else {
+			$author_id = $post->post_author;
+		}
 
 		// Custom author title.
 		$author_title = sprintf(
