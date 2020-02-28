@@ -146,6 +146,9 @@ class Admin {
 		// Functions for various admin pages and edit screens.
 		require_once CCP_PATH . 'admin/class-admin-pages.php';
 
+		// Add WYSIWYG editor to user bio field.
+		require_once CCP_PATH . 'admin/class-user-bio.php';
+
 		// Import custom fields for editing, if ACF Pro is active.
 		if ( ccp_acf_options() ) {
 			include_once CCP_PATH . 'admin/class-fields-import.php';
