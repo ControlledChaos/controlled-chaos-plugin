@@ -51,7 +51,7 @@ class Media {
 
 	}
 
-    /**
+	/**
 	 * Constructor method
 	 *
 	 * @since  1.0.0
@@ -73,10 +73,10 @@ class Media {
 		add_filter( 'the_content', [ $this, 'fancybox_single_images' ], 2 );
 
 		// Default add single image link.
-        add_action( 'admin_init', [ $this, 'image_link' ], 10 );
+		add_action( 'admin_init', [ $this, 'image_link' ], 10 );
 
-        // Default add gallery images link.
-        add_filter( 'media_view_settings', [ $this, 'gallery_link' ], 10 );
+		// Default add gallery images link.
+		add_filter( 'media_view_settings', [ $this, 'gallery_link' ], 10 );
 
 		// Add featured images to RSS feeds.
 		add_filter( 'the_excerpt_rss', [ $this, 'rss_featured_images' ] );
@@ -227,47 +227,47 @@ class Media {
 	}
 
 	/**
-     * Default link when adding an image.
+	 * Default link when adding an image.
 	 *
 	 * Note: As of this comment on June 21, 2018 the `image_default_link_type`
 	 * option only works with the classic editor, not with the new block editor.
-     *
-     * @since  1.0.0
+	 *
+	 * @since  1.0.0
 	 * @access public
 	 * @return void
 	 *
 	 * @todo Review this after WordPress 5.0 is released or if/when the new block
 	 *       editor adds the option to link to the full size image.
-     */
-    public function image_link() {
+	 */
+	public function image_link() {
 
-        $image_set = get_option( 'image_default_link_type' );
+		$image_set = get_option( 'image_default_link_type' );
 
-        if ( $image_set !== 'file' ) { // Could be 'none'
-            update_option( 'image_default_link_type', 'file' );
-        }
+		if ( $image_set !== 'file' ) { // Could be 'none'
+			update_option( 'image_default_link_type', 'file' );
+		}
 
-    }
+	}
 
-    /**
-     * Default gallery images link.
+	/**
+	 * Default gallery images link.
 	 *
 	 * Note: As of this comment on June 21, 2018 this function only works with
 	 * galleries in the classic editor, not with the new block editor galleries.
-     *
-     * @since  1.0.0
+	 *
+	 * @since  1.0.0
 	 * @access public
 	 * @return mixed[] Modifies the WordPress gallery shortcode.
 	 *
 	 * @todo Review this after WordPress 5.0 is released or if/when the new block
 	 *       editor adds the option to link to the full size images.
-     */
-    public function gallery_link( $settings ) {
+	 */
+	public function gallery_link( $settings ) {
 
-        $settings['galleryDefaults']['link'] = 'file';
+		$settings['galleryDefaults']['link'] = 'file';
 
-        return $settings;
-    }
+		return $settings;
+	}
 
 	/**
 	 * Add featured images to RSS feeds.
