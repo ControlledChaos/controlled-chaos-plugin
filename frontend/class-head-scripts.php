@@ -48,26 +48,26 @@ class Head_Scripts {
 
 	}
 
-    /**
+	/**
 	 * Constructor method
 	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return self
 	 */
-    public function __construct() {
+	public function __construct() {
 
-        // Remove WP versions from stylesheets and scripts.
-        add_filter( 'style_loader_src', [ $this, 'remove_ver_css_js' ], 999 );
+		// Remove WP versions from stylesheets and scripts.
+		add_filter( 'style_loader_src', [ $this, 'remove_ver_css_js' ], 999 );
 		add_filter( 'script_loader_src', [ $this, 'remove_ver_css_js' ], 999 );
 
 		// Disable emoji script.
 		add_action( 'init', [ $this, 'disable_emojis' ] );
 
-    }
+	}
 
-    /**
-     * Remove WP versions from stylesheets and scripts.
+	/**
+	 * Remove WP versions from stylesheets and scripts.
 	 *
 	 * Only if the option is selected on the Script Options page.
 	 *
@@ -75,10 +75,10 @@ class Head_Scripts {
 	 * @access public
 	 * @param  string $src Path to the file.
 	 * @return null
-     */
+	 */
 	public function remove_ver_css_js( $src ) {
 
-		if ( get_option( 'ccp_remove_script_verion' ) && strpos( $src, 'ver=' ) ) {
+		if ( get_option( 'ccp_remove_script_verion' ) && strpos( $src, '?ver=' ) ) {
 			$src = remove_query_arg( 'ver', $src );
 		}
 

@@ -160,13 +160,13 @@ class Admin {
 	}
 
 	/**
-     * Remove theme & plugin editor links.
-     *
-     * @since  1.0.0
+	 * Remove theme & plugin editor links.
+	 *
+	 * @since  1.0.0
 	 * @access public
 	 * @return array
-     */
-    public function remove_editor_links() {
+	 */
+	public function remove_editor_links() {
 
 		$remove_theme_editor  = remove_submenu_page( 'themes.php', 'theme-editor.php' );
 		$remove_plugin_editor = remove_submenu_page( 'plugins.php', 'plugin-editor.php' );
@@ -382,7 +382,7 @@ class Admin {
 	 * Enqueue the stylesheets for the admin area.
 	 *
 	 * Uses the universal slug partial for admin pages. Set this
-     * slug in the core plugin file.
+	 * slug in the core plugin file.
 	 *
 	 * @since  1.0.0
 	 * @access public
