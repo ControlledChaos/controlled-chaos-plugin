@@ -12,6 +12,10 @@ A feature-packed WordPress or ClassicPress starter plugin for building custom-ta
 
 ![](https://raw.githubusercontent.com/ControlledChaos/controlled-chaos-plugin/master/assets/images/controlled-chaos-github-banner.jpg)
 
+## Archived
+
+This plugin has been replaced by the [Site Core](https://github.com/ControlledChaos/sitecore) plugin, which offers most of what this plugin offers plus more. The code has been updated to operate with new PHP versions and is generally more sophisticated. Check it out!
+
 ## Plugin Overview
 
 Controlled Chaos Plugin is a tool — a means to an end. It is not intended to be used as is, without further development, however it can be used as such. I use it to build site-specific plugins for clients.
